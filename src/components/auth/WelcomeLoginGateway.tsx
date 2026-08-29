@@ -10,7 +10,7 @@ import {
   UserPlus
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
-import { GoogleIcon, TikTokIcon, FacebookIcon, GitHubIcon, GitLabIcon, BitbucketIcon } from './SocialOAuthPopup';
+import { GoogleIcon } from './SocialOAuthPopup';
 
 interface WelcomeLoginGatewayProps {
   onEnterSystem?: () => void;
@@ -64,7 +64,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
     }
   };
 
-  const handleSocialLogin = (provider: 'google' | 'tiktok' | 'facebook' | 'github' | 'gitlab' | 'bitbucket') => {
+  const handleSocialLogin = (provider: 'google') => {
     openOAuthPopup(provider);
   };
 
@@ -172,38 +172,6 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
                 <span>{t('login_with_google')}</span>
               </button>
 
-              {/* GitHub Button */}
-              <button
-                id="btn-gateway-login-github"
-                onClick={() => handleSocialLogin('github')}
-                type="button"
-                className="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-100 font-bold text-xs border border-slate-700/80 transition-all flex items-center justify-center gap-3 cursor-pointer active:scale-[0.99]"
-              >
-                <GitHubIcon className="w-4 h-4" />
-                <span>{t('login_with_github')}</span>
-              </button>
-
-              {/* GitLab Button */}
-              <button
-                id="btn-gateway-login-gitlab"
-                onClick={() => handleSocialLogin('gitlab')}
-                type="button"
-                className="w-full py-2.5 px-4 rounded-xl bg-[#FC6D27] hover:bg-[#e85a17] text-white font-bold text-xs border border-[#FC6D27]/60 transition-all flex items-center justify-center gap-3 cursor-pointer active:scale-[0.99]"
-              >
-                <GitLabIcon className="w-4 h-4" />
-                <span>{t('login_with_gitlab')}</span>
-              </button>
-
-              {/* Bitbucket Button */}
-              <button
-                id="btn-gateway-login-bitbucket"
-                onClick={() => handleSocialLogin('bitbucket')}
-                type="button"
-                className="w-full py-2.5 px-4 rounded-xl bg-[#0052CC] hover:bg-[#003d99] text-white font-bold text-xs border border-[#0052CC]/60 transition-all flex items-center justify-center gap-3 cursor-pointer active:scale-[0.99]"
-              >
-                <BitbucketIcon className="w-4 h-4" />
-                <span>{t('login_with_bitbucket')}</span>
-              </button>
             </div>
 
             {/* Divider */}
