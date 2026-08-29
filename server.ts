@@ -6,6 +6,24 @@ import dotenv from 'dotenv';
 import { spawn, spawnSync } from 'child_process';
 import { GoogleGenAI } from '@google/genai';
 
+// ---- Visitor tracking (daily unique visitors) ----
+const VISITOR_FILE = path.join(process.cwd(), 'server_data', 'visitors.json');
+let visitorSet = new Set<string>();
+try {
+  const raw = fs.readFileSync(VISITOR_FILE, 'utf-8');
+  visitorSet = new Set(JSON.parse(raw));
+} catch { /* no file yet */ }
+function trackVisitor(ip: string) {
+  if (!visitorSet.has(ip)) {
+    visitorSet.add(ip);
+    try {
+      fs.mkdirSync(path.dirname(VISITOR_FILE), { recursive: true });
+      fs.writeFileSync(VISITOR_FILE, JSON.stringify([...visitorSet]));
+    } catch { /* ignore */ }
+  }
+}
+function getVisitorCount() { return visitorSet.size; }
+
 function whichPython(): string {
   // hermes venv python (Windows)
   const candidates = [
@@ -445,9 +463,34 @@ ${JSON.stringify(organizationSummary, null, 2)}
     const distPath = path.join(process.cwd(), 'dist');
     app.use(express.static(distPath));
     app.get('*', (req, res) => {
+      const ip = req.headers['x-forwarded-for']?.toString().split(',')[0]?.trim() || req.socket.remoteAddress || 'unknown';
+      trackVisitor(ip);
       res.sendFile(path.join(distPath, 'index.html'));
     });
   }
+
+  // Stats endpoint (visitors + members) for owner reporting
+  app.get('/api/stats', (_req, res) => {
+    try {
+      const members = readMembers();
+      res.json({
+        ok: true,
+        visitors: getVisitorCount(),
+        members: members.length,
+        deployUrl: process.env.DEPLOY_URL || `http://localhost:${PORT}`,
+      });
+    } catch (e: any) { res.status(500).json({ ok: false, error: e?.message }); }
+  });
+
+  // Owner report trigger (Telegram + LINE) — callable from cron/deploy
+  app.post('/api/report', (_req, res) => {
+    try {
+      const members = readMembers().length;
+      const visitors = getVisitorCount();
+      notifyStats(visitors, members);
+      res.json({ ok: true, visitors, members });
+    } catch (e: any) { res.status(500).json({ ok: false, error: e?.message }); }
+  });
 
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`AI Insurance Network OS Server running on http://localhost:${PORT}`);

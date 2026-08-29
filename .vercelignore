@@ -1,0 +1,9 @@
+node_modules
+dist
+server_data
+server_videos
+video_myplan
+.git
+*.log
+.env
+.env.local
