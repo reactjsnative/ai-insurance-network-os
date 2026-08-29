@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   X, 
@@ -8,15 +8,12 @@ import {
   Phone, 
   Eye, 
   EyeOff, 
-  Shield, 
   CheckCircle2, 
   ArrowRight, 
   Loader2, 
   Sparkles, 
   AlertCircle,
-  KeyRound,
-  Users,
-  Check
+  KeyRound
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { GoogleIcon, TikTokIcon, FacebookIcon } from './SocialOAuthPopup';
@@ -31,14 +28,17 @@ export const AuthModal: React.FC = () => {
     loginWithEmail, 
     openOAuthPopup, 
     registerWithEmail,
+    resetPassword,
+    verifyResetCode,
+    confirmResetPassword,
     members,
     positions,
     t
   } = useApp();
 
   // Login form state
-  const [loginEmail, setLoginEmail] = useState('akarapol.pro798@gmail.com');
-  const [loginPassword, setLoginPassword] = useState('123456');
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(true);
   const [showLoginPassword, setShowLoginPassword] = useState(false);
 
@@ -48,18 +48,42 @@ export const AuthModal: React.FC = () => {
   const [regPassword, setRegPassword] = useState('');
   const [regPhone, setRegPhone] = useState('');
   const [regPosition, setRegPosition] = useState<PositionId>('agent');
-  const [regSponsorCode, setRegSponsorCode] = useState('CM-101');
+  const [regSponsorCode, setRegSponsorCode] = useState('');
   const [showRegPassword, setShowRegPassword] = useState(false);
 
-  // Forgot password state
+  // Forgot password state (email -> code -> new password -> success)
   const [forgotEmail, setForgotEmail] = useState('');
-  const [forgotStep, setForgotStep] = useState<'request' | 'otp' | 'success'>('request');
-  const [otpCode, setOtpCode] = useState(['', '', '', '', '', '']);
+  const [forgotStep, setForgotStep] = useState<'request' | 'code' | 'reset' | 'success'>('request');
+  const [resetCode, setResetCode] = useState('');
+  const [resetEmail, setResetEmail] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showNewPassword, setShowNewPassword] = useState(false);
 
   // Status & loading
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  // Auto-open the "set new password" step when arriving from the reset email link
+  // (?mode=resetPassword&oobCode=...)
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const mode = params.get('mode');
+      const oobCode = params.get('oobCode');
+      if (mode === 'resetPassword' && oobCode) {
+        setResetCode(oobCode);
+        setForgotStep('reset');
+        openAuthModal('forgot');
+        verifyResetCode(oobCode).then((res) => {
+          if (res.success && res.email) setResetEmail(res.email);
+        });
+        window.history.replaceState({}, '', window.location.pathname);
+      }
+    } catch {
+      /* ignore */
+    }
+  }, []);
 
   if (!isAuthModalOpen) return null;
 
@@ -128,56 +152,82 @@ export const AuthModal: React.FC = () => {
     }
   };
 
-  const handleSendResetOTP = (e: React.FormEvent) => {
+  const handleSendResetEmail = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage('');
     if (!forgotEmail.includes('@')) {
       setErrorMessage('กรุณากรอกอีเมลที่ใช้สมัครสมาชิก');
       return;
     }
     setIsLoading(true);
-    setTimeout(() => {
+    try {
+      const res = await resetPassword(forgotEmail);
+      if (res.success) {
+        setResetCode('');
+        setResetEmail('');
+        setForgotStep('code');
+      } else {
+        setErrorMessage(res.message);
+      }
+    } catch (err) {
+      setErrorMessage('เกิดข้อผิดพลาดในการส่งรหัสยืนยัน');
+    } finally {
       setIsLoading(false);
-      setForgotStep('otp');
-      setErrorMessage('');
-    }, 800);
+    }
   };
 
-  const handleVerifyOtpAndReset = (e: React.FormEvent) => {
+  const handleVerifyCode = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage('');
+    if (!resetCode) {
+      setErrorMessage('กรุณากรอกรหัสยืนยันจากอีเมล');
+      return;
+    }
     setIsLoading(true);
-    setTimeout(() => {
+    try {
+      const res = await verifyResetCode(resetCode);
+      if (res.success) {
+        setResetEmail(res.email || forgotEmail);
+        setForgotStep('reset');
+      } else {
+        setErrorMessage(res.message);
+      }
+    } catch (err) {
+      setErrorMessage('เกิดข้อผิดพลาดในการตรวจสอบรหัสยืนยัน');
+    } finally {
       setIsLoading(false);
-      setForgotStep('success');
-    }, 1000);
+    }
   };
 
-  // Quick Demo Accounts
-  const demoAccounts = [
-    {
-      title: 'ดร. อัครพล สุวรรณภูมิ',
-      role: 'Super Admin / ผู้บริหารภาค (RM)',
-      email: 'akarapol.pro798@gmail.com',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150',
-      badge: 'Root Leader',
-      color: 'border-purple-200 bg-purple-50/50 hover:bg-purple-50',
-    },
-    {
-      title: 'คุณกนกวรรณ จันทร์สว่าง',
-      role: 'Center Manager (CM)',
-      email: 'kanokwan@insurance-os.com',
-      avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150',
-      badge: 'CM-101',
-      color: 'border-blue-200 bg-blue-50/50 hover:bg-blue-50',
-    },
-    {
-      title: 'คุณวีรภัทร ชาญวิทย์',
-      role: 'Unit Manager (UM)',
-      email: 'weerapat@insurance-os.com',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150',
-      badge: 'UM-101-1',
-      color: 'border-emerald-200 bg-emerald-50/50 hover:bg-emerald-50',
-    },
-  ];
+  const handleConfirmReset = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMessage('');
+    if (newPassword.length < 6) {
+      setErrorMessage('รหัสผ่านใหม่ต้องมีอย่างน้อย 6 ตัวอักษร');
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      setErrorMessage('รหัสผ่านไม่ตรงกัน กรุณาลองอีกครั้ง');
+      return;
+    }
+    setIsLoading(true);
+    try {
+      const res = await confirmResetPassword(resetCode, newPassword);
+      if (res.success) {
+        setNewPassword('');
+        setConfirmPassword('');
+        setForgotStep('success');
+      } else {
+        setErrorMessage(res.message);
+      }
+    } catch (err) {
+      setErrorMessage('เกิดข้อผิดพลาดในการตั้งรหัสผ่านใหม่');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Quick Demo Accounts removed — real Firebase authentication is required.
 
   return (
     <div 
@@ -218,9 +268,6 @@ export const AuthModal: React.FC = () => {
               </h2>
             </div>
           </div>
-          <p className="text-xs text-slate-300 max-w-md">
-            ระบบบริหารองค์กรตัวแทนประกันชีวิต คำนวณรายได้ตามโครงสร้างผลประโยชน์จริง 13 หมวด
-          </p>
 
           {/* Tab navigation */}
           <div className="flex items-center gap-2 mt-5 p-1 bg-slate-800/80 rounded-xl border border-slate-700/60">
@@ -403,45 +450,6 @@ export const AuthModal: React.FC = () => {
                   )}
                 </button>
               </form>
-
-              {/* Quick Demo Switcher */}
-              <div className="pt-4 border-t border-slate-100">
-                <div className="flex items-center justify-between mb-2.5">
-                  <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
-                    <Users className="w-3.5 h-3.5 text-indigo-500" />
-                    เข้าสู่ระบบด่วนด้วยบัญชีสาธิต
-                  </span>
-                </div>
-                <div className="space-y-2">
-                  {demoAccounts.map(demo => (
-                    <button
-                      key={demo.email}
-                      type="button"
-                      onClick={() => {
-                        setLoginEmail(demo.email);
-                        setLoginPassword('123456');
-                      }}
-                      className={`w-full p-2.5 rounded-xl border text-left flex items-center gap-3 transition-all cursor-pointer ${demo.color}`}
-                    >
-                      <img
-                        src={demo.avatar}
-                        alt={demo.title}
-                        className="w-8 h-8 rounded-full object-cover border border-white shadow-sm"
-                        referrerPolicy="no-referrer"
-                      />
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between">
-                          <p className="text-xs font-bold text-slate-800 truncate">{demo.title}</p>
-                          <span className="text-[10px] font-semibold text-indigo-700 bg-white px-2 py-0.5 rounded-md border border-indigo-100">
-                            {demo.badge}
-                          </span>
-                        </div>
-                        <p className="text-[11px] text-slate-500 truncate">{demo.role}</p>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
             </div>
           )}
 
@@ -536,7 +544,7 @@ export const AuthModal: React.FC = () => {
                     type="text"
                     value={regSponsorCode}
                     onChange={e => setRegSponsorCode(e.target.value)}
-                    placeholder="CM-101"
+                    placeholder="รหัสผู้แนะนำ (ถ้ามี)"
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-500 text-xs text-slate-800 outline-none uppercase"
                   />
                 </div>
@@ -579,15 +587,16 @@ export const AuthModal: React.FC = () => {
             </form>
           )}
 
-          {/* TAB 3: FORGOT PASSWORD */}
+          {/* TAB 3: FORGOT PASSWORD (email -> code -> new password -> success) */}
           {authModalTab === 'forgot' && (
             <div className="space-y-5">
+              {/* STEP 1: request email */}
               {forgotStep === 'request' && (
-                <form onSubmit={handleSendResetOTP} className="space-y-4">
+                <form onSubmit={handleSendResetEmail} className="space-y-4">
                   <div className="text-center p-3 bg-indigo-50/50 rounded-2xl border border-indigo-100">
                     <KeyRound className="w-8 h-8 text-indigo-600 mx-auto mb-1.5" />
-                    <h4 className="text-sm font-bold text-slate-800">ขอรับรหัส OTP เพื่อรีเซ็ตรหัสผ่าน</h4>
-                    <p className="text-xs text-slate-500 mt-0.5">ระบบจะส่งรหัสความปลอดภัย 6 หลักไปยังอีเมลของคุณ</p>
+                    <h4 className="text-sm font-bold text-slate-800">รีเซ็ตรหัสผ่าน</h4>
+                    <p className="text-xs text-slate-500 mt-0.5">ระบบจะส่งรหัสยืนยันไปยังอีเมลของคุณ</p>
                   </div>
 
                   <div>
@@ -602,14 +611,14 @@ export const AuthModal: React.FC = () => {
                         required
                         value={forgotEmail}
                         onChange={e => setForgotEmail(e.target.value)}
-                        placeholder="akarapol.pro798@gmail.com"
+                        placeholder="you@example.com"
                         className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-500 text-xs text-slate-800 outline-none"
                       />
                     </div>
                   </div>
 
                   <button
-                    id="btn-send-reset-otp"
+                    id="btn-send-reset-email"
                     type="submit"
                     disabled={isLoading}
                     className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
@@ -617,11 +626,11 @@ export const AuthModal: React.FC = () => {
                     {isLoading ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin text-white" />
-                        <span>กำลังส่งรหัส OTP...</span>
+                        <span>กำลังส่งรหัสยืนยัน...</span>
                       </>
                     ) : (
                       <>
-                        <span>ส่งรหัสยืนยัน OTP</span>
+                        <span>ส่งรหัสยืนยันทางอีเมล</span>
                         <ArrowRight className="w-4 h-4" />
                       </>
                     )}
@@ -629,46 +638,112 @@ export const AuthModal: React.FC = () => {
                 </form>
               )}
 
-              {forgotStep === 'otp' && (
-                <form onSubmit={handleVerifyOtpAndReset} className="space-y-4">
-                  <div className="text-center p-3 bg-emerald-50 rounded-2xl border border-emerald-100">
-                    <CheckCircle2 className="w-8 h-8 text-emerald-600 mx-auto mb-1.5" />
-                    <h4 className="text-sm font-bold text-slate-800">กรอกรหัสยืนยัน OTP (6 หลัก)</h4>
-                    <p className="text-xs text-slate-500 mt-0.5">ส่งไปยัง {forgotEmail || 'อีเมลของคุณ'} แล้ว (ทดสอบ: 123456)</p>
-                  </div>
-
-                  <div className="flex justify-center gap-2">
-                    {[0, 1, 2, 3, 4, 5].map((i) => (
-                      <input
-                        key={i}
-                        type="text"
-                        maxLength={1}
-                        defaultValue={i === 0 ? '1' : i === 1 ? '2' : i === 2 ? '3' : i === 3 ? '4' : i === 4 ? '5' : '6'}
-                        className="w-10 h-12 text-center font-bold text-lg rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none"
-                      />
-                    ))}
+              {/* STEP 2: enter code */}
+              {forgotStep === 'code' && (
+                <form onSubmit={handleVerifyCode} className="space-y-4">
+                  <div className="text-center p-3 bg-amber-50/60 rounded-2xl border border-amber-100">
+                    <CheckCircle2 className="w-8 h-8 text-amber-600 mx-auto mb-1.5" />
+                    <h4 className="text-sm font-bold text-slate-800">ส่งอีเมลรีเซ็ตรหัสผ่านแล้ว</h4>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      เปิดอีเมล <b className="text-slate-700">{forgotEmail}</b> แล้วคลิกลิงก์{" "}
+                      <b className="text-slate-700">Reset Password</b> เพื่อตั้งรหัสผ่านใหม่
+                    </p>
                   </div>
 
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                      ตั้งรหัสผ่านใหม่
+                      ตั้งรหัสใหม่ในแอปนี้ (วางรหัสจากลิงก์)
                     </label>
+                    <input
+                      id="input-reset-code"
+                      value={resetCode}
+                      onChange={e => setResetCode(e.target.value.trim())}
+                      placeholder="วางรหัสยืนยัน (oobCode) จากลิงก์ในอีเมล"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-500 text-xs text-slate-800 outline-none font-mono"
+                    />
+                    <p className="text-[11px] text-slate-400 mt-1.5">
+                      ไม่สะดวกคลิกลิงก์? วางรหัสยืนยันจากลิงก์ในอีเมลตรงนี้ แล้วกดยืนยันรหัส
+                    </p>
+                  </div>
+
+                  <button
+                    id="btn-verify-reset-code"
+                    type="submit"
+                    disabled={isLoading}
+                    className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin text-white" />
+                        <span>กำลังตรวจสอบรหัส...</span>
+                      </>
+                    ) : (
+                      <span>ยืนยันรหัส</span>
+                    )}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => { setErrorMessage(''); setForgotStep('request'); }}
+                    className="w-full text-center text-xs text-indigo-600 hover:text-indigo-700 font-semibold py-1 cursor-pointer"
+                  >
+                    ส่งรหัสใหม่ / เปลี่ยนอีเมล
+                  </button>
+                </form>
+              )}
+
+              {/* STEP 3: set new password */}
+              {forgotStep === 'reset' && (
+                <form onSubmit={handleConfirmReset} className="space-y-4">
+                  <div className="text-center p-3 bg-emerald-50/50 rounded-2xl border border-emerald-100">
+                    <Lock className="w-8 h-8 text-emerald-600 mx-auto mb-1.5" />
+                    <h4 className="text-sm font-bold text-slate-800">ตั้งรหัสผ่านใหม่</h4>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      {resetEmail ? <>สำหรับบัญชี <b className="text-slate-700">{resetEmail}</b></> : 'รหัสยืนยันถูกต้องแล้ว'}
+                    </p>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">รหัสผ่านใหม่</label>
                     <div className="relative">
                       <Lock className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                       <input
                         id="input-new-password"
-                        type="password"
+                        type={showNewPassword ? 'text' : 'password'}
                         required
                         value={newPassword}
                         onChange={e => setNewPassword(e.target.value)}
-                        placeholder="••••••••"
-                        className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-500 text-xs text-slate-800 outline-none"
+                        placeholder="อย่างน้อย 6 ตัวอักษร"
+                        className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-500 text-xs text-slate-800 outline-none"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowNewPassword(v => !v)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
+                      >
+                        {showNewPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">ยืนยันรหัสผ่านใหม่</label>
+                    <div className="relative">
+                      <Lock className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                      <input
+                        id="input-confirm-password"
+                        type={showNewPassword ? 'text' : 'password'}
+                        required
+                        value={confirmPassword}
+                        onChange={e => setConfirmPassword(e.target.value)}
+                        placeholder="พิมพ์รหัสผ่านซ้ำอีกครั้ง"
+                        className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-500 text-xs text-slate-800 outline-none"
                       />
                     </div>
                   </div>
 
                   <button
-                    id="btn-confirm-new-password"
+                    id="btn-confirm-reset-password"
                     type="submit"
                     disabled={isLoading}
                     className="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
@@ -676,24 +751,22 @@ export const AuthModal: React.FC = () => {
                     {isLoading ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin text-white" />
-                        <span>กำลังบันทึกรหัสผ่านใหม่...</span>
+                        <span>กำลังตั้งรหัสผ่านใหม่...</span>
                       </>
                     ) : (
-                      <>
-                        <span>ยืนยันเปลี่ยนรหัสผ่านและเข้าสู่ระบบ</span>
-                        <Check className="w-4 h-4" />
-                      </>
+                      <span>ยืนยันตั้งรหัสผ่านใหม่</span>
                     )}
                   </button>
                 </form>
               )}
 
+              {/* STEP 4: success */}
               {forgotStep === 'success' && (
                 <div className="text-center py-6 space-y-4">
                   <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="text-base font-bold text-slate-900">เปลี่ยนรหัสผ่านสำเร็จ</h3>
+                  <h3 className="text-base font-bold text-slate-900">ตั้งรหัสผ่านใหม่เรียบร้อยแล้ว</h3>
                   <p className="text-xs text-slate-500">คุณสามารถเข้าสู่ระบบด้วยรหัสผ่านใหม่ได้ทันที</p>
                   <button
                     id="btn-back-to-login"
@@ -702,7 +775,7 @@ export const AuthModal: React.FC = () => {
                       setForgotStep('request');
                       openAuthModal('login');
                     }}
-                    className="py-2.5 px-6 rounded-xl bg-indigo-600 text-white font-semibold text-xs hover:bg-indigo-700"
+                    className="py-2.5 px-6 rounded-xl bg-indigo-600 text-white font-semibold text-xs hover:bg-indigo-700 cursor-pointer"
                   >
                     กลับไปหน้าเข้าสู่ระบบ
                   </button>
@@ -711,11 +784,7 @@ export const AuthModal: React.FC = () => {
             </div>
           )}
 
-          {/* Footer Security Badge */}
-          <div className="pt-4 border-t border-slate-100 flex items-center justify-center gap-2 text-[11px] text-slate-400">
-            <Shield className="w-3.5 h-3.5 text-emerald-500" />
-            <span>มาตรฐานความปลอดภัยเข้ารหัส 256-bit SSL Data Encryption</span>
-          </div>
+          {/* Footer Security Badge removed */}
         </div>
       </motion.div>
     </div>

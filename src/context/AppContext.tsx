@@ -38,6 +38,11 @@ import {
 } from 'firebase/firestore';
 import { 
   signInWithPopup, 
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+  verifyPasswordResetCode,
+  confirmPasswordReset,
   signOut as firebaseSignOut, 
   onAuthStateChanged 
 } from 'firebase/auth';
@@ -103,6 +108,9 @@ interface AppContextType {
   linkSocialAccount: (provider: 'google' | 'tiktok' | 'facebook') => Promise<{ success: boolean; message: string }>;
   unlinkSocialAccount: (provider: 'google' | 'tiktok' | 'facebook') => Promise<{ success: boolean; message: string }>;
   logout: () => void;
+  resetPassword: (email: string) => Promise<{ success: boolean; message: string }>;
+  verifyResetCode: (code: string) => Promise<{ success: boolean; message: string; email?: string }>;
+  confirmResetPassword: (code: string, newPassword: string) => Promise<{ success: boolean; message: string }>;
 
   // Recruitment
   applications: AgentApplication[];
@@ -173,7 +181,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, []);
 
   const [members, setMembers] = useState<Member[]>(() => {
-    const saved = localStorage.getItem('insure_os_members');
+    const saved = localStorage.getItem('insure_os_members_v3');
     return saved ? JSON.parse(saved) : INITIAL_MEMBERS;
   });
 
@@ -194,7 +202,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
             remoteMembers.push(docSnap.data() as Member);
           });
           setMembers(remoteMembers);
-          localStorage.setItem('insure_os_members', JSON.stringify(remoteMembers));
+          localStorage.setItem('insure_os_members_v3', JSON.stringify(remoteMembers));
         } else {
           // Auto-seed Firestore on initial setup
           INITIAL_MEMBERS.forEach(m => {
@@ -267,31 +275,30 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [activeUser, setActiveUser] = useState<Member>(ROOT_LEADER);
   const [selectedMember, setSelectedMember] = useState<Member | null>(null);
 
-  // Authentication State
+  // Authentication State — starts LOGGED OUT (real Firebase auth required)
   const initialAuthUser: AuthUser = {
-    id: 'user_root',
-    email: 'akarapol.pro798@gmail.com',
-    name: 'ดร. อัครพล สุวรรณภูมิ',
-    avatarUrl: ROOT_LEADER.avatarUrl,
-    provider: 'google',
-    connectedProviders: ['google', 'email', 'tiktok', 'facebook', 'github'],
-    memberId: ROOT_LEADER.id,
-    role: 'super_admin',
-    positionId: 'executive_region',
-    isLoggedIn: true,
-    lastLoginAt: new Date().toISOString(),
-    phone: '089-123-4567',
-    tiktokHandle: '@akarapol_insurance_os',
-    facebookId: 'akarapol.insurance.network',
-    is2FAEnabled: true,
-    token: 'jwt_secure_token_ai_os_2026',
+    id: '',
+    email: '',
+    name: '',
+    avatarUrl: '',
+    provider: 'email',
+    connectedProviders: [],
+    memberId: '',
+    role: 'viewer',
+    positionId: 'agent',
+    isLoggedIn: false,
+    lastLoginAt: '',
+    is2FAEnabled: false,
+    token: '',
   };
 
   const [authUser, setAuthUser] = useState<AuthUser>(() => {
-    const saved = localStorage.getItem('insure_os_auth_user');
+    const saved = localStorage.getItem('insure_os_auth_user_v3');
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved) as AuthUser;
+        // Only restore a session explicitly marked as logged-in.
+        if (parsed && parsed.isLoggedIn) return parsed;
       } catch (e) {
         // ignore parse error
       }
@@ -299,10 +306,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return initialAuthUser;
   });
 
-  const [showGatewayScreen, setShowGatewayScreen] = useState<boolean>(false);
+  // Require authentication: show the login gateway unless a valid session exists.
+  const [showGatewayScreen, setShowGatewayScreen] = useState<boolean>(() => !authUser.isLoggedIn);
 
   useEffect(() => {
-    localStorage.setItem('insure_os_auth_user', JSON.stringify(authUser));
+    localStorage.setItem('insure_os_auth_user_v3', JSON.stringify(authUser));
   }, [authUser]);
 
   const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
@@ -327,159 +335,200 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setAuthOAuthProvider(null);
   };
 
-  const loginWithEmail = async (credentials: LoginCredentials) => {
-    const email = credentials.email.trim().toLowerCase();
-    
-    // Find matching member or fallback
-    let matchedMember = members.find(m => 
-      m.name.toLowerCase().includes(email.split('@')[0]) ||
-      m.memberCode.toLowerCase() === email.split('@')[0]
-    ) || members[0];
+  // Map a real Firebase Auth user → app AuthUser, with least-privilege defaults.
+  const buildAuthUserFromFirebase = async (fbUser: any, provider: AuthProvider): Promise<{ authUser: AuthUser; member: Member }> => {
+    const email = (fbUser.email || '').toLowerCase();
+    const token = await fbUser.getIdToken();
 
-    const updatedUser: AuthUser = {
-      ...authUser,
-      id: `usr_${Date.now()}`,
-      email: credentials.email,
-      name: matchedMember.name,
-      avatarUrl: matchedMember.avatarUrl,
-      provider: 'email',
-      connectedProviders: Array.from(new Set([...authUser.connectedProviders, 'email'])),
-      memberId: matchedMember.id,
-      role: matchedMember.role,
-      positionId: matchedMember.positionId,
+    let member = members.find(m => (m.email || '').toLowerCase() === email) || null;
+
+    if (!member) {
+      // Unknown user → least-privilege agent record (NEVER super_admin).
+      const fallbackName = fbUser.displayName || email.split('@')[0] || 'สมาชิกใหม่';
+      member = {
+        id: `mem_${fbUser.uid}`,
+        memberCode: `AG-${String(fbUser.uid || '').slice(0, 6).toUpperCase()}`,
+        name: fallbackName,
+        nickname: fallbackName.split(' ')[0],
+        avatarUrl: fbUser.photoURL || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150',
+        positionId: 'agent',
+        role: 'agent',
+        sponsorId: ROOT_LEADER.id,
+        parentMemberId: ROOT_LEADER.id,
+        unitId: null,
+        centerId: null,
+        regionId: null,
+        joinDate: new Date().toISOString().slice(0, 10),
+        status: 'active',
+        email,
+        personalFYC: 0,
+        personalCOM: 0,
+        firstYearPremium: 0,
+        renewalPremium: 0,
+        location: { province: 'กรุงเทพมหานคร', region: 'Bangkok & Metro', lat: 13.7563, lng: 100.5018 },
+      };
+      setMembers(prev => [member as Member, ...prev]);
+    }
+
+    const authUser: AuthUser = {
+      id: fbUser.uid,
+      email,
+      name: member.name,
+      avatarUrl: member.avatarUrl,
+      provider,
+      connectedProviders: [provider],
+      memberId: member.id,
+      role: member.role,
+      positionId: member.positionId,
       isLoggedIn: true,
       lastLoginAt: new Date().toISOString(),
-      token: `jwt_email_${Date.now()}`,
+      is2FAEnabled: false,
+      token,
     };
 
-    setAuthUser(updatedUser);
-    setActiveUser(matchedMember);
-    setIsAuthModalOpen(false);
-    setShowGatewayScreen(false);
+    return { authUser, member };
+  };
 
-    const log: AuditLog = {
-      id: `log_${Date.now()}`,
-      timestamp: new Date().toISOString(),
-      userId: matchedMember.id,
-      userName: matchedMember.name,
-      action: 'LOGIN_EMAIL',
-      entityType: 'settings',
-      entityId: credentials.email,
-      oldValue: 'Logged Out',
-      newValue: `Logged In (${credentials.email})`,
-      reason: 'เข้าสู่ระบบด้วย Email & Password สำเร็จ',
+  // Translate Firebase auth error codes into friendly Thai messages.
+  const translateAuthError = (err: any): string => {
+    const code = err?.code || '';
+    const map: Record<string, string> = {
+      'auth/invalid-credential': 'อีเมลหรือรหัสผ่านไม่ถูกต้อง',
+      'auth/invalid-email': 'รูปแบบอีเมลไม่ถูกต้อง',
+      'auth/user-not-found': 'ไม่พบบัญชีผู้ใช้นี้',
+      'auth/wrong-password': 'รหัสผ่านไม่ถูกต้อง',
+      'auth/email-already-in-use': 'อีเมลนี้ถูกใช้งานแล้ว',
+      'auth/weak-password': 'รหัสผ่านอ่อนเกินไป (อย่างน้อย 6 ตัวอักษร)',
+      'auth/user-disabled': 'บัญชีนี้ถูกปิดใช้งาน',
+      'auth/too-many-requests': 'พยายามเข้าสู่ระบบบ่อยเกินไป กรุณารอสักครู่',
+      'auth/network-request-failed': 'เชื่อมต่อเครือข่ายไม่สำเร็จ',
+      'auth/popup-closed-by-user': 'ยกเลิกการเข้าสู่ระบบแล้ว',
+      'auth/operation-not-allowed': 'ช่องทางล็อกอินนี้ยังไม่ถูกเปิดใช้งาน (โปรดเปิดใน Firebase Console)',
+      'auth/invalid-api-key': 'การตั้งค่า Firebase ไม่ถูกต้อง',
+      'auth/invalid-action-code': 'รหัสยืนยันไม่ถูกต้องหรือหมดอายุแล้ว',
+      'auth/expired-action-code': 'รหัสยืนยันหมดอายุแล้ว กรุณาขอรหัสใหม่',
     };
-    setAuditLogs(prev => [log, ...prev]);
+    return map[code] || err?.message || 'เกิดข้อผิดพลาดในการเข้าสู่ระบบ';
+  };
 
-    setAuthNotification({
-      type: 'success',
-      message: `เข้าสู่ระบบสำเร็จในชื่อ ${matchedMember.name} (${credentials.email})`
-    });
+  const loginWithEmail = async (credentials: LoginCredentials) => {
+    const email = (credentials.email || '').trim().toLowerCase();
+    const password = credentials.password || '';
 
-    return { success: true, message: 'เข้าสู่ระบบสำเร็จ', user: updatedUser };
+    if (!email || !password) {
+      return { success: false, message: 'กรุณากรอกอีเมลและรหัสผ่าน' };
+    }
+
+    try {
+      const cred = await signInWithEmailAndPassword(auth, email, password);
+      const { authUser: updatedUser, member } = await buildAuthUserFromFirebase(cred.user, 'email');
+
+      setAuthUser(updatedUser);
+      setActiveUser(member);
+      setIsAuthModalOpen(false);
+      setShowGatewayScreen(false);
+
+      const log: AuditLog = {
+        id: `log_${Date.now()}`,
+        timestamp: new Date().toISOString(),
+        userId: member.id,
+        userName: member.name,
+        action: 'LOGIN_EMAIL',
+        entityType: 'settings',
+        entityId: email,
+        oldValue: 'Logged Out',
+        newValue: `Logged In (${email})`,
+        reason: 'เข้าสู่ระบบด้วย Email & Password สำเร็จ',
+      };
+      setAuditLogs(prev => [log, ...prev]);
+
+      setAuthNotification({
+        type: 'success',
+        message: `เข้าสู่ระบบสำเร็จในชื่อ ${member.name} (${email})`
+      });
+
+      return { success: true, message: 'เข้าสู่ระบบสำเร็จ', user: updatedUser };
+    } catch (err) {
+      const message = translateAuthError(err);
+      setAuthNotification({ type: 'error', message });
+      return { success: false, message };
+    }
   };
 
   const loginWithSocial = async (provider: 'google' | 'tiktok' | 'facebook' | 'github' | 'gitlab' | 'bitbucket', profile?: Partial<AuthUser>) => {
-    let matchedMember = members[0];
-    let defaultEmail = 'user@example.com';
-    let defaultName = 'ผู้นำเครือข่ายประกัน';
-    let defaultAvatar = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150';
-
-    if (provider === 'google') {
-      try {
-        const result = await signInWithPopup(auth, googleAuthProvider);
-        if (result && result.user) {
-          defaultEmail = result.user.email || 'akarapol.pro798@gmail.com';
-          defaultName = result.user.displayName || 'ดร. อัครพล สุวรรณภูมิ (Google)';
-          defaultAvatar = result.user.photoURL || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150';
-        }
-      } catch (authError) {
-        console.warn('Firebase popup notice or fallback:', authError);
-      }
-      defaultEmail = profile?.email || defaultEmail || 'akarapol.pro798@gmail.com';
-      defaultName = profile?.name || defaultName || 'ดร. อัครพล สุวรรณภูมิ (Google)';
-      defaultAvatar = profile?.avatarUrl || defaultAvatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150';
-      matchedMember = members.find(m => m.id === 'mem_1') || members[0];
-    } else if (provider === 'tiktok') {
-      defaultEmail = profile?.email || 'tiktok.creator@insurance-os.com';
-      defaultName = profile?.name || 'คุณกนกวรรณ จันทร์สว่าง (@tiktok_leader)';
-      defaultAvatar = 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150';
-      matchedMember = members.find(m => m.id === 'mem_2') || members[1] || members[0];
-    } else if (provider === 'facebook') {
-      defaultEmail = profile?.email || 'facebook.leader@meta-insurance.com';
-      defaultName = profile?.name || 'คุณวีรภัทร ชาญวิทย์ (Meta FB)';
-      defaultAvatar = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150';
-      matchedMember = members.find(m => m.id === 'mem_3') || members[2] || members[0];
-    } else if (provider === 'github') {
-      defaultEmail = profile?.email || 'github.dev@insurance-os.com';
-      defaultName = profile?.name || 'คุณธนากร โอภาสกุล (GitHub)';
-      defaultAvatar = 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=150';
-      matchedMember = members.find(m => m.id === 'mem_1') || members[0];
-    } else if (provider === 'gitlab') {
-      defaultEmail = profile?.email || 'gitlab.dev@insurance-os.com';
-      defaultName = profile?.name || 'คุณธนากร โอภาสกุล (GitLab)';
-      defaultAvatar = 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=150';
-      matchedMember = members.find(m => m.id === 'mem_1') || members[0];
-    } else if (provider === 'bitbucket') {
-      defaultEmail = profile?.email || 'bitbucket.dev@insurance-os.com';
-      defaultName = profile?.name || 'คุณธนากร โอภาสกุล (Bitbucket)';
-      defaultAvatar = 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=150';
-      matchedMember = members.find(m => m.id === 'mem_1') || members[0];
+    // Only Google OAuth is wired to real Firebase Auth. Other providers are not yet configured.
+    if (provider !== 'google') {
+      const message = `ล็อกอินด้วย ${provider.toUpperCase()} ยังไม่พร้อมใช้งาน — โปรดใช้ Google หรือ Email`;
+      setAuthNotification({ type: 'error', message });
+      return { success: false, message };
     }
 
-    const updatedUser: AuthUser = {
-      ...authUser,
-      id: `usr_${provider}_${Date.now()}`,
-      email: profile?.email || defaultEmail,
-      name: profile?.name || defaultName,
-      avatarUrl: profile?.avatarUrl || defaultAvatar,
-      provider: provider,
-      connectedProviders: Array.from(new Set([...authUser.connectedProviders, provider])),
-      memberId: matchedMember.id,
-      role: matchedMember.role,
-      positionId: matchedMember.positionId,
-      isLoggedIn: true,
-      lastLoginAt: new Date().toISOString(),
-      tiktokHandle: provider === 'tiktok' ? (profile?.tiktokHandle || '@insurance_pro') : authUser.tiktokHandle,
-      facebookId: provider === 'facebook' ? (profile?.facebookId || 'fb.insurance.agent') : authUser.facebookId,
-      token: `jwt_social_${provider}_${Date.now()}`,
-    };
+    try {
+      const result = await signInWithPopup(auth, googleAuthProvider);
+      if (!result || !result.user) {
+        const message = 'ไม่ได้รับข้อมูลผู้ใช้จาก Google กรุณาลองใหม่';
+        setAuthNotification({ type: 'error', message });
+        return { success: false, message };
+      }
 
-    setAuthUser(updatedUser);
-    setActiveUser(matchedMember);
-    setIsAuthModalOpen(false);
-    setAuthOAuthProvider(null);
-    setShowGatewayScreen(false);
+      const { authUser: updatedUser, member } = await buildAuthUserFromFirebase(result.user, 'google');
 
-    const log: AuditLog = {
-      id: `log_${Date.now()}`,
-      timestamp: new Date().toISOString(),
-      userId: matchedMember.id,
-      userName: matchedMember.name,
-      action: `LOGIN_${provider.toUpperCase()}`,
-      entityType: 'settings',
-      entityId: updatedUser.email,
-      oldValue: 'Logged Out',
-      newValue: `Logged In via ${provider.toUpperCase()}`,
-      reason: `เข้าสู่ระบบผ่าน ${provider.toUpperCase()} OAuth สำเร็จ`,
-    };
-    setAuditLogs(prev => [log, ...prev]);
+      setAuthUser(updatedUser);
+      setActiveUser(member);
+      setIsAuthModalOpen(false);
+      setAuthOAuthProvider(null);
+      setShowGatewayScreen(false);
 
-    // Save to Firestore auditLogs
-    setDoc(doc(db, 'auditLogs', log.id), log).catch(err => {
-      handleFirestoreError(err, OperationType.CREATE, `auditLogs/${log.id}`);
-    });
+      const log: AuditLog = {
+        id: `log_${Date.now()}`,
+        timestamp: new Date().toISOString(),
+        userId: member.id,
+        userName: member.name,
+        action: 'LOGIN_GOOGLE',
+        entityType: 'settings',
+        entityId: updatedUser.email,
+        oldValue: 'Logged Out',
+        newValue: 'Logged In via Google',
+        reason: 'เข้าสู่ระบบผ่าน Google OAuth สำเร็จ',
+      };
+      setAuditLogs(prev => [log, ...prev]);
 
-    setAuthNotification({
-      type: 'success',
-      message: `เข้าสู่ระบบสำเร็จผ่าน ${provider.toUpperCase()} (${updatedUser.name})`
-    });
+      setDoc(doc(db, 'auditLogs', log.id), log).catch(err => {
+        handleFirestoreError(err, OperationType.CREATE, `auditLogs/${log.id}`);
+      });
 
-    return { success: true, message: `เข้าสู่ระบบผ่าน ${provider} สำเร็จ`, user: updatedUser };
+      setAuthNotification({
+        type: 'success',
+        message: `เข้าสู่ระบบสำเร็จผ่าน Google (${updatedUser.name})`
+      });
+
+      return { success: true, message: 'เข้าสู่ระบบผ่าน Google สำเร็จ', user: updatedUser };
+    } catch (err) {
+      const message = translateAuthError(err);
+      setAuthNotification({ type: 'error', message });
+      return { success: false, message };
+    }
   };
 
   const registerWithEmail = async (data: RegisterCredentials) => {
-    const newMemberId = `mem_${Date.now()}`;
+    if (!data.email || !data.password) {
+      return { success: false, message: 'กรุณากรอกอีเมลและรหัสผ่าน' };
+    }
+
+    // Create the real Firebase Auth account first (identity layer).
+    let fbUser: any = null;
+    let token = '';
+    try {
+      const cred = await createUserWithEmailAndPassword(auth, data.email, data.password);
+      fbUser = cred.user;
+      token = await fbUser.getIdToken();
+    } catch (err) {
+      const message = translateAuthError(err);
+      setAuthNotification({ type: 'error', message });
+      return { success: false, message };
+    }
+
+    const newMemberId = `mem_${fbUser.uid}`;
     const randomSeq = Math.floor(100 + Math.random() * 900);
     const memberCode = `AG-${randomSeq}`;
 
@@ -513,19 +562,19 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setMembers(prev => [newMember, ...prev]);
 
     const updatedUser: AuthUser = {
-      id: `usr_${Date.now()}`,
+      id: fbUser.uid,
       email: data.email,
       name: data.name,
       avatarUrl: newMember.avatarUrl,
-      provider: data.provider || 'email',
-      connectedProviders: [data.provider || 'email'],
+      provider: 'email',
+      connectedProviders: ['email'],
       memberId: newMember.id,
       role: 'agent',
       positionId: 'agent',
       isLoggedIn: true,
       lastLoginAt: new Date().toISOString(),
       phone: data.phone || '080-000-0000',
-      token: `jwt_reg_${Date.now()}`,
+      token,
     };
 
     setAuthUser(updatedUser);
@@ -616,16 +665,55 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     } catch (e) {
       console.warn('Firebase sign out:', e);
     }
-    setAuthUser(prev => ({
-      ...prev,
-      isLoggedIn: false,
-    }));
+    // Fully clear the session — no sensitive data retained.
+    setAuthUser({ ...initialAuthUser });
     setShowGatewayScreen(true);
-    
+    localStorage.removeItem('insure_os_auth_user_v3');
+
     setAuthNotification({
       type: 'info',
       message: 'ออกจากระบบเรียบร้อยแล้ว'
     });
+  };
+
+  const resetPassword = async (email: string): Promise<{ success: boolean; message: string }> => {
+    if (!email || !email.includes('@')) {
+      return { success: false, message: 'กรุณากรอกอีเมลให้ถูกต้อง' };
+    }
+    try {
+      await sendPasswordResetEmail(auth, email);
+      return { success: true, message: 'ส่งอีเมลรีเซ็ตรหัสผ่านไปยังอีเมลของคุณแล้ว กรุณาตรวจสอบกล่องข้อความ' };
+    } catch (err) {
+      const message = translateAuthError(err);
+      return { success: false, message };
+    }
+  };
+
+  const verifyResetCode = async (code: string): Promise<{ success: boolean; message: string; email?: string }> => {
+    if (!code) {
+      return { success: false, message: 'กรุณากรอกรหัสยืนยัน' };
+    }
+    try {
+      const email = await verifyPasswordResetCode(auth, code);
+      return { success: true, message: 'รหัสยืนยันถูกต้อง', email };
+    } catch (err) {
+      return { success: false, message: translateAuthError(err) };
+    }
+  };
+
+  const confirmResetPassword = async (code: string, newPassword: string): Promise<{ success: boolean; message: string }> => {
+    if (!code) {
+      return { success: false, message: 'รหัสยืนยันไม่ถูกต้อง' };
+    }
+    if (!newPassword || newPassword.length < 6) {
+      return { success: false, message: 'รหัสผ่านใหม่ต้องมีอย่างน้อย 6 ตัวอักษร' };
+    }
+    try {
+      await confirmPasswordReset(auth, code, newPassword);
+      return { success: true, message: 'ตั้งรหัสผ่านใหม่เรียบร้อยแล้ว' };
+    } catch (err) {
+      return { success: false, message: translateAuthError(err) };
+    }
   };
   
   const [activeTab, setActiveTab] = useState<ActiveTab>('dashboard');
@@ -635,13 +723,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [heatmapMode, setHeatmapMode] = useState<boolean>(false);
 
   const [applications, setApplications] = useState<AgentApplication[]>(() => {
-    const saved = localStorage.getItem('insure_os_applications');
+    const saved = localStorage.getItem('insure_os_applications_v2');
     return saved ? JSON.parse(saved) : INITIAL_APPLICATIONS;
   });
 
   // Save applications to localStorage
   useEffect(() => {
-    localStorage.setItem('insure_os_applications', JSON.stringify(applications));
+    localStorage.setItem('insure_os_applications_v2', JSON.stringify(applications));
   }, [applications]);
 
   const submitApplication = (appData: Omit<AgentApplication, 'id' | 'applicationNo' | 'submittedAt' | 'status'>) => {
@@ -799,7 +887,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Save to localStorage when members change
   useEffect(() => {
-    localStorage.setItem('insure_os_members', JSON.stringify(members));
+    localStorage.setItem('insure_os_members_v3', JSON.stringify(members));
   }, [members]);
 
   const activePlan = planVersions.find(p => p.id === activePlanId) || planVersions[0];
@@ -1144,6 +1232,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         linkSocialAccount,
         unlinkSocialAccount,
         logout,
+        resetPassword,
+        verifyResetCode,
+        confirmResetPassword,
 
         // Recruitment
         applications,

@@ -59,35 +59,17 @@ export const BitbucketIcon: React.FC<{ className?: string }> = ({ className = "w
 export const SocialOAuthPopup: React.FC = () => {
   const { authOAuthProvider, closeOAuthPopup, loginWithSocial } = useApp();
   const [isProcessing, setIsProcessing] = useState(false);
-  const [selectedAccountIndex, setSelectedAccountIndex] = useState(0);
 
   if (!authOAuthProvider) return null;
 
-  const googleAccounts = [
-    {
-      name: 'ดร. อัครพล สุวรรณภูมิ',
-      email: 'akarapol.pro798@gmail.com',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150',
-      badge: 'Primary Account (Super Admin)',
-    },
-    {
-      name: 'Akarapol Insurance Official',
-      email: 'exec.leader@insurance-os.com',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150',
-      badge: 'Executive Workspace',
-    }
-  ];
-
-  const handleConfirmGoogle = async (acc: typeof googleAccounts[0]) => {
+  // Real Google OAuth: trigger Firebase signInWithPopup directly (no fake account chooser).
+  const handleConfirmGoogle = async () => {
     setIsProcessing(true);
-    setTimeout(async () => {
-      await loginWithSocial('google', {
-        email: acc.email,
-        name: acc.name,
-        avatarUrl: acc.avatar,
-      });
+    try {
+      await loginWithSocial('google');
+    } finally {
       setIsProcessing(false);
-    }, 1000);
+    }
   };
 
   const handleConfirmTikTok = async () => {
@@ -189,45 +171,27 @@ export const SocialOAuthPopup: React.FC = () => {
               <p className="text-xs text-slate-500 mt-1">to continue to <span className="font-semibold text-indigo-600">AI Insurance Network OS</span></p>
             </div>
 
-            {/* Google Accounts List */}
-            <div className="space-y-2 mb-5">
-              {googleAccounts.map((acc, idx) => (
-                <button
-                  key={acc.email}
-                  id={`btn-oauth-google-account-${idx}`}
-                  disabled={isProcessing}
-                  onClick={() => {
-                    setSelectedAccountIndex(idx);
-                    handleConfirmGoogle(acc);
-                  }}
-                  className={`w-full text-left p-3.5 rounded-xl border transition-all flex items-center gap-3.5 ${
-                    selectedAccountIndex === idx && isProcessing
-                      ? 'border-indigo-500 bg-indigo-50/50'
-                      : 'border-slate-200 hover:border-indigo-300 hover:bg-slate-50'
-                  }`}
-                >
-                  <img
-                    src={acc.avatar}
-                    alt={acc.name}
-                    className="w-10 h-10 rounded-full object-cover border border-slate-200"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between">
-                      <p className="text-sm font-semibold text-slate-900 truncate">{acc.name}</p>
-                      <span className="text-[10px] font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full border border-indigo-100">
-                        {acc.badge}
-                      </span>
-                    </div>
-                    <p className="text-xs text-slate-500 truncate">{acc.email}</p>
-                  </div>
-                  {isProcessing && selectedAccountIndex === idx ? (
-                    <Loader2 className="w-4 h-4 text-indigo-600 animate-spin" />
-                  ) : (
-                    <ArrowRight className="w-4 h-4 text-slate-400" />
-                  )}
-                </button>
-              ))}
+            {/* Google OAuth — real Firebase sign-in */}
+            <div className="mb-5">
+              <button
+                id="btn-confirm-google-auth"
+                disabled={isProcessing}
+                onClick={handleConfirmGoogle}
+                className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+              >
+                {isProcessing ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin text-white" />
+                    <span>กำลังเชื่อมต่อ Google...</span>
+                  </>
+                ) : (
+                  <>
+                    <GoogleIcon className="w-4 h-4" />
+                    <span>ดำเนินการต่อด้วย Google</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </>
+                )}
+              </button>
             </div>
 
             <div className="bg-slate-50 rounded-xl p-3 border border-slate-200 text-xs text-slate-500 flex items-start gap-2">

@@ -30,3 +30,8 @@ Thumbs.db
 .idea/
 
 .vercel
+
+# OAuth / Firebase secrets (never commit)
+oauth_enable.mjs
+.fb_tokens.json
+*.fb_tokens.json

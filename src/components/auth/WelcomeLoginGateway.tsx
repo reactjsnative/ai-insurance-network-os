@@ -1,27 +1,16 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { 
-  Shield, 
   Mail, 
   Lock, 
   ArrowRight, 
-  Sparkles, 
-  CheckCircle2, 
-  KeyRound, 
   Eye, 
   EyeOff, 
-  Users, 
-  TrendingUp, 
-  Cpu, 
   Globe, 
-  Award,
-  ChevronRight,
-  UserPlus,
-  Play
+  UserPlus
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { GoogleIcon, TikTokIcon, FacebookIcon, GitHubIcon, GitLabIcon, BitbucketIcon } from './SocialOAuthPopup';
-import heroImage from '../../assets/images/login_hero_custom_2026.png';
 
 interface WelcomeLoginGatewayProps {
   onEnterSystem?: () => void;
@@ -32,15 +21,13 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
     loginWithEmail, 
     openOAuthPopup, 
     openAuthModal, 
-    switchActiveUser, 
-    members, 
     language, 
     toggleLanguage,
     t 
   } = useApp();
 
-  const [email, setEmail] = useState('akarapol.pro798@gmail.com');
-  const [password, setPassword] = useState('123456');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -81,52 +68,6 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
     openOAuthPopup(provider);
   };
 
-  const handleQuickDemoLogin = (memberId: string) => {
-    switchActiveUser(memberId);
-    if (onEnterSystem) {
-      onEnterSystem();
-    }
-  };
-
-  const quickRoles = [
-    {
-      id: 'MEM-001',
-      title: 'ผู้บริหารภาค (RM)',
-      roleEn: 'Regional Manager',
-      name: 'ดร. ภาณุพงศ์ วงศ์สวรรค์',
-      code: 'RM-001',
-      color: 'from-amber-500 to-amber-600',
-      badge: 'Tier 1 Executive'
-    },
-    {
-      id: 'MEM-002',
-      title: 'ผู้จัดการศูนย์ (CM)',
-      roleEn: 'Center Manager',
-      name: 'คุณ สุชาดา รัตนวิชัย',
-      code: 'CM-101',
-      color: 'from-indigo-500 to-indigo-600',
-      badge: 'Hub Leader'
-    },
-    {
-      id: 'MEM-003',
-      title: 'ผู้จัดการหน่วย (UM)',
-      roleEn: 'Unit Manager',
-      name: 'คุณ กานต์พิชชา ศรีสุข',
-      code: 'UM-201',
-      color: 'from-emerald-500 to-emerald-600',
-      badge: 'Team Builder'
-    },
-    {
-      id: 'MEM-006',
-      title: 'ตัวแทนมืออาชีพ (AG)',
-      roleEn: 'Senior Agent',
-      name: 'คุณ ณัฐนนท์ พัฒนศิลป์',
-      code: 'AG-301',
-      color: 'from-sky-500 to-sky-600',
-      badge: 'Top Producer'
-    }
-  ];
-
   return (
     <div id="welcome-login-gateway-screen" className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 relative overflow-x-hidden">
       {/* Dynamic Background Glows */}
@@ -152,7 +93,6 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
                 Enterprise 2026
               </span>
             </div>
-            <p className="text-xs text-slate-400 font-medium">ระบบปฏิบัติการบริหารเครือข่าย & คำนวณคอมมิชชั่นอัจฉริยะ</p>
           </div>
         </div>
 
@@ -179,101 +119,19 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
         <div className="lg:col-span-7 space-y-6">
           {/* Headline & Badge */}
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/80 border border-slate-800 text-xs font-semibold text-amber-300 backdrop-blur-md">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
-              <span>ระบบเข้าสู่ระบบความปลอดภัยสูง 4 ช่องทาง (Multi-OAuth Protected)</span>
-            </div>
-
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15]">
-              {t('login_headline_1')} <br />
-              <span className="bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500 bg-clip-text text-transparent">
+            <h1 className="text-left">
+              <span className="block text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500 bg-clip-text text-transparent">
+                {t('login_headline_1')}
+              </span>
+              <span className="mt-4 block max-w-2xl text-base sm:text-lg lg:text-xl font-medium leading-relaxed text-slate-300">
                 {t('login_headline_2')}
               </span>
             </h1>
-
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
-              เชื่อมต่อบัญชีของคุณด้วย <strong>Email, Google, TikTok, หรือ Facebook</strong> เพื่อเข้าถึงแดชบอร์ดโครงสร้างเครือข่าย คำนวณคอมมิชชั่นแบบเรียลไทม์ 4 ระดับ และวางแผนการเลื่อนตำแหน่งอัตโนมัติ
-            </p>
           </div>
 
-          {/* High-Tech Generated Hero Visual Card */}
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="relative rounded-3xl overflow-hidden border border-slate-800/80 shadow-2xl bg-slate-900 group"
-          >
-            {/* Image Artwork */}
-            <div className="relative aspect-[4/5] sm:aspect-[4/3] w-full overflow-hidden bg-slate-950 flex items-center justify-center">
-              <img
-                src={heroImage}
-                alt="AI Insurance Network OS"
-                className="w-full h-full object-contain object-center group-hover:scale-[1.02] transition-transform duration-700"
-                referrerPolicy="no-referrer"
-              />
-              {/* Floating Live System Stats Overlay — MOVED to Dashboard (shows after login) */}
-              {/*
-              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex flex-wrap items-center justify-between gap-3 bg-slate-900/90 backdrop-blur-md p-3.5 sm:p-4 rounded-2xl border border-slate-700/60 shadow-xl">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
-                    <Cpu className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-white flex items-center gap-1.5">
-                      <span>AI Engine 2026 Active</span>
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    </div>
-                    <div className="text-[11px] text-slate-400">4-Tier Auto Commission Calculation</div>
-                  </div>
-                </div>
+          {/* Hero image removed — replaced with headline text (per request). */}
 
-                <div className="flex items-center gap-4 text-xs font-semibold text-slate-300">
-                  <div className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                    <span>256-bit SSL</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Shield className="w-4 h-4 text-amber-400" />
-                    <span>ISO 27001</span>
-                  </div>
-                </div>
-              </div>
-              */}
-            </div>
-          </motion.div>
-
-          {/* Quick Demo Access Bar — hidden on first page (kept in background, re-enable by removing 'hidden') */}
-          <div className="hidden p-3 rounded-2xl bg-slate-900/20 border border-slate-800/40 space-y-2 opacity-60 hover:opacity-100 transition-opacity duration-300">
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] font-medium text-slate-500 flex items-center gap-1.5">
-                <KeyRound className="w-3 h-3 text-slate-500" />
-                {t('login_quick_demo')}
-              </span>
-              <span className="text-[9px] text-slate-600">1-Click Bypass</span>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              {quickRoles.map(role => (
-                <button
-                  key={role.id}
-                  id={`btn-gateway-quick-${role.code}`}
-                  onClick={() => handleQuickDemoLogin(role.id)}
-                  className="p-2 rounded-xl bg-slate-950/40 hover:bg-slate-800 border border-slate-800/60 hover:border-slate-700 transition-all text-left group cursor-pointer"
-                >
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-[10px] font-medium text-slate-400 group-hover:text-amber-300">
-                      {role.code}
-                    </span>
-                    <span className="text-[9px] px-1.5 py-0.2 rounded bg-slate-800/60 text-slate-500">
-                      Demo
-                    </span>
-                  </div>
-                  <div className="text-[11px] font-medium text-slate-400 truncate">{role.title}</div>
-                  <div className="text-[10px] text-slate-500 truncate">{role.name}</div>
-                </button>
-              ))}
-            </div>
-          </div>
+          {/* Quick Demo Access Bar removed — real authentication is required. */}
         </div>
 
         {/* Right Column: Multi-OAuth & Email Login Gateway Card (5 Cols on desktop) */}

@@ -152,7 +152,7 @@ export const AICoach: React.FC = () => {
             <span>Promotion Candidate Alert</span>
           </div>
           <p className="text-xs text-slate-300 leading-relaxed">
-            <strong className="text-slate-100">คุณกนกวรรณ (UM-102)</strong> FYC สะสมถึง 86% และแยกหน่วยแล้ว 1 หน่วย ขาดอีก 1 หน่วยเพื่อแต่งตั้งผู้บริหารศูนย์ (CM)
+            <strong className="text-slate-100">ยังไม่มีข้อมูล</strong> สมาชิกที่เข้าเกณฑ์เลื่อนตำแหน่งจะปรากฏที่นี่เมื่อสมัครเข้าใช้งาน
           </p>
         </div>
 
@@ -162,7 +162,7 @@ export const AICoach: React.FC = () => {
             <span>Retention Risk Alert</span>
           </div>
           <p className="text-xs text-slate-300 leading-relaxed">
-            <strong className="text-slate-100">หน่วยหาดใหญ่ พรีเมียร์</strong> มีแนวโน้ม Retention ลดลง 12% ตัวแทนใหม่เริ่มขาดการส่งงานต่อเนื่อง ควรนัดติวเข้มประกบงานขาย
+            <strong className="text-slate-100">ยังไม่มีข้อมูล</strong> การแจ้งเตือนความเสี่ยงด้าน Retention จะปรากฏที่นี่เมื่อมีสมาชิกในระบบ
           </p>
         </div>
 
@@ -172,7 +172,7 @@ export const AICoach: React.FC = () => {
             <span>Top Performing Cluster</span>
           </div>
           <p className="text-xs text-slate-300 leading-relaxed">
-            <strong className="text-slate-100">ศูนย์เชียงใหม่ (CM-102)</strong> ครองแชมป์ Active Rate 88% สูงสุดในภาค พร้อมสร้างหน่วยงานใหม่เตรียมแยก 2 หน่วย
+            <strong className="text-slate-100">ยังไม่มีข้อมูล</strong> หน่วยงานที่มีผลงานโดดเด่นจะปรากฏที่นี่เมื่อมีสมาชิกในระบบ
           </p>
         </div>
       </div>

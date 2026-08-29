@@ -54,9 +54,9 @@ export const MemberSheetView: React.FC = () => {
 
   useEffect(() => { load(); }, []);
 
-  const sheetUrl = process.env.GOOGLE_SHEET_ID
-    ? `https://docs.google.com/spreadsheets/d/${process.env.GOOGLE_SHEET_ID}/edit`
-    : 'https://docs.google.com/spreadsheets/';
+  // GOOGLE_SHEET_ID is a server-side secret (.env) — the client must NOT read process.env.
+  // The exact sheet link is resolved server-side; the client opens the generic Sheets URL.
+  const sheetUrl = 'https://docs.google.com/spreadsheets/';
 
   return (
     <div id="member_sheet_view" className="space-y-6 max-w-7xl mx-auto pb-16 text-left">

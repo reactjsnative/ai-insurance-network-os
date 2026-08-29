@@ -67,21 +67,21 @@ export const Header: React.FC = () => {
     { 
       id: 1, 
       title: language === 'th' ? 'สมาชิกใกล้ครบเกณฑ์เลื่อนตำแหน่ง' : 'Promotion Milestone Alert', 
-      desc: language === 'th' ? 'คุณกนกวรรณ (UM-102) FYC สะสมถึง 86% ของเกณฑ์ผู้บริหารศูนย์' : 'Kanokwan (UM-102) accumulated 86% of Center Manager criteria', 
+      desc: language === 'th' ? 'ยังไม่มีข้อมูลสมาชิกที่เข้าเกณฑ์เลื่อนตำแหน่ง' : 'No members approaching promotion criteria yet', 
       time: language === 'th' ? '10 นาทีที่แล้ว' : '10 mins ago', 
       type: 'promotion' 
     },
     { 
       id: 2, 
       title: language === 'th' ? 'อัตรา Active ประจำสัปดาห์' : 'Weekly Top Active Rate', 
-      desc: language === 'th' ? 'ศูนย์เชียงใหม่ ทำผลงานแตะ 88% Active สูงสุดในภาค' : 'Chiang Mai Center achieved 88% active rate, highest in region', 
+      desc: language === 'th' ? 'ยังไม่มีข้อมูลผลงานประจำสัปดาห์' : 'No weekly performance data yet', 
       time: language === 'th' ? '1 ชั่วโมงที่แล้ว' : '1 hour ago', 
       type: 'success' 
     },
     { 
       id: 3, 
       title: language === 'th' ? 'การแจ้งเตือนความเสี่ยง Retention' : 'Retention Risk Notification', 
-      desc: language === 'th' ? 'หน่วยหาดใหญ่ พรีเมียร์ มีแนวโน้ม Retention ลดลง 12%' : 'Hat Yai Premier Unit retention dropped by 12%', 
+      desc: language === 'th' ? 'ยังไม่มีข้อมูลความเสี่ยง Retention' : 'No retention risk data yet', 
       time: language === 'th' ? '3 ชั่วโมงที่แล้ว' : '3 hours ago', 
       type: 'warning' 
     },
