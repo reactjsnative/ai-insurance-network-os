@@ -30,7 +30,7 @@ export const translations = {
 
     // Sidebar
     menu_core: 'เมนูหลัก (Core Modules)',
-    nav_dashboard: 'Executive Dashboard',
+    nav_dashboard: 'แดชบอร์ดผู้บริหาร (Dashboard)',
     nav_income_calculator: 'เครื่องคำนวณรายได้ (Income)',
     nav_organization: 'โครงสร้างองค์กร (Organization)',
     nav_network_visual: 'ผังองค์กร (Network)',
