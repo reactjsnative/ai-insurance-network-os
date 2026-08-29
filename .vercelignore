@@ -4,6 +4,9 @@ server_data
 server_videos
 video_myplan
 .git
+.venv-ocr
+comfy_workflows
+assets
 *.log
 .env
 .env.local
