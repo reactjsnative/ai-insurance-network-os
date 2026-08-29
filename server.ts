@@ -402,6 +402,54 @@ ${JSON.stringify(organizationSummary, null, 2)}
     });
   }
 
+  // ============================================================
+  // Owner notifications (Telegram + LINE) for new members / deploy
+  // Credentials read from env (TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, LINE_TOKEN)
+  // ============================================================================
+  function sendTelegram(text: string) {
+    const token = process.env.TELEGRAM_BOT_TOKEN;
+    const chat = process.env.TELEGRAM_CHAT_ID;
+    if (!token || !chat) { console.log('[notify] Telegram skipped (no creds)'); return; }
+    const url = `https://api.telegram.org/bot${token}/sendMessage`;
+    fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: chat, text, parse_mode: 'HTML' }),
+    }).catch((e) => console.warn('[notify] telegram error', e?.message || e));
+  }
+  function sendLine(text: string) {
+    const token = process.env.LINE_TOKEN;
+    if (!token) { console.log('[notify] LINE skipped (no creds)'); return; }
+    fetch('https://notify-api.line.me/api/notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded', Authorization: `Bearer ${token}` },
+      body: `message=${encodeURIComponent(text)}`,
+    }).catch((e) => console.warn('[notify] line error', e?.message || e));
+  }
+  function notifyNewMember(m: any) {
+    const msg = `👤 สมาชิกใหม่สมัครเข้ามา\n🆔 ${m.memberCode}\n👤 ${m.name}\n📧 ${m.email || '-'}\n📱 ${m.phone || '-'}\n🏷️ ${m.positionId}\n📍 ${m.province || '-'}\n⏰ ${new Date().toLocaleString('th-TH')}`;
+    sendTelegram(msg);
+    sendLine(msg);
+  }
+  function notifyDeploy(url: string) {
+    const msg = `✅ Deploy สำเร็จ\n🌐 ${url}\n📱 AI Insurance Network OS พร้อมใช้งาน`;
+    sendTelegram(msg);
+    sendLine(msg);
+  }
+  function notifyStats(visitors: number, members: number) {
+    const msg = `📊 สถิติประจำวัน\n👁 ผู้เข้าชม: ${visitors}\n👥 สมาชิกใหม่: ${members}`;
+    sendTelegram(msg);
+    sendLine(msg);
+  }
+
+  app.post('/api/notify-member', (req, res) => {
+    try { notifyNewMember(req.body || {}); res.json({ ok: true }); }
+    catch (e: any) { res.status(500).json({ ok: false, error: e?.message || 'notify failed' }); }
+  });
+  // Reusable hooks callable from deploy scripts / cron
+  (globalThis as any).__notifyDeploy = notifyDeploy;
+  (globalThis as any).__notifyStats = notifyStats;
+
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`AI Insurance Network OS Server running on http://localhost:${PORT}`);
   });

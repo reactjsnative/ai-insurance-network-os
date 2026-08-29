@@ -565,6 +565,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       console.warn('[registerWithEmail] external sync skipped:', syncErr);
     }
 
+    // Notify owner via Telegram + LINE (skips silently if tokens not configured)
+    try {
+      const { notifyNewMember } = await import('../lib/notifier');
+      notifyNewMember(newMember, updatedUser);
+    } catch (e) { /* ignore */ }
+
     return { success: true, message: 'สมัครสมาชิกสำเร็จ', user: updatedUser };
   };
 
