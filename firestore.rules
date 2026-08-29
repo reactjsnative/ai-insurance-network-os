@@ -1,0 +1,111 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Default Deny All
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        request.auth.token.email == 'akarapol.pro798@gmail.com' ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function isValidMember(data) {
+      return data.id is string && data.id.size() <= 128 &&
+             data.memberCode is string && data.memberCode.size() <= 32 &&
+             data.name is string && data.name.size() <= 100 &&
+             data.positionId is string && data.positionId.size() <= 50 &&
+             data.role is string && data.role.size() <= 50 &&
+             data.status in ['active', 'inactive', 'probation'] &&
+             data.personalFYC is number;
+    }
+
+    function isValidApplication(data) {
+      return data.id is string && data.id.size() <= 128 &&
+             data.applicationNo is string && data.applicationNo.size() <= 32 &&
+             data.status in ['pending_review', 'document_verified', 'exam_passed', 'approved', 'rejected'] &&
+             data.firstName is string && data.firstName.size() <= 80 &&
+             data.lastName is string && data.lastName.size() <= 80 &&
+             data.phone is string && data.phone.size() <= 30 &&
+             data.email is string && data.email.size() <= 150;
+    }
+
+    function isValidAuditLog(data) {
+      return data.id is string && data.id.size() <= 128 &&
+             data.timestamp is string && data.timestamp.size() <= 50 &&
+             data.userId is string && data.userId.size() <= 128 &&
+             data.action is string && data.action.size() <= 100 &&
+             data.entityType is string && data.entityType.size() <= 50;
+    }
+
+    function isValidCompensationPlan(data) {
+      return data.id is string && data.id.size() <= 128 &&
+             data.code is string && data.code.size() <= 50 &&
+             data.name is string && data.name.size() <= 150 &&
+             data.status in ['active', 'draft', 'archived'];
+    }
+
+    // Members collection
+    match /members/{memberId} {
+      allow get, list: if true; // Public read for network organization and directory simulation
+      allow create: if isValidId(memberId) && isValidMember(incoming());
+      allow update: if isValidId(memberId) && isValidMember(incoming());
+      allow delete: if isValidId(memberId) && (isAdmin() || isSignedIn());
+    }
+
+    // Candidate Recruitment Applications
+    match /applications/{applicationId} {
+      allow get, list: if true;
+      allow create: if isValidId(applicationId) && isValidApplication(incoming());
+      allow update: if isValidId(applicationId) && isValidApplication(incoming());
+      allow delete: if isValidId(applicationId) && (isAdmin() || isSignedIn());
+    }
+
+    // Audit logs - append-only, no updates or deletes allowed
+    match /auditLogs/{logId} {
+      allow get, list: if true;
+      allow create: if isValidId(logId) && isValidAuditLog(incoming());
+      allow update, delete: if false;
+    }
+
+    // Compensation Plans
+    match /compensationPlans/{planId} {
+      allow get, list: if true;
+      allow create: if isValidId(planId) && isValidCompensationPlan(incoming());
+      allow update: if isValidId(planId) && isValidCompensationPlan(incoming());
+      allow delete: if isValidId(planId) && isAdmin();
+    }
+
+    // Admins registry collection
+    match /admins/{adminId} {
+      allow get: if isSignedIn();
+      allow list, write: if isAdmin();
+    }
+
+    // Test connection document
+    match /test/{docId} {
+      allow read, write: if true;
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "entities": {
+    "Member": {
+      "title": "Member",
+      "description": "Insurance network agent and management tier profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "memberCode": { "type": "string", "maxLength": 32 },
+        "name": { "type": "string", "maxLength": 100 },
+        "nickname": { "type": "string", "maxLength": 50 },
+        "avatarUrl": { "type": "string", "maxLength": 500 },
+        "positionId": { "type": "string", "maxLength": 50 },
+        "role": { "type": "string", "maxLength": 50 },
+        "sponsorId": { "type": "string", "maxLength": 128 },
+        "parentMemberId": { "type": "string", "maxLength": 128 },
+        "unitId": { "type": "string", "maxLength": 128 },
+        "centerId": { "type": "string", "maxLength": 128 },
+        "regionId": { "type": "string", "maxLength": 128 },
+        "joinDate": { "type": "string", "maxLength": 20 },
+        "status": { "type": "string", "enum": ["active", "inactive", "probation"] },
+        "phone": { "type": "string", "maxLength": 30 },
+        "email": { "type": "string", "maxLength": 150 },
+        "personalFYC": { "type": "number" },
+        "personalCOM": { "type": "number" },
+        "firstYearPremium": { "type": "number" },
+        "renewalPremium": { "type": "number" }
+      },
+      "required": ["id", "memberCode", "name", "positionId", "role", "status", "personalFYC"]
+    },
+    "AgentApplication": {
+      "title": "AgentApplication",
+      "description": "Recruitment application submitted by candidate agents",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "applicationNo": { "type": "string", "maxLength": 32 },
+        "submittedAt": { "type": "string", "maxLength": 50 },
+        "status": { "type": "string", "enum": ["pending_review", "document_verified", "exam_passed", "approved", "rejected"] },
+        "firstName": { "type": "string", "maxLength": 80 },
+        "lastName": { "type": "string", "maxLength": 80 },
+        "phone": { "type": "string", "maxLength": 30 },
+        "email": { "type": "string", "maxLength": 150 },
+        "sponsorMemberId": { "type": "string", "maxLength": 128 },
+        "sponsorCode": { "type": "string", "maxLength": 32 }
+      },
+      "required": ["id", "applicationNo", "submittedAt", "status", "firstName", "lastName", "phone", "email"]
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "System event and compensation changes audit record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "timestamp": { "type": "string", "maxLength": 50 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "userName": { "type": "string", "maxLength": 100 },
+        "action": { "type": "string", "maxLength": 100 },
+        "entityType": { "type": "string", "maxLength": 50 },
+        "entityId": { "type": "string", "maxLength": 128 },
+        "reason": { "type": "string", "maxLength": 500 }
+      },
+      "required": ["id", "timestamp", "userId", "action", "entityType"]
+    },
+    "CompensationPlan": {
+      "title": "CompensationPlan",
+      "description": "Commission and overriding calculation rule plan",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "code": { "type": "string", "maxLength": 50 },
+        "name": { "type": "string", "maxLength": 150 },
+        "status": { "type": "string", "enum": ["active", "draft", "archived"] },
+        "effectiveDate": { "type": "string", "maxLength": 30 },
+        "description": { "type": "string", "maxLength": 500 }
+      },
+      "required": ["id", "code", "name", "status"]
+    }
+  },
+  "firestore": {
+    "/members/{memberId}": {
+      "schema": { "$ref": "Member" },
+      "description": "Network agent records and hierarchy nodes"
+    },
+    "/applications/{applicationId}": {
+      "schema": { "$ref": "AgentApplication" },
+      "description": "Candidate recruitment applications"
+    },
+    "/auditLogs/{logId}": {
+      "schema": { "$ref": "AuditLog" },
+      "description": "System transaction and rule change logs"
+    },
+    "/compensationPlans/{planId}": {
+      "schema": { "$ref": "CompensationPlan" },
+      "description": "Compensation rules and commission formulas"
+    }
+  }
+}

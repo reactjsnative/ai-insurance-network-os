@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Env / secrets — NEVER commit
+.env
+.env.*
+!.env.example
+
+# Generated data & media
+server_data/
+server_videos/
+video_myplan/
+
+# Build output
+dist/
+build/
+.vite/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/

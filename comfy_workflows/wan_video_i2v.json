@@ -1,0 +1,89 @@
+{
+  "_comment": "Wan 2.1 image-to-video (I2V). Starts from an image (from Flux) and animates it. Cloud: confirmed available. Local: needs wan2.1_i2v_14B_fp16.safetensors (or 1.3B) -> models/diffusion_models/, umt5_xxl_fp16.safetensors -> models/text_encoders/, wan_2.1_vae.safetensors -> models/vae/. The 'image' input is injected by the server proxy as a workflow input path; 'prompt' drives motion. Output: MP4 via VHS_VideoCombine.",
+  "6": {
+    "class_type": "CLIPTextEncode",
+    "_meta": {"title": "Positive Prompt"},
+    "inputs": {
+      "text": "cinematic slow motion, smooth camera move, graceful drift",
+      "clip": ["38", 0]
+    }
+  },
+  "7": {
+    "class_type": "CLIPTextEncode",
+    "_meta": {"title": "Negative Prompt"},
+    "inputs": {
+      "text": "static, blurry, watermark, low quality, jitter",
+      "clip": ["38", 0]
+    }
+  },
+  "8": {
+    "class_type": "VAEDecode",
+    "_meta": {"title": "VAE Decode"},
+    "inputs": {"samples": ["3", 0], "vae": ["39", 0]}
+  },
+  "9": {
+    "class_type": "VHS_VideoCombine",
+    "_meta": {"title": "Video Combine"},
+    "inputs": {
+      "frame_rate": 16.0,
+      "loop_count": 0,
+      "filename_prefix": "wan_i2v",
+      "format": "video/h264-mp4",
+      "pingpong": false,
+      "save_output": true,
+      "images": ["8", 0]
+    }
+  },
+  "37": {
+    "class_type": "UNETLoader",
+    "_meta": {"title": "Wan UNET"},
+    "inputs": {"unet_name": "wan2.1_i2v_14B_fp16.safetensors", "weight_dtype": "default"}
+  },
+  "38": {
+    "class_type": "CLIPLoader",
+    "_meta": {"title": "Wan CLIP"},
+    "inputs": {"clip_name": "umt5_xxl_fp16.safetensors", "type": "wan"}
+  },
+  "39": {
+    "class_type": "VAELoader",
+    "_meta": {"title": "Wan VAE"},
+    "inputs": {"vae_name": "wan_2.1_vae.safetensors"}
+  },
+  "3": {
+    "class_type": "KSampler",
+    "_meta": {"title": "KSampler"},
+    "inputs": {
+      "seed": 42,
+      "steps": 30,
+      "cfg": 6.0,
+      "sampler_name": "uni_pc",
+      "scheduler": "simple",
+      "denoise": 1.0,
+      "model": ["37", 0],
+      "positive": ["6", 0],
+      "negative": ["7", 0],
+      "latent_image": ["40", 0]
+    }
+  },
+  "40": {
+    "class_type": "WanImageToVideo",
+    "_meta": {"title": "Wan Image to Video"},
+    "inputs": {
+      "positive": ["6", 0],
+      "negative": ["7", 0],
+      "vae": ["39", 0],
+      "image": ["41", 0],
+      "width": 832,
+      "height": 480,
+      "length": 81,
+      "batch_size": 1
+    }
+  },
+  "41": {
+    "class_type": "LoadImage",
+    "_meta": {"title": "Source Image"},
+    "inputs": {
+      "image": "flux_dev_00001_.png"
+    }
+  }
+}

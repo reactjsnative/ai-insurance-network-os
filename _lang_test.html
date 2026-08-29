@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ทดสอบเปลี่ยนภาษา</title>
+<style>
+  body { font-family: sans-serif; background: #0f172a; color: #e2e8f0; padding: 2rem; }
+  button { background: #f59e0b; color: #000; border: 0; padding: .5rem 1rem; border-radius: 8px; cursor: pointer; font-weight: bold; }
+  .card { background: #1e293b; padding: 1.5rem; border-radius: 12px; margin-top: 1rem; max-width: 480px; }
+  h1 { margin: 0 0 .5rem; }
+  .row { padding: .3rem 0; border-bottom: 1px solid #334155; }
+</style>
+</head>
+<body>
+  <button onclick="toggle()">🔁 สลับภาษา (TH / EN)</button>
+  <div class="card" id="out"></div>
+
+<script>
+// คัดลอก logic จาก AppContext.tsx + translations.ts
+const translations = {
+  th: {
+    login_freedom: 'อิสระภาพทางการเงิน',
+    login_headline_1: 'แพลตฟอร์มบริหารสายงาน',
+    login_headline_2: 'ด้วยเครือข่ายยุค AI Agent N8N ทำงานแทนคุณตลอดเวลา',
+    login_title: 'เข้าสู่ระบบ',
+    login_with_google: 'เข้าสู่ระบบด้วย Google (Google Workspace)',
+    login_with_tiktok: 'TikTok',
+    login_with_facebook: 'Facebook',
+    login_with_github: 'GitHub',
+    login_or_email: 'หรือเข้าสู่ระบบด้วยอีเมล',
+    login_email_label: 'อีเมลตัวแทน / สมาชิก (Email)',
+    login_password_label: 'รหัสผ่าน (Password)',
+    login_forgot: 'ลืมรหัสผ่าน?',
+    login_remember: 'จดจำการเข้าสู่ระบบบนเครื่องนี้',
+    login_submit: 'เข้าสู่ระบบ (Sign In with Email)',
+    login_register_prompt: 'ยังไม่มีรหัสตัวแทนในระบบเครือข่าย?',
+    login_register: 'สมัครตัวแทนใหม่และสร้างบัญชี (Agent Registration)',
+    login_quick_demo: 'ทดสอบเข้าใช้งานทันทีตามตำแหน่ง (Quick Demo Logins):',
+    login_copyright: '© 2026 AI Insurance Network Operating System. สงวนลิขสิทธิ์ทุกประการ'
+  },
+  en: {
+    login_freedom: 'Financial Freedom',
+    login_headline_1: 'Network Management Platform',
+    login_headline_2: 'Powered by AI Agent N8N — Working for You 24/7',
+    login_title: 'Sign In',
+    login_with_google: 'Sign in with Google (Google Workspace)',
+    login_with_tiktok: 'TikTok',
+    login_with_facebook: 'Facebook',
+    login_with_github: 'GitHub',
+    login_or_email: 'Or sign in with email',
+    login_email_label: 'Agent / Member Email',
+    login_password_label: 'Password',
+    login_forgot: 'Forgot password?',
+    login_remember: 'Remember me on this device',
+    login_submit: 'Sign In (with Email)',
+    login_register_prompt: 'No agent account in the network yet?',
+    login_register: 'Register as a new agent & create account',
+    login_quick_demo: 'Quick Demo Logins (1-Click Bypass):',
+    login_copyright: '© 2026 AI Insurance Network Operating System. All rights reserved'
+  }
+};
+let language = 'th';
+const t = (key) => (translations[language] || translations.th)[key] || key;
+function toggle() { language = language === 'th' ? 'en' : 'th'; render(); }
+function render() {
+  document.getElementById('out').innerHTML = `
+    <h1>${t('login_freedom')}</h1>
+    <div class="row"><b>${t('login_headline_1')}</b><br>${t('login_headline_2')}</div>
+    <div class="row"><b>${t('login_title')}</b></div>
+    <div class="row">🔵 ${t('login_with_google')}</div>
+    <div class="row">⚫ ${t('login_with_tiktok')}</div>
+    <div class="row">🔵 ${t('login_with_facebook')}</div>
+    <div class="row">⚫ ${t('login_with_github')}</div>
+    <div class="row">✉️ ${t('login_email_label')}</div>
+    <div class="row">🔒 ${t('login_password_label')}</div>
+    <div class="row">❓ ${t('login_forgot')}</div>
+    <div class="row">☑️ ${t('login_remember')}</div>
+    <div class="row">➡️ ${t('login_submit')}</div>
+    <div class="row">➕ ${t('login_register_prompt')} <b>${t('login_register')}</b></div>
+    <div class="row">🚀 ${t('login_quick_demo')}</div>
+    <div class="row">© ${t('login_copyright')}</div>
+    <p style="color:#22c55e;margin-top:1rem">ภาษาปัจจุบัน: <b>${language.toUpperCase()}</b></p>
+  `;
+}
+render();
+</script>
+</body>
+</html>
