@@ -383,28 +383,10 @@ ${JSON.stringify(organizationSummary, null, 2)}
       </body></html>`);
   });
 
-  // Vite middleware for development vs Static files in production
-  if (process.env.NODE_ENV !== 'production') {
-    const vite = await createViteServer({
-      server: {
-        middlewareMode: true,
-        // Don't watch the generated video folder — writing files there must NOT reload the page
-        watch: { ignored: ['**/server_videos/**', '**/node_modules/**'] },
-      },
-      appType: 'spa',
-    });
-    app.use(vite.middlewares);
-  } else {
-    const distPath = path.join(process.cwd(), 'dist');
-    app.use(express.static(distPath));
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
-    });
-  }
-
   // ============================================================
   // Owner notifications (Telegram + LINE) for new members / deploy
   // Credentials read from env (TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, LINE_TOKEN)
+  // Registered BEFORE the SPA catch-all so requests reach it.
   // ============================================================================
   function sendTelegram(text: string) {
     const token = process.env.TELEGRAM_BOT_TOKEN;
@@ -441,14 +423,31 @@ ${JSON.stringify(organizationSummary, null, 2)}
     sendTelegram(msg);
     sendLine(msg);
   }
-
   app.post('/api/notify-member', (req, res) => {
     try { notifyNewMember(req.body || {}); res.json({ ok: true }); }
     catch (e: any) { res.status(500).json({ ok: false, error: e?.message || 'notify failed' }); }
   });
-  // Reusable hooks callable from deploy scripts / cron
   (globalThis as any).__notifyDeploy = notifyDeploy;
   (globalThis as any).__notifyStats = notifyStats;
+
+  // Vite middleware for development vs Static files in production
+  if (process.env.NODE_ENV !== 'production') {
+    const vite = await createViteServer({
+      server: {
+        middlewareMode: true,
+        // Don't watch the generated video folder — writing files there must NOT reload the page
+        watch: { ignored: ['**/server_videos/**', '**/node_modules/**'] },
+      },
+      appType: 'spa',
+    });
+    app.use(vite.middlewares);
+  } else {
+    const distPath = path.join(process.cwd(), 'dist');
+    app.use(express.static(distPath));
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(distPath, 'index.html'));
+    });
+  }
 
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`AI Insurance Network OS Server running on http://localhost:${PORT}`);
