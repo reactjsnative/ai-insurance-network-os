@@ -561,6 +561,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
     setMembers(prev => [newMember, ...prev]);
 
+    // Persist the new member to Firestore so it appears for every user/device
+    // (the app's real-time `members` listener reads from this collection).
+    setDoc(doc(db, 'members', newMember.id), newMember).catch(err => {
+      handleFirestoreError(err, OperationType.CREATE, `members/${newMember.id}`);
+    });
+
     const updatedUser: AuthUser = {
       id: fbUser.uid,
       email: data.email,

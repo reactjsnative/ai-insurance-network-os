@@ -1,62 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { Sheet, RefreshCw, ExternalLink } from 'lucide-react';
-
-interface SheetMember {
-  memberId: string;
-  memberCode: string;
-  name: string;
-  email: string;
-  phone: string;
-  positionId: string;
-  province: string;
-  joinDate: string;
-  status: string;
-  [k: string]: any;
-}
+import { Sheet } from 'lucide-react';
 
 export const MemberSheetView: React.FC = () => {
-  const { t } = useApp();
-  const [members, setMembers] = useState<SheetMember[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [configured, setConfigured] = useState(true);
-  const [lastSync, setLastSync] = useState<string>('');
+  const { members, t } = useApp();
 
-  const load = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      // Try Google Sheet first
-      const res = await fetch('/api/members/sheet');
-      const data = await res.json();
-      if (res.ok && data.ok) {
-        setMembers(data.members || []);
-        setLastSync(new Date().toLocaleTimeString('th-TH') + ' (Google Sheet)');
-        return;
-      }
-      // Fallback: local JSON store (server_data/members.json)
-      const local = await fetch('/api/members');
-      const localData = await local.json();
-      if (local.ok && localData.ok) {
-        setMembers(localData.members || []);
-        setConfigured(!!data.configured);
-        setLastSync(new Date().toLocaleTimeString('th-TH') + ' (Local Store)');
-      } else {
-        throw new Error('ไม่สามารถโหลดข้อมูลได้');
-      }
-    } catch (e: any) {
-      setError(e.message || 'เกิดข้อผิดพลาด');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => { load(); }, []);
-
-  // GOOGLE_SHEET_ID is a server-side secret (.env) — the client must NOT read process.env.
-  // The exact sheet link is resolved server-side; the client opens the generic Sheets URL.
-  const sheetUrl = 'https://docs.google.com/spreadsheets/';
+  // Reuse the app's live member list (Firestore-backed) — the same source the
+  // rest of the app (dashboard, organization, members management) reads from.
+  // The old /api/members endpoints were served by the local Express dev server
+  // only and 404 on Vercel, so this menu always showed "no data" in production.
+  const sortedMembers = [...members].sort((a, b) => (a.joinDate || '').localeCompare(b.joinDate || ''));
 
   return (
     <div id="member_sheet_view" className="space-y-6 max-w-7xl mx-auto pb-16 text-left">
@@ -64,55 +17,26 @@ export const MemberSheetView: React.FC = () => {
         <div>
           <div className="flex items-center gap-2">
             <Sheet className="w-5 h-5 text-emerald-400" />
-            <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">GOOGLE SHEET</span>
+            <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">REAL-TIME</span>
           </div>
-          <h1 className="mt-2 text-2xl font-black text-slate-100">คลังข้อมูลสมาชิก (จาก Google Sheets)</h1>
-          <p className="text-sm text-slate-400 mt-1">ข้อมูลสมาชิกที่ดึงมาจาก Google Sheet แบบเรียลไทม์</p>
+          <h1 className="mt-2 text-2xl font-black text-slate-100">คลังข้อมูลสมาชิก</h1>
+          <p className="text-sm text-slate-400 mt-1">รายชื่อสมาชิกทั้งหมดในระบบ อัปเดตเรียลไทม์จากฐานข้อมูลกลาง</p>
         </div>
         <div className="flex items-center gap-2">
-          <button
-            onClick={load}
-            disabled={loading}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 text-xs font-bold border border-emerald-500/30 transition-colors disabled:opacity-60"
-          >
-            <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
-            {loading ? 'กำลังโหลด...' : 'รีเฟรช'}
-          </button>
-          <a
-            href={sheetUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 transition-colors"
-          >
-            <ExternalLink className="w-4 h-4" />
-            เปิด Sheet
-          </a>
+          <span className="px-4 py-2.5 rounded-xl bg-slate-800 text-slate-200 text-xs font-bold border border-slate-700">
+            ทั้งหมด {members.length} คน
+          </span>
         </div>
       </div>
 
-      {lastSync && (
-        <div className="text-[11px] text-slate-500">ซิงก์ล่าสุด: {lastSync} • {members.length} เรคคอร์ด</div>
-      )}
-
-      {error && (
-        <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-200 text-sm">
-          {error}
-          {!configured && (
-            <div className="mt-2 text-[12px] text-rose-300/80">
-              ยังไม่ได้ตั้งค่า GOOGLE_SHEET_ID และ GOOGLE_SHEETS_CREDENTIALS_JSON ในไฟล์ .env
-              — ใส่ credential แล้วรีสตาร์ท server ระบบจะดึงข้อมูลจาก Sheet ได้ทันที
-            </div>
-          )}
-        </div>
-      )}
-
-      {!error && members.length === 0 && !loading && (
+      {members.length === 0 ? (
         <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 text-center text-slate-400 text-sm">
-          ยังไม่มีข้อมูลใน Google Sheet (หรือยังไม่ได้ตั้งค่า credential)
+          ยังไม่มีข้อมูลสมาชิกในระบบ
+          <div className="mt-2 text-[12px] text-slate-500">
+            สมาชิกจะปรากฏที่นี่โดยอัตโนมัติเมื่อสมัครเข้ามาผ่านระบบ หรือเมื่อเพิ่มจากหน้า "การจัดการสมาชิก"
+          </div>
         </div>
-      )}
-
-      {members.length > 0 && (
+      ) : (
         <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/60">
           <table className="w-full text-sm">
             <thead className="bg-slate-950 text-slate-400 text-[11px] uppercase tracking-wider text-left">
@@ -129,18 +53,24 @@ export const MemberSheetView: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {members.map((m, i) => (
-                <tr key={m.memberId || i} className="border-t border-slate-800 hover:bg-slate-800/40">
+              {sortedMembers.map((m, i) => (
+                <tr key={m.id || i} className="border-t border-slate-800 hover:bg-slate-800/40">
                   <td className="p-3 text-slate-500">{i + 1}</td>
                   <td className="p-3 font-mono text-emerald-300">{m.memberCode}</td>
                   <td className="p-3 font-semibold text-slate-100">{m.name}</td>
                   <td className="p-3 text-slate-300">{m.email || '-'}</td>
                   <td className="p-3 text-slate-300">{m.phone || '-'}</td>
                   <td className="p-3 text-slate-300">{m.positionId}</td>
-                  <td className="p-3 text-slate-300">{m.province || '-'}</td>
+                  <td className="p-3 text-slate-300">{m.location?.province || '-'}</td>
                   <td className="p-3 text-slate-300">{m.joinDate}</td>
                   <td className="p-3">
-                    <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 text-[11px] font-bold">{m.status || 'active'}</span>
+                    <span className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${
+                      m.status === 'active'
+                        ? 'bg-emerald-500/15 text-emerald-300'
+                        : m.status === 'probation'
+                        ? 'bg-amber-500/15 text-amber-300'
+                        : 'bg-slate-500/15 text-slate-400'
+                    }`}>{m.status || 'active'}</span>
                   </td>
                 </tr>
               ))}

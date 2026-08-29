@@ -1,9 +1,12 @@
 {
-  "projectId": "appx-a1f70",
-  "appId": "1:133007151399:web:e0b51ff5b3c68287219902",
-  "apiKey": "AIzaSyAP8oPJWFfYBD00WvOhtQ6VnIG3TK5KQj0",
-  "authDomain": "appx-a1f70.firebaseapp.com",
-  "storageBucket": "appx-a1f70.firebasestorage.app",
-  "messagingSenderId": "133007151399",
-  "measurementId": "G-19B2K21PQM"
+  "projectId": "corded-totem-7wgw1",
+  "appId": "1:787966502822:web:48d51b1e73c80c6a2c5167",
+  "apiKey": "AIzaSyBmnIz9Ontb6q0zkkBTWi6e2FkEW_kqxlU",
+  "authDomain": "corded-totem-7wgw1.firebaseapp.com",
+  "firestoreDatabaseId": "ai-studio-aiinsurancenetwo-5de21c17-340c-4f71-a6a6-2ad34c2e0843",
+  "storageBucket": "corded-totem-7wgw1.firebasestorage.app",
+  "messagingSenderId": "787966502822",
+  "measurementId": "",
+  "oAuthClientId": "787966502822-ur13ibpu4dn2m36mla9qald1dsblk84m.apps.googleusercontent.com",
+  "recaptchaSiteKey": ""
 }
