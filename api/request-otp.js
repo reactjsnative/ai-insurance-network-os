@@ -54,35 +54,26 @@ async function handlerInner(req, res) {
 
   const now = Date.now();
 
-  // Rate limit: reuse an active code created in the last minute instead of spamming.
-  const activeSnap = await admin.db
-    .collection('resetCodes')
-    .where('uid', '==', uid)
-    .where('expiresAt', '>', now)
-    .where('used', '==', false)
-    .orderBy('createdAt', 'desc')
-    .limit(1)
-    .get();
-
-  if (!activeSnap.empty) {
-    const existing = activeSnap.docs[0];
-    const created = existing.data().createdAt || 0;
-    if (now - created < RATE_LIMIT_MS) {
+  // One active OTP per user: deterministic doc id (no composite index required).
+  const resetDocId = 'otp_' + uid;
+  const resetRef = admin.db.collection('resetCodes').doc(resetDocId);
+  const existingSnap = await resetRef.get();
+  if (existingSnap.exists) {
+    const existing = existingSnap.data();
+    const created = existing.createdAt || 0;
+    if (!existing.used && now < (existing.expiresAt || 0) && now - created < RATE_LIMIT_MS) {
       return res.status(429).json({
         ok: false,
         code: 'RATE_LIMITED',
         retryAfterSeconds: Math.ceil((RATE_LIMIT_MS - (now - created)) / 1000),
       });
     }
-    // Expired-limit window passed: clear stale code before issuing a new one.
-    await existing.ref.delete();
   }
 
   const code = generateOtp();
   const salt = crypto.randomBytes(16).toString('hex');
-  const requestId = crypto.randomBytes(16).toString('hex');
 
-  await admin.db.collection('resetCodes').doc(requestId).set({
+  await resetRef.set({
     uid,
     email,
     codeHash: hashOtp(code, salt),
@@ -95,5 +86,5 @@ async function handlerInner(req, res) {
 
   await sendOtpEmail(email, code);
 
-  return res.json({ ok: true, requestId, expiresInSeconds: OTP_TTL_SECONDS });
+  return res.json({ ok: true, requestId: resetDocId, expiresInSeconds: OTP_TTL_SECONDS });
 }
