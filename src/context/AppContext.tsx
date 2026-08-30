@@ -111,6 +111,8 @@ interface AppContextType {
   resetPassword: (email: string) => Promise<{ success: boolean; message: string }>;
   verifyResetCode: (code: string) => Promise<{ success: boolean; message: string; email?: string }>;
   confirmResetPassword: (code: string, newPassword: string) => Promise<{ success: boolean; message: string }>;
+  requestResetOtp: (email: string) => Promise<{ success: boolean; message: string; mode: 'otp' | 'link'; requestId?: string }>;
+  verifyResetOtp: (requestId: string, code: string, newPassword: string) => Promise<{ success: boolean; message: string }>;
 
   // Recruitment
   applications: AgentApplication[];
@@ -721,6 +723,87 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       return { success: false, message: translateAuthError(err) };
     }
   };
+
+  const requestResetOtp = async (email: string): Promise<{ success: boolean; message: string; mode: 'otp' | 'link'; requestId?: string }> => {
+    if (!email || !email.includes('@')) {
+      return { success: false, message: 'กรุณากรอกอีเมลให้ถูกต้อง', mode: 'link' };
+    }
+    const trimmed = email.trim().toLowerCase();
+    try {
+      const res = await fetch('/api/request-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: trimmed }),
+      });
+      const ct = res.headers.get('content-type') || '';
+      if (!res.ok || !ct.includes('application/json')) {
+        throw new Error('otp_endpoint_unavailable');
+      }
+      const data = await res.json();
+      if (data.ok) {
+        return {
+          success: true,
+          message: 'ส่งรหัส OTP (6 หลัก) ไปยังอีเมลของคุณแล้ว',
+          mode: 'otp',
+          requestId: data.requestId || '',
+        };
+      }
+      if (data.code === 'RATE_LIMITED') {
+        return { success: false, message: 'ขอรหัสบ่อยเกินไป กรุณารอสักครู่แล้วลองใหม่', mode: 'otp' };
+      }
+      if (data.code === 'INVALID_EMAIL') {
+        return { success: false, message: 'กรุณากรอกอีเมลให้ถูกต้อง', mode: 'link' };
+      }
+      throw new Error('otp_not_configured');
+    } catch (err) {
+      // Fallback to the Firebase password-reset link flow.
+      try {
+        await sendPasswordResetEmail(auth, trimmed);
+        return { success: true, message: 'ส่งอีเมลรีเซ็ตรหัสผ่านไปแล้ว กรุณาตรวจสอบกล่องข้อความ', mode: 'link' };
+      } catch (fbErr) {
+        return { success: false, message: translateAuthError(fbErr), mode: 'link' };
+      }
+    }
+  };
+
+  const verifyResetOtp = async (requestId: string, code: string, newPassword: string): Promise<{ success: boolean; message: string }> => {
+    if (!requestId || !code) {
+      return { success: false, message: 'รหัสยืนยันไม่ถูกต้อง' };
+    }
+    if (!newPassword || newPassword.length < 6) {
+      return { success: false, message: 'รหัสผ่านใหม่ต้องมีอย่างน้อย 6 ตัวอักษร' };
+    }
+    try {
+      const res = await fetch('/api/verify-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ requestId, code, newPassword }),
+      });
+      const ct = res.headers.get('content-type') || '';
+      if (!ct.includes('application/json')) {
+        return { success: false, message: 'เกิดข้อผิดพลาด กรุณาลองใหม่' };
+      }
+      const data = await res.json();
+      if (data.ok) {
+        return { success: true, message: 'ตั้งรหัสผ่านใหม่เรียบร้อยแล้ว' };
+      }
+      switch (data.code) {
+        case 'INVALID_OR_EXPIRED':
+          return { success: false, message: 'รหัส OTP ไม่ถูกต้องหรือหมดอายุแล้ว' };
+        case 'TOO_MANY_ATTEMPTS':
+          return { success: false, message: 'กรอกรหัสผิดหลายครั้งเกินไป กรุณาขอรหัสใหม่' };
+        case 'WEAK_PASSWORD':
+          return { success: false, message: 'รหัสผ่านใหม่ต้องมีอย่างน้อย 6 ตัวอักษร' };
+        case 'ADMIN_NOT_CONFIGURED':
+        case 'EMAIL_NOT_CONFIGURED':
+          return { success: false, message: 'ระบบ OTP ยังไม่พร้อมใช้งาน กรุณาใช้ลิงก์รีเซ็ตทางอีเมลแทน' };
+        default:
+          return { success: false, message: data.message || 'เกิดข้อผิดพลาด กรุณาลองใหม่' };
+      }
+    } catch (err) {
+      return { success: false, message: 'เกิดข้อผิดพลาดในการตั้งรหัสผ่านใหม่' };
+    }
+  };
   
   const [activeTab, setActiveTab] = useState<ActiveTab>('dashboard');
   const [isPresentationMode, setIsPresentationMode] = useState<boolean>(false);
@@ -1241,6 +1324,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         resetPassword,
         verifyResetCode,
         confirmResetPassword,
+        requestResetOtp,
+        verifyResetOtp,
 
         // Recruitment
         applications,

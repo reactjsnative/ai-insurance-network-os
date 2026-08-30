@@ -1,34 +1,28 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    
-    // Default Deny All
+
+    // Default deny all
     match /{document=**} {
       allow read, write: if false;
     }
 
-    // Helper functions
+    // ---- Helpers ----
     function isValidId(id) {
       return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
     }
-
-    function incoming() {
-      return request.resource.data;
-    }
-
-    function existing() {
-      return resource.data;
-    }
-
     function isSignedIn() {
       return request.auth != null;
     }
-
     function isAdmin() {
       return isSignedIn() && (
         request.auth.token.email == 'akarapol.pro798@gmail.com' ||
         exists(/databases/$(database)/documents/admins/$(request.auth.uid))
       );
+    }
+    // Privileged roles must never be granted by a non-admin.
+    function isPrivilegedRole(data) {
+      return data.role in ['admin', 'super_admin', 'regional_manager', 'center_manager', 'unit_manager'];
     }
 
     function isValidMember(data) {
@@ -40,7 +34,6 @@ service cloud.firestore {
              data.status in ['active', 'inactive', 'probation'] &&
              data.personalFYC is number;
     }
-
     function isValidApplication(data) {
       return data.id is string && data.id.size() <= 128 &&
              data.applicationNo is string && data.applicationNo.size() <= 32 &&
@@ -50,7 +43,6 @@ service cloud.firestore {
              data.phone is string && data.phone.size() <= 30 &&
              data.email is string && data.email.size() <= 150;
     }
-
     function isValidAuditLog(data) {
       return data.id is string && data.id.size() <= 128 &&
              data.timestamp is string && data.timestamp.size() <= 50 &&
@@ -58,7 +50,6 @@ service cloud.firestore {
              data.action is string && data.action.size() <= 100 &&
              data.entityType is string && data.entityType.size() <= 50;
     }
-
     function isValidCompensationPlan(data) {
       return data.id is string && data.id.size() <= 128 &&
              data.code is string && data.code.size() <= 50 &&
@@ -66,44 +57,47 @@ service cloud.firestore {
              data.status in ['active', 'draft', 'archived'];
     }
 
-    // Members collection
+    // ---- Members ----
+    // Reads stay public for the org-chart directory. Writes require a signed-in
+    // user, and non-admins can never create/update a privileged role record.
     match /members/{memberId} {
-      allow get, list: if true; // Public read for network organization and directory simulation
-      allow create: if isValidId(memberId) && isValidMember(incoming());
-      allow update: if isValidId(memberId) && isValidMember(incoming());
-      allow delete: if isValidId(memberId) && (isAdmin() || isSignedIn());
+      allow get, list: if true;
+      allow create, update: if isValidId(memberId) && isValidMember(incoming()) && isSignedIn() && (isAdmin() || !isPrivilegedRole(incoming()));
+      allow delete: if isValidId(memberId) && isAdmin();
     }
 
-    // Candidate Recruitment Applications
+    // ---- Candidate Recruitment Applications ----
     match /applications/{applicationId} {
       allow get, list: if true;
-      allow create: if isValidId(applicationId) && isValidApplication(incoming());
-      allow update: if isValidId(applicationId) && isValidApplication(incoming());
-      allow delete: if isValidId(applicationId) && (isAdmin() || isSignedIn());
+      allow create, update: if isValidId(applicationId) && isValidApplication(incoming()) && isSignedIn();
+      allow delete: if isValidId(applicationId) && isAdmin();
     }
 
-    // Audit logs - append-only, no updates or deletes allowed
+    // ---- Audit logs: append-only, signed-in ----
     match /auditLogs/{logId} {
       allow get, list: if true;
-      allow create: if isValidId(logId) && isValidAuditLog(incoming());
+      allow create: if isValidId(logId) && isValidAuditLog(incoming()) && isSignedIn();
       allow update, delete: if false;
     }
 
-    // Compensation Plans
+    // ---- Compensation plans: admin-only writes ----
     match /compensationPlans/{planId} {
       allow get, list: if true;
-      allow create: if isValidId(planId) && isValidCompensationPlan(incoming());
-      allow update: if isValidId(planId) && isValidCompensationPlan(incoming());
-      allow delete: if isValidId(planId) && isAdmin();
+      allow create, update, delete: if isValidId(planId) && isValidCompensationPlan(incoming()) && isAdmin();
     }
 
-    // Admins registry collection
+    // ---- Admins registry ----
     match /admins/{adminId} {
       allow get: if isSignedIn();
       allow list, write: if isAdmin();
     }
 
-    // Test connection document
+    // ---- Password-reset OTP codes: server (Admin SDK) only ----
+    match /resetCodes/{codeId} {
+      allow read, write: if false;
+    }
+
+    // ---- Test connection ----
     match /test/{docId} {
       allow read, write: if true;
     }
