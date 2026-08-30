@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Music2, Plus, Link2, Trash2, ExternalLink, User, Share2 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
+import { db } from '../../lib/firebase';
+import { collection, onSnapshot, doc, setDoc, deleteDoc } from 'firebase/firestore';
+import { safeGet, safeSet } from '../../lib/safeStorage';
 
 interface TikTokLink {
   id: string;
@@ -34,22 +37,38 @@ export const TikTokLinks: React.FC = () => {
   const { t, activeUser } = useApp();
   const STORAGE_KEY = 'insure_os_tiktok_links_v1';
   const [links, setLinks] = useState<TikTokLink[]>(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
+    const saved = safeGet(STORAGE_KEY);
+    if (saved) {
+      try {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) return parsed as TikTokLink[];
-      }
-    } catch { /* ignore */ }
+      } catch { /* ignore */ }
+    }
     return INITIAL_LINKS;
   });
   const [showAdd, setShowAdd] = useState(false);
   const [form, setForm] = useState({ title: '', handle: '', url: '' });
 
-  // Persist to localStorage so added links survive page changes / reloads.
+  // Persist to localStorage (same-device fallback / instant load).
   React.useEffect(() => {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(links)); } catch { /* ignore */ }
+    safeSet(STORAGE_KEY, JSON.stringify(links));
   }, [links]);
+
+  // Firestore sync so links appear on every device.
+  React.useEffect(() => {
+    try {
+      const unsub = onSnapshot(collection(db, 'tiktokLinks'), (snap) => {
+        if (!snap.empty) {
+          const remote: TikTokLink[] = [];
+          snap.forEach((d) => remote.push(d.data() as TikTokLink));
+          setLinks(remote);
+        }
+      }, (err) => console.warn('tiktok links listener:', err));
+      return () => unsub();
+    } catch (e) {
+      console.warn('tiktok links sync init:', e);
+    }
+  }, []);
 
   const normalizeUrl = (raw: string): string => {
     if (/^https?:\/\//.test(raw)) return raw;
@@ -68,12 +87,14 @@ export const TikTokLinks: React.FC = () => {
       addedAt: new Date().toISOString().slice(0, 10),
     };
     setLinks((prev) => [item, ...prev]);
+    setDoc(doc(db, 'tiktokLinks', item.id), item).catch((err) => console.warn('tiktok link save:', err));
     setForm({ title: '', handle: '', url: '' });
     setShowAdd(false);
   };
 
   const handleDelete = (id: string) => {
     setLinks((prev) => prev.filter((l) => l.id !== id));
+    deleteDoc(doc(db, 'tiktokLinks', id)).catch((err) => console.warn('tiktok link delete:', err));
   };
 
   const openLink = (url: string) => {

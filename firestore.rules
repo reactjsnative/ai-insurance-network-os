@@ -80,6 +80,18 @@ service cloud.firestore {
       allow update, delete: if false;
     }
 
+    // ---- Video library (cross-device sync) ----
+    match /videos/{videoId} {
+      allow get, list: if true;
+      allow create, update, delete: if isValidId(videoId) && isSignedIn();
+    }
+
+    // ---- TikTok links (cross-device sync) ----
+    match /tiktokLinks/{linkId} {
+      allow get, list: if true;
+      allow create, update, delete: if isValidId(linkId) && isSignedIn();
+    }
+
     // ---- Compensation plans: admin-only writes ----
     match /compensationPlans/{planId} {
       allow get, list: if true;

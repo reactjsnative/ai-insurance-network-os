@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Video, Play, Plus, Link2, Trash2, Youtube, Eye } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
+import { db } from '../../lib/firebase';
+import { collection, onSnapshot, doc, setDoc, deleteDoc } from 'firebase/firestore';
+import { safeGet, safeSet } from '../../lib/safeStorage';
 
 interface VideoItem {
   id: string;
@@ -47,32 +50,48 @@ export const VideoLibrary: React.FC = () => {
   const { t, activeUser } = useApp();
   const STORAGE_KEY = 'insure_os_videos_v1';
   const [videos, setVideos] = useState<VideoItem[]>(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
+    const saved = safeGet(STORAGE_KEY);
+    if (saved) {
+      try {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) return parsed as VideoItem[];
-      }
-    } catch { /* ignore */ }
+      } catch { /* ignore */ }
+    }
     return INITIAL_VIDEOS;
   });
   const [activeVideo, setActiveVideo] = useState<VideoItem>(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
+    const saved = safeGet(STORAGE_KEY);
+    if (saved) {
+      try {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) return parsed[0] as VideoItem;
-      }
-    } catch { /* ignore */ }
+      } catch { /* ignore */ }
+    }
     return INITIAL_VIDEOS[0];
   });
   const [showAdd, setShowAdd] = useState(false);
   const [form, setForm] = useState({ title: '', url: '', category: 'ทั่วไป' });
 
-  // Persist to localStorage so added videos survive page changes / reloads.
+  // Persist to localStorage (same-device fallback / instant load).
   React.useEffect(() => {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(videos)); } catch { /* ignore */ }
+    safeSet(STORAGE_KEY, JSON.stringify(videos));
   }, [videos]);
+
+  // Firestore sync so videos appear on every device (phone, tablet, PC).
+  React.useEffect(() => {
+    try {
+      const unsub = onSnapshot(collection(db, 'videos'), (snap) => {
+        if (!snap.empty) {
+          const remote: VideoItem[] = [];
+          snap.forEach((d) => remote.push(d.data() as VideoItem));
+          setVideos(remote);
+        }
+      }, (err) => console.warn('videos listener:', err));
+      return () => unsub();
+    } catch (e) {
+      console.warn('videos sync init:', e);
+    }
+  }, []);
 
   // Allow the AI Image Generator to push generated images into this library
   React.useEffect(() => {
@@ -116,6 +135,7 @@ export const VideoLibrary: React.FC = () => {
     };
     setVideos((prev) => [item, ...prev]);
     setActiveVideo(item);
+    setDoc(doc(db, 'videos', item.id), item).catch((err) => console.warn('video save:', err));
     setForm({ title: '', url: '', category: 'ทั่วไป' });
     setShowAdd(false);
   };
@@ -124,6 +144,7 @@ export const VideoLibrary: React.FC = () => {
     const next = videos.filter((v) => v.id !== id);
     setVideos(next);
     if (activeVideo.id === id) setActiveVideo(next[0]);
+    deleteDoc(doc(db, 'videos', id)).catch((err) => console.warn('video delete:', err));
   };
 
   return (
