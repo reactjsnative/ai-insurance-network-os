@@ -45,10 +45,34 @@ const INITIAL_VIDEOS: VideoItem[] = [
 
 export const VideoLibrary: React.FC = () => {
   const { t, activeUser } = useApp();
-  const [videos, setVideos] = useState<VideoItem[]>(INITIAL_VIDEOS);
-  const [activeVideo, setActiveVideo] = useState<VideoItem>(INITIAL_VIDEOS[0]);
+  const STORAGE_KEY = 'insure_os_videos_v1';
+  const [videos, setVideos] = useState<VideoItem[]>(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed as VideoItem[];
+      }
+    } catch { /* ignore */ }
+    return INITIAL_VIDEOS;
+  });
+  const [activeVideo, setActiveVideo] = useState<VideoItem>(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed[0] as VideoItem;
+      }
+    } catch { /* ignore */ }
+    return INITIAL_VIDEOS[0];
+  });
   const [showAdd, setShowAdd] = useState(false);
   const [form, setForm] = useState({ title: '', url: '', category: 'ทั่วไป' });
+
+  // Persist to localStorage so added videos survive page changes / reloads.
+  React.useEffect(() => {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(videos)); } catch { /* ignore */ }
+  }, [videos]);
 
   // Allow the AI Image Generator to push generated images into this library
   React.useEffect(() => {

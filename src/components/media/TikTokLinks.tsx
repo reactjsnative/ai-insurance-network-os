@@ -32,9 +32,24 @@ const INITIAL_LINKS: TikTokLink[] = [
 
 export const TikTokLinks: React.FC = () => {
   const { t, activeUser } = useApp();
-  const [links, setLinks] = useState<TikTokLink[]>(INITIAL_LINKS);
+  const STORAGE_KEY = 'insure_os_tiktok_links_v1';
+  const [links, setLinks] = useState<TikTokLink[]>(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed as TikTokLink[];
+      }
+    } catch { /* ignore */ }
+    return INITIAL_LINKS;
+  });
   const [showAdd, setShowAdd] = useState(false);
   const [form, setForm] = useState({ title: '', handle: '', url: '' });
+
+  // Persist to localStorage so added links survive page changes / reloads.
+  React.useEffect(() => {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(links)); } catch { /* ignore */ }
+  }, [links]);
 
   const normalizeUrl = (raw: string): string => {
     if (/^https?:\/\//.test(raw)) return raw;
