@@ -28,6 +28,7 @@ import {
   OperationType,
   testFirestoreConnection
 } from '../lib/firebase';
+import { safeGet, safeSet, safeRemove } from '../lib/safeStorage';
 import { 
   collection, 
   onSnapshot, 
@@ -147,13 +148,13 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<Language>(() => {
-    const saved = localStorage.getItem('insure_os_lang');
+    const saved = safeGet('insure_os_lang');
     return (saved === 'en' || saved === 'th') ? saved : 'th';
   });
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
-    localStorage.setItem('insure_os_lang', lang);
+    safeSet('insure_os_lang', lang);
   };
 
   const toggleLanguage = () => {
@@ -183,7 +184,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, []);
 
   const [members, setMembers] = useState<Member[]>(() => {
-    const saved = localStorage.getItem('insure_os_members_v3');
+    const saved = safeGet('insure_os_members_v3');
     return saved ? JSON.parse(saved) : INITIAL_MEMBERS;
   });
 
@@ -204,7 +205,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
             remoteMembers.push(docSnap.data() as Member);
           });
           setMembers(remoteMembers);
-          localStorage.setItem('insure_os_members_v3', JSON.stringify(remoteMembers));
+          safeSet('insure_os_members_v3', JSON.stringify(remoteMembers));
         } else {
           // Auto-seed Firestore on initial setup
           INITIAL_MEMBERS.forEach(m => {
@@ -295,7 +296,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const [authUser, setAuthUser] = useState<AuthUser>(() => {
-    const saved = localStorage.getItem('insure_os_auth_user_v3');
+    const saved = safeGet('insure_os_auth_user_v3');
     if (saved) {
       try {
         const parsed = JSON.parse(saved) as AuthUser;
@@ -312,7 +313,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [showGatewayScreen, setShowGatewayScreen] = useState<boolean>(() => !authUser.isLoggedIn);
 
   useEffect(() => {
-    localStorage.setItem('insure_os_auth_user_v3', JSON.stringify(authUser));
+    safeSet('insure_os_auth_user_v3', JSON.stringify(authUser));
   }, [authUser]);
 
   const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
@@ -678,7 +679,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     // Fully clear the session — no sensitive data retained.
     setAuthUser({ ...initialAuthUser });
     setShowGatewayScreen(true);
-    localStorage.removeItem('insure_os_auth_user_v3');
+    safeRemove('insure_os_auth_user_v3');
 
     setAuthNotification({
       type: 'info',
@@ -814,13 +815,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [heatmapMode, setHeatmapMode] = useState<boolean>(false);
 
   const [applications, setApplications] = useState<AgentApplication[]>(() => {
-    const saved = localStorage.getItem('insure_os_applications_v2');
+    const saved = safeGet('insure_os_applications_v2');
     return saved ? JSON.parse(saved) : INITIAL_APPLICATIONS;
   });
 
   // Save applications to localStorage
   useEffect(() => {
-    localStorage.setItem('insure_os_applications_v2', JSON.stringify(applications));
+    safeSet('insure_os_applications_v2', JSON.stringify(applications));
   }, [applications]);
 
   const submitApplication = (appData: Omit<AgentApplication, 'id' | 'applicationNo' | 'submittedAt' | 'status'>) => {
@@ -978,7 +979,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Save to localStorage when members change
   useEffect(() => {
-    localStorage.setItem('insure_os_members_v3', JSON.stringify(members));
+    safeSet('insure_os_members_v3', JSON.stringify(members));
   }, [members]);
 
   const activePlan = planVersions.find(p => p.id === activePlanId) || planVersions[0];
