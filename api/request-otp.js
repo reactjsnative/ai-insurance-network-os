@@ -12,6 +12,15 @@ const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 const RATE_LIMIT_MS = 60 * 1000; // 1 request per email per minute
 
 export default async function handler(req, res) {
+  try {
+    return await handlerInner(req, res);
+  } catch (err) {
+    console.error('request-otp error:', err);
+    return res.status(500).json({ ok: false, code: 'INTERNAL', message: (err && err.message) || String(err) });
+  }
+}
+
+async function handlerInner(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ ok: false, code: 'METHOD_NOT_ALLOWED' });
