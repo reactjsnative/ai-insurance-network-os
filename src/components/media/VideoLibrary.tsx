@@ -72,20 +72,31 @@ export const VideoLibrary: React.FC = () => {
   const [showAdd, setShowAdd] = useState(false);
   const [form, setForm] = useState({ title: '', url: '', category: 'ทั่วไป' });
 
+  // Keep a ref of latest videos for the Firestore sync effect.
+  const videosRef = React.useRef(videos);
+  React.useEffect(() => { videosRef.current = videos; }, [videos]);
+
   // Persist to localStorage (same-device fallback / instant load).
   React.useEffect(() => {
     safeSet(STORAGE_KEY, JSON.stringify(videos));
   }, [videos]);
 
   // Firestore sync so videos appear on every device (phone, tablet, PC).
+  // Merge instead of replace so local-only videos never disappear, and seed
+  // them into Firestore so they sync everywhere.
   React.useEffect(() => {
     try {
       const unsub = onSnapshot(collection(db, 'videos'), (snap) => {
-        if (!snap.empty) {
-          const remote: VideoItem[] = [];
-          snap.forEach((d) => remote.push(d.data() as VideoItem));
-          setVideos(remote);
-        }
+        const remote: VideoItem[] = [];
+        snap.forEach((d) => remote.push(d.data() as VideoItem));
+        const remoteIds = new Set(remote.map((v) => v.id));
+        const localOnly = videosRef.current.filter((v) => !remoteIds.has(v.id));
+        // Seed local-only videos into Firestore so they persist across devices.
+        localOnly.forEach((v) => setDoc(doc(db, 'videos', v.id), v).catch((err) => console.warn('video seed:', err)));
+        // Merge so nothing disappears from the UI.
+        const merged = [...remote, ...localOnly];
+        setVideos(merged);
+        safeSet(STORAGE_KEY, JSON.stringify(merged));
       }, (err) => console.warn('videos listener:', err));
       return () => unsub();
     } catch (e) {
@@ -133,9 +144,11 @@ export const VideoLibrary: React.FC = () => {
       addedBy: activeUser?.name || 'สมาชิก',
       addedAt: new Date().toISOString().slice(0, 10),
     };
-    setVideos((prev) => [item, ...prev]);
+    const next = [item, ...videos];
+    setVideos(next);
     setActiveVideo(item);
-    setDoc(doc(db, 'videos', item.id), item).catch((err) => console.warn('video save:', err));
+    // Write ALL videos to Firestore (not just the new one) so old ones never get lost.
+    next.forEach((v) => setDoc(doc(db, 'videos', v.id), v).catch((err) => console.warn('video save:', err)));
     setForm({ title: '', url: '', category: 'ทั่วไป' });
     setShowAdd(false);
   };

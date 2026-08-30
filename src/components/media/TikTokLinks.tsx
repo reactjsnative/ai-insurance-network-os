@@ -49,20 +49,29 @@ export const TikTokLinks: React.FC = () => {
   const [showAdd, setShowAdd] = useState(false);
   const [form, setForm] = useState({ title: '', handle: '', url: '' });
 
+  // Keep a ref of latest links for the Firestore sync effect.
+  const linksRef = React.useRef(links);
+  React.useEffect(() => { linksRef.current = links; }, [links]);
+
   // Persist to localStorage (same-device fallback / instant load).
   React.useEffect(() => {
     safeSet(STORAGE_KEY, JSON.stringify(links));
   }, [links]);
 
   // Firestore sync so links appear on every device.
+  // Merge instead of replace so local-only links never disappear, and seed
+  // them into Firestore so they sync everywhere.
   React.useEffect(() => {
     try {
       const unsub = onSnapshot(collection(db, 'tiktokLinks'), (snap) => {
-        if (!snap.empty) {
-          const remote: TikTokLink[] = [];
-          snap.forEach((d) => remote.push(d.data() as TikTokLink));
-          setLinks(remote);
-        }
+        const remote: TikTokLink[] = [];
+        snap.forEach((d) => remote.push(d.data() as TikTokLink));
+        const remoteIds = new Set(remote.map((l) => l.id));
+        const localOnly = linksRef.current.filter((l) => !remoteIds.has(l.id));
+        localOnly.forEach((l) => setDoc(doc(db, 'tiktokLinks', l.id), l).catch((err) => console.warn('tiktok link seed:', err)));
+        const merged = [...remote, ...localOnly];
+        setLinks(merged);
+        safeSet(STORAGE_KEY, JSON.stringify(merged));
       }, (err) => console.warn('tiktok links listener:', err));
       return () => unsub();
     } catch (e) {
@@ -86,8 +95,10 @@ export const TikTokLinks: React.FC = () => {
       owner: activeUser?.name || 'สมาชิก',
       addedAt: new Date().toISOString().slice(0, 10),
     };
-    setLinks((prev) => [item, ...prev]);
-    setDoc(doc(db, 'tiktokLinks', item.id), item).catch((err) => console.warn('tiktok link save:', err));
+    const next = [item, ...links];
+    setLinks(next);
+    // Write ALL links to Firestore (not just the new one) so old ones never get lost.
+    next.forEach((l) => setDoc(doc(db, 'tiktokLinks', l.id), l).catch((err) => console.warn('tiktok link save:', err)));
     setForm({ title: '', handle: '', url: '' });
     setShowAdd(false);
   };
