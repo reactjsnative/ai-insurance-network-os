@@ -39,6 +39,8 @@ import {
 } from 'firebase/firestore';
 import { 
   signInWithPopup, 
+  signInWithRedirect,
+  getRedirectResult,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
@@ -168,11 +170,45 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const [isFirebaseConnected, setIsFirebaseConnected] = useState<boolean>(true);
 
-  // Initialize Firebase connection check and Auth listener
+  // Initialize Firebase connection check and Auth listener + redirect result (mobile)
   useEffect(() => {
     testFirestoreConnection().then(connected => {
       setIsFirebaseConnected(connected);
     });
+
+    // Mobile: Google sign-in via redirect returns to this page with a result.
+    getRedirectResult(auth)
+      .then(async (result) => {
+        if (result && result.user) {
+          try {
+            const { authUser: u, member: m } = await buildAuthUserFromFirebase(result.user, 'google');
+            setAuthUser(u);
+            setActiveUser(m);
+            setAuthOAuthProvider(null);
+            setShowGatewayScreen(false);
+            const log: AuditLog = {
+              id: `log_${Date.now()}`,
+              timestamp: new Date().toISOString(),
+              userId: m.id,
+              userName: m.name,
+              action: 'LOGIN_GOOGLE',
+              entityType: 'settings',
+              entityId: u.email,
+              oldValue: 'Logged Out',
+              newValue: 'Logged In via Google',
+              reason: 'เข้าสู่ระบบผ่าน Google OAuth สำเร็จ (redirect)',
+            };
+            setAuditLogs(prev => [log, ...prev]);
+            setDoc(doc(db, 'auditLogs', log.id), log).catch(err => {
+              handleFirestoreError(err, OperationType.CREATE, `auditLogs/${log.id}`);
+            });
+            setAuthNotification({ type: 'success', message: `เข้าสู่ระบบสำเร็จผ่าน Google (${u.name})` });
+          } catch (e) {
+            console.warn('redirect login processing error:', e);
+          }
+        }
+      })
+      .catch((e) => console.warn('getRedirectResult:', e?.message || e));
 
     const unsubAuth = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -469,6 +505,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
 
     try {
+      // Mobile: popup sign-in is unreliable (blank/slow screen after auth) → use redirect flow.
+      const isMobile = typeof window !== 'undefined' && /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || '');
+      if (isMobile) {
+        await signInWithRedirect(auth, googleAuthProvider);
+        // Page will navigate to Google and come back — result handled in getRedirectResult.
+        return { success: true, message: 'กำลังเชื่อมต่อ Google...' };
+      }
+
       const result = await signInWithPopup(auth, googleAuthProvider);
       if (!result || !result.user) {
         const message = 'ไม่ได้รับข้อมูลผู้ใช้จาก Google กรุณาลองใหม่';
