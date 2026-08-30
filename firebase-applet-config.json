@@ -1,12 +1,11 @@
 {
-  "projectId": "corded-totem-7wgw1",
-  "appId": "1:787966502822:web:48d51b1e73c80c6a2c5167",
-  "apiKey": "AIzaSyBmnIz9Ontb6q0zkkBTWi6e2FkEW_kqxlU",
-  "authDomain": "corded-totem-7wgw1.firebaseapp.com",
-  "firestoreDatabaseId": "ai-studio-aiinsurancenetwo-5de21c17-340c-4f71-a6a6-2ad34c2e0843",
-  "storageBucket": "corded-totem-7wgw1.firebasestorage.app",
-  "messagingSenderId": "787966502822",
+  "projectId": "akarapol798",
+  "appId": "1:99602641954:web:e1a0af358471c434ed867b",
+  "apiKey": "AIzaSyDTWpcAjBGSD5tC_3Mz1ogwmJHtztaAZ0k",
+  "authDomain": "akarapol798.firebaseapp.com",
+  "firestoreDatabaseId": "(default)",
+  "storageBucket": "akarapol798.firebasestorage.app",
+  "messagingSenderId": "99602641954",
   "measurementId": "",
-  "oAuthClientId": "787966502822-ur13ibpu4dn2m36mla9qald1dsblk84m.apps.googleusercontent.com",
   "recaptchaSiteKey": ""
 }

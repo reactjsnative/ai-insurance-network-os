@@ -8,10 +8,9 @@ import { getFirestore } from 'firebase-admin/firestore';
 export const OTP_TTL_SECONDS = 600; // 10 minutes
 export const MAX_ATTEMPTS = 5;
 
-// Firestore database id (matches firebase-applet-config.json). Override via env if needed.
-const FIREBASE_DB_ID =
-  process.env.FIREBASE_DATABASE_ID ||
-  'ai-studio-aiinsurancenetwo-5de21c17-340c-4f71-a6a6-2ad34c2e0843';
+// Firestore database id. Defaults to the project's "(default)" database.
+// Override via env if the project uses a named database.
+const FIREBASE_DB_ID = process.env.FIREBASE_DATABASE_ID || '(default)';
 
 let _admin = null;
 
@@ -23,9 +22,9 @@ export function getAdmin() {
   if (!process.env.FIREBASE_SERVICE_ACCOUNT_JSON) return null;
   if (_admin) return _admin;
   const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON);
-  const app = getApps().length
-    ? getApps()[0]
-    : initializeApp({ credential: cert(serviceAccount), databaseId: FIREBASE_DB_ID });
+  const opts = { credential: cert(serviceAccount) };
+  if (process.env.FIREBASE_DATABASE_ID) opts.databaseId = process.env.FIREBASE_DATABASE_ID;
+  const app = getApps().length ? getApps()[0] : initializeApp(opts);
   _admin = { auth: getAuth(app), db: getFirestore(app) };
   return _admin;
 }
