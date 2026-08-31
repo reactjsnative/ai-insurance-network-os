@@ -52,6 +52,7 @@ import {
 
 export type ActiveTab = 
   | 'dashboard'
+  | 'ai_studio'
   | 'income_calculator'
   | 'organization'
   | 'network_visual'

@@ -31,6 +31,7 @@ export const translations = {
     // Sidebar
     menu_core: 'เมนูหลัก (Core Modules)',
     nav_dashboard: 'แดชบอร์ดผู้บริหาร (Dashboard)',
+    nav_ai_studio: 'AI Studio (ผู้ช่วยอัจฉริยะ)',
     nav_income_calculator: 'เครื่องคำนวณรายได้ (Income)',
     nav_organization: 'โครงสร้างองค์กร (Organization)',
     nav_network_visual: 'ผังองค์กร (Network)',
@@ -52,6 +53,15 @@ export const translations = {
     nav_tiktok_links: 'ลิงก์ TikTok (Social)',
     ai_network_engine: 'AI Network Engine',
     ai_network_engine_desc: 'รองรับโครงสร้างแบบไม่จำกัดชั้น (Infinite Generations) อิง Rule Engine 28 ส.ค. 69',
+
+    // AI Studio launcher
+    ai_studio_title: 'Google AI Studio',
+    ai_studio_subtitle: 'ผู้ช่วย AI อัจฉริยะสำหรับองค์กร',
+    ai_studio_desc: 'แอป AI จาก Google AI Studio — พร้อมคำตอบและการวิเคราะห์สำหรับทีมตัวแทนประกัน',
+    ai_studio_open: 'เปิด AI App (แท็บใหม่)',
+    ai_studio_copy: 'คัดลอกลิงก์',
+    ai_studio_copied: 'คัดลอกแล้ว ✓',
+    ai_studio_note: 'Google AI Studio ไม่อนุญาตให้ฝังในเว็บ (iframe) — จึงเปิดในแท็บใหม่แทน',
 
     // Dashboard
     hero_quote_1: '“สร้างคน สร้างผู้นำ',
@@ -375,6 +385,7 @@ export const translations = {
     // Sidebar
     menu_core: 'Core Modules',
     nav_dashboard: 'Executive Dashboard',
+    nav_ai_studio: 'AI Studio (Assistant)',
     nav_income_calculator: 'Income Calculator',
     nav_organization: 'Organization Structure',
     nav_network_visual: 'Organization Network',
@@ -396,6 +407,15 @@ export const translations = {
     nav_tiktok_links: 'TikTok Links',
     ai_network_engine: 'AI Network Engine',
     ai_network_engine_desc: 'Supports infinite generations based on verified Compensation Rule Engine (28 Aug 2026)',
+
+    // AI Studio launcher
+    ai_studio_title: 'Google AI Studio',
+    ai_studio_subtitle: 'Smart AI assistant for your organization',
+    ai_studio_desc: 'AI app from Google AI Studio — answers and analysis for your insurance agent team',
+    ai_studio_open: 'Open AI App (new tab)',
+    ai_studio_copy: 'Copy link',
+    ai_studio_copied: 'Copied ✓',
+    ai_studio_note: 'Google AI Studio blocks iframe embedding — it opens in a new tab instead',
 
     // Dashboard
     hero_quote_1: '“Develop People, Build Leaders,',
