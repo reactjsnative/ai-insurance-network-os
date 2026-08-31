@@ -30,7 +30,7 @@ export const Sidebar: React.FC = () => {
 
   const navItems: { id: ActiveTab; label: string; icon: any; badge?: string }[] = [
     { id: 'dashboard', label: t('nav_dashboard'), icon: LayoutDashboard },
-    { id: 'ai_studio', label: t('nav_ai_studio'), icon: Gem, badge: 'Gemini' },
+    { id: 'ai_studio', label: t('nav_ai_studio'), icon: Gem, badge: 'Simulator' },
     { id: 'income_calculator', label: t('nav_income_calculator'), icon: Calculator, badge: 'Real-Time' },
     { id: 'organization', label: t('nav_organization'), icon: Building2, badge: 'Hierarchy' },
     { id: 'network_visual', label: t('nav_network_visual'), icon: Network, badge: '4 Views' },

@@ -31,7 +31,7 @@ export const translations = {
     // Sidebar
     menu_core: 'เมนูหลัก (Core Modules)',
     nav_dashboard: 'แดชบอร์ดผู้บริหาร (Dashboard)',
-    nav_ai_studio: 'AI Studio (ผู้ช่วยอัจฉริยะ)',
+    nav_ai_studio: 'AI Income Simulator (จำลองรายได้)',
     nav_income_calculator: 'เครื่องคำนวณรายได้ (Income)',
     nav_organization: 'โครงสร้างองค์กร (Organization)',
     nav_network_visual: 'ผังองค์กร (Network)',
@@ -385,7 +385,7 @@ export const translations = {
     // Sidebar
     menu_core: 'Core Modules',
     nav_dashboard: 'Executive Dashboard',
-    nav_ai_studio: 'AI Studio (Assistant)',
+    nav_ai_studio: 'AI Income Simulator',
     nav_income_calculator: 'Income Calculator',
     nav_organization: 'Organization Structure',
     nav_network_visual: 'Organization Network',
