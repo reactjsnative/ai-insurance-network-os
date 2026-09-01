@@ -8,9 +8,7 @@
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ],
   "functions": {
-    "api/python/calculate.js": { "includeFiles": "thai_life_compensation.py" },
-    "api/python/code.js": { "includeFiles": "thai_life_compensation.py" },
-    "api/mobile/code.js": { "includeFiles": "mobile/ThaiLifeCompensationScreen.tsx" }
+    "api/python/calculate.js": { "includeFiles": "thai_life_compensation.py" }
   },
   "env": {
     "NODE_ENV": "production"

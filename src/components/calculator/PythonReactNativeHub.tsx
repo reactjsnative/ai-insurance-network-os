@@ -342,19 +342,19 @@ export const PythonReactNativeHub: React.FC = () => {
   const [pythonCode, setPythonCode] = useState<string>('');
   const [rnCode, setRnCode] = useState<string>('');
 
-  // Fetch source codes on load
+  // Fetch source codes on load (served as static files in production)
   useEffect(() => {
-    fetch('/api/python/code')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.code) setPythonCode(data.code);
+    fetch('/thai_life_compensation.py')
+      .then((res) => res.text())
+      .then((text) => {
+        if (text) setPythonCode(text);
       })
       .catch(() => {});
 
-    fetch('/api/mobile/code')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.code) setRnCode(data.code);
+    fetch('/mobile/ThaiLifeCompensationScreen.tsx')
+      .then((res) => res.text())
+      .then((text) => {
+        if (text) setRnCode(text);
       })
       .catch(() => {});
 
