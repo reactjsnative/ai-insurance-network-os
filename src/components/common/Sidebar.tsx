@@ -23,7 +23,9 @@ import {
   Wand2,
   Sheet,
   Gem,
-  Boxes
+  Boxes,
+  ChevronDown,
+  ChevronRight
 } from 'lucide-react';
 import { useApp, ActiveTab } from '../../context/AppContext';
 
