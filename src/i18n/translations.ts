@@ -31,6 +31,7 @@ export const translations = {
     // Sidebar
     menu_core: 'เมนูหลัก (Core Modules)',
     nav_dashboard: 'แดชบอร์ดผู้บริหาร (Dashboard)',
+    nav_network_success: 'Network Success (เครือข่ายความสำเร็จ)',
     nav_extracted_ai_network: 'ระบบบริหารทีมตัวแทนประกัน',
     nav_ai_studio: 'AI Income Simulator (จำลองรายได้)',
     nav_income_calculator: 'เครื่องคำนวณรายได้ (Income)',
@@ -386,6 +387,7 @@ export const translations = {
     // Sidebar
     menu_core: 'Core Modules',
     nav_dashboard: 'Executive Dashboard',
+    nav_network_success: 'Network Success',
     nav_extracted_ai_network: 'extracted-ai-network',
     nav_ai_studio: 'AI Income Simulator',
     nav_income_calculator: 'Income Calculator',

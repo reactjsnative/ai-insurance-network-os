@@ -17,6 +17,7 @@ import {
   ShieldAlert, 
   Sparkles,
   Layers,
+  Award,
   Video,
   Music2,
   Wand2,
@@ -31,6 +32,7 @@ export const Sidebar: React.FC = () => {
 
   const navItems: { id: ActiveTab; label: string; icon: any; badge?: string }[] = [
     { id: 'dashboard', label: t('nav_dashboard'), icon: LayoutDashboard },
+    { id: 'network_success', label: t('nav_network_success'), icon: Award, badge: 'Success' },
     { id: 'extracted_ai_network', label: t('nav_extracted_ai_network'), icon: Boxes, badge: 'Team Builder' },
     { id: 'ai_studio', label: t('nav_ai_studio'), icon: Gem, badge: 'Simulator' },
     { id: 'income_calculator', label: t('nav_income_calculator'), icon: Calculator, badge: 'Real-Time' },
