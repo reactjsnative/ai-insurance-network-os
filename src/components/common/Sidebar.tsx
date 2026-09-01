@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   LayoutDashboard, 
   Calculator, 
@@ -32,7 +32,6 @@ export const Sidebar: React.FC = () => {
 
   const navItems: { id: ActiveTab; label: string; icon: any; badge?: string }[] = [
     { id: 'dashboard', label: t('nav_dashboard'), icon: LayoutDashboard },
-    { id: 'network_success', label: t('nav_network_success'), icon: Award, badge: 'Success' },
     { id: 'extracted_ai_network', label: t('nav_extracted_ai_network'), icon: Boxes, badge: 'Team Builder' },
     { id: 'ai_studio', label: t('nav_ai_studio'), icon: Gem, badge: 'Simulator' },
     { id: 'income_calculator', label: t('nav_income_calculator'), icon: Calculator, badge: 'Real-Time' },
@@ -55,6 +54,14 @@ export const Sidebar: React.FC = () => {
     { id: 'tiktok_links', label: t('nav_tiktok_links'), icon: Music2, badge: 'Social' },
     { id: 'settings', label: t('nav_settings'), icon: SettingsIcon, badge: 'DB & API' },
   ];
+
+  // ซัพเมนูของ Network Success (เครือข่ายความสำเร็จ)
+  const [networkSuccessOpen, setNetworkSuccessOpen] = useState(true);
+  const networkSuccessItems: { id: ActiveTab; label: string; icon: any }[] = [
+    { id: 'network_success', label: t('nav_network_success'), icon: Award },
+    { id: 'network_success_team_goal', label: t('nav_network_success_team_goal'), icon: Target },
+  ];
+  const isNetworkSuccessActive = networkSuccessItems.some((item) => activeTab === item.id);
 
   return (
     <aside id="app_sidebar" className="w-64 border-r border-slate-800 bg-slate-950 flex flex-col justify-between shrink-0 hidden lg:flex">
@@ -93,6 +100,53 @@ export const Sidebar: React.FC = () => {
             </button>
           );
         })}
+
+        {/* ===== ซัพเมนู: Network Success (เครือข่ายความสำเร็จ) ===== */}
+        <div className="pt-1">
+          <button
+            id="nav_network_success_group"
+            onClick={() => setNetworkSuccessOpen((v) => !v)}
+            className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all group ${
+              isNetworkSuccessActive
+                ? 'bg-gradient-to-r from-amber-500/20 to-amber-500/5 text-amber-300 border border-amber-500/40 shadow-sm shadow-amber-500/10'
+                : 'text-slate-300 hover:text-white hover:bg-slate-900/80 border border-transparent'
+            }`}
+          >
+            <div className="flex items-center gap-2.5">
+              <Award className={`w-4 h-4 transition-colors ${isNetworkSuccessActive ? 'text-amber-400' : 'text-slate-400 group-hover:text-slate-200'}`} />
+              <span className="truncate">{t('nav_network_success')}</span>
+            </div>
+            {networkSuccessOpen ? (
+              <ChevronDown className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+            ) : (
+              <ChevronRight className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+            )}
+          </button>
+
+          {networkSuccessOpen && (
+            <div className="ml-2.5 pl-2.5 mt-0.5 space-y-0.5 border-l border-slate-800">
+              {networkSuccessItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = activeTab === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    id={`nav_${item.id}`}
+                    onClick={() => setActiveTab(item.id)}
+                    className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-[11px] font-medium transition-all group ${
+                      isActive
+                        ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30'
+                        : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/80 border border-transparent'
+                    }`}
+                  >
+                    <Icon className={`w-3.5 h-3.5 shrink-0 transition-colors ${isActive ? 'text-amber-400' : 'text-slate-500 group-hover:text-slate-300'}`} />
+                    <span className="truncate">{item.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Footer Info Box */}

@@ -59,13 +59,67 @@ function getAI(): GoogleGenAI | null {
 
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = Number(process.env.PORT || 3000);
 
   app.use(express.json({ limit: '10mb' }));
 
   // API Routes
   app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
+  });
+
+  // ---- Network Success: Thai Life Compensation Engine (Python) ----
+  const pythonCmd = process.platform === 'win32' ? 'python' : 'python3';
+  const PYTHON_ENV = { ...process.env, PYTHONIOENCODING: 'utf-8' };
+
+  // Live Python calculation (thai_life_compensation.py)
+  app.post('/api/python/calculate', (req, res) => {
+    try {
+      const pythonProcess = spawn(pythonCmd, ['thai_life_compensation.py', '--json'], { env: PYTHON_ENV });
+      let outputData = '';
+      let errorData = '';
+      pythonProcess.stdout.on('data', (data: any) => {
+        outputData += data.toString();
+      });
+      pythonProcess.stderr.on('data', (data: any) => {
+        errorData += data.toString();
+      });
+      pythonProcess.on('close', (code: number) => {
+        if (code !== 0) {
+          return res.status(500).json({ error: errorData || `Python process exited with code ${code}` });
+        }
+        try {
+          const parsed = JSON.parse(outputData);
+          res.json({ success: true, engine: 'Python 3.12', data: parsed });
+        } catch (parseErr: any) {
+          res.status(500).json({ error: 'Failed to parse Python JSON output', raw: outputData });
+        }
+      });
+      pythonProcess.stdin.write(JSON.stringify(req.body || {}));
+      pythonProcess.stdin.end();
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // Serve raw Python source code
+  app.get('/api/python/code', (_req, res) => {
+    try {
+      const code = fs.readFileSync(path.join(process.cwd(), 'thai_life_compensation.py'), 'utf8');
+      res.json({ filename: 'thai_life_compensation.py', language: 'python', code });
+    } catch (e: any) {
+      res.status(500).json({ error: e.message });
+    }
+  });
+
+  // Serve raw React Native source code
+  app.get('/api/mobile/code', (_req, res) => {
+    try {
+      const code = fs.readFileSync(path.join(process.cwd(), 'mobile/ThaiLifeCompensationScreen.tsx'), 'utf8');
+      res.json({ filename: 'ThaiLifeCompensationScreen.tsx', language: 'typescript', code });
+    } catch (e: any) {
+      res.status(500).json({ error: e.message });
+    }
   });
 
   // AI Chat & Organization Intelligence

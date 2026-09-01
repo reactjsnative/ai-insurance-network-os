@@ -53,6 +53,7 @@ import {
 export type ActiveTab = 
   | 'dashboard'
   | 'network_success'
+  | 'network_success_team_goal'
   | 'extracted_ai_network'
   | 'ai_studio'
   | 'income_calculator'

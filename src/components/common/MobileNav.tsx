@@ -25,6 +25,7 @@ export const MobileNav: React.FC = () => {
   const mobileItems: { id: ActiveTab; label: string; icon: any }[] = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'network_success', label: 'Success', icon: Award },
+    { id: 'network_success_team_goal', label: 'Team Goal', icon: Target },
     { id: 'extracted_ai_network', label: 'ทีมตัวแทน', icon: Boxes },
     { id: 'ai_studio', label: 'Simulator', icon: Gem },
     { id: 'income_calculator', label: t('direct_com').split(' ')[0] || 'Income', icon: Calculator },
