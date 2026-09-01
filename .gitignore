@@ -35,3 +35,8 @@ Thumbs.db
 oauth_enable.mjs
 .fb_tokens.json
 *.fb_tokens.json
+
+# test artifacts
+st.json
+prod_bundle.js
+*.probe.json
