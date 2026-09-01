@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { ExternalLink, RefreshCw, Network } from 'lucide-react';
 
-// Stable production deployment of the extracted "AI Insurance Network & Team Builder".
-// (Preview URL https://extracted-ai-network-4o3epgsa0-ak-e11e.vercel.app serves the same bundle.)
-const EXTRACTED_APP_URL = 'https://extracted-ai-network.vercel.app/';
+// Stable production deployment of the extracted "AI Insurance Network & Team Builder"
+// (same bundle as the preview URL https://extracted-ai-network-4o3epgsa0-ak-e11e.vercel.app).
+const EXTRACTED_APP_URL = 'https://extracted-ai-network-ak-e11e.vercel.app/';
 
 export const ExtractedAiNetwork: React.FC = () => {
   const [nonce, setNonce] = useState(0);
