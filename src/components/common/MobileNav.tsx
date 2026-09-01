@@ -13,7 +13,8 @@ import {
   Sliders,
   Video,
   Music2,
-  Gem
+  Gem,
+  Boxes
 } from 'lucide-react';
 import { useApp, ActiveTab } from '../../context/AppContext';
 
@@ -22,6 +23,7 @@ export const MobileNav: React.FC = () => {
 
   const mobileItems: { id: ActiveTab; label: string; icon: any }[] = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { id: 'extracted_ai_network', label: 'AI Network', icon: Boxes },
     { id: 'ai_studio', label: 'Simulator', icon: Gem },
     { id: 'income_calculator', label: t('direct_com').split(' ')[0] || 'Income', icon: Calculator },
     { id: 'network_visual', label: 'Network', icon: Network },

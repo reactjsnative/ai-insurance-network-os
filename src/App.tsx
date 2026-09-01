@@ -15,6 +15,7 @@ import { GoalPlanner } from './components/goals/GoalPlanner';
 import { GrowthSimulation } from './components/simulation/GrowthSimulation';
 import { AICoach } from './components/ai/AICoach';
 import { AiStudioApp } from './aiStudio/AiStudioApp';
+import { ExtractedAiNetwork } from './components/extracted/ExtractedAiNetwork';
 import { AgentRecruitmentPortal } from './components/recruitment/AgentRecruitmentPortal';
 import { MembersManagement } from './components/members/MembersManagement';
 import { CompensationAdmin } from './components/admin/CompensationAdmin';
@@ -65,6 +66,7 @@ const MainContent: React.FC = () => {
 
         <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-gradient-to-b from-slate-950 via-slate-900/30 to-slate-950">
           {activeTab === 'dashboard' && <Dashboard />}
+          {activeTab === 'extracted_ai_network' && <ExtractedAiNetwork />}
           {activeTab === 'ai_studio' && <AiStudioApp />}
           {activeTab === 'income_calculator' && <IncomeCalculator />}
           {activeTab === 'organization' && <OrganizationStructure />}
