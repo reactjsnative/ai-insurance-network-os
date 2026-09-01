@@ -16,7 +16,7 @@ import {
   KeyRound
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
-import { GoogleIcon, TikTokIcon, FacebookIcon } from './SocialOAuthPopup';
+import { GoogleIcon, TikTokIcon, FacebookIcon, GithubIcon } from './SocialOAuthPopup';
 import { PositionId } from '../../types';
 
 export const AuthModal: React.FC = () => {
@@ -363,42 +363,46 @@ export const AuthModal: React.FC = () => {
                   เลือกช่องทางเข้าสู่ระบบที่ต้องการ
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                  {/* Google */}
+                <div className="grid grid-cols-1 gap-2.5">
+                  {/* Google — ลำดับแรก */}
                   <button
                     id="btn-login-google"
                     type="button"
                     onClick={() => openOAuthPopup('google')}
-                    className="py-2.5 px-3.5 rounded-xl border border-slate-200 hover:border-indigo-300 bg-white hover:bg-slate-50/80 text-slate-700 font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-2.5 px-3.5 rounded-xl border border-slate-200 hover:border-indigo-300 bg-white hover:bg-slate-50/80 text-slate-700 font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <GoogleIcon className="w-4 h-4" />
                     <span>Google</span>
                   </button>
-
-                  {/* TikTok — coming soon */}
+                  {/* TikTok — ลำดับต่อจาก Google */}
                   <button
                     id="btn-login-tiktok"
                     type="button"
-                    disabled
-                    title="เร็วๆ นี้"
-                    className="py-2.5 px-3.5 rounded-xl border border-slate-200 bg-slate-100 text-slate-400 font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-not-allowed"
+                    onClick={() => openOAuthPopup('tiktok')}
+                    className="w-full py-2.5 px-3.5 rounded-xl border border-slate-200 bg-black hover:bg-zinc-900 text-white font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <TikTokIcon className="w-4 h-4" />
+                    <TikTokIcon className="w-4 h-4 text-white" />
                     <span>TikTok</span>
-                    <span className="text-[9px] font-bold uppercase">เร็วๆ นี้</span>
                   </button>
-
-                  {/* Facebook — coming soon */}
+                  {/* Facebook — ลำดับต่อจาก TikTok */}
                   <button
                     id="btn-login-facebook"
                     type="button"
-                    disabled
-                    title="เร็วๆ นี้"
-                    className="py-2.5 px-3.5 rounded-xl border border-slate-200 bg-slate-100 text-slate-400 font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-not-allowed"
+                    onClick={() => openOAuthPopup('facebook')}
+                    className="w-full py-2.5 px-3.5 rounded-xl border border-[#1877F2] bg-[#1877F2] hover:bg-[#166fe5] text-white font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <FacebookIcon className="w-4 h-4" />
                     <span>Facebook</span>
-                    <span className="text-[9px] font-bold uppercase">เร็วๆ นี้</span>
+                  </button>
+                  {/* GitHub — ลำดับต่อจาก Facebook */}
+                  <button
+                    id="btn-login-github"
+                    type="button"
+                    onClick={() => openOAuthPopup('github')}
+                    className="w-full py-2.5 px-3.5 rounded-xl border border-slate-800 bg-slate-900 hover:bg-black text-white font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <GithubIcon className="w-4 h-4 text-white" />
+                    <span>GitHub</span>
                   </button>
                 </div>
               </div>

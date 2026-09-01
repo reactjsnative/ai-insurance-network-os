@@ -10,7 +10,7 @@ import {
   UserPlus
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
-import { GoogleIcon } from './SocialOAuthPopup';
+import { GoogleIcon, TikTokIcon, FacebookIcon, GithubIcon } from './SocialOAuthPopup';
 
 interface WelcomeLoginGatewayProps {
   onEnterSystem?: () => void;
@@ -64,7 +64,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
     }
   };
 
-  const handleSocialLogin = (provider: 'google') => {
+  const handleSocialLogin = (provider: 'google' | 'tiktok' | 'facebook') => {
     openOAuthPopup(provider);
   };
 
@@ -108,6 +108,15 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
           </button>
 
           {/* Quick Direct Enter Button — removed per request */}
+          <button
+            id="btn-gateway-demo-enter"
+            onClick={() => onEnterSystem?.()}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/90 hover:bg-amber-400 text-slate-950 text-xs font-bold transition-all shadow-sm cursor-pointer"
+            title="เข้าชมระบบโดยไม่ต้องล็อกอิน (สำหรับดูตัวอย่าง)"
+          >
+            <ArrowRight className="w-3.5 h-3.5" />
+            <span>ดูระบบ (Demo)</span>
+          </button>
 
         </div>
       </header>
@@ -170,6 +179,39 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
               >
                 <GoogleIcon className="w-4 h-4" />
                 <span>{t('login_with_google')}</span>
+              </button>
+
+              {/* TikTok Button — ลำดับต่อจาก Google */}
+              <button
+                id="btn-gateway-login-tiktok"
+                onClick={() => handleSocialLogin('tiktok')}
+                type="button"
+                className="w-full py-2.5 px-4 rounded-xl bg-black hover:bg-zinc-900 text-white font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-3 border border-zinc-800 cursor-pointer active:scale-[0.99]"
+              >
+                <TikTokIcon className="w-4 h-4 text-white" />
+                <span>{t('login_with_tiktok') || 'ดำเนินการต่อด้วย TikTok'}</span>
+              </button>
+
+              {/* Facebook Button — ลำดับต่อจาก TikTok */}
+              <button
+                id="btn-gateway-login-facebook"
+                onClick={() => handleSocialLogin('facebook')}
+                type="button"
+                className="w-full py-2.5 px-4 rounded-xl bg-[#1877F2] hover:bg-[#166fe5] text-white font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-3 border border-[#1877F2] cursor-pointer active:scale-[0.99]"
+              >
+                <FacebookIcon className="w-4 h-4" />
+                <span>{t('login_with_facebook') || 'ดำเนินการต่อด้วย Facebook'}</span>
+              </button>
+
+              {/* GitHub Button — ลำดับต่อจาก Facebook */}
+              <button
+                id="btn-gateway-login-github"
+                onClick={() => handleSocialLogin('github')}
+                type="button"
+                className="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-black text-white font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-3 border border-slate-800 cursor-pointer active:scale-[0.99]"
+              >
+                <GithubIcon className="w-4 h-4 text-white" />
+                <span>{t('login_with_github') || 'ดำเนินการต่อด้วย GitHub'}</span>
               </button>
 
             </div>

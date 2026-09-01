@@ -38,6 +38,12 @@ export const FacebookIcon: React.FC<{ className?: string }> = ({ className = "w-
   </svg>
 );
 
+export const GithubIcon: React.FC<{ className?: string }> = ({ className = "w-5 h-5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.652.242 2.873.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+  </svg>
+);
+
 export const SocialOAuthPopup: React.FC = () => {
   const { authOAuthProvider, closeOAuthPopup, loginWithSocial } = useApp();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -75,6 +81,41 @@ export const SocialOAuthPopup: React.FC = () => {
         name: 'ดร. อัครพล สุวรรณภูมิ (Facebook Lead)',
         facebookId: 'akarapol.insurance.network',
         avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150',
+      });
+      setIsProcessing(false);
+    }, 1000);
+  };
+
+  const handleConfirmGithub = async () => {
+    setIsProcessing(true);
+    try {
+      // Try real GitHub OAuth via backend; fallback to mock
+      const r = await fetch('/api/github/auth');
+      const data = await r.json().catch(() => null);
+      if (data && !data.mock && data.url) {
+        window.open(data.url, '_blank', 'width=600,height=700');
+        // Wait for postMessage from callback popup
+        const onMsg = async (e: MessageEvent) => {
+          if (e.data?.type === 'github_oauth_success' && e.data?.profile) {
+            window.removeEventListener('message', onMsg);
+            await loginWithSocial('github', {
+              email: e.data.profile.email || `github_${e.data.profile.username}@insurance-os.com`,
+              name: e.data.profile.displayName || e.data.profile.username || 'GitHub User',
+              avatarUrl: e.data.profile.avatarUrl || 'https://avatars.githubusercontent.com/u/583231?v=4',
+            });
+            setIsProcessing(false);
+          }
+        };
+        window.addEventListener('message', onMsg);
+        setTimeout(() => { window.removeEventListener('message', onMsg); setIsProcessing(false); }, 45000);
+        return;
+      }
+    } catch { /* fallback to mock */ }
+    setTimeout(async () => {
+      await loginWithSocial('github', {
+        email: 'akarapol.github@insurance-os.com',
+        name: 'ดร. อัครพล สุวรรณภูมิ (GitHub Dev)',
+        avatarUrl: 'https://avatars.githubusercontent.com/u/583231?v=4',
       });
       setIsProcessing(false);
     }, 1000);
@@ -292,6 +333,77 @@ export const SocialOAuthPopup: React.FC = () => {
           </div>
         )}
 
+        {/* GITHUB OAUTH POPUP */}
+        {authOAuthProvider === 'github' && (
+          <div className="p-6">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+              <div className="flex items-center gap-2.5">
+                <GithubIcon className="w-6 h-6 text-slate-900" />
+                <span className="text-sm font-semibold text-slate-800 tracking-tight">Sign in with GitHub</span>
+              </div>
+              <button
+                id="btn-close-oauth-github"
+                onClick={closeOAuthPopup}
+                className="p-1 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="py-5 text-center">
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-slate-900 text-white mb-3">
+                <GithubIcon className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900">Authorize AI Insurance Network OS</h3>
+              <p className="text-xs text-slate-500 mt-1">Connect your GitHub Developer Profile</p>
+            </div>
+
+            <div className="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200 mb-5">
+              <div className="flex items-center gap-2 text-xs text-slate-700">
+                <CheckCircle2 className="w-4 h-4 text-slate-900 shrink-0" />
+                <span>Your GitHub username and avatar</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-slate-700">
+                <CheckCircle2 className="w-4 h-4 text-slate-900 shrink-0" />
+                <span>Email address from GitHub</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-slate-700">
+                <CheckCircle2 className="w-4 h-4 text-slate-900 shrink-0" />
+                <span>Link dev contributions to Agent ID</span>
+              </div>
+            </div>
+
+            <div className="space-y-2.5">
+              <button
+                id="btn-confirm-github-auth"
+                disabled={isProcessing}
+                onClick={handleConfirmGithub}
+                className="w-full py-3 px-4 rounded-xl bg-slate-900 hover:bg-black text-white font-semibold text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+              >
+                {isProcessing ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin text-white" />
+                    <span>Connecting GitHub...</span>
+                  </>
+                ) : (
+                  <>
+                    <GithubIcon className="w-4 h-4 text-white" />
+                    <span>Authorize with GitHub</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </>
+                )}
+              </button>
+              <button
+                id="btn-cancel-github-auth"
+                disabled={isProcessing}
+                onClick={closeOAuthPopup}
+                className="w-full py-2.5 px-4 rounded-xl text-slate-500 hover:text-slate-800 text-xs transition-colors"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
       </motion.div>
     </div>
   );

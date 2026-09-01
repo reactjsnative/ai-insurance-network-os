@@ -445,6 +445,126 @@ ${JSON.stringify(organizationSummary, null, 2)}
     try { notifyNewMember(req.body || {}); res.json({ ok: true }); }
     catch (e: any) { res.status(500).json({ ok: false, error: e?.message || 'notify failed' }); }
   });
+
+  // ============================================================
+  // TikTok Login — OAuth 2.0 (Login Kit)
+  // Docs: https://developers.tiktok.com/doc/login-kit-web
+  // Env: TIKTOK_CLIENT_KEY, TIKTOK_CLIENT_SECRET, TIKTOK_REDIRECT_URI
+  // When env is NOT set, endpoints run in MOCK mode so the UI still works on localhost.
+  // ============================================================
+  app.get('/api/tiktok/auth', (req, res) => {
+    const clientKey = process.env.TIKTOK_CLIENT_KEY;
+    const redirectUri = process.env.TIKTOK_REDIRECT_URI || `${req.protocol}://${req.get('host')}/api/tiktok/callback`;
+    if (!clientKey) {
+      // Mock mode — frontend will use SocialOAuthPopup mock flow instead.
+      return res.json({ mock: true, message: 'TIKTOK_CLIENT_KEY not set — using mock TikTok login. Set env to enable real OAuth.', redirectUri });
+    }
+    const state = Buffer.from(JSON.stringify({ ts: Date.now(), r: Math.random().toString(36).slice(2) })).toString('base64url');
+    const scope = 'user.info.basic';
+    const url = `https://www.tiktok.com/v2/auth/authorize?client_key=${encodeURIComponent(clientKey)}&scope=${encodeURIComponent(scope)}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&state=${encodeURIComponent(state)}`;
+    res.json({ mock: false, url, state, redirectUri });
+  });
+
+  app.get('/api/tiktok/callback', async (req, res) => {
+    const { code, state } = req.query as Record<string, string>;
+    const clientKey = process.env.TIKTOK_CLIENT_KEY;
+    const clientSecret = process.env.TIKTOK_CLIENT_SECRET;
+    const redirectUri = process.env.TIKTOK_REDIRECT_URI || `${req.protocol}://${req.get('host')}/api/tiktok/callback`;
+    if (!clientKey || !clientSecret) {
+      return res.status(503).send(`<html><body style="font-family:sans-serif;padding:24px"><h3>TikTok Login ยังไม่ได้ตั้งค่า</h3><p>ตั้งค่า <code>TIKTOK_CLIENT_KEY</code> และ <code>TIKTOK_CLIENT_SECRET</code> ใน .env แล้ว restart server</p><p><a href="/">กลับหน้าหลัก</a></p></body></html>`);
+    }
+    if (!code) return res.status(400).send('Missing code');
+    try {
+      const tokenRes = await fetch('https://open.tiktokapis.com/v2/oauth/token/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          client_key: clientKey,
+          client_secret: clientSecret,
+          code,
+          grant_type: 'authorization_code',
+          redirect_uri: redirectUri,
+        }).toString(),
+      });
+      const tokenData: any = await tokenRes.json();
+      if (!tokenRes.ok || tokenData.error) {
+        console.error('TikTok token error:', tokenData);
+        return res.status(502).send(`TikTok token exchange failed: ${JSON.stringify(tokenData)}`);
+      }
+      const accessToken = tokenData.access_token;
+      const openId = tokenData.open_id || tokenData.openId || '';
+      // Fetch user info
+      const userRes = await fetch('https://open.tiktokapis.com/v2/user/info/?fields=open_id,union_id,avatar_url,display_name,username', {
+        headers: { 'Authorization': `Bearer ${accessToken}` },
+      });
+      const userData: any = await userRes.json();
+      const user = userData?.data?.user || {};
+      const displayName = user.display_name || user.username || 'TikTok User';
+      const avatarUrl = user.avatar_url || '';
+      const username = user.username ? `@${user.username}` : '@tiktok_user';
+      // Return HTML that posts profile back to opener window and closes popup
+      const profile = { openId, displayName, avatarUrl, username, accessToken: accessToken.slice(0, 8) + '...' };
+      const html = `<!doctype html><html><head><meta charset="utf-8"><title>TikTok Login</title></head><body style="font-family:sans-serif;padding:24px;text-align:center">
+        <p>เข้าสู่ระบบด้วย TikTok สำเร็จ — กำลังกลับสู่ระบบ...</p>
+        <script>
+          try {
+            const profile = ${JSON.stringify(profile)};
+            if (window.opener) {
+              window.opener.postMessage({ type: 'tiktok_oauth_success', profile }, '*');
+            }
+            localStorage.setItem('tiktok_oauth_profile', JSON.stringify(profile));
+          } catch(e) {}
+          setTimeout(() => { window.close(); if (window.opener) window.location.href='/'; }, 800);
+        </script>
+        </body></html>`;
+      res.send(html);
+    } catch (e: any) {
+      console.error('TikTok callback error:', e);
+      res.status(500).send(`TikTok callback error: ${e.message}`);
+    }
+  });
+
+  // Mock exchange endpoint for frontend fallback (no redirect needed)
+  app.post('/api/tiktok/mock-login', (req, res) => {
+    const { email, name, avatarUrl, tiktokHandle } = req.body || {};
+    res.json({ ok: true, profile: { email: email || 'tiktok.user@insurance-os.com', name: name || 'TikTok User', avatarUrl: avatarUrl || 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150', tiktokHandle: tiktokHandle || '@tiktok_user' } });
+  });
+  // ============================================================
+  // GitHub OAuth
+  // Env: GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, GITHUB_REDIRECT_URI
+  // ============================================================
+  app.get('/api/github/auth', (req, res) => {
+    const clientId = process.env.GITHUB_CLIENT_ID;
+    const redirectUri = process.env.GITHUB_REDIRECT_URI || req.protocol + '://' + req.get('host') + '/api/github/callback';
+    if (!clientId) return res.json({ mock: true, message: 'GITHUB_CLIENT_ID not set — using mock GitHub login', redirectUri });
+    const state = Buffer.from(JSON.stringify({ ts: Date.now() })).toString('base64url');
+    const url = 'https://github.com/login/oauth/authorize?client_id=' + encodeURIComponent(clientId) + '&redirect_uri=' + encodeURIComponent(redirectUri) + '&scope=user:email&state=' + encodeURIComponent(state);
+    res.json({ mock: false, url, state, redirectUri });
+  });
+  app.get('/api/github/callback', async (req, res) => {
+    const code = req.query.code as string;
+    const clientId = process.env.GITHUB_CLIENT_ID;
+    const clientSecret = process.env.GITHUB_CLIENT_SECRET;
+    const redirectUri = process.env.GITHUB_REDIRECT_URI || req.protocol + '://' + req.get('host') + '/api/github/callback';
+    if (!clientId || !clientSecret) return res.status(503).send('<html><body style="font-family:sans-serif;padding:24px"><h3>GitHub Login not configured</h3><p>Set GITHUB_CLIENT_ID / GITHUB_CLIENT_SECRET in .env</p><p><a href="/">Back</a></p></body></html>');
+    if (!code) return res.status(400).send('Missing code');
+    try {
+      const tokenRes = await fetch('https://github.com/login/oauth/access_token', { method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: clientId, client_secret: clientSecret, code, redirect_uri: redirectUri }) });
+      const tokenData: any = await tokenRes.json();
+      if (tokenData.error || !tokenData.access_token) return res.status(502).send('GitHub token failed: '+JSON.stringify(tokenData));
+      const accessToken = tokenData.access_token;
+      const userRes = await fetch('https://api.github.com/user', { headers: { 'Authorization': 'Bearer ' + accessToken, 'Accept': 'application/vnd.github+json' } });
+      const user: any = await userRes.json();
+      let email = user.email || '';
+      if (!email) { const er = await fetch('https://api.github.com/user/emails', { headers: { 'Authorization': 'Bearer ' + accessToken, 'Accept': 'application/vnd.github+json' } }); const em: any = await er.json(); const pri = Array.isArray(em) ? (em.find((e:any)=>e.primary)||em[0]) : null; email = pri?.email || user.login+'@users.noreply.github.com'; }
+      const profile = { username: user.login, displayName: user.name || user.login, avatarUrl: user.avatar_url || '', email };
+      const html = '<!doctype html><html><head><meta charset="utf-8"><title>GitHub Login</title></head><body style="font-family:sans-serif;padding:24px;text-align:center"><p>GitHub login success — returning...</p><script>try{const p=' + JSON.stringify(profile) + '; if(window.opener) window.opener.postMessage({type:"github_oauth_success", profile:p},"*"); localStorage.setItem("github_oauth_profile", JSON.stringify(p));}catch(e){} setTimeout(()=>{window.close(); if(window.opener) window.location.href="/";},800);</scr' + 'ipt></body></html>';
+      // Build correctly
+      const finalHtml = '<!doctype html><html><head><meta charset="utf-8"><title>GitHub Login</title></head><body style="font-family:sans-serif;padding:24px;text-align:center"><p>เข้าสู่ระบบด้วย GitHub สำเร็จ — กำลังกลับสู่ระบบ...</p><script>try{const p=' + JSON.stringify({username: user.login, displayName: user.name || user.login, avatarUrl: user.avatar_url, email}) + '; if(window.opener) window.opener.postMessage({type:"github_oauth_success", profile:p},"*"); localStorage.setItem("github_oauth_profile", JSON.stringify(p));}catch(e){} setTimeout(()=>{window.close(); if(window.opener) window.location.href="/";},800);</scr' + 'ipt></body></html>';
+      res.send(finalHtml);
+    } catch(e:any){ res.status(500).send('GitHub callback error: '+e.message); }
+  });
+
   (globalThis as any).__notifyDeploy = notifyDeploy;
   (globalThis as any).__notifyStats = notifyStats;
 

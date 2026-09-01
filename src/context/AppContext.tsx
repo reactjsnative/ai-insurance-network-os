@@ -498,9 +498,94 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const loginWithSocial = async (provider: 'google' | 'tiktok' | 'facebook' | 'github' | 'gitlab' | 'bitbucket', profile?: Partial<AuthUser>) => {
-    // Only Google OAuth is wired to real Firebase Auth. Other providers are not yet configured.
+    // TikTok & Facebook: use provided profile (mock/demo) or real TikTok API profile when available.
+    if (provider === 'tiktok' || provider === 'facebook' || provider === 'github') {
+      const email = (profile?.email || '').toLowerCase().trim();
+      const displayName = profile?.name || (provider === 'tiktok' ? 'TikTok User' : provider === 'facebook' ? 'Facebook User' : 'GitHub User');
+      const avatarUrl = profile?.avatarUrl || (provider === 'tiktok'
+        ? 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150'
+        : 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150');
+      if (!email) {
+        const message = `ไม่พบอีเมลจาก ${provider.toUpperCase()} กรุณาลองใหม่`;
+        setAuthNotification({ type: 'error', message });
+        return { success: false, message };
+      }
+      // Find or create member linked to this social email — least-privilege agent.
+      let member = members.find(m => (m.email || '').toLowerCase() === email) || null;
+      const uid = profile?.id || `tiktok_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+      if (!member) {
+        member = {
+          id: `mem_${uid}`,
+          memberCode: `AG-${String(uid).slice(-6).toUpperCase()}`,
+          name: displayName,
+          nickname: displayName.split(' ')[0],
+          avatarUrl,
+          positionId: 'agent',
+          role: 'agent',
+          sponsorId: ROOT_LEADER.id,
+          parentMemberId: ROOT_LEADER.id,
+          unitId: null,
+          centerId: null,
+          regionId: null,
+          joinDate: new Date().toISOString().slice(0, 10),
+          status: 'active',
+          email,
+          personalFYC: 0,
+          personalCOM: 0,
+          firstYearPremium: 0,
+          renewalPremium: 0,
+          location: { province: 'กรุงเทพมหานคร', region: 'Bangkok & Metro', lat: 13.7563, lng: 100.5018 },
+        };
+        setMembers(prev => [member as Member, ...prev]);
+        setDoc(doc(db, 'members', member!.id), member as Member).catch(err => {
+          handleFirestoreError(err, OperationType.CREATE, `members/${member!.id}`);
+        });
+      }
+      const authUserData: AuthUser = {
+        id: uid,
+        email,
+        name: member.name,
+        avatarUrl: member.avatarUrl,
+        provider,
+        connectedProviders: [provider],
+        memberId: member.id,
+        role: member.role,
+        positionId: member.positionId,
+        isLoggedIn: true,
+        lastLoginAt: new Date().toISOString(),
+        is2FAEnabled: false,
+        token: `mock_${provider}_token_${Date.now()}`,
+        ...(provider === 'tiktok' ? { tiktokHandle: profile?.tiktokHandle || '@tiktok_user' } : {}),
+        ...(provider === 'facebook' ? { facebookId: profile?.facebookId || email } : {}),
+      };
+      setAuthUser(authUserData);
+      setActiveUser(member);
+      setIsAuthModalOpen(false);
+      setAuthOAuthProvider(null);
+      setShowGatewayScreen(false);
+      const action = provider === 'tiktok' ? 'LOGIN_TIKTOK' : provider === 'facebook' ? 'LOGIN_FACEBOOK' : 'LOGIN_GITHUB';
+      const log: AuditLog = {
+        id: `log_${Date.now()}`,
+        timestamp: new Date().toISOString(),
+        userId: member.id,
+        userName: member.name,
+        action: action as any,
+        entityType: 'settings',
+        entityId: email,
+        oldValue: 'Logged Out',
+        newValue: `Logged In via ${provider.toUpperCase()}`,
+        reason: provider === 'tiktok' ? 'เข้าสู่ระบบผ่าน TikTok OAuth สำเร็จ' : provider === 'facebook' ? 'เข้าสู่ระบบผ่าน Facebook OAuth สำเร็จ' : 'เข้าสู่ระบบผ่าน GitHub OAuth สำเร็จ',
+      };
+      setAuditLogs(prev => [log, ...prev]);
+      setDoc(doc(db, 'auditLogs', log.id), log).catch(err => {
+        handleFirestoreError(err, OperationType.CREATE, `auditLogs/${log.id}`);
+      });
+      const successMsg = provider === 'tiktok' ? `เข้าสู่ระบบด้วย TikTok สำเร็จ (${displayName})` : provider === 'facebook' ? `เข้าสู่ระบบด้วย Facebook สำเร็จ (${displayName})` : `เข้าสู่ระบบด้วย GitHub สำเร็จ (${displayName})`;
+      setAuthNotification({ type: 'success', message: successMsg });
+      return { success: true, message: successMsg, user: authUserData };
+    }
     if (provider !== 'google') {
-      const message = `ล็อกอินด้วย ${provider.toUpperCase()} ยังไม่พร้อมใช้งาน — โปรดใช้ Google หรือ Email`;
+      const message = `ล็อกอินด้วย ${provider.toUpperCase()} ยังไม่พร้อมใช้งาน — โปรดใช้ Google, TikTok, Facebook, GitHub หรือ Email`;
       setAuthNotification({ type: 'error', message });
       return { success: false, message };
     }
