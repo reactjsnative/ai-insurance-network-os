@@ -50,6 +50,35 @@ const LOCAL_STORAGE_RULES_KEY = 'ai_ins_sim_rules_v1';
 const LOCAL_STORAGE_LOGS_KEY = 'ai_ins_sim_logs_v1';
 const LOCAL_STORAGE_THEME_KEY = 'ai_ins_sim_theme_v1';
 
+/**
+ * Deep-merge a saved CompensationRuleSet onto the current defaults.
+ * Ensures every nested tier array / field exists, so a stale or partial
+ * localStorage payload can never crash a `.map()` in the UI (previously
+ * caused a full-screen black render on the Admin Settings view).
+ */
+function mergeRules<T>(base: T, saved: unknown): T {
+  if (Array.isArray(base)) {
+    const src = Array.isArray(saved) ? saved : [];
+    return (src.length ? src : base) as unknown as T;
+  }
+  if (base && typeof base === 'object') {
+    const out: Record<string, unknown> = { ...(base as Record<string, unknown>) };
+    if (saved && typeof saved === 'object') {
+      for (const key of Object.keys(saved as Record<string, unknown>)) {
+        const baseVal = (base as Record<string, unknown>)[key];
+        const savedVal = (saved as Record<string, unknown>)[key];
+        if (baseVal !== undefined && typeof baseVal === 'object') {
+          out[key] = mergeRules(baseVal, savedVal);
+        } else if (savedVal !== undefined && savedVal !== null) {
+          out[key] = savedVal;
+        }
+      }
+    }
+    return out as unknown as T;
+  }
+  return (saved === undefined || saved === null ? base : saved) as unknown as T;
+}
+
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Members State
   const [members, setMembers] = useState<Member[]>(() => {
@@ -64,12 +93,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return INITIAL_MEMBERS;
   });
 
-  // Rules State
+  // Rules State (merge with default to survive stale/partial localStorage data)
   const [rules, setRules] = useState<CompensationRuleSet>(() => {
     const saved = localStorage.getItem(LOCAL_STORAGE_RULES_KEY);
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        if (parsed && parsed.unitManager && parsed.centerManager && parsed.groupManager) {
+          // Deep-merge saved onto defaults so missing fields never crash the Admin editor.
+          return mergeRules(DEFAULT_COMPENSATION_RULES, parsed);
+        }
       } catch (e) {
         console.error('Failed to parse saved rules', e);
       }
