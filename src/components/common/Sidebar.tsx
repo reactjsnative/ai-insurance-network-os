@@ -46,7 +46,6 @@ export const Sidebar: React.FC = () => {
     { id: 'career_path', label: t('nav_career_path'), icon: TrendingUp },
     { id: 'career_plan', label: t('nav_career_plan'), icon: Rocket, badge: 'แผน' },
     { id: 'my_plan', label: t('nav_my_plan'), icon: UserPlus, badge: 'สมาชิก' },
-    { id: 'tiktok_ads', label: t('nav_tiktok_ads'), icon: Music2, badge: 'สอน' },
     { id: 'member_sheet', label: t('nav_member_sheet'), icon: Sheet, badge: 'ชีต' },
     { id: 'goals', label: t('nav_goals'), icon: Compass, badge: 'กลยุทธ์' },
     { id: 'simulation_goals', label: t('nav_simulation_goals'), icon: Target, badge: 'สถานการณ์' },

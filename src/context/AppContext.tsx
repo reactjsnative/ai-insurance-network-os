@@ -78,7 +78,6 @@ export type ActiveTab =
   | 'career_path'
   | 'career_plan'
   | 'my_plan'
-  | 'tiktok_ads'
   | 'member_sheet'
   | 'goals'
   | 'simulation_goals'

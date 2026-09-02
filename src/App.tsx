@@ -10,7 +10,6 @@ import { OrganizationStructure } from './components/organization/OrganizationStr
 import { OrganizationNetwork } from './components/network/OrganizationNetwork';
 import { CareerPath } from './components/career/CareerPath';
 import { CareerPlan } from './components/career/CareerPlan';
-import { TikTokAdsTutorial } from './components/career/TikTokAdsTutorial';
 import { GoalPlanner } from './components/goals/GoalPlanner';
 import { GrowthSimulation } from './components/simulation/GrowthSimulation';
 import { AICoach } from './components/ai/AICoach';
@@ -89,7 +88,6 @@ const MainContent: React.FC = () => {
           {activeTab === 'career_path' && <CareerPath />}
           {activeTab === 'career_plan' && <CareerPlan />}
           {activeTab === 'my_plan' && <CareerPlan memberMode />}
-          {activeTab === 'tiktok_ads' && <TikTokAdsTutorial />}
           {activeTab === 'member_sheet' && <MemberSheetView />}
           {activeTab === 'goals' && <GoalPlanner />}
           {activeTab === 'simulation_goals' && <GrowthSimulation />}
