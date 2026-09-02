@@ -49,7 +49,6 @@ export const Sidebar: React.FC = () => {
     { id: 'goals', label: t('nav_goals'), icon: Compass, badge: 'กลยุทธ์' },
     { id: 'simulation_goals', label: t('nav_simulation_goals'), icon: Target, badge: 'สถานการณ์' },
     { id: 'ai_coach', label: t('nav_ai_coach'), icon: Bot, badge: 'AI' },
-    { id: 'recruit_agent', label: t('nav_recruit_agent'), icon: UserPlus, badge: 'ใหม่' },
     { id: 'members_mgmt', label: t('nav_members_mgmt'), icon: Users },
     { id: 'compensation_admin', label: t('nav_compensation_admin'), icon: Sliders },
     { id: 'reports', label: t('nav_reports'), icon: FileText },
@@ -134,7 +133,10 @@ export const Sidebar: React.FC = () => {
         {/* ===== เมนู 1: แดชบอร์ดผู้บริหาร ===== */}
         {navItems.slice(0, 1).map(renderNavItem)}
 
-        {/* ===== เมนู 2: ซัพเมนู ระบบบริหารตัวแทนประกัน ===== */}
+        {/* ===== เมนู 2: สมัครตัวแทนประกัน ===== */}
+        {renderNavItem({ id: 'recruit_agent', label: t('nav_recruit_agent'), icon: UserPlus, badge: 'ใหม่' })}
+
+        {/* ===== เมนู 3: ซัพเมนู ระบบบริหารตัวแทนประกัน ===== */}
         <div className="pt-1">
           <button
             id="nav_extracted_group"
