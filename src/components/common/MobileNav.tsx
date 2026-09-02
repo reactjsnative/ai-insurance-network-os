@@ -28,7 +28,6 @@ export const MobileNav: React.FC = () => {
     { id: 'network_success_team_goal', label: 'เป้าหมาย', icon: Target },
     { id: 'extracted_ai_network', label: 'ทีมตัวแทน', icon: Boxes },
     { id: 'ai_studio', label: 'จำลอง', icon: Gem },
-    { id: 'income_calculator', label: t('direct_com').split(' ')[0] || 'Income', icon: Calculator },
     { id: 'network_visual', label: 'เครือข่าย', icon: Network },
     { id: 'career_path', label: 'อาชีพ', icon: TrendingUp },
     { id: 'career_plan', label: 'แผน', icon: Rocket },
