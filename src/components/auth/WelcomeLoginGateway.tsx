@@ -90,7 +90,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
                 AI INSURANCE <span className="text-amber-400">NETWORK OS</span>
               </span>
               <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30 hidden sm:inline">
-                Enterprise 2026
+                องค์กร Enterprise 2026
               </span>
             </div>
           </div>

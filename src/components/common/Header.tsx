@@ -161,7 +161,7 @@ export const Header: React.FC = () => {
             <div className={`w-2 h-2 rounded-full ${isFirebaseConnected ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'}`} />
             <Cloud className="w-3.5 h-3.5 text-amber-400" />
             <span className="text-slate-300 font-medium">
-              {isFirebaseConnected ? 'Firebase Live' : 'Firebase Ready'}
+              {isFirebaseConnected ? 'Firebase เชื่อมต่อแล้ว' : 'Firebase พร้อมใช้'}
             </span>
           </div>
 

@@ -88,7 +88,7 @@ export const Dashboard: React.FC = () => {
           </div>
           <div>
             <div className="text-xs font-bold text-white flex items-center gap-1.5">
-              <span>AI Engine 2026 Active</span>
+              <span>AI Engine 2026 เปิดใช้งาน</span>
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             </div>
             <div className="text-[11px] text-slate-400">4-Tier Auto Commission Calculation</div>
@@ -113,7 +113,7 @@ export const Dashboard: React.FC = () => {
           <div className="max-w-xl text-left space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>AI INSURANCE NETWORK OS • PRODUCTION ENGINE</span>
+              <span>AI INSURANCE NETWORK OS • ระบบหลัก</span>
             </div>
             
             <div className="flex flex-wrap items-center gap-3 pt-2">

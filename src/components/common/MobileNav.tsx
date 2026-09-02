@@ -23,20 +23,20 @@ export const MobileNav: React.FC = () => {
   const { activeTab, setActiveTab, t } = useApp();
 
   const mobileItems: { id: ActiveTab; label: string; icon: any }[] = [
-    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { id: 'network_success', label: 'Success', icon: Award },
-    { id: 'network_success_team_goal', label: 'Team Goal', icon: Target },
+    { id: 'dashboard', label: 'หน้าแรก', icon: LayoutDashboard },
+    { id: 'network_success', label: 'สำเร็จ', icon: Award },
+    { id: 'network_success_team_goal', label: 'เป้าหมาย', icon: Target },
     { id: 'extracted_ai_network', label: 'ทีมตัวแทน', icon: Boxes },
-    { id: 'ai_studio', label: 'Simulator', icon: Gem },
+    { id: 'ai_studio', label: 'จำลอง', icon: Gem },
     { id: 'income_calculator', label: t('direct_com').split(' ')[0] || 'Income', icon: Calculator },
-    { id: 'network_visual', label: 'Network', icon: Network },
-    { id: 'career_path', label: 'Career', icon: TrendingUp },
-    { id: 'career_plan', label: 'Plan', icon: Rocket },
-    { id: 'recruit_agent', label: 'Recruit', icon: UserPlus },
-    { id: 'ai_coach', label: 'AI Coach', icon: Bot },
-    { id: 'members_mgmt', label: 'Members', icon: Users },
-    { id: 'video_library', label: 'Video', icon: Video },
-    { id: 'compensation_admin', label: 'Admin', icon: Sliders },
+    { id: 'network_visual', label: 'เครือข่าย', icon: Network },
+    { id: 'career_path', label: 'อาชีพ', icon: TrendingUp },
+    { id: 'career_plan', label: 'แผน', icon: Rocket },
+    { id: 'recruit_agent', label: 'รับสมัคร', icon: UserPlus },
+    { id: 'ai_coach', label: 'AI โค้ช', icon: Bot },
+    { id: 'members_mgmt', label: 'สมาชิก', icon: Users },
+    { id: 'video_library', label: 'วิดีโอ', icon: Video },
+    { id: 'compensation_admin', label: 'ตั้งค่า', icon: Sliders },
   ];
 
   return (
