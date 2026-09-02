@@ -100,10 +100,6 @@ export const Dashboard: React.FC = () => {
             <CheckCircle2 className="w-4 h-4 text-emerald-400" />
             <span>256-bit SSL</span>
           </div>
-          <div className="flex items-center gap-1.5">
-            <Shield className="w-4 h-4 text-amber-400" />
-            <span>ISO 27001</span>
-          </div>
         </div>
       </div>
 
