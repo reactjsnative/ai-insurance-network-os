@@ -90,8 +90,8 @@ export const Sidebar: React.FC = () => {
   const [socialOpen, setSocialOpen] = useState(true);
   const socialItems: { id: ActiveTab; label: string; icon: any }[] = [
     { id: 'social_tiktok', label: t('social_sub_tiktok'), icon: Music2 },
-    { id: 'social_youtube', label: t('social_sub_youtube'), icon: Youtube },
     { id: 'social_facebook', label: t('social_sub_facebook'), icon: Facebook },
+    { id: 'social_youtube', label: t('social_sub_youtube'), icon: Youtube },
     { id: 'social_github', label: t('social_sub_github'), icon: Github },
   ];
   const isSocialActive = socialItems.some((item) => activeTab === item.id);
