@@ -371,7 +371,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
               <Rocket className="w-4 h-4" />
             </div>
             <h1 className="text-xl sm:text-2xl font-black text-slate-100">แผนรายได้ & เส้นทางสู่อิสระภาพทางการเงิน</h1>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30">Working</span>
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30">พร้อมใช้งาน</span>
           </div>
           <p className="text-xs text-slate-400 mt-1">
             วางแผนรายได้ → วิเคราะห์ช่องว่าง → จำลองการเติบโต → ประมาณการอนาคต → AI แนะนำแผน 30/60/90 วัน (คำนวณเรียลไทม์จาก Rule Engine)
@@ -453,7 +453,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
       <section className="space-y-4">
         <div className="flex items-center gap-2 px-1">
           <Calculator className="w-5 h-5 text-sky-400" />
-          <h2 className="text-lg font-black text-slate-100">2. แดชบอร์ดเรียลไทม์</h2>
+          <h2 className="text-lg font-black text-slate-100">2. แดชบอร์ดเรียลไทม์ (Real-Time)</h2>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <KpiCard label="ระดับปัจจุบัน" value={POSITION_LABELS[currentPosition]} sub="Current Position" accent="sky" />

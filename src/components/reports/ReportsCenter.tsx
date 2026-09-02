@@ -75,7 +75,7 @@ export const ReportsCenter: React.FC = () => {
             className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm flex items-center gap-2 border border-slate-700 transition-colors"
           >
             <Download className="w-4 h-4 text-amber-400" />
-            <span>Export CSV</span>
+            <span>ส่งออก CSV</span>
           </button>
           <button
             onClick={handlePrint}

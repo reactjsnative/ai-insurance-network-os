@@ -161,9 +161,9 @@ export const AIImageGenerator: React.FC = () => {
                   disabled={isBusy}
                   className="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-emerald-500/50"
                 >
-                  <option value="auto">Auto</option>
-                  <option value="high">High</option>
-                  <option value="low">Low</option>
+                  <option value="auto">อัตโนมัติ</option>
+                  <option value="high">สูง</option>
+                  <option value="low">ต่ำ</option>
                 </select>
               </div>
             </div>
