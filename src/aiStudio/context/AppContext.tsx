@@ -50,6 +50,11 @@ const LOCAL_STORAGE_RULES_KEY = 'ai_ins_sim_rules_v1';
 const LOCAL_STORAGE_LOGS_KEY = 'ai_ins_sim_logs_v1';
 const LOCAL_STORAGE_THEME_KEY = 'ai_ins_sim_theme_v1';
 
+// Increment this whenever the rule/member schema changes so stale cached
+// browser data is dropped instead of crashing views (previously caused a
+// full-screen black render in the simulator / Admin Settings).
+const SCHEMA_VERSION = 2;
+
 /**
  * Deep-merge a saved CompensationRuleSet onto the current defaults.
  * Ensures every nested tier array / field exists, so a stale or partial
@@ -80,6 +85,23 @@ function mergeRules<T>(base: T, saved: unknown): T {
 }
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  // Drop stale cached data from older schema versions so the UI never
+  // re-crashes after an update (black-screen bug). Runs synchronously before
+  // any state initializer reads localStorage.
+  if (typeof localStorage !== 'undefined') {
+    try {
+      const storedVersion = localStorage.getItem('ai_ins_sim_schema_v');
+      if (storedVersion !== String(SCHEMA_VERSION)) {
+        localStorage.removeItem(LOCAL_STORAGE_RULES_KEY);
+        localStorage.removeItem(LOCAL_STORAGE_MEMBERS_KEY);
+        localStorage.removeItem(LOCAL_STORAGE_LOGS_KEY);
+        localStorage.setItem('ai_ins_sim_schema_v', String(SCHEMA_VERSION));
+      }
+    } catch (e) {
+      console.warn('schema guard:', e);
+    }
+  }
+
   // Members State
   const [members, setMembers] = useState<Member[]>(() => {
     const saved = localStorage.getItem(LOCAL_STORAGE_MEMBERS_KEY);
