@@ -92,6 +92,18 @@ service cloud.firestore {
       allow create, update, delete: if isValidId(linkId) && isSignedIn();
     }
 
+    // ---- Facebook links (cross-device sync) ----
+    match /facebookLinks/{linkId} {
+      allow get, list: if true;
+      allow create, update, delete: if isValidId(linkId) && isSignedIn();
+    }
+
+    // ---- YouTube links (cross-device sync) ----
+    match /youtubeLinks/{linkId} {
+      allow get, list: if true;
+      allow create, update, delete: if isValidId(linkId) && isSignedIn();
+    }
+
     // ---- Compensation plans: admin-only writes ----
     match /compensationPlans/{planId} {
       allow get, list: if true;

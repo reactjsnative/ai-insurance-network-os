@@ -685,6 +685,33 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const randomSeq = Math.floor(100 + Math.random() * 900);
     const memberCode = `AG-${randomSeq}`;
 
+    // Identity consistency: if this email already exists as a member, reuse that record
+    // (สมัคร 1 คน = คนคนเดียวกันในระบบ) instead of creating a duplicate member.
+    const existingMember = members.find(m => (m.email || '').toLowerCase() === String(data.email).toLowerCase());
+    if (existingMember) {
+      const reusedUser: AuthUser = {
+        id: fbUser.uid,
+        email: data.email,
+        name: existingMember.name,
+        avatarUrl: existingMember.avatarUrl,
+        provider: 'email',
+        connectedProviders: ['email'],
+        memberId: existingMember.id,
+        role: existingMember.role,
+        positionId: existingMember.positionId,
+        isLoggedIn: true,
+        lastLoginAt: new Date().toISOString(),
+        phone: existingMember.phone || data.phone || '080-000-0000',
+        token,
+      };
+      setAuthUser(reusedUser);
+      setActiveUser(existingMember);
+      setIsAuthModalOpen(false);
+      setShowGatewayScreen(false);
+      setAuthNotification({ type: 'success', message: `เข้าสู่ระบบด้วยสมาชิกเดิมในระบบแล้ว (รหัส ${existingMember.memberCode})` });
+      return { success: true, message: 'พบสมาชิกเดิมในระบบ — ผูกบัญชีเข้าสู่ระบบเรียบร้อย', user: reusedUser };
+    }
+
     const newMember: Member = {
       id: newMemberId,
       memberCode,
@@ -1177,11 +1204,23 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const addMember = (memberData: Partial<Member>) => {
+    // Identity consistency: same email = same person in the system — reuse existing record instead of duplicating
+    if (memberData.email) {
+      const existing = members.find(m => (m.email || '').toLowerCase() === String(memberData.email).toLowerCase());
+      if (existing) {
+        return { success: true, message: 'สมาชิกนี้มีในระบบอยู่แล้ว (อีเมลเดียวกัน) — ใช้ข้อมูลเดิมโดยไม่สร้างซ้ำ', member: existing, reused: true };
+      }
+    }
     const newId = `mem_${Date.now()}`;
     const codePrefix = memberData.positionId === 'region_manager' ? 'RM' :
                        memberData.positionId === 'center_manager' ? 'CM' :
                        memberData.positionId === 'unit_manager' ? 'UM' : 'AG';
-    const newCode = `${codePrefix}-${Math.floor(100 + Math.random() * 900)}`;
+    let newCode = `${codePrefix}-${Math.floor(100 + Math.random() * 900)}`;
+    // Ensure the member code is unique across the whole system
+    let codeGuard = 0;
+    while (members.some(m => m.memberCode === newCode) && codeGuard++ < 50) {
+      newCode = `${codePrefix}-${Math.floor(100 + Math.random() * 900)}`;
+    }
 
     const newMember: Member = {
       id: newId,

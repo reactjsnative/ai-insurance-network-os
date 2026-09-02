@@ -26,6 +26,21 @@ export default async function handler(req, res) {
       return res.status(501).json({ ok: false, error: 'ADMIN_NOT_CONFIGURED' });
     }
     try {
+      // Identity consistency: same email = same person. If a member with this
+      // email already exists, merge into that record instead of duplicating.
+      const email = String(row.email || '').toLowerCase().trim();
+      if (email) {
+        const snap = await admin.db.collection('members').where('email', '==', email).limit(1).get();
+        if (!snap.empty) {
+          const existing = snap.docs[0];
+          const id = existing.id;
+          const merged = { ...existing.data(), ...row, id, memberId: id };
+          merged.memberId = id;
+          merged.id = id;
+          await admin.db.collection('members').doc(id).set(merged, { merge: true });
+          return res.json({ ok: true, reused: true, memberId: id });
+        }
+      }
       await admin.db.collection('members').doc(String(row.memberId)).set(row, { merge: true });
       return res.json({ ok: true });
     } catch (e) {
