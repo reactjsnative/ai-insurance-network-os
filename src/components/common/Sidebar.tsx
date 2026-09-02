@@ -181,8 +181,8 @@ export const Sidebar: React.FC = () => {
           )}
         </div>
 
-        {/* ===== เมนูที่เหลือ (โปรแกรมจำลองรายได้เป็นลำดับถัดไป) ===== */}
-        {navItems.slice(1).map(renderNavItem)}
+        {/* ===== เมนู 3: โปรแกรมจำลองรายได้ ===== */}
+        {renderNavItem(navItems[1])}
 
         {/* ===== ซัพเมนู: Network Success (เครือข่ายความสำเร็จ) ===== */}
         <div className="pt-1">
@@ -230,6 +230,9 @@ export const Sidebar: React.FC = () => {
             </div>
           )}
         </div>
+
+        {/* ===== เมนูที่เหลือ ===== */}
+        {navItems.slice(2).map(renderNavItem)}
 
         {/* ===== ซัพเมนู: Social (โซเชียลมีเดีย) ===== */}
         <div className="pt-1">
