@@ -96,6 +96,37 @@ export const Sidebar: React.FC = () => {
   ];
   const isSocialActive = socialItems.some((item) => activeTab === item.id);
 
+  const renderNavItem = (item: { id: ActiveTab; label: string; icon: any; badge?: string }) => {
+    const Icon = item.icon;
+    const isActive = activeTab === item.id;
+    return (
+      <button
+        key={item.id}
+        id={`nav_${item.id}`}
+        onClick={() => setActiveTab(item.id)}
+        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all group ${
+          isActive
+            ? 'bg-gradient-to-r from-amber-500/20 to-amber-500/5 text-amber-300 border border-amber-500/40 shadow-sm shadow-amber-500/10'
+            : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/80 border border-transparent'
+        }`}
+      >
+        <div className="flex items-center gap-2.5">
+          <Icon className={`w-4 h-4 transition-colors ${isActive ? 'text-amber-400' : 'text-slate-400 group-hover:text-slate-200'}`} />
+          <span className="truncate">{item.label}</span>
+        </div>
+        {item.badge && (
+          <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-full shrink-0 ${
+            isActive 
+              ? 'bg-amber-400 text-slate-950' 
+              : item.badge === 'AI' ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30' : 'bg-slate-800 text-slate-400'
+          }`}>
+            {item.badge}
+          </span>
+        )}
+      </button>
+    );
+  };
+
   return (
     <aside id="app_sidebar" className="w-64 border-r border-slate-800 bg-slate-950 flex flex-col justify-between shrink-0 hidden lg:flex">
       {/* Navigation Links */}
@@ -103,36 +134,59 @@ export const Sidebar: React.FC = () => {
         <div className="px-3 py-2 text-[10px] font-bold text-slate-500 uppercase tracking-wider text-left">
           {t('menu_core')}
         </div>
-        {navItems.map((item) => {
-          const Icon = item.icon;
-          const isActive = activeTab === item.id;
-          return (
-            <button
-              key={item.id}
-              id={`nav_${item.id}`}
-              onClick={() => setActiveTab(item.id)}
-              className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all group ${
-                isActive
-                  ? 'bg-gradient-to-r from-amber-500/20 to-amber-500/5 text-amber-300 border border-amber-500/40 shadow-sm shadow-amber-500/10'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/80 border border-transparent'
-              }`}
-            >
-              <div className="flex items-center gap-2.5">
-                <Icon className={`w-4 h-4 transition-colors ${isActive ? 'text-amber-400' : 'text-slate-400 group-hover:text-slate-200'}`} />
-                <span className="truncate">{item.label}</span>
-              </div>
-              {item.badge && (
-                <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-full shrink-0 ${
-                  isActive 
-                    ? 'bg-amber-400 text-slate-950' 
-                    : item.badge === 'AI' ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30' : 'bg-slate-800 text-slate-400'
-                }`}>
-                  {item.badge}
-                </span>
-              )}
-            </button>
-          );
-        })}
+
+        {/* ===== เมนู 1: แดชบอร์ดผู้บริหาร ===== */}
+        {navItems.slice(0, 1).map(renderNavItem)}
+
+        {/* ===== เมนู 2: ซัพเมนู ระบบบริหารตัวแทนประกัน ===== */}
+        <div className="pt-1">
+          <button
+            id="nav_extracted_group"
+            onClick={() => setExtractedOpen((v) => !v)}
+            className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all group ${
+              isExtractedActive
+                ? 'bg-gradient-to-r from-blue-500/20 to-blue-500/5 text-blue-300 border border-blue-500/40 shadow-sm shadow-blue-500/10'
+                : 'text-slate-300 hover:text-white hover:bg-slate-900/80 border border-transparent'
+            }`}
+          >
+            <div className="flex items-center gap-2.5">
+              <Boxes className={`w-4 h-4 transition-colors ${isExtractedActive ? 'text-blue-400' : 'text-slate-400 group-hover:text-slate-200'}`} />
+              <span className="truncate">{t('nav_extracted_ai_network')}</span>
+            </div>
+            {extractedOpen ? (
+              <ChevronDown className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+            ) : (
+              <ChevronRight className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+            )}
+          </button>
+
+          {extractedOpen && (
+            <div className="ml-2.5 pl-2.5 mt-0.5 space-y-0.5 border-l border-slate-800">
+              {extractedItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = activeTab === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    id={`nav_${item.id}`}
+                    onClick={() => setActiveTab(item.id)}
+                    className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-[11px] font-medium transition-all group ${
+                      isActive
+                        ? 'bg-blue-500/15 text-blue-300 border border-blue-500/30'
+                        : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/80 border border-transparent'
+                    }`}
+                  >
+                    <Icon className={`w-3.5 h-3.5 shrink-0 transition-colors ${isActive ? 'text-blue-400' : 'text-slate-500 group-hover:text-slate-300'}`} />
+                    <span className="truncate">{item.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
+        {/* ===== เมนูที่เหลือ (โปรแกรมจำลองรายได้เป็นลำดับถัดไป) ===== */}
+        {navItems.slice(1).map(renderNavItem)}
 
         {/* ===== ซัพเมนู: Network Success (เครือข่ายความสำเร็จ) ===== */}
         <div className="pt-1">
@@ -173,53 +227,6 @@ export const Sidebar: React.FC = () => {
                     }`}
                   >
                     <Icon className={`w-3.5 h-3.5 shrink-0 transition-colors ${isActive ? 'text-amber-400' : 'text-slate-500 group-hover:text-slate-300'}`} />
-                    <span className="truncate">{item.label}</span>
-                  </button>
-                );
-              })}
-            </div>
-          )}
-        </div>
-
-        {/* ===== ซัพเมนู: ระบบบริหารตัวแทนประกันชีวิต ===== */}
-        <div className="pt-1">
-          <button
-            id="nav_extracted_group"
-            onClick={() => setExtractedOpen((v) => !v)}
-            className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all group ${
-              isExtractedActive
-                ? 'bg-gradient-to-r from-blue-500/20 to-blue-500/5 text-blue-300 border border-blue-500/40 shadow-sm shadow-blue-500/10'
-                : 'text-slate-300 hover:text-white hover:bg-slate-900/80 border border-transparent'
-            }`}
-          >
-            <div className="flex items-center gap-2.5">
-              <Boxes className={`w-4 h-4 transition-colors ${isExtractedActive ? 'text-blue-400' : 'text-slate-400 group-hover:text-slate-200'}`} />
-              <span className="truncate">{t('nav_extracted_ai_network')}</span>
-            </div>
-            {extractedOpen ? (
-              <ChevronDown className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-            ) : (
-              <ChevronRight className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-            )}
-          </button>
-
-          {extractedOpen && (
-            <div className="ml-2.5 pl-2.5 mt-0.5 space-y-0.5 border-l border-slate-800">
-              {extractedItems.map((item) => {
-                const Icon = item.icon;
-                const isActive = activeTab === item.id;
-                return (
-                  <button
-                    key={item.id}
-                    id={`nav_${item.id}`}
-                    onClick={() => setActiveTab(item.id)}
-                    className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-[11px] font-medium transition-all group ${
-                      isActive
-                        ? 'bg-blue-500/15 text-blue-300 border border-blue-500/30'
-                        : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/80 border border-transparent'
-                    }`}
-                  >
-                    <Icon className={`w-3.5 h-3.5 shrink-0 transition-colors ${isActive ? 'text-blue-400' : 'text-slate-500 group-hover:text-slate-300'}`} />
                     <span className="truncate">{item.label}</span>
                   </button>
                 );

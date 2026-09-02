@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { 
   Bot, 
   Sparkles, 
@@ -22,7 +22,7 @@ interface ChatMessage {
 }
 
 export const AICoach: React.FC = () => {
-  const { activeUser, members, activePlan, getDownlineStats } = useApp();
+  const { activeUser, members, activePlan, positions, getDownlineStats } = useApp();
 
   const [inputMessage, setInputMessage] = useState('');
   const [loading, setLoading] = useState(false);
@@ -120,6 +120,43 @@ export const AICoach: React.FC = () => {
     'อธิบายสูตรค่าจัดงานภาค Type 1 และ Type 2 ให้เข้าใจง่าย',
   ];
 
+  // Live insights computed from real member + hierarchy data (no longer hardcoded).
+  const insights = useMemo(() => {
+    const nextPositionOf = (member: typeof members[number]) => {
+      const cur = positions.find((p) => p.id === member.positionId);
+      if (!cur) return null;
+      const higher = positions.filter((p) => p.level > cur.level);
+      higher.sort((a, b) => a.level - b.level);
+      return higher[0] || null;
+    };
+
+    // 1. Promotion candidates: active members whose team FYC already meets next rank.
+    const promotionCandidates = members
+      .filter((m) => m.status === 'active')
+      .map((m) => {
+        const stats = getDownlineStats(m.id);
+        const teamFYC = (m.personalFYC || 0) + (stats.teamFYC || 0);
+        return { member: m, teamFYC, next: nextPositionOf(m) };
+      })
+      .filter((c) => c.next && c.teamFYC >= (c.next.qualification.minFyc || 0))
+      .sort((a, b) => b.teamFYC - a.teamFYC)
+      .slice(0, 3);
+
+    // 2. Retention risk: members who are inactive or on probation.
+    const atRisk = members.filter((m) => m.status === 'inactive' || m.status === 'probation');
+
+    // 3. Top performing cluster: members ranked by personal + team FYC.
+    const topPerformers = members
+      .map((m) => {
+        const stats = getDownlineStats(m.id);
+        return { member: m, total: (m.personalFYC || 0) + (stats.teamFYC || 0) };
+      })
+      .sort((a, b) => b.total - a.total)
+      .slice(0, 3);
+
+    return { promotionCandidates, atRisk, topPerformers };
+  }, [members, positions, getDownlineStats]);
+
   return (
     <div id="ai_coach_view" className="space-y-6 max-w-7xl mx-auto pb-16 text-left">
       {/* 1. Header Banner */}
@@ -130,7 +167,7 @@ export const AICoach: React.FC = () => {
               <Brain className="w-4 h-4" />
             </div>
             <h1 className="text-xl sm:text-2xl font-black text-slate-100">
-              AI Organization Coach & Leadership Intelligence
+              AI ที่ปรึกษาองค์กรและระบบอัจฉริยะสำหรับผู้นำ
             </h1>
           </div>
           <p className="text-xs text-slate-400 mt-1">
@@ -140,7 +177,7 @@ export const AICoach: React.FC = () => {
 
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 text-xs font-semibold self-start md:self-auto">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span>AI Coach Online</span>
+          <span>AI โค้ช ออนไลน์</span>
         </div>
       </div>
 
@@ -149,31 +186,67 @@ export const AICoach: React.FC = () => {
         <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
           <div className="flex items-center gap-2 text-xs font-bold text-amber-400">
             <Award className="w-4 h-4" />
-            <span>Promotion Candidate Alert</span>
+            <span>ผู้มีศักยภาพเลื่อนตำแหน่ง</span>
           </div>
-          <p className="text-xs text-slate-300 leading-relaxed">
-            <strong className="text-slate-100">ยังไม่มีข้อมูล</strong> สมาชิกที่เข้าเกณฑ์เลื่อนตำแหน่งจะปรากฏที่นี่เมื่อสมัครเข้าใช้งาน
-          </p>
+          {insights.promotionCandidates.length === 0 ? (
+            <p className="text-xs text-slate-300 leading-relaxed">
+              ยังไม่มีสมาชิกที่เข้าเกณฑ์เลื่อนตำแหน่งในขณะนี้ (เกณฑ์อ้างอิงจาก FYC และโครงสร้างสายงาน)
+            </p>
+          ) : (
+            <ul className="space-y-2">
+              {insights.promotionCandidates.map((c) => (
+                <li key={c.member.id} className="text-xs text-slate-200 leading-relaxed">
+                  <strong className="text-amber-300">{c.member.name}</strong> (FYC ทีม ฿{c.teamFYC.toLocaleString()})
+                  <span className="text-slate-400 block">
+                    ใกล้เลื่อนเป็น {c.next?.name || 'ตำแหน่งถัดไป'}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
         <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
           <div className="flex items-center gap-2 text-xs font-bold text-rose-400">
             <AlertTriangle className="w-4 h-4" />
-            <span>Retention Risk Alert</span>
+            <span>ความเสี่ยง Retention</span>
           </div>
-          <p className="text-xs text-slate-300 leading-relaxed">
-            <strong className="text-slate-100">ยังไม่มีข้อมูล</strong> การแจ้งเตือนความเสี่ยงด้าน Retention จะปรากฏที่นี่เมื่อมีสมาชิกในระบบ
-          </p>
+          {insights.atRisk.length === 0 ? (
+            <p className="text-xs text-slate-300 leading-relaxed">
+              ไม่พบสมาชิกที่มีความเสี่ยง (ทุกคนอยู่ในสถานะ Active)
+            </p>
+          ) : (
+            <ul className="space-y-2">
+              {insights.atRisk.slice(0, 3).map((m) => (
+                <li key={m.id} className="text-xs text-slate-200 leading-relaxed">
+                  <strong className="text-rose-300">{m.name}</strong>
+                  <span className="text-slate-400 block">
+                    สถานะ {m.status === 'inactive' ? 'ไม่ Active' : 'ทดลองงาน'} — แนะนำติดตามอย่างใกล้ชิด
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
         <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
           <div className="flex items-center gap-2 text-xs font-bold text-emerald-400">
             <TrendingUp className="w-4 h-4" />
-            <span>Top Performing Cluster</span>
+            <span>สายงานผลงานโดดเด่น</span>
           </div>
-          <p className="text-xs text-slate-300 leading-relaxed">
-            <strong className="text-slate-100">ยังไม่มีข้อมูล</strong> หน่วยงานที่มีผลงานโดดเด่นจะปรากฏที่นี่เมื่อมีสมาชิกในระบบ
-          </p>
+          {insights.topPerformers.length === 0 || insights.topPerformers.every((p) => p.total === 0) ? (
+            <p className="text-xs text-slate-300 leading-relaxed">
+              ยังไม่มีข้อมูลผลงาน — จะแสดงสายงานที่โดดเด่นเมื่อสมาชิกเริ่มมียอด FYC
+            </p>
+          ) : (
+            <ul className="space-y-2">
+              {insights.topPerformers.map((p) => (
+                <li key={p.member.id} className="text-xs text-slate-200 leading-relaxed">
+                  <strong className="text-emerald-300">{p.member.name}</strong> (FYC รวม ฿{p.total.toLocaleString()})
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
 
