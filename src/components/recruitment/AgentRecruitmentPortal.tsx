@@ -322,7 +322,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
             </h1>
             <p className="text-slate-300 text-sm max-w-3xl leading-relaxed">
               {language === 'th' 
-                ? 'ระบบยื่นใบสมัครตัวแทนใหม่ ตรวจสอบคุณวุฒิใบอนุญาต คปภ. ผูกสายงานผู้แนะนำ (Sponsor) วางเป้าหมายรายได้ FYC และอนุมัติบรรจุเข้าสู่ผังองค์กรแบบ Real-Time'
+                ? 'ระบบยื่นใบสมัครตัวแทนใหม่ ตรวจสอบคุณวุฒิใบอนุญาต คปภ. ผูกสายงานผู้แนะนำ วางเป้าหมายรายได้ FYC และอนุมัติบรรจุเข้าสู่ผังองค์กรแบบ Real-Time'
                 : 'Submit new agent applications, verify OIC license qualifications, assign network sponsors, project income goals, and instantly approve new team members into the network tree.'}
             </p>
           </div>
