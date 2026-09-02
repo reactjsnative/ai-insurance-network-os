@@ -131,7 +131,7 @@ export const GoalSimulatorView: React.FC = () => {
           {/* New recruits per month */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-slate-300">สมาชิกใหม่เพิ่มต่อเดือน (Recruits/mo):</span>
+              <span className="text-slate-300">สมาชิกใหม่เพิ่มต่อเดือน:</span>
               <strong className="text-blue-400">+{newRecruitsPerMonth} คน/ด</strong>
             </div>
             <input

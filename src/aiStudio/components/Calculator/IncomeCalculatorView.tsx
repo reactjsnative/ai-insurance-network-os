@@ -301,7 +301,7 @@ export const IncomeCalculatorView: React.FC = () => {
                 พารามิเตอร์จำลองผลงาน
               </h2>
               <span className="text-[11px] text-amber-300 font-semibold bg-amber-950/80 px-2 py-0.5 rounded border border-amber-600/40">
-                คำนวณ Real-time
+                คำนวณแบบเรียลไทม์
               </span>
             </div>
 
