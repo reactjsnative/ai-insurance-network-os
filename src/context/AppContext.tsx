@@ -88,7 +88,6 @@ export type ActiveTab =
   | 'reports'
   | 'settings'
   | 'video_library'
-  | 'video_generator'
   | 'tiktok_links';
 
 interface AppContextType {

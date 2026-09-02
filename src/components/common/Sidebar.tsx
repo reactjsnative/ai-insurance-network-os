@@ -20,7 +20,6 @@ import {
   Award,
   Video,
   Music2,
-  Wand2,
   Sheet,
   Gem,
   Boxes,
@@ -55,7 +54,6 @@ export const Sidebar: React.FC = () => {
     { id: 'compensation_admin', label: t('nav_compensation_admin'), icon: Sliders },
     { id: 'reports', label: t('nav_reports'), icon: FileText },
     { id: 'video_library', label: t('nav_video_library'), icon: Video, badge: 'สื่อ' },
-    { id: 'video_generator', label: t('nav_video_generator'), icon: Wand2, badge: 'AI' },
     { id: 'settings', label: t('nav_settings'), icon: SettingsIcon, badge: 'DB & API' },
   ];
 

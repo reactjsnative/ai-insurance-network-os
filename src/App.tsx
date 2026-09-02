@@ -27,7 +27,6 @@ import { CompensationAdmin } from './components/admin/CompensationAdmin';
 import { ReportsCenter } from './components/reports/ReportsCenter';
 import { SettingsView } from './components/settings/SettingsView';
 import { VideoLibrary } from './components/media/VideoLibrary';
-import { AIImageGenerator } from './components/media/AIImageGenerator';
 import { TikTokLinks } from './components/media/TikTokLinks';
 import { MemberSheetView } from './components/members/MemberSheetView';
 import { AuthModal } from './components/auth/AuthModal';
@@ -97,7 +96,6 @@ const MainContent: React.FC = () => {
           {activeTab === 'compensation_admin' && <CompensationAdmin />}
           {activeTab === 'reports' && <ReportsCenter />}
           {activeTab === 'video_library' && <VideoLibrary />}
-          {activeTab === 'video_generator' && <AIImageGenerator />}
           {activeTab === 'tiktok_links' && <TikTokLinks />}
           {activeTab === 'settings' && <SettingsView />}
         </main>
