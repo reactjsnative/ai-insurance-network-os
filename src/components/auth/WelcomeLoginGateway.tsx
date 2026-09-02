@@ -108,15 +108,6 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
           </button>
 
           {/* Quick Direct Enter Button — removed per request */}
-          <button
-            id="btn-gateway-demo-enter"
-            onClick={() => onEnterSystem?.()}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/90 hover:bg-amber-400 text-slate-950 text-xs font-bold transition-all shadow-sm cursor-pointer"
-            title="เข้าชมระบบโดยไม่ต้องล็อกอิน (สำหรับดูตัวอย่าง)"
-          >
-            <ArrowRight className="w-3.5 h-3.5" />
-            <span>ดูระบบ (Demo)</span>
-          </button>
 
         </div>
       </header>
