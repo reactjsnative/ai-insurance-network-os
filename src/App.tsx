@@ -18,6 +18,7 @@ import { AiStudioApp } from './aiStudio/AiStudioApp';
 import { ExtractedAiNetwork } from './components/extracted/ExtractedAiNetwork';
 import { NetworkSuccessView } from './components/extracted/NetworkSuccessView';
 import { TeamGoalView } from './components/network/teamGoal/TeamGoalView';
+import { SocialView } from './components/social/SocialView';
 import { AgentRecruitmentPortal } from './components/recruitment/AgentRecruitmentPortal';
 import { MembersManagement } from './components/members/MembersManagement';
 import { CompensationAdmin } from './components/admin/CompensationAdmin';
@@ -74,6 +75,7 @@ const MainContent: React.FC = () => {
           {(activeTab.startsWith('extracted_') && activeTab !== 'extracted_ai_network') && (
             <ExtractedAiNetwork tab={activeTab.replace('extracted_', '')} />
           )}
+          {(activeTab === 'social_tiktok' || activeTab === 'social_youtube' || activeTab === 'social_facebook' || activeTab === 'social_github') && <SocialView />}
           {activeTab === 'ai_studio' && <AiStudioApp />}
           {activeTab === 'income_calculator' && <IncomeCalculator />}
           {activeTab === 'organization' && <OrganizationStructure />}
