@@ -143,7 +143,7 @@ export const IncomeCalculator: React.FC = () => {
                 ปรับแต่งตัวแปรผลงานจำลอง (Simulation Parameter Controller)
               </span>
             </div>
-            <span className="text-[10px] text-slate-400">คำนวณและอัปเดตผลตอบแทนทันทีแบบ Real-Time</span>
+            <span className="text-[10px] text-slate-400">คำนวณและอัปเดตผลตอบแทนทันทีแบบเรียลไทม์</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

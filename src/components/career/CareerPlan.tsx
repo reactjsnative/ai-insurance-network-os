@@ -453,7 +453,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
       <section className="space-y-4">
         <div className="flex items-center gap-2 px-1">
           <Calculator className="w-5 h-5 text-sky-400" />
-          <h2 className="text-lg font-black text-slate-100">2. แดชบอร์ดเรียลไทม์ (Real-Time)</h2>
+          <h2 className="text-lg font-black text-slate-100">2. แดชบอร์ดเรียลไทม์</h2>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <KpiCard label="ระดับปัจจุบัน" value={POSITION_LABELS[currentPosition]} sub="Current Position" accent="sky" />

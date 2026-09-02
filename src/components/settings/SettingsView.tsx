@@ -553,7 +553,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               {
                 id: 'telegram_alerts',
                 title: 'Telegram Executive Bot',
-                desc: 'แจ้งเตือน Real-time เมื่อมีศูนย์หรือหน่วยทำผลงานทะลุเป้าหมายเพื่อรับรางวัลโบนัสภาค',
+                desc: 'แจ้งเตือนแบบเรียลไทม์เมื่อมีศูนย์หรือหน่วยทำผลงานทะลุเป้าหมายเพื่อรับรางวัลโบนัสภาค',
                 status: 'Active',
                 endpoint: 'https://api.telegram.org/bot<TOKEN>/sendMessage',
                 auth: 'Bot ID: @InsuranceOS_Executive_Bot'
