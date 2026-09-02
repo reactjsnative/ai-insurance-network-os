@@ -57,7 +57,6 @@ export const Sidebar: React.FC = () => {
     { id: 'reports', label: t('nav_reports'), icon: FileText },
     { id: 'video_library', label: t('nav_video_library'), icon: Video, badge: 'Media' },
     { id: 'video_generator', label: t('nav_video_generator'), icon: Wand2, badge: 'AI' },
-    { id: 'tiktok_links', label: t('nav_tiktok_links'), icon: Music2, badge: 'Social' },
     { id: 'settings', label: t('nav_settings'), icon: SettingsIcon, badge: 'DB & API' },
   ];
 
@@ -89,10 +88,9 @@ export const Sidebar: React.FC = () => {
   // ซัพเมนูของ Social (ลิงก์โซเชียลมีเดีย)
   const [socialOpen, setSocialOpen] = useState(true);
   const socialItems: { id: ActiveTab; label: string; icon: any }[] = [
-    { id: 'social_tiktok', label: t('social_sub_tiktok'), icon: Music2 },
     { id: 'social_facebook', label: t('social_sub_facebook'), icon: Facebook },
     { id: 'social_youtube', label: t('social_sub_youtube'), icon: Youtube },
-    { id: 'social_github', label: t('social_sub_github'), icon: Github },
+    { id: 'social_tiktok', label: t('social_sub_tiktok'), icon: Music2 },
   ];
   const isSocialActive = socialItems.some((item) => activeTab === item.id);
 

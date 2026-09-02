@@ -1,50 +1,35 @@
 import React from 'react';
-import { ExternalLink, Globe, Music2, Youtube, Facebook, Github } from 'lucide-react';
+import { ExternalLink, Globe, Youtube, Facebook } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 
-// Social platform link hub — submenu views for the Social menu
+// Social platform link hub — submenu views for the ลิงก์ (Social) menu
+// (TikTok submenu uses the full TikTokLinks page with เพิ่มลิงก์ + link list.)
 // URLs are easy to edit here when accounts/pages change.
 const SOCIAL_LINKS: Record<
   string,
   { title: string; url: string; desc: string; icon: any; gradient: string; ring: string }
 > = {
-  social_tiktok: {
-    title: 'TikTok',
-    url: 'https://www.tiktok.com/@akarapol_insurance_os',
-    desc: 'ช่อง TikTok ระบบเครือข่ายประกัน (AI Insurance OS)',
-    icon: Music2,
-    gradient: 'from-slate-900 via-slate-800 to-black',
-    ring: 'border-slate-700',
-  },
-  social_youtube: {
-    title: 'YouTube',
-    url: 'https://www.youtube.com/',
-    desc: 'ช่อง YouTube สำหรับวิดีโอสอนและคอนเทนต์ระบบเครือข่าย',
-    icon: Youtube,
-    gradient: 'from-red-600/20 via-slate-900 to-slate-950',
-    ring: 'border-red-500/30',
-  },
   social_facebook: {
-    title: 'Facebook',
+    title: 'ลิงก์ Facebook (Social)',
     url: 'https://www.facebook.com/',
-    desc: 'เพจ Facebook สำหรับประกาศข่าวสารและกิจกรรมทีม',
+    desc: 'ลิงก์ Facebook ของทีมและตัวแทน เพื่อต่อยอดการตลาดออนไลน์',
     icon: Facebook,
     gradient: 'from-blue-600/20 via-slate-900 to-slate-950',
     ring: 'border-blue-500/30',
   },
-  social_github: {
-    title: 'GitHub',
-    url: 'https://github.com/reactjsnative/ai-insurance-network-os',
-    desc: 'ซอร์สโค้ดระบบ AI Insurance Network OS (Open Source)',
-    icon: Github,
-    gradient: 'from-violet-600/20 via-slate-900 to-slate-950',
-    ring: 'border-violet-500/30',
+  social_youtube: {
+    title: 'ลิงก์ YouTube (Social)',
+    url: 'https://www.youtube.com/',
+    desc: 'ลิงก์ YouTube ของทีมและตัวแทน เพื่อต่อยอดการตลาดออนไลน์',
+    icon: Youtube,
+    gradient: 'from-red-600/20 via-slate-900 to-slate-950',
+    ring: 'border-red-500/30',
   },
 };
 
 export const SocialView: React.FC = () => {
   const { activeTab } = useApp();
-  const item = SOCIAL_LINKS[activeTab] || SOCIAL_LINKS.social_tiktok;
+  const item = SOCIAL_LINKS[activeTab] || SOCIAL_LINKS.social_facebook;
   const Icon = item.icon;
 
   return (

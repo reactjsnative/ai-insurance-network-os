@@ -36,7 +36,6 @@ export const MobileNav: React.FC = () => {
     { id: 'ai_coach', label: 'AI Coach', icon: Bot },
     { id: 'members_mgmt', label: 'Members', icon: Users },
     { id: 'video_library', label: 'Video', icon: Video },
-    { id: 'tiktok_links', label: 'TikTok', icon: Music2 },
     { id: 'compensation_admin', label: 'Admin', icon: Sliders },
   ];
 
