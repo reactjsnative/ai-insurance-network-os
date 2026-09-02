@@ -246,9 +246,9 @@ export const translations = {
     strategic_insight_body: 'การเพิ่มอัตราคงอยู่ (Retention) จาก 80% เป็น 90% ส่งผลต่อรายได้ระยะยาวมากกว่าการเร่งรับตัวแทนใหม่ถึง 1.8 เท่า',
 
     // AI Coach
-    ai_coach_title: 'AI Organization Coach & Leadership Intelligence',
+    ai_coach_title: 'AI ที่ปรึกษาองค์กรและระบบอัจฉริยะสำหรับผู้นำ',
     ai_coach_subtitle: 'ที่ปรึกษาปัญญาประดิษฐ์วิเคราะห์สายงานตามหลักคณิตศาสตร์ประกันชีวิตและ Compensation Rule Engine',
-    ai_online: 'AI Coach Online',
+    ai_online: 'AI โค้ช ออนไลน์',
     quick_topics: 'หัวข้อยอดนิยม:',
     chat_placeholder: 'พิมพ์คำถามเกี่ยวกับการบริหารทีม, รายได้, หรือกลยุทธ์...',
     btn_send: 'ส่ง',
