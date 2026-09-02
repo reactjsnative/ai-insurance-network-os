@@ -68,6 +68,7 @@ export type ActiveTab =
   | 'extracted_audit_logs'
   | 'social_tiktok'
   | 'social_youtube'
+  | 'social_x'
   | 'social_facebook'
   | 'social_github'
   | 'ai_studio'

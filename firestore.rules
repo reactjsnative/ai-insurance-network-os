@@ -104,6 +104,12 @@ service cloud.firestore {
       allow create, update, delete: if isValidId(linkId) && isSignedIn();
     }
 
+    // ---- X (Twitter) links (cross-device sync) ----
+    match /xLinks/{linkId} {
+      allow get, list: if true;
+      allow create, update, delete: if isValidId(linkId) && isSignedIn();
+    }
+
     // ---- Compensation plans: admin-only writes ----
     match /compensationPlans/{planId} {
       allow get, list: if true;

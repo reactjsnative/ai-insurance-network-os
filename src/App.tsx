@@ -21,6 +21,7 @@ import { TeamGoalView } from './components/network/teamGoal/TeamGoalView';
 import { SocialView } from './components/social/SocialView';
 import { FacebookLinks } from './components/media/FacebookLinks';
 import { YouTubeLinks } from './components/media/YouTubeLinks';
+import { XLinks } from './components/media/XLinks';
 import { AgentRecruitmentPortal } from './components/recruitment/AgentRecruitmentPortal';
 import { MembersManagement } from './components/members/MembersManagement';
 import { CompensationAdmin } from './components/admin/CompensationAdmin';
@@ -79,6 +80,7 @@ const MainContent: React.FC = () => {
           )}
           {(activeTab === 'social_youtube') && <YouTubeLinks />}
           {activeTab === 'social_facebook' && <FacebookLinks />}
+          {activeTab === 'social_x' && <XLinks />}
           {activeTab === 'social_tiktok' && <TikTokLinks />}
           {activeTab === 'ai_studio' && <AiStudioApp />}
           {activeTab === 'income_calculator' && <IncomeCalculator />}

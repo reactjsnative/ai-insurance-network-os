@@ -30,7 +30,8 @@ import {
   RefreshCw,
   Youtube,
   Facebook,
-  Github
+  Github,
+  Twitter
 } from 'lucide-react';
 import { useApp, ActiveTab } from '../../context/AppContext';
 
@@ -91,6 +92,7 @@ export const Sidebar: React.FC = () => {
     { id: 'social_facebook', label: t('social_sub_facebook'), icon: Facebook },
     { id: 'social_youtube', label: t('social_sub_youtube'), icon: Youtube },
     { id: 'social_tiktok', label: t('social_sub_tiktok'), icon: Music2 },
+    { id: 'social_x', label: t('social_sub_x'), icon: Twitter },
   ];
   const isSocialActive = socialItems.some((item) => activeTab === item.id);
 
