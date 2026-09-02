@@ -25,7 +25,9 @@ import {
   Gem,
   Boxes,
   ChevronDown,
-  ChevronRight
+  ChevronRight,
+  QrCode,
+  RefreshCw
 } from 'lucide-react';
 import { useApp, ActiveTab } from '../../context/AppContext';
 
@@ -34,7 +36,6 @@ export const Sidebar: React.FC = () => {
 
   const navItems: { id: ActiveTab; label: string; icon: any; badge?: string }[] = [
     { id: 'dashboard', label: t('nav_dashboard'), icon: LayoutDashboard },
-    { id: 'extracted_ai_network', label: t('nav_extracted_ai_network'), icon: Boxes, badge: 'Team Builder' },
     { id: 'ai_studio', label: t('nav_ai_studio'), icon: Gem, badge: 'Simulator' },
     { id: 'income_calculator', label: t('nav_income_calculator'), icon: Calculator, badge: 'Real-Time' },
     { id: 'organization', label: t('nav_organization'), icon: Building2, badge: 'Hierarchy' },
@@ -64,6 +65,23 @@ export const Sidebar: React.FC = () => {
     { id: 'network_success_team_goal', label: t('nav_network_success_team_goal'), icon: Target },
   ];
   const isNetworkSuccessActive = networkSuccessItems.some((item) => activeTab === item.id);
+
+  // ซัพเมนูของระบบบริหารตัวแทนประกันชีวิต (เดิมคือเมนูใน extracted-ai-network)
+  const [extractedOpen, setExtractedOpen] = useState(true);
+  const extractedItems: { id: ActiveTab; label: string; icon: any }[] = [
+    { id: 'extracted_dashboard', label: t('ext_sub_dashboard'), icon: LayoutDashboard },
+    { id: 'extracted_network_tree', label: t('ext_sub_network_tree'), icon: Network },
+    { id: 'extracted_members', label: t('ext_sub_members'), icon: Users },
+    { id: 'extracted_registration', label: t('ext_sub_registration'), icon: QrCode },
+    { id: 'extracted_auto_builder', label: t('ext_sub_auto_builder'), icon: Boxes },
+    { id: 'extracted_auto_sponsor', label: t('ext_sub_auto_sponsor'), icon: RefreshCw },
+    { id: 'extracted_calculator', label: t('ext_sub_calculator'), icon: Calculator },
+    { id: 'extracted_promotion', label: t('ext_sub_promotion'), icon: TrendingUp },
+    { id: 'extracted_simulator', label: t('ext_sub_simulator'), icon: Target },
+    { id: 'extracted_rules_editor', label: t('ext_sub_rules_editor'), icon: Sliders },
+    { id: 'extracted_audit_logs', label: t('ext_sub_audit_logs'), icon: FileText },
+  ];
+  const isExtractedActive = extractedItems.some((item) => activeTab === item.id);
 
   return (
     <aside id="app_sidebar" className="w-64 border-r border-slate-800 bg-slate-950 flex flex-col justify-between shrink-0 hidden lg:flex">
@@ -142,6 +160,53 @@ export const Sidebar: React.FC = () => {
                     }`}
                   >
                     <Icon className={`w-3.5 h-3.5 shrink-0 transition-colors ${isActive ? 'text-amber-400' : 'text-slate-500 group-hover:text-slate-300'}`} />
+                    <span className="truncate">{item.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
+        {/* ===== ซัพเมนู: ระบบบริหารตัวแทนประกันชีวิต ===== */}
+        <div className="pt-1">
+          <button
+            id="nav_extracted_group"
+            onClick={() => setExtractedOpen((v) => !v)}
+            className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all group ${
+              isExtractedActive
+                ? 'bg-gradient-to-r from-blue-500/20 to-blue-500/5 text-blue-300 border border-blue-500/40 shadow-sm shadow-blue-500/10'
+                : 'text-slate-300 hover:text-white hover:bg-slate-900/80 border border-transparent'
+            }`}
+          >
+            <div className="flex items-center gap-2.5">
+              <Boxes className={`w-4 h-4 transition-colors ${isExtractedActive ? 'text-blue-400' : 'text-slate-400 group-hover:text-slate-200'}`} />
+              <span className="truncate">{t('nav_extracted_ai_network')}</span>
+            </div>
+            {extractedOpen ? (
+              <ChevronDown className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+            ) : (
+              <ChevronRight className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+            )}
+          </button>
+
+          {extractedOpen && (
+            <div className="ml-2.5 pl-2.5 mt-0.5 space-y-0.5 border-l border-slate-800">
+              {extractedItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = activeTab === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    id={`nav_${item.id}`}
+                    onClick={() => setActiveTab(item.id)}
+                    className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-[11px] font-medium transition-all group ${
+                      isActive
+                        ? 'bg-blue-500/15 text-blue-300 border border-blue-500/30'
+                        : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/80 border border-transparent'
+                    }`}
+                  >
+                    <Icon className={`w-3.5 h-3.5 shrink-0 transition-colors ${isActive ? 'text-blue-400' : 'text-slate-500 group-hover:text-slate-300'}`} />
                     <span className="truncate">{item.label}</span>
                   </button>
                 );

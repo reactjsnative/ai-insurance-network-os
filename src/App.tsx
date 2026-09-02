@@ -70,7 +70,10 @@ const MainContent: React.FC = () => {
           {activeTab === 'dashboard' && <Dashboard />}
           {activeTab === 'network_success' && <NetworkSuccessView />}
           {activeTab === 'network_success_team_goal' && <TeamGoalView />}
-          {activeTab === 'extracted_ai_network' && <ExtractedAiNetwork />}
+          {activeTab === 'extracted_ai_network' && <ExtractedAiNetwork tab="dashboard" />}
+          {(activeTab.startsWith('extracted_') && activeTab !== 'extracted_ai_network') && (
+            <ExtractedAiNetwork tab={activeTab.replace('extracted_', '')} />
+          )}
           {activeTab === 'ai_studio' && <AiStudioApp />}
           {activeTab === 'income_calculator' && <IncomeCalculator />}
           {activeTab === 'organization' && <OrganizationStructure />}

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Insurance Network &amp; Team Builder - ระบบบริหารทีมตัวแทนประกัน</title>
+    <meta name="description" content="ระบบบริหารทีมตัวแทนประกันชีวิต ขยายเครือข่ายอัตโนมัติ เลขรันผู้แนะนำอัตโนมัติ Tree Network และ Calculation Engine ตามเกณฑ์รายได้และตำแหน่ง" />
+    <meta property="og:title" content="AI Insurance Network &amp; Team Builder - ระบบบริหารทีมตัวแทนประกัน" />
+    <meta property="og:description" content="ระบบบริหารทีมตัวแทนประกันชีวิต ขยายเครือข่ายอัตโนมัติ เลขรันผู้แนะนำอัตโนมัติ Tree Network และ Calculation Engine ตามเกณฑ์รายได้และตำแหน่ง" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Sarabun:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="./static/index-DoTvPuU6.js"></script>
+    <link rel="stylesheet" crossorigin href="./static/index-BIjHwKV2.css">
+    <style>
+      /* ซ่อน sidebar ภายใน (เมนู 11 รายการ) เพราะเมนูหลักอยู่ที่ sidebar ของ OS แล้ว */
+      #app-sidebar-desktop { display: none !important; }
+    </style>
+    <style>
+      /* Badge สถานะ: โหมดจัดสายงาน + เลขผู้แนะนำรันปัจจุบัน (ย้ายมาจาก sidebar ที่ซ่อน) */
+      #ext-status-badge {
+        position: fixed;
+        top: 70px;
+        right: 14px;
+        z-index: 9990;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        background: rgba(15, 23, 42, 0.92);
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        border-radius: 12px;
+        padding: 8px 12px;
+        font-size: 11px;
+        line-height: 1.4;
+        color: #e2e8f0;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(6px);
+        pointer-events: none;
+        font-family: 'Sarabun', system-ui, sans-serif;
+        min-width: 205px;
+      }
+      #ext-status-badge .row {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+      }
+      #ext-status-badge .k { color: #94a3b8; font-weight: 500; }
+      #ext-status-badge .mode { color: #34d399; font-weight: 700; text-transform: uppercase; }
+      #ext-status-badge .sponsor { color: #fbbf24; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-weight: 700; }
+    </style>
+  </head>
+  <body class="bg-slate-50 font-sans antialiased text-slate-900 selection:bg-blue-600 selection:text-white">
+    <div id="root"></div>
+    <script>
+      // Deep-link support: /extracted-app/#<tab> -> click the matching sidebar item
+      // (tab ids mirror the extracted app's internal nav: nav-item-<id>)
+      (function () {
+        var TAB_IDS = ['dashboard','network_tree','members','registration','auto_builder','auto_sponsor','calculator','promotion','simulator','rules_editor','audit_logs'];
+        function applyHash() {
+          var h = (location.hash || '').replace(/^#\/?/, '');
+          if (!h || TAB_IDS.indexOf(h) === -1) return;
+          var el = document.getElementById('nav-item-' + h);
+          if (el) el.click();
+        }
+        var tries = 0;
+        var timer = setInterval(function () {
+          applyHash();
+          if (++tries > 50) clearInterval(timer); // ~15s max wait for React mount
+        }, 300);
+        window.addEventListener('hashchange', applyHash);
+      })();
+    </script>
+    <script>
+      // Status badge: read "โหมดจัดสายงาน" + "เลขผู้แนะนำรันปัจจุบัน" from the (hidden) sidebar DOM
+      // and show them as a floating badge so the info stays visible without the duplicated sidebar.
+      (function () {
+        function createBadge() {
+          var badge = document.createElement('div');
+          badge.id = 'ext-status-badge';
+          badge.innerHTML =
+            '<div class="row"><span class="k">โหมดจัดสายงาน:</span><span class="mode" id="ext-badge-mode">–</span></div>' +
+            '<div class="row"><span class="k">เลขผู้แนะนำรันปัจจุบัน:</span><span class="sponsor" id="ext-badge-sponsor">–</span></div>';
+          document.body.appendChild(badge);
+          return badge;
+        }
+        function readStatus() {
+          try {
+            var sidebar = document.getElementById('app-sidebar-desktop');
+            if (!sidebar) return;
+            var spans = sidebar.querySelectorAll('span');
+            for (var i = 0; i < spans.length; i++) {
+              var c = spans[i].className || '';
+              if (typeof c === 'string' && c.indexOf('bg-emerald-500/20') !== -1) {
+                document.getElementById('ext-badge-mode').textContent = spans[i].textContent;
+              }
+              if (typeof c === 'string' && c.indexOf('font-mono') !== -1 && c.indexOf('font-bold') !== -1) {
+                document.getElementById('ext-badge-sponsor').textContent = spans[i].textContent;
+              }
+            }
+          } catch (e) { /* ignore */ }
+        }
+        createBadge();
+        readStatus();
+        setInterval(readStatus, 800); // keep in sync if user changes mode / runs auto-sponsor
+      })();
+    </script>
+    <script>
+      // Member sync: when a new agent registers inside this app, capture the data and
+      // POST it to /api/members (same-origin) so it lands in Firestore (Vercel),
+      // Google Sheets and owner notifications — and the main OS picks it up via its
+      // Firestore realtime listener (เชื่อมข้อมูลในระบบเดียวกัน).
+      (function () {
+        var SEEN_KEY = 'extracted_synced_members_v1';
+        var seen = {};
+        try { seen = JSON.parse(localStorage.getItem(SEEN_KEY) || '{}'); } catch (e) {}
+        function seenSave() { try { localStorage.setItem(SEEN_KEY, JSON.stringify(seen)); } catch (e) {} }
+
+        function $(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+
+        function findSuccessBanner() {
+          var divs = document.querySelectorAll('div');
+          for (var i = 0; i < divs.length; i++) {
+            var el = divs[i];
+            var cn = el.className;
+            if (typeof cn === 'string' && cn.indexOf('from-emerald-900') !== -1 && el.textContent.indexOf('สมัครสมาชิกสำเร็จ') !== -1) {
+              return el;
+            }
+          }
+          return null;
+        }
+
+        function capture() {
+          var banner = findSuccessBanner();
+          if (!banner) return;
+
+          var code = null;
+          var sponsor = '';
+          var placement = '';
+          var spans = banner.querySelectorAll('span');
+          for (var j = 0; j < spans.length; j++) {
+            var sc = spans[j].className || '';
+            var tx = spans[j].textContent.trim();
+            if (typeof sc === 'string' && sc.indexOf('font-mono') !== -1 && sc.indexOf('text-amber-300') !== -1 && /^AG\d+$/.test(tx)) {
+              code = tx;
+            }
+          }
+          var strongs = banner.querySelectorAll('strong');
+          for (var k = 0; k < strongs.length; k++) {
+            var kc = strongs[k].className || '';
+            var kt = strongs[k].textContent.trim();
+            if (typeof kc === 'string' && kc.indexOf('text-sky-300') !== -1) placement = kt;
+            else if (typeof kc === 'string' && kc.indexOf('font-mono') !== -1 && /^AG\d+$/.test(kt)) sponsor = kt;
+          }
+          if (!code || seen[code]) return;
+
+          var fyc = parseFloat($('input-member-fyc')) || 0;
+          var renewal = parseFloat($('input-member-renewal')) || 0;
+          var today = new Date().toISOString().slice(0, 10);
+          var row = {
+            id: 'ext_' + code,
+            memberId: 'ext_' + code,
+            memberCode: code,
+            name: ($('input-member-name') + ' ' + $('input-member-surname')).trim(),
+            nickname: $('input-member-nickname'),
+            avatarUrl: '',
+            positionId: 'agent',
+            role: 'agent',
+            sponsorId: sponsor || 'SYSTEM',
+            parentMemberId: placement && /^AG\d+$/.test(placement) ? placement : null,
+            unitId: null,
+            centerId: null,
+            regionId: null,
+            joinDate: today,
+            status: 'active',
+            phone: $('input-member-phone'),
+            email: $('input-member-email'),
+            location: { province: '', region: 'Bangkok & Metro', lat: 0, lng: 0 },
+            personalFYC: fyc,
+            personalCOM: 0,
+            firstYearPremium: 0,
+            renewalPremium: renewal,
+            registeredAt: new Date().toISOString(),
+            source: 'team-builder',
+            placementParent: placement,
+          };
+
+          fetch('/api/members', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(row),
+          })
+            .then(function (r) { return r.json(); })
+            .then(function (j) { seen[code] = 1; seenSave(); })
+            .catch(function () { /* network error -> retry on next tick */ });
+        }
+
+        setInterval(capture, 1200);
+        try {
+          new MutationObserver(capture).observe(document.body, { childList: true, subtree: true });
+        } catch (e) {}
+      })();
+    </script>
+  </body>
+</html>

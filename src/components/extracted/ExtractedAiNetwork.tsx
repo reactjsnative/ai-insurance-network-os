@@ -5,8 +5,27 @@ import { ExternalLink, RefreshCw, Network } from 'lucide-react';
 // (same bundle as the preview URL https://extracted-ai-network-4o3epgsa0-ak-e11e.vercel.app).
 const EXTRACTED_APP_URL = 'https://extracted-ai-network-ak-e11e.vercel.app/';
 
-export const ExtractedAiNetwork: React.FC = () => {
+// Local same-origin copy (served from public/extracted-app/) so the parent can
+// deep-link into each section via URL hash (#<tab>).
+const EXTRACTED_LOCAL_URL = '/extracted-app/';
+
+const TAB_LABELS: Record<string, string> = {
+  dashboard: 'ภาพรวมระบบ (Dashboard)',
+  network_tree: 'ผังสายงาน Tree Network',
+  members: 'ทะเบียนสมาชิกตัวแทน',
+  registration: 'สมัครสมาชิก & Referral QR',
+  auto_builder: 'สร้างทีมอัตโนมัติ (Auto Builder)',
+  auto_sponsor: 'รันเลขผู้แนะนำอัตโนมัติ',
+  calculator: 'คำนวณรายได้ & ผลงาน',
+  promotion: 'ระบบเลื่อนตำแหน่ง',
+  simulator: 'จำลองการขยายทีม (Simulator)',
+  rules_editor: 'ตั้งค่าเกณฑ์รายได้ (Rules)',
+  audit_logs: 'ประวัติการทำงาน (Audit Logs)',
+};
+
+export const ExtractedAiNetwork: React.FC<{ tab?: string }> = ({ tab = 'dashboard' }) => {
   const [nonce, setNonce] = useState(0);
+  const src = `${EXTRACTED_LOCAL_URL}#${tab}`;
 
   return (
     <div className="flex flex-col h-[calc(100vh-8rem)] min-h-[560px] w-full rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 shadow-xl shadow-black/40">
@@ -16,10 +35,10 @@ export const ExtractedAiNetwork: React.FC = () => {
           <Network className="w-4 h-4 text-amber-400 shrink-0" />
           <div className="min-w-0">
             <p className="text-sm font-bold text-slate-100 truncate leading-tight">
-              extracted-ai-network
+              ระบบบริหารตัวแทนประกันชีวิต
             </p>
             <p className="text-[10px] text-slate-500 truncate leading-tight">
-              AI Insurance Network & Team Builder · ระบบบริหารทีมตัวแทนประกัน
+              {TAB_LABELS[tab] || tab} · AI Insurance Network &amp; Team Builder
             </p>
           </div>
         </div>
@@ -45,10 +64,10 @@ export const ExtractedAiNetwork: React.FC = () => {
         </div>
       </div>
 
-      {/* Full embedded app */}
+      {/* Full embedded app (same-origin copy, deep-linked to the selected section) */}
       <iframe
         key={nonce}
-        src={EXTRACTED_APP_URL}
+        src={src}
         title="extracted-ai-network — AI Insurance Network & Team Builder"
         className="flex-1 w-full bg-white"
         sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-popups-to-escape-sandbox"
