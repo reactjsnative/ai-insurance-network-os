@@ -50,7 +50,7 @@ let activeId = categories[0].id;
 function render(){
   const active = categories.find(c=>c.id===activeId) || categories[0];
   document.getElementById('app').innerHTML = `
-<header class="relative z-50 border-b border-sky-100 bg-sky-50">
+<header class="relative z-50 border-b border-sky-50/30 bg-sky-50">
   <nav class="mx-auto flex h-20 max-w-7xl items-center justify-between px-5">
     <a href="/" class="flex items-center gap-3">
       <span class="grid h-10 w-10 place-items-center rounded-xl bg-blue-600 text-white"><i data-lucide="sparkles" class="h-5 w-5"></i></span>
@@ -72,9 +72,9 @@ function render(){
 
   ${desktopOpen ? `
   <button id="btn-close-desktop" class="fixed inset-0 top-20 z-40 hidden cursor-default bg-sky-50/50 backdrop-blur-[2px] lg:block"></button>
-  <section class="absolute left-1/2 top-[92px] z-50 hidden w-[min(94vw,1400px)] -translate-x-1/2 overflow-hidden rounded-2xl border border-sky-100 bg-sky-50 shadow-2xl lg:block">
+  <section class="absolute left-1/2 top-[92px] z-50 hidden w-[min(94vw,1400px)] -translate-x-1/2 overflow-hidden rounded-2xl border border-sky-50/30 bg-sky-50 shadow-[0_8px_24px_rgba(148,163,184,0.08)] lg:block">
     <div class="grid min-h-[520px] grid-cols-[320px_1fr]">
-      <aside class="border-r border-sky-100 bg-sky-50 p-7">
+      <aside class="border-r border-sky-50/30 bg-sky-50 p-7">
         <p class="mb-5 text-xs font-semibold uppercase tracking-widest text-slate-500">หมวดหมู่</p>
         <div class="space-y-2">
           ${categories.map(c=>`
@@ -116,7 +116,7 @@ function render(){
     <div class="h-[calc(100vh-80px)] overflow-y-auto p-5">
       <div class="space-y-3">
         ${categories.map(c=>`
-          <div class="overflow-hidden rounded-xl border border-sky-100">
+          <div class="overflow-hidden rounded-xl border border-sky-50/30">
             <button data-mcat="${c.id}" class="flex w-full items-center gap-3 p-4 text-left">
               <span class="grid h-10 w-10 place-items-center rounded-lg bg-blue-100 text-blue-600"><i data-lucide="${c.icon}" class="h-5 w-5"></i></span>
               <span class="flex-1 font-semibold text-slate-900">${c.title}</span>

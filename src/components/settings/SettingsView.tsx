@@ -241,7 +241,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
   return (
     <div id="settings_integrations_view" className="space-y-6 max-w-7xl mx-auto pb-12">
       {/* Top Banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-sky-50 via-indigo-950 to-slate-50 border border-sky-100/60 p-6 sm:p-8 shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-sky-50 via-indigo-950 to-slate-50 border border-sky-50/40 p-6 sm:p-8 shadow-[0_4px_12px_rgba(148,163,184,0.10)]">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
@@ -260,12 +260,12 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
           </div>
 
           {/* Tab Switcher */}
-          <div className="flex flex-wrap items-center gap-2 bg-[#f0f9ff]/80 p-1.5 rounded-xl border border-sky-100/60 self-start md:self-auto">
+          <div className="flex flex-wrap items-center gap-2 bg-[#fcfdff]/80 p-1.5 rounded-xl border border-sky-50/40 self-start md:self-auto">
             <button
               onClick={() => setActiveTab('auth_settings')}
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'auth_settings'
-                  ? 'bg-blue-600 text-slate-950 shadow-sm shadow-amber-500/30'
+                  ? 'bg-blue-600 text-slate-950 shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/30'
                   : 'text-slate-800 hover:text-slate-800'
               }`}
             >
@@ -276,7 +276,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               onClick={() => setActiveTab('firebase_cloud')}
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'firebase_cloud'
-                  ? 'bg-blue-600 text-slate-950 shadow-sm shadow-amber-500/30'
+                  ? 'bg-blue-600 text-slate-950 shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/30'
                   : 'text-slate-800 hover:text-slate-800'
               }`}
             >
@@ -287,7 +287,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               onClick={() => setActiveTab('integrations')}
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'integrations'
-                  ? 'bg-indigo-600 text-slate-900 shadow-sm shadow-indigo-600/30'
+                  ? 'bg-indigo-600 text-slate-900 shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-indigo-600/30'
                   : 'text-slate-800 hover:text-slate-800'
               }`}
             >
@@ -298,7 +298,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               onClick={() => setActiveTab('database_schema')}
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'database_schema'
-                  ? 'bg-indigo-600 text-slate-900 shadow-sm shadow-indigo-600/30'
+                  ? 'bg-indigo-600 text-slate-900 shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-indigo-600/30'
                   : 'text-slate-800 hover:text-slate-800'
               }`}
             >
@@ -309,7 +309,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               onClick={() => setActiveTab('security_rls')}
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'security_rls'
-                  ? 'bg-indigo-600 text-slate-900 shadow-sm shadow-indigo-600/30'
+                  ? 'bg-indigo-600 text-slate-900 shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-indigo-600/30'
                   : 'text-slate-800 hover:text-slate-800'
               }`}
             >
@@ -323,7 +323,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               }}
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'test_runner'
-                  ? 'bg-emerald-600 text-slate-900 shadow-sm shadow-emerald-600/30'
+                  ? 'bg-emerald-600 text-slate-900 shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-emerald-600/30'
                   : 'text-slate-800 hover:text-slate-800'
               }`}
             >
@@ -338,13 +338,13 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
       {activeTab === 'auth_settings' && (
         <div className="space-y-6">
           {/* Active Account Overview Card */}
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-sky-50 via-sky-100 to-indigo-950/40 border border-sky-100/60 shadow-xl">
+          <div className="p-6 rounded-2xl bg-gradient-to-br from-sky-50 via-sky-100 to-indigo-950/40 border border-sky-50/40 shadow-[0_4px_12px_rgba(148,163,184,0.10)]">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="flex items-center gap-4">
                 <img
                   src={authUser.avatarUrl || activeUser.avatarUrl}
                   alt={authUser.name}
-                  className="w-16 h-16 rounded-2xl object-cover border-2 border-blue-600/40 shadow-sm"
+                  className="w-16 h-16 rounded-2xl object-cover border-2 border-blue-600/40 shadow-[0_1px_3px_rgba(148,163,184,0.08)]"
                   referrerPolicy="no-referrer"
                 />
                 <div>
@@ -364,7 +364,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => openAuthModal('login')}
-                  className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 font-bold text-xs shadow-sm shadow-amber-500/20 transition-all flex items-center gap-1.5 cursor-pointer"
+                  className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 font-bold text-xs shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/20 transition-all flex items-center gap-1.5 cursor-pointer"
                 >
                   <LogIn className="w-3.5 h-3.5" />
                   <span>เปิดหน้าต่างล็อกอิน (Open Login Modal)</span>
@@ -376,7 +376,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
           {/* Social Provider Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* 1. Email & Password */}
-            <div className="p-5 rounded-2xl bg-[#f0f9ff] border border-sky-100/60 space-y-4">
+            <div className="p-5 rounded-2xl bg-[#fcfdff] border border-sky-50/40 space-y-4">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-400">
@@ -391,17 +391,17 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
                   {authUser.connectedProviders.includes('email') ? 'เชื่อมต่อแล้ว' : 'พร้อมใช้งาน'}
                 </span>
               </div>
-              <div className="p-3 bg-[#f0f9ff] rounded-xl border border-sky-100/60 text-xs text-slate-800 font-mono flex items-center justify-between">
+              <div className="p-3 bg-[#fcfdff] rounded-xl border border-sky-50/40 text-xs text-slate-800 font-mono flex items-center justify-between">
                 <span>{authUser.email}</span>
                 <span className="text-slate-800 text-[11px]">Primary Account</span>
               </div>
             </div>
 
             {/* 2. Google OAuth */}
-            <div className="p-5 rounded-2xl bg-[#f0f9ff] border border-sky-100/60 space-y-4">
+            <div className="p-5 rounded-2xl bg-[#fcfdff] border border-sky-50/40 space-y-4">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-xl bg-[#f0f9ff]/10 border border-sky-100/60">
+                  <div className="p-2.5 rounded-xl bg-[#fcfdff]/10 border border-sky-50/40">
                     <GoogleIcon className="w-5 h-5" />
                   </div>
                   <div>
@@ -412,12 +412,12 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
                 <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${
                   authUser.connectedProviders.includes('google')
                     ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
-                    : 'bg-[#e0f2fe] text-slate-800 border-sky-100/60'
+                    : 'bg-[#f0f9ff] text-slate-800 border-sky-50/40'
                 }`}>
                   {authUser.connectedProviders.includes('google') ? 'Connected' : 'Not Linked'}
                 </span>
               </div>
-              <div className="flex items-center justify-between pt-2 border-t border-sky-100/60">
+              <div className="flex items-center justify-between pt-2 border-t border-sky-50/40">
                 <span className="text-xs text-slate-800">
                   {authUser.connectedProviders.includes('google') ? 'เชื่อมต่อกับ Google ID เรียบร้อย' : 'ยังไม่ได้เชื่อมต่อ Google'}
                 </span>
@@ -441,10 +441,10 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
             </div>
 
             {/* 3. TikTok OAuth */}
-            <div className="p-5 rounded-2xl bg-[#f0f9ff] border border-sky-100/60 space-y-4">
+            <div className="p-5 rounded-2xl bg-[#fcfdff] border border-sky-50/40 space-y-4">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-xl bg-[#e0f2fe] border border-sky-100/60">
+                  <div className="p-2.5 rounded-xl bg-[#f0f9ff] border border-sky-50/40">
                     <TikTokIcon className="w-5 h-5 text-pink-400" />
                   </div>
                   <div>
@@ -455,12 +455,12 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
                 <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${
                   authUser.connectedProviders.includes('tiktok')
                     ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
-                    : 'bg-[#e0f2fe] text-slate-800 border-sky-100/60'
+                    : 'bg-[#f0f9ff] text-slate-800 border-sky-50/40'
                 }`}>
                   {authUser.connectedProviders.includes('tiktok') ? 'Connected' : 'Not Linked'}
                 </span>
               </div>
-              <div className="flex items-center justify-between pt-2 border-t border-sky-100/60">
+              <div className="flex items-center justify-between pt-2 border-t border-sky-50/40">
                 <span className="text-xs text-slate-800 font-mono">
                   {authUser.connectedProviders.includes('tiktok') ? (authUser.tiktokHandle || '@insurance_leader') : 'ยังไม่ได้เชื่อมต่อ TikTok'}
                 </span>
@@ -484,7 +484,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
             </div>
 
             {/* 4. Facebook OAuth */}
-            <div className="p-5 rounded-2xl bg-[#f0f9ff] border border-sky-100/60 space-y-4">
+            <div className="p-5 rounded-2xl bg-[#fcfdff] border border-sky-50/40 space-y-4">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-xl bg-blue-600/20 border border-blue-500/30">
@@ -498,12 +498,12 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
                 <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${
                   authUser.connectedProviders.includes('facebook')
                     ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
-                    : 'bg-[#e0f2fe] text-slate-800 border-sky-100/60'
+                    : 'bg-[#f0f9ff] text-slate-800 border-sky-50/40'
                 }`}>
                   {authUser.connectedProviders.includes('facebook') ? 'Connected' : 'Not Linked'}
                 </span>
               </div>
-              <div className="flex items-center justify-between pt-2 border-t border-sky-100/60">
+              <div className="flex items-center justify-between pt-2 border-t border-sky-50/40">
                 <span className="text-xs text-slate-800">
                   {authUser.connectedProviders.includes('facebook') ? (authUser.facebookId || 'fb.agent.official') : 'ยังไม่ได้เชื่อมต่อ Facebook'}
                 </span>
@@ -567,7 +567,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
                 auth: 'OAuth2 Connected: akarapol.pro798@gmail.com'
               },
             ].map((item) => (
-              <div key={item.id} className="bg-[#f0f9ff] border border-sky-100/60 rounded-2xl p-5 shadow-sm space-y-3">
+              <div key={item.id} className="bg-[#fcfdff] border border-sky-50/40 rounded-2xl p-5 shadow-[0_1px_3px_rgba(148,163,184,0.08)] space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
                     <div className="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
@@ -583,7 +583,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
                   </div>
                   <button
                     onClick={() => handleCopy(item.endpoint, item.id)}
-                    className="px-2.5 py-1 rounded bg-[#e0f2fe] hover:bg-slate-200 text-xs text-slate-800 flex items-center gap-1"
+                    className="px-2.5 py-1 rounded bg-[#f0f9ff] hover:bg-slate-200 text-xs text-slate-800 flex items-center gap-1"
                   >
                     {copiedKey === item.id ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copiedKey === item.id ? 'Copied' : 'Copy'}</span>
@@ -592,7 +592,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
 
                 <p className="text-xs text-slate-800 leading-relaxed">{item.desc}</p>
 
-                <div className="bg-[#f0f9ff] p-2.5 rounded-lg border border-sky-100/60 text-[11px] font-mono text-slate-800 overflow-x-auto">
+                <div className="bg-[#fcfdff] p-2.5 rounded-lg border border-sky-50/40 text-[11px] font-mono text-slate-800 overflow-x-auto">
                   <p className="text-slate-800">Endpoint:</p>
                   <p className="text-indigo-300 truncate">{item.endpoint}</p>
                 </div>
@@ -604,8 +604,8 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
 
       {/* TAB 2: SUPABASE POSTGRESQL SCHEMA */}
       {activeTab === 'database_schema' && (
-        <div className="bg-[#f0f9ff] border border-sky-100/60 rounded-2xl p-6 shadow-xl space-y-4">
-          <div className="flex items-center justify-between border-b border-sky-100/60 pb-3">
+        <div className="bg-[#fcfdff] border border-sky-50/40 rounded-2xl p-6 shadow-[0_4px_12px_rgba(148,163,184,0.10)] space-y-4">
+          <div className="flex items-center justify-between border-b border-sky-50/40 pb-3">
             <div className="flex items-center gap-2">
               <Database className="w-5 h-5 text-indigo-400" />
               <div>
@@ -622,7 +622,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
             </button>
           </div>
 
-          <div className="bg-[#f0f9ff] p-4 rounded-xl border border-sky-100/60 font-mono text-xs text-emerald-400 overflow-x-auto max-h-96">
+          <div className="bg-[#fcfdff] p-4 rounded-xl border border-sky-50/40 font-mono text-xs text-emerald-400 overflow-x-auto max-h-96">
             <pre>{supabaseDdlSchema}</pre>
           </div>
         </div>
@@ -630,8 +630,8 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
 
       {/* TAB 3: SECURITY & RLS POLICIES */}
       {activeTab === 'security_rls' && (
-        <div className="bg-[#f0f9ff] border border-sky-100/60 rounded-2xl p-6 shadow-xl space-y-4">
-          <div className="border-b border-sky-100/60 pb-3 flex items-center gap-2">
+        <div className="bg-[#fcfdff] border border-sky-50/40 rounded-2xl p-6 shadow-[0_4px_12px_rgba(148,163,184,0.10)] space-y-4">
+          <div className="border-b border-sky-50/40 pb-3 flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-emerald-400" />
             <div>
               <h3 className="font-bold text-slate-900 text-sm">การกำหนดสิทธิ์และการเข้าถึงข้อมูล (Role-Based Access & RLS)</h3>
@@ -647,7 +647,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               { role: 'Unit Manager (ผู้บริหารหน่วย)', access: 'มองเห็นผลงานตัวแทนในหน่วยตนเอง', badge: 'Unit Scope' },
               { role: 'Agent (ตัวแทนประกันชีวิต)', access: 'มองเห็นเฉพาะผลงานส่วนตัวและผู้ที่ตนเองแนะนำตรง (Direct Sponsor) เท่านั้น', badge: 'Strict Isolation' },
             ].map((r, i) => (
-              <div key={i} className="p-4 rounded-xl bg-[#f0f9ff] border border-sky-100/60 space-y-2">
+              <div key={i} className="p-4 rounded-xl bg-[#fcfdff] border border-sky-50/40 space-y-2">
                 <div className="flex items-center justify-between">
                   <h4 className="font-bold text-slate-800 text-xs">{r.role}</h4>
                   <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">{r.badge}</span>
@@ -661,8 +661,8 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
 
       {/* TAB 4: IN-APP UNIT TEST RUNNER */}
       {activeTab === 'test_runner' && (
-        <div className="bg-[#f0f9ff] border border-sky-100/60 rounded-2xl p-6 shadow-xl space-y-4">
-          <div className="flex items-center justify-between border-b border-sky-100/60 pb-3">
+        <div className="bg-[#fcfdff] border border-sky-50/40 rounded-2xl p-6 shadow-[0_4px_12px_rgba(148,163,184,0.10)] space-y-4">
+          <div className="flex items-center justify-between border-b border-sky-50/40 pb-3">
             <div className="flex items-center gap-2">
               <Terminal className="w-5 h-5 text-emerald-400" />
               <div>
@@ -674,7 +674,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
             <button
               onClick={runAllUnitTests}
               disabled={runningTests}
-              className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-900 font-semibold text-xs flex items-center gap-2 shadow-sm shadow-emerald-600/30 transition-all"
+              className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-900 font-semibold text-xs flex items-center gap-2 shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-emerald-600/30 transition-all"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${runningTests ? 'animate-spin' : ''}`} />
               <span>{runningTests ? 'กำลังทดสอบ...' : 'รันทดสอบทั้งหมด (Run Tests)'}</span>

@@ -65,7 +65,7 @@ export default function MegaMenu() {
   return (
     <header
       ref={navigationRef}
-      className="relative z-50 border-b border-sky-100/60 bg-white"
+      className="relative z-50 border-b border-sky-50/40 bg-white"
     >
       <nav
         className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5"
@@ -120,7 +120,7 @@ export default function MegaMenu() {
         <div className="hidden items-center gap-3 lg:flex">
           <a
             href="/login"
-            className="rounded-full px-5 py-2.5 font-medium text-slate-800 hover:bg-[#e0f2fe]"
+            className="rounded-full px-5 py-2.5 font-medium text-slate-800 hover:bg-[#f0f9ff]"
           >
             เข้าสู่ระบบ
           </a>
@@ -138,7 +138,7 @@ export default function MegaMenu() {
           aria-label="เปิดเมนู"
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen(true)}
-          className="rounded-lg p-2 text-slate-800 hover:bg-[#e0f2fe] lg:hidden"
+          className="rounded-lg p-2 text-slate-800 hover:bg-[#f0f9ff] lg:hidden"
         >
           <Menu className="h-6 w-6" />
         </button>
@@ -157,10 +157,10 @@ export default function MegaMenu() {
             id="products-mega-menu"
             role="menu"
             aria-label="รายการเมนู"
-            className="absolute left-1/2 top-[92px] z-50 hidden w-[min(94vw,1400px)] -translate-x-1/2 overflow-hidden rounded-2xl border border-sky-100/60 bg-white shadow-2xl lg:block"
+            className="absolute left-1/2 top-[92px] z-50 hidden w-[min(94vw,1400px)] -translate-x-1/2 overflow-hidden rounded-2xl border border-sky-50/40 bg-white shadow-[0_8px_24px_rgba(148,163,184,0.08)] lg:block"
           >
             <div className="grid min-h-[520px] grid-cols-[320px_1fr]">
-              <aside className="border-r border-sky-100/60 bg-white p-7">
+              <aside className="border-r border-sky-50/40 bg-white p-7">
                 <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-slate-800">
                   หมวดหมู่
                 </p>
@@ -250,7 +250,7 @@ export default function MegaMenu() {
                         role="menuitem"
                         className="group flex gap-4 rounded-xl border border-transparent p-4 transition hover:border-blue-100 hover:bg-blue-50"
                       >
-                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#e0f2fe] text-slate-800 transition group-hover:bg-blue-600 group-hover:text-slate-900">
+                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#f0f9ff] text-slate-800 transition group-hover:bg-blue-600 group-hover:text-slate-900">
                           <Icon className="h-5 w-5" />
                         </span>
 
@@ -285,7 +285,7 @@ export default function MegaMenu() {
               type="button"
               aria-label="ปิดเมนู"
               onClick={() => setMobileOpen(false)}
-              className="rounded-lg p-2 text-slate-800 hover:bg-[#e0f2fe]"
+              className="rounded-lg p-2 text-slate-800 hover:bg-[#f0f9ff]"
             >
               <X className="h-6 w-6" />
             </button>
@@ -301,7 +301,7 @@ export default function MegaMenu() {
                 return (
                   <div
                     key={category.id}
-                    className="overflow-hidden rounded-xl border border-sky-100/60"
+                    className="overflow-hidden rounded-xl border border-sky-50/40"
                   >
                     <button
                       type="button"

@@ -26,12 +26,12 @@ export const AuthToast: React.FC = () => {
         initial={{ opacity: 0, y: 20, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 20, scale: 0.95 }}
-        className={`p-4 rounded-2xl shadow-xl border flex items-start gap-3 backdrop-blur-md ${
+        className={`p-4 rounded-2xl shadow-[0_4px_12px_rgba(148,163,184,0.10)] border flex items-start gap-3 backdrop-blur-md ${
           authNotification.type === 'success'
-            ? 'bg-[#f0f9ff]/95 text-slate-900 border-emerald-500/40'
+            ? 'bg-[#fcfdff]/95 text-slate-900 border-emerald-500/40'
             : authNotification.type === 'error'
             ? 'bg-rose-950/95 text-slate-900 border-rose-500/40'
-            : 'bg-[#f0f9ff]/95 text-slate-900 border-indigo-500/40'
+            : 'bg-[#fcfdff]/95 text-slate-900 border-indigo-500/40'
         }`}
       >
         {authNotification.type === 'success' && (

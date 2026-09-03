@@ -275,28 +275,28 @@ export const AuthModal: React.FC = () => {
   return (
     <div 
       id="auth-modal-backdrop"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#f0f9ff]/70 backdrop-blur-md overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#fcfdff]/70 backdrop-blur-md overflow-y-auto"
     >
       <motion.div
         id="auth-modal-container"
         initial={{ opacity: 0, scale: 0.96, y: 10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.96, y: 10 }}
-        className="w-full max-w-lg bg-[#f0f9ff] rounded-3xl shadow-2xl border border-sky-100/60/80 overflow-hidden my-8"
+        className="w-full max-w-lg bg-[#fcfdff] rounded-3xl shadow-[0_8px_24px_rgba(148,163,184,0.08)] border border-sky-50/40/80 overflow-hidden my-8"
       >
         {/* Header Bar */}
         <div className="relative bg-gradient-to-r from-blue-700 via-indigo-700 to-violet-700 text-white p-6 sm:p-7">
           <button
             id="btn-close-auth-modal"
             onClick={closeAuthModal}
-            className="absolute top-5 right-5 p-2 rounded-xl text-slate-800 hover:text-slate-900 hover:bg-[#f0f9ff]/10 transition-colors cursor-pointer"
+            className="absolute top-5 right-5 p-2 rounded-xl text-slate-800 hover:text-slate-900 hover:bg-[#fcfdff]/10 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
 
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-cyan-400 p-0.5 shadow-sm shadow-indigo-500/20">
-              <div className="w-full h-full bg-[#f0f9ff] rounded-[10px] flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-cyan-400 p-0.5 shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-indigo-500/20">
+              <div className="w-full h-full bg-[#fcfdff] rounded-[10px] flex items-center justify-center">
                 <Sparkles className="w-5 h-5 text-indigo-400" />
               </div>
             </div>
@@ -313,7 +313,7 @@ export const AuthModal: React.FC = () => {
           </div>
 
           {/* Tab navigation */}
-          <div className="flex items-center gap-2 mt-5 p-1 bg-[#e0f2fe]/80 rounded-xl border border-sky-100/60/60">
+          <div className="flex items-center gap-2 mt-5 p-1 bg-[#f0f9ff]/80 rounded-xl border border-sky-50/40/60">
             <button
               id="tab-btn-login"
               onClick={() => {
@@ -322,7 +322,7 @@ export const AuthModal: React.FC = () => {
               }}
               className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 authModalTab === 'login'
-                  ? 'bg-indigo-600 text-slate-900 shadow-sm'
+                  ? 'bg-indigo-600 text-slate-900 shadow-[0_1px_3px_rgba(148,163,184,0.08)]'
                   : 'text-slate-800 hover:text-slate-900'
               }`}
             >
@@ -336,7 +336,7 @@ export const AuthModal: React.FC = () => {
               }}
               className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 authModalTab === 'register'
-                  ? 'bg-indigo-600 text-slate-900 shadow-sm'
+                  ? 'bg-indigo-600 text-slate-900 shadow-[0_1px_3px_rgba(148,163,184,0.08)]'
                   : 'text-slate-800 hover:text-slate-900'
               }`}
             >
@@ -369,7 +369,7 @@ export const AuthModal: React.FC = () => {
                     id="btn-login-google"
                     type="button"
                     onClick={() => openOAuthPopup('google')}
-                    className="w-full py-2.5 px-3.5 rounded-xl border border-sky-100/60 hover:border-indigo-300 bg-[#f0f9ff] hover:bg-[#f0f9ff]/80 text-slate-800 font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-2.5 px-3.5 rounded-xl border border-sky-50/40 hover:border-indigo-300 bg-[#fcfdff] hover:bg-[#fcfdff]/80 text-slate-800 font-semibold text-xs transition-all shadow-[0_1px_3px_rgba(148,163,184,0.08)] flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <GoogleIcon className="w-4 h-4" />
                     <span>Google</span>
@@ -379,7 +379,7 @@ export const AuthModal: React.FC = () => {
                     id="btn-login-tiktok"
                     type="button"
                     onClick={() => openOAuthPopup('tiktok')}
-                    className="w-full py-2.5 px-3.5 rounded-xl border border-sky-100/60 bg-[#f0f9ff] hover:bg-zinc-900 text-slate-900 font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-2.5 px-3.5 rounded-xl border border-sky-50/40 bg-[#fcfdff] hover:bg-zinc-900 text-slate-900 font-semibold text-xs transition-all shadow-[0_1px_3px_rgba(148,163,184,0.08)] flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <TikTokIcon className="w-4 h-4 text-slate-900" />
                     <span>TikTok</span>
@@ -389,7 +389,7 @@ export const AuthModal: React.FC = () => {
                     id="btn-login-facebook"
                     type="button"
                     onClick={() => openOAuthPopup('facebook')}
-                    className="w-full py-2.5 px-3.5 rounded-xl border border-[#1877F2] bg-[#1877F2] hover:bg-[#166fe5] text-slate-900 font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-2.5 px-3.5 rounded-xl border border-[#1877F2] bg-[#1877F2] hover:bg-[#166fe5] text-slate-900 font-semibold text-xs transition-all shadow-[0_1px_3px_rgba(148,163,184,0.08)] flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <FacebookIcon className="w-4 h-4" />
                     <span>Facebook</span>
@@ -399,7 +399,7 @@ export const AuthModal: React.FC = () => {
                     id="btn-login-github"
                     type="button"
                     onClick={() => openOAuthPopup('github')}
-                    className="w-full py-2.5 px-3.5 rounded-xl border border-sky-100/60 bg-[#f0f9ff] hover:bg-[#f0f9ff] text-slate-900 font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-2.5 px-3.5 rounded-xl border border-sky-50/40 bg-[#fcfdff] hover:bg-[#fcfdff] text-slate-900 font-semibold text-xs transition-all shadow-[0_1px_3px_rgba(148,163,184,0.08)] flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <GithubIcon className="w-4 h-4 text-slate-900" />
                     <span>GitHub</span>
@@ -409,8 +409,8 @@ export const AuthModal: React.FC = () => {
 
               {/* Divider */}
               <div className="relative flex items-center justify-center">
-                <div className="border-t border-sky-100/60 w-full" />
-                <span className="bg-[#f0f9ff] px-3 text-[11px] font-medium text-slate-800 uppercase tracking-wider">
+                <div className="border-t border-sky-50/40 w-full" />
+                <span className="bg-[#fcfdff] px-3 text-[11px] font-medium text-slate-800 uppercase tracking-wider">
                   หรือใช้อีเมล & รหัสผ่าน
                 </span>
               </div>
@@ -430,7 +430,7 @@ export const AuthModal: React.FC = () => {
                       value={loginEmail}
                       onChange={e => setLoginEmail(e.target.value)}
                       placeholder="akarapol.pro798@gmail.com"
-                      className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-sky-100/60 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 text-xs text-slate-800 outline-none transition-all"
+                      className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-sky-50/40 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 text-xs text-slate-800 outline-none transition-all"
                     />
                   </div>
                 </div>
@@ -458,7 +458,7 @@ export const AuthModal: React.FC = () => {
                       value={loginPassword}
                       onChange={e => setLoginPassword(e.target.value)}
                       placeholder="••••••••"
-                      className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-sky-100/60 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 text-xs text-slate-800 outline-none transition-all"
+                      className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-sky-50/40 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 text-xs text-slate-800 outline-none transition-all"
                     />
                     <button
                       type="button"
@@ -486,7 +486,7 @@ export const AuthModal: React.FC = () => {
                   id="btn-submit-email-login"
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-slate-900 font-bold text-xs transition-all shadow-sm shadow-indigo-600/20 flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-slate-900 font-bold text-xs transition-all shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-indigo-600/20 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   {isLoading ? (
                     <>
@@ -520,7 +520,7 @@ export const AuthModal: React.FC = () => {
                     value={regName}
                     onChange={e => setRegName(e.target.value)}
                     placeholder="เช่น คุณสมชาย เจริญกิจ"
-                    className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-sky-100/60 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 text-xs text-slate-800 outline-none transition-all"
+                    className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-sky-50/40 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 text-xs text-slate-800 outline-none transition-all"
                   />
                 </div>
               </div>
@@ -538,7 +538,7 @@ export const AuthModal: React.FC = () => {
                     value={regEmail}
                     onChange={e => setRegEmail(e.target.value)}
                     placeholder="somchai@insurance-os.com"
-                    className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-sky-100/60 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 text-xs text-slate-800 outline-none transition-all"
+                    className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-sky-50/40 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 text-xs text-slate-800 outline-none transition-all"
                   />
                 </div>
               </div>
@@ -556,7 +556,7 @@ export const AuthModal: React.FC = () => {
                     value={regPassword}
                     onChange={e => setRegPassword(e.target.value)}
                     placeholder="ขั้นต่ำ 6 ตัวอักษร"
-                    className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-sky-100/60 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 text-xs text-slate-800 outline-none transition-all"
+                    className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-sky-50/40 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 text-xs text-slate-800 outline-none transition-all"
                   />
                   <button
                     type="button"
@@ -581,7 +581,7 @@ export const AuthModal: React.FC = () => {
                       value={regPhone}
                       onChange={e => setRegPhone(e.target.value)}
                       placeholder="081-234-5678"
-                      className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-sky-100/60 focus:border-indigo-500 text-xs text-slate-800 outline-none"
+                      className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-sky-50/40 focus:border-indigo-500 text-xs text-slate-800 outline-none"
                     />
                   </div>
                 </div>
@@ -596,7 +596,7 @@ export const AuthModal: React.FC = () => {
                     value={regSponsorCode}
                     onChange={e => setRegSponsorCode(e.target.value)}
                     placeholder="รหัสผู้แนะนำ (ถ้ามี)"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-sky-100/60 focus:border-indigo-500 text-xs text-slate-800 outline-none uppercase"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-sky-50/40 focus:border-indigo-500 text-xs text-slate-800 outline-none uppercase"
                   />
                 </div>
               </div>
@@ -609,7 +609,7 @@ export const AuthModal: React.FC = () => {
                   id="select-reg-position"
                   value={regPosition}
                   onChange={e => setRegPosition(e.target.value as PositionId)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-sky-100/60 focus:border-indigo-500 text-xs text-slate-800 outline-none bg-[#f0f9ff]"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-sky-50/40 focus:border-indigo-500 text-xs text-slate-800 outline-none bg-[#fcfdff]"
                 >
                   <option value="agent">ตัวแทน (Agent)</option>
                   <option value="unit_manager">ผู้บริหารหน่วย (UM)</option>
@@ -621,7 +621,7 @@ export const AuthModal: React.FC = () => {
                 id="btn-submit-register"
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-slate-900 font-bold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer mt-2"
+                className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-slate-900 font-bold text-xs transition-all shadow-[0_1px_3px_rgba(148,163,184,0.08)] flex items-center justify-center gap-2 cursor-pointer mt-2"
               >
                 {isLoading ? (
                   <>
@@ -663,7 +663,7 @@ export const AuthModal: React.FC = () => {
                         value={forgotEmail}
                         onChange={e => setForgotEmail(e.target.value)}
                         placeholder="you@example.com"
-                        className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-sky-100/60 focus:border-indigo-500 text-xs text-slate-800 outline-none"
+                        className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-sky-50/40 focus:border-indigo-500 text-xs text-slate-800 outline-none"
                       />
                     </div>
                   </div>
@@ -672,7 +672,7 @@ export const AuthModal: React.FC = () => {
                     id="btn-send-reset-email"
                     type="submit"
                     disabled={isLoading}
-                    className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-slate-900 font-bold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-slate-900 font-bold text-xs transition-all shadow-[0_1px_3px_rgba(148,163,184,0.08)] flex items-center justify-center gap-2 cursor-pointer"
                   >
                     {isLoading ? (
                       <>
@@ -710,7 +710,7 @@ export const AuthModal: React.FC = () => {
                       value={otpCode}
                       onChange={e => setOtpCode(e.target.value.replace(/\D/g, ''))}
                       placeholder="000000"
-                      className="w-full px-3.5 py-3 rounded-xl border border-sky-100/60 focus:border-indigo-500 text-center text-xl tracking-[0.5em] font-bold text-slate-800 outline-none font-mono"
+                      className="w-full px-3.5 py-3 rounded-xl border border-sky-50/40 focus:border-indigo-500 text-center text-xl tracking-[0.5em] font-bold text-slate-800 outline-none font-mono"
                     />
                   </div>
 
@@ -725,7 +725,7 @@ export const AuthModal: React.FC = () => {
                         value={newPassword}
                         onChange={e => setNewPassword(e.target.value)}
                         placeholder="อย่างน้อย 6 ตัวอักษร"
-                        className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-sky-100/60 focus:border-indigo-500 text-xs text-slate-800 outline-none"
+                        className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-sky-50/40 focus:border-indigo-500 text-xs text-slate-800 outline-none"
                       />
                       <button
                         type="button"
@@ -748,7 +748,7 @@ export const AuthModal: React.FC = () => {
                         value={confirmPassword}
                         onChange={e => setConfirmPassword(e.target.value)}
                         placeholder="พิมพ์รหัสผ่านซ้ำอีกครั้ง"
-                        className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-sky-100/60 focus:border-indigo-500 text-xs text-slate-800 outline-none"
+                        className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-sky-50/40 focus:border-indigo-500 text-xs text-slate-800 outline-none"
                       />
                     </div>
                   </div>
@@ -757,7 +757,7 @@ export const AuthModal: React.FC = () => {
                     id="btn-verify-otp"
                     type="submit"
                     disabled={isLoading}
-                    className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-slate-900 font-bold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-slate-900 font-bold text-xs transition-all shadow-[0_1px_3px_rgba(148,163,184,0.08)] flex items-center justify-center gap-2 cursor-pointer"
                   >
                     {isLoading ? (
                       <>
@@ -800,7 +800,7 @@ export const AuthModal: React.FC = () => {
                       value={resetCode}
                       onChange={e => setResetCode(e.target.value.trim())}
                       placeholder="วางรหัสยืนยัน (oobCode) จากลิงก์ในอีเมล"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-sky-100/60 focus:border-indigo-500 text-xs text-slate-800 outline-none font-mono"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-sky-50/40 focus:border-indigo-500 text-xs text-slate-800 outline-none font-mono"
                     />
                     <p className="text-[11px] text-slate-800 mt-1.5">
                       ไม่สะดวกคลิกลิงก์? วางรหัสยืนยันจากลิงก์ในอีเมลตรงนี้ แล้วกดยืนยันรหัส
@@ -811,7 +811,7 @@ export const AuthModal: React.FC = () => {
                     id="btn-verify-reset-code"
                     type="submit"
                     disabled={isLoading}
-                    className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-slate-900 font-bold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-slate-900 font-bold text-xs transition-all shadow-[0_1px_3px_rgba(148,163,184,0.08)] flex items-center justify-center gap-2 cursor-pointer"
                   >
                     {isLoading ? (
                       <>
@@ -855,7 +855,7 @@ export const AuthModal: React.FC = () => {
                         value={newPassword}
                         onChange={e => setNewPassword(e.target.value)}
                         placeholder="อย่างน้อย 6 ตัวอักษร"
-                        className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-sky-100/60 focus:border-indigo-500 text-xs text-slate-800 outline-none"
+                        className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-sky-50/40 focus:border-indigo-500 text-xs text-slate-800 outline-none"
                       />
                       <button
                         type="button"
@@ -878,7 +878,7 @@ export const AuthModal: React.FC = () => {
                         value={confirmPassword}
                         onChange={e => setConfirmPassword(e.target.value)}
                         placeholder="พิมพ์รหัสผ่านซ้ำอีกครั้ง"
-                        className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-sky-100/60 focus:border-indigo-500 text-xs text-slate-800 outline-none"
+                        className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-sky-50/40 focus:border-indigo-500 text-xs text-slate-800 outline-none"
                       />
                     </div>
                   </div>
@@ -887,7 +887,7 @@ export const AuthModal: React.FC = () => {
                     id="btn-confirm-reset-password"
                     type="submit"
                     disabled={isLoading}
-                    className="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-slate-900 font-bold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-slate-900 font-bold text-xs transition-all shadow-[0_1px_3px_rgba(148,163,184,0.08)] flex items-center justify-center gap-2 cursor-pointer"
                   >
                     {isLoading ? (
                       <>

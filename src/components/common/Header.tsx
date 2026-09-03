@@ -89,10 +89,10 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <header id="app_header" className="h-16 border-b border-sky-100/60 bg-[#f0f9ff]/95 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between sticky top-0 z-40">
+      <header id="app_header" className="h-16 border-b border-sky-50/40 bg-[#fcfdff]/95 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between sticky top-0 z-40">
         {/* Left: Brand / Title */}
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 flex items-center justify-center shadow-sm shadow-amber-500/20 text-slate-950 font-black text-lg shrink-0">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 flex items-center justify-center shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/20 text-slate-950 font-black text-lg shrink-0">
             OS
           </div>
           <div className="hidden sm:block">
@@ -118,30 +118,30 @@ export const Header: React.FC = () => {
               placeholder={t('search_placeholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#f0f9ff]/70 border border-sky-100/60 focus:border-blue-600/50 rounded-xl pl-9 pr-4 py-1.5 text-xs text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500/50 transition-all"
+              className="w-full bg-[#fcfdff]/70 border border-sky-50/40 focus:border-blue-600/50 rounded-xl pl-9 pr-4 py-1.5 text-xs text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500/50 transition-all"
             />
           </div>
 
           {/* Search Results Dropdown */}
           {filteredSearchMembers.length > 0 && (
-            <div className="absolute top-full left-0 right-0 mt-1 bg-[#f0f9ff] border border-sky-100/60 rounded-xl shadow-2xl overflow-hidden z-50">
-              <div className="p-1.5 text-[10px] font-semibold text-slate-800 uppercase tracking-wider px-3 border-b border-sky-100/60">
+            <div className="absolute top-full left-0 right-0 mt-1 bg-[#fcfdff] border border-sky-50/40 rounded-xl shadow-[0_8px_24px_rgba(148,163,184,0.08)] overflow-hidden z-50">
+              <div className="p-1.5 text-[10px] font-semibold text-slate-800 uppercase tracking-wider px-3 border-b border-sky-50/40">
                 {t('search_results')} ({filteredSearchMembers.length})
               </div>
               {filteredSearchMembers.map((m) => (
                 <button
                   key={m.id}
                   onClick={() => handleSelectSearchedMember(m)}
-                  className="w-full px-3 py-2 text-left hover:bg-[#e0f2fe]/80 flex items-center justify-between group transition-colors cursor-pointer"
+                  className="w-full px-3 py-2 text-left hover:bg-[#f0f9ff]/80 flex items-center justify-between group transition-colors cursor-pointer"
                 >
                   <div className="flex items-center gap-2.5">
-                    <img src={m.avatarUrl} alt={m.name} className="w-7 h-7 rounded-full object-cover border border-sky-100/60" referrerPolicy="no-referrer" />
+                    <img src={m.avatarUrl} alt={m.name} className="w-7 h-7 rounded-full object-cover border border-sky-50/40" referrerPolicy="no-referrer" />
                     <div>
                       <div className="text-xs font-semibold text-slate-800 group-hover:text-blue-600">{m.name}</div>
                       <div className="text-[10px] text-slate-800">{m.memberCode} • {m.location.province}</div>
                     </div>
                   </div>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#e0f2fe] text-slate-800 border border-sky-100/60">
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#f0f9ff] text-slate-800 border border-sky-50/40">
                     {m.positionId === 'region_manager' ? t('pos_rm_short') : m.positionId === 'center_manager' ? t('pos_cm_short') : m.positionId === 'unit_manager' ? t('pos_um_short') : t('pos_ag_short')}
                   </span>
                 </button>
@@ -155,7 +155,7 @@ export const Header: React.FC = () => {
           {/* Firebase Cloud Live Database Badge */}
           <div 
             id="badge_firebase_status" 
-            className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-[#f0f9ff]/80 border border-sky-100/60 text-[11px] font-medium"
+            className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-[#fcfdff]/80 border border-sky-50/40 text-[11px] font-medium"
             title="Firebase Firestore Cloud Database"
           >
             <div className={`w-2 h-2 rounded-full ${isFirebaseConnected ? 'bg-emerald-400 animate-pulse' : 'bg-blue-500'}`} />
@@ -169,7 +169,7 @@ export const Header: React.FC = () => {
           <button
             id="btn_language_switcher"
             onClick={toggleLanguage}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-[#e0f2fe]/90 hover:bg-[#e0f2fe] text-blue-600 border border-sky-100/60 shadow-sm cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-[#f0f9ff]/90 hover:bg-[#f0f9ff] text-blue-600 border border-sky-50/40 shadow-[0_1px_3px_rgba(148,163,184,0.08)] cursor-pointer"
             title={t('switch_lang')}
           >
             <Globe className="w-3.5 h-3.5 text-blue-600" />
@@ -180,7 +180,7 @@ export const Header: React.FC = () => {
           <button
             id="btn_toggle_gateway_screen"
             onClick={() => setShowGatewayScreen(true)}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-gradient-to-r from-amber-500/10 to-indigo-600/20 hover:from-amber-500/20 hover:to-indigo-600/30 text-blue-600 border border-blue-600/40 cursor-pointer shadow-sm"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-gradient-to-r from-amber-500/10 to-indigo-600/20 hover:from-amber-500/20 hover:to-indigo-600/30 text-blue-600 border border-blue-600/40 cursor-pointer shadow-[0_1px_3px_rgba(148,163,184,0.08)]"
             title="ดูภาพหน้าแรกก่อนเข้าระบบ (Login Gateway Screen)"
           >
             <Shield className="w-3.5 h-3.5 text-blue-600" />
@@ -196,8 +196,8 @@ export const Header: React.FC = () => {
             }}
             className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold transition-all border cursor-pointer ${
               isPresentationMode 
-                ? 'bg-blue-600 text-slate-950 border-blue-400 shadow-sm shadow-amber-500/20' 
-                : 'bg-[#e0f2fe]/60 hover:bg-[#e0f2fe] text-slate-800 border-sky-100/60'
+                ? 'bg-blue-600 text-slate-950 border-blue-400 shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/20' 
+                : 'bg-[#f0f9ff]/60 hover:bg-[#f0f9ff] text-slate-800 border-sky-50/40'
             }`}
             title={t('presentation_desc')}
           >
@@ -210,21 +210,21 @@ export const Header: React.FC = () => {
             <button
               id="btn_notifications"
               onClick={() => setShowNotifications(!showNotifications)}
-              className="w-9 h-9 rounded-xl bg-[#e0f2fe]/60 hover:bg-[#e0f2fe] text-slate-800 border border-sky-100/60 flex items-center justify-center relative transition-colors cursor-pointer"
+              className="w-9 h-9 rounded-xl bg-[#f0f9ff]/60 hover:bg-[#f0f9ff] text-slate-800 border border-sky-50/40 flex items-center justify-center relative transition-colors cursor-pointer"
             >
               <Bell className="w-4 h-4" />
               <span className="w-2 h-2 rounded-full bg-blue-500 absolute top-2 right-2 animate-pulse" />
             </button>
 
             {showNotifications && (
-              <div className="absolute right-0 mt-2 w-80 bg-[#f0f9ff] border border-sky-100/60 rounded-2xl shadow-2xl p-3 z-50">
-                <div className="flex items-center justify-between pb-2 border-b border-sky-100/60 mb-2">
+              <div className="absolute right-0 mt-2 w-80 bg-[#fcfdff] border border-sky-50/40 rounded-2xl shadow-[0_8px_24px_rgba(148,163,184,0.08)] p-3 z-50">
+                <div className="flex items-center justify-between pb-2 border-b border-sky-50/40 mb-2">
                   <span className="text-xs font-bold text-slate-800">{t('notifications')}</span>
                   <span className="text-[10px] text-blue-600 font-medium">3 {t('new_items')}</span>
                 </div>
                 <div className="space-y-2">
                   {notifications.map((n) => (
-                    <div key={n.id} className="p-2 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60/80 text-left">
+                    <div key={n.id} className="p-2 rounded-xl bg-[#fcfdff]/60 border border-sky-50/40/80 text-left">
                       <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-800">
                         {n.type === 'promotion' ? <Sparkles className="w-3 h-3 text-blue-600" /> :
                          n.type === 'warning' ? <AlertTriangle className="w-3 h-3 text-rose-400" /> :
@@ -245,7 +245,7 @@ export const Header: React.FC = () => {
             <button
               id="btn-header-signin"
               onClick={() => openAuthModal('login')}
-              className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs shadow-sm shadow-amber-500/20 transition-all cursor-pointer"
+              className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/20 transition-all cursor-pointer"
             >
               <LogIn className="w-4 h-4" />
               <span>เข้าสู่ระบบ (Sign In)</span>
@@ -255,7 +255,7 @@ export const Header: React.FC = () => {
               <button
                 id="btn_user_role_switcher"
                 onClick={() => setShowUserMenu(!showUserMenu)}
-                className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-xl bg-[#e0f2fe]/90 hover:bg-[#e0f2fe] border border-sky-100/60/80 transition-all text-left cursor-pointer"
+                className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-xl bg-[#f0f9ff]/90 hover:bg-[#f0f9ff] border border-sky-50/40/80 transition-all text-left cursor-pointer"
               >
                 <div className="relative">
                   <img 
@@ -265,7 +265,7 @@ export const Header: React.FC = () => {
                     referrerPolicy="no-referrer"
                   />
                   {/* Provider small badge */}
-                  <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#f0f9ff] border border-sky-100/60 flex items-center justify-center">
+                  <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#fcfdff] border border-sky-50/40 flex items-center justify-center">
                     {authUser.provider === 'google' && <GoogleIcon className="w-2.5 h-2.5" />}
                     {authUser.provider === 'tiktok' && <TikTokIcon className="w-2 h-2 text-cyan-400" />}
                     {authUser.provider === 'facebook' && <FacebookIcon className="w-2.5 h-2.5" />}
@@ -288,9 +288,9 @@ export const Header: React.FC = () => {
 
               {/* User Dropdown Menu */}
               {showUserMenu && (
-                <div className="absolute right-0 mt-2 w-80 bg-[#f0f9ff] border border-sky-100/60 rounded-2xl shadow-2xl p-2 z-50">
+                <div className="absolute right-0 mt-2 w-80 bg-[#fcfdff] border border-sky-50/40 rounded-2xl shadow-[0_8px_24px_rgba(148,163,184,0.08)] p-2 z-50">
                   {/* Top Profile Summary */}
-                  <div className="p-3 bg-[#f0f9ff]/70 rounded-xl border border-sky-100/60 mb-2">
+                  <div className="p-3 bg-[#fcfdff]/70 rounded-xl border border-sky-50/40 mb-2">
                     <div className="flex items-center gap-3">
                       <img
                         src={authUser.avatarUrl || activeUser.avatarUrl}
@@ -340,7 +340,7 @@ export const Header: React.FC = () => {
                           setShowUserMenu(false);
                         }}
                         className={`w-full px-2.5 py-1.5 rounded-xl text-left flex items-center justify-between text-xs transition-colors cursor-pointer ${
-                          activeUser.id === m.id ? 'bg-blue-600/10 text-blue-600 border border-blue-600/30' : 'hover:bg-[#e0f2fe] text-slate-800'
+                          activeUser.id === m.id ? 'bg-blue-600/10 text-blue-600 border border-blue-600/30' : 'hover:bg-[#f0f9ff] text-slate-800'
                         }`}
                       >
                         <div className="flex items-center gap-2">
@@ -356,7 +356,7 @@ export const Header: React.FC = () => {
                   </div>
 
                   {/* Log Out Option */}
-                  <div className="pt-2 border-t border-sky-100/60 mt-1">
+                  <div className="pt-2 border-t border-sky-50/40 mt-1">
                     <button
                       id="btn-header-logout"
                       onClick={() => {

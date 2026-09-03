@@ -176,7 +176,7 @@ export const VideoLibrary: React.FC = () => {
         <button
           id="btn_add_video"
           onClick={() => setShowAdd((s) => !s)}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 text-sm font-bold transition-all shadow-sm shadow-amber-500/20"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 text-sm font-bold transition-all shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/20"
         >
           <Plus className="w-4 h-4" /> เพิ่มวีดีโอ
         </button>
@@ -184,28 +184,28 @@ export const VideoLibrary: React.FC = () => {
 
       {/* Add form */}
       {showAdd && (
-        <div className="p-4 rounded-2xl bg-[#f0f9ff]/80 border border-sky-100/60 space-y-3">
+        <div className="p-4 rounded-2xl bg-[#fcfdff]/80 border border-sky-50/40 space-y-3">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <input
               id="video_title_input"
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
               placeholder="ชื่อวีดีโอ"
-              className="px-3 py-2 rounded-lg bg-[#f0f9ff] border border-sky-100/60 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
+              className="px-3 py-2 rounded-lg bg-[#fcfdff] border border-sky-50/40 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
             <input
               id="video_url_input"
               value={form.url}
               onChange={(e) => setForm({ ...form, url: e.target.value })}
               placeholder="ลิงก์ YouTube / Vimeo"
-              className="px-3 py-2 rounded-lg bg-[#f0f9ff] border border-sky-100/60 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
+              className="px-3 py-2 rounded-lg bg-[#fcfdff] border border-sky-50/40 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
             <input
               id="video_cat_input"
               value={form.category}
               onChange={(e) => setForm({ ...form, category: e.target.value })}
               placeholder="หมวดหมู่"
-              className="px-3 py-2 rounded-lg bg-[#f0f9ff] border border-sky-100/60 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
+              className="px-3 py-2 rounded-lg bg-[#fcfdff] border border-sky-50/40 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
           </div>
           <div className="flex gap-2">
@@ -218,7 +218,7 @@ export const VideoLibrary: React.FC = () => {
             </button>
             <button
               onClick={() => setShowAdd(false)}
-              className="px-4 py-2 rounded-lg bg-[#e0f2fe] hover:bg-slate-200 text-slate-800 text-sm"
+              className="px-4 py-2 rounded-lg bg-[#f0f9ff] hover:bg-slate-200 text-slate-800 text-sm"
             >
               ยกเลิก
             </button>
@@ -229,14 +229,14 @@ export const VideoLibrary: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Player */}
         <div className="lg:col-span-2 space-y-3">
-          <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-[#f0f9ff] border border-sky-100/60">
+          <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-[#fcfdff] border border-sky-50/40">
             {activeVideo ? (
               activeVideo.type === 'image' ? (
                 <img
                   id="video_player"
                   src={activeVideo.url}
                   alt={activeVideo.title}
-                  className="w-full h-full object-contain bg-[#f0f9ff]"
+                  className="w-full h-full object-contain bg-[#fcfdff]"
                 />
               ) : (
                 <iframe
@@ -255,7 +255,7 @@ export const VideoLibrary: React.FC = () => {
             )}
           </div>
           {activeVideo && (
-            <div className="p-4 rounded-2xl bg-[#f0f9ff]/60 border border-sky-100/60">
+            <div className="p-4 rounded-2xl bg-[#fcfdff]/60 border border-sky-50/40">
               <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                 <Play className="w-4 h-4 text-blue-600" /> {activeVideo.title}
               </h2>
@@ -282,11 +282,11 @@ export const VideoLibrary: React.FC = () => {
                 className={`group flex items-center gap-3 p-2.5 rounded-xl border transition-all cursor-pointer ${
                   activeVideo?.id === v.id
                     ? 'bg-blue-600/10 border-blue-600/40'
-                    : 'bg-[#f0f9ff]/60 border-sky-100/60 hover:border-sky-100/60'
+                    : 'bg-[#fcfdff]/60 border-sky-50/40 hover:border-sky-50/40'
                 }`}
                 onClick={() => setActiveVideo(v)}
               >
-                <div className="w-10 h-10 rounded-lg bg-[#e0f2fe] flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-[#f0f9ff] flex items-center justify-center shrink-0">
                   <Youtube className="w-5 h-5 text-red-400" />
                 </div>
                 <div className="flex-1 min-w-0">

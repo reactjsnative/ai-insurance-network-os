@@ -160,10 +160,10 @@ export const AICoach: React.FC = () => {
   return (
     <div id="ai_coach_view" className="space-y-6 max-w-7xl mx-auto pb-16 text-left">
       {/* 1. Header Banner */}
-      <div className="p-6 rounded-3xl bg-[#f0f9ff]/90 border border-sky-100/60 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-[#fcfdff]/90 border border-sky-50/40 shadow-[0_4px_12px_rgba(148,163,184,0.10)] flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-slate-900 shadow-sm shadow-indigo-500/30">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-slate-900 shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-indigo-500/30">
               <Brain className="w-4 h-4" />
             </div>
             <h1 className="text-xl sm:text-2xl font-black text-slate-900">
@@ -183,7 +183,7 @@ export const AICoach: React.FC = () => {
 
       {/* 2. Automated Smart Insights Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="p-4 rounded-2xl bg-[#f0f9ff]/80 border border-sky-100/60 space-y-2">
+        <div className="p-4 rounded-2xl bg-[#fcfdff]/80 border border-sky-50/40 space-y-2">
           <div className="flex items-center gap-2 text-xs font-bold text-blue-600">
             <Award className="w-4 h-4" />
             <span>ผู้มีศักยภาพเลื่อนตำแหน่ง</span>
@@ -206,7 +206,7 @@ export const AICoach: React.FC = () => {
           )}
         </div>
 
-        <div className="p-4 rounded-2xl bg-[#f0f9ff]/80 border border-sky-100/60 space-y-2">
+        <div className="p-4 rounded-2xl bg-[#fcfdff]/80 border border-sky-50/40 space-y-2">
           <div className="flex items-center gap-2 text-xs font-bold text-rose-400">
             <AlertTriangle className="w-4 h-4" />
             <span>ความเสี่ยง Retention</span>
@@ -229,7 +229,7 @@ export const AICoach: React.FC = () => {
           )}
         </div>
 
-        <div className="p-4 rounded-2xl bg-[#f0f9ff]/80 border border-sky-100/60 space-y-2">
+        <div className="p-4 rounded-2xl bg-[#fcfdff]/80 border border-sky-50/40 space-y-2">
           <div className="flex items-center gap-2 text-xs font-bold text-emerald-400">
             <TrendingUp className="w-4 h-4" />
             <span>สายงานผลงานโดดเด่น</span>
@@ -251,7 +251,7 @@ export const AICoach: React.FC = () => {
       </div>
 
       {/* 3. Interactive AI Chat Console */}
-      <div className="rounded-3xl bg-[#f0f9ff]/90 border border-sky-100/60 shadow-2xl flex flex-col h-[520px] overflow-hidden">
+      <div className="rounded-3xl bg-[#fcfdff]/90 border border-sky-50/40 shadow-[0_8px_24px_rgba(148,163,184,0.08)] flex flex-col h-[520px] overflow-hidden">
         {/* Chat Messages Log */}
         <div className="flex-1 p-4 sm:p-6 overflow-y-auto space-y-4">
           {messages.map((msg) => (
@@ -260,7 +260,7 @@ export const AICoach: React.FC = () => {
               className={`flex gap-3 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               {msg.sender === 'ai' && (
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-slate-900 flex items-center justify-center shrink-0 shadow-sm">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-slate-900 flex items-center justify-center shrink-0 shadow-[0_1px_3px_rgba(148,163,184,0.08)]">
                   <Bot className="w-4 h-4" />
                 </div>
               )}
@@ -269,7 +269,7 @@ export const AICoach: React.FC = () => {
                 className={`max-w-xl rounded-2xl p-4 text-xs sm:text-sm leading-relaxed space-y-1 ${
                   msg.sender === 'user'
                     ? 'bg-blue-600 text-slate-950 font-medium rounded-tr-none'
-                    : 'bg-[#f0f9ff]/80 border border-sky-100/60 text-slate-800 rounded-tl-none'
+                    : 'bg-[#fcfdff]/80 border border-sky-50/40 text-slate-800 rounded-tl-none'
                 }`}
               >
                 <div className="whitespace-pre-line">{msg.text}</div>
@@ -293,7 +293,7 @@ export const AICoach: React.FC = () => {
               <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-slate-900 flex items-center justify-center shrink-0">
                 <Bot className="w-4 h-4 animate-spin" />
               </div>
-              <div className="bg-[#f0f9ff]/80 border border-sky-100/60 rounded-2xl rounded-tl-none p-4 text-xs text-slate-800 flex items-center gap-2">
+              <div className="bg-[#fcfdff]/80 border border-sky-50/40 rounded-2xl rounded-tl-none p-4 text-xs text-slate-800 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-blue-500 animate-bounce" />
                 <span className="w-2 h-2 rounded-full bg-indigo-400 animate-bounce [animation-delay:0.2s]" />
                 <span className="w-2 h-2 rounded-full bg-purple-400 animate-bounce [animation-delay:0.4s]" />
@@ -306,14 +306,14 @@ export const AICoach: React.FC = () => {
         </div>
 
         {/* Quick Suggestion Prompts */}
-        <div className="p-3 bg-[#f0f9ff]/60 border-t border-sky-100/60/80 flex items-center gap-2 overflow-x-auto">
+        <div className="p-3 bg-[#fcfdff]/60 border-t border-sky-50/40/80 flex items-center gap-2 overflow-x-auto">
           <span className="text-[10px] uppercase font-bold text-slate-800 whitespace-nowrap pl-2">หัวข้อยอดนิยม:</span>
           {quickPrompts.map((p, idx) => (
             <button
               key={idx}
               onClick={() => handleSendMessage(p)}
               disabled={loading}
-              className="px-3 py-1.5 rounded-full bg-[#f0f9ff] hover:bg-[#e0f2fe] text-slate-800 border border-sky-100/60/80 text-xs whitespace-nowrap transition-colors"
+              className="px-3 py-1.5 rounded-full bg-[#fcfdff] hover:bg-[#f0f9ff] text-slate-800 border border-sky-50/40/80 text-xs whitespace-nowrap transition-colors"
             >
               {p}
             </button>
@@ -321,19 +321,19 @@ export const AICoach: React.FC = () => {
         </div>
 
         {/* Chat Input Bar */}
-        <div className="p-4 bg-[#f0f9ff] border-t border-sky-100/60 flex items-center gap-2">
+        <div className="p-4 bg-[#fcfdff] border-t border-sky-50/40 flex items-center gap-2">
           <input
             type="text"
             placeholder="พิมพ์คำถามเกี่ยวกับการบริหารทีม, รายได้, หรือกลยุทธ์..."
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
-            className="flex-1 bg-[#f0f9ff] border border-sky-100/60 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-slate-800 placeholder-slate-500 focus:outline-none focus:border-blue-600/50"
+            className="flex-1 bg-[#fcfdff] border border-sky-50/40 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-slate-800 placeholder-slate-500 focus:outline-none focus:border-blue-600/50"
           />
           <button
             onClick={() => handleSendMessage()}
             disabled={!inputMessage.trim() || loading}
-            className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 disabled:opacity-40 text-slate-950 font-bold text-xs sm:text-sm flex items-center gap-1.5 transition-all shadow-sm shadow-amber-500/20"
+            className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 disabled:opacity-40 text-slate-950 font-bold text-xs sm:text-sm flex items-center gap-1.5 transition-all shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/20"
           >
             <Send className="w-4 h-4" />
             <span>ส่ง</span>

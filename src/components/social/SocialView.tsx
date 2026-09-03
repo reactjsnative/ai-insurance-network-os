@@ -34,9 +34,9 @@ export const SocialView: React.FC = () => {
 
   return (
     <div className="w-full max-w-3xl mx-auto">
-      <div className={`p-6 sm:p-8 rounded-3xl bg-gradient-to-r ${item.gradient} border ${item.ring} shadow-xl`}>
+      <div className={`p-6 sm:p-8 rounded-3xl bg-gradient-to-r ${item.gradient} border ${item.ring} shadow-[0_4px_12px_rgba(148,163,184,0.10)]`}>
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-[#f0f9ff]/80 border border-sky-100/60 flex items-center justify-center shadow-sm">
+          <div className="w-14 h-14 rounded-2xl bg-[#fcfdff]/80 border border-sky-50/40 flex items-center justify-center shadow-[0_1px_3px_rgba(148,163,184,0.08)]">
             <Icon className="w-7 h-7 text-slate-900" />
           </div>
           <div className="min-w-0">
@@ -45,7 +45,7 @@ export const SocialView: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-6 p-4 rounded-2xl bg-[#f0f9ff]/60 border border-sky-100/60">
+        <div className="mt-6 p-4 rounded-2xl bg-[#fcfdff]/60 border border-sky-50/40">
           <div className="flex items-center gap-2 text-[11px] text-slate-800">
             <Globe className="w-3.5 h-3.5" />
             <span className="truncate font-mono text-slate-800">{item.url}</span>
@@ -56,7 +56,7 @@ export const SocialView: React.FC = () => {
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 font-bold text-sm transition-all shadow-sm shadow-amber-500/20 cursor-pointer"
+          className="mt-6 w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 font-bold text-sm transition-all shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/20 cursor-pointer"
         >
           <ExternalLink className="w-4 h-4" />
           เปิด {item.title} ในแท็บใหม่

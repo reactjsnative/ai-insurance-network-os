@@ -364,10 +364,10 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
   return (
     <div id="career_plan_view" className="space-y-8 max-w-7xl mx-auto pb-16 text-left">
       {/* Header */}
-      <div className="p-6 rounded-3xl bg-[#f0f9ff]/90 border border-sky-100/60 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-[#fcfdff]/90 border border-sky-50/40 shadow-[0_4px_12px_rgba(148,163,184,0.10)] flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-500 to-rose-600 flex items-center justify-center text-slate-900 shadow-sm shadow-amber-500/30">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-500 to-rose-600 flex items-center justify-center text-slate-900 shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/30">
               <Rocket className="w-4 h-4" />
             </div>
             <h1 className="text-xl sm:text-2xl font-black text-slate-900">แผนรายได้ & เส้นทางสู่อิสระภาพทางการเงิน</h1>
@@ -404,7 +404,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
               const el = document.querySelector('input[type="number"]') as HTMLInputElement | null;
               el?.focus();
             }}
-            className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 hover:from-indigo-400 hover:to-fuchsia-400 text-slate-900 text-xs font-bold shadow-sm shadow-indigo-500/20 transition-all whitespace-nowrap"
+            className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 hover:from-indigo-400 hover:to-fuchsia-400 text-slate-900 text-xs font-bold shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-indigo-500/20 transition-all whitespace-nowrap"
           >
             เริ่มสร้างแผนของฉัน →
           </button>
@@ -435,7 +435,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
           />
           <NumberField label="เป้าหมายรายได้ (บาท/เดือน)" value={targetIncome} onChange={setTargetIncome} step={10000} icon={<Target className="w-4 h-4" />} />
           <NumberField label="ระยะเวลาเป้าหมาย (เดือน)" value={targetMonths} onChange={setTargetMonths} step={1} icon={<Flag className="w-4 h-4" />} />
-          <div className="p-4 rounded-2xl bg-[#f0f9ff]/60 border border-sky-100/60 space-y-2">
+          <div className="p-4 rounded-2xl bg-[#fcfdff]/60 border border-sky-50/40 space-y-2">
             <label className="text-xs font-semibold text-slate-800 block">Retention / Activation</label>
             <div className="flex items-center gap-2">
               <span className="text-[10px] text-slate-800 w-16">Retain {(retention * 100).toFixed(0)}%</span>
@@ -461,12 +461,12 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
           <KpiCard label="รายได้จำลอง" value={fmt(incomeResult.totalIncome)} sub="Estimated / เดือน" accent="emerald" />
           <KpiCard label="เป้าหมายถัดไป" value={POSITION_LABELS[targetPosition]} sub="Next Level" accent="amber" />
         </div>
-        <div className="p-5 rounded-2xl bg-[#f0f9ff]/60 border border-sky-100/60 space-y-4">
+        <div className="p-5 rounded-2xl bg-[#fcfdff]/60 border border-sky-50/40 space-y-4">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-slate-800">ความคืบหน้าสู่ {POSITION_LABELS[targetPosition]}</span>
             <span className="text-xs font-black text-blue-600">{career.overallProgressPercent}%</span>
           </div>
-          <div className="w-full h-3 rounded-full bg-[#e0f2fe] overflow-hidden">
+          <div className="w-full h-3 rounded-full bg-[#f0f9ff] overflow-hidden">
             <div className="h-full bg-gradient-to-r from-amber-500 to-rose-500 rounded-full transition-all" style={{ width: `${career.overallProgressPercent}%` }} />
           </div>
           <p className="text-[11px] text-slate-800 leading-relaxed">{career.mathematicalProjection.recommendationText}</p>
@@ -485,7 +485,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
           <h2 className="text-lg font-black text-slate-900">3. คำนวณย้อนหลัง & วิเคราะห์ช่องว่าง (Reverse + Gap)</h2>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-          <div className="p-5 rounded-2xl bg-gradient-to-br from-sky-50 to-fuchsia-950/20 border border-sky-100/60 space-y-4">
+          <div className="p-5 rounded-2xl bg-gradient-to-br from-sky-50 to-fuchsia-950/20 border border-sky-50/40 space-y-4">
             <div className="flex items-center gap-2 text-fuchsia-300">
               <Target className="w-4 h-4" />
               <span className="text-xs font-bold uppercase tracking-wider">Reverse Goal Calculator</span>
@@ -501,7 +501,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
             </div>
           </div>
 
-          <div className="p-5 rounded-2xl bg-gradient-to-br from-sky-50 to-amber-950/20 border border-sky-100/60 space-y-4">
+          <div className="p-5 rounded-2xl bg-gradient-to-br from-sky-50 to-amber-950/20 border border-sky-50/40 space-y-4">
             <div className="flex items-center gap-2 text-blue-600">
               <TrendingDown className="w-4 h-4" />
               <span className="text-xs font-bold uppercase tracking-wider">Career Gap Analysis</span>
@@ -524,7 +524,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
           <SlidersHorizontal className="w-5 h-5 text-emerald-400" />
           <h2 className="text-lg font-black text-slate-900">4. จำลองสถานการณ์ (What-If Simulator)</h2>
         </div>
-        <div className="p-5 rounded-2xl bg-[#f0f9ff]/60 border border-sky-100/60 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="p-5 rounded-2xl bg-[#fcfdff]/60 border border-sky-50/40 grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-4">
             <Slider label="COM ต่อคน" min={1000} max={100000} step={1000} value={comPerMember} onChange={setComPerMember} fmt={fmt} />
             <Slider label="จำนวนสมาชิก" min={1} max={500} step={1} value={memberCount} onChange={setMemberCount} fmt={(n) => `${n} คน`} />
@@ -557,7 +557,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
           <TrendingUp className="w-5 h-5 text-blue-400" />
           <h2 className="text-lg font-black text-slate-900">5. ประมาณการอนาคต (Forecast 3 เส้น)</h2>
         </div>
-        <div className="p-5 rounded-2xl bg-[#f0f9ff]/60 border border-sky-100/60">
+        <div className="p-5 rounded-2xl bg-[#fcfdff]/60 border border-sky-50/40">
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={forecastChart} margin={{ top: 10, right: 20, left: 10, bottom: 0 }}>
@@ -577,7 +577,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
               const m12 = s.data.find((d) => d.month === 12);
               const m36 = s.data.find((d) => d.month === 36);
               return (
-                <div key={s.key} className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
+                <div key={s.key} className="p-3 rounded-xl bg-[#fcfdff]/60 border border-sky-50/40">
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full" style={{ background: s.color }} />
                     <span className="text-xs font-bold text-slate-800">{s.label}</span>
@@ -607,16 +607,16 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
               <li key={i} className="flex gap-2"><ChevronRight className="w-4 h-4 text-indigo-400 shrink-0" /> {line}</li>
             ))}
           </ul>
-          <div className="pt-3 mt-1 border-t border-sky-100/60">
+          <div className="pt-3 mt-1 border-t border-sky-50/40">
             <p className="text-[11px] font-bold text-indigo-300 mb-2">30 / 60 / 90 Day Plan (จากเป้าหมายของคุณ)</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-[11px] text-slate-800">
-              <div className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
+              <div className="p-3 rounded-xl bg-[#fcfdff]/60 border border-sky-50/40">
                 <b className="text-indigo-300">30 วัน</b> — เพิ่มสมาชิก ~{Math.max(1, Math.round(reverse.requiredMonthlyRecruitment))} คน / เพิ่ม Team COM ~{fmt(teamCOM * 0.4)}
               </div>
-              <div className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
+              <div className="p-3 rounded-xl bg-[#fcfdff]/60 border border-sky-50/40">
                 <b className="text-indigo-300">60 วัน</b> — สร้างทีมรวม ~{memberCount + reverse.requiredMonthlyRecruitment * 2} คน / เตรียมแยกหน่วยแรก
               </div>
-              <div className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
+              <div className="p-3 rounded-xl bg-[#fcfdff]/60 border border-sky-50/40">
                 <b className="text-indigo-300">90 วัน</b> — ไปถึงเป้าหมายรายได้ {fmt(targetIncome)} หากรักษาอัตรารับสมาชิก
               </div>
             </div>
@@ -650,7 +650,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
             <h2 className="text-lg font-black text-slate-900">8. วิดีโอสรุปแผนของฉัน</h2>
             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-fuchsia-500/10 text-fuchsia-300 border border-fuchsia-500/30">AI Video</span>
           </div>
-          <div className="p-5 rounded-2xl bg-gradient-to-br from-sky-50 to-fuchsia-950/20 border border-sky-100/60 space-y-4">
+          <div className="p-5 rounded-2xl bg-gradient-to-br from-sky-50 to-fuchsia-950/20 border border-sky-50/40 space-y-4">
             <p className="text-xs text-slate-800 leading-relaxed">
               เมื่อคุณตั้งค่าแผนด้านบนเรียบร้อย กดปุ่มด้านล่างเพื่อสร้าง <b>วิดีโอสรุปแผนของคุณ</b> อัตโนมัติ
               จากข้อมูลที่คุณกรอก — ตำแหน่งปัจจุบัน เป้าหมาย รายได้จำลอง แผน 30/60/90 วัน พร้อมเสียงเล่าภาษาไทย
@@ -658,7 +658,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
             <button
               onClick={buildPlanVideo}
               disabled={videoLoading}
-              className="px-5 py-3 rounded-xl bg-gradient-to-r from-fuchsia-500 to-purple-500 hover:from-fuchsia-400 hover:to-purple-400 text-slate-900 text-xs font-bold shadow-sm shadow-fuchsia-500/20 transition-all disabled:opacity-60 flex items-center gap-2"
+              className="px-5 py-3 rounded-xl bg-gradient-to-r from-fuchsia-500 to-purple-500 hover:from-fuchsia-400 hover:to-purple-400 text-slate-900 text-xs font-bold shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-fuchsia-500/20 transition-all disabled:opacity-60 flex items-center gap-2"
             >
               {videoLoading ? (
                 <>
@@ -680,7 +680,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
             )}
 
             {videoUrl && (
-              <div className="rounded-2xl overflow-hidden border border-fuchsia-500/30 bg-[#f0f9ff]">
+              <div className="rounded-2xl overflow-hidden border border-fuchsia-500/30 bg-[#fcfdff]">
                 <video src={videoUrl} controls className="w-full max-h-[70vh]" />
                 <div className="p-3 text-[11px] text-slate-800 flex items-center justify-between">
                   <span>วิดีโอสรุปแผนของ {activeUser.name}</span>
@@ -715,7 +715,7 @@ const NumberField: React.FC<{
   step?: number;
   icon?: React.ReactNode;
 }> = ({ label, value, onChange, step = 1, icon }) => (
-  <div className="p-4 rounded-2xl bg-[#f0f9ff]/60 border border-sky-100/60 space-y-1.5">
+  <div className="p-4 rounded-2xl bg-[#fcfdff]/60 border border-sky-50/40 space-y-1.5">
     <label className="text-xs font-semibold text-slate-800 flex items-center gap-1.5">
       {icon && <span className="text-blue-600">{icon}</span>}
       {label}
@@ -725,7 +725,7 @@ const NumberField: React.FC<{
       value={value}
       step={step}
       onChange={(e) => onChange(Number(e.target.value))}
-      className="w-full bg-[#f0f9ff] border border-sky-100/60 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600"
+      className="w-full bg-[#fcfdff] border border-sky-50/40 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600"
     />
   </div>
 );
@@ -736,12 +736,12 @@ const SelectField: React.FC<{
   onChange: (v: string) => void;
   options: { value: string; label: string }[];
 }> = ({ label, value, onChange, options }) => (
-  <div className="p-4 rounded-2xl bg-[#f0f9ff]/60 border border-sky-100/60 space-y-1.5">
+  <div className="p-4 rounded-2xl bg-[#fcfdff]/60 border border-sky-50/40 space-y-1.5">
     <label className="text-xs font-semibold text-slate-800 block">{label}</label>
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="w-full bg-[#f0f9ff] border border-sky-100/60 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600"
+      className="w-full bg-[#fcfdff] border border-sky-50/40 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600"
     >
       {options.map((o) => (
         <option key={o.value} value={o.value}>{o.label}</option>
@@ -776,7 +776,7 @@ const KpiCard: React.FC<{ label: string; value: string; sub: string; accent: 'sk
     amber: 'from-amber-500/20 text-blue-600',
   }[accent];
   return (
-    <div className={`p-4 rounded-2xl bg-gradient-to-br to-sky-50 border border-sky-100/60 ${ring}`}>
+    <div className={`p-4 rounded-2xl bg-gradient-to-br to-sky-50 border border-sky-50/40 ${ring}`}>
       <p className="text-[11px] font-semibold uppercase tracking-wider opacity-80">{label}</p>
       <p className="text-lg font-black mt-1">{value}</p>
       <p className="text-[10px] opacity-60">{sub}</p>
@@ -785,14 +785,14 @@ const KpiCard: React.FC<{ label: string; value: string; sub: string; accent: 'sk
 };
 
 const GapPill: React.FC<{ label: string; value: string }> = ({ label, value }) => (
-  <div className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
+  <div className="p-3 rounded-xl bg-[#fcfdff]/60 border border-sky-50/40">
     <p className="text-[10px] text-slate-800">{label}</p>
     <p className="text-sm font-bold text-slate-900 mt-0.5">{value}</p>
   </div>
 );
 
 const ReverseStat: React.FC<{ label: string; value: string }> = ({ label, value }) => (
-  <div className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
+  <div className="p-3 rounded-xl bg-[#fcfdff]/60 border border-sky-50/40">
     <p className="text-[10px] text-slate-800">{label}</p>
     <p className="text-sm font-bold text-fuchsia-300 mt-0.5">{value}</p>
   </div>
@@ -887,7 +887,7 @@ const InfiniteNetworkTree: React.FC<{
   }, [tree]);
 
   return (
-    <div className="p-5 rounded-2xl bg-gradient-to-br from-sky-50 to-rose-950/10 border border-sky-100/60 space-y-4">
+    <div className="p-5 rounded-2xl bg-gradient-to-br from-sky-50 to-rose-950/10 border border-sky-50/40 space-y-4">
       {/* Toolbar */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2 text-rose-300 text-xs font-bold uppercase tracking-wider">
@@ -897,7 +897,7 @@ const InfiniteNetworkTree: React.FC<{
         <div className="flex items-center gap-2">
           <button
             onClick={() => setDepth(Math.max(1, depth - 1))}
-            className="px-3 py-1.5 rounded-lg bg-[#e0f2fe] hover:bg-slate-200 text-slate-800 text-xs font-bold"
+            className="px-3 py-1.5 rounded-lg bg-[#f0f9ff] hover:bg-slate-200 text-slate-800 text-xs font-bold"
           >
             − ชั้น
           </button>
@@ -913,26 +913,26 @@ const InfiniteNetworkTree: React.FC<{
 
       {/* Summary */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <div className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
+        <div className="p-3 rounded-xl bg-[#fcfdff]/60 border border-sky-50/40">
           <p className="text-[10px] text-slate-800">จำนวนคนในแผนผัง</p>
           <p className="text-sm font-black text-rose-300">{totalPeople.toLocaleString()} คน</p>
         </div>
-        <div className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
+        <div className="p-3 rounded-xl bg-[#fcfdff]/60 border border-sky-50/40">
           <p className="text-[10px] text-slate-800">ศูนย์สูงสุดที่เป็นไปได้</p>
           <p className="text-sm font-black text-blue-600">~{Math.floor(totalPeople / 15)} ศูนย์</p>
         </div>
-        <div className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
+        <div className="p-3 rounded-xl bg-[#fcfdff]/60 border border-sky-50/40">
           <p className="text-[10px] text-slate-800">หน่วยสูงสุดที่เป็นไปได้</p>
           <p className="text-sm font-black text-cyan-300">~{Math.floor(totalPeople / 5)} หน่วย</p>
         </div>
-        <div className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
+        <div className="p-3 rounded-xl bg-[#fcfdff]/60 border border-sky-50/40">
           <p className="text-[10px] text-slate-800">Potential COM สะสม</p>
           <p className="text-sm font-black text-emerald-300">{fmt(totalPotential)}</p>
         </div>
       </div>
 
       {/* Tree (vertical layers) */}
-      <div className="relative rounded-2xl bg-[#f0f9ff]/70 border border-sky-100/60 p-4 overflow-x-auto">
+      <div className="relative rounded-2xl bg-[#fcfdff]/70 border border-sky-50/40 p-4 overflow-x-auto">
         <div className="min-w-[640px] space-y-3">
           {layers.map((layer, li) => (
             <div key={layer.gen} className="flex flex-col items-center">
@@ -948,13 +948,13 @@ const InfiniteNetworkTree: React.FC<{
                     <button
                       key={n.id}
                       onClick={() => setSelectedNode({ name: n.name, gen: n.gen, com: n.com, role: role.label })}
-                      className={`group relative flex flex-col items-center p-2 rounded-xl border bg-[#f0f9ff]/80 transition-all hover:-translate-y-0.5 ${
-                        isSel ? `${role.ring} ring-2 ring-rose-400/40` : 'border-sky-100/60 hover:border-slate-600'
+                      className={`group relative flex flex-col items-center p-2 rounded-xl border bg-[#fcfdff]/80 transition-all hover:-translate-y-0.5 ${
+                        isSel ? `${role.ring} ring-2 ring-rose-400/40` : 'border-sky-50/40 hover:border-slate-600'
                       }`}
                       title={`${n.name} • ${role.label}`}
                     >
                       <span
-                        className="absolute -top-1.5 -right-1.5 w-3 h-3 rounded-full border border-sky-100/60"
+                        className="absolute -top-1.5 -right-1.5 w-3 h-3 rounded-full border border-sky-50/40"
                         style={{ background: role.color }}
                       />
                       <img

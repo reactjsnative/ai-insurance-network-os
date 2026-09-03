@@ -59,18 +59,18 @@ export const AddMemberModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#f0f9ff]/75 backdrop-blur-sm">
-      <div className="bg-[#f0f9ff] border border-sky-100/60 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#fcfdff]/75 backdrop-blur-sm">
+      <div className="bg-[#fcfdff] border border-sky-50/40 rounded-2xl w-full max-w-lg shadow-[0_8px_24px_rgba(148,163,184,0.08)] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-sky-100/60 bg-[#f0f9ff]/60">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-sky-50/40 bg-[#fcfdff]/60">
           <div className="flex items-center gap-2 text-slate-900 font-bold text-base">
             <UserPlus className="w-5 h-5 text-blue-600" />
             <span>เพิ่มสมาชิกใหม่เข้าสู่สายงาน</span>
           </div>
           <button
             onClick={() => setIsAddMemberModalOpen(false)}
-            className="p-1 rounded-lg text-slate-800 hover:text-slate-900 hover:bg-[#e0f2fe] transition-colors"
+            className="p-1 rounded-lg text-slate-800 hover:text-slate-900 hover:bg-[#f0f9ff] transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -87,7 +87,7 @@ export const AddMemberModal: React.FC = () => {
                 required
                 value={code}
                 onChange={e => setCode(e.target.value)}
-                className="w-full bg-[#e0f2fe] border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
+                className="w-full bg-[#f0f9ff] border border-sky-50/40 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
               />
             </div>
             <div>
@@ -97,7 +97,7 @@ export const AddMemberModal: React.FC = () => {
                 placeholder="เช่น บอส, แจน"
                 value={nickname}
                 onChange={e => setNickname(e.target.value)}
-                className="w-full bg-[#e0f2fe] border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
+                className="w-full bg-[#f0f9ff] border border-sky-50/40 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
               />
             </div>
           </div>
@@ -110,7 +110,7 @@ export const AddMemberModal: React.FC = () => {
               placeholder="เช่น นายสมเกียรติ สว่างไกล"
               value={name}
               onChange={e => setName(e.target.value)}
-              className="w-full bg-[#e0f2fe] border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
+              className="w-full bg-[#f0f9ff] border border-sky-50/40 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
             />
           </div>
 
@@ -120,7 +120,7 @@ export const AddMemberModal: React.FC = () => {
               <select
                 value={position}
                 onChange={e => setPosition(e.target.value as PositionLevel)}
-                className="w-full bg-[#e0f2fe] border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500 cursor-pointer"
+                className="w-full bg-[#f0f9ff] border border-sky-50/40 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500 cursor-pointer"
               >
                 {POSITIONS_LIST.map(p => (
                   <option key={p.id} value={p.id}>{p.nameTh}</option>
@@ -133,7 +133,7 @@ export const AddMemberModal: React.FC = () => {
               <select
                 value={parentId}
                 onChange={e => setParentId(e.target.value)}
-                className="w-full bg-[#e0f2fe] border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500 cursor-pointer"
+                className="w-full bg-[#f0f9ff] border border-sky-50/40 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500 cursor-pointer"
               >
                 <option value="">รากสายงาน (ไม่มีหัวหน้า)</option>
                 {members.map(m => (
@@ -152,7 +152,7 @@ export const AddMemberModal: React.FC = () => {
                 type="number"
                 value={personalMonthlySales}
                 onChange={e => setPersonalMonthlySales(Number(e.target.value))}
-                className="w-full bg-[#e0f2fe] border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
+                className="w-full bg-[#f0f9ff] border border-sky-50/40 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
               />
             </div>
             <div>
@@ -161,23 +161,23 @@ export const AddMemberModal: React.FC = () => {
                 type="number"
                 value={personalRenewalPremium}
                 onChange={e => setPersonalRenewalPremium(Number(e.target.value))}
-                className="w-full bg-[#e0f2fe] border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
+                className="w-full bg-[#f0f9ff] border border-sky-50/40 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
               />
             </div>
           </div>
 
           {/* Footer buttons */}
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-sky-100/60">
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-sky-50/40">
             <button
               type="button"
               onClick={() => setIsAddMemberModalOpen(false)}
-              className="px-4 py-2 rounded-xl bg-[#e0f2fe] hover:bg-slate-200 text-slate-800 text-xs font-semibold cursor-pointer"
+              className="px-4 py-2 rounded-xl bg-[#f0f9ff] hover:bg-slate-200 text-slate-800 text-xs font-semibold cursor-pointer"
             >
               ยกเลิก
             </button>
             <button
               type="submit"
-              className="flex items-center gap-1.5 px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-bold shadow-sm shadow-amber-500/20 cursor-pointer"
+              className="flex items-center gap-1.5 px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-bold shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/20 cursor-pointer"
             >
               <Save className="w-4 h-4" />
               <span>บันทึกสมาชิก</span>

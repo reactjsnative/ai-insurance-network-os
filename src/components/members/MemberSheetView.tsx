@@ -13,7 +13,7 @@ export const MemberSheetView: React.FC = () => {
 
   return (
     <div id="member_sheet_view" className="space-y-6 max-w-7xl mx-auto pb-16 text-left">
-      <div className="p-6 rounded-3xl bg-gradient-to-r from-sky-50 to-emerald-950/30 border border-sky-100/60 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-gradient-to-r from-sky-50 to-emerald-950/30 border border-sky-50/40 shadow-[0_4px_12px_rgba(148,163,184,0.10)] flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <Sheet className="w-5 h-5 text-emerald-400" />
@@ -23,23 +23,23 @@ export const MemberSheetView: React.FC = () => {
           <p className="text-sm text-slate-800 mt-1">รายชื่อสมาชิกทั้งหมดในระบบ อัปเดตเรียลไทม์จากฐานข้อมูลกลาง</p>
         </div>
         <div className="flex items-center gap-2">
-          <span className="px-4 py-2.5 rounded-xl bg-[#e0f2fe] text-slate-800 text-xs font-bold border border-sky-100/60">
+          <span className="px-4 py-2.5 rounded-xl bg-[#f0f9ff] text-slate-800 text-xs font-bold border border-sky-50/40">
             ทั้งหมด {members.length} คน
           </span>
         </div>
       </div>
 
       {members.length === 0 ? (
-        <div className="p-8 rounded-2xl bg-[#f0f9ff]/60 border border-sky-100/60 text-center text-slate-800 text-sm">
+        <div className="p-8 rounded-2xl bg-[#fcfdff]/60 border border-sky-50/40 text-center text-slate-800 text-sm">
           ยังไม่มีข้อมูลสมาชิกในระบบ
           <div className="mt-2 text-[12px] text-slate-800">
             สมาชิกจะปรากฏที่นี่โดยอัตโนมัติเมื่อสมัครเข้ามาผ่านระบบ หรือเมื่อเพิ่มจากหน้า "การจัดการสมาชิก"
           </div>
         </div>
       ) : (
-        <div className="overflow-x-auto rounded-2xl border border-sky-100/60 bg-[#f0f9ff]/60">
+        <div className="overflow-x-auto rounded-2xl border border-sky-50/40 bg-[#fcfdff]/60">
           <table className="w-full text-sm">
-            <thead className="bg-[#f0f9ff] text-slate-800 text-[11px] uppercase tracking-wider text-left">
+            <thead className="bg-[#fcfdff] text-slate-800 text-[11px] uppercase tracking-wider text-left">
               <tr>
                 <th className="p-3">#</th>
                 <th className="p-3">รหัส</th>
@@ -54,7 +54,7 @@ export const MemberSheetView: React.FC = () => {
             </thead>
             <tbody>
               {sortedMembers.map((m, i) => (
-                <tr key={m.id || i} className="border-t border-sky-100/60 hover:bg-[#e0f2fe]/40">
+                <tr key={m.id || i} className="border-t border-sky-50/40 hover:bg-[#f0f9ff]/40">
                   <td className="p-3 text-slate-800">{i + 1}</td>
                   <td className="p-3 font-mono text-emerald-300">{m.memberCode}</td>
                   <td className="p-3 font-semibold text-slate-900">{m.name}</td>
@@ -69,7 +69,7 @@ export const MemberSheetView: React.FC = () => {
                         ? 'bg-emerald-500/15 text-emerald-300'
                         : m.status === 'probation'
                         ? 'bg-blue-600/15 text-blue-600'
-                        : 'bg-[#f0f9ff]0/15 text-slate-800'
+                        : 'bg-[#fcfdff]0/15 text-slate-800'
                     }`}>{m.status || 'active'}</span>
                   </td>
                 </tr>

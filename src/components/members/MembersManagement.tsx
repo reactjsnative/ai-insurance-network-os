@@ -117,7 +117,7 @@ export const MembersManagement: React.FC = () => {
   return (
     <div id="members_management_view" className="space-y-6 max-w-7xl mx-auto pb-16 text-left">
       {/* 1. Header & Actions */}
-      <div className="p-6 rounded-3xl bg-[#f0f9ff]/90 border border-sky-100/60 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-[#fcfdff]/90 border border-sky-50/40 shadow-[0_4px_12px_rgba(148,163,184,0.10)] flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-xl sm:text-2xl font-black text-slate-900">
@@ -134,7 +134,7 @@ export const MembersManagement: React.FC = () => {
 
         <button
           onClick={handleOpenAdd}
-          className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 font-bold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-sm shadow-amber-500/20 self-start md:self-auto"
+          className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 font-bold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/20 self-start md:self-auto"
         >
           <UserPlus className="w-4 h-4" />
           <span>เพิ่มสมาชิกใหม่</span>
@@ -150,14 +150,14 @@ export const MembersManagement: React.FC = () => {
             placeholder="ค้นหาชื่อ, รหัสตัวแทน, หรือจังหวัด..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-[#f0f9ff] border border-sky-100/60 rounded-2xl pl-10 pr-4 py-2.5 text-xs text-slate-800 placeholder-slate-500 focus:outline-none focus:border-blue-600/50"
+            className="w-full bg-[#fcfdff] border border-sky-50/40 rounded-2xl pl-10 pr-4 py-2.5 text-xs text-slate-800 placeholder-slate-500 focus:outline-none focus:border-blue-600/50"
           />
         </div>
 
         <select
           value={filterPosition}
           onChange={(e) => setFilterPosition(e.target.value)}
-          className="bg-[#f0f9ff] border border-sky-100/60 rounded-2xl px-4 py-2.5 text-xs text-slate-800 focus:outline-none"
+          className="bg-[#fcfdff] border border-sky-50/40 rounded-2xl px-4 py-2.5 text-xs text-slate-800 focus:outline-none"
         >
           <option value="all">ทุกระดับตำแหน่ง</option>
           <option value="region_manager">ผู้บริหารภาค (RM)</option>
@@ -168,10 +168,10 @@ export const MembersManagement: React.FC = () => {
       </div>
 
       {/* 3. Members Table */}
-      <div className="rounded-3xl bg-[#f0f9ff]/90 border border-sky-100/60 overflow-hidden shadow-2xl">
+      <div className="rounded-3xl bg-[#fcfdff]/90 border border-sky-50/40 overflow-hidden shadow-[0_8px_24px_rgba(148,163,184,0.08)]">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs text-slate-800">
-            <thead className="bg-[#f0f9ff]/80 text-slate-800 uppercase text-[10px] tracking-wider border-b border-sky-100/60 font-bold">
+            <thead className="bg-[#fcfdff]/80 text-slate-800 uppercase text-[10px] tracking-wider border-b border-sky-50/40 font-bold">
               <tr>
                 <th className="py-3.5 px-4">สมาชิก</th>
                 <th className="py-3.5 px-4">ตำแหน่ง</th>
@@ -187,10 +187,10 @@ export const MembersManagement: React.FC = () => {
                 const parent = members.find(p => p.id === m.parentMemberId);
                 const income = calculateMemberIncome(m, 'ACTUAL');
                 return (
-                  <tr key={m.id} className="hover:bg-[#e0f2fe]/40 transition-colors">
+                  <tr key={m.id} className="hover:bg-[#f0f9ff]/40 transition-colors">
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-2.5">
-                        <img src={m.avatarUrl} alt={m.name} className="w-8 h-8 rounded-full object-cover border border-sky-100/60" />
+                        <img src={m.avatarUrl} alt={m.name} className="w-8 h-8 rounded-full object-cover border border-sky-50/40" />
                         <div>
                           <div className="font-bold text-slate-900">{m.name}</div>
                           <div className="text-[10px] text-blue-600 font-mono">{m.memberCode} • {m.location.province}</div>
@@ -202,7 +202,7 @@ export const MembersManagement: React.FC = () => {
                         m.positionId === 'region_manager' ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40' :
                         m.positionId === 'center_manager' ? 'bg-blue-600/20 text-blue-600 border border-blue-600/40' :
                         m.positionId === 'unit_manager' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' :
-                        'bg-[#f0f9ff]0/20 text-sky-300 border border-sky-500/40'
+                        'bg-[#fcfdff]0/20 text-sky-300 border border-sky-500/40'
                       }`}>
                         {m.positionId === 'region_manager' ? 'RM' : m.positionId === 'center_manager' ? 'CM' : m.positionId === 'unit_manager' ? 'UM' : 'Agent'}
                       </span>
@@ -227,7 +227,7 @@ export const MembersManagement: React.FC = () => {
                       <div className="flex items-center justify-center gap-1.5">
                         <button
                           onClick={() => handleOpenEdit(m)}
-                          className="p-1.5 rounded-lg bg-[#e0f2fe] hover:bg-slate-200 text-slate-800 transition-colors"
+                          className="p-1.5 rounded-lg bg-[#f0f9ff] hover:bg-slate-200 text-slate-800 transition-colors"
                           title="แก้ไขข้อมูล"
                         >
                           <Edit3 className="w-3.5 h-3.5" />
@@ -251,19 +251,19 @@ export const MembersManagement: React.FC = () => {
 
       {/* 4. Add / Edit Member Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 bg-[#f0f9ff]/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-[#fcfdff]/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <form 
             onSubmit={handleSubmit}
-            className="bg-[#f0f9ff] border border-sky-100/60 rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto"
+            className="bg-[#fcfdff] border border-sky-50/40 rounded-3xl max-w-lg w-full p-6 shadow-[0_8px_24px_rgba(148,163,184,0.08)] space-y-4 max-h-[90vh] overflow-y-auto"
           >
-            <div className="flex items-center justify-between pb-3 border-b border-sky-100/60">
+            <div className="flex items-center justify-between pb-3 border-b border-sky-50/40">
               <h3 className="text-base font-bold text-slate-900">
                 {editingMember ? 'แก้ไขข้อมูลสมาชิก' : 'เพิ่มสมาชิกใหม่เข้าสู่สายงาน'}
               </h3>
               <button
                 type="button"
                 onClick={() => setShowAddModal(false)}
-                className="w-7 h-7 rounded-lg bg-[#e0f2fe] text-slate-800 hover:text-slate-900 flex items-center justify-center text-xs"
+                className="w-7 h-7 rounded-lg bg-[#f0f9ff] text-slate-800 hover:text-slate-900 flex items-center justify-center text-xs"
               >
                 ✕
               </button>
@@ -285,7 +285,7 @@ export const MembersManagement: React.FC = () => {
                   value={formData.name || ''}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="เช่น สมชาย ใจดี"
-                  className="w-full bg-[#f0f9ff] border border-sky-100/60 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                  className="w-full bg-[#fcfdff] border border-sky-50/40 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                 />
               </div>
 
@@ -296,7 +296,7 @@ export const MembersManagement: React.FC = () => {
                   value={formData.nickname || ''}
                   onChange={(e) => setFormData({ ...formData, nickname: e.target.value })}
                   placeholder="เช่น บอย"
-                  className="w-full bg-[#f0f9ff] border border-sky-100/60 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                  className="w-full bg-[#fcfdff] border border-sky-50/40 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                 />
               </div>
 
@@ -305,7 +305,7 @@ export const MembersManagement: React.FC = () => {
                 <select
                   value={formData.positionId || 'agent'}
                   onChange={(e) => setFormData({ ...formData, positionId: e.target.value })}
-                  className="w-full bg-[#f0f9ff] border border-sky-100/60 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                  className="w-full bg-[#fcfdff] border border-sky-50/40 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                 >
                   <option value="agent">ตัวแทน (Agent)</option>
                   <option value="unit_manager">ผู้บริหารหน่วย (UM)</option>
@@ -319,7 +319,7 @@ export const MembersManagement: React.FC = () => {
                 <select
                   value={formData.parentMemberId || ''}
                   onChange={(e) => setFormData({ ...formData, parentMemberId: e.target.value })}
-                  className="w-full bg-[#f0f9ff] border border-sky-100/60 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                  className="w-full bg-[#fcfdff] border border-sky-50/40 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                 >
                   {members.filter(m => !editingMember || m.id !== editingMember.id).map(m => (
                     <option key={m.id} value={m.id}>{m.name} ({m.memberCode})</option>
@@ -333,7 +333,7 @@ export const MembersManagement: React.FC = () => {
                   type="number"
                   value={formData.personalFYC || 0}
                   onChange={(e) => setFormData({ ...formData, personalFYC: Number(e.target.value) })}
-                  className="w-full bg-[#f0f9ff] border border-sky-100/60 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                  className="w-full bg-[#fcfdff] border border-sky-50/40 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                 />
               </div>
 
@@ -343,7 +343,7 @@ export const MembersManagement: React.FC = () => {
                   type="number"
                   value={formData.personalCOM || 0}
                   onChange={(e) => setFormData({ ...formData, personalCOM: Number(e.target.value) })}
-                  className="w-full bg-[#f0f9ff] border border-sky-100/60 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                  className="w-full bg-[#fcfdff] border border-sky-50/40 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                 />
               </div>
             </div>
@@ -352,13 +352,13 @@ export const MembersManagement: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setShowAddModal(false)}
-                className="flex-1 py-2.5 rounded-xl bg-[#e0f2fe] hover:bg-slate-200 text-slate-800 text-xs font-bold transition-colors"
+                className="flex-1 py-2.5 rounded-xl bg-[#f0f9ff] hover:bg-slate-200 text-slate-800 text-xs font-bold transition-colors"
               >
                 ยกเลิก
               </button>
               <button
                 type="submit"
-                className="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 text-xs font-bold transition-colors shadow-sm shadow-amber-500/20"
+                className="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 text-xs font-bold transition-colors shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/20"
               >
                 {editingMember ? 'บันทึกการแก้ไข' : 'ยืนยันเพิ่มสมาชิก'}
               </button>

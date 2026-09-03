@@ -99,7 +99,7 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
   return (
     <div 
       id="profile-drawer-backdrop"
-      className="fixed inset-0 z-50 flex justify-end bg-[#f0f9ff]/60 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex justify-end bg-[#fcfdff]/60 backdrop-blur-sm"
     >
       <motion.div
         id="profile-drawer-content"
@@ -107,14 +107,14 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
         animate={{ x: 0 }}
         exit={{ x: '100%' }}
         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        className="w-full max-w-md bg-[#f0f9ff] h-full shadow-2xl flex flex-col overflow-hidden border-l border-sky-100/60"
+        className="w-full max-w-md bg-[#fcfdff] h-full shadow-[0_8px_24px_rgba(148,163,184,0.08)] flex flex-col overflow-hidden border-l border-sky-50/40"
       >
         {/* Header */}
         <div className="p-6 bg-gradient-to-br from-blue-700 via-indigo-700 to-violet-700 text-white relative">
           <button
             id="btn-close-profile-drawer"
             onClick={onClose}
-            className="absolute top-5 right-5 p-2 rounded-xl text-slate-800 hover:text-slate-900 hover:bg-[#f0f9ff]/10 transition-colors"
+            className="absolute top-5 right-5 p-2 rounded-xl text-slate-800 hover:text-slate-900 hover:bg-[#fcfdff]/10 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -124,10 +124,10 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
               <img
                 src={authUser.avatarUrl || activeUser.avatarUrl}
                 alt={authUser.name}
-                className="w-16 h-16 rounded-2xl object-cover border-2 border-indigo-400/50 shadow-sm"
+                className="w-16 h-16 rounded-2xl object-cover border-2 border-indigo-400/50 shadow-[0_1px_3px_rgba(148,163,184,0.08)]"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-sky-100/60 flex items-center justify-center">
+              <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-sky-50/40 flex items-center justify-center">
                 <CheckCircle2 className="w-3.5 h-3.5 text-slate-900" />
               </div>
             </div>
@@ -147,14 +147,14 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
         {/* Body content */}
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
           {/* Active Rank & Commission Tier */}
-          <div className="p-4 rounded-2xl bg-[#f0f9ff] border border-sky-100/60">
+          <div className="p-4 rounded-2xl bg-[#fcfdff] border border-sky-50/40">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">ตำแหน่งปัจจุบันในเครือข่าย</span>
               <span className="text-xs font-extrabold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">
                 {currentPos?.titleTh || 'ผู้บริหารภาค (RM)'}
               </span>
             </div>
-            <div className="grid grid-cols-2 gap-2 text-xs text-slate-800 mt-3 pt-3 border-t border-sky-100/60/70">
+            <div className="grid grid-cols-2 gap-2 text-xs text-slate-800 mt-3 pt-3 border-t border-sky-50/40/70">
               <div>
                 <span className="text-[11px] text-slate-800 block">รหัสตัวแทน</span>
                 <span className="font-semibold text-slate-800">{activeUser.memberCode}</span>
@@ -185,11 +185,11 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
                   <div
                     key={item.id}
                     className={`p-3.5 rounded-xl border transition-all flex items-center justify-between gap-3 ${
-                      isConnected ? 'bg-[#f0f9ff] border-sky-100/60 shadow-sm' : 'bg-[#f0f9ff]/70 border-dashed border-sky-100/60'
+                      isConnected ? 'bg-[#fcfdff] border-sky-50/40 shadow-[0_1px_3px_rgba(148,163,184,0.08)]' : 'bg-[#fcfdff]/70 border-dashed border-sky-50/40'
                     }`}
                   >
                     <div className="flex items-center gap-3 min-w-0">
-                      <div className="p-2 rounded-xl bg-[#e0f2fe] border border-sky-100/60 shrink-0">
+                      <div className="p-2 rounded-xl bg-[#f0f9ff] border border-sky-50/40 shrink-0">
                         {item.icon}
                       </div>
                       <div className="min-w-0">
@@ -212,13 +212,13 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
                         className={`text-xs font-semibold px-3 py-1.5 rounded-lg transition-all shrink-0 cursor-pointer ${
                           isConnected
                             ? 'text-rose-600 hover:bg-rose-50 border border-rose-200'
-                            : 'text-indigo-600 hover:bg-indigo-50 border border-indigo-200 bg-[#f0f9ff]'
+                            : 'text-indigo-600 hover:bg-indigo-50 border border-indigo-200 bg-[#fcfdff]'
                         }`}
                       >
                         {isConnected ? 'ยกเลิก' : 'เชื่อมต่อ'}
                       </button>
                     ) : (
-                      <span className="text-[11px] text-slate-800 font-medium px-2 py-1 bg-[#e0f2fe] rounded">
+                      <span className="text-[11px] text-slate-800 font-medium px-2 py-1 bg-[#f0f9ff] rounded">
                         หลัก
                       </span>
                     )}
@@ -247,12 +247,12 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
         </div>
 
         {/* Footer Actions */}
-        <div className="p-6 border-t border-sky-100/60 bg-[#f0f9ff]/50 space-y-2">
+        <div className="p-6 border-t border-sky-50/40 bg-[#fcfdff]/50 space-y-2">
           {!showLogoutConfirm ? (
             <button
               id="btn-drawer-signout"
               onClick={() => setShowLogoutConfirm(true)}
-              className="w-full py-2.5 px-4 rounded-xl border border-rose-200 bg-[#f0f9ff] hover:bg-rose-50 text-rose-600 font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+              className="w-full py-2.5 px-4 rounded-xl border border-rose-200 bg-[#fcfdff] hover:bg-rose-50 text-rose-600 font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer shadow-[0_1px_3px_rgba(148,163,184,0.08)]"
             >
               <LogOut className="w-4 h-4" />
               <span>ออกจากระบบ (Sign Out)</span>
@@ -273,7 +273,7 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
                 <button
                   id="btn-cancel-signout"
                   onClick={() => setShowLogoutConfirm(false)}
-                  className="flex-1 py-1.5 rounded-lg bg-[#f0f9ff] border border-sky-100/60 text-slate-800 font-semibold text-xs hover:bg-[#f0f9ff]"
+                  className="flex-1 py-1.5 rounded-lg bg-[#fcfdff] border border-sky-50/40 text-slate-800 font-semibold text-xs hover:bg-[#fcfdff]"
                 >
                   ยกเลิก
                 </button>
