@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { ExternalLink, RefreshCw, Network, Home } from 'lucide-react';
+import { RefreshCw, Network, Home } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 
 // Local same-origin copy (served from public/extracted-app/) so the parent can
 // deep-link into each section via URL hash (#<tab>).
 const EXTRACTED_LOCAL_URL = '/extracted-app/';
-const EXTRACTED_APP_URL = `${typeof window !== 'undefined' ? window.location.origin : ''}/extracted-app/`;
 
 const TAB_LABELS: Record<string, string> = {
   dashboard: 'ภาพรวมระบบ (Dashboard)',
@@ -58,16 +57,6 @@ export const ExtractedAiNetwork: React.FC<{ tab?: string }> = ({ tab = 'dashboar
             <RefreshCw className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">โหลดใหม่</span>
           </button>
-          <a
-            href={EXTRACTED_APP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            title="เปิดในแท็บใหม่ (Open in new tab)"
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-blue-600 hover:text-amber-200 hover:bg-blue-600/10 border border-blue-600/30 transition-colors"
-          >
-            <ExternalLink className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">เปิดแท็บใหม่</span>
-          </a>
         </div>
       </div>
 
