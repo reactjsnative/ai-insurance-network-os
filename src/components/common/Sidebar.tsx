@@ -45,7 +45,6 @@ export const Sidebar: React.FC = () => {
     { id: 'career_path', label: t('nav_career_path'), icon: TrendingUp },
     { id: 'career_plan', label: t('nav_career_plan'), icon: Rocket, badge: 'แผน' },
     { id: 'my_plan', label: t('nav_my_plan'), icon: UserPlus, badge: 'สมาชิก' },
-    { id: 'member_sheet', label: t('nav_member_sheet'), icon: Sheet, badge: 'ชีต' },
     { id: 'goals', label: t('nav_goals'), icon: Compass, badge: 'กลยุทธ์' },
     { id: 'simulation_goals', label: t('nav_simulation_goals'), icon: Target, badge: 'สถานการณ์' },
     { id: 'ai_coach', label: t('nav_ai_coach'), icon: Bot, badge: 'AI' },
@@ -137,6 +136,7 @@ export const Sidebar: React.FC = () => {
 
         {/* ===== เมนู 2.5: จัดการสมาชิก ===== */}
         {renderNavItem({ id: 'members_mgmt', label: t('nav_members_mgmt'), icon: Users })}
+        {renderNavItem({ id: 'member_sheet', label: t('nav_member_sheet'), icon: Sheet, badge: 'ชีต' })}
 
         {/* ===== เมนู 3: ซัพเมนู ระบบบริหารตัวแทนประกัน ===== */}
         <div className="pt-1">
