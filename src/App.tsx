@@ -52,7 +52,7 @@ const MainContent: React.FC = () => {
   // If gateway screen is active, display the pre-login entrance screen
   if (showGatewayScreen) {
     return (
-      <div className="flex-1 min-h-screen bg-slate-950 font-sans">
+      <div className="flex-1 min-h-screen bg-white font-sans">
         <WelcomeLoginGateway onEnterSystem={() => setShowGatewayScreen(false)} />
         <AuthModal />
         <SocialOAuthPopup />
@@ -62,12 +62,12 @@ const MainContent: React.FC = () => {
   }
 
   return (
-    <div className="flex-1 flex flex-col h-screen overflow-hidden bg-slate-950 text-slate-100 font-sans">
+    <div className="flex-1 flex flex-col h-screen overflow-hidden bg-white text-slate-900 font-sans">
       {!isPresentationMode && <InsuranceMegaMenu />}
       {!isPresentationMode && <Header />}
 
       <div className="flex-1 flex overflow-hidden">
-        <main className="flex-1 overflow-y-auto bg-gradient-to-b from-slate-950 via-slate-900/30 to-slate-950"><div className="mx-auto max-w-7xl w-full p-4 sm:p-6 lg:p-8">
+        <main className="flex-1 overflow-y-auto bg-gradient-to-b from-white via-slate-50 to-white"><div className="mx-auto max-w-7xl w-full p-4 sm:p-6 lg:p-8">
           {activeTab === 'dashboard' && <Dashboard />}
           {activeTab === 'network_success' && <NetworkSuccessView />}
           {activeTab === 'network_success_team_goal' && <TeamGoalView />}
