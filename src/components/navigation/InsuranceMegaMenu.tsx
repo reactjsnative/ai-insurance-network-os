@@ -72,7 +72,7 @@ const categories: MegaCategory[] = [
 ];
 
 export default function InsuranceMegaMenu() {
-  const { setActiveTab, t } = useApp();
+  const { setActiveTab, activeTab, t } = useApp();
   const [desktopOpen, setDesktopOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeId, setActiveId] = useState(categories[0].id);
@@ -94,21 +94,21 @@ export default function InsuranceMegaMenu() {
     <header ref={ref} className="relative z-50 border-b border-sky-50/40 bg-white isolate">
       <nav className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-5" aria-label="เมนูหลัก">
         <div className="flex items-center gap-3"></div>
-        <div className="hidden h-full items-center gap-1 lg:flex">
+        <div className="hidden h-full items-center gap-1.5 lg:flex">
           <button
             onClick={() => setDesktopOpen(v=>!v)}
             aria-expanded={desktopOpen}
-            className={`flex h-full items-center gap-2 border-b-2 px-3 text-[13px] font-bold transition ${desktopOpen ? "border-blue-600 text-blue-600" : "border-transparent text-blue-600 hover:text-blue-700"}`}
+            className={`flex h-full items-center gap-2 border-b-2 px-4 text-[13px] font-black transition-all ${desktopOpen ? "border-blue-600 text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 shadow-md rounded-t-lg" : "border-transparent text-slate-700 hover:text-blue-600 hover:bg-[#f0f9ff] rounded-full"}`}
           >
             เมนู <ChevronDown className={`h-4 w-4 transition-transform ${desktopOpen ? "rotate-180" : ""}`} />
           </button>
-          <button onClick={()=>go("dashboard")} className="px-3 text-[13px] font-semibold text-blue-600 hover:text-blue-700">แดชบอร์ด</button>
-          <button onClick={()=>go("recruit_agent")} className="px-3 text-[13px] font-semibold text-blue-600 hover:text-blue-700">สมัครตัวแทน</button>
-          <button onClick={()=>go("members_mgmt")} className="px-3 text-[13px] font-semibold text-blue-600 hover:text-blue-700">จัดการสมาชิก</button>
+          <button onClick={()=>go("dashboard")} className={`px-4 py-2 rounded-full text-[13px] font-bold transition-all ${activeTab==='dashboard' ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 text-white shadow-md" : "text-slate-700 hover:text-blue-600 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 border border-transparent hover:border-blue-100"}`}>แดชบอร์ด</button>
+          <button onClick={()=>go("recruit_agent")} className={`px-4 py-2 rounded-full text-[13px] font-bold transition-all ${activeTab==='recruit_agent' ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 text-white shadow-md" : "text-slate-700 hover:text-blue-600 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 border border-transparent hover:border-blue-100"}`}>สมัครตัวแทน</button>
+          <button onClick={()=>go("members_mgmt")} className={`px-4 py-2 rounded-full text-[13px] font-bold transition-all ${activeTab==='members_mgmt' ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 text-white shadow-md" : "text-slate-700 hover:text-blue-600 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 border border-transparent hover:border-blue-100"}`}>จัดการสมาชิก</button>
         </div>
 
         <div className="hidden items-center gap-2 lg:flex">
-          <button onClick={()=>go("ai_studio")} className="rounded-full bg-blue-600 px-5 py-2 text-[13px] font-bold text-white hover:bg-blue-500">จำลองรายได้</button>
+          <button onClick={()=>go("ai_studio")} className="rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-700 hover:via-indigo-700 hover:to-violet-700 px-5 py-2 text-[13px] font-black text-white shadow-md transition-all hover:shadow-lg hover:scale-105 active:scale-95">จำลองรายได้</button>
         </div>
 
         <button onClick={()=>setMobileOpen(true)} className="rounded-lg p-2 text-slate-800 hover:bg-white lg:hidden"><Menu className="h-6 w-6" /></button>
