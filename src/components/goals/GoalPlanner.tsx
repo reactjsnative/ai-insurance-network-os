@@ -121,7 +121,7 @@ export const GoalPlanner: React.FC = () => {
   return (
     <div id="goal_planner_container" className="space-y-6 max-w-7xl mx-auto pb-12">
       {/* Header Banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-white via-indigo-950 to-slate-50 border border-indigo-500/20 p-6 sm:p-8 shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-sky-50 via-indigo-950 to-slate-50 border border-indigo-500/20 p-6 sm:p-8 shadow-xl">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
@@ -139,7 +139,7 @@ export const GoalPlanner: React.FC = () => {
             </p>
           </div>
 
-          <div className="flex items-center gap-2 bg-white p-1.5 rounded-xl border border-slate-200 self-start md:self-auto">
+          <div className="flex items-center gap-2 bg-sky-50 p-1.5 rounded-xl border border-sky-100 self-start md:self-auto">
             <button
               onClick={() => applyPreset('conservative')}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
@@ -168,26 +168,26 @@ export const GoalPlanner: React.FC = () => {
         </div>
 
         {/* 4 Summary Highlight Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-slate-200/80">
-          <div className="bg-white/60 p-3.5 rounded-xl border border-slate-200/60">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-sky-100/80">
+          <div className="bg-sky-50/60 p-3.5 rounded-xl border border-sky-100/60">
             <p className="text-xs text-indigo-300 font-medium">{language === 'th' ? 'เป้าหมายสมาชิก Active' : 'Target Active Members'}</p>
             <p className="text-2xl font-black text-slate-900 mt-1">{formatNumber(targetActiveMembers)} <span className="text-xs text-slate-700 font-normal">คน</span></p>
             <p className="text-[11px] text-slate-700 mt-1">ในระยะเวลา {targetTimeMonths} เดือน</p>
           </div>
 
-          <div className="bg-white/60 p-3.5 rounded-xl border border-slate-200/60">
+          <div className="bg-sky-50/60 p-3.5 rounded-xl border border-sky-100/60">
             <p className="text-xs text-blue-600 font-medium">{language === 'th' ? 'อัตราสรรหาที่ต้องทำ' : 'Required Recruits/Mo'}</p>
             <p className="text-2xl font-black text-blue-600 mt-1">{calculation.monthlyRecruitsNeeded} <span className="text-xs text-slate-700 font-normal">คน/เดือน</span></p>
             <p className="text-[11px] text-slate-700 mt-1">รวมทั้งสิ้น {formatNumber(calculation.totalRecruitsNeeded)} คน</p>
           </div>
 
-          <div className="bg-white/60 p-3.5 rounded-xl border border-slate-200/60">
+          <div className="bg-sky-50/60 p-3.5 rounded-xl border border-sky-100/60">
             <p className="text-xs text-cyan-400 font-medium">{language === 'th' ? 'โครงสร้างผู้นำที่ต้องสร้าง' : 'Leadership Blueprint'}</p>
             <p className="text-2xl font-black text-cyan-400 mt-1">{calculation.estimatedUnits} <span className="text-xs text-slate-700 font-normal">หน่วย</span> / {calculation.estimatedCenters} <span className="text-xs text-slate-700 font-normal">ศูนย์</span></p>
             <p className="text-[11px] text-slate-700 mt-1">สร้าง {calculation.estimatedRegions} ภาคใหญ่</p>
           </div>
 
-          <div className="bg-white/60 p-3.5 rounded-xl border border-slate-200/60">
+          <div className="bg-sky-50/60 p-3.5 rounded-xl border border-sky-100/60">
             <p className="text-xs text-emerald-400 font-medium">{language === 'th' ? 'ประมาณการ FYC รายเดือน' : 'Projected Monthly FYC'}</p>
             <p className="text-2xl font-black text-emerald-400 mt-1">{formatCurrency(calculation.projectedMonthlyFYC)}</p>
             <p className="text-[11px] text-slate-700 mt-1">~{formatCurrency(calculation.projectedAnnualFYC)} / ปี</p>
@@ -198,8 +198,8 @@ export const GoalPlanner: React.FC = () => {
       {/* Main Form & Calculation Engine Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Interactive Parameters */}
-        <div className="bg-white border border-slate-200 rounded-2xl p-6 space-y-5 shadow-xl">
-          <div className="border-b border-slate-200 pb-3 flex items-center gap-2">
+        <div className="bg-sky-50 border border-sky-100 rounded-2xl p-6 space-y-5 shadow-xl">
+          <div className="border-b border-sky-100 pb-3 flex items-center gap-2">
             <Calculator className="w-5 h-5 text-indigo-400" />
             <h2 className="font-bold text-slate-900 text-base">{language === 'th' ? 'ตั้งค่าเป้าหมายและสมมติฐาน' : 'Goal Inputs & Assumptions'}</h2>
           </div>
@@ -246,11 +246,11 @@ export const GoalPlanner: React.FC = () => {
                 type="number"
                 value={currentActiveMembers}
                 onChange={(e) => setCurrentActiveMembers(Math.max(0, Number(e.target.value)))}
-                className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500"
+                className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500"
               />
             </div>
 
-            <div className="pt-3 border-t border-slate-200 space-y-4">
+            <div className="pt-3 border-t border-sky-100 space-y-4">
               <div>
                 <div className="flex items-center justify-between text-xs mb-1.5">
                   <label className="text-slate-700 font-medium">{language === 'th' ? 'อัตราคงอยู่รายเดือน (Monthly Retention)' : 'Monthly Retention Rate'}</label>
@@ -294,7 +294,7 @@ export const GoalPlanner: React.FC = () => {
                   step={5000}
                   value={avgFycPerActiveMember}
                   onChange={(e) => setAvgFycPerActiveMember(Math.max(1000, Number(e.target.value)))}
-                  className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </div>
@@ -316,8 +316,8 @@ export const GoalPlanner: React.FC = () => {
         {/* Right 2 Columns: Milestone Roadmap & Action Plan */}
         <div className="lg:col-span-2 space-y-6">
           {/* Milestone Step Table */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xl space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+          <div className="bg-sky-50 border border-sky-100 rounded-2xl p-6 shadow-xl space-y-4">
+            <div className="flex items-center justify-between border-b border-sky-100 pb-3">
               <div className="flex items-center gap-2">
                 <Clock className="w-5 h-5 text-blue-600" />
                 <h3 className="font-bold text-slate-900 text-base">{language === 'th' ? 'แผนขั้นบันไดสู่ความสำเร็จ (Milestone Roadmap)' : 'Execution Roadmap'}</h3>
@@ -328,7 +328,7 @@ export const GoalPlanner: React.FC = () => {
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
                 <thead>
-                  <tr className="border-b border-slate-200 text-slate-700">
+                  <tr className="border-b border-sky-100 text-slate-700">
                     <th className="py-2.5 px-3 font-semibold">{language === 'th' ? 'หมุดหมาย' : 'Checkpoint'}</th>
                     <th className="py-2.5 px-3 font-semibold">{language === 'th' ? 'สมาชิกเป้าหมาย' : 'Active Target'}</th>
                     <th className="py-2.5 px-3 font-semibold">{language === 'th' ? 'โครงสร้างหน่วย' : 'Required Units'}</th>
@@ -338,7 +338,7 @@ export const GoalPlanner: React.FC = () => {
                 </thead>
                 <tbody className="divide-y divide-slate-800/60">
                   {calculation.milestones.map((m) => (
-                    <tr key={m.step} className="hover:bg-slate-100/40 transition-all">
+                    <tr key={m.step} className="hover:bg-sky-100/40 transition-all">
                       <td className="py-3 px-3">
                         <div className="flex items-center gap-2">
                           <span className="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-300 font-bold flex items-center justify-center text-[11px] border border-indigo-500/40">
@@ -368,7 +368,7 @@ export const GoalPlanner: React.FC = () => {
 
           {/* Strategic Action Directives */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="bg-white border border-slate-200 rounded-xl p-4 space-y-2">
+            <div className="bg-sky-50 border border-sky-100 rounded-xl p-4 space-y-2">
               <div className="flex items-center gap-2 text-indigo-400 font-semibold text-xs">
                 <Users className="w-4 h-4" />
                 <span>{language === 'th' ? 'แผนงานด้านการสรรหา (Recruitment)' : 'Recruitment Cadence'}</span>
@@ -378,7 +378,7 @@ export const GoalPlanner: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-white border border-slate-200 rounded-xl p-4 space-y-2">
+            <div className="bg-sky-50 border border-sky-100 rounded-xl p-4 space-y-2">
               <div className="flex items-center gap-2 text-emerald-400 font-semibold text-xs">
                 <ShieldCheck className="w-4 h-4" />
                 <span>{language === 'th' ? 'การรักษาอัตราคงอยู่ (Retention Guard)' : 'Retention Guard'}</span>

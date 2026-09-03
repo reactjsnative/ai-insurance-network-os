@@ -15,7 +15,7 @@ const AppContent: React.FC = () => {
   const { activeTab } = useApp();
 
   return (
-    <div className="min-h-full bg-white text-slate-900 flex flex-col font-sans selection:bg-blue-600/30 selection:text-amber-200">
+    <div className="min-h-full bg-sky-50 text-slate-900 flex flex-col font-sans selection:bg-blue-600/30 selection:text-amber-200">
       {/* 1. Mandatory Disclaimer Banner */}
       <DisclaimerBanner />
 
@@ -33,7 +33,7 @@ const AppContent: React.FC = () => {
       </main>
 
       {/* 4. Footer */}
-      <footer className="border-t border-slate-200/80 bg-white py-6 text-center text-xs text-slate-700">
+      <footer className="border-t border-sky-100/80 bg-sky-50 py-6 text-center text-xs text-slate-700">
         <div className="max-w-7xl mx-auto px-4 space-y-1">
           <p className="font-medium text-slate-700">
             AI Insurance Network Income Simulator &copy; {new Date().getFullYear()} — All Rights Reserved.

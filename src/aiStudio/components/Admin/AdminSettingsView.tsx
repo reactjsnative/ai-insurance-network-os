@@ -28,7 +28,7 @@ const TierEditor: React.FC<{
     <div className="overflow-x-auto">
       <table className="w-full text-xs text-left border-collapse">
         <thead>
-          <tr className="bg-slate-100 text-slate-700 border-b border-slate-200">
+          <tr className="bg-sky-100 text-slate-700 border-b border-sky-100">
             <th className="py-2 px-3">ขั้น</th>
             <th className="py-2 px-3">ยอดขั้นต่ำ (บาท)</th>
             <th className="py-2 px-3">ยอดสูงสุด (บาท)</th>
@@ -47,7 +47,7 @@ const TierEditor: React.FC<{
                   type="number"
                   value={tier.minAmount}
                   onChange={(e) => update(idx, 'minAmount', Number(e.target.value))}
-                  className="bg-slate-100 border border-slate-200 rounded px-2 py-1 text-xs text-slate-900 w-28"
+                  className="bg-sky-100 border border-sky-100 rounded px-2 py-1 text-xs text-slate-900 w-28"
                 />
               </td>
               <td className="py-2 px-3">
@@ -58,7 +58,7 @@ const TierEditor: React.FC<{
                   onChange={(e) =>
                     update(idx, 'maxAmount', e.target.value === '' ? undefined : Number(e.target.value))
                   }
-                  className="bg-slate-100 border border-slate-200 rounded px-2 py-1 text-xs text-slate-900 w-28"
+                  className="bg-sky-100 border border-sky-100 rounded px-2 py-1 text-xs text-slate-900 w-28"
                 />
               </td>
               {rate && (
@@ -70,7 +70,7 @@ const TierEditor: React.FC<{
                     onChange={(e) =>
                       update(idx, 'ratePercentage', e.target.value === '' ? undefined : Number(e.target.value))
                     }
-                    className="bg-slate-100 border border-slate-200 rounded px-2 py-1 text-xs text-blue-600 font-bold w-20"
+                    className="bg-sky-100 border border-sky-100 rounded px-2 py-1 text-xs text-blue-600 font-bold w-20"
                   />
                   {' '}%
                 </td>
@@ -83,7 +83,7 @@ const TierEditor: React.FC<{
                     onChange={(e) =>
                       update(idx, 'fixedAmount', e.target.value === '' ? undefined : Number(e.target.value))
                     }
-                    className="bg-slate-100 border border-slate-200 rounded px-2 py-1 text-xs text-emerald-400 font-bold w-24"
+                    className="bg-sky-100 border border-sky-100 rounded px-2 py-1 text-xs text-emerald-400 font-bold w-24"
                   />
                 </td>
               )}
@@ -157,7 +157,7 @@ export const AdminSettingsView: React.FC = () => {
   return (
     <div className="space-y-6 pb-12">
       {/* Top Header */}
-      <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-sky-50/90 border border-sky-100 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
@@ -178,7 +178,7 @@ export const AdminSettingsView: React.FC = () => {
         </div>
 
         {/* Tab switcher */}
-        <div className="flex bg-slate-100 rounded-xl p-1 border border-slate-200">
+        <div className="flex bg-sky-100 rounded-xl p-1 border border-sky-100">
           {([
             ['RULES_EDITOR', 'แบบฟอร์มกติกา'],
             ['JSON_IO', 'นำเข้า / ส่งออก JSON'],
@@ -207,8 +207,8 @@ export const AdminSettingsView: React.FC = () => {
       {activeTab === 'RULES_EDITOR' ? (
         <div className="space-y-6">
           {/* 1. Unit Manager */}
-          <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-4">
-            <div className="border-b border-slate-200 pb-3">
+          <div className="bg-sky-50/90 border border-sky-100 rounded-2xl p-6 shadow-xl space-y-4">
+            <div className="border-b border-sky-100 pb-3">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full bg-blue-500" />
                 1. กติกาผู้บริหารหน่วย (Unit Manager)
@@ -220,19 +220,19 @@ export const AdminSettingsView: React.FC = () => {
                 <label className="text-xs font-semibold text-slate-700 block mb-1">ผลงานขั้นต่ำเพื่อดำรงตำแหน่ง (บาท/เดือน)</label>
                 <input type="number" value={editForm.unitManager.qualMinPerformance}
                   onChange={(e) => setUnit({ qualMinPerformance: num(e.target.value) })}
-                  className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
+                  className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
               </div>
               <div>
                 <label className="text-xs font-semibold text-slate-700 block mb-1">ค่าพาหนะผู้บริหารหน่วย (บาท/เดือน)</label>
                 <input type="number" value={editForm.unitManager.vehicleAllowance}
                   onChange={(e) => setUnit({ vehicleAllowance: num(e.target.value) })}
-                  className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
+                  className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
               </div>
               <div>
                 <label className="text-xs font-semibold text-slate-700 block mb-1">ค่าแยกหน่วยต่อหน่วย (บาท/เดือน)</label>
                 <input type="number" value={editForm.unitManager.unitSeparationPerUnit}
                   onChange={(e) => setUnit({ unitSeparationPerUnit: num(e.target.value) })}
-                  className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
+                  className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
               </div>
             </div>
             <div className="mt-4 pt-2">
@@ -246,8 +246,8 @@ export const AdminSettingsView: React.FC = () => {
           </div>
 
           {/* 2. Center Manager */}
-          <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-4">
-            <div className="border-b border-slate-200 pb-3">
+          <div className="bg-sky-50/90 border border-sky-100 rounded-2xl p-6 shadow-xl space-y-4">
+            <div className="border-b border-sky-100 pb-3">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full bg-emerald-500" />
                 2. กติกาผู้บริหารศูนย์ (Center Manager)
@@ -259,25 +259,25 @@ export const AdminSettingsView: React.FC = () => {
                 <label className="text-xs font-semibold text-slate-700 block mb-1">ผลงานขั้นต่ำ (บาท/เดือน)</label>
                 <input type="number" value={editForm.centerManager.qualMinPerformance}
                   onChange={(e) => setCenter({ qualMinPerformance: num(e.target.value) })}
-                  className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
+                  className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
               </div>
               <div>
                 <label className="text-xs font-semibold text-slate-700 block mb-1">จำนวนหน่วยแยกขั้นต่ำ</label>
                 <input type="number" value={editForm.centerManager.qualMinSeparatedUnits}
                   onChange={(e) => setCenter({ qualMinSeparatedUnits: num(e.target.value) })}
-                  className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
+                  className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
               </div>
               <div>
                 <label className="text-xs font-semibold text-slate-700 block mb-1">อัตราค่าจัดงานประเภท 2 (%)</label>
                 <input type="number" step={0.1} value={editForm.centerManager.centerType2Rate}
                   onChange={(e) => setCenter({ centerType2Rate: num(e.target.value) })}
-                  className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
+                  className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
               </div>
               <div>
                 <label className="text-xs font-semibold text-slate-700 block mb-1">เงินเพิ่มค่าแยกศูนย์เดือนแรก</label>
                 <input type="number" value={editForm.centerManager.centerSeparationFirstMonthBooster}
                   onChange={(e) => setCenter({ centerSeparationFirstMonthBooster: num(e.target.value) })}
-                  className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
+                  className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
               </div>
             </div>
             <div className="space-y-5">
@@ -301,8 +301,8 @@ export const AdminSettingsView: React.FC = () => {
           </div>
 
           {/* 3. Group Manager */}
-          <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-4">
-            <div className="border-b border-slate-200 pb-3">
+          <div className="bg-sky-50/90 border border-sky-100 rounded-2xl p-6 shadow-xl space-y-4">
+            <div className="border-b border-sky-100 pb-3">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full bg-blue-600" />
                 3. กติกาผู้บริหารภาค (Group Manager)
@@ -314,25 +314,25 @@ export const AdminSettingsView: React.FC = () => {
                 <label className="text-xs font-semibold text-slate-700 block mb-1">ผลงานขั้นต่ำ (บาท/เดือน)</label>
                 <input type="number" value={editForm.groupManager.qualMinPerformance}
                   onChange={(e) => setGroup({ qualMinPerformance: num(e.target.value) })}
-                  className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
+                  className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
               </div>
               <div>
                 <label className="text-xs font-semibold text-slate-700 block mb-1">จำนวนศูนย์แยกขั้นต่ำ</label>
                 <input type="number" value={editForm.groupManager.qualMinSeparatedCenters}
                   onChange={(e) => setGroup({ qualMinSeparatedCenters: num(e.target.value) })}
-                  className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
+                  className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
               </div>
               <div>
                 <label className="text-xs font-semibold text-slate-700 block mb-1">ค่าแยกภาคครั้งเดียว (บาท)</label>
                 <input type="number" value={editForm.groupManager.groupSeparationType1Fixed}
                   onChange={(e) => setGroup({ groupSeparationType1Fixed: num(e.target.value) })}
-                  className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
+                  className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
               </div>
               <div>
                 <label className="text-xs font-semibold text-slate-700 block mb-1">ค่าแยกภาครายเดือน (บาท/เดือน)</label>
                 <input type="number" value={editForm.groupManager.groupSeparationType2Monthly}
                   onChange={(e) => setGroup({ groupSeparationType2Monthly: num(e.target.value) })}
-                  className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
+                  className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none" />
               </div>
             </div>
             <div className="space-y-5">
@@ -352,9 +352,9 @@ export const AdminSettingsView: React.FC = () => {
           </div>
 
           {/* Action Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-white border border-slate-200 rounded-2xl">
+          <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-sky-50 border border-sky-100 rounded-2xl">
             <button onClick={resetRulesToDefault}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-rose-300 border border-slate-200 text-xs font-semibold transition-colors cursor-pointer">
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-sky-100 hover:bg-slate-200 text-rose-300 border border-sky-100 text-xs font-semibold transition-colors cursor-pointer">
               <RotateCcw className="w-4 h-4" />
               <span>รีเซ็ตกลับเป็นเอกสาร 15 ม.ค. 2564</span>
             </button>
@@ -373,7 +373,7 @@ export const AdminSettingsView: React.FC = () => {
           </div>
         </div>
       ) : activeTab === 'JSON_IO' ? (
-        <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-4">
+        <div className="bg-sky-50/90 border border-sky-100 rounded-2xl p-6 shadow-xl space-y-4">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
@@ -386,7 +386,7 @@ export const AdminSettingsView: React.FC = () => {
             </div>
             <div className="flex items-center gap-2">
               <button onClick={handleJsonExport}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-semibold text-slate-900 border border-slate-200 cursor-pointer">
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-sky-100 hover:bg-slate-200 text-xs font-semibold text-slate-900 border border-sky-100 cursor-pointer">
                 <Download className="w-3.5 h-3.5" />
                 <span>Download JSON</span>
               </button>
@@ -398,10 +398,10 @@ export const AdminSettingsView: React.FC = () => {
             </div>
           </div>
           <textarea value={jsonText} onChange={(e) => setJsonText(e.target.value)} rows={18}
-            className="w-full bg-white font-mono text-xs text-emerald-400 p-4 rounded-xl border border-slate-200 focus:outline-none focus:border-blue-500" />
+            className="w-full bg-sky-50 font-mono text-xs text-emerald-400 p-4 rounded-xl border border-sky-100 focus:outline-none focus:border-blue-500" />
         </div>
       ) : (
-        <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-4">
+        <div className="bg-sky-50/90 border border-sky-100 rounded-2xl p-6 shadow-xl space-y-4">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
@@ -416,7 +416,7 @@ export const AdminSettingsView: React.FC = () => {
           <div className="overflow-x-auto">
             <table className="w-full text-xs text-left border-collapse">
               <thead>
-                <tr className="bg-slate-100 text-slate-700 border-b border-slate-200">
+                <tr className="bg-sky-100 text-slate-700 border-b border-sky-100">
                   <th className="py-2.5 px-3">วันและเวลา</th>
                   <th className="py-2.5 px-3">ผู้กระทำ</th>
                   <th className="py-2.5 px-3">การกระทำ</th>
@@ -426,7 +426,7 @@ export const AdminSettingsView: React.FC = () => {
               </thead>
               <tbody className="divide-y divide-slate-800">
                 {auditLogs.map((log) => (
-                  <tr key={log.id} className="hover:bg-slate-100/40">
+                  <tr key={log.id} className="hover:bg-sky-100/40">
                     <td className="py-2.5 px-3 font-mono text-slate-700">
                       {new Date(log.timestamp).toLocaleString('th-TH')}
                     </td>

@@ -28,10 +28,10 @@ export const AuthToast: React.FC = () => {
         exit={{ opacity: 0, y: 20, scale: 0.95 }}
         className={`p-4 rounded-2xl shadow-xl border flex items-start gap-3 backdrop-blur-md ${
           authNotification.type === 'success'
-            ? 'bg-white/95 text-white border-emerald-500/40'
+            ? 'bg-sky-50/95 text-white border-emerald-500/40'
             : authNotification.type === 'error'
             ? 'bg-rose-950/95 text-slate-900 border-rose-500/40'
-            : 'bg-white/95 text-white border-indigo-500/40'
+            : 'bg-sky-50/95 text-white border-indigo-500/40'
         }`}
       >
         {authNotification.type === 'success' && (

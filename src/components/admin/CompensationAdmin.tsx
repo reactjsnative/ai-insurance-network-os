@@ -33,7 +33,7 @@ export const CompensationAdmin: React.FC = () => {
   return (
     <div id="compensation_admin_view" className="space-y-6 max-w-7xl mx-auto pb-16 text-left">
       {/* 1. Header Card */}
-      <div className="p-6 rounded-3xl bg-white/90 border border-slate-200 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-sky-50/90 border border-sky-100 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-xl sm:text-2xl font-black text-slate-900">
@@ -59,12 +59,12 @@ export const CompensationAdmin: React.FC = () => {
 
       {/* 2. Active Plan Information */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="p-4 rounded-2xl bg-white/80 border border-slate-200">
+        <div className="p-4 rounded-2xl bg-sky-50/80 border border-sky-100">
           <span className="text-[10px] text-slate-700 uppercase font-bold">เวอร์ชันปัจจุบัน</span>
           <div className="text-lg font-black text-blue-600 mt-1">{activePlan.name}</div>
           <div className="text-[10px] text-slate-700 font-mono mt-0.5">Code: {activePlan.code}</div>
         </div>
-        <div className="p-4 rounded-2xl bg-white/80 border border-slate-200">
+        <div className="p-4 rounded-2xl bg-sky-50/80 border border-sky-100">
           <span className="text-[10px] text-slate-700 uppercase font-bold">สถานะความถูกต้อง (Rule Verification)</span>
           <div className="text-lg font-black text-emerald-400 mt-1 flex items-center gap-1.5">
             <ShieldCheck className="w-5 h-5" />
@@ -72,7 +72,7 @@ export const CompensationAdmin: React.FC = () => {
           </div>
           <div className="text-[10px] text-slate-700 mt-0.5">อิงเอกสารผลประโยชน์ 28 ส.ค. 69</div>
         </div>
-        <div className="p-4 rounded-2xl bg-white/80 border border-slate-200">
+        <div className="p-4 rounded-2xl bg-sky-50/80 border border-sky-100">
           <span className="text-[10px] text-slate-700 uppercase font-bold">จำนวนกฎที่ Active</span>
           <div className="text-lg font-black text-slate-900 mt-1">{activePlan.rules.length} กฎผลประโยชน์</div>
           <div className="text-[10px] text-slate-700 mt-0.5">ครอบคลุมทุกระดับตำแหน่ง</div>
@@ -80,14 +80,14 @@ export const CompensationAdmin: React.FC = () => {
       </div>
 
       {/* 3. Rules Table */}
-      <div className="rounded-3xl bg-white/90 border border-slate-200 overflow-hidden shadow-2xl">
-        <div className="p-4 border-b border-slate-200 flex items-center justify-between">
+      <div className="rounded-3xl bg-sky-50/90 border border-sky-100 overflow-hidden shadow-2xl">
+        <div className="p-4 border-b border-sky-100 flex items-center justify-between">
           <h2 className="text-sm font-bold text-slate-900">รายการกฎผลประโยชน์ทั้งหมด ({activePlan.rules.length})</h2>
           <span className="text-xs text-slate-700 font-mono">Rule Engine v2021-01-15</span>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs text-slate-700">
-            <thead className="bg-white/80 text-slate-700 uppercase text-[10px] tracking-wider border-b border-slate-200 font-bold">
+            <thead className="bg-sky-50/80 text-slate-700 uppercase text-[10px] tracking-wider border-b border-sky-100 font-bold">
               <tr>
                 <th className="py-3.5 px-4">ชื่อผลประโยชน์ (Benefit)</th>
                 <th className="py-3.5 px-4">ตำแหน่งที่มีสิทธิ์</th>
@@ -98,13 +98,13 @@ export const CompensationAdmin: React.FC = () => {
             </thead>
             <tbody className="divide-y divide-slate-800/60">
               {activePlan.rules.map((r) => (
-                <tr key={r.id} className="hover:bg-slate-100/40 transition-colors">
+                <tr key={r.id} className="hover:bg-sky-100/40 transition-colors">
                   <td className="py-3 px-4">
                     <div className="font-bold text-slate-900">{r.name}</div>
                     <div className="text-[10px] text-slate-700">{r.description}</div>
                   </td>
                   <td className="py-3 px-4">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 text-slate-700">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-sky-100 text-slate-700">
                       {r.positionId || 'ทุกตำแหน่ง'}
                     </span>
                   </td>
@@ -127,7 +127,7 @@ export const CompensationAdmin: React.FC = () => {
       </div>
 
       {/* 4. Audit Log Trail */}
-      <div className="rounded-3xl bg-white/90 border border-slate-200 p-6 space-y-4 shadow-xl">
+      <div className="rounded-3xl bg-sky-50/90 border border-sky-100 p-6 space-y-4 shadow-xl">
         <div className="flex items-center gap-2">
           <History className="w-5 h-5 text-blue-600" />
           <h2 className="text-sm sm:text-base font-bold text-slate-900">
@@ -137,7 +137,7 @@ export const CompensationAdmin: React.FC = () => {
 
         <div className="space-y-2">
           {auditLogs.slice(0, 5).map((log) => (
-            <div key={log.id} className="p-3 rounded-xl bg-white border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+            <div key={log.id} className="p-3 rounded-xl bg-sky-50 border border-sky-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
               <div>
                 <div className="flex items-center gap-2">
                   <span className="font-bold text-slate-800">{log.action}</span>
@@ -153,9 +153,9 @@ export const CompensationAdmin: React.FC = () => {
 
       {/* 5. Duplicate Plan Modal */}
       {showDuplicateModal && (
-        <div className="fixed inset-0 bg-white/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <form onSubmit={handleDuplicate} className="bg-white border border-slate-200 rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-200">
+        <div className="fixed inset-0 bg-sky-50/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <form onSubmit={handleDuplicate} className="bg-sky-50 border border-sky-100 rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-sky-100">
               <h3 className="text-base font-bold text-slate-900">จำลองเวอร์ชันแผนใหม่</h3>
               <button type="button" onClick={() => setShowDuplicateModal(false)} className="text-slate-700 hover:text-slate-900">✕</button>
             </div>
@@ -167,7 +167,7 @@ export const CompensationAdmin: React.FC = () => {
                 placeholder="เช่น PLAN-2026-V2"
                 value={newPlanCode}
                 onChange={(e) => setNewPlanCode(e.target.value)}
-                className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                className="w-full bg-sky-50 border border-sky-100 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
               />
             </div>
             <div>
@@ -178,11 +178,11 @@ export const CompensationAdmin: React.FC = () => {
                 placeholder="เช่น แผนผลตอบแทนขยายภาคปี 2026"
                 value={newPlanName}
                 onChange={(e) => setNewPlanName(e.target.value)}
-                className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                className="w-full bg-sky-50 border border-sky-100 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
               />
             </div>
             <div className="flex gap-2 pt-2">
-              <button type="button" onClick={() => setShowDuplicateModal(false)} className="flex-1 py-2 rounded-xl bg-slate-100 text-xs font-bold text-slate-700">ยกเลิก</button>
+              <button type="button" onClick={() => setShowDuplicateModal(false)} className="flex-1 py-2 rounded-xl bg-sky-100 text-xs font-bold text-slate-700">ยกเลิก</button>
               <button type="submit" className="flex-1 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-xs font-bold text-slate-900">สร้างเวอร์ชัน</button>
             </div>
           </form>

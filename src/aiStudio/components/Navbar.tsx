@@ -33,7 +33,7 @@ export const Navbar: React.FC = () => {
   const posColor = POSITIONS_LIST.find(p => p.id === selectedMember?.position)?.accentColor || '#3B82F6';
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 dark:bg-white/95 backdrop-blur border-b border-slate-200 text-slate-900 shadow-lg">
+    <header className="sticky top-0 z-40 bg-sky-50/95 dark:bg-sky-50/95 backdrop-blur border-b border-sky-100 text-slate-900 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-4">
           
@@ -44,7 +44,7 @@ export const Navbar: React.FC = () => {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-bold text-base sm:text-lg tracking-tight bg-gradient-to-r from-white via-slate-200 to-amber-300 bg-clip-text text-transparent">
+                <span className="font-bold text-base sm:text-lg tracking-tight bg-gradient-to-r from-sky-50 via-slate-200 to-amber-300 bg-clip-text text-transparent">
                   AI Insurance Simulator
                 </span>
                 <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-semibold tracking-wide rounded bg-blue-600/20 text-blue-600 border border-blue-600/30">
@@ -58,7 +58,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Member Quick Switcher */}
-          <div className="hidden lg:flex items-center gap-2 bg-slate-100/80 rounded-lg px-3 py-1.5 border border-slate-200">
+          <div className="hidden lg:flex items-center gap-2 bg-sky-100/80 rounded-lg px-3 py-1.5 border border-sky-100">
             <div className="flex items-center gap-1.5 text-xs text-slate-700">
               <UserCheck className="w-3.5 h-3.5 text-blue-600" />
               <span>กำลังดู:</span>
@@ -69,7 +69,7 @@ export const Navbar: React.FC = () => {
               className="bg-transparent text-xs font-medium text-slate-800 focus:outline-none cursor-pointer max-w-[220px] truncate"
             >
               {members.map(m => (
-                <option key={m.id} value={m.id} className="bg-white text-slate-800">
+                <option key={m.id} value={m.id} className="bg-sky-50 text-slate-800">
                   [{m.code}] {m.name} ({m.position === 'GROUP_MANAGER' ? 'ภาค' : m.position === 'CENTER_MANAGER' ? 'ศูนย์' : m.position === 'UNIT_MANAGER' ? 'หน่วย' : 'ตัวแทน'})
                 </option>
               ))}
@@ -89,25 +89,25 @@ export const Navbar: React.FC = () => {
             </button>
 
             {/* Role Switcher */}
-            <div className="hidden md:flex items-center gap-1 bg-slate-100/60 rounded-lg p-1 border border-slate-200/60">
+            <div className="hidden md:flex items-center gap-1 bg-sky-100/60 rounded-lg p-1 border border-sky-100/60">
               <select
                 value={userRole}
                 onChange={e => setUserRole(e.target.value as any)}
                 className="bg-transparent text-[11px] font-semibold text-slate-700 focus:outline-none cursor-pointer px-1.5"
                 title="สลับมุมมองสิทธิ์ผู้ใช้งาน"
               >
-                <option value="ADMIN" className="bg-white">👑 สิทธิ์: ผู้ดูแล (Admin)</option>
-                <option value="GROUP_MANAGER" className="bg-white">🏢 สิทธิ์: ผู้บริหารภาค</option>
-                <option value="CENTER_MANAGER" className="bg-white">🏬 สิทธิ์: ผู้บริหารศูนย์</option>
-                <option value="UNIT_MANAGER" className="bg-white">🏠 สิทธิ์: ผู้บริหารหน่วย</option>
-                <option value="AGENT" className="bg-white">👤 สิทธิ์: ตัวแทนทั่วไป</option>
+                <option value="ADMIN" className="bg-sky-50">👑 สิทธิ์: ผู้ดูแล (Admin)</option>
+                <option value="GROUP_MANAGER" className="bg-sky-50">🏢 สิทธิ์: ผู้บริหารภาค</option>
+                <option value="CENTER_MANAGER" className="bg-sky-50">🏬 สิทธิ์: ผู้บริหารศูนย์</option>
+                <option value="UNIT_MANAGER" className="bg-sky-50">🏠 สิทธิ์: ผู้บริหารหน่วย</option>
+                <option value="AGENT" className="bg-sky-50">👤 สิทธิ์: ตัวแทนทั่วไป</option>
               </select>
             </div>
 
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-slate-100/80 hover:bg-slate-200/80 border border-slate-200 text-slate-700 hover:text-slate-900 transition-colors cursor-pointer"
+              className="p-2 rounded-lg bg-sky-100/80 hover:bg-slate-200/80 border border-sky-100 text-slate-700 hover:text-slate-900 transition-colors cursor-pointer"
               title="สลับโหมดมืด/สว่าง"
             >
               {theme === 'dark' ? <Sun className="w-4 h-4 text-blue-600" /> : <Moon className="w-4 h-4 text-blue-300" />}
@@ -116,14 +116,14 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Navigation Tabs Bar */}
-        <nav className="flex items-center gap-1 sm:gap-2 overflow-x-auto py-2.5 scrollbar-none border-t border-slate-200/80">
+        <nav className="flex items-center gap-1 sm:gap-2 overflow-x-auto py-2.5 scrollbar-none border-t border-sky-100/80">
           
           <button
             onClick={() => setActiveTab('DASHBOARD')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'DASHBOARD'
                 ? 'bg-blue-600 text-slate-900 shadow-md shadow-blue-500/20'
-                : 'text-slate-700 hover:text-slate-800 hover:bg-slate-100/60'
+                : 'text-slate-700 hover:text-slate-800 hover:bg-sky-100/60'
             }`}
           >
             <LayoutDashboard className="w-4 h-4" />
@@ -135,12 +135,12 @@ export const Navbar: React.FC = () => {
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'TREE'
                 ? 'bg-blue-600 text-slate-900 shadow-md shadow-blue-500/20'
-                : 'text-slate-700 hover:text-slate-800 hover:bg-slate-100/60'
+                : 'text-slate-700 hover:text-slate-800 hover:bg-sky-100/60'
             }`}
           >
             <Network className="w-4 h-4" />
             <span>ผังองค์กรต้นไม้</span>
-            <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+            <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-sky-100 text-slate-700 border border-sky-100">
               {members.length}
             </span>
           </button>
@@ -150,7 +150,7 @@ export const Navbar: React.FC = () => {
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'CALCULATOR'
                 ? 'bg-blue-600 text-slate-900 shadow-md shadow-blue-500/20'
-                : 'text-slate-700 hover:text-slate-800 hover:bg-slate-100/60'
+                : 'text-slate-700 hover:text-slate-800 hover:bg-sky-100/60'
             }`}
           >
             <Calculator className="w-4 h-4" />
@@ -162,7 +162,7 @@ export const Navbar: React.FC = () => {
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'GOAL'
                 ? 'bg-blue-600 text-slate-900 shadow-md shadow-blue-500/20'
-                : 'text-slate-700 hover:text-slate-800 hover:bg-slate-100/60'
+                : 'text-slate-700 hover:text-slate-800 hover:bg-sky-100/60'
             }`}
           >
             <Target className="w-4 h-4" />
@@ -174,7 +174,7 @@ export const Navbar: React.FC = () => {
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'ADMIN'
                 ? 'bg-blue-600 text-slate-900 shadow-md shadow-blue-500/20'
-                : 'text-slate-700 hover:text-slate-800 hover:bg-slate-100/60'
+                : 'text-slate-700 hover:text-slate-800 hover:bg-sky-100/60'
             }`}
           >
             <Settings className="w-4 h-4" />
@@ -186,7 +186,7 @@ export const Navbar: React.FC = () => {
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'UNIT_TESTS'
                 ? 'bg-blue-600 text-slate-900 shadow-md shadow-blue-500/20'
-                : 'text-slate-700 hover:text-slate-800 hover:bg-slate-100/60'
+                : 'text-slate-700 hover:text-slate-800 hover:bg-sky-100/60'
             }`}
           >
             <CheckCircle2 className="w-4 h-4 text-emerald-400" />

@@ -117,7 +117,7 @@ export const MembersManagement: React.FC = () => {
   return (
     <div id="members_management_view" className="space-y-6 max-w-7xl mx-auto pb-16 text-left">
       {/* 1. Header & Actions */}
-      <div className="p-6 rounded-3xl bg-white/90 border border-slate-200 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-sky-50/90 border border-sky-100 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-xl sm:text-2xl font-black text-slate-900">
@@ -150,14 +150,14 @@ export const MembersManagement: React.FC = () => {
             placeholder="ค้นหาชื่อ, รหัสตัวแทน, หรือจังหวัด..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-2xl pl-10 pr-4 py-2.5 text-xs text-slate-800 placeholder-slate-500 focus:outline-none focus:border-blue-600/50"
+            className="w-full bg-sky-50 border border-sky-100 rounded-2xl pl-10 pr-4 py-2.5 text-xs text-slate-800 placeholder-slate-500 focus:outline-none focus:border-blue-600/50"
           />
         </div>
 
         <select
           value={filterPosition}
           onChange={(e) => setFilterPosition(e.target.value)}
-          className="bg-white border border-slate-200 rounded-2xl px-4 py-2.5 text-xs text-slate-800 focus:outline-none"
+          className="bg-sky-50 border border-sky-100 rounded-2xl px-4 py-2.5 text-xs text-slate-800 focus:outline-none"
         >
           <option value="all">ทุกระดับตำแหน่ง</option>
           <option value="region_manager">ผู้บริหารภาค (RM)</option>
@@ -168,10 +168,10 @@ export const MembersManagement: React.FC = () => {
       </div>
 
       {/* 3. Members Table */}
-      <div className="rounded-3xl bg-white/90 border border-slate-200 overflow-hidden shadow-2xl">
+      <div className="rounded-3xl bg-sky-50/90 border border-sky-100 overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs text-slate-700">
-            <thead className="bg-white/80 text-slate-700 uppercase text-[10px] tracking-wider border-b border-slate-200 font-bold">
+            <thead className="bg-sky-50/80 text-slate-700 uppercase text-[10px] tracking-wider border-b border-sky-100 font-bold">
               <tr>
                 <th className="py-3.5 px-4">สมาชิก</th>
                 <th className="py-3.5 px-4">ตำแหน่ง</th>
@@ -187,10 +187,10 @@ export const MembersManagement: React.FC = () => {
                 const parent = members.find(p => p.id === m.parentMemberId);
                 const income = calculateMemberIncome(m, 'ACTUAL');
                 return (
-                  <tr key={m.id} className="hover:bg-slate-100/40 transition-colors">
+                  <tr key={m.id} className="hover:bg-sky-100/40 transition-colors">
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-2.5">
-                        <img src={m.avatarUrl} alt={m.name} className="w-8 h-8 rounded-full object-cover border border-slate-200" />
+                        <img src={m.avatarUrl} alt={m.name} className="w-8 h-8 rounded-full object-cover border border-sky-100" />
                         <div>
                           <div className="font-bold text-slate-900">{m.name}</div>
                           <div className="text-[10px] text-blue-600 font-mono">{m.memberCode} • {m.location.province}</div>
@@ -227,7 +227,7 @@ export const MembersManagement: React.FC = () => {
                       <div className="flex items-center justify-center gap-1.5">
                         <button
                           onClick={() => handleOpenEdit(m)}
-                          className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors"
+                          className="p-1.5 rounded-lg bg-sky-100 hover:bg-slate-200 text-slate-700 transition-colors"
                           title="แก้ไขข้อมูล"
                         >
                           <Edit3 className="w-3.5 h-3.5" />
@@ -251,19 +251,19 @@ export const MembersManagement: React.FC = () => {
 
       {/* 4. Add / Edit Member Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 bg-white/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-sky-50/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <form 
             onSubmit={handleSubmit}
-            className="bg-white border border-slate-200 rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto"
+            className="bg-sky-50 border border-sky-100 rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto"
           >
-            <div className="flex items-center justify-between pb-3 border-b border-slate-200">
+            <div className="flex items-center justify-between pb-3 border-b border-sky-100">
               <h3 className="text-base font-bold text-slate-900">
                 {editingMember ? 'แก้ไขข้อมูลสมาชิก' : 'เพิ่มสมาชิกใหม่เข้าสู่สายงาน'}
               </h3>
               <button
                 type="button"
                 onClick={() => setShowAddModal(false)}
-                className="w-7 h-7 rounded-lg bg-slate-100 text-slate-700 hover:text-slate-900 flex items-center justify-center text-xs"
+                className="w-7 h-7 rounded-lg bg-sky-100 text-slate-700 hover:text-slate-900 flex items-center justify-center text-xs"
               >
                 ✕
               </button>
@@ -285,7 +285,7 @@ export const MembersManagement: React.FC = () => {
                   value={formData.name || ''}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="เช่น สมชาย ใจดี"
-                  className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                  className="w-full bg-sky-50 border border-sky-100 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                 />
               </div>
 
@@ -296,7 +296,7 @@ export const MembersManagement: React.FC = () => {
                   value={formData.nickname || ''}
                   onChange={(e) => setFormData({ ...formData, nickname: e.target.value })}
                   placeholder="เช่น บอย"
-                  className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                  className="w-full bg-sky-50 border border-sky-100 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                 />
               </div>
 
@@ -305,7 +305,7 @@ export const MembersManagement: React.FC = () => {
                 <select
                   value={formData.positionId || 'agent'}
                   onChange={(e) => setFormData({ ...formData, positionId: e.target.value })}
-                  className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                  className="w-full bg-sky-50 border border-sky-100 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                 >
                   <option value="agent">ตัวแทน (Agent)</option>
                   <option value="unit_manager">ผู้บริหารหน่วย (UM)</option>
@@ -319,7 +319,7 @@ export const MembersManagement: React.FC = () => {
                 <select
                   value={formData.parentMemberId || ''}
                   onChange={(e) => setFormData({ ...formData, parentMemberId: e.target.value })}
-                  className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                  className="w-full bg-sky-50 border border-sky-100 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                 >
                   {members.filter(m => !editingMember || m.id !== editingMember.id).map(m => (
                     <option key={m.id} value={m.id}>{m.name} ({m.memberCode})</option>
@@ -333,7 +333,7 @@ export const MembersManagement: React.FC = () => {
                   type="number"
                   value={formData.personalFYC || 0}
                   onChange={(e) => setFormData({ ...formData, personalFYC: Number(e.target.value) })}
-                  className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                  className="w-full bg-sky-50 border border-sky-100 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                 />
               </div>
 
@@ -343,7 +343,7 @@ export const MembersManagement: React.FC = () => {
                   type="number"
                   value={formData.personalCOM || 0}
                   onChange={(e) => setFormData({ ...formData, personalCOM: Number(e.target.value) })}
-                  className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                  className="w-full bg-sky-50 border border-sky-100 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                 />
               </div>
             </div>
@@ -352,7 +352,7 @@ export const MembersManagement: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setShowAddModal(false)}
-                className="flex-1 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors"
+                className="flex-1 py-2.5 rounded-xl bg-sky-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors"
               >
                 ยกเลิก
               </button>

@@ -84,7 +84,7 @@ export const GrowthSimulation: React.FC = () => {
   return (
     <div id="growth_simulation_view" className="space-y-6 max-w-7xl mx-auto pb-16 text-left">
       {/* 1. Header Card */}
-      <div className="p-6 rounded-3xl bg-white/90 border border-slate-200 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-sky-50/90 border border-sky-100 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-xl sm:text-2xl font-black text-slate-900">
@@ -100,7 +100,7 @@ export const GrowthSimulation: React.FC = () => {
         </div>
 
         {/* Scenario Switcher Tabs */}
-        <div className="inline-flex p-1 rounded-xl bg-white border border-slate-200 self-start md:self-auto">
+        <div className="inline-flex p-1 rounded-xl bg-sky-50 border border-sky-100 self-start md:self-auto">
           {(['A', 'B', 'C'] as const).map((key) => (
             <button
               key={key}
@@ -118,7 +118,7 @@ export const GrowthSimulation: React.FC = () => {
       </div>
 
       {/* 2. Reverse Goal Solver: "อยากได้รายได้เดือนละเท่าไหร่? ระบบคำนวณสิ่งที่ต้องสร้างให้" */}
-      <div className="p-6 rounded-3xl bg-gradient-to-r from-purple-950/40 via-slate-50 to-indigo-950/40 border border-purple-500/30 space-y-6">
+      <div className="p-6 rounded-3xl bg-gradient-to-r from-purple-950/40 via-sky-100 to-indigo-950/40 border border-purple-500/30 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
@@ -134,7 +134,7 @@ export const GrowthSimulation: React.FC = () => {
 
           <div className="flex items-center gap-3">
             <span className="text-xs text-slate-700">เป้าหมายรายได้:</span>
-            <div className="px-4 py-2 rounded-2xl bg-white border border-purple-500/40 text-xl font-black text-purple-300 font-mono">
+            <div className="px-4 py-2 rounded-2xl bg-sky-50 border border-purple-500/40 text-xl font-black text-purple-300 font-mono">
               ฿{targetMonthlyIncome.toLocaleString()} <span className="text-xs font-normal text-slate-700">/ด.</span>
             </div>
           </div>
@@ -149,7 +149,7 @@ export const GrowthSimulation: React.FC = () => {
             step={25000}
             value={targetMonthlyIncome}
             onChange={(e) => setTargetMonthlyIncome(Number(e.target.value))}
-            className="w-full accent-purple-500 cursor-pointer h-2 bg-white rounded-lg"
+            className="w-full accent-purple-500 cursor-pointer h-2 bg-sky-50 rounded-lg"
           />
           <div className="flex justify-between text-[10px] text-slate-700 font-mono">
             <span>฿50,000</span>
@@ -162,7 +162,7 @@ export const GrowthSimulation: React.FC = () => {
 
         {/* Required Resources Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
-          <div className="p-4 rounded-2xl bg-white/80 border border-slate-200">
+          <div className="p-4 rounded-2xl bg-sky-50/80 border border-sky-100">
             <span className="text-[10px] text-slate-700 uppercase font-bold block">FYC องค์กรที่ต้องทำ</span>
             <div className="text-xl font-black text-blue-600 font-mono mt-1">
               ฿{requiredFyc.toLocaleString()}
@@ -170,7 +170,7 @@ export const GrowthSimulation: React.FC = () => {
             <span className="text-[10px] text-slate-700">เบี้ยประกัน ~฿{(requiredFyc * 3).toLocaleString()}</span>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white/80 border border-slate-200">
+          <div className="p-4 rounded-2xl bg-sky-50/80 border border-sky-100">
             <span className="text-[10px] text-slate-700 uppercase font-bold block">จำนวนตัวแทน Active</span>
             <div className="text-xl font-black text-sky-300 font-mono mt-1">
               {requiredAgents} <span className="text-xs font-normal text-slate-700">คน</span>
@@ -178,7 +178,7 @@ export const GrowthSimulation: React.FC = () => {
             <span className="text-[10px] text-slate-700">เฉลี่ย ฿{fycPerAgent.toLocaleString()} /คน</span>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white/80 border border-slate-200">
+          <div className="p-4 rounded-2xl bg-sky-50/80 border border-sky-100">
             <span className="text-[10px] text-slate-700 uppercase font-bold block">จำนวนหน่วยงานแยก (UM)</span>
             <div className="text-xl font-black text-emerald-300 font-mono mt-1">
               {requiredUnits} <span className="text-xs font-normal text-slate-700">หน่วย</span>
@@ -186,7 +186,7 @@ export const GrowthSimulation: React.FC = () => {
             <span className="text-[10px] text-slate-700">~5 คนต่อ 1 หน่วย</span>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white/80 border border-slate-200">
+          <div className="p-4 rounded-2xl bg-sky-50/80 border border-sky-100">
             <span className="text-[10px] text-slate-700 uppercase font-bold block">จำนวนศูนย์งานแยก (CM)</span>
             <div className="text-xl font-black text-rose-300 font-mono mt-1">
               {requiredCenters} <span className="text-xs font-normal text-slate-700">ศูนย์</span>
@@ -199,7 +199,7 @@ export const GrowthSimulation: React.FC = () => {
       {/* 3. 12-Month Projection Chart & Month-by-Month Table */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Projection Area Chart (2 Cols) */}
-        <div className="lg:col-span-2 p-6 rounded-3xl bg-white/90 border border-slate-200 space-y-4">
+        <div className="lg:col-span-2 p-6 rounded-3xl bg-sky-50/90 border border-sky-100 space-y-4">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-sm sm:text-base font-bold text-slate-900">
@@ -232,21 +232,21 @@ export const GrowthSimulation: React.FC = () => {
         </div>
 
         {/* Scenario Parameters Comparison */}
-        <div className="p-6 rounded-3xl bg-white/90 border border-slate-200 flex flex-col justify-between space-y-4">
+        <div className="p-6 rounded-3xl bg-sky-50/90 border border-sky-100 flex flex-col justify-between space-y-4">
           <div>
             <h3 className="text-sm sm:text-base font-bold text-slate-900 mb-1">ตัวแปรสมมติฐานประจำ Scenario</h3>
             <p className="text-xs text-slate-700 mb-4">ปรับเปลี่ยนพารามิเตอร์เพื่อเปรียบเทียบผลลัพธ์</p>
 
             <div className="space-y-3 text-xs">
-              <div className="p-3 rounded-xl bg-white border border-slate-200 flex justify-between">
+              <div className="p-3 rounded-xl bg-sky-50 border border-sky-100 flex justify-between">
                 <span className="text-slate-700">อัตราการรับตัวแทนใหม่:</span>
                 <span className="font-bold text-slate-900">{scenarios[activeScenario].recruits} คน/เดือน</span>
               </div>
-              <div className="p-3 rounded-xl bg-white border border-slate-200 flex justify-between">
+              <div className="p-3 rounded-xl bg-sky-50 border border-sky-100 flex justify-between">
                 <span className="text-slate-700">FYC เฉลี่ยต่อตัวแทน:</span>
                 <span className="font-bold text-blue-600 font-mono">฿{scenarios[activeScenario].fyc.toLocaleString()}</span>
               </div>
-              <div className="p-3 rounded-xl bg-white border border-slate-200 flex justify-between">
+              <div className="p-3 rounded-xl bg-sky-50 border border-sky-100 flex justify-between">
                 <span className="text-slate-700">อัตราการคงอยู่ (Retention):</span>
                 <span className="font-bold text-emerald-400 font-mono">{scenarios[activeScenario].retention}%</span>
               </div>

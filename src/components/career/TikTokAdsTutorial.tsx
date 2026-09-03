@@ -55,7 +55,7 @@ export const TikTokAdsTutorial: React.FC = () => {
   return (
     <div id="tiktok_ads_view" className="space-y-8 max-w-7xl mx-auto pb-16 text-left">
       {/* Header */}
-      <div className="p-6 rounded-3xl bg-gradient-to-r from-white to-rose-950/30 border border-slate-200 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-gradient-to-r from-sky-50 to-rose-950/30 border border-sky-100 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-rose-400" />
@@ -78,7 +78,7 @@ export const TikTokAdsTutorial: React.FC = () => {
       {/* Steps overview */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {DEFAULT_SCENES.map((s, i) => (
-          <div key={i} className="p-4 rounded-2xl bg-white/70 border border-slate-200">
+          <div key={i} className="p-4 rounded-2xl bg-sky-50/70 border border-sky-100">
             <div className="text-[11px] font-bold text-rose-400 mb-1">ขั้นตอนที่ {i + 1}</div>
             <div className="text-sm font-bold text-slate-900 mb-1">{s.title}</div>
             <div className="text-xs text-slate-700 leading-relaxed">{s.body}</div>
@@ -92,7 +92,7 @@ export const TikTokAdsTutorial: React.FC = () => {
           <Play className="w-5 h-5 text-rose-400" />
           <h2 className="text-lg font-black text-slate-900">สร้างวิดีโอสอนยิงแอด</h2>
         </div>
-        <div className="p-5 rounded-2xl bg-gradient-to-br from-white to-rose-950/20 border border-slate-200 space-y-4">
+        <div className="p-5 rounded-2xl bg-gradient-to-br from-sky-50 to-rose-950/20 border border-sky-100 space-y-4">
           <p className="text-xs text-slate-700 leading-relaxed">
             กดปุ่มเพื่อสร้าง <b>วิดีโอสอนยิงแอด TikTok</b> แนว Professional Tutorial (9:16) พร้อมเสียงเล่าภาษาไทย
             และแสดงลิงก์ <b>ads.tiktok.com/business/th</b> ด้านล่างของวิดีโอตลอดทั้งคลิป
@@ -131,7 +131,7 @@ export const TikTokAdsTutorial: React.FC = () => {
           )}
 
           {videoUrl && (
-            <div className="rounded-2xl overflow-hidden border border-rose-500/30 bg-white">
+            <div className="rounded-2xl overflow-hidden border border-rose-500/30 bg-sky-50">
               <video
                 src={videoUrl}
                 controls

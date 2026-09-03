@@ -65,7 +65,7 @@ export default function MegaMenu() {
   return (
     <header
       ref={navigationRef}
-      className="relative z-50 border-b border-slate-200 bg-white"
+      className="relative z-50 border-b border-sky-100 bg-sky-50"
     >
       <nav
         className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5"
@@ -120,7 +120,7 @@ export default function MegaMenu() {
         <div className="hidden items-center gap-3 lg:flex">
           <a
             href="/login"
-            className="rounded-full px-5 py-2.5 font-medium text-slate-700 hover:bg-slate-100"
+            className="rounded-full px-5 py-2.5 font-medium text-slate-700 hover:bg-sky-100"
           >
             เข้าสู่ระบบ
           </a>
@@ -138,7 +138,7 @@ export default function MegaMenu() {
           aria-label="เปิดเมนู"
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen(true)}
-          className="rounded-lg p-2 text-slate-700 hover:bg-slate-100 lg:hidden"
+          className="rounded-lg p-2 text-slate-700 hover:bg-sky-100 lg:hidden"
         >
           <Menu className="h-6 w-6" />
         </button>
@@ -150,17 +150,17 @@ export default function MegaMenu() {
             type="button"
             aria-label="ปิดเมนู"
             onClick={() => setDesktopOpen(false)}
-            className="fixed inset-0 top-20 z-40 hidden cursor-default bg-white/50 backdrop-blur-[2px] lg:block"
+            className="fixed inset-0 top-20 z-40 hidden cursor-default bg-sky-50/50 backdrop-blur-[2px] lg:block"
           />
 
           <section
             id="products-mega-menu"
             role="menu"
             aria-label="รายการเมนู"
-            className="absolute left-1/2 top-[92px] z-50 hidden w-[min(94vw,1400px)] -translate-x-1/2 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl lg:block"
+            className="absolute left-1/2 top-[92px] z-50 hidden w-[min(94vw,1400px)] -translate-x-1/2 overflow-hidden rounded-2xl border border-sky-100 bg-sky-50 shadow-2xl lg:block"
           >
             <div className="grid min-h-[520px] grid-cols-[320px_1fr]">
-              <aside className="border-r border-slate-200 bg-slate-50 p-7">
+              <aside className="border-r border-sky-100 bg-sky-50 p-7">
                 <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-slate-700">
                   หมวดหมู่
                 </p>
@@ -187,14 +187,14 @@ export default function MegaMenu() {
                         className={`flex w-full items-center gap-3 rounded-xl p-3 text-left transition ${
                           selected
                             ? "bg-blue-100 text-blue-700"
-                            : "text-slate-700 hover:bg-slate-50 hover:text-blue-600"
+                            : "text-slate-700 hover:bg-sky-50 hover:text-blue-600"
                         }`}
                       >
                         <span
                           className={`grid h-10 w-10 place-items-center rounded-full ${
                             selected
                               ? "bg-blue-600 text-slate-900"
-                              : "bg-white text-slate-700"
+                              : "bg-sky-50 text-slate-700"
                           }`}
                         >
                           <Icon className="h-5 w-5" />
@@ -212,7 +212,7 @@ export default function MegaMenu() {
               </aside>
 
               <main className="p-8">
-                <div className="relative mb-8 overflow-hidden rounded-2xl bg-gradient-to-r from-white via-blue-950 to-blue-600 p-8 text-white">
+                <div className="relative mb-8 overflow-hidden rounded-2xl bg-gradient-to-r from-sky-50 via-blue-950 to-blue-600 p-8 text-white">
                   <div className="relative z-10 max-w-2xl">
                     <p className="mb-3 text-sm font-medium text-blue-700">
                       {activeCategory.title}
@@ -235,7 +235,7 @@ export default function MegaMenu() {
                     </a>
                   </div>
 
-                  <div className="absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-white/10" />
+                  <div className="absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-sky-50/10" />
                   <div className="absolute right-20 top-8 h-32 w-32 rounded-full bg-blue-300/10" />
                 </div>
 
@@ -250,7 +250,7 @@ export default function MegaMenu() {
                         role="menuitem"
                         className="group flex gap-4 rounded-xl border border-transparent p-4 transition hover:border-blue-100 hover:bg-blue-50"
                       >
-                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-slate-100 text-slate-700 transition group-hover:bg-blue-600 group-hover:text-slate-900">
+                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-sky-100 text-slate-700 transition group-hover:bg-blue-600 group-hover:text-slate-900">
                           <Icon className="h-5 w-5" />
                         </span>
 
@@ -275,7 +275,7 @@ export default function MegaMenu() {
       )}
 
       {mobileOpen && (
-        <div className="fixed inset-0 z-[70] bg-white lg:hidden">
+        <div className="fixed inset-0 z-[70] bg-sky-50 lg:hidden">
           <div className="flex h-20 items-center justify-between border-b px-5">
             <span className="text-xl font-bold text-slate-900">
               ชื่อแบรนด์
@@ -285,7 +285,7 @@ export default function MegaMenu() {
               type="button"
               aria-label="ปิดเมนู"
               onClick={() => setMobileOpen(false)}
-              className="rounded-lg p-2 text-slate-700 hover:bg-slate-100"
+              className="rounded-lg p-2 text-slate-700 hover:bg-sky-100"
             >
               <X className="h-6 w-6" />
             </button>
@@ -301,7 +301,7 @@ export default function MegaMenu() {
                 return (
                   <div
                     key={category.id}
-                    className="overflow-hidden rounded-xl border border-slate-200"
+                    className="overflow-hidden rounded-xl border border-sky-100"
                   >
                     <button
                       type="button"
@@ -329,7 +329,7 @@ export default function MegaMenu() {
                     </button>
 
                     {expanded && (
-                      <div className="space-y-2 border-t bg-slate-50 p-3">
+                      <div className="space-y-2 border-t bg-sky-50 p-3">
                         {category.links.map((link) => {
                           const LinkIcon = link.icon;
 
@@ -338,7 +338,7 @@ export default function MegaMenu() {
                               key={link.href}
                               href={link.href}
                               onClick={() => setMobileOpen(false)}
-                              className="flex gap-3 rounded-lg bg-white p-3"
+                              className="flex gap-3 rounded-lg bg-sky-50 p-3"
                             >
                               <LinkIcon className="mt-0.5 h-5 w-5 shrink-0 text-blue-600" />
 

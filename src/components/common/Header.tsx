@@ -89,7 +89,7 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <header id="app_header" className="h-16 border-b border-slate-200 bg-white/95 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between sticky top-0 z-40">
+      <header id="app_header" className="h-16 border-b border-sky-100 bg-sky-50/95 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between sticky top-0 z-40">
         {/* Left: Brand / Title */}
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 flex items-center justify-center shadow-lg shadow-amber-500/20 text-slate-950 font-black text-lg shrink-0">
@@ -118,30 +118,30 @@ export const Header: React.FC = () => {
               placeholder={t('search_placeholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white/70 border border-slate-200 focus:border-blue-600/50 rounded-xl pl-9 pr-4 py-1.5 text-xs text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500/50 transition-all"
+              className="w-full bg-sky-50/70 border border-sky-100 focus:border-blue-600/50 rounded-xl pl-9 pr-4 py-1.5 text-xs text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500/50 transition-all"
             />
           </div>
 
           {/* Search Results Dropdown */}
           {filteredSearchMembers.length > 0 && (
-            <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-slate-200 rounded-xl shadow-2xl overflow-hidden z-50">
-              <div className="p-1.5 text-[10px] font-semibold text-slate-700 uppercase tracking-wider px-3 border-b border-slate-200">
+            <div className="absolute top-full left-0 right-0 mt-1 bg-sky-50 border border-sky-100 rounded-xl shadow-2xl overflow-hidden z-50">
+              <div className="p-1.5 text-[10px] font-semibold text-slate-700 uppercase tracking-wider px-3 border-b border-sky-100">
                 {t('search_results')} ({filteredSearchMembers.length})
               </div>
               {filteredSearchMembers.map((m) => (
                 <button
                   key={m.id}
                   onClick={() => handleSelectSearchedMember(m)}
-                  className="w-full px-3 py-2 text-left hover:bg-slate-100/80 flex items-center justify-between group transition-colors cursor-pointer"
+                  className="w-full px-3 py-2 text-left hover:bg-sky-100/80 flex items-center justify-between group transition-colors cursor-pointer"
                 >
                   <div className="flex items-center gap-2.5">
-                    <img src={m.avatarUrl} alt={m.name} className="w-7 h-7 rounded-full object-cover border border-slate-200" referrerPolicy="no-referrer" />
+                    <img src={m.avatarUrl} alt={m.name} className="w-7 h-7 rounded-full object-cover border border-sky-100" referrerPolicy="no-referrer" />
                     <div>
                       <div className="text-xs font-semibold text-slate-800 group-hover:text-blue-600">{m.name}</div>
                       <div className="text-[10px] text-slate-700">{m.memberCode} • {m.location.province}</div>
                     </div>
                   </div>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-sky-100 text-slate-700 border border-sky-100">
                     {m.positionId === 'region_manager' ? t('pos_rm_short') : m.positionId === 'center_manager' ? t('pos_cm_short') : m.positionId === 'unit_manager' ? t('pos_um_short') : t('pos_ag_short')}
                   </span>
                 </button>
@@ -155,7 +155,7 @@ export const Header: React.FC = () => {
           {/* Firebase Cloud Live Database Badge */}
           <div 
             id="badge_firebase_status" 
-            className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-white/80 border border-slate-200 text-[11px] font-medium"
+            className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-sky-50/80 border border-sky-100 text-[11px] font-medium"
             title="Firebase Firestore Cloud Database"
           >
             <div className={`w-2 h-2 rounded-full ${isFirebaseConnected ? 'bg-emerald-400 animate-pulse' : 'bg-blue-500'}`} />
@@ -169,7 +169,7 @@ export const Header: React.FC = () => {
           <button
             id="btn_language_switcher"
             onClick={toggleLanguage}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-slate-100/90 hover:bg-slate-100 text-blue-600 border border-slate-200 shadow-sm cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-sky-100/90 hover:bg-sky-100 text-blue-600 border border-sky-100 shadow-sm cursor-pointer"
             title={t('switch_lang')}
           >
             <Globe className="w-3.5 h-3.5 text-blue-600" />
@@ -197,7 +197,7 @@ export const Header: React.FC = () => {
             className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold transition-all border cursor-pointer ${
               isPresentationMode 
                 ? 'bg-blue-600 text-slate-950 border-blue-400 shadow-lg shadow-amber-500/20' 
-                : 'bg-slate-100/60 hover:bg-slate-100 text-slate-700 border-slate-200'
+                : 'bg-sky-100/60 hover:bg-sky-100 text-slate-700 border-sky-100'
             }`}
             title={t('presentation_desc')}
           >
@@ -210,21 +210,21 @@ export const Header: React.FC = () => {
             <button
               id="btn_notifications"
               onClick={() => setShowNotifications(!showNotifications)}
-              className="w-9 h-9 rounded-xl bg-slate-100/60 hover:bg-slate-100 text-slate-700 border border-slate-200 flex items-center justify-center relative transition-colors cursor-pointer"
+              className="w-9 h-9 rounded-xl bg-sky-100/60 hover:bg-sky-100 text-slate-700 border border-sky-100 flex items-center justify-center relative transition-colors cursor-pointer"
             >
               <Bell className="w-4 h-4" />
               <span className="w-2 h-2 rounded-full bg-blue-500 absolute top-2 right-2 animate-pulse" />
             </button>
 
             {showNotifications && (
-              <div className="absolute right-0 mt-2 w-80 bg-white border border-slate-200 rounded-2xl shadow-2xl p-3 z-50">
-                <div className="flex items-center justify-between pb-2 border-b border-slate-200 mb-2">
+              <div className="absolute right-0 mt-2 w-80 bg-sky-50 border border-sky-100 rounded-2xl shadow-2xl p-3 z-50">
+                <div className="flex items-center justify-between pb-2 border-b border-sky-100 mb-2">
                   <span className="text-xs font-bold text-slate-800">{t('notifications')}</span>
                   <span className="text-[10px] text-blue-600 font-medium">3 {t('new_items')}</span>
                 </div>
                 <div className="space-y-2">
                   {notifications.map((n) => (
-                    <div key={n.id} className="p-2 rounded-xl bg-white/60 border border-slate-200/80 text-left">
+                    <div key={n.id} className="p-2 rounded-xl bg-sky-50/60 border border-sky-100/80 text-left">
                       <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-800">
                         {n.type === 'promotion' ? <Sparkles className="w-3 h-3 text-blue-600" /> :
                          n.type === 'warning' ? <AlertTriangle className="w-3 h-3 text-rose-400" /> :
@@ -255,7 +255,7 @@ export const Header: React.FC = () => {
               <button
                 id="btn_user_role_switcher"
                 onClick={() => setShowUserMenu(!showUserMenu)}
-                className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-xl bg-slate-100/90 hover:bg-slate-100 border border-slate-200/80 transition-all text-left cursor-pointer"
+                className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-xl bg-sky-100/90 hover:bg-sky-100 border border-sky-100/80 transition-all text-left cursor-pointer"
               >
                 <div className="relative">
                   <img 
@@ -265,7 +265,7 @@ export const Header: React.FC = () => {
                     referrerPolicy="no-referrer"
                   />
                   {/* Provider small badge */}
-                  <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-white border border-slate-200 flex items-center justify-center">
+                  <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-sky-50 border border-sky-100 flex items-center justify-center">
                     {authUser.provider === 'google' && <GoogleIcon className="w-2.5 h-2.5" />}
                     {authUser.provider === 'tiktok' && <TikTokIcon className="w-2 h-2 text-cyan-400" />}
                     {authUser.provider === 'facebook' && <FacebookIcon className="w-2.5 h-2.5" />}
@@ -288,9 +288,9 @@ export const Header: React.FC = () => {
 
               {/* User Dropdown Menu */}
               {showUserMenu && (
-                <div className="absolute right-0 mt-2 w-80 bg-white border border-slate-200 rounded-2xl shadow-2xl p-2 z-50">
+                <div className="absolute right-0 mt-2 w-80 bg-sky-50 border border-sky-100 rounded-2xl shadow-2xl p-2 z-50">
                   {/* Top Profile Summary */}
-                  <div className="p-3 bg-white/70 rounded-xl border border-slate-200 mb-2">
+                  <div className="p-3 bg-sky-50/70 rounded-xl border border-sky-100 mb-2">
                     <div className="flex items-center gap-3">
                       <img
                         src={authUser.avatarUrl || activeUser.avatarUrl}
@@ -340,7 +340,7 @@ export const Header: React.FC = () => {
                           setShowUserMenu(false);
                         }}
                         className={`w-full px-2.5 py-1.5 rounded-xl text-left flex items-center justify-between text-xs transition-colors cursor-pointer ${
-                          activeUser.id === m.id ? 'bg-blue-600/10 text-blue-600 border border-blue-600/30' : 'hover:bg-slate-100 text-slate-700'
+                          activeUser.id === m.id ? 'bg-blue-600/10 text-blue-600 border border-blue-600/30' : 'hover:bg-sky-100 text-slate-700'
                         }`}
                       >
                         <div className="flex items-center gap-2">
@@ -356,7 +356,7 @@ export const Header: React.FC = () => {
                   </div>
 
                   {/* Log Out Option */}
-                  <div className="pt-2 border-t border-slate-200 mt-1">
+                  <div className="pt-2 border-t border-sky-100 mt-1">
                     <button
                       id="btn-header-logout"
                       onClick={() => {

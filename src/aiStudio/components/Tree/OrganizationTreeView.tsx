@@ -59,8 +59,8 @@ const TreeNodeComponent: React.FC<TreeNodeProps> = ({
   const incomeRes = allMemberResults.get(member.id);
 
   // Position border & accent styling
-  let borderClass = 'border-slate-200 hover:border-slate-500';
-  let badgeBg = 'bg-slate-100 text-slate-700';
+  let borderClass = 'border-sky-100 hover:border-slate-500';
+  let badgeBg = 'bg-sky-100 text-slate-700';
   if (member.position === 'GROUP_MANAGER') {
     borderClass = 'border-blue-600/80 shadow-amber-500/10 shadow-lg';
     badgeBg = 'bg-amber-950 text-blue-600 border-amber-600';
@@ -77,7 +77,7 @@ const TreeNodeComponent: React.FC<TreeNodeProps> = ({
       
       {/* Member Node Card */}
       <div
-        className={`relative z-10 w-72 rounded-2xl p-4 bg-white/95 border-2 transition-all cursor-pointer select-none ${borderClass} ${
+        className={`relative z-10 w-72 rounded-2xl p-4 bg-sky-50/95 border-2 transition-all cursor-pointer select-none ${borderClass} ${
           isSelected ? 'ring-2 ring-amber-400 scale-[1.02]' : 'hover:scale-[1.01]'
         }`}
         onClick={() => onSelect(member.id)}
@@ -110,7 +110,7 @@ const TreeNodeComponent: React.FC<TreeNodeProps> = ({
                 e.stopPropagation();
                 onEdit(member.id);
               }}
-              className="p-1 rounded-md text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+              className="p-1 rounded-md text-slate-700 hover:text-slate-900 hover:bg-sky-100 transition-colors"
               title="แก้ไขข้อมูลสมาชิก"
             >
               <Edit2 className="w-3.5 h-3.5" />
@@ -129,7 +129,7 @@ const TreeNodeComponent: React.FC<TreeNodeProps> = ({
         </div>
 
         {/* Position Badge & Status */}
-        <div className="flex items-center justify-between mt-2.5 pt-2 border-t border-slate-200 text-[10px]">
+        <div className="flex items-center justify-between mt-2.5 pt-2 border-t border-sky-100 text-[10px]">
           <span className={`px-2 py-0.5 rounded-full font-bold border ${badgeBg}`}>
             {posInfo.nameTh.split('(')[0]}
           </span>
@@ -139,7 +139,7 @@ const TreeNodeComponent: React.FC<TreeNodeProps> = ({
         </div>
 
         {/* Sales & Rollup Stats */}
-        <div className="mt-2.5 grid grid-cols-2 gap-1.5 text-[11px] bg-white/60 p-2 rounded-xl border border-slate-200/80">
+        <div className="mt-2.5 grid grid-cols-2 gap-1.5 text-[11px] bg-sky-50/60 p-2 rounded-xl border border-sky-100/80">
           <div>
             <span className="text-[10px] text-slate-700 block">ขายส่วนตัว:</span>
             <strong className="text-slate-800">{formatBaht(member.personalMonthlySales, false)}</strong>
@@ -148,7 +148,7 @@ const TreeNodeComponent: React.FC<TreeNodeProps> = ({
             <span className="text-[10px] text-slate-700 block">ยอดรวมทีม:</span>
             <strong className="text-blue-400">{formatBaht(stats?.totalMonthlySales || member.personalMonthlySales, false)}</strong>
           </div>
-          <div className="col-span-2 pt-1 border-t border-slate-200/60 flex items-center justify-between">
+          <div className="col-span-2 pt-1 border-t border-sky-100/60 flex items-center justify-between">
             <span className="text-[10px] text-slate-700">รายได้ประมาณการ/ด:</span>
             <strong className="text-blue-600">{formatBaht(incomeRes?.totalMonthlyIncome || 0, false)}</strong>
           </div>
@@ -161,7 +161,7 @@ const TreeNodeComponent: React.FC<TreeNodeProps> = ({
               e.stopPropagation();
               toggleExpand(member.id);
             }}
-            className="w-full mt-2.5 py-1 px-2 rounded-lg bg-slate-100/80 hover:bg-slate-200/80 text-[11px] font-semibold text-slate-700 flex items-center justify-center gap-1 border border-slate-200 transition-colors"
+            className="w-full mt-2.5 py-1 px-2 rounded-lg bg-sky-100/80 hover:bg-slate-200/80 text-[11px] font-semibold text-slate-700 flex items-center justify-center gap-1 border border-sky-100 transition-colors"
           >
             {isExpanded ? (
               <>
@@ -281,7 +281,7 @@ export const OrganizationTreeView: React.FC = () => {
     <div className="space-y-4 pb-12">
       
       {/* Controls Bar */}
-      <div className="bg-white/90 border border-slate-200 rounded-2xl p-4 shadow-xl flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+      <div className="bg-sky-50/90 border border-sky-100 rounded-2xl p-4 shadow-xl flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
         
         {/* Search & Filter */}
         <div className="flex flex-wrap items-center gap-2.5 flex-1">
@@ -292,14 +292,14 @@ export const OrganizationTreeView: React.FC = () => {
               value={search}
               onChange={e => setSearch(e.target.value)}
               placeholder="ค้นหาชื่อ, รหัส, ชื่อเล่น..."
-              className="w-full pl-9 pr-3 py-1.5 rounded-xl bg-slate-100 border border-slate-200 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
+              className="w-full pl-9 pr-3 py-1.5 rounded-xl bg-sky-100 border border-sky-100 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
             />
           </div>
 
           <select
             value={filterPos}
             onChange={e => setFilterPos(e.target.value)}
-            className="bg-slate-100 border border-slate-200 text-xs text-slate-800 rounded-xl px-3 py-1.5 focus:outline-none cursor-pointer"
+            className="bg-sky-100 border border-sky-100 text-xs text-slate-800 rounded-xl px-3 py-1.5 focus:outline-none cursor-pointer"
           >
             <option value="ALL">ทุกตำแหน่ง ({members.length} คน)</option>
             <option value="GROUP_MANAGER">ผู้บริหารภาค ({members.filter(m => m.position === 'GROUP_MANAGER').length})</option>
@@ -312,7 +312,7 @@ export const OrganizationTreeView: React.FC = () => {
         {/* Action Buttons: Expand/Collapse/Zoom/Add */}
         <div className="flex items-center gap-2 shrink-0">
           
-          <div className="flex items-center bg-slate-100 rounded-xl p-1 border border-slate-200">
+          <div className="flex items-center bg-sky-100 rounded-xl p-1 border border-sky-100">
             <button
               onClick={() => setZoom(z => Math.max(0.5, z - 0.1))}
               className="p-1.5 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-200 transition-colors"
@@ -339,13 +339,13 @@ export const OrganizationTreeView: React.FC = () => {
 
           <button
             onClick={expandAll}
-            className="px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs text-slate-800 transition-colors cursor-pointer"
+            className="px-2.5 py-1.5 rounded-xl bg-sky-100 hover:bg-slate-200 border border-sky-100 text-xs text-slate-800 transition-colors cursor-pointer"
           >
             กางทั้งหมด
           </button>
           <button
             onClick={collapseAll}
-            className="px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs text-slate-800 transition-colors cursor-pointer"
+            className="px-2.5 py-1.5 rounded-xl bg-sky-100 hover:bg-slate-200 border border-sky-100 text-xs text-slate-800 transition-colors cursor-pointer"
           >
             ยุบทั้งหมด
           </button>
@@ -363,7 +363,7 @@ export const OrganizationTreeView: React.FC = () => {
       </div>
 
       {/* Legend & Duplicate Audit Badge */}
-      <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-700 bg-white/60 p-3 rounded-xl border border-slate-200">
+      <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-700 bg-sky-50/60 p-3 rounded-xl border border-sky-100">
         <div className="flex flex-wrap items-center gap-3">
           <span className="font-semibold text-slate-700">สัญลักษณ์ตำแหน่ง:</span>
           <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-950/80 text-blue-600 border border-amber-600/60 text-[11px] font-semibold">
@@ -375,7 +375,7 @@ export const OrganizationTreeView: React.FC = () => {
           <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-blue-950/80 text-blue-300 border border-blue-600/60 text-[11px] font-semibold">
             <span className="w-2 h-2 rounded-full bg-blue-400" /> ผู้บริหารหน่วย (UM)
           </span>
-          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200 text-[11px] font-semibold">
+          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-sky-100 text-slate-700 border border-sky-100 text-[11px] font-semibold">
             <span className="w-2 h-2 rounded-full bg-slate-400" /> ตัวแทน (Agent)
           </span>
         </div>
@@ -387,7 +387,7 @@ export const OrganizationTreeView: React.FC = () => {
       </div>
 
       {/* Main Interactive Canvas Area */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-2xl overflow-auto min-h-[600px]">
+      <div className="bg-sky-50 border border-sky-100 rounded-2xl p-8 shadow-2xl overflow-auto min-h-[600px]">
         <div
           className="min-w-max flex justify-center transition-transform origin-top duration-200"
           style={{ transform: `scale(${zoom})` }}

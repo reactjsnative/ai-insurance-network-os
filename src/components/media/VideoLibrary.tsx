@@ -184,28 +184,28 @@ export const VideoLibrary: React.FC = () => {
 
       {/* Add form */}
       {showAdd && (
-        <div className="p-4 rounded-2xl bg-white/80 border border-slate-200 space-y-3">
+        <div className="p-4 rounded-2xl bg-sky-50/80 border border-sky-100 space-y-3">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <input
               id="video_title_input"
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
               placeholder="ชื่อวีดีโอ"
-              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
+              className="px-3 py-2 rounded-lg bg-sky-50 border border-sky-100 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
             <input
               id="video_url_input"
               value={form.url}
               onChange={(e) => setForm({ ...form, url: e.target.value })}
               placeholder="ลิงก์ YouTube / Vimeo"
-              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
+              className="px-3 py-2 rounded-lg bg-sky-50 border border-sky-100 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
             <input
               id="video_cat_input"
               value={form.category}
               onChange={(e) => setForm({ ...form, category: e.target.value })}
               placeholder="หมวดหมู่"
-              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
+              className="px-3 py-2 rounded-lg bg-sky-50 border border-sky-100 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
           </div>
           <div className="flex gap-2">
@@ -218,7 +218,7 @@ export const VideoLibrary: React.FC = () => {
             </button>
             <button
               onClick={() => setShowAdd(false)}
-              className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-sm"
+              className="px-4 py-2 rounded-lg bg-sky-100 hover:bg-slate-200 text-slate-800 text-sm"
             >
               ยกเลิก
             </button>
@@ -229,14 +229,14 @@ export const VideoLibrary: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Player */}
         <div className="lg:col-span-2 space-y-3">
-          <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-white border border-slate-200">
+          <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-sky-50 border border-sky-100">
             {activeVideo ? (
               activeVideo.type === 'image' ? (
                 <img
                   id="video_player"
                   src={activeVideo.url}
                   alt={activeVideo.title}
-                  className="w-full h-full object-contain bg-white"
+                  className="w-full h-full object-contain bg-sky-50"
                 />
               ) : (
                 <iframe
@@ -255,7 +255,7 @@ export const VideoLibrary: React.FC = () => {
             )}
           </div>
           {activeVideo && (
-            <div className="p-4 rounded-2xl bg-white/60 border border-slate-200">
+            <div className="p-4 rounded-2xl bg-sky-50/60 border border-sky-100">
               <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                 <Play className="w-4 h-4 text-blue-600" /> {activeVideo.title}
               </h2>
@@ -282,11 +282,11 @@ export const VideoLibrary: React.FC = () => {
                 className={`group flex items-center gap-3 p-2.5 rounded-xl border transition-all cursor-pointer ${
                   activeVideo?.id === v.id
                     ? 'bg-blue-600/10 border-blue-600/40'
-                    : 'bg-white/60 border-slate-200 hover:border-slate-200'
+                    : 'bg-sky-50/60 border-sky-100 hover:border-sky-100'
                 }`}
                 onClick={() => setActiveVideo(v)}
               >
-                <div className="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-sky-100 flex items-center justify-center shrink-0">
                   <Youtube className="w-5 h-5 text-red-400" />
                 </div>
                 <div className="flex-1 min-w-0">
