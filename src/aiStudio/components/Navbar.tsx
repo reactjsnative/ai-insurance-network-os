@@ -40,18 +40,18 @@ export const Navbar: React.FC = () => {
           {/* Brand Logo & Name */}
           <div className="flex items-center gap-3 shrink-0">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-indigo-600 to-amber-500 flex items-center justify-center shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-blue-500/20 ring-1 ring-white/20">
-              <TrendingUp className="w-5 h-5 text-slate-900" />
+              <TrendingUp className="w-5 h-5 text-white" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-bold text-base sm:text-lg tracking-tight bg-gradient-to-r from-sky-50 via-slate-200 to-amber-300 bg-clip-text text-transparent">
+                <span className="font-bold text-base sm:text-lg tracking-tight bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
                   AI Insurance Simulator
                 </span>
                 <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-semibold tracking-wide rounded bg-blue-600/20 text-blue-600 border border-blue-600/30">
                   PRO
                 </span>
               </div>
-              <p className="text-[11px] text-slate-800 hidden sm:block">
+              <p className="text-[11px] text-slate-900 font-semibold hidden sm:block">
                 ระบบจำลองโครงสร้างทีม เป้าหมายตำแหน่ง และรายได้ตัวแทน
               </p>
             </div>
@@ -122,8 +122,8 @@ export const Navbar: React.FC = () => {
             onClick={() => setActiveTab('DASHBOARD')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'DASHBOARD'
-                ? 'bg-blue-600 text-slate-900 shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-blue-500/20'
-                : 'text-slate-800 hover:text-slate-800 hover:bg-[#f0f9ff]/60'
+                ? 'bg-blue-600 text-white shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-blue-500/20'
+                : 'text-slate-800 hover:text-blue-700 hover:bg-blue-50'
             }`}
           >
             <LayoutDashboard className="w-4 h-4" />
@@ -134,8 +134,8 @@ export const Navbar: React.FC = () => {
             onClick={() => setActiveTab('TREE')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'TREE'
-                ? 'bg-blue-600 text-slate-900 shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-blue-500/20'
-                : 'text-slate-800 hover:text-slate-800 hover:bg-[#f0f9ff]/60'
+                ? 'bg-blue-600 text-white shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-blue-500/20'
+                : 'text-slate-800 hover:text-blue-700 hover:bg-blue-50'
             }`}
           >
             <Network className="w-4 h-4" />
@@ -149,8 +149,8 @@ export const Navbar: React.FC = () => {
             onClick={() => setActiveTab('CALCULATOR')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'CALCULATOR'
-                ? 'bg-blue-600 text-slate-900 shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-blue-500/20'
-                : 'text-slate-800 hover:text-slate-800 hover:bg-[#f0f9ff]/60'
+                ? 'bg-blue-600 text-white shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-blue-500/20'
+                : 'text-slate-800 hover:text-blue-700 hover:bg-blue-50'
             }`}
           >
             <Calculator className="w-4 h-4" />
@@ -161,8 +161,8 @@ export const Navbar: React.FC = () => {
             onClick={() => setActiveTab('GOAL')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'GOAL'
-                ? 'bg-blue-600 text-slate-900 shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-blue-500/20'
-                : 'text-slate-800 hover:text-slate-800 hover:bg-[#f0f9ff]/60'
+                ? 'bg-blue-600 text-white shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-blue-500/20'
+                : 'text-slate-800 hover:text-blue-700 hover:bg-blue-50'
             }`}
           >
             <Target className="w-4 h-4" />
@@ -173,8 +173,8 @@ export const Navbar: React.FC = () => {
             onClick={() => setActiveTab('ADMIN')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'ADMIN'
-                ? 'bg-blue-600 text-slate-900 shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-blue-500/20'
-                : 'text-slate-800 hover:text-slate-800 hover:bg-[#f0f9ff]/60'
+                ? 'bg-blue-600 text-white shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-blue-500/20'
+                : 'text-slate-800 hover:text-blue-700 hover:bg-blue-50'
             }`}
           >
             <Settings className="w-4 h-4" />
@@ -185,8 +185,8 @@ export const Navbar: React.FC = () => {
             onClick={() => setActiveTab('UNIT_TESTS')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'UNIT_TESTS'
-                ? 'bg-blue-600 text-slate-900 shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-blue-500/20'
-                : 'text-slate-800 hover:text-slate-800 hover:bg-[#f0f9ff]/60'
+                ? 'bg-blue-600 text-white shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-blue-500/20'
+                : 'text-slate-800 hover:text-blue-700 hover:bg-blue-50'
             }`}
           >
             <CheckCircle2 className="w-4 h-4 text-emerald-400" />
