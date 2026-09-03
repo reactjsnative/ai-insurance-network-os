@@ -76,7 +76,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
       <div className="absolute top-1/2 right-1/4 w-80 h-80 bg-pink-500/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Top Header Bar */}
-      <header className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 relative z-10">
+      <header className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 relative z-10 isolate">
         <div className="flex items-center gap-3 shrink-0">
           <div className="min-w-0">
             <div className="text-[10px] font-bold text-blue-600 tracking-wider uppercase whitespace-nowrap">

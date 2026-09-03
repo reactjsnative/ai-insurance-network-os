@@ -91,7 +91,7 @@ export default function InsuranceMegaMenu() {
   const go = (tab: string) => { setActiveTab(tab as any); setDesktopOpen(false); setMobileOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); };
 
   return (
-    <header ref={ref} className="relative z-50 border-b border-sky-50/40 bg-white">
+    <header ref={ref} className="relative z-50 border-b border-sky-50/40 bg-white isolate">
       <nav className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-5" aria-label="เมนูหลัก">
         <div className="flex items-center gap-3"></div>
         <div className="hidden h-full items-center gap-1 lg:flex">

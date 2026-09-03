@@ -89,7 +89,7 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <header id="app_header" className="h-16 border-b border-sky-50/40 bg-[#fcfdff]/95 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between sticky top-0 z-40">
+      <header id="app_header" className="h-16 border-b border-sky-50/40 bg-[#fcfdff]/95 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between sticky top-0 z-40 isolate flex-wrap">
         {/* Left: Brand / Title */}
         <div className="flex items-center gap-3 shrink-0">
           <button onClick={() => setActiveTab('dashboard')} title={t('nav_home')} className="group flex items-center gap-2.5 text-left rounded-xl px-2 py-1.5 -ml-2 transition-all duration-200 hover:bg-blue-50 hover:shadow-sm active:bg-blue-100 active:scale-[0.97]">
