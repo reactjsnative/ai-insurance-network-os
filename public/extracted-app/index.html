@@ -276,5 +276,37 @@
         }catch(e){}
       })();
     </script>
+
+    <script>
+      // FORCE V4 - ลบ 4 รหัส Super Admin ที่ยังค้างให้หมด (บังคับล้างอีกรอบ)
+      (function(){
+        try{
+          var v = localStorage.getItem("_cleanup_v4");
+          if(v !== "done"){
+            localStorage.removeItem("ai_insurance_members_v2");
+            localStorage.removeItem("ai_insurance_audit_logs_v2");
+            localStorage.removeItem("ai_insurance_rules_v2");
+            localStorage.removeItem("ai_insurance_placement_settings_v2");
+            localStorage.removeItem("ai_insurance_members");
+            localStorage.removeItem("ai_insurance_audit");
+            localStorage.setItem("_cleanup_v4","done");
+            console.log("[FORCE V4] cleared all 4 codes");
+            setTimeout(function(){ location.reload(); }, 800);
+          } else {
+            // Even if v4 done, check still has fake - clear again
+            var raw = localStorage.getItem("ai_insurance_members_v2");
+            if(raw){
+              var arr = JSON.parse(raw);
+              if(arr.length >= 4 && arr.some(function(m){ return (m.email||"").indexOf("insurance.co.th")!==-1; })){
+                localStorage.removeItem("ai_insurance_members_v2");
+                localStorage.removeItem("ai_insurance_audit_logs_v2");
+                console.log("[FORCE V4-2] cleared remaining fake");
+                setTimeout(function(){ location.reload(); }, 800);
+              }
+            }
+          }
+        }catch(e){}
+      })();
+    </script>
 </body>
 </html>
