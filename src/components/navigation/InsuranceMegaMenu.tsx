@@ -98,7 +98,7 @@ export default function InsuranceMegaMenu() {
           <button
             onClick={() => setDesktopOpen(v=>!v)}
             aria-expanded={desktopOpen}
-            className={`flex h-full items-center gap-2 border-b-2 px-4 text-[13px] font-black transition-all ${desktopOpen ? "border-blue-600 text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 shadow-md rounded-t-lg" : "border-transparent text-slate-700 hover:text-blue-600 hover:bg-[#f0f9ff] rounded-full"}`}
+            className={`flex h-full items-center gap-2 border-b-2 px-4 text-[13px] font-black transition-all ${desktopOpen ? "border-blue-600 text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 shadow-md rounded-full" : "border-transparent text-slate-700 hover:text-blue-600 hover:bg-[#f0f9ff] rounded-full"}`}
           >
             เมนู <ChevronDown className={`h-4 w-4 transition-transform ${desktopOpen ? "rotate-180" : ""}`} />
           </button>
