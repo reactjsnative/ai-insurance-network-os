@@ -115,12 +115,13 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
         {/* Left Column: Visual Hero Banner & System Highlights (7 Cols on desktop) */}
         <div className="lg:col-span-7 space-y-6">
           {/* Headline & Badge */}
-          <div className="space-y-3">
+          <div className="space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-600/10 border border-blue-600/20 text-[11px] font-bold tracking-widest uppercase text-blue-600"><span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />Financial Freedom • Global Network</div>
             <h1 className="text-left">
-              <span className="block text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500 bg-clip-text text-transparent">
+              <span className="block text-4xl sm:text-5xl lg:text-[56px] font-black tracking-[-0.03em] leading-[0.95] bg-gradient-to-r from-slate-900 via-blue-700 to-violet-600 bg-clip-text text-transparent">
                 {t('login_headline_1')}
               </span>
-              <span className="mt-4 block max-w-2xl text-base sm:text-lg lg:text-xl font-medium leading-relaxed text-slate-800">
+              <span className="mt-5 block max-w-xl text-base sm:text-lg font-light leading-relaxed text-slate-600 tracking-wide">
                 {t('login_headline_2')}
               </span>
             </h1>

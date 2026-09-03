@@ -352,11 +352,11 @@ export const translations = {
     auth_login_required: 'กรุณาเข้าสู่ระบบเพื่อดำเนินการต่อ',
     auth_profile_settings: 'ข้อมูลโปรไฟล์และความปลอดภัย',
 
-    // Login Gateway (WelcomeLoginGateway)
-    login_freedom: 'อิสระภาพทางการเงิน',
-    login_secure_badge: 'ระบบเข้าสู่ระบบความปลอดภัยสูง 4 ช่องทาง (Multi-OAuth Protected)',
-    login_headline_1: 'พลังเครือข่าย AI AUTOMATION',
-    login_headline_2: 'AI AGENT ทำงานให้คุณ 24 ชั่วโมง และ ระบบ AUTOMATION ด้วย N8N เชื่อมทุกขั้นตอนให้อัตโนมัติ',
+    // Login Gateway (WelcomeLoginGateway) — สากล สวย นุ่มนวล
+    login_freedom: 'Financial Freedom • Global Network',
+    login_secure_badge: 'Enterprise-Grade Secure Access • Multi-OAuth Protected',
+    login_headline_1: 'AI-POWERED NETWORK AUTOMATION',
+    login_headline_2: 'AI AGENTS ทำงานให้คุณ 24/7 — เชื่อมทุกขั้นตอนอัตโนมัติด้วย n8n Workflow Automation',
     login_title: 'เข้าสู่ระบบ',
     login_create_account: 'สร้างบัญชีของคุณ',
     login_with_google: 'ดำเนินการต่อด้วย Google',
