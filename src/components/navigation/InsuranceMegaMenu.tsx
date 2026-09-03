@@ -94,7 +94,7 @@ export default function InsuranceMegaMenu() {
     <header ref={ref} className="relative z-50 border-b border-sky-100/60 bg-white">
       <nav className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-5" aria-label="เมนูหลัก">
         <a href="/" className="flex items-center gap-3" onClick={(e)=>{e.preventDefault(); go("dashboard");}}>
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-slate-950 font-black">OS</span>
+          <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white font-black">OS</span>
           <span className="hidden sm:block text-[15px] font-black text-slate-900 tracking-tight">AI INSURANCE NETWORK OS</span>
           <span className="sm:hidden text-[15px] font-black text-slate-900">OS</span>
         </a>
@@ -113,7 +113,7 @@ export default function InsuranceMegaMenu() {
         </div>
 
         <div className="hidden items-center gap-2 lg:flex">
-          <button onClick={()=>go("ai_studio")} className="rounded-full bg-blue-600 px-5 py-2 text-[13px] font-bold text-slate-950 hover:bg-blue-500">จำลองรายได้</button>
+          <button onClick={()=>go("ai_studio")} className="rounded-full bg-blue-600 px-5 py-2 text-[13px] font-bold text-white hover:bg-blue-500">จำลองรายได้</button>
         </div>
 
         <button onClick={()=>setMobileOpen(true)} className="rounded-lg p-2 text-slate-800 hover:bg-white lg:hidden"><Menu className="h-6 w-6" /></button>
@@ -124,14 +124,14 @@ export default function InsuranceMegaMenu() {
           <button onClick={()=>setDesktopOpen(false)} className="fixed inset-0 top-[68px] z-40 hidden cursor-default bg-white/20 backdrop-blur-[2px] lg:block" aria-label="ปิดเมนู" />
           <section className="absolute left-1/2 top-[76px] z-50 hidden w-[min(94vw,1200px)] -translate-x-1/2 overflow-hidden rounded-2xl border border-sky-100/60 bg-white shadow-2xl lg:block">
             <div className="grid min-h-[480px] grid-cols-[300px_1fr]">
-              <aside className="border-r border-sky-100/60 bg-white p-6">
+              <aside className="border-r border-sky-100/40 bg-[#f8fbff] p-6">
                 <p className="mb-4 text-[11px] font-bold uppercase tracking-widest text-slate-800">หมวดหมู่</p>
                 <div className="space-y-2">
                   {categories.map(c=>{
                     const Icon=c.icon; const sel=c.id===activeId;
                     return (
-                      <button key={c.id} onMouseEnter={()=>setActiveId(c.id)} onClick={()=>setActiveId(c.id)} className={`flex w-full items-center gap-3 rounded-xl p-3 text-left transition ${sel ? "bg-blue-600/15 text-blue-700 border border-blue-600/30" : "text-slate-800 hover:bg-white hover:text-blue-600"}`}>
-                        <span className={`grid h-9 w-9 place-items-center rounded-full ${sel ? "bg-blue-600 text-slate-950" : "bg-white text-slate-800"}`}><Icon className="h-5 w-5" /></span>
+                      <button key={c.id} onMouseEnter={()=>setActiveId(c.id)} onClick={()=>setActiveId(c.id)} className={`flex w-full items-center gap-3 rounded-xl p-3 text-left transition ${sel ? "bg-blue-50 text-blue-700 border border-blue-200" : "text-slate-800 hover:bg-[#f0f9ff] hover:text-blue-700"}`}>
+                        <span className={`grid h-9 w-9 place-items-center rounded-full ${sel ? "bg-blue-600 text-white" : "bg-white text-slate-800"}`}><Icon className="h-5 w-5" /></span>
                         <span className="flex-1 text-[13px] font-bold">{c.title}</span>
                         <ChevronRight className="h-4 w-4 opacity-60" />
                       </button>
@@ -140,11 +140,11 @@ export default function InsuranceMegaMenu() {
                 </div>
               </aside>
               <main className="p-7 bg-white">
-                <div className="relative mb-6 overflow-hidden rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 p-7 text-white border border-blue-600/20">
+                <div className="relative mb-6 overflow-hidden rounded-2xl bg-gradient-to-r from-[#f0f9ff] via-[#e0f2fe] to-[#bae6fd]/20 p-7 text-slate-900 border border-sky-100">
                   <div className="relative z-10 max-w-xl">
                     <p className="mb-2 text-xs font-bold tracking-widest text-blue-700">{active.title}</p>
-                    <h2 className="text-2xl font-black">{active.heading}</h2>
-                    <p className="mt-2 text-sm leading-6 text-slate-800">{active.description}</p>
+                    <h2 className="text-2xl font-black text-slate-900">{active.heading}</h2>
+                    <p className="mt-2 text-sm leading-6 text-slate-900 font-semibold">{active.description}</p>
                   </div>
                   <div className="absolute -bottom-20 -right-10 h-64 w-64 rounded-full bg-blue-600/10" />
                 </div>
@@ -153,7 +153,7 @@ export default function InsuranceMegaMenu() {
                     const Icon=l.icon;
                     return (
                       <button key={l.tab} onClick={()=>go(l.tab)} className="group flex gap-3 rounded-xl border border-sky-100/60 bg-white p-4 text-left transition hover:border-blue-600/40 hover:bg-white">
-                        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-slate-800 group-hover:bg-blue-600 group-hover:text-slate-950 transition"><Icon className="h-5 w-5" /></span>
+                        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#f0f9ff] text-slate-800 group-hover:bg-blue-600 group-hover:text-slate-950 transition"><Icon className="h-5 w-5" /></span>
                         <span className="min-w-0"><span className="flex items-center gap-1 text-[13px] font-bold text-slate-900 group-hover:text-blue-600">{l.title} {l.badge && <span className="ml-1 rounded-full bg-blue-600 px-1.5 py-0.5 text-[9px] font-black text-slate-950">{l.badge}</span>}<ChevronRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition" /></span><span className="mt-1 block text-xs leading-5 text-slate-800">{l.description}</span></span>
                       </button>
                     );
