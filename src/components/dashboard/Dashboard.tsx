@@ -91,11 +91,11 @@ export const Dashboard: React.FC = () => {
               <span>AI Engine 2026 เปิดใช้งาน</span>
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             </div>
-            <div className="text-[11px] text-slate-800">4-Tier Auto Commission Calculation</div>
+            <div className="text-[11px] text-slate-900">4-Tier Auto Commission Calculation</div>
           </div>
         </div>
 
-        <div className="flex items-center gap-4 text-xs font-semibold text-slate-800">
+        <div className="flex items-center gap-4 text-xs font-semibold text-slate-900">
           <div className="flex items-center gap-1.5">
             <CheckCircle2 className="w-4 h-4 text-emerald-400" />
             <span>256-bit SSL</span>
@@ -104,7 +104,7 @@ export const Dashboard: React.FC = () => {
       </div>
 
       {/* 1. Hero Network Growth Visualizer Card */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-50 via-sky-100 to-indigo-950/40 border border-sky-50/40 p-6 sm:p-8 shadow-[0_8px_24px_rgba(148,163,184,0.08)]">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#fcfdff] via-[#f8fbff] to-[#f0f9ff]/50 border border-sky-50/40 p-6 sm:p-8 shadow-[0_8px_24px_rgba(148,163,184,0.08)]">
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -120,7 +120,7 @@ export const Dashboard: React.FC = () => {
               <button
                 id="btn_hero_explore_network"
                 onClick={() => setActiveTab('network_visual')}
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-bold text-xs sm:text-sm shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/20 flex items-center gap-2 transition-transform hover:scale-105 active:scale-95"
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-bold text-xs sm:text-sm shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/20 flex items-center gap-2 transition-transform hover:scale-105 active:scale-95"
               >
                 <Network className="w-4 h-4" />
                 <span>{t('view_network_btn')}</span>
@@ -129,7 +129,7 @@ export const Dashboard: React.FC = () => {
               <button
                 id="btn_hero_calculate_income"
                 onClick={() => setActiveTab('income_calculator')}
-                className="px-4 py-2.5 rounded-xl bg-[#f0f9ff]/80 hover:bg-[#f0f9ff] text-slate-800 font-semibold text-xs sm:text-sm border border-sky-50/40 flex items-center gap-2 transition-all"
+                className="px-4 py-2.5 rounded-xl bg-white hover:bg-[#fcfdff] text-slate-900 font-semibold text-xs sm:text-sm border border-sky-50/40 flex items-center gap-2 transition-all"
               >
                 <DollarSign className="w-4 h-4 text-blue-600" />
                 <span>{t('calculate_income_btn')}</span>
@@ -138,7 +138,7 @@ export const Dashboard: React.FC = () => {
               <button
                 id="btn_hero_recruit_agent"
                 onClick={() => setActiveTab('recruit_agent')}
-                className="px-4 py-2.5 rounded-xl bg-indigo-600/80 hover:bg-indigo-600 text-slate-900 font-semibold text-xs sm:text-sm border border-indigo-500/50 flex items-center gap-2 shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-indigo-600/20 transition-all"
+                className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs sm:text-sm border border-indigo-500/50 flex items-center gap-2 shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-indigo-600/20 transition-all"
               >
                 <UserPlus className="w-4 h-4 text-indigo-200" />
                 <span>{language === 'th' ? 'สมัครตัวแทนใหม่' : 'Recruit Agent'}</span>
@@ -148,7 +148,7 @@ export const Dashboard: React.FC = () => {
                 id="btn_hero_play_growth_anim"
                 onClick={handlePlayGrowthAnimation}
                 disabled={animatingGrowth}
-                className="px-3.5 py-2.5 rounded-xl bg-indigo-950/60 hover:bg-indigo-900/60 text-indigo-200 font-medium text-xs border border-indigo-700/50 flex items-center gap-1.5 transition-all"
+                className="px-3.5 py-2.5 rounded-xl bg-white hover:bg-[#fcfdff] text-slate-900 font-medium text-xs border border-sky-50/30 flex items-center gap-1.5 transition-all"
               >
                 {animatingGrowth ? <RotateCcw className="w-3.5 h-3.5 animate-spin" /> : <Play className="w-3.5 h-3.5 fill-current" />}
                 <span>{animatingGrowth ? (language === 'th' ? 'กำลังจำลองการเติบโต...' : 'Simulating Growth...') : t('play_growth_anim')}</span>
@@ -158,7 +158,7 @@ export const Dashboard: React.FC = () => {
 
           {/* Right: Dynamic Interactive Network Cluster Preview */}
           <div className="relative w-full lg:w-96 h-72 rounded-2xl bg-[#fcfdff]/60 border border-sky-50/40/80 p-4 flex flex-col items-center justify-center overflow-hidden">
-            <div className="absolute top-2 left-3 text-[10px] uppercase font-bold text-slate-800 tracking-wider">
+            <div className="absolute top-2 left-3 text-[10px] uppercase font-bold text-slate-900 tracking-wider">
               {animationStep === 1 && (language === 'th' ? 'ขั้นที่ 1: Root Leader (1 ท่าน)' : 'Step 1: Root Leader (1 Leader)')}
               {animationStep === 2 && (language === 'th' ? 'ขั้นที่ 2: สร้างผู้นำศูนย์ 4 ศูนย์ (4 CMs)' : 'Step 2: 4 Centers Expanded (4 CMs)')}
               {animationStep === 3 && (language === 'th' ? 'ขั้นที่ 3: แตกหน่วยงาน 12 หน่วย (12 UMs)' : 'Step 3: 12 Units Formed (12 UMs)')}
@@ -173,11 +173,11 @@ export const Dashboard: React.FC = () => {
                   alt={activeUser.name} 
                   className="w-14 h-14 rounded-full object-cover border-2 border-blue-400 shadow-[0_4px_12px_rgba(148,163,184,0.10)] shadow-amber-500/30"
                 />
-                <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-blue-600 text-slate-950 font-black text-[9px] flex items-center justify-center border-2 border-slate-950">
+                <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-blue-600 text-white font-black text-[9px] flex items-center justify-center border-2 border-white">
                   RM
                 </span>
               </div>
-              <span className="text-[11px] font-bold text-slate-800 mt-1">{activeUser.name.split(' ')[0]}</span>
+              <span className="text-[11px] font-bold text-slate-900 mt-1">{activeUser.name.split(' ')[0]}</span>
             </div>
 
             {/* Step 2: Surrounding Centers */}
@@ -229,7 +229,7 @@ export const Dashboard: React.FC = () => {
               </div>
             )}
 
-            <div className="absolute bottom-2 text-[10px] text-slate-800 font-mono">
+            <div className="absolute bottom-2 text-[10px] text-slate-900 font-mono">
               {t('kpi_downline_count')}: <span className="text-blue-600 font-bold">{downlineStats.totalDownlineCount}</span> {t('people')} • Active: <span className="text-emerald-400 font-bold">{downlineStats.activeDownlineCount}</span> {t('people')}
             </div>
           </div>
@@ -241,7 +241,7 @@ export const Dashboard: React.FC = () => {
         {/* KPI 1: Monthly Income */}
         <div className="p-5 rounded-2xl bg-[#fcfdff]/90 border border-sky-50/40 relative overflow-hidden text-left group hover:border-blue-600/40 transition-colors">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-800">{t('kpi_monthly_income')}</span>
+            <span className="text-xs font-semibold text-slate-900">{t('kpi_monthly_income')}</span>
             <div className="w-8 h-8 rounded-xl bg-blue-600/10 text-blue-600 flex items-center justify-center">
               <DollarSign className="w-4 h-4" />
             </div>
@@ -258,7 +258,7 @@ export const Dashboard: React.FC = () => {
         {/* KPI 2: Total FYC */}
         <div className="p-5 rounded-2xl bg-[#fcfdff]/90 border border-sky-50/40 relative overflow-hidden text-left group hover:border-sky-500/40 transition-colors">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-800">{t('kpi_team_fyc')}</span>
+            <span className="text-xs font-semibold text-slate-900">{t('kpi_team_fyc')}</span>
             <div className="w-8 h-8 rounded-xl bg-[#fcfdff]0/10 text-sky-400 flex items-center justify-center">
               <TrendingUp className="w-4 h-4" />
             </div>
@@ -274,15 +274,15 @@ export const Dashboard: React.FC = () => {
         {/* KPI 3: Total Organization & Active */}
         <div className="p-5 rounded-2xl bg-[#fcfdff]/90 border border-sky-50/40 relative overflow-hidden text-left group hover:border-emerald-500/40 transition-colors">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-800">{t('kpi_organization')}</span>
+            <span className="text-xs font-semibold text-slate-900">{t('kpi_organization')}</span>
             <div className="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
               <Users className="w-4 h-4" />
             </div>
           </div>
           <div className="text-xl sm:text-2xl font-extrabold text-slate-900 mt-2">
-            {totalOrgCount} <span className="text-xs font-normal text-slate-800">{t('people')} (Active {activeOrgCount})</span>
+            {totalOrgCount} <span className="text-xs font-normal text-slate-900">{t('people')} (Active {activeOrgCount})</span>
           </div>
-          <div className="flex items-center gap-2 text-[11px] text-slate-800 mt-2">
+          <div className="flex items-center gap-2 text-[11px] text-slate-900 mt-2">
             <span className="text-emerald-400 font-semibold">{t('kpi_active_rate')} {activeRate}%</span>
             <span>•</span>
             <span className="text-blue-600 font-semibold">{t('kpi_retention')} {retentionRate}%</span>
@@ -292,13 +292,13 @@ export const Dashboard: React.FC = () => {
         {/* KPI 4: Units & Centers Structure */}
         <div className="p-5 rounded-2xl bg-[#fcfdff]/90 border border-sky-50/40 relative overflow-hidden text-left group hover:border-purple-500/40 transition-colors">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-800">{t('kpi_leadership')}</span>
+            <span className="text-xs font-semibold text-slate-900">{t('kpi_leadership')}</span>
             <div className="w-8 h-8 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center">
               <Building2 className="w-4 h-4" />
             </div>
           </div>
           <div className="text-xl sm:text-2xl font-extrabold text-slate-900 mt-2">
-            {downlineStats.totalCenters} <span className="text-xs font-normal text-slate-800">{t('centers_unit')}</span> / {downlineStats.totalUnits} <span className="text-xs font-normal text-slate-800">{t('units_unit')}</span>
+            {downlineStats.totalCenters} <span className="text-xs font-normal text-slate-900">{t('centers_unit')}</span> / {downlineStats.totalUnits} <span className="text-xs font-normal text-slate-900">{t('units_unit')}</span>
           </div>
           <div className="flex items-center gap-1.5 text-[11px] text-purple-400 mt-2 font-medium">
             <span>{language === 'th' ? `แยกศูนย์ ${activeUser.separatedCentersCount || 4} • แยกหน่วย ${activeUser.separatedUnitsCount || 12}` : `Sep. Centers: ${activeUser.separatedCentersCount || 4} • Sep. Units: ${activeUser.separatedUnitsCount || 12}`}</span>
@@ -313,7 +313,7 @@ export const Dashboard: React.FC = () => {
           <div className="flex items-center justify-between mb-4">
             <div>
               <h2 className="text-sm sm:text-base font-bold text-slate-900">{t('trend_12_month_title')}</h2>
-              <p className="text-[11px] text-slate-800">{t('trend_12_month_subtitle')}</p>
+              <p className="text-[11px] text-slate-900">{t('trend_12_month_subtitle')}</p>
             </div>
             <div className="flex items-center gap-2 text-xs">
               <span className="inline-flex items-center gap-1 text-[11px] text-blue-600 font-medium">
@@ -356,7 +356,7 @@ export const Dashboard: React.FC = () => {
         <div className="p-5 sm:p-6 rounded-2xl bg-[#fcfdff]/90 border border-sky-50/40 text-left flex flex-col justify-between">
           <div>
             <h2 className="text-sm sm:text-base font-bold text-slate-900 mb-1">{t('position_hierarchy_title')}</h2>
-            <p className="text-[11px] text-slate-800 mb-4">{t('position_hierarchy_subtitle')}</p>
+            <p className="text-[11px] text-slate-900 mb-4">{t('position_hierarchy_subtitle')}</p>
 
             <div className="h-44 w-full">
               <ResponsiveContainer width="100%" height="100%">
@@ -387,7 +387,7 @@ export const Dashboard: React.FC = () => {
                 <div key={item.name} className="flex items-center justify-between text-xs">
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: item.color }} />
-                    <span className="text-slate-800">{item.name}</span>
+                    <span className="text-slate-900">{item.name}</span>
                   </div>
                   <span className="font-bold text-slate-900">{item.count} {t('people')}</span>
                 </div>
@@ -397,7 +397,7 @@ export const Dashboard: React.FC = () => {
 
           <button
             onClick={() => setActiveTab('career_path')}
-            className="w-full mt-4 py-2 rounded-xl bg-[#f0f9ff] hover:bg-slate-200 text-slate-800 text-xs font-semibold flex items-center justify-center gap-1 transition-colors"
+            className="w-full mt-4 py-2 rounded-xl bg-[#f0f9ff] hover:bg-slate-200 text-slate-900 text-xs font-semibold flex items-center justify-center gap-1 transition-colors"
           >
             <span>{t('view_career_btn')}</span>
             <ChevronRight className="w-3.5 h-3.5" />
@@ -415,7 +415,7 @@ export const Dashboard: React.FC = () => {
                 ACTUAL
               </span>
             </div>
-            <p className="text-[11px] text-slate-800">{t('compensation_summary_subtitle')}</p>
+            <p className="text-[11px] text-slate-900">{t('compensation_summary_subtitle')}</p>
           </div>
 
           <button
@@ -430,13 +430,13 @@ export const Dashboard: React.FC = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           {incomeResult.breakdown.slice(0, 6).map((item) => (
             <div key={item.id} className="p-3 rounded-xl bg-[#fcfdff]/70 border border-sky-50/40/80">
-              <div className="text-[10px] text-slate-800 font-medium truncate" title={item.title}>
+              <div className="text-[10px] text-slate-900 font-medium truncate" title={item.title}>
                 {item.title}
               </div>
               <div className="text-sm sm:text-base font-bold text-blue-600 mt-1">
                 ฿{item.amount.toLocaleString()}
               </div>
-              <div className="text-[9px] text-slate-800 mt-1 truncate">
+              <div className="text-[9px] text-slate-900 mt-1 truncate">
                 {language === 'th' ? 'อัตรา: ' : 'Rate: '}{item.rateOrFormula}
               </div>
             </div>
@@ -445,8 +445,8 @@ export const Dashboard: React.FC = () => {
       </div>
 
       {/* 5. Professional Disclaimer */}
-      <div className="p-4 rounded-xl bg-[#fcfdff]/50 border border-sky-50/40/60 text-left text-[11px] text-slate-800 leading-relaxed">
-        <span className="font-bold text-slate-800">{t('disclaimer_title')} </span>
+      <div className="p-4 rounded-xl bg-[#fcfdff]/50 border border-sky-50/40/60 text-left text-[11px] text-slate-900 leading-relaxed">
+        <span className="font-bold text-slate-900">{t('disclaimer_title')} </span>
         {t('disclaimer_body')}
       </div>
     </div>
