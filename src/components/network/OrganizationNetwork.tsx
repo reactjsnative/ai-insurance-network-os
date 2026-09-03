@@ -33,7 +33,9 @@ export const OrganizationNetwork: React.FC = () => {
     heatmapMode, 
     setHeatmapMode,
     calculateMemberIncome,
-    getDownlineStats
+    getDownlineStats,
+    setActiveTab,
+    t
   } = useApp();
 
   const [zoomLevel, setZoomLevel] = useState(1);
@@ -86,6 +88,16 @@ export const OrganizationNetwork: React.FC = () => {
 
   return (
     <div id="organization_network_view" className="space-y-4 max-w-7xl mx-auto pb-16 text-left relative">
+      {/* Home Button - กลับหน้าแรก */}
+      <div className="flex justify-start">
+        <button
+          onClick={() => setActiveTab('dashboard')}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-700 hover:via-indigo-700 hover:to-violet-700 text-white text-xs font-black shadow-md transition-all hover:shadow-lg hover:scale-105 active:scale-95"
+        >
+          <ChevronRight className="w-3.5 h-3.5 rotate-180" />
+          <span>{t('nav_home')}</span>
+        </button>
+      </div>
       {/* 1. Control Toolbar */}
       <div className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-[#fcfdff]/90 border border-sky-50/40 shadow-[0_4px_12px_rgba(148,163,184,0.10)]">
         {/* Left: 4 Visual Views Tabs */}
@@ -303,31 +315,51 @@ export const OrganizationNetwork: React.FC = () => {
             style={{ transform: `scale(${zoomLevel})` }}
           >
             <div className="absolute inset-0 bg-radial from-amber-500/10 via-sky-100 to-sky-50 pointer-events-none" />
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 z-10">
-              {centerLeaders.map((cm, cIdx) => (
-                <div key={cm.id} className="p-4 rounded-2xl bg-[#fcfdff]/60 border border-sky-50/40 text-center space-y-3">
-                  <div className="font-bold text-blue-600 text-xs">{cm.location.region} Solar System</div>
-                  <MemberNodeCard 
-                    member={cm} 
-                    isSelected={selectedMember?.id === cm.id}
-                    onSelect={() => setSelectedMember(cm)}
-                    heatmap={heatmapMode}
-                  />
-                  <div className="flex flex-wrap justify-center gap-1.5 mt-2">
-                    {unitLeaders.filter(u => u.centerId === cm.id || u.parentMemberId === cm.id).map(u => (
-                      <img 
-                        key={u.id}
-                        src={u.avatarUrl} 
-                        alt={u.name}
-                        onClick={() => setSelectedMember(u)}
-                        className="w-6 h-6 rounded-full object-cover border border-emerald-400 cursor-pointer hover:scale-125 transition-transform" 
-                        title={`${u.name} (${u.memberCode})`}
-                      />
+            {centerLeaders.length === 0 ? (
+              <div className="text-center z-10 p-6 space-y-4 max-w-2xl">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 text-xs font-bold">Galaxy Cluster — ยังไม่มีข้อมูลศูนย์</div>
+                <div className="text-sm font-bold text-slate-800">ยังไม่มีสมาชิกตำแหน่งศูนย์ (Center Manager) ในระบบ</div>
+                <div className="text-xs text-slate-600">Galaxy จะแสดงเมื่อมีศูนย์ — ขณะนี้มี {members.length} คนในระบบ • ลองเพิ่มสมาชิกศูนย์หรือดู Tree/Radial ก่อน</div>
+                {filteredMembers.length > 0 && (
+                  <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mt-4">
+                    {filteredMembers.slice(0, 12).map(m => (
+                      <button key={m.id} onClick={() => setSelectedMember(m)} className={`p-2 rounded-2xl border text-center hover:scale-105 transition-all ${selectedMember?.id===m.id ? 'border-blue-400 bg-blue-50' : 'bg-[#fcfdff]/80 border-sky-50/40'}`}>
+                        <img src={m.avatarUrl} alt={m.name} className="w-10 h-10 rounded-xl object-cover mx-auto border border-sky-50/40" />
+                        <div className="text-[11px] font-bold text-slate-800 truncate mt-1">{m.name}</div>
+                        <div className="text-[9px] text-slate-600">{m.memberCode}</div>
+                      </button>
                     ))}
                   </div>
-                </div>
-              ))}
-            </div>
+                )}
+                <button onClick={() => setSelectedNetworkView('tree')} className="mt-2 px-4 py-2 rounded-full bg-[#f0f9ff] border border-sky-50/40 text-xs font-bold text-blue-600 hover:bg-blue-50">ไปดู Tree View ก่อน →</button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 z-10">
+                {centerLeaders.map((cm, cIdx) => (
+                  <div key={cm.id} className="p-4 rounded-2xl bg-[#fcfdff]/60 border border-sky-50/40 text-center space-y-3">
+                    <div className="font-bold text-blue-600 text-xs">{cm.location.region} Solar System</div>
+                    <MemberNodeCard 
+                      member={cm} 
+                      isSelected={selectedMember?.id === cm.id}
+                      onSelect={() => setSelectedMember(cm)}
+                      heatmap={heatmapMode}
+                    />
+                    <div className="flex flex-wrap justify-center gap-1.5 mt-2">
+                      {unitLeaders.filter(u => u.centerId === cm.id || u.parentMemberId === cm.id).map(u => (
+                        <img 
+                          key={u.id}
+                          src={u.avatarUrl} 
+                          alt={u.name}
+                          onClick={() => setSelectedMember(u)}
+                          className="w-6 h-6 rounded-full object-cover border border-emerald-400 cursor-pointer hover:scale-125 transition-transform" 
+                          title={`${u.name} (${u.memberCode})`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         )}
 
