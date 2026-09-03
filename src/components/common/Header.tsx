@@ -93,9 +93,6 @@ export const Header: React.FC = () => {
         {/* Left: Brand / Title */}
         <div className="flex items-center gap-3">
           <button onClick={() => setActiveTab('dashboard')} title={t('nav_home')} className="flex items-center gap-2.5 text-left">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 flex items-center justify-center shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/20 text-white font-black text-base shrink-0">
-            OS
-          </div>
           <div className="hidden sm:block">
             <div className="flex items-center gap-2">
               <h1 className="font-extrabold text-slate-900 tracking-tight text-base sm:text-lg">
