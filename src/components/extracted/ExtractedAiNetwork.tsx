@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ExternalLink, RefreshCw, Network } from 'lucide-react';
+import { ExternalLink, RefreshCw, Network, Home } from 'lucide-react';
+import { useApp } from '../../context/AppContext';
 
 // Stable production deployment of the extracted "AI Insurance Network & Team Builder"
 // (same bundle as the preview URL https://extracted-ai-network-4o3epgsa0-ak-e11e.vercel.app).
@@ -24,11 +25,22 @@ const TAB_LABELS: Record<string, string> = {
 };
 
 export const ExtractedAiNetwork: React.FC<{ tab?: string }> = ({ tab = 'dashboard' }) => {
+  const { setActiveTab, t } = useApp();
   const [nonce, setNonce] = useState(0);
   const src = `${EXTRACTED_LOCAL_URL}#${tab}`;
 
   return (
-    <div className="flex flex-col h-[calc(100vh-8rem)] min-h-[560px] w-full rounded-2xl overflow-hidden border border-sky-50/40 bg-[#fcfdff] shadow-[0_4px_12px_rgba(148,163,184,0.10)] shadow-black/40">
+    <div className="flex flex-col gap-3 w-full">
+      <div className="flex justify-start">
+        <button
+          onClick={() => setActiveTab('dashboard')}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 shadow hover:from-blue-700 hover:to-violet-700 hover:shadow-md active:scale-[0.97] transition-all"
+        >
+          <Home className="w-4 h-4" />
+          {t('nav_home')}
+        </button>
+      </div>
+      <div className="flex flex-col h-[calc(100vh-11rem)] min-h-[560px] w-full rounded-2xl overflow-hidden border border-sky-50/40 bg-[#fcfdff] shadow-[0_4px_12px_rgba(148,163,184,0.10)] shadow-black/40">
       {/* Slim toolbar */}
       <div className="flex items-center justify-between gap-3 px-4 py-2.5 border-b border-sky-50/40 bg-[#fcfdff]/95 shrink-0">
         <div className="flex items-center gap-2.5 min-w-0">
@@ -75,6 +87,7 @@ export const ExtractedAiNetwork: React.FC<{ tab?: string }> = ({ tab = 'dashboar
         referrerPolicy="no-referrer-when-downgrade"
         loading="eager"
       />
+      </div>
     </div>
   );
 };
