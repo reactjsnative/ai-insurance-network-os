@@ -156,49 +156,49 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
               <h3 className="text-base font-bold text-slate-900 tracking-tight">{t('login_create_account')}</h3>
             </div>
 
-            {/* Social OAuth Providers - Vertical stack */}
+            {/* Social OAuth Providers - สีนิยม สากล นิ่มนวล */}
             <div className="space-y-2.5">
-              {/* Google Button */}
+              {/* Google — ขาวนุ่ม สากล */}
               <button
                 id="btn-gateway-login-google"
                 onClick={() => handleSocialLogin('google')}
                 type="button"
-                className="w-full py-2.5 px-4 rounded-xl bg-[#fcfdff] hover:bg-[#f0f9ff] text-slate-900 font-bold text-xs shadow-[0_1px_3px_rgba(148,163,184,0.08)] transition-all flex items-center justify-center gap-3 border border-sky-50/40 cursor-pointer active:scale-[0.99]"
+                className="w-full py-3 px-4 rounded-2xl bg-white hover:bg-[#fcfdff] text-slate-700 font-semibold text-[13px] shadow-[0_2px_12px_rgba(148,163,184,0.08)] hover:shadow-[0_4px_16px_rgba(148,163,184,0.12)] transition-all duration-300 flex items-center justify-center gap-3 border border-slate-200/70 hover:border-slate-300/70 cursor-pointer active:scale-[0.98] backdrop-blur-sm"
               >
-                <GoogleIcon className="w-4 h-4" />
+                <GoogleIcon className="w-5 h-5 shrink-0" />
                 <span>{t('login_with_google')}</span>
               </button>
 
-              {/* TikTok Button — ลำดับต่อจาก Google */}
+              {/* TikTok — ขาวนุ่ม ไอคอนสีนิยมชมพู-ฟ้า */}
               <button
                 id="btn-gateway-login-tiktok"
                 onClick={() => handleSocialLogin('tiktok')}
                 type="button"
-                className="w-full py-2.5 px-4 rounded-xl bg-[#fcfdff] hover:bg-zinc-900 text-slate-900 font-bold text-xs shadow-[0_1px_3px_rgba(148,163,184,0.08)] transition-all flex items-center justify-center gap-3 border border-zinc-800 cursor-pointer active:scale-[0.99]"
+                className="w-full py-3 px-4 rounded-2xl bg-white hover:bg-[#fcfdff] text-slate-700 font-semibold text-[13px] shadow-[0_2px_12px_rgba(148,163,184,0.08)] hover:shadow-[0_4px_16px_rgba(148,163,184,0.12)] transition-all duration-300 flex items-center justify-center gap-3 border border-slate-200/70 hover:border-slate-300/70 cursor-pointer active:scale-[0.98] backdrop-blur-sm"
               >
-                <TikTokIcon className="w-4 h-4 text-slate-900" />
+                <span className="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400 to-pink-500 flex items-center justify-center shrink-0"><TikTokIcon className="w-3 h-3 text-white" /></span>
                 <span>{t('login_with_tiktok') || 'ดำเนินการต่อด้วย TikTok'}</span>
               </button>
 
-              {/* Facebook Button — ลำดับต่อจาก TikTok */}
+              {/* Facebook — ขาวนุ่ม ไอคอนฟ้า */}
               <button
                 id="btn-gateway-login-facebook"
                 onClick={() => handleSocialLogin('facebook')}
                 type="button"
-                className="w-full py-2.5 px-4 rounded-xl bg-[#1877F2] hover:bg-[#166fe5] text-slate-900 font-bold text-xs shadow-[0_1px_3px_rgba(148,163,184,0.08)] transition-all flex items-center justify-center gap-3 border border-[#1877F2] cursor-pointer active:scale-[0.99]"
+                className="w-full py-3 px-4 rounded-2xl bg-white hover:bg-[#fcfdff] text-slate-700 font-semibold text-[13px] shadow-[0_2px_12px_rgba(148,163,184,0.08)] hover:shadow-[0_4px_16px_rgba(148,163,184,0.12)] transition-all duration-300 flex items-center justify-center gap-3 border border-slate-200/70 hover:border-slate-300/70 cursor-pointer active:scale-[0.98] backdrop-blur-sm"
               >
-                <FacebookIcon className="w-4 h-4" />
+                <FacebookIcon className="w-5 h-5 shrink-0" />
                 <span>{t('login_with_facebook') || 'ดำเนินการต่อด้วย Facebook'}</span>
               </button>
 
-              {/* GitHub Button — ลำดับต่อจาก Facebook */}
+              {/* GitHub — ขาวนุ่ม ไอคอนดำ */}
               <button
                 id="btn-gateway-login-github"
                 onClick={() => handleSocialLogin('github')}
                 type="button"
-                className="w-full py-2.5 px-4 rounded-xl bg-[#fcfdff] hover:bg-[#fcfdff] text-slate-900 font-bold text-xs shadow-[0_1px_3px_rgba(148,163,184,0.08)] transition-all flex items-center justify-center gap-3 border border-sky-50/40 cursor-pointer active:scale-[0.99]"
+                className="w-full py-3 px-4 rounded-2xl bg-white hover:bg-[#fcfdff] text-slate-700 font-semibold text-[13px] shadow-[0_2px_12px_rgba(148,163,184,0.08)] hover:shadow-[0_4px_16px_rgba(148,163,184,0.12)] transition-all duration-300 flex items-center justify-center gap-3 border border-slate-200/70 hover:border-slate-300/70 cursor-pointer active:scale-[0.98] backdrop-blur-sm"
               >
-                <GithubIcon className="w-4 h-4 text-slate-900" />
+                <GithubIcon className="w-5 h-5 shrink-0" />
                 <span>{t('login_with_github') || 'ดำเนินการต่อด้วย GitHub'}</span>
               </button>
 
@@ -281,12 +281,12 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
                 </label>
               </div>
 
-              {/* Submit Button */}
+              {/* Submit Button — สีนิยม gradient นุ่มนวล */}
               <button
                 id="btn-gateway-submit-email"
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 via-sky-1000 to-indigo-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-extrabold text-xs shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/20 transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99] disabled:opacity-50"
+                className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-500 hover:via-indigo-500 hover:to-violet-500 text-white font-bold text-[13px] shadow-[0_4px_14px_rgba(37,99,235,0.25)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.35)] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? (
                   <span>กำลังตรวจสอบข้อมูล...</span>
