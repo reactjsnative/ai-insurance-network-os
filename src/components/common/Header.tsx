@@ -92,13 +92,14 @@ export const Header: React.FC = () => {
       <header id="app_header" className="h-16 border-b border-sky-50/40 bg-[#fcfdff]/95 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between sticky top-0 z-40">
         {/* Left: Brand / Title */}
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 flex items-center justify-center shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/20 text-slate-950 font-black text-lg shrink-0">
+          <button onClick={() => setActiveTab('dashboard')} title={t('nav_home')} className="flex items-center gap-2.5 text-left">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 flex items-center justify-center shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/20 text-white font-black text-lg shrink-0">
             OS
           </div>
           <div className="hidden sm:block">
             <div className="flex items-center gap-2">
               <h1 className="font-extrabold text-slate-900 tracking-tight text-sm sm:text-base">
-                AI INSURANCE <span className="text-blue-600">NETWORK OS</span>
+                {t('nav_home')}
               </h1>
               <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-blue-600/10 text-blue-600 border border-blue-600/30">
                 {t('plan_badge')}
@@ -106,6 +107,7 @@ export const Header: React.FC = () => {
             </div>
             <p className="text-[11px] text-slate-800 font-medium">{t('app_subtitle')}</p>
           </div>
+          </button>
         </div>
 
         {/* Center: Global Search Bar */}
