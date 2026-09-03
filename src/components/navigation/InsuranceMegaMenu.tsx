@@ -146,15 +146,15 @@ export default function InsuranceMegaMenu() {
                     <h2 className="text-2xl font-black text-slate-900">{active.heading}</h2>
                     <p className="mt-2 text-sm leading-6 text-slate-900 font-semibold">{active.description}</p>
                   </div>
-                  <div className="absolute -bottom-20 -right-10 h-64 w-64 rounded-full bg-blue-600/10" />
+                  <div className="absolute -bottom-20 -right-10 h-64 w-64 rounded-full bg-sky-100/30" />
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   {active.links.map(l=>{
                     const Icon=l.icon;
                     return (
                       <button key={l.tab} onClick={()=>go(l.tab)} className="group flex gap-3 rounded-xl border border-sky-100/60 bg-white p-4 text-left transition hover:border-blue-600/40 hover:bg-white">
-                        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#f0f9ff] text-slate-800 group-hover:bg-blue-600 group-hover:text-slate-950 transition"><Icon className="h-5 w-5" /></span>
-                        <span className="min-w-0"><span className="flex items-center gap-1 text-[13px] font-bold text-slate-900 group-hover:text-blue-600">{l.title} {l.badge && <span className="ml-1 rounded-full bg-blue-600 px-1.5 py-0.5 text-[9px] font-black text-slate-950">{l.badge}</span>}<ChevronRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition" /></span><span className="mt-1 block text-xs leading-5 text-slate-800">{l.description}</span></span>
+                        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#f0f9ff] text-slate-800 group-hover:bg-blue-600 group-hover:text-white transition"><Icon className="h-5 w-5" /></span>
+                        <span className="min-w-0"><span className="flex items-center gap-1 text-[13px] font-bold text-slate-900 group-hover:text-blue-600">{l.title} {l.badge && <span className="ml-1 rounded-full bg-blue-600 px-1.5 py-0.5 text-[9px] font-black text-white">{l.badge}</span>}<ChevronRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition" /></span><span className="mt-1 block text-xs leading-5 text-slate-800">{l.description}</span></span>
                       </button>
                     );
                   })}
@@ -177,7 +177,7 @@ export default function InsuranceMegaMenu() {
               return (
                 <div key={c.id} className="overflow-hidden rounded-xl border border-sky-100/60 bg-white">
                   <button onClick={()=>setActiveId(exp ? "" : c.id)} className="flex w-full items-center gap-3 p-4 text-left">
-                    <span className="grid h-9 w-9 place-items-center rounded-lg bg-blue-600/15 text-blue-600"><Icon className="h-5 w-5" /></span>
+                    <span className="grid h-9 w-9 place-items-center rounded-lg bg-blue-50 text-blue-600"><Icon className="h-5 w-5" /></span>
                     <span className="flex-1 text-[13px] font-bold text-slate-900">{c.title}</span>
                     <ChevronDown className={`h-5 w-5 text-slate-800 transition-transform ${exp ? "rotate-180" : ""}`} />
                   </button>
