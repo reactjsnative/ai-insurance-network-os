@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ExternalLink, RefreshCw, Network } from 'lucide-react';
+import { ExternalLink, RefreshCw, Network, Home } from 'lucide-react';
+import { useApp } from '../../context/AppContext';
 
 // Stable production deployment of the extracted "AI Insurance Network & Team Builder"
 // (same bundle as the preview URL https://extracted-ai-network-4o3epgsa0-ak-e11e.vercel.app).
@@ -24,6 +25,7 @@ const TAB_LABELS: Record<string, string> = {
 };
 
 export const ExtractedAiNetwork: React.FC<{ tab?: string }> = ({ tab = 'dashboard' }) => {
+  const { setActiveTab, t } = useApp();
   const [nonce, setNonce] = useState(0);
   const src = `${EXTRACTED_LOCAL_URL}#${tab}`;
 
@@ -43,6 +45,14 @@ export const ExtractedAiNetwork: React.FC<{ tab?: string }> = ({ tab = 'dashboar
           </div>
         </div>
         <div className="flex items-center gap-2 shrink-0">
+          <button
+            onClick={() => setActiveTab('dashboard')}
+            title={t('nav_home')}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 shadow hover:from-blue-700 hover:to-violet-700 hover:shadow-md active:scale-[0.97] transition-all"
+          >
+            <Home className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">{t('nav_home')}</span>
+          </button>
           <button
             onClick={() => setNonce((n) => n + 1)}
             title="โหลดใหม่ (Reload)"
