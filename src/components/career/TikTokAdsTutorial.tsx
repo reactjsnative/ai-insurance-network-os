@@ -62,7 +62,7 @@ export const TikTokAdsTutorial: React.FC = () => {
             <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-300 border border-rose-500/30">TUTORIAL</span>
           </div>
           <h1 className="mt-2 text-2xl font-black text-slate-900">สอนยิงแอด TikTok Ads</h1>
-          <p className="text-sm text-slate-700 mt-1">เรียนรู้สร้างแคมเปญโฆษณาบน TikTok Ads Manager ตั้งแต่เริ่มต้นจนยิงแอดได้จริง</p>
+          <p className="text-sm text-slate-800 mt-1">เรียนรู้สร้างแคมเปญโฆษณาบน TikTok Ads Manager ตั้งแต่เริ่มต้นจนยิงแอดได้จริง</p>
         </div>
         <a
           href={TIKTOK_URL}
@@ -78,10 +78,10 @@ export const TikTokAdsTutorial: React.FC = () => {
       {/* Steps overview */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {DEFAULT_SCENES.map((s, i) => (
-          <div key={i} className="p-4 rounded-2xl bg-sky-50/70 border border-sky-100/60">
+          <div key={i} className="p-4 rounded-2xl bg-[#f0f9ff]/70 border border-sky-100/60">
             <div className="text-[11px] font-bold text-rose-400 mb-1">ขั้นตอนที่ {i + 1}</div>
             <div className="text-sm font-bold text-slate-900 mb-1">{s.title}</div>
-            <div className="text-xs text-slate-700 leading-relaxed">{s.body}</div>
+            <div className="text-xs text-slate-800 leading-relaxed">{s.body}</div>
           </div>
         ))}
       </div>
@@ -93,7 +93,7 @@ export const TikTokAdsTutorial: React.FC = () => {
           <h2 className="text-lg font-black text-slate-900">สร้างวิดีโอสอนยิงแอด</h2>
         </div>
         <div className="p-5 rounded-2xl bg-gradient-to-br from-sky-50 to-rose-950/20 border border-sky-100/60 space-y-4">
-          <p className="text-xs text-slate-700 leading-relaxed">
+          <p className="text-xs text-slate-800 leading-relaxed">
             กดปุ่มเพื่อสร้าง <b>วิดีโอสอนยิงแอด TikTok</b> แนว Professional Tutorial (9:16) พร้อมเสียงเล่าภาษาไทย
             และแสดงลิงก์ <b>ads.tiktok.com/business/th</b> ด้านล่างของวิดีโอตลอดทั้งคลิป
           </p>
@@ -131,14 +131,14 @@ export const TikTokAdsTutorial: React.FC = () => {
           )}
 
           {videoUrl && (
-            <div className="rounded-2xl overflow-hidden border border-rose-500/30 bg-sky-50">
+            <div className="rounded-2xl overflow-hidden border border-rose-500/30 bg-[#f0f9ff]">
               <video
                 src={videoUrl}
                 controls
                 className="w-full max-h-[70vh]"
                 onError={(e) => setError('ไม่สามารถเล่นวิดีโอได้: ' + (videoUrl || ''))}
               />
-              <div className="p-3 text-[11px] text-slate-700 flex items-center justify-between flex-wrap gap-2">
+              <div className="p-3 text-[11px] text-slate-800 flex items-center justify-between flex-wrap gap-2">
                 <span>วิดีโอสอนยิงแอด TikTok Ads</span>
                 <div className="flex items-center gap-3">
                   <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="text-rose-300 hover:underline flex items-center gap-1">
@@ -151,7 +151,7 @@ export const TikTokAdsTutorial: React.FC = () => {
             </div>
           )}
 
-          <p className="text-[10px] text-slate-700 leading-relaxed">
+          <p className="text-[10px] text-slate-800 leading-relaxed">
             วิดีโอใช้เพื่อการศึกษา ไม่รับประกันยอดขายหรือรายได้ใด ๆ การยิงแอดต้องอาศัยการทดสอบและวิเคราะห์ข้อมูลอย่างต่อเนื่อง
           </p>
         </div>

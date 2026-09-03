@@ -28,16 +28,16 @@ export const ExtractedAiNetwork: React.FC<{ tab?: string }> = ({ tab = 'dashboar
   const src = `${EXTRACTED_LOCAL_URL}#${tab}`;
 
   return (
-    <div className="flex flex-col h-[calc(100vh-8rem)] min-h-[560px] w-full rounded-2xl overflow-hidden border border-sky-100/60 bg-sky-50 shadow-xl shadow-black/40">
+    <div className="flex flex-col h-[calc(100vh-8rem)] min-h-[560px] w-full rounded-2xl overflow-hidden border border-sky-100/60 bg-[#f0f9ff] shadow-xl shadow-black/40">
       {/* Slim toolbar */}
-      <div className="flex items-center justify-between gap-3 px-4 py-2.5 border-b border-sky-100/60 bg-sky-50/95 shrink-0">
+      <div className="flex items-center justify-between gap-3 px-4 py-2.5 border-b border-sky-100/60 bg-[#f0f9ff]/95 shrink-0">
         <div className="flex items-center gap-2.5 min-w-0">
           <Network className="w-4 h-4 text-blue-600 shrink-0" />
           <div className="min-w-0">
             <p className="text-sm font-bold text-slate-900 truncate leading-tight">
               ระบบบริหารตัวแทนประกันชีวิต
             </p>
-            <p className="text-[10px] text-slate-700 truncate leading-tight">
+            <p className="text-[10px] text-slate-800 truncate leading-tight">
               {TAB_LABELS[tab] || tab} · AI Insurance Network &amp; Team Builder
             </p>
           </div>
@@ -46,7 +46,7 @@ export const ExtractedAiNetwork: React.FC<{ tab?: string }> = ({ tab = 'dashboar
           <button
             onClick={() => setNonce((n) => n + 1)}
             title="โหลดใหม่ (Reload)"
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-700 hover:text-slate-900 hover:bg-sky-100 border border-sky-100/60/60 transition-colors"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:text-slate-900 hover:bg-[#e0f2fe] border border-sky-100/60/60 transition-colors"
           >
             <RefreshCw className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">โหลดใหม่</span>
@@ -69,7 +69,7 @@ export const ExtractedAiNetwork: React.FC<{ tab?: string }> = ({ tab = 'dashboar
         key={nonce}
         src={src}
         title="extracted-ai-network — AI Insurance Network & Team Builder"
-        className="flex-1 w-full bg-sky-50"
+        className="flex-1 w-full bg-[#f0f9ff]"
         sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-popups-to-escape-sandbox"
         allow="clipboard-read; clipboard-write"
         referrerPolicy="no-referrer-when-downgrade"

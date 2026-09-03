@@ -54,17 +54,17 @@ export const ReportsCenter: React.FC = () => {
   return (
     <div id="reports_center_view" className="space-y-6 max-w-7xl mx-auto pb-16 text-left">
       {/* 1. Header & Actions */}
-      <div className="p-6 rounded-3xl bg-sky-50/90 border border-sky-100/60 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-[#f0f9ff]/90 border border-sky-100/60 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-xl sm:text-2xl font-black text-slate-900">
               ศูนย์รายงานและเอกสารสรุปผลงาน (Reports & Statement Center)
             </h1>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-300 border border-sky-500/30">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#f0f9ff]0/10 text-sky-300 border border-sky-500/30">
               Executive Export
             </span>
           </div>
-          <p className="text-xs text-slate-700 mt-1">
+          <p className="text-xs text-slate-800 mt-1">
             พิมพ์ใบสรุปผลประโยชน์ (Statement), ดาวน์โหลด CSV/Excel, และรายงานผลงานรายเดือน/รายปี
           </p>
         </div>
@@ -72,7 +72,7 @@ export const ReportsCenter: React.FC = () => {
         <div className="flex items-center gap-2 self-start md:self-auto">
           <button
             onClick={handleExportCSV}
-            className="px-4 py-2.5 rounded-xl bg-sky-100 hover:bg-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center gap-2 border border-sky-100/60 transition-colors"
+            className="px-4 py-2.5 rounded-xl bg-[#e0f2fe] hover:bg-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center gap-2 border border-sky-100/60 transition-colors"
           >
             <Download className="w-4 h-4 text-blue-600" />
             <span>ส่งออก CSV</span>
@@ -88,7 +88,7 @@ export const ReportsCenter: React.FC = () => {
       </div>
 
       {/* 2. Executive Statement Preview Card */}
-      <div className="p-8 rounded-3xl bg-sky-50 border border-sky-100/60 space-y-6 shadow-2xl print:border-none print:shadow-none print:p-0">
+      <div className="p-8 rounded-3xl bg-[#f0f9ff] border border-sky-100/60 space-y-6 shadow-2xl print:border-none print:shadow-none print:p-0">
         <div className="flex justify-between items-start border-b border-sky-100/60 pb-6">
           <div>
             <div className="text-lg font-black text-slate-900">
@@ -100,32 +100,32 @@ export const ReportsCenter: React.FC = () => {
           </div>
           <div className="text-right">
             <div className="text-xs font-bold text-slate-800">{activeUser.name}</div>
-            <div className="text-[11px] text-slate-700">{activeUser.memberCode} • {activeUser.positionId}</div>
-            <div className="text-[10px] text-slate-700">{activeUser.location.province}</div>
+            <div className="text-[11px] text-slate-800">{activeUser.memberCode} • {activeUser.positionId}</div>
+            <div className="text-[10px] text-slate-800">{activeUser.location.province}</div>
           </div>
         </div>
 
         {/* Summary Metrics */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <div className="p-4 rounded-2xl bg-sky-50 border border-sky-100/60">
-            <span className="text-[10px] text-slate-700 block uppercase">FYC องค์กรรวม</span>
+          <div className="p-4 rounded-2xl bg-[#f0f9ff] border border-sky-100/60">
+            <span className="text-[10px] text-slate-800 block uppercase">FYC องค์กรรวม</span>
             <div className="text-xl font-black text-sky-400 font-mono mt-1">
               ฿{(activeUser.personalFYC + stats.teamFYC).toLocaleString()}
             </div>
           </div>
-          <div className="p-4 rounded-2xl bg-sky-50 border border-sky-100/60">
-            <span className="text-[10px] text-slate-700 block uppercase">สมาชิกทั้งหมด</span>
+          <div className="p-4 rounded-2xl bg-[#f0f9ff] border border-sky-100/60">
+            <span className="text-[10px] text-slate-800 block uppercase">สมาชิกทั้งหมด</span>
             <div className="text-xl font-black text-slate-800 font-mono mt-1">
               {members.length} คน
             </div>
           </div>
-          <div className="p-4 rounded-2xl bg-sky-50 border border-sky-100/60">
-            <span className="text-[10px] text-slate-700 block uppercase">หน่วยแยก / ศูนย์แยก</span>
+          <div className="p-4 rounded-2xl bg-[#f0f9ff] border border-sky-100/60">
+            <span className="text-[10px] text-slate-800 block uppercase">หน่วยแยก / ศูนย์แยก</span>
             <div className="text-xl font-black text-slate-800 font-mono mt-1">
               {stats.totalUnits} / {stats.totalCenters}
             </div>
           </div>
-          <div className="p-4 rounded-2xl bg-sky-50 border border-blue-600/40">
+          <div className="p-4 rounded-2xl bg-[#f0f9ff] border border-blue-600/40">
             <span className="text-[10px] text-blue-600 block uppercase font-bold">รายได้สุทธิเดือนนี้</span>
             <div className="text-xl font-black text-blue-600 font-mono mt-1">
               ฿{income.totalIncome.toLocaleString()}
@@ -137,8 +137,8 @@ export const ReportsCenter: React.FC = () => {
         <div>
           <h3 className="text-sm font-bold text-slate-800 mb-3">รายละเอียดผลประโยชน์ (13 Income Categories)</h3>
           <div className="rounded-2xl border border-sky-100/60 overflow-hidden">
-            <table className="w-full text-xs text-left text-slate-700">
-              <thead className="bg-sky-50 text-slate-700 font-bold uppercase text-[10px] border-b border-sky-100/60">
+            <table className="w-full text-xs text-left text-slate-800">
+              <thead className="bg-[#f0f9ff] text-slate-800 font-bold uppercase text-[10px] border-b border-sky-100/60">
                 <tr>
                   <th className="p-3">ลำดับ</th>
                   <th className="p-3">หมวดหมู่ผลประโยชน์</th>
@@ -148,15 +148,15 @@ export const ReportsCenter: React.FC = () => {
               </thead>
               <tbody className="divide-y divide-slate-800/60">
                 {income.breakdown.map((b, idx) => (
-                  <tr key={b.id} className="hover:bg-sky-50/30">
-                    <td className="p-3 text-slate-700">{idx + 1}</td>
+                  <tr key={b.id} className="hover:bg-[#f0f9ff]/30">
+                    <td className="p-3 text-slate-800">{idx + 1}</td>
                     <td className="p-3 font-semibold text-slate-800">{b.title}</td>
-                    <td className="p-3 text-slate-700 font-mono">{b.rateOrFormula}</td>
+                    <td className="p-3 text-slate-800 font-mono">{b.rateOrFormula}</td>
                     <td className="p-3 text-right font-bold text-blue-600 font-mono">฿{b.amount.toLocaleString()}</td>
                   </tr>
                 ))}
               </tbody>
-              <tfoot className="bg-sky-50/90 font-bold text-slate-900 border-t border-sky-100/60">
+              <tfoot className="bg-[#f0f9ff]/90 font-bold text-slate-900 border-t border-sky-100/60">
                 <tr>
                   <td colSpan={3} className="p-3 text-right text-blue-600 uppercase">รวมรายได้สุทธิ (Total Income)</td>
                   <td className="p-3 text-right text-base text-blue-600 font-mono">฿{income.totalIncome.toLocaleString()}</td>

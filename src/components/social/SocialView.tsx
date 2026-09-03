@@ -36,19 +36,19 @@ export const SocialView: React.FC = () => {
     <div className="w-full max-w-3xl mx-auto">
       <div className={`p-6 sm:p-8 rounded-3xl bg-gradient-to-r ${item.gradient} border ${item.ring} shadow-xl`}>
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-sky-50/80 border border-sky-100/60 flex items-center justify-center shadow-sm">
+          <div className="w-14 h-14 rounded-2xl bg-[#f0f9ff]/80 border border-sky-100/60 flex items-center justify-center shadow-sm">
             <Icon className="w-7 h-7 text-slate-900" />
           </div>
           <div className="min-w-0">
             <h1 className="text-2xl font-black text-slate-900 tracking-tight">{item.title}</h1>
-            <p className="text-xs text-slate-700 mt-1">{item.desc}</p>
+            <p className="text-xs text-slate-800 mt-1">{item.desc}</p>
           </div>
         </div>
 
-        <div className="mt-6 p-4 rounded-2xl bg-sky-50/60 border border-sky-100/60">
-          <div className="flex items-center gap-2 text-[11px] text-slate-700">
+        <div className="mt-6 p-4 rounded-2xl bg-[#f0f9ff]/60 border border-sky-100/60">
+          <div className="flex items-center gap-2 text-[11px] text-slate-800">
             <Globe className="w-3.5 h-3.5" />
-            <span className="truncate font-mono text-slate-700">{item.url}</span>
+            <span className="truncate font-mono text-slate-800">{item.url}</span>
           </div>
         </div>
 
@@ -62,7 +62,7 @@ export const SocialView: React.FC = () => {
           เปิด {item.title} ในแท็บใหม่
         </a>
 
-        <p className="mt-4 text-[11px] text-slate-700 text-center">
+        <p className="mt-4 text-[11px] text-slate-800 text-center">
           ลิงก์อย่างเป็นทางการ · กดเพื่อเปิดหน้า {item.title} ภายนอกระบบ
         </p>
       </div>

@@ -87,13 +87,13 @@ export const OrganizationNetwork: React.FC = () => {
   return (
     <div id="organization_network_view" className="space-y-4 max-w-7xl mx-auto pb-16 text-left relative">
       {/* 1. Control Toolbar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-sky-50/90 border border-sky-100/60 shadow-xl">
+      <div className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-[#f0f9ff]/90 border border-sky-100/60 shadow-xl">
         {/* Left: 4 Visual Views Tabs */}
-        <div className="inline-flex p-1 rounded-xl bg-sky-50 border border-sky-100/60">
+        <div className="inline-flex p-1 rounded-xl bg-[#f0f9ff] border border-sky-100/60">
           <button
             onClick={() => setSelectedNetworkView('tree')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-              selectedNetworkView === 'tree' ? 'bg-blue-600 text-slate-950 shadow-sm shadow-amber-500/20' : 'text-slate-700 hover:text-slate-800'
+              selectedNetworkView === 'tree' ? 'bg-blue-600 text-slate-950 shadow-sm shadow-amber-500/20' : 'text-slate-800 hover:text-slate-800'
             }`}
           >
             Tree View (ผังองค์กร)
@@ -101,7 +101,7 @@ export const OrganizationNetwork: React.FC = () => {
           <button
             onClick={() => setSelectedNetworkView('radial')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-              selectedNetworkView === 'radial' ? 'bg-blue-600 text-slate-950 shadow-sm shadow-amber-500/20' : 'text-slate-700 hover:text-slate-800'
+              selectedNetworkView === 'radial' ? 'bg-blue-600 text-slate-950 shadow-sm shadow-amber-500/20' : 'text-slate-800 hover:text-slate-800'
             }`}
           >
             Radial Network (วงโคจร)
@@ -109,7 +109,7 @@ export const OrganizationNetwork: React.FC = () => {
           <button
             onClick={() => setSelectedNetworkView('galaxy')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-              selectedNetworkView === 'galaxy' ? 'bg-blue-600 text-slate-950 shadow-sm shadow-amber-500/20' : 'text-slate-700 hover:text-slate-800'
+              selectedNetworkView === 'galaxy' ? 'bg-blue-600 text-slate-950 shadow-sm shadow-amber-500/20' : 'text-slate-800 hover:text-slate-800'
             }`}
           >
             Galaxy Cluster (ดวงดาว)
@@ -117,7 +117,7 @@ export const OrganizationNetwork: React.FC = () => {
           <button
             onClick={() => setSelectedNetworkView('geo')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-              selectedNetworkView === 'geo' ? 'bg-blue-600 text-slate-950 shadow-sm shadow-amber-500/20' : 'text-slate-700 hover:text-slate-800'
+              selectedNetworkView === 'geo' ? 'bg-blue-600 text-slate-950 shadow-sm shadow-amber-500/20' : 'text-slate-800 hover:text-slate-800'
             }`}
           >
             Geo Map (ภูมิศาสตร์ไทย)
@@ -130,7 +130,7 @@ export const OrganizationNetwork: React.FC = () => {
           <button
             onClick={() => setHeatmapMode(!heatmapMode)}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all flex items-center gap-1.5 ${
-              heatmapMode ? 'bg-rose-500/20 text-rose-300 border-rose-500/40' : 'bg-sky-100 text-slate-700 border-sky-100/60'
+              heatmapMode ? 'bg-rose-500/20 text-rose-300 border-rose-500/40' : 'bg-[#e0f2fe] text-slate-800 border-sky-100/60'
             }`}
           >
             <Flame className="w-3.5 h-3.5" />
@@ -148,20 +148,20 @@ export const OrganizationNetwork: React.FC = () => {
           </button>
 
           {/* Zoom In / Out */}
-          <div className="inline-flex rounded-xl bg-sky-100 border border-sky-100/60 overflow-hidden">
+          <div className="inline-flex rounded-xl bg-[#e0f2fe] border border-sky-100/60 overflow-hidden">
             <button
               onClick={() => setZoomLevel(prev => Math.max(0.6, prev - 0.1))}
-              className="p-1.5 hover:bg-slate-200 text-slate-700"
+              className="p-1.5 hover:bg-slate-200 text-slate-800"
               title="Zoom Out"
             >
               <ZoomOut className="w-4 h-4" />
             </button>
-            <span className="px-2 py-1 text-[11px] font-mono text-slate-700 flex items-center">
+            <span className="px-2 py-1 text-[11px] font-mono text-slate-800 flex items-center">
               {Math.round(zoomLevel * 100)}%
             </span>
             <button
               onClick={() => setZoomLevel(prev => Math.min(1.6, prev + 0.1))}
-              className="p-1.5 hover:bg-slate-200 text-slate-700"
+              className="p-1.5 hover:bg-slate-200 text-slate-800"
               title="Zoom In"
             >
               <ZoomIn className="w-4 h-4" />
@@ -171,7 +171,7 @@ export const OrganizationNetwork: React.FC = () => {
       </div>
 
       {/* 2. Main Interactive Network Canvas */}
-      <div className="relative min-h-[580px] rounded-3xl bg-sky-50 border border-sky-100/60 overflow-hidden shadow-2xl p-6 flex flex-col justify-center items-center">
+      <div className="relative min-h-[580px] rounded-3xl bg-[#f0f9ff] border border-sky-100/60 overflow-hidden shadow-2xl p-6 flex flex-col justify-center items-center">
         {/* Background Grid Accent */}
         <div 
           className="absolute inset-0 opacity-20 pointer-events-none" 
@@ -305,7 +305,7 @@ export const OrganizationNetwork: React.FC = () => {
             <div className="absolute inset-0 bg-radial from-amber-500/10 via-sky-100 to-sky-50 pointer-events-none" />
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 z-10">
               {centerLeaders.map((cm, cIdx) => (
-                <div key={cm.id} className="p-4 rounded-2xl bg-sky-50/60 border border-sky-100/60 text-center space-y-3">
+                <div key={cm.id} className="p-4 rounded-2xl bg-[#f0f9ff]/60 border border-sky-100/60 text-center space-y-3">
                   <div className="font-bold text-blue-600 text-xs">{cm.location.region} Solar System</div>
                   <MemberNodeCard 
                     member={cm} 
@@ -338,7 +338,7 @@ export const OrganizationNetwork: React.FC = () => {
               const regionMembers = members.filter(m => m.location.region === regionName);
               const regionFYC = regionMembers.reduce((sum, m) => sum + m.personalFYC, 0);
               return (
-                <div key={regionName} className="p-4 rounded-2xl bg-sky-50/80 border border-sky-100/60 flex flex-col justify-between">
+                <div key={regionName} className="p-4 rounded-2xl bg-[#f0f9ff]/80 border border-sky-100/60 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between pb-2 border-b border-sky-100/60">
                       <div className="flex items-center gap-1.5 font-bold text-slate-900 text-xs">
@@ -349,7 +349,7 @@ export const OrganizationNetwork: React.FC = () => {
                     </div>
 
                     <div className="my-3 text-xs">
-                      <div className="text-slate-700 text-[10px]">FYC ภูมิภาค</div>
+                      <div className="text-slate-800 text-[10px]">FYC ภูมิภาค</div>
                       <div className="text-base font-extrabold text-blue-600 font-mono">฿{regionFYC.toLocaleString()}</div>
                     </div>
 
@@ -358,13 +358,13 @@ export const OrganizationNetwork: React.FC = () => {
                         <div 
                           key={m.id}
                           onClick={() => setSelectedMember(m)}
-                          className="p-2 rounded-xl bg-sky-50/60 hover:bg-sky-100 cursor-pointer flex items-center justify-between text-xs transition-colors"
+                          className="p-2 rounded-xl bg-[#f0f9ff]/60 hover:bg-[#e0f2fe] cursor-pointer flex items-center justify-between text-xs transition-colors"
                         >
                           <div className="flex items-center gap-2">
                             <img src={m.avatarUrl} alt={m.name} className="w-5 h-5 rounded-full object-cover" />
                             <span className="text-slate-800 text-[11px] truncate max-w-[100px]">{m.name}</span>
                           </div>
-                          <span className="text-[9px] text-slate-700">{m.location.province}</span>
+                          <span className="text-[9px] text-slate-800">{m.location.province}</span>
                         </div>
                       ))}
                     </div>
@@ -378,13 +378,13 @@ export const OrganizationNetwork: React.FC = () => {
 
       {/* 3. Member Profile Drawer Panel (when selected) */}
       {selectedMember && (
-        <div className="fixed inset-y-0 right-0 w-80 sm:w-96 bg-sky-50 border-l border-sky-100/60 shadow-2xl z-50 p-6 flex flex-col justify-between overflow-y-auto animate-in slide-in-from-right duration-300">
+        <div className="fixed inset-y-0 right-0 w-80 sm:w-96 bg-[#f0f9ff] border-l border-sky-100/60 shadow-2xl z-50 p-6 flex flex-col justify-between overflow-y-auto animate-in slide-in-from-right duration-300">
           <div className="space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-sky-100/60">
-              <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">Member Profile</span>
+              <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">Member Profile</span>
               <button 
                 onClick={() => setSelectedMember(null)}
-                className="w-7 h-7 rounded-lg bg-sky-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center text-xs"
+                className="w-7 h-7 rounded-lg bg-[#e0f2fe] hover:bg-slate-200 text-slate-800 flex items-center justify-center text-xs"
               >
                 ✕
               </button>
@@ -400,44 +400,44 @@ export const OrganizationNetwork: React.FC = () => {
               <div>
                 <h3 className="font-extrabold text-slate-900 text-sm sm:text-base">{selectedMember.name}</h3>
                 <div className="text-xs text-blue-600 font-semibold">{selectedMember.memberCode}</div>
-                <div className="text-[10px] text-slate-700 mt-0.5">{selectedMember.location.province} • {selectedMember.location.region}</div>
+                <div className="text-[10px] text-slate-800 mt-0.5">{selectedMember.location.province} • {selectedMember.location.region}</div>
               </div>
             </div>
 
             {/* Position & Status */}
             <div className="grid grid-cols-2 gap-2 text-xs">
-              <div className="p-2.5 rounded-xl bg-sky-50 border border-sky-100/60">
-                <span className="text-[10px] text-slate-700 block">ตำแหน่ง</span>
+              <div className="p-2.5 rounded-xl bg-[#f0f9ff] border border-sky-100/60">
+                <span className="text-[10px] text-slate-800 block">ตำแหน่ง</span>
                 <span className="font-bold text-slate-800">
                   {selectedMember.positionId === 'region_manager' ? 'ผู้บริหารภาค (RM)' :
                    selectedMember.positionId === 'center_manager' ? 'ผู้บริหารศูนย์ (CM)' :
                    selectedMember.positionId === 'unit_manager' ? 'ผู้บริหารหน่วย (UM)' : 'ตัวแทน (Agent)'}
                 </span>
               </div>
-              <div className="p-2.5 rounded-xl bg-sky-50 border border-sky-100/60">
-                <span className="text-[10px] text-slate-700 block">สถานะปฏิบัติงาน</span>
-                <span className={`font-bold ${selectedMember.status === 'active' ? 'text-emerald-400' : 'text-slate-700'}`}>
+              <div className="p-2.5 rounded-xl bg-[#f0f9ff] border border-sky-100/60">
+                <span className="text-[10px] text-slate-800 block">สถานะปฏิบัติงาน</span>
+                <span className={`font-bold ${selectedMember.status === 'active' ? 'text-emerald-400' : 'text-slate-800'}`}>
                   {selectedMember.status.toUpperCase()}
                 </span>
               </div>
             </div>
 
             {/* Financial Performance */}
-            <div className="p-3 rounded-xl bg-sky-50 border border-sky-100/60 space-y-2 text-xs">
+            <div className="p-3 rounded-xl bg-[#f0f9ff] border border-sky-100/60 space-y-2 text-xs">
               <div className="flex justify-between">
-                <span className="text-slate-700">FYC ส่วนตัว:</span>
+                <span className="text-slate-800">FYC ส่วนตัว:</span>
                 <span className="font-bold text-sky-400">฿{selectedMember.personalFYC.toLocaleString()}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-700">COM ส่วนตัว:</span>
+                <span className="text-slate-800">COM ส่วนตัว:</span>
                 <span className="font-bold text-blue-600">฿{selectedMember.personalCOM.toLocaleString()}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-700">เบี้ยปีแรก (FYP):</span>
+                <span className="text-slate-800">เบี้ยปีแรก (FYP):</span>
                 <span className="font-bold text-slate-800">฿{selectedMember.firstYearPremium.toLocaleString()}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-700">เบี้ยปีต่อ (Renewal):</span>
+                <span className="text-slate-800">เบี้ยปีต่อ (Renewal):</span>
                 <span className="font-bold text-slate-800">฿{selectedMember.renewalPremium.toLocaleString()}</span>
               </div>
             </div>
@@ -453,7 +453,7 @@ export const OrganizationNetwork: React.FC = () => {
 
           <button
             onClick={() => setSelectedMember(null)}
-            className="w-full py-2.5 rounded-xl bg-sky-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition-colors mt-4"
+            className="w-full py-2.5 rounded-xl bg-[#e0f2fe] hover:bg-slate-200 text-slate-800 text-xs font-bold transition-colors mt-4"
           >
             ปิดหน้าต่าง
           </button>
@@ -475,7 +475,7 @@ const MemberNodeCard: React.FC<{ member: Member; isSelected: boolean; onSelect: 
       case 'region_manager': return { text: 'RM', bg: 'bg-rose-500 text-slate-950' };
       case 'center_manager': return { text: 'CM', bg: 'bg-blue-600 text-slate-950' };
       case 'unit_manager': return { text: 'UM', bg: 'bg-emerald-500 text-slate-950' };
-      default: return { text: 'AG', bg: 'bg-sky-500 text-slate-950' };
+      default: return { text: 'AG', bg: 'bg-[#f0f9ff]0 text-slate-950' };
     }
   };
 
@@ -485,7 +485,7 @@ const MemberNodeCard: React.FC<{ member: Member; isSelected: boolean; onSelect: 
   return (
     <div
       onClick={onSelect}
-      className={`relative p-3 rounded-2xl bg-sky-50/90 border ${isSelected ? 'border-blue-400 ring-2 ring-amber-400/40' : heatIntensity} hover:border-blue-400/80 cursor-pointer transition-all duration-200 w-52 shadow-xl text-left group`}
+      className={`relative p-3 rounded-2xl bg-[#f0f9ff]/90 border ${isSelected ? 'border-blue-400 ring-2 ring-amber-400/40' : heatIntensity} hover:border-blue-400/80 cursor-pointer transition-all duration-200 w-52 shadow-xl text-left group`}
     >
       <div className="flex items-center gap-2.5">
         <div className="relative">
@@ -496,12 +496,12 @@ const MemberNodeCard: React.FC<{ member: Member; isSelected: boolean; onSelect: 
         </div>
         <div className="overflow-hidden">
           <div className="font-bold text-xs text-slate-800 truncate group-hover:text-blue-600">{member.name}</div>
-          <div className="text-[10px] text-slate-700">{member.memberCode}</div>
+          <div className="text-[10px] text-slate-800">{member.memberCode}</div>
         </div>
       </div>
 
       <div className="mt-2.5 pt-2 border-t border-sky-100/60 flex items-center justify-between text-[10px]">
-        <span className="text-slate-700">FYC:</span>
+        <span className="text-slate-800">FYC:</span>
         <span className="font-bold text-sky-400 font-mono">฿{member.personalFYC.toLocaleString()}</span>
       </div>
     </div>
@@ -517,7 +517,7 @@ const MemberMiniCard: React.FC<{ member: Member; isSelected: boolean; onSelect: 
   return (
     <div
       onClick={onSelect}
-      className={`p-1.5 rounded-xl bg-sky-50/90 border ${isSelected ? 'border-blue-400' : 'border-sky-100/60'} hover:border-blue-400 cursor-pointer flex items-center gap-1.5 shadow-sm`}
+      className={`p-1.5 rounded-xl bg-[#f0f9ff]/90 border ${isSelected ? 'border-blue-400' : 'border-sky-100/60'} hover:border-blue-400 cursor-pointer flex items-center gap-1.5 shadow-sm`}
       title={`${member.name} (${member.memberCode})`}
     >
       <img src={member.avatarUrl} alt={member.name} className="w-7 h-7 rounded-lg object-cover" />

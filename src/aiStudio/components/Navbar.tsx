@@ -33,7 +33,7 @@ export const Navbar: React.FC = () => {
   const posColor = POSITIONS_LIST.find(p => p.id === selectedMember?.position)?.accentColor || '#3B82F6';
 
   return (
-    <header className="sticky top-0 z-40 bg-sky-50/95 dark:bg-sky-50/95 backdrop-blur border-b border-sky-100/60 text-slate-900 shadow-sm">
+    <header className="sticky top-0 z-40 bg-[#f0f9ff]/95 dark:bg-[#f0f9ff]/95 backdrop-blur border-b border-sky-100/60 text-slate-900 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-4">
           
@@ -51,15 +51,15 @@ export const Navbar: React.FC = () => {
                   PRO
                 </span>
               </div>
-              <p className="text-[11px] text-slate-700 hidden sm:block">
+              <p className="text-[11px] text-slate-800 hidden sm:block">
                 ระบบจำลองโครงสร้างทีม เป้าหมายตำแหน่ง และรายได้ตัวแทน
               </p>
             </div>
           </div>
 
           {/* Member Quick Switcher */}
-          <div className="hidden lg:flex items-center gap-2 bg-sky-100/80 rounded-lg px-3 py-1.5 border border-sky-100/60">
-            <div className="flex items-center gap-1.5 text-xs text-slate-700">
+          <div className="hidden lg:flex items-center gap-2 bg-[#e0f2fe]/80 rounded-lg px-3 py-1.5 border border-sky-100/60">
+            <div className="flex items-center gap-1.5 text-xs text-slate-800">
               <UserCheck className="w-3.5 h-3.5 text-blue-600" />
               <span>กำลังดู:</span>
             </div>
@@ -69,7 +69,7 @@ export const Navbar: React.FC = () => {
               className="bg-transparent text-xs font-medium text-slate-800 focus:outline-none cursor-pointer max-w-[220px] truncate"
             >
               {members.map(m => (
-                <option key={m.id} value={m.id} className="bg-sky-50 text-slate-800">
+                <option key={m.id} value={m.id} className="bg-[#f0f9ff] text-slate-800">
                   [{m.code}] {m.name} ({m.position === 'GROUP_MANAGER' ? 'ภาค' : m.position === 'CENTER_MANAGER' ? 'ศูนย์' : m.position === 'UNIT_MANAGER' ? 'หน่วย' : 'ตัวแทน'})
                 </option>
               ))}
@@ -89,25 +89,25 @@ export const Navbar: React.FC = () => {
             </button>
 
             {/* Role Switcher */}
-            <div className="hidden md:flex items-center gap-1 bg-sky-100/60 rounded-lg p-1 border border-sky-100/60/60">
+            <div className="hidden md:flex items-center gap-1 bg-[#e0f2fe]/60 rounded-lg p-1 border border-sky-100/60/60">
               <select
                 value={userRole}
                 onChange={e => setUserRole(e.target.value as any)}
-                className="bg-transparent text-[11px] font-semibold text-slate-700 focus:outline-none cursor-pointer px-1.5"
+                className="bg-transparent text-[11px] font-semibold text-slate-800 focus:outline-none cursor-pointer px-1.5"
                 title="สลับมุมมองสิทธิ์ผู้ใช้งาน"
               >
-                <option value="ADMIN" className="bg-sky-50">👑 สิทธิ์: ผู้ดูแล (Admin)</option>
-                <option value="GROUP_MANAGER" className="bg-sky-50">🏢 สิทธิ์: ผู้บริหารภาค</option>
-                <option value="CENTER_MANAGER" className="bg-sky-50">🏬 สิทธิ์: ผู้บริหารศูนย์</option>
-                <option value="UNIT_MANAGER" className="bg-sky-50">🏠 สิทธิ์: ผู้บริหารหน่วย</option>
-                <option value="AGENT" className="bg-sky-50">👤 สิทธิ์: ตัวแทนทั่วไป</option>
+                <option value="ADMIN" className="bg-[#f0f9ff]">👑 สิทธิ์: ผู้ดูแล (Admin)</option>
+                <option value="GROUP_MANAGER" className="bg-[#f0f9ff]">🏢 สิทธิ์: ผู้บริหารภาค</option>
+                <option value="CENTER_MANAGER" className="bg-[#f0f9ff]">🏬 สิทธิ์: ผู้บริหารศูนย์</option>
+                <option value="UNIT_MANAGER" className="bg-[#f0f9ff]">🏠 สิทธิ์: ผู้บริหารหน่วย</option>
+                <option value="AGENT" className="bg-[#f0f9ff]">👤 สิทธิ์: ตัวแทนทั่วไป</option>
               </select>
             </div>
 
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-sky-100/80 hover:bg-slate-200/80 border border-sky-100/60 text-slate-700 hover:text-slate-900 transition-colors cursor-pointer"
+              className="p-2 rounded-lg bg-[#e0f2fe]/80 hover:bg-slate-200/80 border border-sky-100/60 text-slate-800 hover:text-slate-900 transition-colors cursor-pointer"
               title="สลับโหมดมืด/สว่าง"
             >
               {theme === 'dark' ? <Sun className="w-4 h-4 text-blue-600" /> : <Moon className="w-4 h-4 text-blue-300" />}
@@ -123,7 +123,7 @@ export const Navbar: React.FC = () => {
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'DASHBOARD'
                 ? 'bg-blue-600 text-slate-900 shadow-sm shadow-blue-500/20'
-                : 'text-slate-700 hover:text-slate-800 hover:bg-sky-100/60'
+                : 'text-slate-800 hover:text-slate-800 hover:bg-[#e0f2fe]/60'
             }`}
           >
             <LayoutDashboard className="w-4 h-4" />
@@ -135,12 +135,12 @@ export const Navbar: React.FC = () => {
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'TREE'
                 ? 'bg-blue-600 text-slate-900 shadow-sm shadow-blue-500/20'
-                : 'text-slate-700 hover:text-slate-800 hover:bg-sky-100/60'
+                : 'text-slate-800 hover:text-slate-800 hover:bg-[#e0f2fe]/60'
             }`}
           >
             <Network className="w-4 h-4" />
             <span>ผังองค์กรต้นไม้</span>
-            <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-sky-100 text-slate-700 border border-sky-100/60">
+            <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-[#e0f2fe] text-slate-800 border border-sky-100/60">
               {members.length}
             </span>
           </button>
@@ -150,7 +150,7 @@ export const Navbar: React.FC = () => {
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'CALCULATOR'
                 ? 'bg-blue-600 text-slate-900 shadow-sm shadow-blue-500/20'
-                : 'text-slate-700 hover:text-slate-800 hover:bg-sky-100/60'
+                : 'text-slate-800 hover:text-slate-800 hover:bg-[#e0f2fe]/60'
             }`}
           >
             <Calculator className="w-4 h-4" />
@@ -162,7 +162,7 @@ export const Navbar: React.FC = () => {
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'GOAL'
                 ? 'bg-blue-600 text-slate-900 shadow-sm shadow-blue-500/20'
-                : 'text-slate-700 hover:text-slate-800 hover:bg-sky-100/60'
+                : 'text-slate-800 hover:text-slate-800 hover:bg-[#e0f2fe]/60'
             }`}
           >
             <Target className="w-4 h-4" />
@@ -174,7 +174,7 @@ export const Navbar: React.FC = () => {
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'ADMIN'
                 ? 'bg-blue-600 text-slate-900 shadow-sm shadow-blue-500/20'
-                : 'text-slate-700 hover:text-slate-800 hover:bg-sky-100/60'
+                : 'text-slate-800 hover:text-slate-800 hover:bg-[#e0f2fe]/60'
             }`}
           >
             <Settings className="w-4 h-4" />
@@ -186,7 +186,7 @@ export const Navbar: React.FC = () => {
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'UNIT_TESTS'
                 ? 'bg-blue-600 text-slate-900 shadow-sm shadow-blue-500/20'
-                : 'text-slate-700 hover:text-slate-800 hover:bg-sky-100/60'
+                : 'text-slate-800 hover:text-slate-800 hover:bg-[#e0f2fe]/60'
             }`}
           >
             <CheckCircle2 className="w-4 h-4 text-emerald-400" />

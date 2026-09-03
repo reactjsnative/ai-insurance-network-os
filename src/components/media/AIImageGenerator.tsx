@@ -82,7 +82,7 @@ export const AIImageGenerator: React.FC = () => {
   return (
     <div id="ai_image_view" className="space-y-6 max-w-7xl mx-auto pb-16 text-left">
       {/* Header */}
-      <div className="p-6 rounded-3xl bg-sky-50/90 border border-sky-100/60 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-[#f0f9ff]/90 border border-sky-100/60 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-slate-900 shadow-sm shadow-emerald-500/30">
@@ -92,21 +92,21 @@ export const AIImageGenerator: React.FC = () => {
               AI Image Generator (OpenAI)
             </h1>
           </div>
-          <p className="text-xs text-slate-700 mt-1">
+          <p className="text-xs text-slate-800 mt-1">
             สร้างภาพ AI จากคำบรรยายด้วย OpenAI gpt-image-1 — ซ่อน API key ไว้ฝั่งเซิร์ฟเวอร์
           </p>
         </div>
         <div
           className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold self-start md:self-auto ${
             configured === null
-              ? 'bg-sky-100 text-slate-700'
+              ? 'bg-[#e0f2fe] text-slate-800'
               : configured
               ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/30'
               : 'bg-blue-600/10 text-blue-600 border border-blue-600/30'
           }`}
         >
           {configured === null ? (
-            <span className="w-2 h-2 rounded-full bg-sky-500 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#f0f9ff]0 animate-pulse" />
           ) : configured ? (
             <>
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -124,9 +124,9 @@ export const AIImageGenerator: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Left — Controls */}
         <div className="space-y-4">
-          <div className="p-5 rounded-2xl bg-sky-50/80 border border-sky-100/60 space-y-4">
+          <div className="p-5 rounded-2xl bg-[#f0f9ff]/80 border border-sky-100/60 space-y-4">
             <div>
-              <label className="text-xs font-bold text-slate-700 flex items-center gap-2">
+              <label className="text-xs font-bold text-slate-800 flex items-center gap-2">
                 <ImageIcon className="w-4 h-4 text-emerald-400" /> คำบรรยายภาพ (Prompt)
               </label>
               <textarea
@@ -135,18 +135,18 @@ export const AIImageGenerator: React.FC = () => {
                 disabled={isBusy}
                 rows={3}
                 placeholder="เช่น ตัวแทนประกันภัยมืออาชีพยิ้มมั่นใจในออฟฟิศทันสมัย..."
-                className="mt-2 w-full bg-sky-50 border border-sky-100/60 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 resize-none"
+                className="mt-2 w-full bg-[#f0f9ff] border border-sky-100/60 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 resize-none"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-[11px] font-bold text-slate-700">ขนาด (Size)</label>
+                <label className="text-[11px] font-bold text-slate-800">ขนาด (Size)</label>
                 <select
                   value={size}
                   onChange={(e) => setSize(e.target.value)}
                   disabled={isBusy}
-                  className="mt-1 w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-emerald-500/50"
+                  className="mt-1 w-full bg-[#f0f9ff] border border-sky-100/60 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-emerald-500/50"
                 >
                   <option value="1024x1024">1024 × 1024</option>
                   <option value="1536x1024">1536 × 1024</option>
@@ -154,12 +154,12 @@ export const AIImageGenerator: React.FC = () => {
                 </select>
               </div>
               <div>
-                <label className="text-[11px] font-bold text-slate-700">คุณภาพ (Quality)</label>
+                <label className="text-[11px] font-bold text-slate-800">คุณภาพ (Quality)</label>
                 <select
                   value={quality}
                   onChange={(e) => setQuality(e.target.value)}
                   disabled={isBusy}
-                  className="mt-1 w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-emerald-500/50"
+                  className="mt-1 w-full bg-[#f0f9ff] border border-sky-100/60 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-emerald-500/50"
                 >
                   <option value="auto">อัตโนมัติ</option>
                   <option value="high">สูง</option>
@@ -174,7 +174,7 @@ export const AIImageGenerator: React.FC = () => {
                   key={i}
                   onClick={() => setPrompt(p)}
                   disabled={isBusy}
-                  className="px-3 py-1.5 rounded-full bg-sky-50 hover:bg-sky-100 text-slate-700 border border-sky-100/60/80 text-[11px] transition-colors"
+                  className="px-3 py-1.5 rounded-full bg-[#f0f9ff] hover:bg-[#e0f2fe] text-slate-800 border border-sky-100/60/80 text-[11px] transition-colors"
                 >
                   {p.length > 36 ? p.slice(0, 36) + '…' : p}
                 </button>
@@ -194,14 +194,14 @@ export const AIImageGenerator: React.FC = () => {
             {(stage === 'done' || stage === 'error') && (
               <button
                 onClick={reset}
-                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-sky-100 hover:bg-slate-200 text-slate-800 text-sm"
+                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#e0f2fe] hover:bg-slate-200 text-slate-800 text-sm"
               >
                 <RefreshCw className="w-4 h-4" /> เริ่มใหม่
               </button>
             )}
 
             {isBusy && (
-              <div className="flex items-center gap-2 text-xs text-slate-700">
+              <div className="flex items-center gap-2 text-xs text-slate-800">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-bounce" />
                 <span className="w-2 h-2 rounded-full bg-teal-400 animate-bounce [animation-delay:0.2s]" />
                 <span className="ml-1">{statusText}</span>
@@ -223,8 +223,8 @@ export const AIImageGenerator: React.FC = () => {
             )}
 
             {revised && (
-              <p className="text-[11px] text-slate-700 leading-relaxed">
-                <span className="text-slate-700 font-semibold">Prompt ที่ปรับปรุงโดย AI:</span> {revised}
+              <p className="text-[11px] text-slate-800 leading-relaxed">
+                <span className="text-slate-800 font-semibold">Prompt ที่ปรับปรุงโดย AI:</span> {revised}
               </p>
             )}
           </div>
@@ -239,16 +239,16 @@ export const AIImageGenerator: React.FC = () => {
 
         {/* Right — Preview */}
         <div className="space-y-3">
-          <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-sky-50 border border-sky-100/60 flex items-center justify-center">
+          <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-[#f0f9ff] border border-sky-100/60 flex items-center justify-center">
             {imageUrl ? (
               <img src={imageUrl} alt="Generated" className="w-full h-full object-contain" />
             ) : isBusy ? (
-              <div className="text-center text-slate-700 text-sm px-6">
+              <div className="text-center text-slate-800 text-sm px-6">
                 <Loader2 className="w-8 h-8 animate-spin mx-auto mb-2 text-emerald-400" />
                 {statusText}
               </div>
             ) : (
-              <div className="text-center text-slate-700 text-sm px-6">
+              <div className="text-center text-slate-800 text-sm px-6">
                 <ImageIcon className="w-10 h-10 mx-auto mb-2 opacity-40" />
                 ภาพที่สร้างจะแสดงที่นี่
               </div>
@@ -274,7 +274,7 @@ export const AIImageGenerator: React.FC = () => {
                   setStatusText('บันทึกลงคลังแล้ว! ดูได้ในแท็บ "คลังวีดีโอ"');
                   setStage('done');
                 }}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-sky-100 hover:bg-slate-200 text-slate-800 text-sm"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#e0f2fe] hover:bg-slate-200 text-slate-800 text-sm"
               >
                 <Library className="w-4 h-4" /> บันทึกลงคลัง
               </button>

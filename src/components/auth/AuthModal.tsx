@@ -275,28 +275,28 @@ export const AuthModal: React.FC = () => {
   return (
     <div 
       id="auth-modal-backdrop"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-sky-50/70 backdrop-blur-md overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#f0f9ff]/70 backdrop-blur-md overflow-y-auto"
     >
       <motion.div
         id="auth-modal-container"
         initial={{ opacity: 0, scale: 0.96, y: 10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.96, y: 10 }}
-        className="w-full max-w-lg bg-sky-50 rounded-3xl shadow-2xl border border-sky-100/60/80 overflow-hidden my-8"
+        className="w-full max-w-lg bg-[#f0f9ff] rounded-3xl shadow-2xl border border-sky-100/60/80 overflow-hidden my-8"
       >
         {/* Header Bar */}
         <div className="relative bg-gradient-to-r from-blue-700 via-indigo-700 to-violet-700 text-white p-6 sm:p-7">
           <button
             id="btn-close-auth-modal"
             onClick={closeAuthModal}
-            className="absolute top-5 right-5 p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-sky-50/10 transition-colors cursor-pointer"
+            className="absolute top-5 right-5 p-2 rounded-xl text-slate-800 hover:text-slate-900 hover:bg-[#f0f9ff]/10 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
 
           <div className="flex items-center gap-3 mb-2">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-cyan-400 p-0.5 shadow-sm shadow-indigo-500/20">
-              <div className="w-full h-full bg-sky-50 rounded-[10px] flex items-center justify-center">
+              <div className="w-full h-full bg-[#f0f9ff] rounded-[10px] flex items-center justify-center">
                 <Sparkles className="w-5 h-5 text-indigo-400" />
               </div>
             </div>
@@ -313,7 +313,7 @@ export const AuthModal: React.FC = () => {
           </div>
 
           {/* Tab navigation */}
-          <div className="flex items-center gap-2 mt-5 p-1 bg-sky-100/80 rounded-xl border border-sky-100/60/60">
+          <div className="flex items-center gap-2 mt-5 p-1 bg-[#e0f2fe]/80 rounded-xl border border-sky-100/60/60">
             <button
               id="tab-btn-login"
               onClick={() => {
@@ -323,7 +323,7 @@ export const AuthModal: React.FC = () => {
               className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 authModalTab === 'login'
                   ? 'bg-indigo-600 text-slate-900 shadow-sm'
-                  : 'text-slate-700 hover:text-slate-900'
+                  : 'text-slate-800 hover:text-slate-900'
               }`}
             >
               เข้าสู่ระบบ
@@ -337,7 +337,7 @@ export const AuthModal: React.FC = () => {
               className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 authModalTab === 'register'
                   ? 'bg-indigo-600 text-slate-900 shadow-sm'
-                  : 'text-slate-700 hover:text-slate-900'
+                  : 'text-slate-800 hover:text-slate-900'
               }`}
             >
               สมัครสมาชิกใหม่
@@ -359,7 +359,7 @@ export const AuthModal: React.FC = () => {
             <div className="space-y-6">
               {/* Social Login Options */}
               <div className="space-y-3">
-                <p className="text-xs font-semibold text-slate-700 uppercase tracking-wider text-center">
+                <p className="text-xs font-semibold text-slate-800 uppercase tracking-wider text-center">
                   เลือกช่องทางเข้าสู่ระบบที่ต้องการ
                 </p>
 
@@ -369,7 +369,7 @@ export const AuthModal: React.FC = () => {
                     id="btn-login-google"
                     type="button"
                     onClick={() => openOAuthPopup('google')}
-                    className="w-full py-2.5 px-3.5 rounded-xl border border-sky-100/60 hover:border-indigo-300 bg-sky-50 hover:bg-sky-50/80 text-slate-700 font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-2.5 px-3.5 rounded-xl border border-sky-100/60 hover:border-indigo-300 bg-[#f0f9ff] hover:bg-[#f0f9ff]/80 text-slate-800 font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <GoogleIcon className="w-4 h-4" />
                     <span>Google</span>
@@ -379,7 +379,7 @@ export const AuthModal: React.FC = () => {
                     id="btn-login-tiktok"
                     type="button"
                     onClick={() => openOAuthPopup('tiktok')}
-                    className="w-full py-2.5 px-3.5 rounded-xl border border-sky-100/60 bg-sky-50 hover:bg-zinc-900 text-slate-900 font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-2.5 px-3.5 rounded-xl border border-sky-100/60 bg-[#f0f9ff] hover:bg-zinc-900 text-slate-900 font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <TikTokIcon className="w-4 h-4 text-slate-900" />
                     <span>TikTok</span>
@@ -399,7 +399,7 @@ export const AuthModal: React.FC = () => {
                     id="btn-login-github"
                     type="button"
                     onClick={() => openOAuthPopup('github')}
-                    className="w-full py-2.5 px-3.5 rounded-xl border border-sky-100/60 bg-sky-50 hover:bg-sky-50 text-slate-900 font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-2.5 px-3.5 rounded-xl border border-sky-100/60 bg-[#f0f9ff] hover:bg-[#f0f9ff] text-slate-900 font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <GithubIcon className="w-4 h-4 text-slate-900" />
                     <span>GitHub</span>
@@ -410,7 +410,7 @@ export const AuthModal: React.FC = () => {
               {/* Divider */}
               <div className="relative flex items-center justify-center">
                 <div className="border-t border-sky-100/60 w-full" />
-                <span className="bg-sky-50 px-3 text-[11px] font-medium text-slate-700 uppercase tracking-wider">
+                <span className="bg-[#f0f9ff] px-3 text-[11px] font-medium text-slate-800 uppercase tracking-wider">
                   หรือใช้อีเมล & รหัสผ่าน
                 </span>
               </div>
@@ -418,11 +418,11 @@ export const AuthModal: React.FC = () => {
               {/* Email Form */}
               <form onSubmit={handleEmailLoginSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                  <label className="block text-xs font-semibold text-slate-800 mb-1.5">
                     อีเมล (Email)
                   </label>
                   <div className="relative">
-                    <Mail className="w-4 h-4 text-slate-700 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                    <Mail className="w-4 h-4 text-slate-800 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
                       id="input-login-email"
                       type="email"
@@ -437,7 +437,7 @@ export const AuthModal: React.FC = () => {
 
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
-                    <label className="text-xs font-semibold text-slate-700">
+                    <label className="text-xs font-semibold text-slate-800">
                       รหัสผ่าน (Password)
                     </label>
                     <button
@@ -450,7 +450,7 @@ export const AuthModal: React.FC = () => {
                     </button>
                   </div>
                   <div className="relative">
-                    <Lock className="w-4 h-4 text-slate-700 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                    <Lock className="w-4 h-4 text-slate-800 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
                       id="input-login-password"
                       type={showLoginPassword ? 'text' : 'password'}
@@ -463,7 +463,7 @@ export const AuthModal: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setShowLoginPassword(!showLoginPassword)}
-                      className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-700 hover:text-slate-700"
+                      className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-800 hover:text-slate-800"
                     >
                       {showLoginPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                     </button>
@@ -478,7 +478,7 @@ export const AuthModal: React.FC = () => {
                       onChange={e => setRememberMe(e.target.checked)}
                       className="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500"
                     />
-                    <span className="text-xs text-slate-700">จดจำการเข้าสู่ระบบ</span>
+                    <span className="text-xs text-slate-800">จดจำการเข้าสู่ระบบ</span>
                   </label>
                 </div>
 
@@ -508,11 +508,11 @@ export const AuthModal: React.FC = () => {
           {authModalTab === 'register' && (
             <form onSubmit={handleRegisterSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                <label className="block text-xs font-semibold text-slate-800 mb-1.5">
                   ชื่อ - นามสกุล *
                 </label>
                 <div className="relative">
-                  <User className="w-4 h-4 text-slate-700 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <User className="w-4 h-4 text-slate-800 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     id="input-reg-name"
                     type="text"
@@ -526,11 +526,11 @@ export const AuthModal: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                <label className="block text-xs font-semibold text-slate-800 mb-1.5">
                   อีเมล (Email) *
                 </label>
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-slate-700 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <Mail className="w-4 h-4 text-slate-800 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     id="input-reg-email"
                     type="email"
@@ -544,11 +544,11 @@ export const AuthModal: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                <label className="block text-xs font-semibold text-slate-800 mb-1.5">
                   รหัสผ่าน (Password) *
                 </label>
                 <div className="relative">
-                  <Lock className="w-4 h-4 text-slate-700 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <Lock className="w-4 h-4 text-slate-800 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     id="input-reg-password"
                     type={showRegPassword ? 'text' : 'password'}
@@ -561,7 +561,7 @@ export const AuthModal: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setShowRegPassword(!showRegPassword)}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-700 hover:text-slate-700"
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-800 hover:text-slate-800"
                   >
                     {showRegPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -570,11 +570,11 @@ export const AuthModal: React.FC = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                  <label className="block text-xs font-semibold text-slate-800 mb-1.5">
                     เบอร์โทรศัพท์
                   </label>
                   <div className="relative">
-                    <Phone className="w-4 h-4 text-slate-700 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                    <Phone className="w-4 h-4 text-slate-800 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
                       id="input-reg-phone"
                       type="tel"
@@ -587,7 +587,7 @@ export const AuthModal: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                  <label className="block text-xs font-semibold text-slate-800 mb-1.5">
                     รหัสผู้แนะนำ
                   </label>
                   <input
@@ -602,14 +602,14 @@ export const AuthModal: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                <label className="block text-xs font-semibold text-slate-800 mb-1.5">
                   ระดับตำแหน่งเริ่มต้น
                 </label>
                 <select
                   id="select-reg-position"
                   value={regPosition}
                   onChange={e => setRegPosition(e.target.value as PositionId)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-sky-100/60 focus:border-indigo-500 text-xs text-slate-800 outline-none bg-sky-50"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-sky-100/60 focus:border-indigo-500 text-xs text-slate-800 outline-none bg-[#f0f9ff]"
                 >
                   <option value="agent">ตัวแทน (Agent)</option>
                   <option value="unit_manager">ผู้บริหารหน่วย (UM)</option>
@@ -647,15 +647,15 @@ export const AuthModal: React.FC = () => {
                   <div className="text-center p-3 bg-indigo-50/50 rounded-2xl border border-indigo-100">
                     <KeyRound className="w-8 h-8 text-indigo-600 mx-auto mb-1.5" />
                     <h4 className="text-sm font-bold text-slate-800">รีเซ็ตรหัสผ่าน</h4>
-                    <p className="text-xs text-slate-700 mt-0.5">ระบบจะส่งรหัสยืนยันไปยังอีเมลของคุณ</p>
+                    <p className="text-xs text-slate-800 mt-0.5">ระบบจะส่งรหัสยืนยันไปยังอีเมลของคุณ</p>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                    <label className="block text-xs font-semibold text-slate-800 mb-1.5">
                       อีเมลที่ลงทะเบียนไว้
                     </label>
                     <div className="relative">
-                      <Mail className="w-4 h-4 text-slate-700 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                      <Mail className="w-4 h-4 text-slate-800 absolute left-3.5 top-1/2 -translate-y-1/2" />
                       <input
                         id="input-forgot-email"
                         type="email"
@@ -695,13 +695,13 @@ export const AuthModal: React.FC = () => {
                   <div className="text-center p-3 bg-indigo-50/50 rounded-2xl border border-indigo-100">
                     <CheckCircle2 className="w-8 h-8 text-indigo-600 mx-auto mb-1.5" />
                     <h4 className="text-sm font-bold text-slate-800">ส่งรหัส OTP แล้ว</h4>
-                    <p className="text-xs text-slate-700 mt-0.5">
-                      กรอก <b className="text-slate-700">รหัส 6 หลัก</b> ที่ส่งไปยัง <b className="text-slate-700">{forgotEmail}</b>
+                    <p className="text-xs text-slate-800 mt-0.5">
+                      กรอก <b className="text-slate-800">รหัส 6 หลัก</b> ที่ส่งไปยัง <b className="text-slate-800">{forgotEmail}</b>
                     </p>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">รหัส OTP (6 หลัก)</label>
+                    <label className="block text-xs font-semibold text-slate-800 mb-1.5">รหัส OTP (6 หลัก)</label>
                     <input
                       id="input-otp-code"
                       inputMode="numeric"
@@ -715,9 +715,9 @@ export const AuthModal: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">รหัสผ่านใหม่</label>
+                    <label className="block text-xs font-semibold text-slate-800 mb-1.5">รหัสผ่านใหม่</label>
                     <div className="relative">
-                      <Lock className="w-4 h-4 text-slate-700 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                      <Lock className="w-4 h-4 text-slate-800 absolute left-3.5 top-1/2 -translate-y-1/2" />
                       <input
                         id="input-otp-new-password"
                         type={showNewPassword ? 'text' : 'password'}
@@ -730,7 +730,7 @@ export const AuthModal: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setShowNewPassword(v => !v)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-700 hover:text-slate-700 cursor-pointer"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-800 hover:text-slate-800 cursor-pointer"
                       >
                         {showNewPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
@@ -738,9 +738,9 @@ export const AuthModal: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">ยืนยันรหัสผ่านใหม่</label>
+                    <label className="block text-xs font-semibold text-slate-800 mb-1.5">ยืนยันรหัสผ่านใหม่</label>
                     <div className="relative">
-                      <Lock className="w-4 h-4 text-slate-700 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                      <Lock className="w-4 h-4 text-slate-800 absolute left-3.5 top-1/2 -translate-y-1/2" />
                       <input
                         id="input-otp-confirm-password"
                         type={showNewPassword ? 'text' : 'password'}
@@ -785,14 +785,14 @@ export const AuthModal: React.FC = () => {
                   <div className="text-center p-3 bg-blue-50/60 rounded-2xl border border-amber-100">
                     <CheckCircle2 className="w-8 h-8 text-blue-600 mx-auto mb-1.5" />
                     <h4 className="text-sm font-bold text-slate-800">ส่งอีเมลรีเซ็ตรหัสผ่านแล้ว</h4>
-                    <p className="text-xs text-slate-700 mt-0.5">
-                      เปิดอีเมล <b className="text-slate-700">{forgotEmail}</b> แล้วคลิกลิงก์{" "}
-                      <b className="text-slate-700">Reset Password</b> เพื่อตั้งรหัสผ่านใหม่
+                    <p className="text-xs text-slate-800 mt-0.5">
+                      เปิดอีเมล <b className="text-slate-800">{forgotEmail}</b> แล้วคลิกลิงก์{" "}
+                      <b className="text-slate-800">Reset Password</b> เพื่อตั้งรหัสผ่านใหม่
                     </p>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                    <label className="block text-xs font-semibold text-slate-800 mb-1.5">
                       ตั้งรหัสใหม่ในแอปนี้ (วางรหัสจากลิงก์)
                     </label>
                     <input
@@ -802,7 +802,7 @@ export const AuthModal: React.FC = () => {
                       placeholder="วางรหัสยืนยัน (oobCode) จากลิงก์ในอีเมล"
                       className="w-full px-3.5 py-2.5 rounded-xl border border-sky-100/60 focus:border-indigo-500 text-xs text-slate-800 outline-none font-mono"
                     />
-                    <p className="text-[11px] text-slate-700 mt-1.5">
+                    <p className="text-[11px] text-slate-800 mt-1.5">
                       ไม่สะดวกคลิกลิงก์? วางรหัสยืนยันจากลิงก์ในอีเมลตรงนี้ แล้วกดยืนยันรหัส
                     </p>
                   </div>
@@ -839,15 +839,15 @@ export const AuthModal: React.FC = () => {
                   <div className="text-center p-3 bg-emerald-50/50 rounded-2xl border border-emerald-100">
                     <Lock className="w-8 h-8 text-emerald-600 mx-auto mb-1.5" />
                     <h4 className="text-sm font-bold text-slate-800">ตั้งรหัสผ่านใหม่</h4>
-                    <p className="text-xs text-slate-700 mt-0.5">
-                      {resetEmail ? <>สำหรับบัญชี <b className="text-slate-700">{resetEmail}</b></> : 'รหัสยืนยันถูกต้องแล้ว'}
+                    <p className="text-xs text-slate-800 mt-0.5">
+                      {resetEmail ? <>สำหรับบัญชี <b className="text-slate-800">{resetEmail}</b></> : 'รหัสยืนยันถูกต้องแล้ว'}
                     </p>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">รหัสผ่านใหม่</label>
+                    <label className="block text-xs font-semibold text-slate-800 mb-1.5">รหัสผ่านใหม่</label>
                     <div className="relative">
-                      <Lock className="w-4 h-4 text-slate-700 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                      <Lock className="w-4 h-4 text-slate-800 absolute left-3.5 top-1/2 -translate-y-1/2" />
                       <input
                         id="input-new-password"
                         type={showNewPassword ? 'text' : 'password'}
@@ -860,7 +860,7 @@ export const AuthModal: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setShowNewPassword(v => !v)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-700 hover:text-slate-700 cursor-pointer"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-800 hover:text-slate-800 cursor-pointer"
                       >
                         {showNewPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
@@ -868,9 +868,9 @@ export const AuthModal: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">ยืนยันรหัสผ่านใหม่</label>
+                    <label className="block text-xs font-semibold text-slate-800 mb-1.5">ยืนยันรหัสผ่านใหม่</label>
                     <div className="relative">
-                      <Lock className="w-4 h-4 text-slate-700 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                      <Lock className="w-4 h-4 text-slate-800 absolute left-3.5 top-1/2 -translate-y-1/2" />
                       <input
                         id="input-confirm-password"
                         type={showNewPassword ? 'text' : 'password'}
@@ -908,7 +908,7 @@ export const AuthModal: React.FC = () => {
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <h3 className="text-base font-bold text-slate-900">ตั้งรหัสผ่านใหม่เรียบร้อยแล้ว</h3>
-                  <p className="text-xs text-slate-700">คุณสามารถเข้าสู่ระบบด้วยรหัสผ่านใหม่ได้ทันที</p>
+                  <p className="text-xs text-slate-800">คุณสามารถเข้าสู่ระบบด้วยรหัสผ่านใหม่ได้ทันที</p>
                   <button
                     id="btn-back-to-login"
                     type="button"

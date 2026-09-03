@@ -108,7 +108,7 @@ export const XLinks: React.FC = () => {
             <Twitter className="w-6 h-6 text-sky-400" />
             {t('social_sub_x')}
           </h1>
-          <p className="text-sm text-slate-700 mt-1">
+          <p className="text-sm text-slate-800 mt-1">
             ลิงก์ X (Twitter) ของทีมและตัวแทน เพื่อต่อยอดการตลาดออนไลน์
           </p>
         </div>
@@ -123,28 +123,28 @@ export const XLinks: React.FC = () => {
 
       {/* Add form */}
       {showAdd && (
-        <div className="p-4 rounded-2xl bg-sky-50/80 border border-sky-100/60 space-y-3">
+        <div className="p-4 rounded-2xl bg-[#f0f9ff]/80 border border-sky-100/60 space-y-3">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <input
               id="x_title_input"
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
               placeholder="ชื่อ/คำอธิบาย"
-              className="px-3 py-2 rounded-lg bg-sky-50 border border-sky-100/60 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
+              className="px-3 py-2 rounded-lg bg-[#f0f9ff] border border-sky-100/60 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
             <input
               id="x_handle_input"
               value={form.handle}
               onChange={(e) => setForm({ ...form, handle: e.target.value })}
               placeholder="ชื่อผู้ใช้ เช่น @ai_network_os"
-              className="px-3 py-2 rounded-lg bg-sky-50 border border-sky-100/60 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
+              className="px-3 py-2 rounded-lg bg-[#f0f9ff] border border-sky-100/60 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
             <input
               id="x_url_input"
               value={form.url}
               onChange={(e) => setForm({ ...form, url: e.target.value })}
               placeholder="ลิงก์ (เว้นไว้ได้)"
-              className="px-3 py-2 rounded-lg bg-sky-50 border border-sky-100/60 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
+              className="px-3 py-2 rounded-lg bg-[#f0f9ff] border border-sky-100/60 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
           </div>
           <div className="flex gap-2">
@@ -157,7 +157,7 @@ export const XLinks: React.FC = () => {
             </button>
             <button
               onClick={() => setShowAdd(false)}
-              className="px-4 py-2 rounded-lg bg-sky-100 hover:bg-slate-200 text-slate-800 text-sm"
+              className="px-4 py-2 rounded-lg bg-[#e0f2fe] hover:bg-slate-200 text-slate-800 text-sm"
             >
               ยกเลิก
             </button>
@@ -173,36 +173,36 @@ export const XLinks: React.FC = () => {
             className="group relative p-4 rounded-2xl bg-gradient-to-br from-sky-50/90 to-sky-50 border border-sky-100/60 hover:border-sky-500/40 transition-all"
           >
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-full bg-sky-100 flex items-center justify-center shrink-0">
+              <div className="w-11 h-11 rounded-full bg-[#e0f2fe] flex items-center justify-center shrink-0">
                 <Twitter className="w-5 h-5 text-sky-400" />
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-bold text-slate-900 truncate flex items-center gap-1">
-                  <User className="w-3.5 h-3.5 text-slate-700" /> {l.handle}
+                  <User className="w-3.5 h-3.5 text-slate-800" /> {l.handle}
                 </p>
-                <p className="text-[11px] text-slate-700 truncate">โดย {l.owner} · {l.addedAt}</p>
+                <p className="text-[11px] text-slate-800 truncate">โดย {l.owner} · {l.addedAt}</p>
               </div>
               <button
                 id={`btn_del_x_${l.id}`}
                 onClick={() => handleDelete(l.id)}
-                className="opacity-0 group-hover:opacity-100 p-1.5 rounded-lg text-slate-700 hover:text-red-400 hover:bg-red-500/10 transition-all"
+                className="opacity-0 group-hover:opacity-100 p-1.5 rounded-lg text-slate-800 hover:text-red-400 hover:bg-red-500/10 transition-all"
               >
                 <Trash2 className="w-3.5 h-3.5" />
               </button>
             </div>
-            <p className="text-sm text-slate-700 mt-3 line-clamp-2">{l.title}</p>
+            <p className="text-sm text-slate-800 mt-3 line-clamp-2">{l.title}</p>
             <button
               id={`btn_open_x_${l.id}`}
               onClick={() => openLink(l.url)}
-              className="mt-3 w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-sky-100 hover:bg-sky-500/20 hover:text-sky-300 text-slate-800 text-xs font-semibold border border-sky-100/60 transition-all"
+              className="mt-3 w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-[#e0f2fe] hover:bg-[#f0f9ff]0/20 hover:text-sky-300 text-slate-800 text-xs font-semibold border border-sky-100/60 transition-all"
             >
               <ExternalLink className="w-3.5 h-3.5" /> เปิดใน X
             </button>
           </div>
         ))}
         {links.length === 0 && (
-          <div className="col-span-full p-8 rounded-2xl bg-sky-50/60 border border-dashed border-sky-100/60 text-center text-slate-700 text-sm">
-            <Share2 className="w-8 h-8 mx-auto mb-2 text-slate-700" />
+          <div className="col-span-full p-8 rounded-2xl bg-[#f0f9ff]/60 border border-dashed border-sky-100/60 text-center text-slate-800 text-sm">
+            <Share2 className="w-8 h-8 mx-auto mb-2 text-slate-800" />
             ยังไม่มีลิงก์ X — กด "เพิ่มลิงก์" เพื่อเริ่มต้น
           </div>
         )}

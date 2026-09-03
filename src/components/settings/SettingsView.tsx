@@ -252,7 +252,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               <SettingsIcon className="w-8 h-8 text-indigo-400" />
               {language === 'th' ? 'การตั้งค่า & การเชื่อมต่อระบบ (Settings)' : 'Settings & Integrations'}
             </h1>
-            <p className="text-slate-700 text-sm max-w-2xl">
+            <p className="text-slate-800 text-sm max-w-2xl">
               {language === 'th'
                 ? 'โครงสร้าง Supabase PostgreSQL DDL, Webhook API สำหรับ n8n/LINE/Telegram, ความปลอดภัย RLS, และระบบทดสอบ Unit Tests Engine'
                 : 'Supabase PostgreSQL DDL schema, n8n/Telegram/LINE webhooks, Row Level Security policies, and live calculation test runner.'}
@@ -260,13 +260,13 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
           </div>
 
           {/* Tab Switcher */}
-          <div className="flex flex-wrap items-center gap-2 bg-sky-50/80 p-1.5 rounded-xl border border-sky-100/60 self-start md:self-auto">
+          <div className="flex flex-wrap items-center gap-2 bg-[#f0f9ff]/80 p-1.5 rounded-xl border border-sky-100/60 self-start md:self-auto">
             <button
               onClick={() => setActiveTab('auth_settings')}
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'auth_settings'
                   ? 'bg-blue-600 text-slate-950 shadow-sm shadow-amber-500/30'
-                  : 'text-slate-700 hover:text-slate-800'
+                  : 'text-slate-800 hover:text-slate-800'
               }`}
             >
               <LogIn className="w-3.5 h-3.5 inline mr-1.5" />
@@ -277,7 +277,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'firebase_cloud'
                   ? 'bg-blue-600 text-slate-950 shadow-sm shadow-amber-500/30'
-                  : 'text-slate-700 hover:text-slate-800'
+                  : 'text-slate-800 hover:text-slate-800'
               }`}
             >
               <Database className="w-3.5 h-3.5 inline mr-1.5" />
@@ -288,7 +288,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'integrations'
                   ? 'bg-indigo-600 text-slate-900 shadow-sm shadow-indigo-600/30'
-                  : 'text-slate-700 hover:text-slate-800'
+                  : 'text-slate-800 hover:text-slate-800'
               }`}
             >
               <Webhook className="w-3.5 h-3.5 inline mr-1.5" />
@@ -299,7 +299,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'database_schema'
                   ? 'bg-indigo-600 text-slate-900 shadow-sm shadow-indigo-600/30'
-                  : 'text-slate-700 hover:text-slate-800'
+                  : 'text-slate-800 hover:text-slate-800'
               }`}
             >
               <Database className="w-3.5 h-3.5 inline mr-1.5" />
@@ -310,7 +310,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'security_rls'
                   ? 'bg-indigo-600 text-slate-900 shadow-sm shadow-indigo-600/30'
-                  : 'text-slate-700 hover:text-slate-800'
+                  : 'text-slate-800 hover:text-slate-800'
               }`}
             >
               <ShieldCheck className="w-3.5 h-3.5 inline mr-1.5" />
@@ -324,7 +324,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'test_runner'
                   ? 'bg-emerald-600 text-slate-900 shadow-sm shadow-emerald-600/30'
-                  : 'text-slate-700 hover:text-slate-800'
+                  : 'text-slate-800 hover:text-slate-800'
               }`}
             >
               <Play className="w-3.5 h-3.5 inline mr-1.5" />
@@ -354,9 +354,9 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
                       {authUser.isLoggedIn ? 'Online (เข้าสู่ระบบแล้ว)' : 'Guest Mode'}
                     </span>
                   </div>
-                  <p className="text-xs text-slate-700">{authUser.email}</p>
-                  <p className="text-[11px] text-slate-700 mt-1">
-                    รหัสตัวแทน: <strong className="text-blue-600">{activeUser.memberCode}</strong> • ช่องทางล็อกอินหลัก: <span className="capitalize font-semibold text-slate-700">{authUser.provider}</span>
+                  <p className="text-xs text-slate-800">{authUser.email}</p>
+                  <p className="text-[11px] text-slate-800 mt-1">
+                    รหัสตัวแทน: <strong className="text-blue-600">{activeUser.memberCode}</strong> • ช่องทางล็อกอินหลัก: <span className="capitalize font-semibold text-slate-800">{authUser.provider}</span>
                   </p>
                 </div>
               </div>
@@ -376,7 +376,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
           {/* Social Provider Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* 1. Email & Password */}
-            <div className="p-5 rounded-2xl bg-sky-50 border border-sky-100/60 space-y-4">
+            <div className="p-5 rounded-2xl bg-[#f0f9ff] border border-sky-100/60 space-y-4">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-400">
@@ -384,41 +384,41 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900 text-sm">อีเมล & รหัสผ่าน (Email & Password)</h4>
-                    <p className="text-xs text-slate-700">เข้าสู่ระบบด้วยอีเมลบริษัท หรืออีเมลส่วนตัวพร้อมการเข้ารหัส bcrypt</p>
+                    <p className="text-xs text-slate-800">เข้าสู่ระบบด้วยอีเมลบริษัท หรืออีเมลส่วนตัวพร้อมการเข้ารหัส bcrypt</p>
                   </div>
                 </div>
                 <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
                   {authUser.connectedProviders.includes('email') ? 'เชื่อมต่อแล้ว' : 'พร้อมใช้งาน'}
                 </span>
               </div>
-              <div className="p-3 bg-sky-50 rounded-xl border border-sky-100/60 text-xs text-slate-700 font-mono flex items-center justify-between">
+              <div className="p-3 bg-[#f0f9ff] rounded-xl border border-sky-100/60 text-xs text-slate-800 font-mono flex items-center justify-between">
                 <span>{authUser.email}</span>
-                <span className="text-slate-700 text-[11px]">Primary Account</span>
+                <span className="text-slate-800 text-[11px]">Primary Account</span>
               </div>
             </div>
 
             {/* 2. Google OAuth */}
-            <div className="p-5 rounded-2xl bg-sky-50 border border-sky-100/60 space-y-4">
+            <div className="p-5 rounded-2xl bg-[#f0f9ff] border border-sky-100/60 space-y-4">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-xl bg-sky-50/10 border border-sky-100/60">
+                  <div className="p-2.5 rounded-xl bg-[#f0f9ff]/10 border border-sky-100/60">
                     <GoogleIcon className="w-5 h-5" />
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900 text-sm">Google Workspace / Account</h4>
-                    <p className="text-xs text-slate-700">ล็อกอิน One-Click และเชื่อมโยง Google Calendar สำหรับนัดหมายลูกค้า</p>
+                    <p className="text-xs text-slate-800">ล็อกอิน One-Click และเชื่อมโยง Google Calendar สำหรับนัดหมายลูกค้า</p>
                   </div>
                 </div>
                 <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${
                   authUser.connectedProviders.includes('google')
                     ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
-                    : 'bg-sky-100 text-slate-700 border-sky-100/60'
+                    : 'bg-[#e0f2fe] text-slate-800 border-sky-100/60'
                 }`}>
                   {authUser.connectedProviders.includes('google') ? 'Connected' : 'Not Linked'}
                 </span>
               </div>
               <div className="flex items-center justify-between pt-2 border-t border-sky-100/60">
-                <span className="text-xs text-slate-700">
+                <span className="text-xs text-slate-800">
                   {authUser.connectedProviders.includes('google') ? 'เชื่อมต่อกับ Google ID เรียบร้อย' : 'ยังไม่ได้เชื่อมต่อ Google'}
                 </span>
                 <button
@@ -441,27 +441,27 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
             </div>
 
             {/* 3. TikTok OAuth */}
-            <div className="p-5 rounded-2xl bg-sky-50 border border-sky-100/60 space-y-4">
+            <div className="p-5 rounded-2xl bg-[#f0f9ff] border border-sky-100/60 space-y-4">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-xl bg-sky-100 border border-sky-100/60">
+                  <div className="p-2.5 rounded-xl bg-[#e0f2fe] border border-sky-100/60">
                     <TikTokIcon className="w-5 h-5 text-pink-400" />
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900 text-sm">TikTok Creator Login</h4>
-                    <p className="text-xs text-slate-700">เชื่อมโยงช่อง TikTok สำหรับดึง Leads ผู้มุ่งหวังจากคลิปสร้างทีม</p>
+                    <p className="text-xs text-slate-800">เชื่อมโยงช่อง TikTok สำหรับดึง Leads ผู้มุ่งหวังจากคลิปสร้างทีม</p>
                   </div>
                 </div>
                 <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${
                   authUser.connectedProviders.includes('tiktok')
                     ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
-                    : 'bg-sky-100 text-slate-700 border-sky-100/60'
+                    : 'bg-[#e0f2fe] text-slate-800 border-sky-100/60'
                 }`}>
                   {authUser.connectedProviders.includes('tiktok') ? 'Connected' : 'Not Linked'}
                 </span>
               </div>
               <div className="flex items-center justify-between pt-2 border-t border-sky-100/60">
-                <span className="text-xs text-slate-700 font-mono">
+                <span className="text-xs text-slate-800 font-mono">
                   {authUser.connectedProviders.includes('tiktok') ? (authUser.tiktokHandle || '@insurance_leader') : 'ยังไม่ได้เชื่อมต่อ TikTok'}
                 </span>
                 <button
@@ -484,7 +484,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
             </div>
 
             {/* 4. Facebook OAuth */}
-            <div className="p-5 rounded-2xl bg-sky-50 border border-sky-100/60 space-y-4">
+            <div className="p-5 rounded-2xl bg-[#f0f9ff] border border-sky-100/60 space-y-4">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-xl bg-blue-600/20 border border-blue-500/30">
@@ -492,19 +492,19 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900 text-sm">Meta Facebook Login</h4>
-                    <p className="text-xs text-slate-700">เข้าสู่ระบบและเชื่อมต่อ Facebook Page / Group ประจำสายงาน</p>
+                    <p className="text-xs text-slate-800">เข้าสู่ระบบและเชื่อมต่อ Facebook Page / Group ประจำสายงาน</p>
                   </div>
                 </div>
                 <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${
                   authUser.connectedProviders.includes('facebook')
                     ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
-                    : 'bg-sky-100 text-slate-700 border-sky-100/60'
+                    : 'bg-[#e0f2fe] text-slate-800 border-sky-100/60'
                 }`}>
                   {authUser.connectedProviders.includes('facebook') ? 'Connected' : 'Not Linked'}
                 </span>
               </div>
               <div className="flex items-center justify-between pt-2 border-t border-sky-100/60">
-                <span className="text-xs text-slate-700">
+                <span className="text-xs text-slate-800">
                   {authUser.connectedProviders.includes('facebook') ? (authUser.facebookId || 'fb.agent.official') : 'ยังไม่ได้เชื่อมต่อ Facebook'}
                 </span>
                 <button
@@ -567,7 +567,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
                 auth: 'OAuth2 Connected: akarapol.pro798@gmail.com'
               },
             ].map((item) => (
-              <div key={item.id} className="bg-sky-50 border border-sky-100/60 rounded-2xl p-5 shadow-sm space-y-3">
+              <div key={item.id} className="bg-[#f0f9ff] border border-sky-100/60 rounded-2xl p-5 shadow-sm space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
                     <div className="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
@@ -583,17 +583,17 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
                   </div>
                   <button
                     onClick={() => handleCopy(item.endpoint, item.id)}
-                    className="px-2.5 py-1 rounded bg-sky-100 hover:bg-slate-200 text-xs text-slate-700 flex items-center gap-1"
+                    className="px-2.5 py-1 rounded bg-[#e0f2fe] hover:bg-slate-200 text-xs text-slate-800 flex items-center gap-1"
                   >
                     {copiedKey === item.id ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copiedKey === item.id ? 'Copied' : 'Copy'}</span>
                   </button>
                 </div>
 
-                <p className="text-xs text-slate-700 leading-relaxed">{item.desc}</p>
+                <p className="text-xs text-slate-800 leading-relaxed">{item.desc}</p>
 
-                <div className="bg-sky-50 p-2.5 rounded-lg border border-sky-100/60 text-[11px] font-mono text-slate-700 overflow-x-auto">
-                  <p className="text-slate-700">Endpoint:</p>
+                <div className="bg-[#f0f9ff] p-2.5 rounded-lg border border-sky-100/60 text-[11px] font-mono text-slate-800 overflow-x-auto">
+                  <p className="text-slate-800">Endpoint:</p>
                   <p className="text-indigo-300 truncate">{item.endpoint}</p>
                 </div>
               </div>
@@ -604,13 +604,13 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
 
       {/* TAB 2: SUPABASE POSTGRESQL SCHEMA */}
       {activeTab === 'database_schema' && (
-        <div className="bg-sky-50 border border-sky-100/60 rounded-2xl p-6 shadow-xl space-y-4">
+        <div className="bg-[#f0f9ff] border border-sky-100/60 rounded-2xl p-6 shadow-xl space-y-4">
           <div className="flex items-center justify-between border-b border-sky-100/60 pb-3">
             <div className="flex items-center gap-2">
               <Database className="w-5 h-5 text-indigo-400" />
               <div>
                 <h3 className="font-bold text-slate-900 text-sm">Supabase PostgreSQL Schema (Production DDL)</h3>
-                <p className="text-xs text-slate-700">20+ Production Tables with Infinite Organization & Multi-Level RBAC</p>
+                <p className="text-xs text-slate-800">20+ Production Tables with Infinite Organization & Multi-Level RBAC</p>
               </div>
             </div>
             <button
@@ -622,7 +622,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
             </button>
           </div>
 
-          <div className="bg-sky-50 p-4 rounded-xl border border-sky-100/60 font-mono text-xs text-emerald-400 overflow-x-auto max-h-96">
+          <div className="bg-[#f0f9ff] p-4 rounded-xl border border-sky-100/60 font-mono text-xs text-emerald-400 overflow-x-auto max-h-96">
             <pre>{supabaseDdlSchema}</pre>
           </div>
         </div>
@@ -630,12 +630,12 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
 
       {/* TAB 3: SECURITY & RLS POLICIES */}
       {activeTab === 'security_rls' && (
-        <div className="bg-sky-50 border border-sky-100/60 rounded-2xl p-6 shadow-xl space-y-4">
+        <div className="bg-[#f0f9ff] border border-sky-100/60 rounded-2xl p-6 shadow-xl space-y-4">
           <div className="border-b border-sky-100/60 pb-3 flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-emerald-400" />
             <div>
               <h3 className="font-bold text-slate-900 text-sm">การกำหนดสิทธิ์และการเข้าถึงข้อมูล (Role-Based Access & RLS)</h3>
-              <p className="text-xs text-slate-700">ป้องกันการมองเห็นรายได้ข้ามสายงาน (Data Privacy & Compliance)</p>
+              <p className="text-xs text-slate-800">ป้องกันการมองเห็นรายได้ข้ามสายงาน (Data Privacy & Compliance)</p>
             </div>
           </div>
 
@@ -647,12 +647,12 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               { role: 'Unit Manager (ผู้บริหารหน่วย)', access: 'มองเห็นผลงานตัวแทนในหน่วยตนเอง', badge: 'Unit Scope' },
               { role: 'Agent (ตัวแทนประกันชีวิต)', access: 'มองเห็นเฉพาะผลงานส่วนตัวและผู้ที่ตนเองแนะนำตรง (Direct Sponsor) เท่านั้น', badge: 'Strict Isolation' },
             ].map((r, i) => (
-              <div key={i} className="p-4 rounded-xl bg-sky-50 border border-sky-100/60 space-y-2">
+              <div key={i} className="p-4 rounded-xl bg-[#f0f9ff] border border-sky-100/60 space-y-2">
                 <div className="flex items-center justify-between">
                   <h4 className="font-bold text-slate-800 text-xs">{r.role}</h4>
                   <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">{r.badge}</span>
                 </div>
-                <p className="text-xs text-slate-700">{r.access}</p>
+                <p className="text-xs text-slate-800">{r.access}</p>
               </div>
             ))}
           </div>
@@ -661,13 +661,13 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
 
       {/* TAB 4: IN-APP UNIT TEST RUNNER */}
       {activeTab === 'test_runner' && (
-        <div className="bg-sky-50 border border-sky-100/60 rounded-2xl p-6 shadow-xl space-y-4">
+        <div className="bg-[#f0f9ff] border border-sky-100/60 rounded-2xl p-6 shadow-xl space-y-4">
           <div className="flex items-center justify-between border-b border-sky-100/60 pb-3">
             <div className="flex items-center gap-2">
               <Terminal className="w-5 h-5 text-emerald-400" />
               <div>
                 <h3 className="font-bold text-slate-900 text-sm">การตรวจสอบความถูกต้องของระบบคำนวณ (Calculation Engine Verification)</h3>
-                <p className="text-xs text-slate-700">ทดสอบสมการทางคณิตศาสตร์ 7 เงื่อนไขตาม Section 51 + Cycle Prevention</p>
+                <p className="text-xs text-slate-800">ทดสอบสมการทางคณิตศาสตร์ 7 เงื่อนไขตาม Section 51 + Cycle Prevention</p>
               </div>
             </div>
 
@@ -691,7 +691,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
                     </span>
                     <p className="font-semibold text-xs text-slate-800">{t.name}</p>
                   </div>
-                  <p className="text-[11px] text-slate-700 font-mono ml-7">
+                  <p className="text-[11px] text-slate-800 font-mono ml-7">
                     สมการ: {t.formula} ➔ ผลลัพธ์: <strong className="text-emerald-400">{t.actual.toLocaleString()}</strong> (คาดหวัง: {t.expected.toLocaleString()})
                   </p>
                 </div>

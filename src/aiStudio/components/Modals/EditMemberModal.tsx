@@ -84,18 +84,18 @@ export const EditMemberModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-sky-50/75 backdrop-blur-sm">
-      <div className="bg-sky-50 border border-sky-100/60 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#f0f9ff]/75 backdrop-blur-sm">
+      <div className="bg-[#f0f9ff] border border-sky-100/60 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-sky-100/60 bg-sky-50/60">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-sky-100/60 bg-[#f0f9ff]/60">
           <div className="flex items-center gap-2 text-slate-900 font-bold text-base">
             <Edit2 className="w-5 h-5 text-blue-400" />
             <span>แก้ไขข้อมูลและผลงาน: {member.name}</span>
           </div>
           <button
             onClick={() => setEditingMemberId(null)}
-            className="p-1 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-sky-100 transition-colors"
+            className="p-1 rounded-lg text-slate-800 hover:text-slate-900 hover:bg-[#e0f2fe] transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -106,44 +106,44 @@ export const EditMemberModal: React.FC = () => {
           
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-slate-700 font-semibold block mb-1">รหัสสมาชิก</label>
+              <label className="text-slate-800 font-semibold block mb-1">รหัสสมาชิก</label>
               <input
                 type="text"
                 required
                 value={code}
                 onChange={e => setCode(e.target.value)}
-                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+                className="w-full bg-[#e0f2fe] border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
               />
             </div>
             <div>
-              <label className="text-slate-700 font-semibold block mb-1">ชื่อเล่น</label>
+              <label className="text-slate-800 font-semibold block mb-1">ชื่อเล่น</label>
               <input
                 type="text"
                 value={nickname}
                 onChange={e => setNickname(e.target.value)}
-                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+                className="w-full bg-[#e0f2fe] border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
               />
             </div>
           </div>
 
           <div>
-            <label className="text-slate-700 font-semibold block mb-1">ชื่อ-นามสกุล</label>
+            <label className="text-slate-800 font-semibold block mb-1">ชื่อ-นามสกุล</label>
             <input
               type="text"
               required
               value={name}
               onChange={e => setName(e.target.value)}
-              className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+              className="w-full bg-[#e0f2fe] border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-slate-700 font-semibold block mb-1">ระดับตำแหน่ง</label>
+              <label className="text-slate-800 font-semibold block mb-1">ระดับตำแหน่ง</label>
               <select
                 value={position}
                 onChange={e => setPosition(e.target.value as PositionLevel)}
-                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none cursor-pointer"
+                className="w-full bg-[#e0f2fe] border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none cursor-pointer"
               >
                 {POSITIONS_LIST.map(p => (
                   <option key={p.id} value={p.id}>{p.nameTh}</option>
@@ -152,11 +152,11 @@ export const EditMemberModal: React.FC = () => {
             </div>
 
             <div>
-              <label className="text-slate-700 font-semibold block mb-1">หัวหน้าสายงาน (Parent)</label>
+              <label className="text-slate-800 font-semibold block mb-1">หัวหน้าสายงาน (Parent)</label>
               <select
                 value={parentId}
                 onChange={e => setParentId(e.target.value)}
-                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none cursor-pointer"
+                className="w-full bg-[#e0f2fe] border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none cursor-pointer"
               >
                 <option value="">รากสายงาน (Root)</option>
                 {members.filter(m => m.id !== member.id).map(m => (
@@ -170,7 +170,7 @@ export const EditMemberModal: React.FC = () => {
 
           <div className="grid grid-cols-3 gap-3">
             <div>
-              <label className="text-slate-700 font-semibold block mb-1">ยอดขาย / ด. (บาท)</label>
+              <label className="text-slate-800 font-semibold block mb-1">ยอดขาย / ด. (บาท)</label>
               <input
                 type="number"
                 value={personalMonthlySales}
@@ -180,73 +180,73 @@ export const EditMemberModal: React.FC = () => {
                   setPersonalMonthlyCom(val * 0.35);
                   setPersonalMonthlyFyc(val * 0.70);
                 }}
-                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+                className="w-full bg-[#e0f2fe] border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
               />
             </div>
             <div>
-              <label className="text-slate-700 font-semibold block mb-1">COM ส่วนตัว (บาท)</label>
+              <label className="text-slate-800 font-semibold block mb-1">COM ส่วนตัว (บาท)</label>
               <input
                 type="number"
                 value={personalMonthlyCom}
                 onChange={e => setPersonalMonthlyCom(Number(e.target.value))}
-                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+                className="w-full bg-[#e0f2fe] border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
               />
             </div>
             <div>
-              <label className="text-slate-700 font-semibold block mb-1">FYC ส่วนตัว (บาท)</label>
+              <label className="text-slate-800 font-semibold block mb-1">FYC ส่วนตัว (บาท)</label>
               <input
                 type="number"
                 value={personalMonthlyFyc}
                 onChange={e => setPersonalMonthlyFyc(Number(e.target.value))}
-                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+                className="w-full bg-[#e0f2fe] border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-slate-700 font-semibold block mb-1">พอร์ตเบี้ยปีต่อไป (บาท)</label>
+              <label className="text-slate-800 font-semibold block mb-1">พอร์ตเบี้ยปีต่อไป (บาท)</label>
               <input
                 type="number"
                 value={personalRenewalPremium}
                 onChange={e => setPersonalRenewalPremium(Number(e.target.value))}
-                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+                className="w-full bg-[#e0f2fe] border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
               />
             </div>
             <div>
-              <label className="text-slate-700 font-semibold block mb-1">เป้าหมายรายได้ (บาท/ด)</label>
+              <label className="text-slate-800 font-semibold block mb-1">เป้าหมายรายได้ (บาท/ด)</label>
               <input
                 type="number"
                 value={monthlyGoalIncome}
                 onChange={e => setMonthlyGoalIncome(Number(e.target.value))}
-                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+                className="w-full bg-[#e0f2fe] border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-slate-700 font-semibold block mb-1">จำนวนหน่วยแยก (หน่วย)</label>
+              <label className="text-slate-800 font-semibold block mb-1">จำนวนหน่วยแยก (หน่วย)</label>
               <input
                 type="number"
                 value={directUnitCount}
                 onChange={e => setDirectUnitCount(Number(e.target.value))}
-                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+                className="w-full bg-[#e0f2fe] border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
               />
             </div>
             <div>
-              <label className="text-slate-700 font-semibold block mb-1">จำนวนศูนย์แยก (ศูนย์)</label>
+              <label className="text-slate-800 font-semibold block mb-1">จำนวนศูนย์แยก (ศูนย์)</label>
               <input
                 type="number"
                 value={directCenterCount}
                 onChange={e => setDirectCenterCount(Number(e.target.value))}
-                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+                className="w-full bg-[#e0f2fe] border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
               />
             </div>
           </div>
 
           <div className="flex items-center gap-4 pt-2">
-            <label className="flex items-center gap-2 text-slate-700 cursor-pointer">
+            <label className="flex items-center gap-2 text-slate-800 cursor-pointer">
               <input
                 type="checkbox"
                 checked={isActive}
@@ -272,7 +272,7 @@ export const EditMemberModal: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setEditingMemberId(null)}
-                className="px-4 py-2 rounded-xl bg-sky-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold cursor-pointer"
+                className="px-4 py-2 rounded-xl bg-[#e0f2fe] hover:bg-slate-200 text-slate-800 text-xs font-semibold cursor-pointer"
               >
                 ยกเลิก
               </button>

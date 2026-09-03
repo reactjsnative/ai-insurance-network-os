@@ -69,7 +69,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
   };
 
   return (
-    <div id="welcome-login-gateway-screen" className="min-h-screen bg-sky-50 text-slate-900 flex flex-col justify-between selection:bg-blue-600 selection:text-slate-950 relative overflow-x-hidden">
+    <div id="welcome-login-gateway-screen" className="min-h-screen bg-[#f0f9ff] text-slate-900 flex flex-col justify-between selection:bg-blue-600 selection:text-slate-950 relative overflow-x-hidden">
       {/* Dynamic Background Glows */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none -translate-y-1/2" />
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none" />
@@ -101,7 +101,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
           <button
             id="btn-gateway-lang"
             onClick={toggleLanguage}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-sky-50/90 hover:bg-sky-100 text-blue-600 border border-sky-100/60 text-xs font-bold transition-all shadow-sm cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#f0f9ff]/90 hover:bg-[#e0f2fe] text-blue-600 border border-sky-100/60 text-xs font-bold transition-all shadow-sm cursor-pointer"
           >
             <Globe className="w-3.5 h-3.5 text-blue-600" />
             <span>{language === 'th' ? '🇹🇭 ภาษาไทย' : '🇬🇧 English'}</span>
@@ -123,7 +123,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
               <span className="block text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500 bg-clip-text text-transparent">
                 {t('login_headline_1')}
               </span>
-              <span className="mt-4 block max-w-2xl text-base sm:text-lg lg:text-xl font-medium leading-relaxed text-slate-700">
+              <span className="mt-4 block max-w-2xl text-base sm:text-lg lg:text-xl font-medium leading-relaxed text-slate-800">
                 {t('login_headline_2')}
               </span>
             </h1>
@@ -140,7 +140,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="p-6 sm:p-8 rounded-3xl bg-sky-50 border border-sky-100/60 shadow-2xl space-y-6 relative overflow-hidden backdrop-blur-xl"
+            className="p-6 sm:p-8 rounded-3xl bg-[#f0f9ff] border border-sky-100/60 shadow-2xl space-y-6 relative overflow-hidden backdrop-blur-xl"
           >
             {/* Top Card Branding */}
             <div className="space-y-1 text-center">
@@ -166,7 +166,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
                 id="btn-gateway-login-google"
                 onClick={() => handleSocialLogin('google')}
                 type="button"
-                className="w-full py-2.5 px-4 rounded-xl bg-sky-50 hover:bg-sky-100 text-slate-900 font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-3 border border-sky-100/60 cursor-pointer active:scale-[0.99]"
+                className="w-full py-2.5 px-4 rounded-xl bg-[#f0f9ff] hover:bg-[#e0f2fe] text-slate-900 font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-3 border border-sky-100/60 cursor-pointer active:scale-[0.99]"
               >
                 <GoogleIcon className="w-4 h-4" />
                 <span>{t('login_with_google')}</span>
@@ -177,7 +177,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
                 id="btn-gateway-login-tiktok"
                 onClick={() => handleSocialLogin('tiktok')}
                 type="button"
-                className="w-full py-2.5 px-4 rounded-xl bg-sky-50 hover:bg-zinc-900 text-slate-900 font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-3 border border-zinc-800 cursor-pointer active:scale-[0.99]"
+                className="w-full py-2.5 px-4 rounded-xl bg-[#f0f9ff] hover:bg-zinc-900 text-slate-900 font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-3 border border-zinc-800 cursor-pointer active:scale-[0.99]"
               >
                 <TikTokIcon className="w-4 h-4 text-slate-900" />
                 <span>{t('login_with_tiktok') || 'ดำเนินการต่อด้วย TikTok'}</span>
@@ -199,7 +199,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
                 id="btn-gateway-login-github"
                 onClick={() => handleSocialLogin('github')}
                 type="button"
-                className="w-full py-2.5 px-4 rounded-xl bg-sky-50 hover:bg-sky-50 text-slate-900 font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-3 border border-sky-100/60 cursor-pointer active:scale-[0.99]"
+                className="w-full py-2.5 px-4 rounded-xl bg-[#f0f9ff] hover:bg-[#f0f9ff] text-slate-900 font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-3 border border-sky-100/60 cursor-pointer active:scale-[0.99]"
               >
                 <GithubIcon className="w-4 h-4 text-slate-900" />
                 <span>{t('login_with_github') || 'ดำเนินการต่อด้วย GitHub'}</span>
@@ -210,7 +210,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
             {/* Divider */}
             <div className="relative flex items-center justify-center">
               <div className="border-t border-sky-100/60 w-full" />
-              <span className="bg-sky-50 px-3 text-[11px] font-semibold text-slate-700 uppercase tracking-wider relative">
+              <span className="bg-[#f0f9ff] px-3 text-[11px] font-semibold text-slate-800 uppercase tracking-wider relative">
                 {t('login_or_email')}
               </span>
             </div>
@@ -219,11 +219,11 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
             <form onSubmit={handleEmailLogin} className="space-y-4">
               {/* Email Input */}
               <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-slate-700 block">
+                <label className="text-xs font-semibold text-slate-800 block">
                   {t('login_email_label')}
                 </label>
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-slate-700 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <Mail className="w-4 h-4 text-slate-800 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     id="gateway-input-email"
                     type="email"
@@ -231,7 +231,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@company.com"
-                    className="w-full bg-sky-50 border border-sky-100/60 focus:border-blue-600 rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all"
+                    className="w-full bg-[#f0f9ff] border border-sky-100/60 focus:border-blue-600 rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all"
                   />
                 </div>
               </div>
@@ -239,7 +239,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
               {/* Password Input */}
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <label className="text-xs font-semibold text-slate-700">
+                  <label className="text-xs font-semibold text-slate-800">
                     {t('login_password_label')}
                   </label>
                   <button
@@ -251,7 +251,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
                   </button>
                 </div>
                 <div className="relative">
-                  <Lock className="w-4 h-4 text-slate-700 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <Lock className="w-4 h-4 text-slate-800 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     id="gateway-input-password"
                     type={showPassword ? 'text' : 'password'}
@@ -259,12 +259,12 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full bg-sky-50 border border-sky-100/60 focus:border-blue-600 rounded-xl pl-10 pr-10 py-2.5 text-xs text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all"
+                    className="w-full bg-[#f0f9ff] border border-sky-100/60 focus:border-blue-600 rounded-xl pl-10 pr-10 py-2.5 text-xs text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-700 hover:text-slate-800 cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-800 hover:text-slate-800 cursor-pointer"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -273,12 +273,12 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
 
               {/* Remember Me Checkbox */}
               <div className="flex items-center justify-between text-xs">
-                <label className="flex items-center gap-2 text-slate-700 cursor-pointer">
+                <label className="flex items-center gap-2 text-slate-800 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={rememberMe}
                     onChange={(e) => setRememberMe(e.target.checked)}
-                    className="rounded border-sky-100/60 bg-sky-50 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5"
+                    className="rounded border-sky-100/60 bg-[#f0f9ff] text-blue-600 focus:ring-blue-500 w-3.5 h-3.5"
                   />
                   <span>{t('login_remember')}</span>
                 </label>
@@ -304,7 +304,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
 
             {/* Bottom Register Prompt */}
             <div className="pt-4 border-t border-sky-100/60 text-center space-y-2">
-              <p className="text-xs text-slate-700">
+              <p className="text-xs text-slate-800">
                 {t('login_register_prompt')}
               </p>
               <button
@@ -322,7 +322,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
       </main>
 
       {/* Footer — copyright only (i18n) */}
-      <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 border-t border-sky-100/60 text-center text-xs text-slate-700 relative z-10">
+      <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 border-t border-sky-100/60 text-center text-xs text-slate-800 relative z-10">
         {t('login_copyright')}
       </footer>
     </div>

@@ -117,7 +117,7 @@ export const MembersManagement: React.FC = () => {
   return (
     <div id="members_management_view" className="space-y-6 max-w-7xl mx-auto pb-16 text-left">
       {/* 1. Header & Actions */}
-      <div className="p-6 rounded-3xl bg-sky-50/90 border border-sky-100/60 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-[#f0f9ff]/90 border border-sky-100/60 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-xl sm:text-2xl font-black text-slate-900">
@@ -127,7 +127,7 @@ export const MembersManagement: React.FC = () => {
               {members.length} สมาชิก
             </span>
           </div>
-          <p className="text-xs text-slate-700 mt-1">
+          <p className="text-xs text-slate-800 mt-1">
             เพิ่ม แก้ไข ย้ายสายงาน พร้อมระบบตรวจสอบความสัมพันธ์เพื่อป้องกันวงวนซ้ำ (Cycle & Orphan Prevention)
           </p>
         </div>
@@ -144,20 +144,20 @@ export const MembersManagement: React.FC = () => {
       {/* 2. Filter & Search Controls */}
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1">
-          <Search className="w-4 h-4 text-slate-700 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-slate-800 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             placeholder="ค้นหาชื่อ, รหัสตัวแทน, หรือจังหวัด..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-sky-50 border border-sky-100/60 rounded-2xl pl-10 pr-4 py-2.5 text-xs text-slate-800 placeholder-slate-500 focus:outline-none focus:border-blue-600/50"
+            className="w-full bg-[#f0f9ff] border border-sky-100/60 rounded-2xl pl-10 pr-4 py-2.5 text-xs text-slate-800 placeholder-slate-500 focus:outline-none focus:border-blue-600/50"
           />
         </div>
 
         <select
           value={filterPosition}
           onChange={(e) => setFilterPosition(e.target.value)}
-          className="bg-sky-50 border border-sky-100/60 rounded-2xl px-4 py-2.5 text-xs text-slate-800 focus:outline-none"
+          className="bg-[#f0f9ff] border border-sky-100/60 rounded-2xl px-4 py-2.5 text-xs text-slate-800 focus:outline-none"
         >
           <option value="all">ทุกระดับตำแหน่ง</option>
           <option value="region_manager">ผู้บริหารภาค (RM)</option>
@@ -168,10 +168,10 @@ export const MembersManagement: React.FC = () => {
       </div>
 
       {/* 3. Members Table */}
-      <div className="rounded-3xl bg-sky-50/90 border border-sky-100/60 overflow-hidden shadow-2xl">
+      <div className="rounded-3xl bg-[#f0f9ff]/90 border border-sky-100/60 overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-700">
-            <thead className="bg-sky-50/80 text-slate-700 uppercase text-[10px] tracking-wider border-b border-sky-100/60 font-bold">
+          <table className="w-full text-left text-xs text-slate-800">
+            <thead className="bg-[#f0f9ff]/80 text-slate-800 uppercase text-[10px] tracking-wider border-b border-sky-100/60 font-bold">
               <tr>
                 <th className="py-3.5 px-4">สมาชิก</th>
                 <th className="py-3.5 px-4">ตำแหน่ง</th>
@@ -187,7 +187,7 @@ export const MembersManagement: React.FC = () => {
                 const parent = members.find(p => p.id === m.parentMemberId);
                 const income = calculateMemberIncome(m, 'ACTUAL');
                 return (
-                  <tr key={m.id} className="hover:bg-sky-100/40 transition-colors">
+                  <tr key={m.id} className="hover:bg-[#e0f2fe]/40 transition-colors">
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-2.5">
                         <img src={m.avatarUrl} alt={m.name} className="w-8 h-8 rounded-full object-cover border border-sky-100/60" />
@@ -202,16 +202,16 @@ export const MembersManagement: React.FC = () => {
                         m.positionId === 'region_manager' ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40' :
                         m.positionId === 'center_manager' ? 'bg-blue-600/20 text-blue-600 border border-blue-600/40' :
                         m.positionId === 'unit_manager' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' :
-                        'bg-sky-500/20 text-sky-300 border border-sky-500/40'
+                        'bg-[#f0f9ff]0/20 text-sky-300 border border-sky-500/40'
                       }`}>
                         {m.positionId === 'region_manager' ? 'RM' : m.positionId === 'center_manager' ? 'CM' : m.positionId === 'unit_manager' ? 'UM' : 'Agent'}
                       </span>
                     </td>
                     <td className="py-3 px-4">
                       {parent ? (
-                        <div className="text-slate-700">{parent.name} ({parent.memberCode})</div>
+                        <div className="text-slate-800">{parent.name} ({parent.memberCode})</div>
                       ) : (
-                        <span className="text-slate-700 text-[10px]">Root Organization</span>
+                        <span className="text-slate-800 text-[10px]">Root Organization</span>
                       )}
                     </td>
                     <td className="py-3 px-4 text-right font-mono text-sky-400 font-bold">
@@ -227,7 +227,7 @@ export const MembersManagement: React.FC = () => {
                       <div className="flex items-center justify-center gap-1.5">
                         <button
                           onClick={() => handleOpenEdit(m)}
-                          className="p-1.5 rounded-lg bg-sky-100 hover:bg-slate-200 text-slate-700 transition-colors"
+                          className="p-1.5 rounded-lg bg-[#e0f2fe] hover:bg-slate-200 text-slate-800 transition-colors"
                           title="แก้ไขข้อมูล"
                         >
                           <Edit3 className="w-3.5 h-3.5" />
@@ -251,10 +251,10 @@ export const MembersManagement: React.FC = () => {
 
       {/* 4. Add / Edit Member Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 bg-sky-50/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-[#f0f9ff]/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <form 
             onSubmit={handleSubmit}
-            className="bg-sky-50 border border-sky-100/60 rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto"
+            className="bg-[#f0f9ff] border border-sky-100/60 rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto"
           >
             <div className="flex items-center justify-between pb-3 border-b border-sky-100/60">
               <h3 className="text-base font-bold text-slate-900">
@@ -263,7 +263,7 @@ export const MembersManagement: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setShowAddModal(false)}
-                className="w-7 h-7 rounded-lg bg-sky-100 text-slate-700 hover:text-slate-900 flex items-center justify-center text-xs"
+                className="w-7 h-7 rounded-lg bg-[#e0f2fe] text-slate-800 hover:text-slate-900 flex items-center justify-center text-xs"
               >
                 ✕
               </button>
@@ -278,34 +278,34 @@ export const MembersManagement: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label className="text-[11px] text-slate-700 block mb-1">ชื่อ-นามสกุล *</label>
+                <label className="text-[11px] text-slate-800 block mb-1">ชื่อ-นามสกุล *</label>
                 <input
                   type="text"
                   required
                   value={formData.name || ''}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="เช่น สมชาย ใจดี"
-                  className="w-full bg-sky-50 border border-sky-100/60 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                  className="w-full bg-[#f0f9ff] border border-sky-100/60 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-[11px] text-slate-700 block mb-1">ชื่อเล่น</label>
+                <label className="text-[11px] text-slate-800 block mb-1">ชื่อเล่น</label>
                 <input
                   type="text"
                   value={formData.nickname || ''}
                   onChange={(e) => setFormData({ ...formData, nickname: e.target.value })}
                   placeholder="เช่น บอย"
-                  className="w-full bg-sky-50 border border-sky-100/60 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                  className="w-full bg-[#f0f9ff] border border-sky-100/60 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-[11px] text-slate-700 block mb-1">ระดับตำแหน่ง *</label>
+                <label className="text-[11px] text-slate-800 block mb-1">ระดับตำแหน่ง *</label>
                 <select
                   value={formData.positionId || 'agent'}
                   onChange={(e) => setFormData({ ...formData, positionId: e.target.value })}
-                  className="w-full bg-sky-50 border border-sky-100/60 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                  className="w-full bg-[#f0f9ff] border border-sky-100/60 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                 >
                   <option value="agent">ตัวแทน (Agent)</option>
                   <option value="unit_manager">ผู้บริหารหน่วย (UM)</option>
@@ -315,11 +315,11 @@ export const MembersManagement: React.FC = () => {
               </div>
 
               <div>
-                <label className="text-[11px] text-slate-700 block mb-1">หัวหน้าสายงาน (Parent Member)</label>
+                <label className="text-[11px] text-slate-800 block mb-1">หัวหน้าสายงาน (Parent Member)</label>
                 <select
                   value={formData.parentMemberId || ''}
                   onChange={(e) => setFormData({ ...formData, parentMemberId: e.target.value })}
-                  className="w-full bg-sky-50 border border-sky-100/60 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                  className="w-full bg-[#f0f9ff] border border-sky-100/60 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                 >
                   {members.filter(m => !editingMember || m.id !== editingMember.id).map(m => (
                     <option key={m.id} value={m.id}>{m.name} ({m.memberCode})</option>
@@ -328,22 +328,22 @@ export const MembersManagement: React.FC = () => {
               </div>
 
               <div>
-                <label className="text-[11px] text-slate-700 block mb-1">FYC ส่วนตัว (บาท)</label>
+                <label className="text-[11px] text-slate-800 block mb-1">FYC ส่วนตัว (บาท)</label>
                 <input
                   type="number"
                   value={formData.personalFYC || 0}
                   onChange={(e) => setFormData({ ...formData, personalFYC: Number(e.target.value) })}
-                  className="w-full bg-sky-50 border border-sky-100/60 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                  className="w-full bg-[#f0f9ff] border border-sky-100/60 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-[11px] text-slate-700 block mb-1">COM ส่วนตัว (บาท)</label>
+                <label className="text-[11px] text-slate-800 block mb-1">COM ส่วนตัว (บาท)</label>
                 <input
                   type="number"
                   value={formData.personalCOM || 0}
                   onChange={(e) => setFormData({ ...formData, personalCOM: Number(e.target.value) })}
-                  className="w-full bg-sky-50 border border-sky-100/60 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
+                  className="w-full bg-[#f0f9ff] border border-sky-100/60 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                 />
               </div>
             </div>
@@ -352,7 +352,7 @@ export const MembersManagement: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setShowAddModal(false)}
-                className="flex-1 py-2.5 rounded-xl bg-sky-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors"
+                className="flex-1 py-2.5 rounded-xl bg-[#e0f2fe] hover:bg-slate-200 text-slate-800 text-xs font-bold transition-colors"
               >
                 ยกเลิก
               </button>

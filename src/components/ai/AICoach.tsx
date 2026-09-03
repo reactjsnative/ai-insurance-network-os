@@ -160,7 +160,7 @@ export const AICoach: React.FC = () => {
   return (
     <div id="ai_coach_view" className="space-y-6 max-w-7xl mx-auto pb-16 text-left">
       {/* 1. Header Banner */}
-      <div className="p-6 rounded-3xl bg-sky-50/90 border border-sky-100/60 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-[#f0f9ff]/90 border border-sky-100/60 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-slate-900 shadow-sm shadow-indigo-500/30">
@@ -170,7 +170,7 @@ export const AICoach: React.FC = () => {
               AI ที่ปรึกษาองค์กรและระบบอัจฉริยะสำหรับผู้นำ
             </h1>
           </div>
-          <p className="text-xs text-slate-700 mt-1">
+          <p className="text-xs text-slate-800 mt-1">
             ที่ปรึกษาปัญญาประดิษฐ์วิเคราะห์สายงานตามหลักคณิตศาสตร์ประกันชีวิตและ Compensation Rule Engine
           </p>
         </div>
@@ -183,13 +183,13 @@ export const AICoach: React.FC = () => {
 
       {/* 2. Automated Smart Insights Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="p-4 rounded-2xl bg-sky-50/80 border border-sky-100/60 space-y-2">
+        <div className="p-4 rounded-2xl bg-[#f0f9ff]/80 border border-sky-100/60 space-y-2">
           <div className="flex items-center gap-2 text-xs font-bold text-blue-600">
             <Award className="w-4 h-4" />
             <span>ผู้มีศักยภาพเลื่อนตำแหน่ง</span>
           </div>
           {insights.promotionCandidates.length === 0 ? (
-            <p className="text-xs text-slate-700 leading-relaxed">
+            <p className="text-xs text-slate-800 leading-relaxed">
               ยังไม่มีสมาชิกที่เข้าเกณฑ์เลื่อนตำแหน่งในขณะนี้ (เกณฑ์อ้างอิงจาก FYC และโครงสร้างสายงาน)
             </p>
           ) : (
@@ -197,7 +197,7 @@ export const AICoach: React.FC = () => {
               {insights.promotionCandidates.map((c) => (
                 <li key={c.member.id} className="text-xs text-slate-800 leading-relaxed">
                   <strong className="text-blue-600">{c.member.name}</strong> (FYC ทีม ฿{c.teamFYC.toLocaleString()})
-                  <span className="text-slate-700 block">
+                  <span className="text-slate-800 block">
                     ใกล้เลื่อนเป็น {c.next?.name || 'ตำแหน่งถัดไป'}
                   </span>
                 </li>
@@ -206,13 +206,13 @@ export const AICoach: React.FC = () => {
           )}
         </div>
 
-        <div className="p-4 rounded-2xl bg-sky-50/80 border border-sky-100/60 space-y-2">
+        <div className="p-4 rounded-2xl bg-[#f0f9ff]/80 border border-sky-100/60 space-y-2">
           <div className="flex items-center gap-2 text-xs font-bold text-rose-400">
             <AlertTriangle className="w-4 h-4" />
             <span>ความเสี่ยง Retention</span>
           </div>
           {insights.atRisk.length === 0 ? (
-            <p className="text-xs text-slate-700 leading-relaxed">
+            <p className="text-xs text-slate-800 leading-relaxed">
               ไม่พบสมาชิกที่มีความเสี่ยง (ทุกคนอยู่ในสถานะ Active)
             </p>
           ) : (
@@ -220,7 +220,7 @@ export const AICoach: React.FC = () => {
               {insights.atRisk.slice(0, 3).map((m) => (
                 <li key={m.id} className="text-xs text-slate-800 leading-relaxed">
                   <strong className="text-rose-300">{m.name}</strong>
-                  <span className="text-slate-700 block">
+                  <span className="text-slate-800 block">
                     สถานะ {m.status === 'inactive' ? 'ไม่ Active' : 'ทดลองงาน'} — แนะนำติดตามอย่างใกล้ชิด
                   </span>
                 </li>
@@ -229,13 +229,13 @@ export const AICoach: React.FC = () => {
           )}
         </div>
 
-        <div className="p-4 rounded-2xl bg-sky-50/80 border border-sky-100/60 space-y-2">
+        <div className="p-4 rounded-2xl bg-[#f0f9ff]/80 border border-sky-100/60 space-y-2">
           <div className="flex items-center gap-2 text-xs font-bold text-emerald-400">
             <TrendingUp className="w-4 h-4" />
             <span>สายงานผลงานโดดเด่น</span>
           </div>
           {insights.topPerformers.length === 0 || insights.topPerformers.every((p) => p.total === 0) ? (
-            <p className="text-xs text-slate-700 leading-relaxed">
+            <p className="text-xs text-slate-800 leading-relaxed">
               ยังไม่มีข้อมูลผลงาน — จะแสดงสายงานที่โดดเด่นเมื่อสมาชิกเริ่มมียอด FYC
             </p>
           ) : (
@@ -251,7 +251,7 @@ export const AICoach: React.FC = () => {
       </div>
 
       {/* 3. Interactive AI Chat Console */}
-      <div className="rounded-3xl bg-sky-50/90 border border-sky-100/60 shadow-2xl flex flex-col h-[520px] overflow-hidden">
+      <div className="rounded-3xl bg-[#f0f9ff]/90 border border-sky-100/60 shadow-2xl flex flex-col h-[520px] overflow-hidden">
         {/* Chat Messages Log */}
         <div className="flex-1 p-4 sm:p-6 overflow-y-auto space-y-4">
           {messages.map((msg) => (
@@ -269,11 +269,11 @@ export const AICoach: React.FC = () => {
                 className={`max-w-xl rounded-2xl p-4 text-xs sm:text-sm leading-relaxed space-y-1 ${
                   msg.sender === 'user'
                     ? 'bg-blue-600 text-slate-950 font-medium rounded-tr-none'
-                    : 'bg-sky-50/80 border border-sky-100/60 text-slate-800 rounded-tl-none'
+                    : 'bg-[#f0f9ff]/80 border border-sky-100/60 text-slate-800 rounded-tl-none'
                 }`}
               >
                 <div className="whitespace-pre-line">{msg.text}</div>
-                <div className={`text-[9px] mt-1 ${msg.sender === 'user' ? 'text-slate-900/70 text-right' : 'text-slate-700'}`}>
+                <div className={`text-[9px] mt-1 ${msg.sender === 'user' ? 'text-slate-900/70 text-right' : 'text-slate-800'}`}>
                   {msg.timestamp}
                 </div>
               </div>
@@ -293,7 +293,7 @@ export const AICoach: React.FC = () => {
               <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-slate-900 flex items-center justify-center shrink-0">
                 <Bot className="w-4 h-4 animate-spin" />
               </div>
-              <div className="bg-sky-50/80 border border-sky-100/60 rounded-2xl rounded-tl-none p-4 text-xs text-slate-700 flex items-center gap-2">
+              <div className="bg-[#f0f9ff]/80 border border-sky-100/60 rounded-2xl rounded-tl-none p-4 text-xs text-slate-800 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-blue-500 animate-bounce" />
                 <span className="w-2 h-2 rounded-full bg-indigo-400 animate-bounce [animation-delay:0.2s]" />
                 <span className="w-2 h-2 rounded-full bg-purple-400 animate-bounce [animation-delay:0.4s]" />
@@ -306,14 +306,14 @@ export const AICoach: React.FC = () => {
         </div>
 
         {/* Quick Suggestion Prompts */}
-        <div className="p-3 bg-sky-50/60 border-t border-sky-100/60/80 flex items-center gap-2 overflow-x-auto">
-          <span className="text-[10px] uppercase font-bold text-slate-700 whitespace-nowrap pl-2">หัวข้อยอดนิยม:</span>
+        <div className="p-3 bg-[#f0f9ff]/60 border-t border-sky-100/60/80 flex items-center gap-2 overflow-x-auto">
+          <span className="text-[10px] uppercase font-bold text-slate-800 whitespace-nowrap pl-2">หัวข้อยอดนิยม:</span>
           {quickPrompts.map((p, idx) => (
             <button
               key={idx}
               onClick={() => handleSendMessage(p)}
               disabled={loading}
-              className="px-3 py-1.5 rounded-full bg-sky-50 hover:bg-sky-100 text-slate-700 border border-sky-100/60/80 text-xs whitespace-nowrap transition-colors"
+              className="px-3 py-1.5 rounded-full bg-[#f0f9ff] hover:bg-[#e0f2fe] text-slate-800 border border-sky-100/60/80 text-xs whitespace-nowrap transition-colors"
             >
               {p}
             </button>
@@ -321,14 +321,14 @@ export const AICoach: React.FC = () => {
         </div>
 
         {/* Chat Input Bar */}
-        <div className="p-4 bg-sky-50 border-t border-sky-100/60 flex items-center gap-2">
+        <div className="p-4 bg-[#f0f9ff] border-t border-sky-100/60 flex items-center gap-2">
           <input
             type="text"
             placeholder="พิมพ์คำถามเกี่ยวกับการบริหารทีม, รายได้, หรือกลยุทธ์..."
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
-            className="flex-1 bg-sky-50 border border-sky-100/60 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-slate-800 placeholder-slate-500 focus:outline-none focus:border-blue-600/50"
+            className="flex-1 bg-[#f0f9ff] border border-sky-100/60 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-slate-800 placeholder-slate-500 focus:outline-none focus:border-blue-600/50"
           />
           <button
             onClick={() => handleSendMessage()}

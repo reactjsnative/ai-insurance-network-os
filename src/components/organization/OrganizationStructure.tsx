@@ -63,7 +63,7 @@ export const OrganizationStructure: React.FC = () => {
       case 'unit_manager':
         return <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">ผู้บริหารหน่วย (UM)</span>;
       default:
-        return <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-sky-100 text-slate-700 border border-sky-100/60">ตัวแทน (Agent)</span>;
+        return <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#e0f2fe] text-slate-800 border border-sky-100/60">ตัวแทน (Agent)</span>;
     }
   };
 
@@ -94,7 +94,7 @@ export const OrganizationStructure: React.FC = () => {
               <Building2 className="w-8 h-8 text-blue-600" />
               {language === 'th' ? 'โครงสร้างองค์กร (Organization)' : 'Organization Hierarchy'}
             </h1>
-            <p className="text-slate-700 text-sm max-w-2xl">
+            <p className="text-slate-800 text-sm max-w-2xl">
               {language === 'th' 
                 ? 'ระบบแจกแจงโครงสร้างระดับ ภาค (Region) → ศูนย์ (Center) → หน่วย (Unit) → ตัวแทน (Agent) พร้อมสรุปผลงาน FYC/COM แบบเรียลไทม์'
                 : 'Complete structural hierarchy drill-down by Region, Center, Unit, and Agents with rolling FYC/COM rollups.'}
@@ -114,39 +114,39 @@ export const OrganizationStructure: React.FC = () => {
 
         {/* 4 Rollup KPI Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-sky-100/60/80">
-          <div className="bg-sky-50/60 p-3.5 rounded-xl border border-sky-100/60/60">
-            <p className="text-xs text-slate-700">{language === 'th' ? 'สมาชิกทั้งหมด' : 'Total Network'}</p>
-            <p className="text-xl font-bold text-slate-900 mt-1">{members.length} <span className="text-xs text-slate-700 font-normal">{language === 'th' ? 'คน' : 'members'}</span></p>
+          <div className="bg-[#f0f9ff]/60 p-3.5 rounded-xl border border-sky-100/60/60">
+            <p className="text-xs text-slate-800">{language === 'th' ? 'สมาชิกทั้งหมด' : 'Total Network'}</p>
+            <p className="text-xl font-bold text-slate-900 mt-1">{members.length} <span className="text-xs text-slate-800 font-normal">{language === 'th' ? 'คน' : 'members'}</span></p>
             <p className="text-[11px] text-emerald-400 mt-1">Active: {totalActive} ({((totalActive/members.length)*100).toFixed(0)}%)</p>
           </div>
-          <div className="bg-sky-50/60 p-3.5 rounded-xl border border-sky-100/60/60">
+          <div className="bg-[#f0f9ff]/60 p-3.5 rounded-xl border border-sky-100/60/60">
             <p className="text-xs text-blue-600">{language === 'th' ? 'โครงสร้างผู้นำ' : 'Leadership Structure'}</p>
-            <p className="text-xl font-bold text-blue-600 mt-1">{regionalManagers.length} <span className="text-xs text-slate-700 font-normal">ภาค</span> / {centerManagers.length} <span className="text-xs text-slate-700 font-normal">ศูนย์</span></p>
-            <p className="text-[11px] text-slate-700 mt-1">{unitManagers.length} หน่วย / {agents.length} ตัวแทน</p>
+            <p className="text-xl font-bold text-blue-600 mt-1">{regionalManagers.length} <span className="text-xs text-slate-800 font-normal">ภาค</span> / {centerManagers.length} <span className="text-xs text-slate-800 font-normal">ศูนย์</span></p>
+            <p className="text-[11px] text-slate-800 mt-1">{unitManagers.length} หน่วย / {agents.length} ตัวแทน</p>
           </div>
-          <div className="bg-sky-50/60 p-3.5 rounded-xl border border-sky-100/60/60">
+          <div className="bg-[#f0f9ff]/60 p-3.5 rounded-xl border border-sky-100/60/60">
             <p className="text-xs text-cyan-400">{language === 'th' ? 'FYC ทั้งองค์กร' : 'Total FYC Rollup'}</p>
             <p className="text-xl font-bold text-cyan-400 mt-1">{formatCurrency(totalFYC)}</p>
-            <p className="text-[11px] text-slate-700 mt-1">First Year Commission</p>
+            <p className="text-[11px] text-slate-800 mt-1">First Year Commission</p>
           </div>
-          <div className="bg-sky-50/60 p-3.5 rounded-xl border border-sky-100/60/60">
+          <div className="bg-[#f0f9ff]/60 p-3.5 rounded-xl border border-sky-100/60/60">
             <p className="text-xs text-emerald-400">{language === 'th' ? 'COM ทั้งองค์กร' : 'Total COM Rollup'}</p>
             <p className="text-xl font-bold text-emerald-400 mt-1">{formatCurrency(totalCOM)}</p>
-            <p className="text-[11px] text-slate-700 mt-1">Direct Commission</p>
+            <p className="text-[11px] text-slate-800 mt-1">Direct Commission</p>
           </div>
         </div>
       </div>
 
       {/* Filter & Search Bar */}
-      <div className="bg-sky-50 border border-sky-100/60 rounded-xl p-4 flex flex-col md:flex-row gap-3 items-center justify-between shadow-sm">
+      <div className="bg-[#f0f9ff] border border-sky-100/60 rounded-xl p-4 flex flex-col md:flex-row gap-3 items-center justify-between shadow-sm">
         <div className="relative w-full md:w-80">
-          <Search className="w-4 h-4 text-slate-700 absolute left-3 top-3" />
+          <Search className="w-4 h-4 text-slate-800 absolute left-3 top-3" />
           <input
             type="text"
             placeholder={language === 'th' ? 'ค้นหาชื่อ, รหัสตัวแทน, หรือจังหวัด...' : 'Search name, code, province...'}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-sky-50 border border-sky-100/60 rounded-lg pl-9 pr-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500"
+            className="w-full bg-[#f0f9ff] border border-sky-100/60 rounded-lg pl-9 pr-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500"
           />
         </div>
 
@@ -154,7 +154,7 @@ export const OrganizationStructure: React.FC = () => {
           <select
             value={selectedRegionId}
             onChange={(e) => setSelectedRegionId(e.target.value)}
-            className="bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2 text-xs text-slate-700 focus:outline-none focus:border-indigo-500"
+            className="bg-[#f0f9ff] border border-sky-100/60 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500"
           >
             <option value="all">{language === 'th' ? 'ทุกภาค (All Regions)' : 'All Regions'}</option>
             <option value="region_1">ภาคกรุงเทพและปริมณฑล</option>
@@ -164,7 +164,7 @@ export const OrganizationStructure: React.FC = () => {
           <select
             value={selectedCenterId}
             onChange={(e) => setSelectedCenterId(e.target.value)}
-            className="bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2 text-xs text-slate-700 focus:outline-none focus:border-indigo-500"
+            className="bg-[#f0f9ff] border border-sky-100/60 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500"
           >
             <option value="all">{language === 'th' ? 'ทุกศูนย์ (All Centers)' : 'All Centers'}</option>
             <option value="center_1">ศูนย์ 1 (Center A)</option>
@@ -180,7 +180,7 @@ export const OrganizationStructure: React.FC = () => {
               setSelectedCenterId('all');
               setSelectedUnitId('all');
             }}
-            className="px-3 py-2 rounded-lg bg-sky-100 hover:bg-slate-200 text-xs text-slate-700 transition-all"
+            className="px-3 py-2 rounded-lg bg-[#e0f2fe] hover:bg-slate-200 text-xs text-slate-800 transition-all"
           >
             {language === 'th' ? 'ล้างตัวกรอง' : 'Reset'}
           </button>
@@ -196,14 +196,14 @@ export const OrganizationStructure: React.FC = () => {
           const rmTotalFYC = members.filter(m => m.regionId === rm.regionId).reduce((s, m) => s + m.personalFYC, 0);
 
           return (
-            <div key={rm.id} className="bg-sky-50 border border-sky-100/60 rounded-2xl overflow-hidden shadow-sm transition-all">
+            <div key={rm.id} className="bg-[#f0f9ff] border border-sky-100/60 rounded-2xl overflow-hidden shadow-sm transition-all">
               {/* Region Header */}
               <div 
                 onClick={() => toggleExpand(rm.id)}
-                className="p-5 bg-gradient-to-r from-amber-950/30 via-sky-100 to-slate-50 border-b border-sky-100/60 cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-sky-100/40"
+                className="p-5 bg-gradient-to-r from-amber-950/30 via-sky-100 to-slate-50 border-b border-sky-100/60 cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-[#e0f2fe]/40"
               >
                 <div className="flex items-center gap-3">
-                  <button className="p-1 rounded bg-sky-100 text-slate-700">
+                  <button className="p-1 rounded bg-[#e0f2fe] text-slate-800">
                     {isRmExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
                   </button>
                   <img
@@ -215,10 +215,10 @@ export const OrganizationStructure: React.FC = () => {
                     <div className="flex items-center gap-2">
                       <h3 className="font-bold text-slate-900 text-base">{rm.name}</h3>
                       {getPositionBadge(rm.positionId)}
-                      <span className="text-xs text-slate-700 font-mono">[{rm.memberCode}]</span>
+                      <span className="text-xs text-slate-800 font-mono">[{rm.memberCode}]</span>
                     </div>
-                    <p className="text-xs text-slate-700 mt-0.5 flex items-center gap-2">
-                      <MapPin className="w-3 h-3 text-slate-700" />
+                    <p className="text-xs text-slate-800 mt-0.5 flex items-center gap-2">
+                      <MapPin className="w-3 h-3 text-slate-800" />
                       {rm.location.province} • สังกัด {rm.regionId}
                     </p>
                   </div>
@@ -226,11 +226,11 @@ export const OrganizationStructure: React.FC = () => {
 
                 <div className="flex items-center gap-6 self-end md:self-auto text-right">
                   <div>
-                    <p className="text-xs text-slate-700">{language === 'th' ? 'รวมสมาชิกในภาค' : 'Total Region Team'}</p>
+                    <p className="text-xs text-slate-800">{language === 'th' ? 'รวมสมาชิกในภาค' : 'Total Region Team'}</p>
                     <p className="text-sm font-bold text-slate-900">{rmTotalMembers} {language === 'th' ? 'คน' : 'members'}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-slate-700">{language === 'th' ? 'FYC ทั้งภาค' : 'Region FYC'}</p>
+                    <p className="text-xs text-slate-800">{language === 'th' ? 'FYC ทั้งภาค' : 'Region FYC'}</p>
                     <p className="text-sm font-bold text-blue-600">{formatCurrency(rmTotalFYC)}</p>
                   </div>
                   <button
@@ -248,7 +248,7 @@ export const OrganizationStructure: React.FC = () => {
 
               {/* Centers Under Region */}
               {isRmExpanded && (
-                <div className="p-4 sm:p-6 space-y-4 bg-sky-50/40">
+                <div className="p-4 sm:p-6 space-y-4 bg-[#f0f9ff]/40">
                   {rmCenters.map((cm) => {
                     const isCmExpanded = !!expandedNodes[cm.id];
                     const cmUnits = unitManagers.filter(um => um.parentMemberId === cm.id || um.sponsorId === cm.id || um.centerId === cm.centerId);
@@ -256,14 +256,14 @@ export const OrganizationStructure: React.FC = () => {
                     const cmTotalFYC = members.filter(m => m.centerId === cm.centerId).reduce((s, m) => s + m.personalFYC, 0);
 
                     return (
-                      <div key={cm.id} className="bg-sky-50/80 border border-sky-100/60 rounded-xl overflow-hidden">
+                      <div key={cm.id} className="bg-[#f0f9ff]/80 border border-sky-100/60 rounded-xl overflow-hidden">
                         {/* Center Row */}
                         <div 
                           onClick={() => toggleExpand(cm.id)}
-                          className="p-4 bg-sky-50 border-b border-sky-100/60 cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-3 hover:bg-sky-100/40"
+                          className="p-4 bg-[#f0f9ff] border-b border-sky-100/60 cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-3 hover:bg-[#e0f2fe]/40"
                         >
                           <div className="flex items-center gap-3">
-                            <button className="p-1 rounded bg-sky-100 text-slate-700">
+                            <button className="p-1 rounded bg-[#e0f2fe] text-slate-800">
                               {isCmExpanded ? <ChevronDown className="w-3.5 h-3.5" /> : <ChevronRight className="w-3.5 h-3.5" />}
                             </button>
                             <img
@@ -275,9 +275,9 @@ export const OrganizationStructure: React.FC = () => {
                               <div className="flex items-center gap-2">
                                 <h4 className="font-bold text-slate-900 text-sm">{cm.name}</h4>
                                 {getPositionBadge(cm.positionId)}
-                                <span className="text-xs text-slate-700 font-mono">[{cm.memberCode}]</span>
+                                <span className="text-xs text-slate-800 font-mono">[{cm.memberCode}]</span>
                               </div>
-                              <p className="text-xs text-slate-700 mt-0.5">
+                              <p className="text-xs text-slate-800 mt-0.5">
                                 รหัสศูนย์: {cm.centerId} • {cm.location.province}
                               </p>
                             </div>
@@ -285,11 +285,11 @@ export const OrganizationStructure: React.FC = () => {
 
                           <div className="flex items-center gap-4 text-right">
                             <div>
-                              <p className="text-[11px] text-slate-700">{language === 'th' ? 'สมาชิกในศูนย์' : 'Center Team'}</p>
+                              <p className="text-[11px] text-slate-800">{language === 'th' ? 'สมาชิกในศูนย์' : 'Center Team'}</p>
                               <p className="text-xs font-bold text-slate-800">{cmTotalMembers} คน</p>
                             </div>
                             <div>
-                              <p className="text-[11px] text-slate-700">{language === 'th' ? 'FYC ศูนย์' : 'Center FYC'}</p>
+                              <p className="text-[11px] text-slate-800">{language === 'th' ? 'FYC ศูนย์' : 'Center FYC'}</p>
                               <p className="text-xs font-bold text-indigo-300">{formatCurrency(cmTotalFYC)}</p>
                             </div>
                             <button
@@ -306,20 +306,20 @@ export const OrganizationStructure: React.FC = () => {
 
                         {/* Units Under Center */}
                         {isCmExpanded && (
-                          <div className="p-3 sm:p-4 space-y-3 bg-sky-50/60">
+                          <div className="p-3 sm:p-4 space-y-3 bg-[#f0f9ff]/60">
                             {cmUnits.map((um) => {
                               const isUmExpanded = !!expandedNodes[um.id];
                               const umAgents = agents.filter(ag => ag.parentMemberId === um.id || ag.sponsorId === um.id || ag.unitId === um.unitId);
                               const umTotalFYC = members.filter(m => m.unitId === um.unitId).reduce((s, m) => s + m.personalFYC, 0);
 
                               return (
-                                <div key={um.id} className="bg-sky-50 border border-sky-100/60 rounded-lg p-3">
+                                <div key={um.id} className="bg-[#f0f9ff] border border-sky-100/60 rounded-lg p-3">
                                   <div 
                                     onClick={() => toggleExpand(um.id)}
                                     className="flex items-center justify-between cursor-pointer"
                                   >
                                     <div className="flex items-center gap-2.5">
-                                      <button className="p-0.5 rounded bg-sky-100 text-slate-700">
+                                      <button className="p-0.5 rounded bg-[#e0f2fe] text-slate-800">
                                         {isUmExpanded ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
                                       </button>
                                       <img
@@ -332,7 +332,7 @@ export const OrganizationStructure: React.FC = () => {
                                           <p className="text-xs font-bold text-slate-800">{um.name}</p>
                                           {getPositionBadge(um.positionId)}
                                         </div>
-                                        <p className="text-[10px] text-slate-700">
+                                        <p className="text-[10px] text-slate-800">
                                           รหัสหน่วย: {um.unitId} • {umAgents.length} ตัวแทนในสังกัด
                                         </p>
                                       </div>
@@ -340,7 +340,7 @@ export const OrganizationStructure: React.FC = () => {
 
                                     <div className="flex items-center gap-3 text-right">
                                       <div>
-                                        <p className="text-[10px] text-slate-700">FYC หน่วย</p>
+                                        <p className="text-[10px] text-slate-800">FYC หน่วย</p>
                                         <p className="text-xs font-bold text-cyan-400">{formatCurrency(umTotalFYC)}</p>
                                       </div>
                                       <button
@@ -348,7 +348,7 @@ export const OrganizationStructure: React.FC = () => {
                                           e.stopPropagation();
                                           setSelectedMemberId(um.id);
                                         }}
-                                        className="px-2 py-0.5 rounded bg-sky-100 hover:bg-slate-200 text-[11px] text-slate-700"
+                                        className="px-2 py-0.5 rounded bg-[#e0f2fe] hover:bg-slate-200 text-[11px] text-slate-800"
                                       >
                                         ดู
                                       </button>
@@ -362,7 +362,7 @@ export const OrganizationStructure: React.FC = () => {
                                         <div 
                                           key={ag.id}
                                           onClick={() => setSelectedMemberId(ag.id)}
-                                          className="p-2 rounded-lg bg-sky-50/80 border border-sky-100/60/80 flex items-center justify-between cursor-pointer hover:border-sky-100/60 hover:bg-sky-50 transition-all"
+                                          className="p-2 rounded-lg bg-[#f0f9ff]/80 border border-sky-100/60/80 flex items-center justify-between cursor-pointer hover:border-sky-100/60 hover:bg-[#f0f9ff] transition-all"
                                         >
                                           <div className="flex items-center gap-2">
                                             <img
@@ -372,7 +372,7 @@ export const OrganizationStructure: React.FC = () => {
                                             />
                                             <div>
                                               <p className="text-xs font-medium text-slate-800 leading-tight">{ag.name}</p>
-                                              <p className="text-[10px] text-slate-700">{ag.memberCode}</p>
+                                              <p className="text-[10px] text-slate-800">{ag.memberCode}</p>
                                             </div>
                                           </div>
                                           <span className="text-[11px] font-bold text-emerald-400">{formatCurrency(ag.personalFYC)}</span>

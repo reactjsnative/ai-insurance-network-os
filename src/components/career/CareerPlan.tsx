@@ -364,7 +364,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
   return (
     <div id="career_plan_view" className="space-y-8 max-w-7xl mx-auto pb-16 text-left">
       {/* Header */}
-      <div className="p-6 rounded-3xl bg-sky-50/90 border border-sky-100/60 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-[#f0f9ff]/90 border border-sky-100/60 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-500 to-rose-600 flex items-center justify-center text-slate-900 shadow-sm shadow-amber-500/30">
@@ -373,7 +373,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
             <h1 className="text-xl sm:text-2xl font-black text-slate-900">แผนรายได้ & เส้นทางสู่อิสระภาพทางการเงิน</h1>
             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-600/10 text-blue-600 border border-blue-600/30">พร้อมใช้งาน</span>
           </div>
-          <p className="text-xs text-slate-700 mt-1">
+          <p className="text-xs text-slate-800 mt-1">
             วางแผนรายได้ → วิเคราะห์ช่องว่าง → จำลองการเติบโต → ประมาณการอนาคต → AI แนะนำแผน 30/60/90 วัน (คำนวณเรียลไทม์จาก Rule Engine)
           </p>
         </div>
@@ -394,7 +394,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
                 >
                   {POSITION_LABELS[activeUser.positionId]}
                 </span>
-                <span className="text-[11px] text-slate-700">สมาชิก {memberDownline?.totalDownlineCount ?? 0} คน • COM ส่วนตัว {fmt(activeUser.personalCOM)}</span>
+                <span className="text-[11px] text-slate-800">สมาชิก {memberDownline?.totalDownlineCount ?? 0} คน • COM ส่วนตัว {fmt(activeUser.personalCOM)}</span>
               </div>
             </div>
           </div>
@@ -435,14 +435,14 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
           />
           <NumberField label="เป้าหมายรายได้ (บาท/เดือน)" value={targetIncome} onChange={setTargetIncome} step={10000} icon={<Target className="w-4 h-4" />} />
           <NumberField label="ระยะเวลาเป้าหมาย (เดือน)" value={targetMonths} onChange={setTargetMonths} step={1} icon={<Flag className="w-4 h-4" />} />
-          <div className="p-4 rounded-2xl bg-sky-50/60 border border-sky-100/60 space-y-2">
-            <label className="text-xs font-semibold text-slate-700 block">Retention / Activation</label>
+          <div className="p-4 rounded-2xl bg-[#f0f9ff]/60 border border-sky-100/60 space-y-2">
+            <label className="text-xs font-semibold text-slate-800 block">Retention / Activation</label>
             <div className="flex items-center gap-2">
-              <span className="text-[10px] text-slate-700 w-16">Retain {(retention * 100).toFixed(0)}%</span>
+              <span className="text-[10px] text-slate-800 w-16">Retain {(retention * 100).toFixed(0)}%</span>
               <input type="range" min={0.3} max={1} step={0.05} value={retention} onChange={(e) => setRetention(Number(e.target.value))} className="flex-1 accent-amber-500" />
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-[10px] text-slate-700 w-16">Active {(activation * 100).toFixed(0)}%</span>
+              <span className="text-[10px] text-slate-800 w-16">Active {(activation * 100).toFixed(0)}%</span>
               <input type="range" min={0.3} max={1} step={0.05} value={activation} onChange={(e) => setActivation(Number(e.target.value))} className="flex-1 accent-amber-500" />
             </div>
           </div>
@@ -461,15 +461,15 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
           <KpiCard label="รายได้จำลอง" value={fmt(incomeResult.totalIncome)} sub="Estimated / เดือน" accent="emerald" />
           <KpiCard label="เป้าหมายถัดไป" value={POSITION_LABELS[targetPosition]} sub="Next Level" accent="amber" />
         </div>
-        <div className="p-5 rounded-2xl bg-sky-50/60 border border-sky-100/60 space-y-4">
+        <div className="p-5 rounded-2xl bg-[#f0f9ff]/60 border border-sky-100/60 space-y-4">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-700">ความคืบหน้าสู่ {POSITION_LABELS[targetPosition]}</span>
+            <span className="text-xs font-bold text-slate-800">ความคืบหน้าสู่ {POSITION_LABELS[targetPosition]}</span>
             <span className="text-xs font-black text-blue-600">{career.overallProgressPercent}%</span>
           </div>
-          <div className="w-full h-3 rounded-full bg-sky-100 overflow-hidden">
+          <div className="w-full h-3 rounded-full bg-[#e0f2fe] overflow-hidden">
             <div className="h-full bg-gradient-to-r from-amber-500 to-rose-500 rounded-full transition-all" style={{ width: `${career.overallProgressPercent}%` }} />
           </div>
-          <p className="text-[11px] text-slate-700 leading-relaxed">{career.mathematicalProjection.recommendationText}</p>
+          <p className="text-[11px] text-slate-800 leading-relaxed">{career.mathematicalProjection.recommendationText}</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
             <GapPill label="FYC ปัจจุบัน" value={fmt(career.currentFYC)} />
             <GapPill label="หน่วย (มี/ต้องการ)" value={`${career.currentUnits}/${career.requiredUnits}`} />
@@ -490,7 +490,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
               <Target className="w-4 h-4" />
               <span className="text-xs font-bold uppercase tracking-wider">Reverse Goal Calculator</span>
             </div>
-            <p className="text-xs text-slate-700">เป้าหมายรายได้ {fmt(targetIncome)}/เดือน ภายใน {targetMonths} เดือน</p>
+            <p className="text-xs text-slate-800">เป้าหมายรายได้ {fmt(targetIncome)}/เดือน ภายใน {targetMonths} เดือน</p>
             <div className="grid grid-cols-2 gap-3">
               <ReverseStat label="รับสมาชิกใหม่/เดือน" value={`${reverse.requiredMonthlyRecruitment} คน`} />
               <ReverseStat label="รวมทั้งหมด" value={`${reverse.requiredTotalRecruits} คน`} />
@@ -506,10 +506,10 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
               <TrendingDown className="w-4 h-4" />
               <span className="text-xs font-bold uppercase tracking-wider">Career Gap Analysis</span>
             </div>
-            <p className="text-xs text-slate-700">
+            <p className="text-xs text-slate-800">
               เพื่อไปถึง <b>{POSITION_LABELS[targetPosition]}</b> จาก <b>{POSITION_LABELS[currentPosition]}</b>
             </p>
-            <ul className="space-y-2.5 text-xs text-slate-700 leading-relaxed">
+            <ul className="space-y-2.5 text-xs text-slate-800 leading-relaxed">
               <li className="flex gap-2"><ChevronRight className="w-4 h-4 text-blue-600 shrink-0" /> ต้องเพิ่มสมาชิกอีกประมาณ <b className="text-blue-600">{gapMembers} คน</b></li>
               <li className="flex gap-2"><ChevronRight className="w-4 h-4 text-blue-600 shrink-0" /> Team COM ปัจจุบัน {fmt(teamCOM)} → เป้าหมายควรสูงกว่านี้ตามระดับ</li>
               <li className="flex gap-2"><ChevronRight className="w-4 h-4 text-blue-600 shrink-0" /> หาก 1 หน่วย = 5 คน → ต้องแยกเพิ่ม {Math.ceil(gapMembers / 5)} หน่วย</li>
@@ -524,14 +524,14 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
           <SlidersHorizontal className="w-5 h-5 text-emerald-400" />
           <h2 className="text-lg font-black text-slate-900">4. จำลองสถานการณ์ (What-If Simulator)</h2>
         </div>
-        <div className="p-5 rounded-2xl bg-sky-50/60 border border-sky-100/60 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="p-5 rounded-2xl bg-[#f0f9ff]/60 border border-sky-100/60 grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-4">
             <Slider label="COM ต่อคน" min={1000} max={100000} step={1000} value={comPerMember} onChange={setComPerMember} fmt={fmt} />
             <Slider label="จำนวนสมาชิก" min={1} max={500} step={1} value={memberCount} onChange={setMemberCount} fmt={(n) => `${n} คน`} />
             <Slider label="COM ส่วนตัว" min={0} max={200000} step={1000} value={personalCom} onChange={setPersonalCom} fmt={fmt} />
           </div>
           <div className="space-y-3">
-            <h3 className="text-xs font-bold text-slate-700">ส่วนประกอบรายได้จำลอง</h3>
+            <h3 className="text-xs font-bold text-slate-800">ส่วนประกอบรายได้จำลอง</h3>
             <div className="h-48">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={waterfall} layout="vertical" margin={{ left: 10, right: 20 }}>
@@ -546,7 +546,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
                 </BarChart>
               </ResponsiveContainer>
             </div>
-            <p className="text-[11px] text-slate-700">รวมรายได้จำลอง: <b className="text-emerald-300">{fmt(incomeResult.totalIncome)}/เดือน</b></p>
+            <p className="text-[11px] text-slate-800">รวมรายได้จำลอง: <b className="text-emerald-300">{fmt(incomeResult.totalIncome)}/เดือน</b></p>
           </div>
         </div>
       </section>
@@ -557,7 +557,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
           <TrendingUp className="w-5 h-5 text-blue-400" />
           <h2 className="text-lg font-black text-slate-900">5. ประมาณการอนาคต (Forecast 3 เส้น)</h2>
         </div>
-        <div className="p-5 rounded-2xl bg-sky-50/60 border border-sky-100/60">
+        <div className="p-5 rounded-2xl bg-[#f0f9ff]/60 border border-sky-100/60">
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={forecastChart} margin={{ top: 10, right: 20, left: 10, bottom: 0 }}>
@@ -577,13 +577,13 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
               const m12 = s.data.find((d) => d.month === 12);
               const m36 = s.data.find((d) => d.month === 36);
               return (
-                <div key={s.key} className="p-3 rounded-xl bg-sky-50/60 border border-sky-100/60">
+                <div key={s.key} className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full" style={{ background: s.color }} />
                     <span className="text-xs font-bold text-slate-800">{s.label}</span>
                   </div>
-                  <p className="text-[11px] text-slate-700 mt-1">เดือน 12: {fmt(m12?.projectedMonthlyIncome || 0)}</p>
-                  <p className="text-[11px] text-slate-700">เดือน 36: {fmt(m36?.projectedMonthlyIncome || 0)}</p>
+                  <p className="text-[11px] text-slate-800 mt-1">เดือน 12: {fmt(m12?.projectedMonthlyIncome || 0)}</p>
+                  <p className="text-[11px] text-slate-800">เดือน 36: {fmt(m36?.projectedMonthlyIncome || 0)}</p>
                 </div>
               );
             })}
@@ -609,14 +609,14 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
           </ul>
           <div className="pt-3 mt-1 border-t border-sky-100/60">
             <p className="text-[11px] font-bold text-indigo-300 mb-2">30 / 60 / 90 Day Plan (จากเป้าหมายของคุณ)</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-[11px] text-slate-700">
-              <div className="p-3 rounded-xl bg-sky-50/60 border border-sky-100/60">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-[11px] text-slate-800">
+              <div className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
                 <b className="text-indigo-300">30 วัน</b> — เพิ่มสมาชิก ~{Math.max(1, Math.round(reverse.requiredMonthlyRecruitment))} คน / เพิ่ม Team COM ~{fmt(teamCOM * 0.4)}
               </div>
-              <div className="p-3 rounded-xl bg-sky-50/60 border border-sky-100/60">
+              <div className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
                 <b className="text-indigo-300">60 วัน</b> — สร้างทีมรวม ~{memberCount + reverse.requiredMonthlyRecruitment * 2} คน / เตรียมแยกหน่วยแรก
               </div>
-              <div className="p-3 rounded-xl bg-sky-50/60 border border-sky-100/60">
+              <div className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
                 <b className="text-indigo-300">90 วัน</b> — ไปถึงเป้าหมายรายได้ {fmt(targetIncome)} หากรักษาอัตรารับสมาชิก
               </div>
             </div>
@@ -651,7 +651,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-fuchsia-500/10 text-fuchsia-300 border border-fuchsia-500/30">AI Video</span>
           </div>
           <div className="p-5 rounded-2xl bg-gradient-to-br from-sky-50 to-fuchsia-950/20 border border-sky-100/60 space-y-4">
-            <p className="text-xs text-slate-700 leading-relaxed">
+            <p className="text-xs text-slate-800 leading-relaxed">
               เมื่อคุณตั้งค่าแผนด้านบนเรียบร้อย กดปุ่มด้านล่างเพื่อสร้าง <b>วิดีโอสรุปแผนของคุณ</b> อัตโนมัติ
               จากข้อมูลที่คุณกรอก — ตำแหน่งปัจจุบัน เป้าหมาย รายได้จำลอง แผน 30/60/90 วัน พร้อมเสียงเล่าภาษาไทย
             </p>
@@ -680,9 +680,9 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
             )}
 
             {videoUrl && (
-              <div className="rounded-2xl overflow-hidden border border-fuchsia-500/30 bg-sky-50">
+              <div className="rounded-2xl overflow-hidden border border-fuchsia-500/30 bg-[#f0f9ff]">
                 <video src={videoUrl} controls className="w-full max-h-[70vh]" />
-                <div className="p-3 text-[11px] text-slate-700 flex items-center justify-between">
+                <div className="p-3 text-[11px] text-slate-800 flex items-center justify-between">
                   <span>วิดีโอสรุปแผนของ {activeUser.name}</span>
                   <a href={videoUrl} download className="text-fuchsia-300 hover:underline">ดาวน์โหลด</a>
                 </div>
@@ -715,8 +715,8 @@ const NumberField: React.FC<{
   step?: number;
   icon?: React.ReactNode;
 }> = ({ label, value, onChange, step = 1, icon }) => (
-  <div className="p-4 rounded-2xl bg-sky-50/60 border border-sky-100/60 space-y-1.5">
-    <label className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
+  <div className="p-4 rounded-2xl bg-[#f0f9ff]/60 border border-sky-100/60 space-y-1.5">
+    <label className="text-xs font-semibold text-slate-800 flex items-center gap-1.5">
       {icon && <span className="text-blue-600">{icon}</span>}
       {label}
     </label>
@@ -725,7 +725,7 @@ const NumberField: React.FC<{
       value={value}
       step={step}
       onChange={(e) => onChange(Number(e.target.value))}
-      className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600"
+      className="w-full bg-[#f0f9ff] border border-sky-100/60 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600"
     />
   </div>
 );
@@ -736,12 +736,12 @@ const SelectField: React.FC<{
   onChange: (v: string) => void;
   options: { value: string; label: string }[];
 }> = ({ label, value, onChange, options }) => (
-  <div className="p-4 rounded-2xl bg-sky-50/60 border border-sky-100/60 space-y-1.5">
-    <label className="text-xs font-semibold text-slate-700 block">{label}</label>
+  <div className="p-4 rounded-2xl bg-[#f0f9ff]/60 border border-sky-100/60 space-y-1.5">
+    <label className="text-xs font-semibold text-slate-800 block">{label}</label>
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600"
+      className="w-full bg-[#f0f9ff] border border-sky-100/60 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600"
     >
       {options.map((o) => (
         <option key={o.value} value={o.value}>{o.label}</option>
@@ -761,7 +761,7 @@ const Slider: React.FC<{
 }> = ({ label, min, max, step, value, onChange, fmt }) => (
   <div className="space-y-1.5">
     <div className="flex items-center justify-between">
-      <span className="text-xs font-semibold text-slate-700">{label}</span>
+      <span className="text-xs font-semibold text-slate-800">{label}</span>
       <span className="text-xs font-bold text-emerald-300">{fmt(value)}</span>
     </div>
     <input type="range" min={min} max={max} step={step} value={value} onChange={(e) => onChange(Number(e.target.value))} className="w-full accent-emerald-500" />
@@ -785,15 +785,15 @@ const KpiCard: React.FC<{ label: string; value: string; sub: string; accent: 'sk
 };
 
 const GapPill: React.FC<{ label: string; value: string }> = ({ label, value }) => (
-  <div className="p-3 rounded-xl bg-sky-50/60 border border-sky-100/60">
-    <p className="text-[10px] text-slate-700">{label}</p>
+  <div className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
+    <p className="text-[10px] text-slate-800">{label}</p>
     <p className="text-sm font-bold text-slate-900 mt-0.5">{value}</p>
   </div>
 );
 
 const ReverseStat: React.FC<{ label: string; value: string }> = ({ label, value }) => (
-  <div className="p-3 rounded-xl bg-sky-50/60 border border-sky-100/60">
-    <p className="text-[10px] text-slate-700">{label}</p>
+  <div className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
+    <p className="text-[10px] text-slate-800">{label}</p>
     <p className="text-sm font-bold text-fuchsia-300 mt-0.5">{value}</p>
   </div>
 );
@@ -897,11 +897,11 @@ const InfiniteNetworkTree: React.FC<{
         <div className="flex items-center gap-2">
           <button
             onClick={() => setDepth(Math.max(1, depth - 1))}
-            className="px-3 py-1.5 rounded-lg bg-sky-100 hover:bg-slate-200 text-slate-800 text-xs font-bold"
+            className="px-3 py-1.5 rounded-lg bg-[#e0f2fe] hover:bg-slate-200 text-slate-800 text-xs font-bold"
           >
             − ชั้น
           </button>
-          <span className="text-xs text-slate-700 font-mono">{depth} ชั้น</span>
+          <span className="text-xs text-slate-800 font-mono">{depth} ชั้น</span>
           <button
             onClick={() => setDepth(Math.min(6, depth + 1))}
             className="px-3 py-1.5 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 text-xs font-bold border border-rose-500/30"
@@ -913,26 +913,26 @@ const InfiniteNetworkTree: React.FC<{
 
       {/* Summary */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <div className="p-3 rounded-xl bg-sky-50/60 border border-sky-100/60">
-          <p className="text-[10px] text-slate-700">จำนวนคนในแผนผัง</p>
+        <div className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
+          <p className="text-[10px] text-slate-800">จำนวนคนในแผนผัง</p>
           <p className="text-sm font-black text-rose-300">{totalPeople.toLocaleString()} คน</p>
         </div>
-        <div className="p-3 rounded-xl bg-sky-50/60 border border-sky-100/60">
-          <p className="text-[10px] text-slate-700">ศูนย์สูงสุดที่เป็นไปได้</p>
+        <div className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
+          <p className="text-[10px] text-slate-800">ศูนย์สูงสุดที่เป็นไปได้</p>
           <p className="text-sm font-black text-blue-600">~{Math.floor(totalPeople / 15)} ศูนย์</p>
         </div>
-        <div className="p-3 rounded-xl bg-sky-50/60 border border-sky-100/60">
-          <p className="text-[10px] text-slate-700">หน่วยสูงสุดที่เป็นไปได้</p>
+        <div className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
+          <p className="text-[10px] text-slate-800">หน่วยสูงสุดที่เป็นไปได้</p>
           <p className="text-sm font-black text-cyan-300">~{Math.floor(totalPeople / 5)} หน่วย</p>
         </div>
-        <div className="p-3 rounded-xl bg-sky-50/60 border border-sky-100/60">
-          <p className="text-[10px] text-slate-700">Potential COM สะสม</p>
+        <div className="p-3 rounded-xl bg-[#f0f9ff]/60 border border-sky-100/60">
+          <p className="text-[10px] text-slate-800">Potential COM สะสม</p>
           <p className="text-sm font-black text-emerald-300">{fmt(totalPotential)}</p>
         </div>
       </div>
 
       {/* Tree (vertical layers) */}
-      <div className="relative rounded-2xl bg-sky-50/70 border border-sky-100/60 p-4 overflow-x-auto">
+      <div className="relative rounded-2xl bg-[#f0f9ff]/70 border border-sky-100/60 p-4 overflow-x-auto">
         <div className="min-w-[640px] space-y-3">
           {layers.map((layer, li) => (
             <div key={layer.gen} className="flex flex-col items-center">
@@ -948,7 +948,7 @@ const InfiniteNetworkTree: React.FC<{
                     <button
                       key={n.id}
                       onClick={() => setSelectedNode({ name: n.name, gen: n.gen, com: n.com, role: role.label })}
-                      className={`group relative flex flex-col items-center p-2 rounded-xl border bg-sky-50/80 transition-all hover:-translate-y-0.5 ${
+                      className={`group relative flex flex-col items-center p-2 rounded-xl border bg-[#f0f9ff]/80 transition-all hover:-translate-y-0.5 ${
                         isSel ? `${role.ring} ring-2 ring-rose-400/40` : 'border-sky-100/60 hover:border-slate-600'
                       }`}
                       title={`${n.name} • ${role.label}`}
@@ -964,16 +964,16 @@ const InfiniteNetworkTree: React.FC<{
                         className="w-9 h-9 rounded-full object-cover ring-2"
                         style={{ boxShadow: `0 0 0 2px ${role.color}55` }}
                       />
-                      <span className="text-[9px] text-slate-700 mt-1 max-w-[64px] truncate">{n.name}</span>
+                      <span className="text-[9px] text-slate-800 mt-1 max-w-[64px] truncate">{n.name}</span>
                     </button>
                   );
                 })}
               </div>
               {li < layers.length - 1 && (
-                <div className="flex items-center gap-1 text-slate-700 my-1">
+                <div className="flex items-center gap-1 text-slate-800 my-1">
                   <div className="w-8 h-px bg-slate-700" />
                   <ChevronRight className="w-3 h-3" />
-                  <span className="text-[9px] font-mono text-slate-700">แตก {branching}×</span>
+                  <span className="text-[9px] font-mono text-slate-800">แตก {branching}×</span>
                   <ChevronRight className="w-3 h-3" />
                   <div className="w-8 h-px bg-slate-700" />
                 </div>
@@ -989,12 +989,12 @@ const InfiniteNetworkTree: React.FC<{
           <Users className="w-5 h-5 text-rose-300" />
           <div className="text-xs text-slate-800">
             <b className="text-rose-200">{selectedNode.name}</b> • {selectedNode.role} • COM {fmt(selectedNode.com)}/เดือน
-            <span className="text-slate-700"> — คลิกโหนดอื่นเพื่อดูรายละเอียด (จำลองเส้นทางสายงาน)</span>
+            <span className="text-slate-800"> — คลิกโหนดอื่นเพื่อดูรายละเอียด (จำลองเส้นทางสายงาน)</span>
           </div>
         </div>
       )}
 
-      <p className="text-[10px] text-slate-700 leading-relaxed">
+      <p className="text-[10px] text-slate-800 leading-relaxed">
         * ต้นไม้นี้เป็นแบบจำลองแสดง "พลังการขยายทีม" หากแต่ละคนสร้าง {branching} คน ต่อเนื่องหลายชั้น จำนวนสมาชิกจะเติบโตทวีคูณ
         (5 → 25 → 125 → 625 → 3,125…) รายได้จัดการจะขยายตามระดับชั้นโดยไม่มีเพดาน — ตัวเลขเป็นสมมติฐานเพื่อการวางแผนเท่านั้น
       </p>

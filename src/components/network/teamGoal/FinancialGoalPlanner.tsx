@@ -66,7 +66,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
 
   if (!currentMember) {
     return (
-      <div className="max-w-4xl mx-auto p-12 text-center text-slate-700">
+      <div className="max-w-4xl mx-auto p-12 text-center text-slate-800">
         กรุณาเลือกสมาชิกที่ต้องการวางแผนเป้าหมาย
       </div>
     );
@@ -164,7 +164,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
               แผนที่สู่อิสรภาพทางการเงิน (Financial Freedom Roadmap)
             </h2>
           </div>
-          <p className="text-xs text-slate-700 mt-1">
+          <p className="text-xs text-slate-800 mt-1">
             กำหนดเป้าหมายรายได้ สมาชิกในทีม และกิจกรรมรายวันเพื่อเปลี่ยนความฝันให้เป็นเป้าหมายที่วัดผลได้
           </p>
         </div>
@@ -183,42 +183,42 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
       {/* Top 4 KPI Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
-        <div className="p-5 rounded-2xl bg-sky-50/80 border border-sky-100/60 backdrop-blur-md shadow-sm">
-          <span className="text-xs text-slate-700 font-medium">เป้าหมายรายได้ต่อเดือน</span>
+        <div className="p-5 rounded-2xl bg-[#f0f9ff]/80 border border-sky-100/60 backdrop-blur-md shadow-sm">
+          <span className="text-xs text-slate-800 font-medium">เป้าหมายรายได้ต่อเดือน</span>
           <div className="text-2xl font-black text-blue-600 mt-1">
             ฿{monthlyGoal.toLocaleString()}
           </div>
-          <span className="text-[11px] text-slate-700 mt-1 block">
+          <span className="text-[11px] text-slate-800 mt-1 block">
             ต่อปี: ฿{(monthlyGoal * 12).toLocaleString()}
           </span>
         </div>
 
-        <div className="p-5 rounded-2xl bg-sky-50/80 border border-sky-100/60 backdrop-blur-md shadow-sm">
-          <span className="text-xs text-slate-700 font-medium">ส่วนต่างที่ขาดอยู่ (Gap)</span>
+        <div className="p-5 rounded-2xl bg-[#f0f9ff]/80 border border-sky-100/60 backdrop-blur-md shadow-sm">
+          <span className="text-xs text-slate-800 font-medium">ส่วนต่างที่ขาดอยู่ (Gap)</span>
           <div className="text-2xl font-black text-rose-400 mt-1">
             ฿{incomeGap.toLocaleString()}
           </div>
-          <span className="text-[11px] text-slate-700 mt-1 block">
+          <span className="text-[11px] text-slate-800 mt-1 block">
             ทำได้แล้ว ฿{actualIncome.toLocaleString()} ({currentProgress}%)
           </span>
         </div>
 
-        <div className="p-5 rounded-2xl bg-sky-50/80 border border-sky-100/60 backdrop-blur-md shadow-sm">
-          <span className="text-xs text-slate-700 font-medium">ระยะเวลาคาดการณ์สู่อิสรภาพ</span>
+        <div className="p-5 rounded-2xl bg-[#f0f9ff]/80 border border-sky-100/60 backdrop-blur-md shadow-sm">
+          <span className="text-xs text-slate-800 font-medium">ระยะเวลาคาดการณ์สู่อิสรภาพ</span>
           <div className="text-2xl font-black text-emerald-400 mt-1">
             ~{estimatedMonths} เดือน
           </div>
-          <span className="text-[11px] text-slate-700 mt-1 block">
+          <span className="text-[11px] text-slate-800 mt-1 block">
             ตามแผนรับสมัคร +{plannedRecruits} คน/เดือน
           </span>
         </div>
 
-        <div className="p-5 rounded-2xl bg-sky-50/80 border border-sky-100/60 backdrop-blur-md shadow-sm">
-          <span className="text-xs text-slate-700 font-medium">เงินสำรองฉุกเฉิน 6 เดือน</span>
+        <div className="p-5 rounded-2xl bg-[#f0f9ff]/80 border border-sky-100/60 backdrop-blur-md shadow-sm">
+          <span className="text-xs text-slate-800 font-medium">เงินสำรองฉุกเฉิน 6 เดือน</span>
           <div className="text-2xl font-black text-blue-400 mt-1">
             ฿{reserveFund.toLocaleString()}
           </div>
-          <span className="text-[11px] text-slate-700 mt-1 block">
+          <span className="text-[11px] text-slate-800 mt-1 block">
             ค่าใช้จ่าย ฿{monthlyExpenses.toLocaleString()}/ด.
           </span>
         </div>
@@ -226,7 +226,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
       </div>
 
       {/* Main Goal Configuration Form */}
-      <div className="p-6 rounded-3xl bg-sky-50/90 border border-sky-100/60/90 backdrop-blur-xl shadow-2xl space-y-6">
+      <div className="p-6 rounded-3xl bg-[#f0f9ff]/90 border border-sky-100/60/90 backdrop-blur-xl shadow-2xl space-y-6">
         <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
           <Wallet className="w-4 h-4 text-blue-600" />
           <span>ปรับแต่งตัวเลขเป้าหมายและทรัพยากรการทำงาน</span>
@@ -234,76 +234,76 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
           <div>
-            <label className="block text-slate-700 font-medium mb-1.5">เป้าหมายรายได้สุทธิต่อเดือน (บาท) *</label>
+            <label className="block text-slate-800 font-medium mb-1.5">เป้าหมายรายได้สุทธิต่อเดือน (บาท) *</label>
             <input
               type="number"
               value={monthlyGoal}
               onChange={(e) => setMonthlyGoal(Number(e.target.value))}
-              className="w-full px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-100/60 text-slate-900 font-semibold focus:outline-none focus:border-blue-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-[#f0f9ff] border border-sky-100/60 text-slate-900 font-semibold focus:outline-none focus:border-blue-400"
             />
           </div>
 
           <div>
-            <label className="block text-slate-700 font-medium mb-1.5">วันที่เป้าหมายสำเร็จ (Target Date)</label>
+            <label className="block text-slate-800 font-medium mb-1.5">วันที่เป้าหมายสำเร็จ (Target Date)</label>
             <input
               type="date"
               value={targetDate}
               onChange={(e) => setTargetDate(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-100/60 text-slate-900 font-semibold focus:outline-none focus:border-blue-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-[#f0f9ff] border border-sky-100/60 text-slate-900 font-semibold focus:outline-none focus:border-blue-400"
             />
           </div>
 
           <div>
-            <label className="block text-slate-700 font-medium mb-1.5">เป้าหมายสร้างผู้นำสายงาน (Leaders)</label>
+            <label className="block text-slate-800 font-medium mb-1.5">เป้าหมายสร้างผู้นำสายงาน (Leaders)</label>
             <input
               type="number"
               value={targetLeaders}
               onChange={(e) => setTargetLeaders(Number(e.target.value))}
-              className="w-full px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-100/60 text-slate-900 font-semibold focus:outline-none focus:border-blue-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-[#f0f9ff] border border-sky-100/60 text-slate-900 font-semibold focus:outline-none focus:border-blue-400"
             />
           </div>
 
           <div>
-            <label className="block text-slate-700 font-medium mb-1.5">แผนรับสมัครตัวแทนใหม่ (คน/เดือน)</label>
+            <label className="block text-slate-800 font-medium mb-1.5">แผนรับสมัครตัวแทนใหม่ (คน/เดือน)</label>
             <input
               type="number"
               value={plannedRecruits}
               onChange={(e) => setPlannedRecruits(Number(e.target.value))}
-              className="w-full px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-100/60 text-slate-900 font-semibold focus:outline-none focus:border-blue-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-[#f0f9ff] border border-sky-100/60 text-slate-900 font-semibold focus:outline-none focus:border-blue-400"
             />
           </div>
 
           <div>
-            <label className="block text-slate-700 font-medium mb-1.5">ชั่วโมงทุ่มเทการทำงาน (ชั่วโมง/สัปดาห์)</label>
+            <label className="block text-slate-800 font-medium mb-1.5">ชั่วโมงทุ่มเทการทำงาน (ชั่วโมง/สัปดาห์)</label>
             <input
               type="number"
               value={workHours}
               onChange={(e) => setWorkHours(Number(e.target.value))}
-              className="w-full px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-100/60 text-slate-900 font-semibold focus:outline-none focus:border-blue-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-[#f0f9ff] border border-sky-100/60 text-slate-900 font-semibold focus:outline-none focus:border-blue-400"
             />
           </div>
 
           <div>
-            <label className="block text-slate-700 font-medium mb-1.5">ค่าใช้จ่ายดำรงชีพครอบครัวต่อเดือน (บาท)</label>
+            <label className="block text-slate-800 font-medium mb-1.5">ค่าใช้จ่ายดำรงชีพครอบครัวต่อเดือน (บาท)</label>
             <input
               type="number"
               value={monthlyExpenses}
               onChange={(e) => setMonthlyExpenses(Number(e.target.value))}
-              className="w-full px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-100/60 text-slate-900 font-semibold focus:outline-none focus:border-blue-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-[#f0f9ff] border border-sky-100/60 text-slate-900 font-semibold focus:outline-none focus:border-blue-400"
             />
           </div>
         </div>
       </div>
 
       {/* 4 Milestones Roadmap (25%, 50%, 75%, 100%) */}
-      <div className="p-6 rounded-3xl bg-sky-50/90 border border-sky-100/60/90 backdrop-blur-xl shadow-2xl space-y-6">
+      <div className="p-6 rounded-3xl bg-[#f0f9ff]/90 border border-sky-100/60/90 backdrop-blur-xl shadow-2xl space-y-6">
         <div className="flex items-center justify-between border-b border-sky-100/60 pb-4">
           <div>
             <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
               <Award className="w-5 h-5 text-indigo-400" />
               <span>แผนบันได 4 ขั้นสู่ความสำเร็จ (4-Stage Milestone Roadmap)</span>
             </h3>
-            <p className="text-xs text-slate-700 mt-0.5">ติ๊กเครื่องหมายถูกเมื่อบรรลุหมุดหมายในแต่ละระดับ</p>
+            <p className="text-xs text-slate-800 mt-0.5">ติ๊กเครื่องหมายถูกเมื่อบรรลุหมุดหมายในแต่ละระดับ</p>
           </div>
           <span className="text-xs px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 font-semibold">
             ความคืบหน้ารวม {currentProgress}%
@@ -315,8 +315,8 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
           {/* Milestone 25% */}
           <div className={`p-5 rounded-2xl border transition-all ${
             milestoneCompleted.p25 
-              ? "bg-sky-50/90 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.15)]" 
-              : "bg-sky-50/60 border-sky-100/60"
+              ? "bg-[#f0f9ff]/90 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.15)]" 
+              : "bg-[#f0f9ff]/60 border-sky-100/60"
           }`}>
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-bold text-blue-400">Milestone 25%</span>
@@ -328,18 +328,18 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
               />
             </div>
             <h4 className="text-xs font-bold text-slate-900 mb-2">วางรากฐานทีม & ยอดส่วนตัว</h4>
-            <div className="space-y-1 text-[11px] text-slate-700">
+            <div className="space-y-1 text-[11px] text-slate-800">
               <div>รายได้เป้าหมาย: <strong className="text-emerald-400">฿{Math.round(monthlyGoal * 0.25).toLocaleString()}</strong></div>
               <div>สมาชิกในทีม: <strong className="text-slate-900">3-5 คน</strong></div>
-              <div>กำหนดเวลา: <span className="text-slate-700">มิ.ย. 2568</span></div>
+              <div>กำหนดเวลา: <span className="text-slate-800">มิ.ย. 2568</span></div>
             </div>
           </div>
 
           {/* Milestone 50% */}
           <div className={`p-5 rounded-2xl border transition-all ${
             milestoneCompleted.p50 
-              ? "bg-sky-50/90 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.15)]" 
-              : "bg-sky-50/60 border-sky-100/60"
+              ? "bg-[#f0f9ff]/90 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.15)]" 
+              : "bg-[#f0f9ff]/60 border-sky-100/60"
           }`}>
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-bold text-indigo-400">Milestone 50%</span>
@@ -351,18 +351,18 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
               />
             </div>
             <h4 className="text-xs font-bold text-slate-900 mb-2">ขยายสายงาน & สร้าง 1 UM</h4>
-            <div className="space-y-1 text-[11px] text-slate-700">
+            <div className="space-y-1 text-[11px] text-slate-800">
               <div>รายได้เป้าหมาย: <strong className="text-emerald-400">฿{Math.round(monthlyGoal * 0.5).toLocaleString()}</strong></div>
               <div>สมาชิกในทีม: <strong className="text-slate-900">7-10 คน</strong></div>
-              <div>กำหนดเวลา: <span className="text-slate-700">ธ.ค. 2568</span></div>
+              <div>กำหนดเวลา: <span className="text-slate-800">ธ.ค. 2568</span></div>
             </div>
           </div>
 
           {/* Milestone 75% */}
           <div className={`p-5 rounded-2xl border transition-all ${
             milestoneCompleted.p75 
-              ? "bg-sky-50/90 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.15)]" 
-              : "bg-sky-50/60 border-sky-100/60"
+              ? "bg-[#f0f9ff]/90 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.15)]" 
+              : "bg-[#f0f9ff]/60 border-sky-100/60"
           }`}>
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-bold text-blue-600">Milestone 75%</span>
@@ -374,18 +374,18 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
               />
             </div>
             <h4 className="text-xs font-bold text-slate-900 mb-2">ระบบผู้นำขยายตัวต่อเนื่อง</h4>
-            <div className="space-y-1 text-[11px] text-slate-700">
+            <div className="space-y-1 text-[11px] text-slate-800">
               <div>รายได้เป้าหมาย: <strong className="text-emerald-400">฿{Math.round(monthlyGoal * 0.75).toLocaleString()}</strong></div>
               <div>สมาชิกในทีม: <strong className="text-slate-900">15-20 คน</strong></div>
-              <div>กำหนดเวลา: <span className="text-slate-700">มิ.ย. 2569</span></div>
+              <div>กำหนดเวลา: <span className="text-slate-800">มิ.ย. 2569</span></div>
             </div>
           </div>
 
           {/* Milestone 100% */}
           <div className={`p-5 rounded-2xl border transition-all ${
             milestoneCompleted.p100 
-              ? "bg-sky-50/90 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.15)]" 
-              : "bg-sky-50/60 border-sky-100/60"
+              ? "bg-[#f0f9ff]/90 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.15)]" 
+              : "bg-[#f0f9ff]/60 border-sky-100/60"
           }`}>
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-bold text-purple-400">Milestone 100%</span>
@@ -397,10 +397,10 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
               />
             </div>
             <h4 className="text-xs font-bold text-slate-900 mb-2">อิสรภาพทางการเงินสมบูรณ์</h4>
-            <div className="space-y-1 text-[11px] text-slate-700">
+            <div className="space-y-1 text-[11px] text-slate-800">
               <div>รายได้เป้าหมาย: <strong className="text-emerald-400">฿{monthlyGoal.toLocaleString()}</strong></div>
               <div>สมาชิกในทีม: <strong className="text-slate-900">30+ คน</strong></div>
-              <div>กำหนดเวลา: <span className="text-slate-700">ธ.ค. 2569</span></div>
+              <div>กำหนดเวลา: <span className="text-slate-800">ธ.ค. 2569</span></div>
             </div>
           </div>
 
