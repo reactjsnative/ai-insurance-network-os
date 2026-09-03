@@ -87,7 +87,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
                 {t('nav_home')}
               </span>
               <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-blue-600/10 text-blue-600 border border-blue-600/30 hidden sm:inline whitespace-nowrap">
-                องค์กร Enterprise 2026
+                AI Network
               </span>
             </div>
           </div>
@@ -116,7 +116,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
         <div className="lg:col-span-7 space-y-6">
           {/* Headline & Badge */}
           <div className="space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-600/10 border border-blue-600/20 text-[11px] font-bold tracking-widest uppercase text-blue-600"><span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />Financial Freedom • Global Network</div>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-600/10 border border-blue-600/20 text-[11px] font-bold tracking-widest uppercase text-blue-600"><span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />AI Network</div>
             <h1 className="text-left">
               <span className="block text-4xl sm:text-5xl lg:text-[56px] font-black tracking-[-0.03em] leading-[0.95] bg-gradient-to-r from-slate-900 via-blue-700 to-violet-600 bg-clip-text text-transparent">
                 {t('login_headline_1')}

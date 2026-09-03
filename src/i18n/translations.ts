@@ -353,7 +353,7 @@ export const translations = {
     auth_profile_settings: 'ข้อมูลโปรไฟล์และความปลอดภัย',
 
     // Login Gateway (WelcomeLoginGateway) — สากล สวย นุ่มนวล
-    login_freedom: 'Financial Freedom • Global Network',
+    login_freedom: 'AI Network',
     login_secure_badge: 'Enterprise-Grade Secure Access • Multi-OAuth Protected',
     login_headline_1: 'AI-POWERED NETWORK AUTOMATION',
     login_headline_2: 'AI AGENTS ทำงานให้คุณ 24 ชั่วโมง เชื่อมทุกขั้นตอนอัตโนมัติด้วย n8n Workflow Automation',
@@ -728,7 +728,7 @@ export const translations = {
     auth_profile_settings: 'Profile & Security Settings',
 
     // Login Gateway (WelcomeLoginGateway)
-    login_freedom: 'Financial Freedom',
+    login_freedom: 'AI Network',
     login_secure_badge: 'High-Security 4-Channel Sign-In (Multi-OAuth Protected)',
     login_headline_1: 'Power of AI Automation Network',
     login_headline_2: 'AI Agents Work for You 24/7 — N8N Automation Connects Every Step',
