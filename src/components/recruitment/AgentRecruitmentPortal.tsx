@@ -320,7 +320,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
               <UserPlus className="w-8 h-8 text-indigo-700" />
               {language === 'th' ? 'ระบบสมัครตัวแทนประกันชีวิต' : 'Agent Recruitment & Registration'}
             </h1>
-            <p className="text-slate-800 text-sm max-w-3xl leading-relaxed">
+            <p className="text-slate-900 text-sm max-w-3xl leading-relaxed font-semibold">
               {language === 'th' 
                 ? 'ระบบยื่นใบสมัครตัวแทนใหม่ ตรวจสอบคุณวุฒิใบอนุญาต คปภ. ผูกสายงานผู้แนะนำ วางเป้าหมายรายได้ FYC และอนุมัติบรรจุเข้าสู่ผังองค์กรแบบ Real-Time'
                 : 'Submit new agent applications, verify OIC license qualifications, assign network sponsors, project income goals, and instantly approve new team members into the network tree.'}
