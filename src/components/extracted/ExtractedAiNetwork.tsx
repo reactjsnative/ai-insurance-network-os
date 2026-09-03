@@ -2,13 +2,10 @@ import React, { useState } from 'react';
 import { ExternalLink, RefreshCw, Network, Home } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 
-// Stable production deployment of the extracted "AI Insurance Network & Team Builder"
-// (same bundle as the preview URL https://extracted-ai-network-4o3epgsa0-ak-e11e.vercel.app).
-const EXTRACTED_APP_URL = 'https://extracted-ai-network-ak-e11e.vercel.app/';
-
 // Local same-origin copy (served from public/extracted-app/) so the parent can
 // deep-link into each section via URL hash (#<tab>).
 const EXTRACTED_LOCAL_URL = '/extracted-app/';
+const EXTRACTED_APP_URL = `${typeof window !== 'undefined' ? window.location.origin : ''}/extracted-app/`;
 
 const TAB_LABELS: Record<string, string> = {
   dashboard: 'ภาพรวมระบบ (Dashboard)',
