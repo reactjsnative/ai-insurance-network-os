@@ -76,27 +76,24 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
       <div className="absolute top-1/2 right-1/4 w-80 h-80 bg-pink-500/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Top Header Bar */}
-      <header className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between relative z-10">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 flex items-center justify-center shadow-[0_1px_3px_rgba(148,163,184,0.08)] shadow-amber-500/20 text-slate-950 font-black text-xl shrink-0">
-            OS
-          </div>
-          <div>
-            <div className="text-[10px] font-bold text-blue-600 tracking-wider uppercase">
+      <header className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between gap-4 relative z-10">
+        <div className="flex items-center gap-3 shrink-0 min-w-0">
+          <div className="min-w-0">
+            <div className="text-[10px] font-bold text-blue-600 tracking-wider uppercase whitespace-nowrap">
               {t('login_freedom')}
             </div>
-            <div className="flex items-center gap-2">
-              <span className="font-extrabold text-slate-900 tracking-tight text-base sm:text-lg">
-                AI INSURANCE <span className="text-blue-600">NETWORK OS</span>
+            <div className="flex items-center gap-2 whitespace-nowrap">
+              <span className="font-black tracking-tight text-base sm:text-lg bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent shrink-0">
+                {t('nav_home')}
               </span>
-              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-blue-600/10 text-blue-600 border border-blue-600/30 hidden sm:inline">
+              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-blue-600/10 text-blue-600 border border-blue-600/30 hidden sm:inline whitespace-nowrap">
                 องค์กร Enterprise 2026
               </span>
             </div>
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 shrink-0">
           {/* Language Switcher */}
           <button
             id="btn-gateway-lang"
