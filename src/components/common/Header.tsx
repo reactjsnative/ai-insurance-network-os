@@ -97,15 +97,15 @@ export const Header: React.FC = () => {
             OS
           </div>
           <div className="hidden sm:block">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 whitespace-nowrap">
               <h1 className="font-extrabold text-slate-900 tracking-tight text-xs sm:text-sm">
                 {t('nav_home')}
               </h1>
               <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-blue-600/10 text-blue-600 border border-blue-600/30">
                 {t('plan_badge')}
               </span>
+              <span className="text-[11px] text-slate-800 font-medium">{t('app_subtitle')}</span>
             </div>
-            <p className="text-[11px] text-slate-800 font-medium">{t('app_subtitle')}</p>
           </div>
           </button>
         </div>
