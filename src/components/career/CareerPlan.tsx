@@ -949,7 +949,7 @@ const InfiniteNetworkTree: React.FC<{
                       key={n.id}
                       onClick={() => setSelectedNode({ name: n.name, gen: n.gen, com: n.com, role: role.label })}
                       className={`group relative flex flex-col items-center p-2 rounded-xl border bg-[#fcfdff]/80 transition-all hover:-translate-y-0.5 ${
-                        isSel ? `${role.ring} ring-2 ring-rose-400/40` : 'border-sky-50/40 hover:border-slate-600'
+                        isSel ? `${role.ring} ring-2 ring-rose-400/40` : 'border-sky-50/40 hover:border-blue-300/50 hover:shadow-[0_2px_8px_rgba(148,163,184,0.10)]'
                       }`}
                       title={`${n.name} • ${role.label}`}
                     >

@@ -59,7 +59,7 @@ const TreeNodeComponent: React.FC<TreeNodeProps> = ({
   const incomeRes = allMemberResults.get(member.id);
 
   // Position border & accent styling
-  let borderClass = 'border-sky-50/40 hover:border-slate-500';
+  let borderClass = 'border-sky-50/40 hover:border-blue-300/60 hover:shadow-[0_2px_8px_rgba(148,163,184,0.12)] transition-all duration-300';
   let badgeBg = 'bg-[#f0f9ff] text-slate-800';
   if (member.position === 'GROUP_MANAGER') {
     borderClass = 'border-blue-600/80 shadow-amber-500/10 shadow-[0_1px_3px_rgba(148,163,184,0.08)]';

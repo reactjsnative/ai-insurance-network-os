@@ -48,6 +48,45 @@ export default async function handler(req, res) {
     }
   }
 
-  res.setHeader('Allow', 'GET, POST');
+  if (req.method === 'DELETE') {
+    if (!admin) {
+      return res.status(501).json({ ok: false, error: 'ADMIN_NOT_CONFIGURED' });
+    }
+    try {
+      const { memberIds, purgeNonRegistered } = req.body || {};
+      let deleted = 0;
+      if (Array.isArray(memberIds) && memberIds.length) {
+        // Delete by explicit id list.
+        for (const id of memberIds) {
+          await admin.db.collection('members').doc(String(id)).delete();
+          deleted++;
+        }
+        return res.json({ ok: true, deleted });
+      }
+      if (purgeNonRegistered) {
+        // Delete members who never actually registered: placeholder records
+        // with no real identity (empty name, email and phone).
+        const snap = await admin.db.collection('members').get();
+        const toDelete = [];
+        snap.docs.forEach((d) => {
+          const m = d.data();
+          const name = String(m?.name || '').trim();
+          const email = String(m?.email || '').trim();
+          const phone = String(m?.phone || '').trim();
+          if (!name && !email && !phone) toDelete.push(d.id);
+        });
+        for (const id of toDelete) {
+          await admin.db.collection('members').doc(id).delete();
+          deleted++;
+        }
+        return res.json({ ok: true, deleted });
+      }
+      return res.status(400).json({ ok: false, error: 'memberIds or purgeNonRegistered required' });
+    } catch (e) {
+      return res.status(500).json({ ok: false, error: e?.message || 'delete failed' });
+    }
+  }
+
+  res.setHeader('Allow', 'GET, POST, DELETE');
   return res.status(405).json({ ok: false, error: 'Method not allowed' });
 }

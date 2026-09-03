@@ -14,7 +14,7 @@ import {
   RegisterCredentials
 } from '../types';
 import { DEFAULT_POSITIONS, INITIAL_PLAN_VERSION } from '../engine/compensationRules';
-import { INITIAL_MEMBERS, INITIAL_AUDIT_LOGS, ROOT_LEADER } from '../data/initialData';
+import { INITIAL_AUDIT_LOGS, ROOT_LEADER } from '../data/initialData';
 import { calculateTotalIncome, calculateDownlineMetrics } from '../engine/calculationEngine';
 import { validateMemberRelationships } from '../engine/validation';
 import { translations, Language } from '../i18n/translations';
@@ -239,7 +239,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const [members, setMembers] = useState<Member[]>(() => {
     const saved = safeGet('insure_os_members_v3');
-    return saved ? JSON.parse(saved) : INITIAL_MEMBERS;
+    return saved ? JSON.parse(saved) : [];
   });
 
   const [positions, setPositions] = useState<Position[]>(DEFAULT_POSITIONS);
@@ -253,21 +253,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   useEffect(() => {
     try {
       const unsub = onSnapshot(collection(db, 'members'), (snapshot) => {
-        if (!snapshot.empty) {
-          const remoteMembers: Member[] = [];
-          snapshot.forEach(docSnap => {
-            remoteMembers.push(docSnap.data() as Member);
-          });
-          setMembers(remoteMembers);
-          safeSet('insure_os_members_v3', JSON.stringify(remoteMembers));
-        } else {
-          // Auto-seed Firestore on initial setup
-          INITIAL_MEMBERS.forEach(m => {
-            setDoc(doc(db, 'members', m.id), m).catch(err => {
-              handleFirestoreError(err, OperationType.CREATE, `members/${m.id}`);
-            });
-          });
-        }
+        const remoteMembers: Member[] = [];
+        snapshot.forEach(docSnap => {
+          remoteMembers.push(docSnap.data() as Member);
+        });
+        setMembers(remoteMembers);
+        safeSet('insure_os_members_v3', JSON.stringify(remoteMembers));
       }, (error) => {
         handleFirestoreError(error, OperationType.GET, 'members');
       });

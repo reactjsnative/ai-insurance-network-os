@@ -193,8 +193,25 @@ export const OrganizationNetwork: React.FC = () => {
           }}
         />
 
+        {/* Empty state: no members yet */}
+        {members.length === 0 && (
+          <div className="relative z-10 text-center space-y-4 max-w-xl">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#f0f9ff] border border-sky-50/40">
+              <Users className="w-8 h-8 text-blue-600" />
+            </div>
+            <h3 className="text-lg font-bold text-slate-800">{t('network_empty_title')}</h3>
+            <p className="text-sm text-slate-600">{t('network_empty_desc')}</p>
+            <button
+              onClick={() => setActiveTab('members_mgmt')}
+              className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-all shadow-md"
+            >
+              {t('nav_members_mgmt')}
+            </button>
+          </div>
+        )}
+
         {/* View Mode 1: Tree View */}
-        {selectedNetworkView === 'tree' && (
+        {members.length > 0 && selectedNetworkView === 'tree' && (
           <div 
             className="w-full h-full overflow-auto py-8 transition-transform duration-200"
             style={{ transform: `scale(${zoomLevel})`, transformOrigin: 'top center' }}
@@ -243,7 +260,7 @@ export const OrganizationNetwork: React.FC = () => {
         )}
 
         {/* View Mode 2: Radial Network Orbit */}
-        {selectedNetworkView === 'radial' && (
+        {members.length > 0 && selectedNetworkView === 'radial' && (
           <div 
             className="relative w-full h-[520px] flex items-center justify-center transition-transform duration-200"
             style={{ transform: `scale(${zoomLevel})` }}
@@ -309,7 +326,7 @@ export const OrganizationNetwork: React.FC = () => {
         )}
 
         {/* View Mode 3: Galaxy View */}
-        {selectedNetworkView === 'galaxy' && (
+        {members.length > 0 && selectedNetworkView === 'galaxy' && (
           <div 
             className="w-full h-[520px] relative overflow-hidden flex items-center justify-center"
             style={{ transform: `scale(${zoomLevel})` }}
@@ -364,7 +381,7 @@ export const OrganizationNetwork: React.FC = () => {
         )}
 
         {/* View Mode 4: Geo Thailand Regional Map */}
-        {selectedNetworkView === 'geo' && (
+        {members.length > 0 && selectedNetworkView === 'geo' && (
           <div className="w-full h-[520px] p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 z-10 overflow-y-auto">
             {['Bangkok & Metro', 'Northern', 'Northeastern', 'Southern'].map((regionName) => {
               const regionMembers = members.filter(m => m.location.region === regionName);
