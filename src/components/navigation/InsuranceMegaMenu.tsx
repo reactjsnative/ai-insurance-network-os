@@ -93,10 +93,7 @@ export default function InsuranceMegaMenu() {
   return (
     <header ref={ref} className="relative z-50 border-b border-sky-50/40 bg-white">
       <nav className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-5" aria-label="เมนูหลัก">
-        <a href="/" className="flex items-center gap-3" onClick={(e)=>{e.preventDefault(); go("dashboard");}} title={t('nav_home')}>
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white font-black">OS</span>
-        </a>
-
+        <div className="flex items-center gap-3"></div>
         <div className="hidden h-full items-center gap-1 lg:flex">
           <button
             onClick={() => setDesktopOpen(v=>!v)}
