@@ -65,7 +65,7 @@ export default function MegaMenu() {
   return (
     <header
       ref={navigationRef}
-      className="relative z-50 border-b border-sky-100/60 bg-[#f0f9ff]"
+      className="relative z-50 border-b border-sky-100/60 bg-white"
     >
       <nav
         className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5"
@@ -150,17 +150,17 @@ export default function MegaMenu() {
             type="button"
             aria-label="ปิดเมนู"
             onClick={() => setDesktopOpen(false)}
-            className="fixed inset-0 top-20 z-40 hidden cursor-default bg-[#f0f9ff]/50 backdrop-blur-[2px] lg:block"
+            className="fixed inset-0 top-20 z-40 hidden cursor-default bg-white/50 backdrop-blur-[2px] lg:block"
           />
 
           <section
             id="products-mega-menu"
             role="menu"
             aria-label="รายการเมนู"
-            className="absolute left-1/2 top-[92px] z-50 hidden w-[min(94vw,1400px)] -translate-x-1/2 overflow-hidden rounded-2xl border border-sky-100/60 bg-[#f0f9ff] shadow-2xl lg:block"
+            className="absolute left-1/2 top-[92px] z-50 hidden w-[min(94vw,1400px)] -translate-x-1/2 overflow-hidden rounded-2xl border border-sky-100/60 bg-white shadow-2xl lg:block"
           >
             <div className="grid min-h-[520px] grid-cols-[320px_1fr]">
-              <aside className="border-r border-sky-100/60 bg-[#f0f9ff] p-7">
+              <aside className="border-r border-sky-100/60 bg-white p-7">
                 <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-slate-800">
                   หมวดหมู่
                 </p>
@@ -187,14 +187,14 @@ export default function MegaMenu() {
                         className={`flex w-full items-center gap-3 rounded-xl p-3 text-left transition ${
                           selected
                             ? "bg-blue-100 text-blue-700"
-                            : "text-slate-800 hover:bg-[#f0f9ff] hover:text-blue-600"
+                            : "text-slate-800 hover:bg-white hover:text-blue-600"
                         }`}
                       >
                         <span
                           className={`grid h-10 w-10 place-items-center rounded-full ${
                             selected
                               ? "bg-blue-600 text-slate-900"
-                              : "bg-[#f0f9ff] text-slate-800"
+                              : "bg-white text-slate-800"
                           }`}
                         >
                           <Icon className="h-5 w-5" />
@@ -235,7 +235,7 @@ export default function MegaMenu() {
                     </a>
                   </div>
 
-                  <div className="absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-[#f0f9ff]/10" />
+                  <div className="absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-white/10" />
                   <div className="absolute right-20 top-8 h-32 w-32 rounded-full bg-blue-300/10" />
                 </div>
 
@@ -275,7 +275,7 @@ export default function MegaMenu() {
       )}
 
       {mobileOpen && (
-        <div className="fixed inset-0 z-[70] bg-[#f0f9ff] lg:hidden">
+        <div className="fixed inset-0 z-[70] bg-white lg:hidden">
           <div className="flex h-20 items-center justify-between border-b px-5">
             <span className="text-xl font-bold text-slate-900">
               ชื่อแบรนด์
@@ -329,7 +329,7 @@ export default function MegaMenu() {
                     </button>
 
                     {expanded && (
-                      <div className="space-y-2 border-t bg-[#f0f9ff] p-3">
+                      <div className="space-y-2 border-t bg-white p-3">
                         {category.links.map((link) => {
                           const LinkIcon = link.icon;
 
@@ -338,7 +338,7 @@ export default function MegaMenu() {
                               key={link.href}
                               href={link.href}
                               onClick={() => setMobileOpen(false)}
-                              className="flex gap-3 rounded-lg bg-[#f0f9ff] p-3"
+                              className="flex gap-3 rounded-lg bg-white p-3"
                             >
                               <LinkIcon className="mt-0.5 h-5 w-5 shrink-0 text-blue-600" />
 
