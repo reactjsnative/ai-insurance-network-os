@@ -356,7 +356,7 @@ export const translations = {
     login_freedom: 'Financial Freedom • Global Network',
     login_secure_badge: 'Enterprise-Grade Secure Access • Multi-OAuth Protected',
     login_headline_1: 'AI-POWERED NETWORK AUTOMATION',
-    login_headline_2: 'AI AGENTS ทำงานให้คุณ 24/7 — เชื่อมทุกขั้นตอนอัตโนมัติด้วย n8n Workflow Automation',
+    login_headline_2: 'AI AGENTS ทำงานให้คุณ 24 ชั่วโมง เชื่อมทุกขั้นตอนอัตโนมัติด้วย n8n Workflow Automation',
     login_title: 'เข้าสู่ระบบ',
     login_create_account: 'สร้างบัญชีของคุณ',
     login_with_google: 'ดำเนินการต่อด้วย Google',
