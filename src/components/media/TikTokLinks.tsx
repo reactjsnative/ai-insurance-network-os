@@ -113,13 +113,13 @@ export const TikTokLinks: React.FC = () => {
   };
 
   return (
-    <div id="tiktok_links_view" className="space-y-6 max-w-5xl mx-auto pb-16 text-left">
+    <div className="space-y-5">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-slate-100 flex items-center gap-2">
             <Music2 className="w-6 h-6 text-amber-400" />
-            {t('nav_tiktok_links')}
+            {t('social_sub_tiktok')}
           </h1>
           <p className="text-sm text-slate-400 mt-1">
             ลิงก์ TikTok ของทีมและตัวแทน เพื่อต่อยอดการตลาดออนไลน์
