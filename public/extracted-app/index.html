@@ -258,5 +258,23 @@
         }catch(e){}
       })();
     </script>
+
+    <script>
+      // FINAL CLEAR - ลบ 4 รหัสค้าง Super Admin ให้หมด
+      (function(){
+        try{
+          var v = localStorage.getItem("_cleanup_v3");
+          if(v !== "done"){
+            localStorage.removeItem("ai_insurance_members_v2");
+            localStorage.removeItem("ai_insurance_audit_logs_v2");
+            localStorage.removeItem("ai_insurance_rules_v2");
+            localStorage.removeItem("ai_insurance_placement_settings_v2");
+            localStorage.setItem("_cleanup_v3","done");
+            console.log("[FINAL] cleared all 4 Super Admin codes");
+            setTimeout(function(){ location.reload(); }, 700);
+          }
+        }catch(e){}
+      })();
+    </script>
 </body>
 </html>
