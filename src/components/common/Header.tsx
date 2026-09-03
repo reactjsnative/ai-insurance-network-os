@@ -18,7 +18,8 @@ import {
   Link2,
   KeyRound,
   Cloud,
-  Database
+  Database,
+  Home
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { GoogleIcon, TikTokIcon, FacebookIcon } from '../auth/SocialOAuthPopup';
@@ -92,11 +93,11 @@ export const Header: React.FC = () => {
   return (
     <>
       <header id="app_header" className="h-16 border-b border-sky-50/40 bg-[#fcfdff]/95 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between sticky top-0 z-40 isolate flex-wrap">
-        {/* Left: Brand / Title — ซ่อนปุ่มกลับหน้าแรกเมื่ออยู่หน้า dashboard แล้ว */}
-        {activeTab !== 'dashboard' && (
+        {/* Left: Brand / Title — มีโลโก้บ้านหน้าเมนู + หน้าแรก/Home ตามภาษา */}
         <div className="flex items-center gap-3 shrink-0">
           <button onClick={() => setActiveTab('dashboard')} title={t('nav_home')} className="group flex items-center gap-2.5 text-left rounded-xl px-2 py-1.5 -ml-2 transition-all duration-200 hover:bg-blue-50 hover:shadow-sm active:bg-blue-100 active:scale-[0.97]">
           <div className="flex items-center gap-2 whitespace-nowrap">
+              <Home className="w-4 h-4 text-blue-600 shrink-0" />
               <h1 className="font-black tracking-tight text-base sm:text-lg bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent transition-all duration-200 group-hover:from-blue-700 group-hover:via-indigo-700 group-hover:to-violet-700 group-active:scale-95">
                 {t('nav_home')}
               </h1>
@@ -108,7 +109,6 @@ export const Header: React.FC = () => {
           </div>
           </button>
         </div>
-        )}
 
         {/* Center: Global Search Bar */}
         <div className="relative max-w-md w-full mx-4 hidden md:block">
