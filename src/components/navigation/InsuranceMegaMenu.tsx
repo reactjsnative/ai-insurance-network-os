@@ -95,7 +95,6 @@ export default function InsuranceMegaMenu() {
       <nav className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-5" aria-label="เมนูหลัก">
         <a href="/" className="flex items-center gap-3" onClick={(e)=>{e.preventDefault(); go("dashboard");}} title={t('nav_home')}>
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white font-black">OS</span>
-          <span className="text-[13px] font-bold text-slate-900 tracking-tight">{t('nav_home')}</span>
         </a>
 
         <div className="hidden h-full items-center gap-1 lg:flex">

@@ -97,7 +97,7 @@ export const Header: React.FC = () => {
             OS
           </div>
           <div className="hidden sm:block">
-            <div className="flex items-center gap-2 whitespace-nowrap">
+            <div className="flex items-center gap-2">
               <h1 className="font-extrabold text-slate-900 tracking-tight text-base sm:text-lg">
                 {t('nav_home')}
               </h1>
@@ -105,6 +105,7 @@ export const Header: React.FC = () => {
                 {t('plan_badge')}
               </span>
             </div>
+            <p className="text-sm text-slate-900 font-semibold mt-0.5">{t('app_subtitle')}</p>
           </div>
           </button>
         </div>
