@@ -205,7 +205,7 @@
     </script>
   
     <script>
-      // Auto-cleanup: ลบสมาชิกปลอม + อัปเดทวันเวลาเป็นปัจจุบัน (ใช้งานจริง)
+      // Force cleanup - ลบสมาชิกปลอมทั้งหมดที่ค้างในระบบ (v2)
       (function () {
         try {
           var today = new Date().toISOString().slice(0,10);
@@ -237,6 +237,25 @@
           dateInputs.forEach(function(inp){ if(!inp.value) inp.value = today; });
           console.log("[extracted-app] Auto-cleanup done, date:", today);
         } catch(e){ console.log("cleanup error", e); }
+      })();
+    </script>
+
+    <script>
+      // FORCE CLEAR fake members - aggressive v2
+      (function(){
+        try{
+          var raw=localStorage.getItem("ai_insurance_members_v2");
+          if(raw){
+            var arr=JSON.parse(raw);
+            var hasFake = arr.some(function(m){ var e=(m.email||"").toLowerCase(); return e.indexOf("insurance.co.th")!==-1 || e.indexOf("demo@example")!==-1; });
+            if(hasFake && arr.length>3){
+              localStorage.removeItem("ai_insurance_members_v2");
+              localStorage.removeItem("ai_insurance_audit_logs_v2");
+              console.log("[FORCE] cleared fake members");
+              setTimeout(function(){ location.reload(); }, 600);
+            }
+          }
+        }catch(e){}
       })();
     </script>
 </body>
