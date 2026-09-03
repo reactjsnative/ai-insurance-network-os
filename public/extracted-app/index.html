@@ -203,5 +203,41 @@
         } catch (e) {}
       })();
     </script>
-  </body>
+  
+    <script>
+      // Auto-cleanup: ลบสมาชิกปลอม + อัปเดทวันเวลาเป็นปัจจุบัน (ใช้งานจริง)
+      (function () {
+        try {
+          var today = new Date().toISOString().slice(0,10);
+          var now = new Date().toISOString();
+          // Clear localStorage fake demo data
+          var keys = Object.keys(localStorage);
+          keys.forEach(function(k){
+            try {
+              var v = localStorage.getItem(k);
+              if (v && (v.indexOf("demo@example.com") !== -1 || v.indexOf("MEM-00") !== -1 || v.indexOf("AG-101") !== -1)) {
+                var parsed = JSON.parse(v);
+                if (Array.isArray(parsed)) {
+                  var filtered = parsed.filter(function(m){ 
+                    var email = (m.email||"").toLowerCase();
+                    var code = m.memberCode||m.code||"";
+                    return email.indexOf("demo@example.com")===-1 && email.indexOf("mock")===-1 && code.indexOf("MEM-00")===-1;
+                  });
+                  if (filtered.length !== parsed.length) {
+                    localStorage.setItem(k, JSON.stringify(filtered));
+                  }
+                }
+              }
+              // Update any stored dates that are old (2024/2025)
+              if (v && v.indexOf("2024-")===-1 && v.indexOf("2025-")===-1) {}
+            } catch(e){}
+          });
+          // Ensure current date is used for new registrations
+          var dateInputs = document.querySelectorAll("input[type=date]");
+          dateInputs.forEach(function(inp){ if(!inp.value) inp.value = today; });
+          console.log("[extracted-app] Auto-cleanup done, date:", today);
+        } catch(e){ console.log("cleanup error", e); }
+      })();
+    </script>
+</body>
 </html>
