@@ -91,7 +91,7 @@ export default function MegaMenu() {
             className={`flex h-full items-center gap-2 border-b-2 px-1 font-medium transition ${
               desktopOpen
                 ? "border-blue-600 text-blue-600"
-                : "border-transparent text-slate-700 hover:text-blue-600"
+                : "border-transparent text-blue-600 hover:text-blue-700"
             }`}
           >
             เมนู
@@ -104,14 +104,14 @@ export default function MegaMenu() {
 
           <a
             href="/about"
-            className="font-medium text-slate-700 hover:text-blue-600"
+            className="font-medium text-blue-600 hover:text-blue-700"
           >
             เกี่ยวกับเรา
           </a>
 
           <a
             href="/contact"
-            className="font-medium text-slate-700 hover:text-blue-600"
+            className="font-medium text-blue-600 hover:text-blue-700"
           >
             ติดต่อเรา
           </a>

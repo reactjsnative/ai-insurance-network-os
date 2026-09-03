@@ -103,13 +103,13 @@ export default function InsuranceMegaMenu() {
           <button
             onClick={() => setDesktopOpen(v=>!v)}
             aria-expanded={desktopOpen}
-            className={`flex h-full items-center gap-2 border-b-2 px-3 text-[13px] font-bold transition ${desktopOpen ? "border-blue-600 text-blue-600" : "border-transparent text-slate-700 hover:text-blue-600"}`}
+            className={`flex h-full items-center gap-2 border-b-2 px-3 text-[13px] font-bold transition ${desktopOpen ? "border-blue-600 text-blue-600" : "border-transparent text-blue-600 hover:text-blue-700"}`}
           >
             เมนู <ChevronDown className={`h-4 w-4 transition-transform ${desktopOpen ? "rotate-180" : ""}`} />
           </button>
-          <button onClick={()=>go("dashboard")} className="px-3 text-[13px] font-semibold text-slate-700 hover:text-blue-600">แดชบอร์ด</button>
-          <button onClick={()=>go("recruit_agent")} className="px-3 text-[13px] font-semibold text-slate-700 hover:text-blue-600">สมัครตัวแทน</button>
-          <button onClick={()=>go("members_mgmt")} className="px-3 text-[13px] font-semibold text-slate-700 hover:text-blue-600">จัดการสมาชิก</button>
+          <button onClick={()=>go("dashboard")} className="px-3 text-[13px] font-semibold text-blue-600 hover:text-blue-700">แดชบอร์ด</button>
+          <button onClick={()=>go("recruit_agent")} className="px-3 text-[13px] font-semibold text-blue-600 hover:text-blue-700">สมัครตัวแทน</button>
+          <button onClick={()=>go("members_mgmt")} className="px-3 text-[13px] font-semibold text-blue-600 hover:text-blue-700">จัดการสมาชิก</button>
         </div>
 
         <div className="hidden items-center gap-2 lg:flex">
