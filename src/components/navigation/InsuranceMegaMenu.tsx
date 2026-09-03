@@ -72,7 +72,7 @@ const categories: MegaCategory[] = [
 ];
 
 export default function InsuranceMegaMenu() {
-  const { setActiveTab } = useApp();
+  const { setActiveTab, t } = useApp();
   const [desktopOpen, setDesktopOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeId, setActiveId] = useState(categories[0].id);
@@ -93,9 +93,9 @@ export default function InsuranceMegaMenu() {
   return (
     <header ref={ref} className="relative z-50 border-b border-sky-50/40 bg-white">
       <nav className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-5" aria-label="เมนูหลัก">
-        <a href="/" className="flex items-center gap-3" onClick={(e)=>{e.preventDefault(); go("dashboard");}} title="กลับหน้า Home">
+        <a href="/" className="flex items-center gap-3" onClick={(e)=>{e.preventDefault(); go("dashboard");}} title={t('nav_home')}>
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white font-black">OS</span>
-          <span className="text-[15px] font-black text-slate-900 tracking-tight">AI INSURANCE NETWORK OS</span>
+          <span className="text-[15px] font-black text-slate-900 tracking-tight">{t('nav_home')}</span>
         </a>
 
         <div className="hidden h-full items-center gap-1 lg:flex">

@@ -30,6 +30,7 @@ export const translations = {
 
     // Sidebar
     menu_core: 'เมนูหลัก',
+    nav_home: 'หน้าแรก',
     nav_dashboard: 'แดชบอร์ดผู้บริหาร',
     nav_network_success: 'Network Success (เครือข่ายความสำเร็จ)',
     nav_network_success_team_goal: 'Our team goal (เป้าหมายทีมของเรา)',
@@ -402,6 +403,7 @@ export const translations = {
 
     // Sidebar
     menu_core: 'Core Modules',
+    nav_home: 'Home',
     nav_dashboard: 'Executive Dashboard',
     nav_network_success: 'Network Success',
     nav_network_success_team_goal: 'Our team goal',
