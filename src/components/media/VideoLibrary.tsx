@@ -169,7 +169,7 @@ export const VideoLibrary: React.FC = () => {
             <Video className="w-6 h-6 text-amber-400" />
             {t('nav_video_library')}
           </h1>
-          <p className="text-sm text-slate-600 mt-1">
+          <p className="text-sm text-slate-700 mt-1">
             คลังวีดีโอความรู้ สอนการใช้งาน และกลยุทธ์เครือข่ายสำหรับตัวแทน
           </p>
         </div>
@@ -249,7 +249,7 @@ export const VideoLibrary: React.FC = () => {
                 />
               )
             ) : (
-              <div className="flex items-center justify-center h-full text-slate-600 text-sm">
+              <div className="flex items-center justify-center h-full text-slate-700 text-sm">
                 ยังไม่มีวีดีโอ
               </div>
             )}
@@ -259,7 +259,7 @@ export const VideoLibrary: React.FC = () => {
               <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                 <Play className="w-4 h-4 text-amber-400" /> {activeVideo.title}
               </h2>
-              <div className="flex flex-wrap items-center gap-2 mt-2 text-[11px] text-slate-600">
+              <div className="flex flex-wrap items-center gap-2 mt-2 text-[11px] text-slate-700">
                 <span className="px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
                   {activeVideo.category}
                 </span>
@@ -291,7 +291,7 @@ export const VideoLibrary: React.FC = () => {
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-semibold text-slate-800 truncate">{v.title}</p>
-                  <p className="text-[10px] text-slate-600 truncate">{v.category}</p>
+                  <p className="text-[10px] text-slate-700 truncate">{v.category}</p>
                 </div>
                 <button
                   id={`btn_del_video_${v.id}`}
@@ -299,14 +299,14 @@ export const VideoLibrary: React.FC = () => {
                     e.stopPropagation();
                     handleDelete(v.id);
                   }}
-                  className="opacity-0 group-hover:opacity-100 p-1.5 rounded-lg text-slate-600 hover:text-red-400 hover:bg-red-500/10 transition-all"
+                  className="opacity-0 group-hover:opacity-100 p-1.5 rounded-lg text-slate-700 hover:text-red-400 hover:bg-red-500/10 transition-all"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                 </button>
               </div>
             ))}
             {videos.length === 0 && (
-              <p className="text-sm text-slate-600 px-1 py-4 text-center">ยังไม่มีวีดีโอในคลัง</p>
+              <p className="text-sm text-slate-700 px-1 py-4 text-center">ยังไม่มีวีดีโอในคลัง</p>
             )}
           </div>
         </div>

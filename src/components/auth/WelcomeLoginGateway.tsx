@@ -210,7 +210,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
             {/* Divider */}
             <div className="relative flex items-center justify-center">
               <div className="border-t border-slate-200 w-full" />
-              <span className="bg-white px-3 text-[11px] font-semibold text-slate-600 uppercase tracking-wider relative">
+              <span className="bg-white px-3 text-[11px] font-semibold text-slate-700 uppercase tracking-wider relative">
                 {t('login_or_email')}
               </span>
             </div>
@@ -223,7 +223,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
                   {t('login_email_label')}
                 </label>
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-slate-600 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <Mail className="w-4 h-4 text-slate-700 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     id="gateway-input-email"
                     type="email"
@@ -251,7 +251,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
                   </button>
                 </div>
                 <div className="relative">
-                  <Lock className="w-4 h-4 text-slate-600 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <Lock className="w-4 h-4 text-slate-700 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     id="gateway-input-password"
                     type={showPassword ? 'text' : 'password'}
@@ -264,7 +264,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-600 hover:text-slate-800 cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-700 hover:text-slate-800 cursor-pointer"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -273,7 +273,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
 
               {/* Remember Me Checkbox */}
               <div className="flex items-center justify-between text-xs">
-                <label className="flex items-center gap-2 text-slate-600 cursor-pointer">
+                <label className="flex items-center gap-2 text-slate-700 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={rememberMe}
@@ -304,7 +304,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
 
             {/* Bottom Register Prompt */}
             <div className="pt-4 border-t border-slate-200 text-center space-y-2">
-              <p className="text-xs text-slate-600">
+              <p className="text-xs text-slate-700">
                 {t('login_register_prompt')}
               </p>
               <button
@@ -322,7 +322,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
       </main>
 
       {/* Footer — copyright only (i18n) */}
-      <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 border-t border-slate-900 text-center text-xs text-slate-600 relative z-10">
+      <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 border-t border-slate-900 text-center text-xs text-slate-700 relative z-10">
         {t('login_copyright')}
       </footer>
     </div>

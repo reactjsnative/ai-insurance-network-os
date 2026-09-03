@@ -33,12 +33,12 @@ const AppContent: React.FC = () => {
       </main>
 
       {/* 4. Footer */}
-      <footer className="border-t border-slate-200/80 bg-white py-6 text-center text-xs text-slate-600">
+      <footer className="border-t border-slate-200/80 bg-white py-6 text-center text-xs text-slate-700">
         <div className="max-w-7xl mx-auto px-4 space-y-1">
-          <p className="font-medium text-slate-600">
+          <p className="font-medium text-slate-700">
             AI Insurance Network Income Simulator &copy; {new Date().getFullYear()} — All Rights Reserved.
           </p>
-          <p className="text-[11px] text-slate-600">
+          <p className="text-[11px] text-slate-700">
             สร้างขึ้นเพื่อการจำลองโครงสร้างองค์กร วางแผนตำแหน่ง และประเมินผลประโยชน์ตัวแทนประกันชีวิตตามประกาศกติกา 15 มกราคม 2564
           </p>
         </div>

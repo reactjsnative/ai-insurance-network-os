@@ -96,7 +96,7 @@ const TreeNodeComponent: React.FC<TreeNodeProps> = ({
                 {member.name}
               </p>
               <div className="flex items-center gap-1 mt-0.5">
-                <span className="font-mono text-[10px] text-slate-600 font-semibold">{member.code}</span>
+                <span className="font-mono text-[10px] text-slate-700 font-semibold">{member.code}</span>
                 {member.nickname && (
                   <span className="text-[10px] text-amber-300 font-medium">({member.nickname})</span>
                 )}
@@ -110,7 +110,7 @@ const TreeNodeComponent: React.FC<TreeNodeProps> = ({
                 e.stopPropagation();
                 onEdit(member.id);
               }}
-              className="p-1 rounded-md text-slate-600 hover:text-white hover:bg-slate-100 transition-colors"
+              className="p-1 rounded-md text-slate-700 hover:text-white hover:bg-slate-100 transition-colors"
               title="แก้ไขข้อมูลสมาชิก"
             >
               <Edit2 className="w-3.5 h-3.5" />
@@ -141,15 +141,15 @@ const TreeNodeComponent: React.FC<TreeNodeProps> = ({
         {/* Sales & Rollup Stats */}
         <div className="mt-2.5 grid grid-cols-2 gap-1.5 text-[11px] bg-white/60 p-2 rounded-xl border border-slate-200/80">
           <div>
-            <span className="text-[10px] text-slate-600 block">ขายส่วนตัว:</span>
+            <span className="text-[10px] text-slate-700 block">ขายส่วนตัว:</span>
             <strong className="text-slate-800">{formatBaht(member.personalMonthlySales, false)}</strong>
           </div>
           <div>
-            <span className="text-[10px] text-slate-600 block">ยอดรวมทีม:</span>
+            <span className="text-[10px] text-slate-700 block">ยอดรวมทีม:</span>
             <strong className="text-blue-400">{formatBaht(stats?.totalMonthlySales || member.personalMonthlySales, false)}</strong>
           </div>
           <div className="col-span-2 pt-1 border-t border-slate-200/60 flex items-center justify-between">
-            <span className="text-[10px] text-slate-600">รายได้ประมาณการ/ด:</span>
+            <span className="text-[10px] text-slate-700">รายได้ประมาณการ/ด:</span>
             <strong className="text-amber-400">{formatBaht(incomeRes?.totalMonthlyIncome || 0, false)}</strong>
           </div>
         </div>
@@ -165,12 +165,12 @@ const TreeNodeComponent: React.FC<TreeNodeProps> = ({
           >
             {isExpanded ? (
               <>
-                <ChevronDown className="w-3.5 h-3.5 text-slate-600" />
+                <ChevronDown className="w-3.5 h-3.5 text-slate-700" />
                 <span>ย่อสายงาน ({children.length} คน)</span>
               </>
             ) : (
               <>
-                <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
+                <ChevronRight className="w-3.5 h-3.5 text-slate-700" />
                 <span>ขยายสายงาน ({children.length} คน)</span>
               </>
             )}
@@ -286,7 +286,7 @@ export const OrganizationTreeView: React.FC = () => {
         {/* Search & Filter */}
         <div className="flex flex-wrap items-center gap-2.5 flex-1">
           <div className="relative flex-1 min-w-[200px] max-w-sm">
-            <Search className="w-4 h-4 text-slate-600 absolute left-3 top-2.5" />
+            <Search className="w-4 h-4 text-slate-700 absolute left-3 top-2.5" />
             <input
               type="text"
               value={search}
@@ -315,7 +315,7 @@ export const OrganizationTreeView: React.FC = () => {
           <div className="flex items-center bg-slate-100 rounded-xl p-1 border border-slate-200">
             <button
               onClick={() => setZoom(z => Math.max(0.5, z - 0.1))}
-              className="p-1.5 rounded-lg text-slate-600 hover:text-white hover:bg-slate-200 transition-colors"
+              className="p-1.5 rounded-lg text-slate-700 hover:text-white hover:bg-slate-200 transition-colors"
               title="ย่อขนาด"
             >
               <ZoomOut className="w-3.5 h-3.5" />
@@ -323,14 +323,14 @@ export const OrganizationTreeView: React.FC = () => {
             <span className="text-[11px] font-mono font-bold text-slate-700 px-1.5">{Math.round(zoom * 100)}%</span>
             <button
               onClick={() => setZoom(z => Math.min(1.5, z + 0.1))}
-              className="p-1.5 rounded-lg text-slate-600 hover:text-white hover:bg-slate-200 transition-colors"
+              className="p-1.5 rounded-lg text-slate-700 hover:text-white hover:bg-slate-200 transition-colors"
               title="ขยายขนาด"
             >
               <ZoomIn className="w-3.5 h-3.5" />
             </button>
             <button
               onClick={() => setZoom(1)}
-              className="p-1.5 rounded-lg text-slate-600 hover:text-white hover:bg-slate-200 transition-colors"
+              className="p-1.5 rounded-lg text-slate-700 hover:text-white hover:bg-slate-200 transition-colors"
               title="รีเซ็ตขนาด 100%"
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -363,7 +363,7 @@ export const OrganizationTreeView: React.FC = () => {
       </div>
 
       {/* Legend & Duplicate Audit Badge */}
-      <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-600 bg-white/60 p-3 rounded-xl border border-slate-200">
+      <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-700 bg-white/60 p-3 rounded-xl border border-slate-200">
         <div className="flex flex-wrap items-center gap-3">
           <span className="font-semibold text-slate-700">สัญลักษณ์ตำแหน่ง:</span>
           <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-950/80 text-amber-300 border border-amber-600/60 text-[11px] font-semibold">

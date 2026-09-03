@@ -51,7 +51,7 @@ export const Navbar: React.FC = () => {
                   PRO
                 </span>
               </div>
-              <p className="text-[11px] text-slate-600 hidden sm:block">
+              <p className="text-[11px] text-slate-700 hidden sm:block">
                 ระบบจำลองโครงสร้างทีม เป้าหมายตำแหน่ง และรายได้ตัวแทน
               </p>
             </div>
@@ -59,7 +59,7 @@ export const Navbar: React.FC = () => {
 
           {/* Member Quick Switcher */}
           <div className="hidden lg:flex items-center gap-2 bg-slate-100/80 rounded-lg px-3 py-1.5 border border-slate-200">
-            <div className="flex items-center gap-1.5 text-xs text-slate-600">
+            <div className="flex items-center gap-1.5 text-xs text-slate-700">
               <UserCheck className="w-3.5 h-3.5 text-amber-400" />
               <span>กำลังดู:</span>
             </div>
@@ -123,7 +123,7 @@ export const Navbar: React.FC = () => {
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'DASHBOARD'
                 ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
-                : 'text-slate-600 hover:text-slate-800 hover:bg-slate-100/60'
+                : 'text-slate-700 hover:text-slate-800 hover:bg-slate-100/60'
             }`}
           >
             <LayoutDashboard className="w-4 h-4" />
@@ -135,7 +135,7 @@ export const Navbar: React.FC = () => {
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'TREE'
                 ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
-                : 'text-slate-600 hover:text-slate-800 hover:bg-slate-100/60'
+                : 'text-slate-700 hover:text-slate-800 hover:bg-slate-100/60'
             }`}
           >
             <Network className="w-4 h-4" />
@@ -150,7 +150,7 @@ export const Navbar: React.FC = () => {
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'CALCULATOR'
                 ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
-                : 'text-slate-600 hover:text-slate-800 hover:bg-slate-100/60'
+                : 'text-slate-700 hover:text-slate-800 hover:bg-slate-100/60'
             }`}
           >
             <Calculator className="w-4 h-4" />
@@ -162,7 +162,7 @@ export const Navbar: React.FC = () => {
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'GOAL'
                 ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
-                : 'text-slate-600 hover:text-slate-800 hover:bg-slate-100/60'
+                : 'text-slate-700 hover:text-slate-800 hover:bg-slate-100/60'
             }`}
           >
             <Target className="w-4 h-4" />
@@ -174,7 +174,7 @@ export const Navbar: React.FC = () => {
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'ADMIN'
                 ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
-                : 'text-slate-600 hover:text-slate-800 hover:bg-slate-100/60'
+                : 'text-slate-700 hover:text-slate-800 hover:bg-slate-100/60'
             }`}
           >
             <Settings className="w-4 h-4" />
@@ -186,7 +186,7 @@ export const Navbar: React.FC = () => {
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'UNIT_TESTS'
                 ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
-                : 'text-slate-600 hover:text-slate-800 hover:bg-slate-100/60'
+                : 'text-slate-700 hover:text-slate-800 hover:bg-slate-100/60'
             }`}
           >
             <CheckCircle2 className="w-4 h-4 text-emerald-400" />

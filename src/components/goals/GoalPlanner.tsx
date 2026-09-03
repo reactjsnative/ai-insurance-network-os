@@ -143,7 +143,7 @@ export const GoalPlanner: React.FC = () => {
             <button
               onClick={() => applyPreset('conservative')}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                selectedScenario === 'conservative' ? 'bg-slate-700 text-white' : 'text-slate-600 hover:text-white'
+                selectedScenario === 'conservative' ? 'bg-slate-700 text-white' : 'text-slate-700 hover:text-white'
               }`}
             >
               {language === 'th' ? 'ระมัดระวัง (250 คน)' : 'Conservative'}
@@ -151,7 +151,7 @@ export const GoalPlanner: React.FC = () => {
             <button
               onClick={() => applyPreset('standard')}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                selectedScenario === 'standard' ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30' : 'text-slate-600 hover:text-white'
+                selectedScenario === 'standard' ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30' : 'text-slate-700 hover:text-white'
               }`}
             >
               {language === 'th' ? 'มาตรฐาน (500 คน)' : 'Standard (500)'}
@@ -159,7 +159,7 @@ export const GoalPlanner: React.FC = () => {
             <button
               onClick={() => applyPreset('aggressive')}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                selectedScenario === 'aggressive' ? 'bg-amber-600 text-white shadow-lg shadow-amber-600/30' : 'text-slate-600 hover:text-white'
+                selectedScenario === 'aggressive' ? 'bg-amber-600 text-white shadow-lg shadow-amber-600/30' : 'text-slate-700 hover:text-white'
               }`}
             >
               {language === 'th' ? 'ก้าวกระโดด (1,000 คน)' : 'Aggressive (1k)'}
@@ -171,26 +171,26 @@ export const GoalPlanner: React.FC = () => {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-slate-200/80">
           <div className="bg-white/60 p-3.5 rounded-xl border border-slate-200/60">
             <p className="text-xs text-indigo-300 font-medium">{language === 'th' ? 'เป้าหมายสมาชิก Active' : 'Target Active Members'}</p>
-            <p className="text-2xl font-black text-white mt-1">{formatNumber(targetActiveMembers)} <span className="text-xs text-slate-600 font-normal">คน</span></p>
-            <p className="text-[11px] text-slate-600 mt-1">ในระยะเวลา {targetTimeMonths} เดือน</p>
+            <p className="text-2xl font-black text-white mt-1">{formatNumber(targetActiveMembers)} <span className="text-xs text-slate-700 font-normal">คน</span></p>
+            <p className="text-[11px] text-slate-700 mt-1">ในระยะเวลา {targetTimeMonths} เดือน</p>
           </div>
 
           <div className="bg-white/60 p-3.5 rounded-xl border border-slate-200/60">
             <p className="text-xs text-amber-400 font-medium">{language === 'th' ? 'อัตราสรรหาที่ต้องทำ' : 'Required Recruits/Mo'}</p>
-            <p className="text-2xl font-black text-amber-400 mt-1">{calculation.monthlyRecruitsNeeded} <span className="text-xs text-slate-600 font-normal">คน/เดือน</span></p>
-            <p className="text-[11px] text-slate-600 mt-1">รวมทั้งสิ้น {formatNumber(calculation.totalRecruitsNeeded)} คน</p>
+            <p className="text-2xl font-black text-amber-400 mt-1">{calculation.monthlyRecruitsNeeded} <span className="text-xs text-slate-700 font-normal">คน/เดือน</span></p>
+            <p className="text-[11px] text-slate-700 mt-1">รวมทั้งสิ้น {formatNumber(calculation.totalRecruitsNeeded)} คน</p>
           </div>
 
           <div className="bg-white/60 p-3.5 rounded-xl border border-slate-200/60">
             <p className="text-xs text-cyan-400 font-medium">{language === 'th' ? 'โครงสร้างผู้นำที่ต้องสร้าง' : 'Leadership Blueprint'}</p>
-            <p className="text-2xl font-black text-cyan-400 mt-1">{calculation.estimatedUnits} <span className="text-xs text-slate-600 font-normal">หน่วย</span> / {calculation.estimatedCenters} <span className="text-xs text-slate-600 font-normal">ศูนย์</span></p>
-            <p className="text-[11px] text-slate-600 mt-1">สร้าง {calculation.estimatedRegions} ภาคใหญ่</p>
+            <p className="text-2xl font-black text-cyan-400 mt-1">{calculation.estimatedUnits} <span className="text-xs text-slate-700 font-normal">หน่วย</span> / {calculation.estimatedCenters} <span className="text-xs text-slate-700 font-normal">ศูนย์</span></p>
+            <p className="text-[11px] text-slate-700 mt-1">สร้าง {calculation.estimatedRegions} ภาคใหญ่</p>
           </div>
 
           <div className="bg-white/60 p-3.5 rounded-xl border border-slate-200/60">
             <p className="text-xs text-emerald-400 font-medium">{language === 'th' ? 'ประมาณการ FYC รายเดือน' : 'Projected Monthly FYC'}</p>
             <p className="text-2xl font-black text-emerald-400 mt-1">{formatCurrency(calculation.projectedMonthlyFYC)}</p>
-            <p className="text-[11px] text-slate-600 mt-1">~{formatCurrency(calculation.projectedAnnualFYC)} / ปี</p>
+            <p className="text-[11px] text-slate-700 mt-1">~{formatCurrency(calculation.projectedAnnualFYC)} / ปี</p>
           </div>
         </div>
       </div>
@@ -265,7 +265,7 @@ export const GoalPlanner: React.FC = () => {
                   onChange={(e) => setMonthlyRetentionRate(Number(e.target.value))}
                   className="w-full accent-emerald-500 cursor-pointer"
                 />
-                <p className="text-[11px] text-slate-600 mt-1">Churn Rate: {100 - monthlyRetentionRate}% ต่อเดือน</p>
+                <p className="text-[11px] text-slate-700 mt-1">Churn Rate: {100 - monthlyRetentionRate}% ต่อเดือน</p>
               </div>
 
               <div>
@@ -305,7 +305,7 @@ export const GoalPlanner: React.FC = () => {
               <Sparkles className="w-3.5 h-3.5 text-amber-400" />
               {language === 'th' ? 'สูตรคณิตศาสตร์เครือข่าย' : 'Network Math Principle'}
             </p>
-            <p className="text-slate-600 leading-relaxed text-[11px]">
+            <p className="text-slate-700 leading-relaxed text-[11px]">
               {language === 'th'
                 ? 'คำนวณแบบ Realistic Churn Decay: การรักษา Retention ให้อยู่ในระดับ 92%+ ช่วยลดภาระการสรรหาใหม่ลงได้มากกว่า 40% ในระยะยาว'
                 : 'High retention significantly reduces recruitment burden by compounding existing team production.'}
@@ -322,13 +322,13 @@ export const GoalPlanner: React.FC = () => {
                 <Clock className="w-5 h-5 text-amber-400" />
                 <h3 className="font-bold text-white text-base">{language === 'th' ? 'แผนขั้นบันไดสู่ความสำเร็จ (Milestone Roadmap)' : 'Execution Roadmap'}</h3>
               </div>
-              <span className="text-xs text-slate-600">{calculation.milestones.length} หมุดหมายสำคัญ</span>
+              <span className="text-xs text-slate-700">{calculation.milestones.length} หมุดหมายสำคัญ</span>
             </div>
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
                 <thead>
-                  <tr className="border-b border-slate-200 text-slate-600">
+                  <tr className="border-b border-slate-200 text-slate-700">
                     <th className="py-2.5 px-3 font-semibold">{language === 'th' ? 'หมุดหมาย' : 'Checkpoint'}</th>
                     <th className="py-2.5 px-3 font-semibold">{language === 'th' ? 'สมาชิกเป้าหมาย' : 'Active Target'}</th>
                     <th className="py-2.5 px-3 font-semibold">{language === 'th' ? 'โครงสร้างหน่วย' : 'Required Units'}</th>

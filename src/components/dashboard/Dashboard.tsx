@@ -91,7 +91,7 @@ export const Dashboard: React.FC = () => {
               <span>AI Engine 2026 เปิดใช้งาน</span>
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             </div>
-            <div className="text-[11px] text-slate-600">4-Tier Auto Commission Calculation</div>
+            <div className="text-[11px] text-slate-700">4-Tier Auto Commission Calculation</div>
           </div>
         </div>
 
@@ -158,7 +158,7 @@ export const Dashboard: React.FC = () => {
 
           {/* Right: Dynamic Interactive Network Cluster Preview */}
           <div className="relative w-full lg:w-96 h-72 rounded-2xl bg-white/60 border border-slate-200/80 p-4 flex flex-col items-center justify-center overflow-hidden">
-            <div className="absolute top-2 left-3 text-[10px] uppercase font-bold text-slate-600 tracking-wider">
+            <div className="absolute top-2 left-3 text-[10px] uppercase font-bold text-slate-700 tracking-wider">
               {animationStep === 1 && (language === 'th' ? 'ขั้นที่ 1: Root Leader (1 ท่าน)' : 'Step 1: Root Leader (1 Leader)')}
               {animationStep === 2 && (language === 'th' ? 'ขั้นที่ 2: สร้างผู้นำศูนย์ 4 ศูนย์ (4 CMs)' : 'Step 2: 4 Centers Expanded (4 CMs)')}
               {animationStep === 3 && (language === 'th' ? 'ขั้นที่ 3: แตกหน่วยงาน 12 หน่วย (12 UMs)' : 'Step 3: 12 Units Formed (12 UMs)')}
@@ -229,7 +229,7 @@ export const Dashboard: React.FC = () => {
               </div>
             )}
 
-            <div className="absolute bottom-2 text-[10px] text-slate-600 font-mono">
+            <div className="absolute bottom-2 text-[10px] text-slate-700 font-mono">
               {t('kpi_downline_count')}: <span className="text-amber-400 font-bold">{downlineStats.totalDownlineCount}</span> {t('people')} • Active: <span className="text-emerald-400 font-bold">{downlineStats.activeDownlineCount}</span> {t('people')}
             </div>
           </div>
@@ -241,7 +241,7 @@ export const Dashboard: React.FC = () => {
         {/* KPI 1: Monthly Income */}
         <div className="p-5 rounded-2xl bg-white/90 border border-slate-200 relative overflow-hidden text-left group hover:border-amber-500/40 transition-colors">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-600">{t('kpi_monthly_income')}</span>
+            <span className="text-xs font-semibold text-slate-700">{t('kpi_monthly_income')}</span>
             <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center">
               <DollarSign className="w-4 h-4" />
             </div>
@@ -258,7 +258,7 @@ export const Dashboard: React.FC = () => {
         {/* KPI 2: Total FYC */}
         <div className="p-5 rounded-2xl bg-white/90 border border-slate-200 relative overflow-hidden text-left group hover:border-sky-500/40 transition-colors">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-600">{t('kpi_team_fyc')}</span>
+            <span className="text-xs font-semibold text-slate-700">{t('kpi_team_fyc')}</span>
             <div className="w-8 h-8 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center">
               <TrendingUp className="w-4 h-4" />
             </div>
@@ -274,15 +274,15 @@ export const Dashboard: React.FC = () => {
         {/* KPI 3: Total Organization & Active */}
         <div className="p-5 rounded-2xl bg-white/90 border border-slate-200 relative overflow-hidden text-left group hover:border-emerald-500/40 transition-colors">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-600">{t('kpi_organization')}</span>
+            <span className="text-xs font-semibold text-slate-700">{t('kpi_organization')}</span>
             <div className="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
               <Users className="w-4 h-4" />
             </div>
           </div>
           <div className="text-xl sm:text-2xl font-extrabold text-slate-900 mt-2">
-            {totalOrgCount} <span className="text-xs font-normal text-slate-600">{t('people')} (Active {activeOrgCount})</span>
+            {totalOrgCount} <span className="text-xs font-normal text-slate-700">{t('people')} (Active {activeOrgCount})</span>
           </div>
-          <div className="flex items-center gap-2 text-[11px] text-slate-600 mt-2">
+          <div className="flex items-center gap-2 text-[11px] text-slate-700 mt-2">
             <span className="text-emerald-400 font-semibold">{t('kpi_active_rate')} {activeRate}%</span>
             <span>•</span>
             <span className="text-amber-400 font-semibold">{t('kpi_retention')} {retentionRate}%</span>
@@ -292,13 +292,13 @@ export const Dashboard: React.FC = () => {
         {/* KPI 4: Units & Centers Structure */}
         <div className="p-5 rounded-2xl bg-white/90 border border-slate-200 relative overflow-hidden text-left group hover:border-purple-500/40 transition-colors">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-600">{t('kpi_leadership')}</span>
+            <span className="text-xs font-semibold text-slate-700">{t('kpi_leadership')}</span>
             <div className="w-8 h-8 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center">
               <Building2 className="w-4 h-4" />
             </div>
           </div>
           <div className="text-xl sm:text-2xl font-extrabold text-slate-900 mt-2">
-            {downlineStats.totalCenters} <span className="text-xs font-normal text-slate-600">{t('centers_unit')}</span> / {downlineStats.totalUnits} <span className="text-xs font-normal text-slate-600">{t('units_unit')}</span>
+            {downlineStats.totalCenters} <span className="text-xs font-normal text-slate-700">{t('centers_unit')}</span> / {downlineStats.totalUnits} <span className="text-xs font-normal text-slate-700">{t('units_unit')}</span>
           </div>
           <div className="flex items-center gap-1.5 text-[11px] text-purple-400 mt-2 font-medium">
             <span>{language === 'th' ? `แยกศูนย์ ${activeUser.separatedCentersCount || 4} • แยกหน่วย ${activeUser.separatedUnitsCount || 12}` : `Sep. Centers: ${activeUser.separatedCentersCount || 4} • Sep. Units: ${activeUser.separatedUnitsCount || 12}`}</span>
@@ -313,7 +313,7 @@ export const Dashboard: React.FC = () => {
           <div className="flex items-center justify-between mb-4">
             <div>
               <h2 className="text-sm sm:text-base font-bold text-slate-900">{t('trend_12_month_title')}</h2>
-              <p className="text-[11px] text-slate-600">{t('trend_12_month_subtitle')}</p>
+              <p className="text-[11px] text-slate-700">{t('trend_12_month_subtitle')}</p>
             </div>
             <div className="flex items-center gap-2 text-xs">
               <span className="inline-flex items-center gap-1 text-[11px] text-amber-400 font-medium">
@@ -356,7 +356,7 @@ export const Dashboard: React.FC = () => {
         <div className="p-5 sm:p-6 rounded-2xl bg-white/90 border border-slate-200 text-left flex flex-col justify-between">
           <div>
             <h2 className="text-sm sm:text-base font-bold text-slate-900 mb-1">{t('position_hierarchy_title')}</h2>
-            <p className="text-[11px] text-slate-600 mb-4">{t('position_hierarchy_subtitle')}</p>
+            <p className="text-[11px] text-slate-700 mb-4">{t('position_hierarchy_subtitle')}</p>
 
             <div className="h-44 w-full">
               <ResponsiveContainer width="100%" height="100%">
@@ -415,7 +415,7 @@ export const Dashboard: React.FC = () => {
                 ACTUAL
               </span>
             </div>
-            <p className="text-[11px] text-slate-600">{t('compensation_summary_subtitle')}</p>
+            <p className="text-[11px] text-slate-700">{t('compensation_summary_subtitle')}</p>
           </div>
 
           <button
@@ -430,13 +430,13 @@ export const Dashboard: React.FC = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           {incomeResult.breakdown.slice(0, 6).map((item) => (
             <div key={item.id} className="p-3 rounded-xl bg-white/70 border border-slate-200/80">
-              <div className="text-[10px] text-slate-600 font-medium truncate" title={item.title}>
+              <div className="text-[10px] text-slate-700 font-medium truncate" title={item.title}>
                 {item.title}
               </div>
               <div className="text-sm sm:text-base font-bold text-amber-300 mt-1">
                 ฿{item.amount.toLocaleString()}
               </div>
-              <div className="text-[9px] text-slate-600 mt-1 truncate">
+              <div className="text-[9px] text-slate-700 mt-1 truncate">
                 {language === 'th' ? 'อัตรา: ' : 'Rate: '}{item.rateOrFormula}
               </div>
             </div>
@@ -445,8 +445,8 @@ export const Dashboard: React.FC = () => {
       </div>
 
       {/* 5. Professional Disclaimer */}
-      <div className="p-4 rounded-xl bg-white/50 border border-slate-200/60 text-left text-[11px] text-slate-600 leading-relaxed">
-        <span className="font-bold text-slate-600">{t('disclaimer_title')} </span>
+      <div className="p-4 rounded-xl bg-white/50 border border-slate-200/60 text-left text-[11px] text-slate-700 leading-relaxed">
+        <span className="font-bold text-slate-700">{t('disclaimer_title')} </span>
         {t('disclaimer_body')}
       </div>
     </div>

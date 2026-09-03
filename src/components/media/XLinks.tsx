@@ -108,7 +108,7 @@ export const XLinks: React.FC = () => {
             <Twitter className="w-6 h-6 text-sky-400" />
             {t('social_sub_x')}
           </h1>
-          <p className="text-sm text-slate-600 mt-1">
+          <p className="text-sm text-slate-700 mt-1">
             ลิงก์ X (Twitter) ของทีมและตัวแทน เพื่อต่อยอดการตลาดออนไลน์
           </p>
         </div>
@@ -178,14 +178,14 @@ export const XLinks: React.FC = () => {
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-bold text-slate-900 truncate flex items-center gap-1">
-                  <User className="w-3.5 h-3.5 text-slate-600" /> {l.handle}
+                  <User className="w-3.5 h-3.5 text-slate-700" /> {l.handle}
                 </p>
-                <p className="text-[11px] text-slate-600 truncate">โดย {l.owner} · {l.addedAt}</p>
+                <p className="text-[11px] text-slate-700 truncate">โดย {l.owner} · {l.addedAt}</p>
               </div>
               <button
                 id={`btn_del_x_${l.id}`}
                 onClick={() => handleDelete(l.id)}
-                className="opacity-0 group-hover:opacity-100 p-1.5 rounded-lg text-slate-600 hover:text-red-400 hover:bg-red-500/10 transition-all"
+                className="opacity-0 group-hover:opacity-100 p-1.5 rounded-lg text-slate-700 hover:text-red-400 hover:bg-red-500/10 transition-all"
               >
                 <Trash2 className="w-3.5 h-3.5" />
               </button>
@@ -201,8 +201,8 @@ export const XLinks: React.FC = () => {
           </div>
         ))}
         {links.length === 0 && (
-          <div className="col-span-full p-8 rounded-2xl bg-white/60 border border-dashed border-slate-200 text-center text-slate-600 text-sm">
-            <Share2 className="w-8 h-8 mx-auto mb-2 text-slate-600" />
+          <div className="col-span-full p-8 rounded-2xl bg-white/60 border border-dashed border-slate-200 text-center text-slate-700 text-sm">
+            <Share2 className="w-8 h-8 mx-auto mb-2 text-slate-700" />
             ยังไม่มีลิงก์ X — กด "เพิ่มลิงก์" เพื่อเริ่มต้น
           </div>
         )}

@@ -373,7 +373,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
             <h1 className="text-xl sm:text-2xl font-black text-slate-900">แผนรายได้ & เส้นทางสู่อิสระภาพทางการเงิน</h1>
             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30">พร้อมใช้งาน</span>
           </div>
-          <p className="text-xs text-slate-600 mt-1">
+          <p className="text-xs text-slate-700 mt-1">
             วางแผนรายได้ → วิเคราะห์ช่องว่าง → จำลองการเติบโต → ประมาณการอนาคต → AI แนะนำแผน 30/60/90 วัน (คำนวณเรียลไทม์จาก Rule Engine)
           </p>
         </div>
@@ -394,7 +394,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
                 >
                   {POSITION_LABELS[activeUser.positionId]}
                 </span>
-                <span className="text-[11px] text-slate-600">สมาชิก {memberDownline?.totalDownlineCount ?? 0} คน • COM ส่วนตัว {fmt(activeUser.personalCOM)}</span>
+                <span className="text-[11px] text-slate-700">สมาชิก {memberDownline?.totalDownlineCount ?? 0} คน • COM ส่วนตัว {fmt(activeUser.personalCOM)}</span>
               </div>
             </div>
           </div>
@@ -438,11 +438,11 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
           <div className="p-4 rounded-2xl bg-white/60 border border-slate-200 space-y-2">
             <label className="text-xs font-semibold text-slate-700 block">Retention / Activation</label>
             <div className="flex items-center gap-2">
-              <span className="text-[10px] text-slate-600 w-16">Retain {(retention * 100).toFixed(0)}%</span>
+              <span className="text-[10px] text-slate-700 w-16">Retain {(retention * 100).toFixed(0)}%</span>
               <input type="range" min={0.3} max={1} step={0.05} value={retention} onChange={(e) => setRetention(Number(e.target.value))} className="flex-1 accent-amber-500" />
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-[10px] text-slate-600 w-16">Active {(activation * 100).toFixed(0)}%</span>
+              <span className="text-[10px] text-slate-700 w-16">Active {(activation * 100).toFixed(0)}%</span>
               <input type="range" min={0.3} max={1} step={0.05} value={activation} onChange={(e) => setActivation(Number(e.target.value))} className="flex-1 accent-amber-500" />
             </div>
           </div>
@@ -469,7 +469,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
           <div className="w-full h-3 rounded-full bg-slate-100 overflow-hidden">
             <div className="h-full bg-gradient-to-r from-amber-500 to-rose-500 rounded-full transition-all" style={{ width: `${career.overallProgressPercent}%` }} />
           </div>
-          <p className="text-[11px] text-slate-600 leading-relaxed">{career.mathematicalProjection.recommendationText}</p>
+          <p className="text-[11px] text-slate-700 leading-relaxed">{career.mathematicalProjection.recommendationText}</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
             <GapPill label="FYC ปัจจุบัน" value={fmt(career.currentFYC)} />
             <GapPill label="หน่วย (มี/ต้องการ)" value={`${career.currentUnits}/${career.requiredUnits}`} />
@@ -546,7 +546,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
                 </BarChart>
               </ResponsiveContainer>
             </div>
-            <p className="text-[11px] text-slate-600">รวมรายได้จำลอง: <b className="text-emerald-300">{fmt(incomeResult.totalIncome)}/เดือน</b></p>
+            <p className="text-[11px] text-slate-700">รวมรายได้จำลอง: <b className="text-emerald-300">{fmt(incomeResult.totalIncome)}/เดือน</b></p>
           </div>
         </div>
       </section>
@@ -582,8 +582,8 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
                     <span className="w-2.5 h-2.5 rounded-full" style={{ background: s.color }} />
                     <span className="text-xs font-bold text-slate-800">{s.label}</span>
                   </div>
-                  <p className="text-[11px] text-slate-600 mt-1">เดือน 12: {fmt(m12?.projectedMonthlyIncome || 0)}</p>
-                  <p className="text-[11px] text-slate-600">เดือน 36: {fmt(m36?.projectedMonthlyIncome || 0)}</p>
+                  <p className="text-[11px] text-slate-700 mt-1">เดือน 12: {fmt(m12?.projectedMonthlyIncome || 0)}</p>
+                  <p className="text-[11px] text-slate-700">เดือน 36: {fmt(m36?.projectedMonthlyIncome || 0)}</p>
                 </div>
               );
             })}
@@ -682,7 +682,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
             {videoUrl && (
               <div className="rounded-2xl overflow-hidden border border-fuchsia-500/30 bg-white">
                 <video src={videoUrl} controls className="w-full max-h-[70vh]" />
-                <div className="p-3 text-[11px] text-slate-600 flex items-center justify-between">
+                <div className="p-3 text-[11px] text-slate-700 flex items-center justify-between">
                   <span>วิดีโอสรุปแผนของ {activeUser.name}</span>
                   <a href={videoUrl} download className="text-fuchsia-300 hover:underline">ดาวน์โหลด</a>
                 </div>
@@ -786,14 +786,14 @@ const KpiCard: React.FC<{ label: string; value: string; sub: string; accent: 'sk
 
 const GapPill: React.FC<{ label: string; value: string }> = ({ label, value }) => (
   <div className="p-3 rounded-xl bg-white/60 border border-slate-200">
-    <p className="text-[10px] text-slate-600">{label}</p>
+    <p className="text-[10px] text-slate-700">{label}</p>
     <p className="text-sm font-bold text-slate-900 mt-0.5">{value}</p>
   </div>
 );
 
 const ReverseStat: React.FC<{ label: string; value: string }> = ({ label, value }) => (
   <div className="p-3 rounded-xl bg-white/60 border border-slate-200">
-    <p className="text-[10px] text-slate-600">{label}</p>
+    <p className="text-[10px] text-slate-700">{label}</p>
     <p className="text-sm font-bold text-fuchsia-300 mt-0.5">{value}</p>
   </div>
 );
@@ -914,19 +914,19 @@ const InfiniteNetworkTree: React.FC<{
       {/* Summary */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         <div className="p-3 rounded-xl bg-white/60 border border-slate-200">
-          <p className="text-[10px] text-slate-600">จำนวนคนในแผนผัง</p>
+          <p className="text-[10px] text-slate-700">จำนวนคนในแผนผัง</p>
           <p className="text-sm font-black text-rose-300">{totalPeople.toLocaleString()} คน</p>
         </div>
         <div className="p-3 rounded-xl bg-white/60 border border-slate-200">
-          <p className="text-[10px] text-slate-600">ศูนย์สูงสุดที่เป็นไปได้</p>
+          <p className="text-[10px] text-slate-700">ศูนย์สูงสุดที่เป็นไปได้</p>
           <p className="text-sm font-black text-amber-300">~{Math.floor(totalPeople / 15)} ศูนย์</p>
         </div>
         <div className="p-3 rounded-xl bg-white/60 border border-slate-200">
-          <p className="text-[10px] text-slate-600">หน่วยสูงสุดที่เป็นไปได้</p>
+          <p className="text-[10px] text-slate-700">หน่วยสูงสุดที่เป็นไปได้</p>
           <p className="text-sm font-black text-cyan-300">~{Math.floor(totalPeople / 5)} หน่วย</p>
         </div>
         <div className="p-3 rounded-xl bg-white/60 border border-slate-200">
-          <p className="text-[10px] text-slate-600">Potential COM สะสม</p>
+          <p className="text-[10px] text-slate-700">Potential COM สะสม</p>
           <p className="text-sm font-black text-emerald-300">{fmt(totalPotential)}</p>
         </div>
       </div>
@@ -970,10 +970,10 @@ const InfiniteNetworkTree: React.FC<{
                 })}
               </div>
               {li < layers.length - 1 && (
-                <div className="flex items-center gap-1 text-slate-600 my-1">
+                <div className="flex items-center gap-1 text-slate-700 my-1">
                   <div className="w-8 h-px bg-slate-700" />
                   <ChevronRight className="w-3 h-3" />
-                  <span className="text-[9px] font-mono text-slate-600">แตก {branching}×</span>
+                  <span className="text-[9px] font-mono text-slate-700">แตก {branching}×</span>
                   <ChevronRight className="w-3 h-3" />
                   <div className="w-8 h-px bg-slate-700" />
                 </div>
@@ -989,12 +989,12 @@ const InfiniteNetworkTree: React.FC<{
           <Users className="w-5 h-5 text-rose-300" />
           <div className="text-xs text-slate-800">
             <b className="text-rose-200">{selectedNode.name}</b> • {selectedNode.role} • COM {fmt(selectedNode.com)}/เดือน
-            <span className="text-slate-600"> — คลิกโหนดอื่นเพื่อดูรายละเอียด (จำลองเส้นทางสายงาน)</span>
+            <span className="text-slate-700"> — คลิกโหนดอื่นเพื่อดูรายละเอียด (จำลองเส้นทางสายงาน)</span>
           </div>
         </div>
       )}
 
-      <p className="text-[10px] text-slate-600 leading-relaxed">
+      <p className="text-[10px] text-slate-700 leading-relaxed">
         * ต้นไม้นี้เป็นแบบจำลองแสดง "พลังการขยายทีม" หากแต่ละคนสร้าง {branching} คน ต่อเนื่องหลายชั้น จำนวนสมาชิกจะเติบโตทวีคูณ
         (5 → 25 → 125 → 625 → 3,125…) รายได้จัดการจะขยายตามระดับชั้นโดยไม่มีเพดาน — ตัวเลขเป็นสมมติฐานเพื่อการวางแผนเท่านั้น
       </p>

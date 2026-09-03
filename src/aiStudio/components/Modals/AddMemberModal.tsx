@@ -70,7 +70,7 @@ export const AddMemberModal: React.FC = () => {
           </div>
           <button
             onClick={() => setIsAddMemberModalOpen(false)}
-            className="p-1 rounded-lg text-slate-600 hover:text-white hover:bg-slate-100 transition-colors"
+            className="p-1 rounded-lg text-slate-700 hover:text-white hover:bg-slate-100 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>

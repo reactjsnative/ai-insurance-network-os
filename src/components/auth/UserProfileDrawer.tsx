@@ -114,7 +114,7 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
           <button
             id="btn-close-profile-drawer"
             onClick={onClose}
-            className="absolute top-5 right-5 p-2 rounded-xl text-slate-600 hover:text-white hover:bg-white/10 transition-colors"
+            className="absolute top-5 right-5 p-2 rounded-xl text-slate-700 hover:text-white hover:bg-white/10 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -154,13 +154,13 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
                 {currentPos?.titleTh || 'ผู้บริหารภาค (RM)'}
               </span>
             </div>
-            <div className="grid grid-cols-2 gap-2 text-xs text-slate-600 mt-3 pt-3 border-t border-slate-200/70">
+            <div className="grid grid-cols-2 gap-2 text-xs text-slate-700 mt-3 pt-3 border-t border-slate-200/70">
               <div>
-                <span className="text-[11px] text-slate-600 block">รหัสตัวแทน</span>
+                <span className="text-[11px] text-slate-700 block">รหัสตัวแทน</span>
                 <span className="font-semibold text-slate-800">{activeUser.memberCode}</span>
               </div>
               <div>
-                <span className="text-[11px] text-slate-600 block">สิทธิ์การเข้าถึง</span>
+                <span className="text-[11px] text-slate-700 block">สิทธิ์การเข้าถึง</span>
                 <span className="font-semibold text-slate-800 capitalize">{authUser.role}</span>
               </div>
             </div>
@@ -173,7 +173,7 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
                 <Link2 className="w-4 h-4 text-indigo-600" />
                 บัญชีที่เชื่อมต่อ (Connected Logins)
               </h4>
-              <span className="text-[11px] text-slate-600">
+              <span className="text-[11px] text-slate-700">
                 {authUser.connectedProviders.length} / 4 ช่องทาง
               </span>
             </div>
@@ -201,7 +201,7 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
                             </span>
                           )}
                         </div>
-                        <p className="text-[11px] text-slate-600 truncate">{item.description}</p>
+                        <p className="text-[11px] text-slate-700 truncate">{item.description}</p>
                       </div>
                     </div>
 
@@ -218,7 +218,7 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
                         {isConnected ? 'ยกเลิก' : 'เชื่อมต่อ'}
                       </button>
                     ) : (
-                      <span className="text-[11px] text-slate-600 font-medium px-2 py-1 bg-slate-100 rounded">
+                      <span className="text-[11px] text-slate-700 font-medium px-2 py-1 bg-slate-100 rounded">
                         หลัก
                       </span>
                     )}
@@ -239,8 +239,8 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
                 Active (เปิดใช้งาน)
               </span>
             </div>
-            <div className="flex items-center gap-2 text-xs text-slate-600">
-              <Clock className="w-3.5 h-3.5 text-slate-600" />
+            <div className="flex items-center gap-2 text-xs text-slate-700">
+              <Clock className="w-3.5 h-3.5 text-slate-700" />
               <span>เข้าสู่ระบบล่าสุด: {new Date(authUser.lastLoginAt).toLocaleTimeString('th-TH')} วันนี้</span>
             </div>
           </div>

@@ -127,7 +127,7 @@ export const MembersManagement: React.FC = () => {
               {members.length} สมาชิก
             </span>
           </div>
-          <p className="text-xs text-slate-600 mt-1">
+          <p className="text-xs text-slate-700 mt-1">
             เพิ่ม แก้ไข ย้ายสายงาน พร้อมระบบตรวจสอบความสัมพันธ์เพื่อป้องกันวงวนซ้ำ (Cycle & Orphan Prevention)
           </p>
         </div>
@@ -144,7 +144,7 @@ export const MembersManagement: React.FC = () => {
       {/* 2. Filter & Search Controls */}
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1">
-          <Search className="w-4 h-4 text-slate-600 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-slate-700 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             placeholder="ค้นหาชื่อ, รหัสตัวแทน, หรือจังหวัด..."
@@ -171,7 +171,7 @@ export const MembersManagement: React.FC = () => {
       <div className="rounded-3xl bg-white/90 border border-slate-200 overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs text-slate-700">
-            <thead className="bg-white/80 text-slate-600 uppercase text-[10px] tracking-wider border-b border-slate-200 font-bold">
+            <thead className="bg-white/80 text-slate-700 uppercase text-[10px] tracking-wider border-b border-slate-200 font-bold">
               <tr>
                 <th className="py-3.5 px-4">สมาชิก</th>
                 <th className="py-3.5 px-4">ตำแหน่ง</th>
@@ -211,7 +211,7 @@ export const MembersManagement: React.FC = () => {
                       {parent ? (
                         <div className="text-slate-700">{parent.name} ({parent.memberCode})</div>
                       ) : (
-                        <span className="text-slate-600 text-[10px]">Root Organization</span>
+                        <span className="text-slate-700 text-[10px]">Root Organization</span>
                       )}
                     </td>
                     <td className="py-3 px-4 text-right font-mono text-sky-400 font-bold">
@@ -263,7 +263,7 @@ export const MembersManagement: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setShowAddModal(false)}
-                className="w-7 h-7 rounded-lg bg-slate-100 text-slate-600 hover:text-slate-900 flex items-center justify-center text-xs"
+                className="w-7 h-7 rounded-lg bg-slate-100 text-slate-700 hover:text-slate-900 flex items-center justify-center text-xs"
               >
                 ✕
               </button>
@@ -278,7 +278,7 @@ export const MembersManagement: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label className="text-[11px] text-slate-600 block mb-1">ชื่อ-นามสกุล *</label>
+                <label className="text-[11px] text-slate-700 block mb-1">ชื่อ-นามสกุล *</label>
                 <input
                   type="text"
                   required
@@ -290,7 +290,7 @@ export const MembersManagement: React.FC = () => {
               </div>
 
               <div>
-                <label className="text-[11px] text-slate-600 block mb-1">ชื่อเล่น</label>
+                <label className="text-[11px] text-slate-700 block mb-1">ชื่อเล่น</label>
                 <input
                   type="text"
                   value={formData.nickname || ''}
@@ -301,7 +301,7 @@ export const MembersManagement: React.FC = () => {
               </div>
 
               <div>
-                <label className="text-[11px] text-slate-600 block mb-1">ระดับตำแหน่ง *</label>
+                <label className="text-[11px] text-slate-700 block mb-1">ระดับตำแหน่ง *</label>
                 <select
                   value={formData.positionId || 'agent'}
                   onChange={(e) => setFormData({ ...formData, positionId: e.target.value })}
@@ -315,7 +315,7 @@ export const MembersManagement: React.FC = () => {
               </div>
 
               <div>
-                <label className="text-[11px] text-slate-600 block mb-1">หัวหน้าสายงาน (Parent Member)</label>
+                <label className="text-[11px] text-slate-700 block mb-1">หัวหน้าสายงาน (Parent Member)</label>
                 <select
                   value={formData.parentMemberId || ''}
                   onChange={(e) => setFormData({ ...formData, parentMemberId: e.target.value })}
@@ -328,7 +328,7 @@ export const MembersManagement: React.FC = () => {
               </div>
 
               <div>
-                <label className="text-[11px] text-slate-600 block mb-1">FYC ส่วนตัว (บาท)</label>
+                <label className="text-[11px] text-slate-700 block mb-1">FYC ส่วนตัว (บาท)</label>
                 <input
                   type="number"
                   value={formData.personalFYC || 0}
@@ -338,7 +338,7 @@ export const MembersManagement: React.FC = () => {
               </div>
 
               <div>
-                <label className="text-[11px] text-slate-600 block mb-1">COM ส่วนตัว (บาท)</label>
+                <label className="text-[11px] text-slate-700 block mb-1">COM ส่วนตัว (บาท)</label>
                 <input
                   type="number"
                   value={formData.personalCOM || 0}

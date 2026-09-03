@@ -46,7 +46,7 @@ export const SocialView: React.FC = () => {
         </div>
 
         <div className="mt-6 p-4 rounded-2xl bg-white/60 border border-slate-200">
-          <div className="flex items-center gap-2 text-[11px] text-slate-600">
+          <div className="flex items-center gap-2 text-[11px] text-slate-700">
             <Globe className="w-3.5 h-3.5" />
             <span className="truncate font-mono text-slate-700">{item.url}</span>
           </div>
@@ -62,7 +62,7 @@ export const SocialView: React.FC = () => {
           เปิด {item.title} ในแท็บใหม่
         </a>
 
-        <p className="mt-4 text-[11px] text-slate-600 text-center">
+        <p className="mt-4 text-[11px] text-slate-700 text-center">
           ลิงก์อย่างเป็นทางการ · กดเพื่อเปิดหน้า {item.title} ภายนอกระบบ
         </p>
       </div>

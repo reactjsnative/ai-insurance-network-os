@@ -71,7 +71,7 @@ export const GoalSimulatorView: React.FC = () => {
             <Target className="w-6 h-6 text-amber-400" />
             ระบบคำนวณย้อนกลับและจำลองเป้าหมาย (Reverse Goal Simulator)
           </h1>
-          <p className="text-xs text-slate-600 mt-1">
+          <p className="text-xs text-slate-700 mt-1">
             ระบุรายได้ที่คุณต้องการ แล้วระบบจะวิเคราะห์ขนาดทีม โครงสร้างหน่วย/ศูนย์ และแผนงานที่ต้องทำอย่างแม่นยำ
           </p>
         </div>
@@ -210,35 +210,35 @@ export const GoalSimulatorView: React.FC = () => {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             
             <div className="bg-white/90 border border-slate-200 rounded-2xl p-4 shadow-lg text-center">
-              <span className="text-[11px] text-slate-600 block mb-1">ระยะเวลาที่ต้องใช้</span>
+              <span className="text-[11px] text-slate-700 block mb-1">ระยะเวลาที่ต้องใช้</span>
               <div className="text-xl sm:text-2xl font-black text-amber-400">
                 {result.monthsToReachGoal <= simulationMonths ? `${result.monthsToReachGoal} เดือน` : `> ${simulationMonths} ด.`}
               </div>
-              <span className="text-[10px] text-slate-600 mt-1 block">เพื่อแตะเป้าหมาย</span>
+              <span className="text-[10px] text-slate-700 mt-1 block">เพื่อแตะเป้าหมาย</span>
             </div>
 
             <div className="bg-white/90 border border-slate-200 rounded-2xl p-4 shadow-lg text-center">
-              <span className="text-[11px] text-slate-600 block mb-1">ต้องมีสมาชิกในทีม</span>
+              <span className="text-[11px] text-slate-700 block mb-1">ต้องมีสมาชิกในทีม</span>
               <div className="text-xl sm:text-2xl font-black text-blue-400">
-                {result.requiredTotalTeamSize} <span className="text-xs font-normal text-slate-600">คน</span>
+                {result.requiredTotalTeamSize} <span className="text-xs font-normal text-slate-700">คน</span>
               </div>
-              <span className="text-[10px] text-slate-600 mt-1 block">Active {result.requiredActiveMembers} คน</span>
+              <span className="text-[10px] text-slate-700 mt-1 block">Active {result.requiredActiveMembers} คน</span>
             </div>
 
             <div className="bg-white/90 border border-slate-200 rounded-2xl p-4 shadow-lg text-center">
-              <span className="text-[11px] text-slate-600 block mb-1">โครงสร้างที่ต้องสร้าง</span>
+              <span className="text-[11px] text-slate-700 block mb-1">โครงสร้างที่ต้องสร้าง</span>
               <div className="text-xl sm:text-2xl font-black text-emerald-400">
                 {result.requiredUnits}U / {result.requiredCenters}C
               </div>
-              <span className="text-[10px] text-slate-600 mt-1 block">{result.requiredUnits} หน่วย / {result.requiredCenters} ศูนย์</span>
+              <span className="text-[10px] text-slate-700 mt-1 block">{result.requiredUnits} หน่วย / {result.requiredCenters} ศูนย์</span>
             </div>
 
             <div className="bg-white/90 border border-slate-200 rounded-2xl p-4 shadow-lg text-center">
-              <span className="text-[11px] text-slate-600 block mb-1">ยอดขายรวมทีม / ด.</span>
+              <span className="text-[11px] text-slate-700 block mb-1">ยอดขายรวมทีม / ด.</span>
               <div className="text-lg sm:text-xl font-black text-purple-300">
                 {formatBaht(result.requiredTotalMonthlySales, false)}
               </div>
-              <span className="text-[10px] text-slate-600 mt-1 block">ยอดขายองค์กร</span>
+              <span className="text-[10px] text-slate-700 mt-1 block">ยอดขายองค์กร</span>
             </div>
 
           </div>
@@ -251,7 +251,7 @@ export const GoalSimulatorView: React.FC = () => {
                   <TrendingUp className="w-5 h-5 text-blue-400" />
                   แนวโน้มรายได้และขนาดทีมตลอด {simulationMonths} เดือน
                 </h2>
-                <p className="text-xs text-slate-600">
+                <p className="text-xs text-slate-700">
                   เส้นสีส้มคือรายได้เป้าหมาย ({formatBaht(targetIncome)}) และเส้นสีทองคือรายได้จริงที่จำลองได้
                 </p>
               </div>

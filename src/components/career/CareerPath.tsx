@@ -95,7 +95,7 @@ export const CareerPath: React.FC = () => {
               Update 15 Jan 64
             </span>
           </div>
-          <p className="text-xs text-slate-600 mt-1">
+          <p className="text-xs text-slate-700 mt-1">
             ระบบติดตามคุณสมบัติอัตโนมัติ (Automated Milestone Tracker) วิเคราะห์ Gap และคำนวณ Run-Rate
           </p>
         </div>
@@ -105,7 +105,7 @@ export const CareerPath: React.FC = () => {
           <button
             onClick={() => setSelectedTargetRank('unit_manager')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-              selectedTargetRank === 'unit_manager' ? 'bg-emerald-500 text-slate-950' : 'text-slate-600 hover:text-slate-800'
+              selectedTargetRank === 'unit_manager' ? 'bg-emerald-500 text-slate-950' : 'text-slate-700 hover:text-slate-800'
             }`}
           >
             ผู้บริหารหน่วย (UM)
@@ -113,7 +113,7 @@ export const CareerPath: React.FC = () => {
           <button
             onClick={() => setSelectedTargetRank('center_manager')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-              selectedTargetRank === 'center_manager' ? 'bg-amber-500 text-slate-950' : 'text-slate-600 hover:text-slate-800'
+              selectedTargetRank === 'center_manager' ? 'bg-amber-500 text-slate-950' : 'text-slate-700 hover:text-slate-800'
             }`}
           >
             ผู้บริหารศูนย์ (CM)
@@ -121,7 +121,7 @@ export const CareerPath: React.FC = () => {
           <button
             onClick={() => setSelectedTargetRank('region_manager')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-              selectedTargetRank === 'region_manager' ? 'bg-rose-500 text-slate-950' : 'text-slate-600 hover:text-slate-800'
+              selectedTargetRank === 'region_manager' ? 'bg-rose-500 text-slate-950' : 'text-slate-700 hover:text-slate-800'
             }`}
           >
             ผู้บริหารภาค (RM)
@@ -138,7 +138,7 @@ export const CareerPath: React.FC = () => {
               เป้าหมาย: {targetCriteria.title}
             </span>
             <div className="text-4xl font-black text-slate-900 mt-2 font-mono">
-              {overallScore}% <span className="text-xs font-normal text-slate-600">ความพร้อม</span>
+              {overallScore}% <span className="text-xs font-normal text-slate-700">ความพร้อม</span>
             </div>
             <p className="text-xs text-slate-700 mt-2 leading-relaxed">
               {targetCriteria.description}
@@ -147,11 +147,11 @@ export const CareerPath: React.FC = () => {
 
           <div className="space-y-3 mt-6 pt-4 border-t border-slate-200">
             <div className="flex justify-between text-xs">
-              <span className="text-slate-600">กรอบเวลาสะสม:</span>
+              <span className="text-slate-700">กรอบเวลาสะสม:</span>
               <span className="font-bold text-slate-800">{targetCriteria.timeframeMonths}</span>
             </div>
             <div className="flex justify-between text-xs">
-              <span className="text-slate-600">เกณฑ์ดำรงตำแหน่งรายปี:</span>
+              <span className="text-slate-700">เกณฑ์ดำรงตำแหน่งรายปี:</span>
               <span className="font-bold text-amber-400 font-mono">฿{targetCriteria.maintenanceAnnualFyc.toLocaleString()} FYC</span>
             </div>
           </div>
@@ -167,14 +167,14 @@ export const CareerPath: React.FC = () => {
           <div className="space-y-1.5">
             <div className="flex justify-between text-xs">
               <span className="font-semibold text-slate-700">1. บำเหน็จสะสม (COM Requirement)</span>
-              <span className="font-mono text-slate-600">
+              <span className="font-mono text-slate-700">
                 <span className="text-amber-400 font-bold">฿{actualCOM.toLocaleString()}</span> / ฿{targetCriteria.comRequired.toLocaleString()} ({comProgress}%)
               </span>
             </div>
             <div className="h-3 w-full rounded-full bg-white overflow-hidden border border-slate-200">
               <div className="h-full bg-gradient-to-r from-amber-500 to-amber-400 transition-all duration-500 rounded-full" style={{ width: `${comProgress}%` }} />
             </div>
-            <div className="text-[10px] text-slate-600">
+            <div className="text-[10px] text-slate-700">
               {comProgress >= 100 ? '✅ ผ่านเกณฑ์บำเหน็จเรียบร้อย' : `ขาดอีก ฿${Math.max(0, targetCriteria.comRequired - actualCOM).toLocaleString()} บาท`}
             </div>
           </div>
@@ -184,14 +184,14 @@ export const CareerPath: React.FC = () => {
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs">
                 <span className="font-semibold text-slate-700">2. การแตกหน่วยงาน (Separated Units)</span>
-                <span className="font-mono text-slate-600">
+                <span className="font-mono text-slate-700">
                   <span className="text-emerald-400 font-bold">{actualUnits}</span> / {targetCriteria.unitsRequired} หน่วย ({unitsProgress}%)
                 </span>
               </div>
               <div className="h-3 w-full rounded-full bg-white overflow-hidden border border-slate-200">
                 <div className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 transition-all duration-500 rounded-full" style={{ width: `${unitsProgress}%` }} />
               </div>
-              <div className="text-[10px] text-slate-600">
+              <div className="text-[10px] text-slate-700">
                 {unitsProgress >= 100 ? '✅ ผ่านเกณฑ์จำนวนหน่วยงานแยก' : `ต้องการสร้างและแยกหน่วยเพิ่มอีก ${Math.max(0, targetCriteria.unitsRequired - actualUnits)} หน่วย`}
               </div>
             </div>
@@ -202,14 +202,14 @@ export const CareerPath: React.FC = () => {
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs">
                 <span className="font-semibold text-slate-700">3. การแตกศูนย์งาน (Separated Centers)</span>
-                <span className="font-mono text-slate-600">
+                <span className="font-mono text-slate-700">
                   <span className="text-rose-400 font-bold">{actualCenters}</span> / {targetCriteria.centersRequired} ศูนย์ ({centersProgress}%)
                 </span>
               </div>
               <div className="h-3 w-full rounded-full bg-white overflow-hidden border border-slate-200">
                 <div className="h-full bg-gradient-to-r from-rose-500 to-rose-400 transition-all duration-500 rounded-full" style={{ width: `${centersProgress}%` }} />
               </div>
-              <div className="text-[10px] text-slate-600">
+              <div className="text-[10px] text-slate-700">
                 {centersProgress >= 100 ? '✅ ผ่านเกณฑ์การสร้างศูนย์งาน' : `ต้องการสร้างศูนย์งานเพิ่มอีก ${Math.max(0, targetCriteria.centersRequired - actualCenters)} ศูนย์`}
               </div>
             </div>

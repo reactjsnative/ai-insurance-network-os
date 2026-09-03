@@ -62,7 +62,7 @@ export const TikTokAdsTutorial: React.FC = () => {
             <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-300 border border-rose-500/30">TUTORIAL</span>
           </div>
           <h1 className="mt-2 text-2xl font-black text-slate-900">สอนยิงแอด TikTok Ads</h1>
-          <p className="text-sm text-slate-600 mt-1">เรียนรู้สร้างแคมเปญโฆษณาบน TikTok Ads Manager ตั้งแต่เริ่มต้นจนยิงแอดได้จริง</p>
+          <p className="text-sm text-slate-700 mt-1">เรียนรู้สร้างแคมเปญโฆษณาบน TikTok Ads Manager ตั้งแต่เริ่มต้นจนยิงแอดได้จริง</p>
         </div>
         <a
           href={TIKTOK_URL}
@@ -81,7 +81,7 @@ export const TikTokAdsTutorial: React.FC = () => {
           <div key={i} className="p-4 rounded-2xl bg-white/70 border border-slate-200">
             <div className="text-[11px] font-bold text-rose-400 mb-1">ขั้นตอนที่ {i + 1}</div>
             <div className="text-sm font-bold text-slate-900 mb-1">{s.title}</div>
-            <div className="text-xs text-slate-600 leading-relaxed">{s.body}</div>
+            <div className="text-xs text-slate-700 leading-relaxed">{s.body}</div>
           </div>
         ))}
       </div>
@@ -138,7 +138,7 @@ export const TikTokAdsTutorial: React.FC = () => {
                 className="w-full max-h-[70vh]"
                 onError={(e) => setError('ไม่สามารถเล่นวิดีโอได้: ' + (videoUrl || ''))}
               />
-              <div className="p-3 text-[11px] text-slate-600 flex items-center justify-between flex-wrap gap-2">
+              <div className="p-3 text-[11px] text-slate-700 flex items-center justify-between flex-wrap gap-2">
                 <span>วิดีโอสอนยิงแอด TikTok Ads</span>
                 <div className="flex items-center gap-3">
                   <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="text-rose-300 hover:underline flex items-center gap-1">
@@ -151,7 +151,7 @@ export const TikTokAdsTutorial: React.FC = () => {
             </div>
           )}
 
-          <p className="text-[10px] text-slate-600 leading-relaxed">
+          <p className="text-[10px] text-slate-700 leading-relaxed">
             วิดีโอใช้เพื่อการศึกษา ไม่รับประกันยอดขายหรือรายได้ใด ๆ การยิงแอดต้องอาศัยการทดสอบและวิเคราะห์ข้อมูลอย่างต่อเนื่อง
           </p>
         </div>

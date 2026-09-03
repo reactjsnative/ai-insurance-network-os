@@ -39,7 +39,7 @@ export const UnitTestsView: React.FC = () => {
             <ShieldCheck className="w-6 h-6 text-emerald-400" />
             ระบบทดสอบความถูกต้องของสูตร (Automated Boundary Unit Tests)
           </h1>
-          <p className="text-xs text-slate-600 mt-1">
+          <p className="text-xs text-slate-700 mt-1">
             ทดสอบเงื่อนไขขอบเขต 14,999 vs 15,000, 29,999 vs 30,000, 59,999 vs 60,000 และกรณีตัวอย่างตามประกาศ 15 ม.ค. 2564
           </p>
         </div>
@@ -63,7 +63,7 @@ export const UnitTestsView: React.FC = () => {
             <FileCheck className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-xs text-slate-600">ชุดทดสอบทั้งหมด</span>
+            <span className="text-xs text-slate-700">ชุดทดสอบทั้งหมด</span>
             <div className="text-xl font-black text-white">{totalTests} เคส</div>
           </div>
         </div>
@@ -73,7 +73,7 @@ export const UnitTestsView: React.FC = () => {
             <CheckCircle2 className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-xs text-slate-600">ผ่านเกณฑ์ (Passed)</span>
+            <span className="text-xs text-slate-700">ผ่านเกณฑ์ (Passed)</span>
             <div className="text-xl font-black text-emerald-400">{passedCount} เคส</div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export const UnitTestsView: React.FC = () => {
             <XCircle className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-xs text-slate-600">ไม่ผ่าน (Failed)</span>
+            <span className="text-xs text-slate-700">ไม่ผ่าน (Failed)</span>
             <div className="text-xl font-black text-rose-400">{failedCount} เคส</div>
           </div>
         </div>
@@ -93,7 +93,7 @@ export const UnitTestsView: React.FC = () => {
             <Award className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-xs text-slate-600">อัตราความถูกต้อง</span>
+            <span className="text-xs text-slate-700">อัตราความถูกต้อง</span>
             <div className="text-xl font-black text-amber-400">{passRate}%</div>
           </div>
         </div>
@@ -109,7 +109,7 @@ export const UnitTestsView: React.FC = () => {
             <button
               onClick={() => setFilter('ALL')}
               className={`px-3 py-1 rounded-lg font-semibold transition-colors cursor-pointer ${
-                filter === 'ALL' ? 'bg-blue-600 text-white' : 'text-slate-600 hover:text-white'
+                filter === 'ALL' ? 'bg-blue-600 text-white' : 'text-slate-700 hover:text-white'
               }`}
             >
               ทั้งหมด ({totalTests})
@@ -117,7 +117,7 @@ export const UnitTestsView: React.FC = () => {
             <button
               onClick={() => setFilter('PASSED')}
               className={`px-3 py-1 rounded-lg font-semibold transition-colors cursor-pointer ${
-                filter === 'PASSED' ? 'bg-emerald-600 text-white' : 'text-slate-600 hover:text-white'
+                filter === 'PASSED' ? 'bg-emerald-600 text-white' : 'text-slate-700 hover:text-white'
               }`}
             >
               ผ่าน ({passedCount})
@@ -125,7 +125,7 @@ export const UnitTestsView: React.FC = () => {
             <button
               onClick={() => setFilter('FAILED')}
               className={`px-3 py-1 rounded-lg font-semibold transition-colors cursor-pointer ${
-                filter === 'FAILED' ? 'bg-rose-600 text-white' : 'text-slate-600 hover:text-white'
+                filter === 'FAILED' ? 'bg-rose-600 text-white' : 'text-slate-700 hover:text-white'
               }`}
             >
               ไม่ผ่าน ({failedCount})
@@ -162,7 +162,7 @@ export const UnitTestsView: React.FC = () => {
                   </td>
                   <td className="py-3 px-3">
                     <p className="font-bold text-white">{test.testName}</p>
-                    <span className="font-mono text-[10px] text-slate-600">{test.id}</span>
+                    <span className="font-mono text-[10px] text-slate-700">{test.id}</span>
                   </td>
                   <td className="py-3 px-3">
                     <span className="text-[11px] text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">

@@ -170,7 +170,7 @@ export const AICoach: React.FC = () => {
               AI ที่ปรึกษาองค์กรและระบบอัจฉริยะสำหรับผู้นำ
             </h1>
           </div>
-          <p className="text-xs text-slate-600 mt-1">
+          <p className="text-xs text-slate-700 mt-1">
             ที่ปรึกษาปัญญาประดิษฐ์วิเคราะห์สายงานตามหลักคณิตศาสตร์ประกันชีวิตและ Compensation Rule Engine
           </p>
         </div>
@@ -197,7 +197,7 @@ export const AICoach: React.FC = () => {
               {insights.promotionCandidates.map((c) => (
                 <li key={c.member.id} className="text-xs text-slate-800 leading-relaxed">
                   <strong className="text-amber-300">{c.member.name}</strong> (FYC ทีม ฿{c.teamFYC.toLocaleString()})
-                  <span className="text-slate-600 block">
+                  <span className="text-slate-700 block">
                     ใกล้เลื่อนเป็น {c.next?.name || 'ตำแหน่งถัดไป'}
                   </span>
                 </li>
@@ -220,7 +220,7 @@ export const AICoach: React.FC = () => {
               {insights.atRisk.slice(0, 3).map((m) => (
                 <li key={m.id} className="text-xs text-slate-800 leading-relaxed">
                   <strong className="text-rose-300">{m.name}</strong>
-                  <span className="text-slate-600 block">
+                  <span className="text-slate-700 block">
                     สถานะ {m.status === 'inactive' ? 'ไม่ Active' : 'ทดลองงาน'} — แนะนำติดตามอย่างใกล้ชิด
                   </span>
                 </li>
@@ -273,7 +273,7 @@ export const AICoach: React.FC = () => {
                 }`}
               >
                 <div className="whitespace-pre-line">{msg.text}</div>
-                <div className={`text-[9px] mt-1 ${msg.sender === 'user' ? 'text-slate-900/70 text-right' : 'text-slate-600'}`}>
+                <div className={`text-[9px] mt-1 ${msg.sender === 'user' ? 'text-slate-900/70 text-right' : 'text-slate-700'}`}>
                   {msg.timestamp}
                 </div>
               </div>
@@ -293,7 +293,7 @@ export const AICoach: React.FC = () => {
               <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-slate-900 flex items-center justify-center shrink-0">
                 <Bot className="w-4 h-4 animate-spin" />
               </div>
-              <div className="bg-white/80 border border-slate-200 rounded-2xl rounded-tl-none p-4 text-xs text-slate-600 flex items-center gap-2">
+              <div className="bg-white/80 border border-slate-200 rounded-2xl rounded-tl-none p-4 text-xs text-slate-700 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-amber-400 animate-bounce" />
                 <span className="w-2 h-2 rounded-full bg-indigo-400 animate-bounce [animation-delay:0.2s]" />
                 <span className="w-2 h-2 rounded-full bg-purple-400 animate-bounce [animation-delay:0.4s]" />
@@ -307,7 +307,7 @@ export const AICoach: React.FC = () => {
 
         {/* Quick Suggestion Prompts */}
         <div className="p-3 bg-white/60 border-t border-slate-200/80 flex items-center gap-2 overflow-x-auto">
-          <span className="text-[10px] uppercase font-bold text-slate-600 whitespace-nowrap pl-2">หัวข้อยอดนิยม:</span>
+          <span className="text-[10px] uppercase font-bold text-slate-700 whitespace-nowrap pl-2">หัวข้อยอดนิยม:</span>
           {quickPrompts.map((p, idx) => (
             <button
               key={idx}

@@ -83,7 +83,7 @@ export const IncomeCalculator: React.FC = () => {
               {posBadge.label}
             </span>
           </div>
-          <p className="text-xs text-slate-600 mt-1">
+          <p className="text-xs text-slate-700 mt-1">
             อิงตาม Compensation Plan เวอร์ชัน <span className="text-amber-400 font-mono font-bold">{activePlan.code}</span> (Update 15 Jan 64)
           </p>
         </div>
@@ -96,7 +96,7 @@ export const IncomeCalculator: React.FC = () => {
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                 calcMode === 'ACTUAL' 
                   ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20' 
-                  : 'text-slate-600 hover:text-slate-800'
+                  : 'text-slate-700 hover:text-slate-800'
               }`}
             >
               ACTUAL (ผลงานจริง)
@@ -106,7 +106,7 @@ export const IncomeCalculator: React.FC = () => {
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                 calcMode === 'PROJECTED' 
                   ? 'bg-sky-500 text-slate-950 shadow-md shadow-sky-500/20' 
-                  : 'text-slate-600 hover:text-slate-800'
+                  : 'text-slate-700 hover:text-slate-800'
               }`}
             >
               PROJECTED (คาดการณ์)
@@ -116,7 +116,7 @@ export const IncomeCalculator: React.FC = () => {
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                 calcMode === 'SIMULATION' 
                   ? 'bg-purple-500 text-slate-950 shadow-md shadow-purple-500/20' 
-                  : 'text-slate-600 hover:text-slate-800'
+                  : 'text-slate-700 hover:text-slate-800'
               }`}
             >
               SIMULATION (จำลองตัวเลข)
@@ -143,13 +143,13 @@ export const IncomeCalculator: React.FC = () => {
                 ปรับแต่งตัวแปรผลงานจำลอง (Simulation Parameter Controller)
               </span>
             </div>
-            <span className="text-[10px] text-slate-600">คำนวณและอัปเดตผลตอบแทนทันทีแบบเรียลไทม์</span>
+            <span className="text-[10px] text-slate-700">คำนวณและอัปเดตผลตอบแทนทันทีแบบเรียลไทม์</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Personal COM */}
             <div className="p-3 rounded-xl bg-white border border-slate-200">
-              <div className="flex justify-between text-xs text-slate-600 mb-1">
+              <div className="flex justify-between text-xs text-slate-700 mb-1">
                 <span>บำเหน็จส่วนตัว (COM)</span>
                 <span className="text-amber-400 font-bold">฿{customParams.personalCOM.toLocaleString()}</span>
               </div>
@@ -166,7 +166,7 @@ export const IncomeCalculator: React.FC = () => {
 
             {/* Team FYC */}
             <div className="p-3 rounded-xl bg-white border border-slate-200">
-              <div className="flex justify-between text-xs text-slate-600 mb-1">
+              <div className="flex justify-between text-xs text-slate-700 mb-1">
                 <span>FYC ทั้งทีม (Team FYC)</span>
                 <span className="text-sky-400 font-bold">฿{customParams.teamFYC.toLocaleString()}</span>
               </div>
@@ -183,7 +183,7 @@ export const IncomeCalculator: React.FC = () => {
 
             {/* Separated Units */}
             <div className="p-3 rounded-xl bg-white border border-slate-200">
-              <div className="flex justify-between text-xs text-slate-600 mb-1">
+              <div className="flex justify-between text-xs text-slate-700 mb-1">
                 <span>จำนวนหน่วยแยก (Units)</span>
                 <span className="text-emerald-400 font-bold">{customParams.separatedUnits} หน่วย</span>
               </div>
@@ -200,7 +200,7 @@ export const IncomeCalculator: React.FC = () => {
 
             {/* Position Selector */}
             <div className="p-3 rounded-xl bg-white border border-slate-200">
-              <div className="text-xs text-slate-600 mb-1.5">ตำแหน่งที่ใช้จำลอง (Simulated Rank)</div>
+              <div className="text-xs text-slate-700 mb-1.5">ตำแหน่งที่ใช้จำลอง (Simulated Rank)</div>
               <select
                 value={customParams.positionId}
                 onChange={(e) => setCustomParams({ ...customParams, positionId: e.target.value })}
@@ -225,9 +225,9 @@ export const IncomeCalculator: React.FC = () => {
             </span>
             <div className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight mt-2 flex items-baseline gap-2">
               <span>฿{incomeResult.totalIncome.toLocaleString()}</span>
-              <span className="text-sm sm:text-base font-medium text-slate-600">/ เดือน</span>
+              <span className="text-sm sm:text-base font-medium text-slate-700">/ เดือน</span>
             </div>
-            <p className="text-xs text-slate-600 mt-2">
+            <p className="text-xs text-slate-700 mt-2">
               ประเมินรายได้รายปี (Annualized Run-Rate): <span className="text-amber-300 font-bold font-mono">฿{(incomeResult.totalIncome * 12).toLocaleString()}</span> บาท/ปี
             </p>
           </div>
@@ -235,11 +235,11 @@ export const IncomeCalculator: React.FC = () => {
           {/* Quick Metrics Badges */}
           <div className="grid grid-cols-2 gap-3 text-xs">
             <div className="p-3 rounded-2xl bg-white/80 border border-slate-200">
-              <span className="text-slate-600 block text-[10px]">บำเหน็จส่วนตัว (Direct)</span>
+              <span className="text-slate-700 block text-[10px]">บำเหน็จส่วนตัว (Direct)</span>
               <span className="font-bold text-slate-800 text-sm">฿{incomeResult.breakdown.find(b => b.id.includes('direct') || b.id.includes('personal'))?.amount.toLocaleString() || '0'}</span>
             </div>
             <div className="p-3 rounded-2xl bg-white/80 border border-slate-200">
-              <span className="text-slate-600 block text-[10px]">ผลตอบแทนบริหารทีม (Override)</span>
+              <span className="text-slate-700 block text-[10px]">ผลตอบแทนบริหารทีม (Override)</span>
               <span className="font-bold text-amber-400 text-sm">฿{(incomeResult.totalIncome - (incomeResult.breakdown.find(b => b.id.includes('direct') || b.id.includes('personal'))?.amount || 0)).toLocaleString()}</span>
             </div>
           </div>
@@ -253,11 +253,11 @@ export const IncomeCalculator: React.FC = () => {
             <h2 className="text-base sm:text-lg font-bold text-slate-900">
               ตารางแจกแจงผลประโยชน์ 13 รายการ (13 Income Categories Breakdown)
             </h2>
-            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
+            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
               {incomeResult.breakdown.length} รายการที่เข้าเกณฑ์
             </span>
           </div>
-          <span className="text-[11px] text-slate-600">คลิกการ์ดเพื่อดูสูตรคำนวณและเกณฑ์ขั้นบันได</span>
+          <span className="text-[11px] text-slate-700">คลิกการ์ดเพื่อดูสูตรคำนวณและเกณฑ์ขั้นบันได</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -273,7 +273,7 @@ export const IncomeCalculator: React.FC = () => {
                     {item.title}
                   </div>
                   <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${
-                    item.amount > 0 ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/30' : 'bg-slate-100 text-slate-600'
+                    item.amount > 0 ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/30' : 'bg-slate-100 text-slate-700'
                   }`}>
                     {item.amount > 0 ? 'Active' : 'Zero Base'}
                   </span>
@@ -283,12 +283,12 @@ export const IncomeCalculator: React.FC = () => {
                   ฿{item.amount.toLocaleString()}
                 </div>
 
-                <div className="text-[11px] text-slate-600 mt-1 line-clamp-2 leading-relaxed">
+                <div className="text-[11px] text-slate-700 mt-1 line-clamp-2 leading-relaxed">
                   {item.description}
                 </div>
               </div>
 
-              <div className="pt-3 mt-3 border-t border-slate-200/80 flex items-center justify-between text-[10px] text-slate-600">
+              <div className="pt-3 mt-3 border-t border-slate-200/80 flex items-center justify-between text-[10px] text-slate-700">
                 <span className="font-mono truncate max-w-[180px]">สูตร: {item.rateOrFormula}</span>
                 <span className="text-amber-400 font-semibold group-hover:underline flex items-center gap-0.5">
                   ดูสูตร <ArrowRight className="w-3 h-3" />
@@ -312,7 +312,7 @@ export const IncomeCalculator: React.FC = () => {
               </div>
               <button
                 onClick={() => setSelectedIncomeCard(null)}
-                className="w-7 h-7 rounded-lg bg-slate-100 text-slate-600 hover:text-slate-900 flex items-center justify-center text-xs"
+                className="w-7 h-7 rounded-lg bg-slate-100 text-slate-700 hover:text-slate-900 flex items-center justify-center text-xs"
               >
                 ✕
               </button>
@@ -320,21 +320,21 @@ export const IncomeCalculator: React.FC = () => {
 
             <div className="space-y-3">
               <div className="p-3 rounded-xl bg-white border border-slate-200">
-                <span className="text-[10px] text-slate-600 uppercase font-bold">ยอดเงินที่คำนวณได้</span>
+                <span className="text-[10px] text-slate-700 uppercase font-bold">ยอดเงินที่คำนวณได้</span>
                 <div className="text-2xl font-black text-amber-300 font-mono mt-0.5">
                   ฿{selectedIncomeCard.amount.toLocaleString()} บาท
                 </div>
               </div>
 
               <div className="p-3 rounded-xl bg-white border border-slate-200">
-                <span className="text-[10px] text-slate-600 uppercase font-bold">อัตราและสูตรที่ใช้</span>
+                <span className="text-[10px] text-slate-700 uppercase font-bold">อัตราและสูตรที่ใช้</span>
                 <div className="text-xs font-semibold text-slate-800 font-mono mt-0.5">
                   {selectedIncomeCard.rateOrFormula}
                 </div>
               </div>
 
               <div className="p-3 rounded-xl bg-white border border-slate-200">
-                <span className="text-[10px] text-slate-600 uppercase font-bold">หลักเกณฑ์และเงื่อนไข</span>
+                <span className="text-[10px] text-slate-700 uppercase font-bold">หลักเกณฑ์และเงื่อนไข</span>
                 <p className="text-xs text-slate-700 mt-1 leading-relaxed">
                   {selectedIncomeCard.description}
                 </p>
@@ -373,13 +373,13 @@ export const IncomeCalculator: React.FC = () => {
               </div>
               <button
                 onClick={() => setShowTestModal(false)}
-                className="w-7 h-7 rounded-lg bg-slate-100 text-slate-600 hover:text-slate-900 flex items-center justify-center text-xs"
+                className="w-7 h-7 rounded-lg bg-slate-100 text-slate-700 hover:text-slate-900 flex items-center justify-center text-xs"
               >
                 ✕
               </button>
             </div>
 
-            <p className="text-xs text-slate-600">
+            <p className="text-xs text-slate-700">
               ชุดการทดสอบคณิตศาสตร์ 8 ขั้น เพื่อยืนยันความถูกต้องของสูตรคำนวณตามเอกสารผลตอบแทน Update 15 Jan 64
             </p>
 
@@ -388,7 +388,7 @@ export const IncomeCalculator: React.FC = () => {
                 <div key={idx} className="p-3 rounded-xl bg-white border border-slate-200 flex items-center justify-between text-xs">
                   <div>
                     <div className="font-semibold text-slate-800">{t.testName}</div>
-                    <div className="text-[10px] text-slate-600 font-mono">
+                    <div className="text-[10px] text-slate-700 font-mono">
                       Expected: ฿{t.expected.toLocaleString()} | Actual: ฿{t.actual.toLocaleString()}
                     </div>
                   </div>

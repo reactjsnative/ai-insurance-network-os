@@ -66,7 +66,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
 
   if (!currentMember) {
     return (
-      <div className="max-w-4xl mx-auto p-12 text-center text-slate-600">
+      <div className="max-w-4xl mx-auto p-12 text-center text-slate-700">
         กรุณาเลือกสมาชิกที่ต้องการวางแผนเป้าหมาย
       </div>
     );
@@ -184,41 +184,41 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
         <div className="p-5 rounded-2xl bg-white/80 border border-slate-200 backdrop-blur-md shadow-lg">
-          <span className="text-xs text-slate-600 font-medium">เป้าหมายรายได้ต่อเดือน</span>
+          <span className="text-xs text-slate-700 font-medium">เป้าหมายรายได้ต่อเดือน</span>
           <div className="text-2xl font-black text-amber-300 mt-1">
             ฿{monthlyGoal.toLocaleString()}
           </div>
-          <span className="text-[11px] text-slate-600 mt-1 block">
+          <span className="text-[11px] text-slate-700 mt-1 block">
             ต่อปี: ฿{(monthlyGoal * 12).toLocaleString()}
           </span>
         </div>
 
         <div className="p-5 rounded-2xl bg-white/80 border border-slate-200 backdrop-blur-md shadow-lg">
-          <span className="text-xs text-slate-600 font-medium">ส่วนต่างที่ขาดอยู่ (Gap)</span>
+          <span className="text-xs text-slate-700 font-medium">ส่วนต่างที่ขาดอยู่ (Gap)</span>
           <div className="text-2xl font-black text-rose-400 mt-1">
             ฿{incomeGap.toLocaleString()}
           </div>
-          <span className="text-[11px] text-slate-600 mt-1 block">
+          <span className="text-[11px] text-slate-700 mt-1 block">
             ทำได้แล้ว ฿{actualIncome.toLocaleString()} ({currentProgress}%)
           </span>
         </div>
 
         <div className="p-5 rounded-2xl bg-white/80 border border-slate-200 backdrop-blur-md shadow-lg">
-          <span className="text-xs text-slate-600 font-medium">ระยะเวลาคาดการณ์สู่อิสรภาพ</span>
+          <span className="text-xs text-slate-700 font-medium">ระยะเวลาคาดการณ์สู่อิสรภาพ</span>
           <div className="text-2xl font-black text-emerald-400 mt-1">
             ~{estimatedMonths} เดือน
           </div>
-          <span className="text-[11px] text-slate-600 mt-1 block">
+          <span className="text-[11px] text-slate-700 mt-1 block">
             ตามแผนรับสมัคร +{plannedRecruits} คน/เดือน
           </span>
         </div>
 
         <div className="p-5 rounded-2xl bg-white/80 border border-slate-200 backdrop-blur-md shadow-lg">
-          <span className="text-xs text-slate-600 font-medium">เงินสำรองฉุกเฉิน 6 เดือน</span>
+          <span className="text-xs text-slate-700 font-medium">เงินสำรองฉุกเฉิน 6 เดือน</span>
           <div className="text-2xl font-black text-blue-400 mt-1">
             ฿{reserveFund.toLocaleString()}
           </div>
-          <span className="text-[11px] text-slate-600 mt-1 block">
+          <span className="text-[11px] text-slate-700 mt-1 block">
             ค่าใช้จ่าย ฿{monthlyExpenses.toLocaleString()}/ด.
           </span>
         </div>
@@ -303,7 +303,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
               <Award className="w-5 h-5 text-indigo-400" />
               <span>แผนบันได 4 ขั้นสู่ความสำเร็จ (4-Stage Milestone Roadmap)</span>
             </h3>
-            <p className="text-xs text-slate-600 mt-0.5">ติ๊กเครื่องหมายถูกเมื่อบรรลุหมุดหมายในแต่ละระดับ</p>
+            <p className="text-xs text-slate-700 mt-0.5">ติ๊กเครื่องหมายถูกเมื่อบรรลุหมุดหมายในแต่ละระดับ</p>
           </div>
           <span className="text-xs px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 font-semibold">
             ความคืบหน้ารวม {currentProgress}%
@@ -331,7 +331,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
             <div className="space-y-1 text-[11px] text-slate-700">
               <div>รายได้เป้าหมาย: <strong className="text-emerald-400">฿{Math.round(monthlyGoal * 0.25).toLocaleString()}</strong></div>
               <div>สมาชิกในทีม: <strong className="text-slate-900">3-5 คน</strong></div>
-              <div>กำหนดเวลา: <span className="text-slate-600">มิ.ย. 2568</span></div>
+              <div>กำหนดเวลา: <span className="text-slate-700">มิ.ย. 2568</span></div>
             </div>
           </div>
 
@@ -354,7 +354,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
             <div className="space-y-1 text-[11px] text-slate-700">
               <div>รายได้เป้าหมาย: <strong className="text-emerald-400">฿{Math.round(monthlyGoal * 0.5).toLocaleString()}</strong></div>
               <div>สมาชิกในทีม: <strong className="text-slate-900">7-10 คน</strong></div>
-              <div>กำหนดเวลา: <span className="text-slate-600">ธ.ค. 2568</span></div>
+              <div>กำหนดเวลา: <span className="text-slate-700">ธ.ค. 2568</span></div>
             </div>
           </div>
 
@@ -377,7 +377,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
             <div className="space-y-1 text-[11px] text-slate-700">
               <div>รายได้เป้าหมาย: <strong className="text-emerald-400">฿{Math.round(monthlyGoal * 0.75).toLocaleString()}</strong></div>
               <div>สมาชิกในทีม: <strong className="text-slate-900">15-20 คน</strong></div>
-              <div>กำหนดเวลา: <span className="text-slate-600">มิ.ย. 2569</span></div>
+              <div>กำหนดเวลา: <span className="text-slate-700">มิ.ย. 2569</span></div>
             </div>
           </div>
 
@@ -400,7 +400,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
             <div className="space-y-1 text-[11px] text-slate-700">
               <div>รายได้เป้าหมาย: <strong className="text-emerald-400">฿{monthlyGoal.toLocaleString()}</strong></div>
               <div>สมาชิกในทีม: <strong className="text-slate-900">30+ คน</strong></div>
-              <div>กำหนดเวลา: <span className="text-slate-600">ธ.ค. 2569</span></div>
+              <div>กำหนดเวลา: <span className="text-slate-700">ธ.ค. 2569</span></div>
             </div>
           </div>
 

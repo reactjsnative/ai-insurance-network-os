@@ -64,7 +64,7 @@ export const ReportsCenter: React.FC = () => {
               Executive Export
             </span>
           </div>
-          <p className="text-xs text-slate-600 mt-1">
+          <p className="text-xs text-slate-700 mt-1">
             พิมพ์ใบสรุปผลประโยชน์ (Statement), ดาวน์โหลด CSV/Excel, และรายงานผลงานรายเดือน/รายปี
           </p>
         </div>
@@ -100,27 +100,27 @@ export const ReportsCenter: React.FC = () => {
           </div>
           <div className="text-right">
             <div className="text-xs font-bold text-slate-800">{activeUser.name}</div>
-            <div className="text-[11px] text-slate-600">{activeUser.memberCode} • {activeUser.positionId}</div>
-            <div className="text-[10px] text-slate-600">{activeUser.location.province}</div>
+            <div className="text-[11px] text-slate-700">{activeUser.memberCode} • {activeUser.positionId}</div>
+            <div className="text-[10px] text-slate-700">{activeUser.location.province}</div>
           </div>
         </div>
 
         {/* Summary Metrics */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           <div className="p-4 rounded-2xl bg-white border border-slate-200">
-            <span className="text-[10px] text-slate-600 block uppercase">FYC องค์กรรวม</span>
+            <span className="text-[10px] text-slate-700 block uppercase">FYC องค์กรรวม</span>
             <div className="text-xl font-black text-sky-400 font-mono mt-1">
               ฿{(activeUser.personalFYC + stats.teamFYC).toLocaleString()}
             </div>
           </div>
           <div className="p-4 rounded-2xl bg-white border border-slate-200">
-            <span className="text-[10px] text-slate-600 block uppercase">สมาชิกทั้งหมด</span>
+            <span className="text-[10px] text-slate-700 block uppercase">สมาชิกทั้งหมด</span>
             <div className="text-xl font-black text-slate-800 font-mono mt-1">
               {members.length} คน
             </div>
           </div>
           <div className="p-4 rounded-2xl bg-white border border-slate-200">
-            <span className="text-[10px] text-slate-600 block uppercase">หน่วยแยก / ศูนย์แยก</span>
+            <span className="text-[10px] text-slate-700 block uppercase">หน่วยแยก / ศูนย์แยก</span>
             <div className="text-xl font-black text-slate-800 font-mono mt-1">
               {stats.totalUnits} / {stats.totalCenters}
             </div>
@@ -138,7 +138,7 @@ export const ReportsCenter: React.FC = () => {
           <h3 className="text-sm font-bold text-slate-800 mb-3">รายละเอียดผลประโยชน์ (13 Income Categories)</h3>
           <div className="rounded-2xl border border-slate-200 overflow-hidden">
             <table className="w-full text-xs text-left text-slate-700">
-              <thead className="bg-white text-slate-600 font-bold uppercase text-[10px] border-b border-slate-200">
+              <thead className="bg-white text-slate-700 font-bold uppercase text-[10px] border-b border-slate-200">
                 <tr>
                   <th className="p-3">ลำดับ</th>
                   <th className="p-3">หมวดหมู่ผลประโยชน์</th>
@@ -149,9 +149,9 @@ export const ReportsCenter: React.FC = () => {
               <tbody className="divide-y divide-slate-800/60">
                 {income.breakdown.map((b, idx) => (
                   <tr key={b.id} className="hover:bg-white/30">
-                    <td className="p-3 text-slate-600">{idx + 1}</td>
+                    <td className="p-3 text-slate-700">{idx + 1}</td>
                     <td className="p-3 font-semibold text-slate-800">{b.title}</td>
-                    <td className="p-3 text-slate-600 font-mono">{b.rateOrFormula}</td>
+                    <td className="p-3 text-slate-700 font-mono">{b.rateOrFormula}</td>
                     <td className="p-3 text-right font-bold text-amber-400 font-mono">฿{b.amount.toLocaleString()}</td>
                   </tr>
                 ))}

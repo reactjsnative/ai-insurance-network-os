@@ -37,7 +37,7 @@ export const ExtractedAiNetwork: React.FC<{ tab?: string }> = ({ tab = 'dashboar
             <p className="text-sm font-bold text-slate-900 truncate leading-tight">
               ระบบบริหารตัวแทนประกันชีวิต
             </p>
-            <p className="text-[10px] text-slate-600 truncate leading-tight">
+            <p className="text-[10px] text-slate-700 truncate leading-tight">
               {TAB_LABELS[tab] || tab} · AI Insurance Network &amp; Team Builder
             </p>
           </div>

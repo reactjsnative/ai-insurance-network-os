@@ -335,7 +335,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeSubTab === 'form'
                   ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
-                  : 'text-slate-600 hover:text-slate-800 hover:bg-white'
+                  : 'text-slate-700 hover:text-slate-800 hover:bg-white'
               }`}
             >
               <Send className="w-3.5 h-3.5" />
@@ -347,7 +347,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all relative ${
                 activeSubTab === 'list'
                   ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
-                  : 'text-slate-600 hover:text-slate-800 hover:bg-white'
+                  : 'text-slate-700 hover:text-slate-800 hover:bg-white'
               }`}
             >
               <FileText className="w-3.5 h-3.5" />
@@ -364,7 +364,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeSubTab === 'stats'
                   ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
-                  : 'text-slate-600 hover:text-slate-800 hover:bg-white'
+                  : 'text-slate-700 hover:text-slate-800 hover:bg-white'
               }`}
             >
               <TrendingUp className="w-3.5 h-3.5" />
@@ -376,20 +376,20 @@ export const AgentRecruitmentPortal: React.FC = () => {
         {/* 4 Mini KPI Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-slate-200/80">
           <div className="bg-white/60 p-3 rounded-xl border border-slate-200/60">
-            <p className="text-xs text-slate-600">{language === 'th' ? 'ใบสมัครทั้งหมด' : 'Total Applications'}</p>
-            <p className="text-xl font-bold text-white mt-1">{totalApps} <span className="text-xs font-normal text-slate-600">{language === 'th' ? 'ราย' : 'apps'}</span></p>
+            <p className="text-xs text-slate-700">{language === 'th' ? 'ใบสมัครทั้งหมด' : 'Total Applications'}</p>
+            <p className="text-xl font-bold text-white mt-1">{totalApps} <span className="text-xs font-normal text-slate-700">{language === 'th' ? 'ราย' : 'apps'}</span></p>
           </div>
           <div className="bg-white/60 p-3 rounded-xl border border-slate-200/60">
             <p className="text-xs text-amber-400">{language === 'th' ? 'รอตรวจสอบ' : 'Pending Review'}</p>
-            <p className="text-xl font-bold text-amber-400 mt-1">{pendingApps} <span className="text-xs font-normal text-slate-600">{language === 'th' ? 'ราย' : 'apps'}</span></p>
+            <p className="text-xl font-bold text-amber-400 mt-1">{pendingApps} <span className="text-xs font-normal text-slate-700">{language === 'th' ? 'ราย' : 'apps'}</span></p>
           </div>
           <div className="bg-white/60 p-3 rounded-xl border border-slate-200/60">
             <p className="text-xs text-cyan-400">{language === 'th' ? 'พร้อมบรรจุ/ผ่านเกณฑ์' : 'Qualified / Ready'}</p>
-            <p className="text-xl font-bold text-cyan-400 mt-1">{verifiedApps} <span className="text-xs font-normal text-slate-600">{language === 'th' ? 'ราย' : 'apps'}</span></p>
+            <p className="text-xl font-bold text-cyan-400 mt-1">{verifiedApps} <span className="text-xs font-normal text-slate-700">{language === 'th' ? 'ราย' : 'apps'}</span></p>
           </div>
           <div className="bg-white/60 p-3 rounded-xl border border-slate-200/60">
             <p className="text-xs text-emerald-400">{language === 'th' ? 'อนุมัติบรรจุแล้ว' : 'Approved to Team'}</p>
-            <p className="text-xl font-bold text-emerald-400 mt-1">{approvedApps} <span className="text-xs font-normal text-slate-600">{language === 'th' ? 'ราย' : 'members'}</span></p>
+            <p className="text-xl font-bold text-emerald-400 mt-1">{approvedApps} <span className="text-xs font-normal text-slate-700">{language === 'th' ? 'ราย' : 'members'}</span></p>
           </div>
         </div>
       </div>
@@ -453,12 +453,12 @@ export const AgentRecruitmentPortal: React.FC = () => {
                         ? 'bg-emerald-600 border-emerald-500 text-white'
                         : isCurrent
                         ? 'bg-indigo-600 border-indigo-400 text-white ring-4 ring-indigo-500/20'
-                        : 'bg-slate-100 border-slate-200 text-slate-600'
+                        : 'bg-slate-100 border-slate-200 text-slate-700'
                     }`}>
                       {isPassed ? <Check className="w-5 h-5 font-bold" /> : <Icon className="w-5 h-5" />}
                     </div>
                     <span className={`text-xs font-semibold whitespace-nowrap ${
-                      isCurrent ? 'text-indigo-400' : isPassed ? 'text-emerald-400' : 'text-slate-600'
+                      isCurrent ? 'text-indigo-400' : isPassed ? 'text-emerald-400' : 'text-slate-700'
                     }`}>
                       {s.title}
                     </span>
@@ -477,7 +477,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                     <UserPlus className="w-5 h-5 text-indigo-400" />
                     {language === 'th' ? 'ขั้นตอนที่ 1: ข้อมูลประวัติส่วนตัวของผู้สมัคร' : 'Step 1: Personal Profile'}
                   </h2>
-                  <p className="text-xs text-slate-600 mt-1">
+                  <p className="text-xs text-slate-700 mt-1">
                     {language === 'th' ? 'กรอกข้อมูลส่วนตัวสำหรับการลงทะเบียนเข้าสู่ระบบบริหารองค์กร' : 'Provide candidate details for agent record registration.'}
                   </p>
                 </div>
@@ -580,7 +580,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                   <div>
                     <label className="block text-xs font-medium text-slate-700 mb-1.5">{language === 'th' ? 'เบอร์โทรศัพท์ติดต่อ *' : 'Phone Number *'}</label>
                     <div className="relative">
-                      <Phone className="w-4 h-4 text-slate-600 absolute left-3 top-3" />
+                      <Phone className="w-4 h-4 text-slate-700 absolute left-3 top-3" />
                       <input
                         type="tel"
                         placeholder="081-234-5678"
@@ -597,7 +597,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                   <div>
                     <label className="block text-xs font-medium text-slate-700 mb-1.5">{language === 'th' ? 'อีเมล (Email) *' : 'Email *'}</label>
                     <div className="relative">
-                      <Mail className="w-4 h-4 text-slate-600 absolute left-3 top-3" />
+                      <Mail className="w-4 h-4 text-slate-700 absolute left-3 top-3" />
                       <input
                         type="email"
                         placeholder="candidate@example.com"
@@ -657,7 +657,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                     <GraduationCap className="w-5 h-5 text-indigo-400" />
                     {language === 'th' ? 'ขั้นตอนที่ 2: วุฒิการศึกษาและประวัติการทำงาน' : 'Step 2: Education & Work Experience'}
                   </h2>
-                  <p className="text-xs text-slate-600 mt-1">
+                  <p className="text-xs text-slate-700 mt-1">
                     {language === 'th' ? 'ข้อมูลเพื่อการวิเคราะห์ศักยภาพและกำหนดแผนการฝึกอบรมที่เหมาะสม' : 'Evaluate candidate background for customized training & fast-track pathways.'}
                   </p>
                 </div>
@@ -756,7 +756,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                     <Award className="w-5 h-5 text-indigo-400" />
                     {language === 'th' ? 'ขั้นตอนที่ 3: สถานะใบอนุญาตตัวแทนประกันชีวิต (คปภ.)' : 'Step 3: OIC Life Insurance License Status'}
                   </h2>
-                  <p className="text-xs text-slate-600 mt-1">
+                  <p className="text-xs text-slate-700 mt-1">
                     {language === 'th' ? 'ตรวจสอบคุณสมบัติตามกฎหมาย คปภ. และใบอนุญาตเสริม (IC / วินาศภัย)' : 'Verify legal compliance, OIC agent license number, and additional certifications.'}
                   </p>
                 </div>
@@ -776,11 +776,11 @@ export const AgentRecruitmentPortal: React.FC = () => {
                           className={`p-4 rounded-xl border cursor-pointer transition-all ${
                             formData.licenseStatus === item.id
                               ? 'bg-indigo-950/60 border-indigo-500 text-white ring-2 ring-indigo-500/20'
-                              : 'bg-white border-slate-200 text-slate-600 hover:border-slate-200'
+                              : 'bg-white border-slate-200 text-slate-700 hover:border-slate-200'
                           }`}
                         >
                           <p className="font-semibold text-sm text-slate-800">{item.label}</p>
-                          <p className="text-xs text-slate-600 mt-1">{item.desc}</p>
+                          <p className="text-xs text-slate-700 mt-1">{item.desc}</p>
                         </div>
                       ))}
                     </div>
@@ -838,7 +838,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                       />
                       <div>
                         <p className="text-xs font-semibold text-slate-800">{language === 'th' ? 'มีใบอนุญาตผู้แนะนำการลงทุน (IC License)' : 'Investment Consultant (IC License)'}</p>
-                        <p className="text-[11px] text-slate-600">{language === 'th' ? 'สามารถเสนอขายแบบประกันควบการลงทุน (Unit-Linked / Universal Life)' : 'Eligible for Unit-Linked & Wealth products'}</p>
+                        <p className="text-[11px] text-slate-700">{language === 'th' ? 'สามารถเสนอขายแบบประกันควบการลงทุน (Unit-Linked / Universal Life)' : 'Eligible for Unit-Linked & Wealth products'}</p>
                       </div>
                     </label>
 
@@ -851,7 +851,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                       />
                       <div>
                         <p className="text-xs font-semibold text-slate-800">{language === 'th' ? 'มีใบอนุญาตนายหน้าประกันวินาศภัย' : 'General / Non-Life Insurance License'}</p>
-                        <p className="text-[11px] text-slate-600">{language === 'th' ? 'สามารถเสนอขายประกันรถยนต์ พ.ร.บ. และอัคคีภัย' : 'Auto & property insurance selling'}</p>
+                        <p className="text-[11px] text-slate-700">{language === 'th' ? 'สามารถเสนอขายประกันรถยนต์ พ.ร.บ. และอัคคีภัย' : 'Auto & property insurance selling'}</p>
                       </div>
                     </label>
                   </div>
@@ -867,7 +867,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                     <Building2 className="w-5 h-5 text-indigo-400" />
                     {language === 'th' ? 'ขั้นตอนที่ 4: ผู้แนะนำ (Sponsor) และเป้าหมายเส้นทางอาชีพ' : 'Step 4: Network Sponsor & Career Goals'}
                   </h2>
-                  <p className="text-xs text-slate-600 mt-1">
+                  <p className="text-xs text-slate-700 mt-1">
                     {language === 'th' ? 'เชื่อมโยงสายงานในระบบ Infinite Network และคำนวณเป้าหมายรายได้' : 'Connect into the downline hierarchy and project monthly/annual income goals.'}
                   </p>
                 </div>
@@ -929,7 +929,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                         onChange={(e) => setFormData({ ...formData, targetYearlyFYCGoal: Number(e.target.value) || 0 })}
                         className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm text-amber-400 font-bold focus:outline-none focus:border-amber-500"
                       />
-                      <p className="text-[11px] text-slate-600 mt-1">
+                      <p className="text-[11px] text-slate-700 mt-1">
                         ≈ {(formData.targetYearlyFYCGoal / 12).toLocaleString()} บาท/เดือน
                       </p>
                     </div>
@@ -946,7 +946,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                         onChange={(e) => setFormData({ ...formData, targetMonthlyIncomeGoal: Number(e.target.value) || 0 })}
                         className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm text-emerald-400 font-bold focus:outline-none focus:border-emerald-500"
                       />
-                      <p className="text-[11px] text-slate-600 mt-1">
+                      <p className="text-[11px] text-slate-700 mt-1">
                         {language === 'th' ? 'ประมาณการคอมมิชชั่นขั้นต้น' : 'Est. base commission'}: ≈ {estimatedMonthlyCommission.toLocaleString()} ฿/ด.
                       </p>
                     </div>
@@ -1031,7 +1031,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
           {/* Filter Bar */}
           <div className="bg-white border border-slate-200 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="relative flex-1 w-full">
-              <Search className="w-4 h-4 text-slate-600 absolute left-3 top-3" />
+              <Search className="w-4 h-4 text-slate-700 absolute left-3 top-3" />
               <input
                 type="text"
                 placeholder={language === 'th' ? 'ค้นหาชื่อผู้สมัคร, รหัสใบสมัคร (APP-), เบอร์โทร, จังหวัด...' : 'Search by name, app no, phone, province...'}
@@ -1042,7 +1042,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
             </div>
 
             <div className="flex items-center gap-3 w-full sm:w-auto">
-              <Filter className="w-4 h-4 text-slate-600" />
+              <Filter className="w-4 h-4 text-slate-700" />
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
@@ -1062,7 +1062,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
           <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xl">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm">
-                <thead className="bg-white text-slate-600 uppercase text-[10px] font-bold border-b border-slate-200 tracking-wider">
+                <thead className="bg-white text-slate-700 uppercase text-[10px] font-bold border-b border-slate-200 tracking-wider">
                   <tr>
                     <th className="px-4 py-3">{language === 'th' ? 'รหัสใบสมัคร / วันที่' : 'App No / Date'}</th>
                     <th className="px-4 py-3">{language === 'th' ? 'ผู้สมัคร' : 'Candidate'}</th>
@@ -1076,7 +1076,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                 <tbody className="divide-y divide-slate-800/60">
                   {filteredApps.length === 0 ? (
                     <tr>
-                      <td colSpan={7} className="px-4 py-12 text-center text-slate-600 text-sm">
+                      <td colSpan={7} className="px-4 py-12 text-center text-slate-700 text-sm">
                         {language === 'th' ? 'ไม่พบรายการใบสมัครตามเงื่อนไข' : 'No applications found matching criteria'}
                       </td>
                     </tr>
@@ -1085,7 +1085,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                       <tr key={app.id} className="hover:bg-slate-100/30 transition-colors">
                         <td className="px-4 py-3.5">
                           <p className="font-mono font-bold text-xs text-indigo-400">{app.applicationNo}</p>
-                          <p className="text-[11px] text-slate-600 mt-0.5">
+                          <p className="text-[11px] text-slate-700 mt-0.5">
                             {new Date(app.submittedAt).toLocaleDateString(language === 'th' ? 'th-TH' : 'en-US', {
                               day: 'numeric',
                               month: 'short',
@@ -1103,8 +1103,8 @@ export const AgentRecruitmentPortal: React.FC = () => {
                               <p className="font-semibold text-slate-900 text-xs">
                                 {app.prefix} {app.firstName} {app.lastName} {app.nickname ? `(${app.nickname})` : ''}
                               </p>
-                              <p className="text-[11px] text-slate-600 flex items-center gap-1.5 mt-0.5">
-                                <Phone className="w-3 h-3 text-slate-600" /> {app.phone} | <MapPin className="w-3 h-3 text-slate-600" /> {app.province}
+                              <p className="text-[11px] text-slate-700 flex items-center gap-1.5 mt-0.5">
+                                <Phone className="w-3 h-3 text-slate-700" /> {app.phone} | <MapPin className="w-3 h-3 text-slate-700" /> {app.province}
                               </p>
                             </div>
                           </div>
@@ -1116,14 +1116,14 @@ export const AgentRecruitmentPortal: React.FC = () => {
                               <span className="text-xs font-semibold text-emerald-400 flex items-center gap-1">
                                 <CheckCircle2 className="w-3.5 h-3.5" /> มีใบอนุญาต คปภ.
                               </span>
-                              <p className="text-[10px] text-slate-600 font-mono mt-0.5">No. {app.licenseNumber || '-'}</p>
+                              <p className="text-[10px] text-slate-700 font-mono mt-0.5">No. {app.licenseNumber || '-'}</p>
                             </div>
                           ) : app.licenseStatus === 'exam_scheduled' ? (
                             <span className="text-xs font-medium text-amber-400 flex items-center gap-1">
                               <Clock className="w-3.5 h-3.5" /> นัดสอบ {app.examDate || 'เร็วๆ นี้'}
                             </span>
                           ) : (
-                            <span className="text-xs font-medium text-slate-600">
+                            <span className="text-xs font-medium text-slate-700">
                               รอเข้าคอร์สอบรม
                             </span>
                           )}
@@ -1136,7 +1136,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
 
                         <td className="px-4 py-3.5">
                           <p className="font-bold text-xs text-amber-400">{(app.targetYearlyFYCGoal || 0).toLocaleString()} ฿</p>
-                          <p className="text-[10px] text-slate-600 mt-0.5">
+                          <p className="text-[10px] text-slate-700 mt-0.5">
                             {app.targetPositionPreference === 'unit_manager_fast_track' ? 'UM Fast Track' :
                              app.targetPositionPreference === 'center_executive_track' ? 'CM Track' : 'Life Agent'}
                           </p>
@@ -1211,19 +1211,19 @@ export const AgentRecruitmentPortal: React.FC = () => {
             </h3>
             <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-3 text-xs">
               <div className="flex justify-between py-1 border-b border-slate-200/80">
-                <span className="text-slate-600">{language === 'th' ? 'เป้าหมาย FYC รวมของผู้สมัครทั้งหมด' : 'Total Projected FYC Pipeline'}</span>
+                <span className="text-slate-700">{language === 'th' ? 'เป้าหมาย FYC รวมของผู้สมัครทั้งหมด' : 'Total Projected FYC Pipeline'}</span>
                 <span className="font-bold text-amber-400 text-sm">
                   {applications.reduce((sum, a) => sum + (a.targetYearlyFYCGoal || 0), 0).toLocaleString()} THB
                 </span>
               </div>
               <div className="flex justify-between py-1 border-b border-slate-200/80">
-                <span className="text-slate-600">{language === 'th' ? 'ผู้สมัครที่มีใบอนุญาต คปภ. แล้ว' : 'Licensed Candidates Ready'}</span>
+                <span className="text-slate-700">{language === 'th' ? 'ผู้สมัครที่มีใบอนุญาต คปภ. แล้ว' : 'Licensed Candidates Ready'}</span>
                 <span className="font-bold text-emerald-400">
                   {applications.filter(a => a.licenseStatus === 'has_license').length} {language === 'th' ? 'ท่าน' : 'agents'}
                 </span>
               </div>
               <div className="flex justify-between py-1">
-                <span className="text-slate-600">{language === 'th' ? 'ผู้สมัครสนใจสายบริหาร Fast-Track' : 'Management Fast-Track Applicants'}</span>
+                <span className="text-slate-700">{language === 'th' ? 'ผู้สมัครสนใจสายบริหาร Fast-Track' : 'Management Fast-Track Applicants'}</span>
                 <span className="font-bold text-cyan-400">
                   {applications.filter(a => a.targetPositionPreference !== 'agent').length} {language === 'th' ? 'ท่าน' : 'leaders'}
                 </span>
@@ -1252,30 +1252,30 @@ export const AgentRecruitmentPortal: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
               <div className="p-3.5 rounded-xl bg-white border border-slate-200 space-y-1.5">
                 <p className="font-bold text-slate-700">{language === 'th' ? 'ข้อมูลติดต่อ & ภูมิลำเนา' : 'Contact & Location'}</p>
-                <p className="text-slate-600"><span className="text-slate-600">โทร:</span> {selectedApplication.phone}</p>
-                <p className="text-slate-600"><span className="text-slate-600">อีเมล:</span> {selectedApplication.email}</p>
-                <p className="text-slate-600"><span className="text-slate-600">จังหวัด:</span> {selectedApplication.province} ({selectedApplication.region})</p>
-                <p className="text-slate-600"><span className="text-slate-600">LINE:</span> {selectedApplication.lineId || '-'}</p>
+                <p className="text-slate-700"><span className="text-slate-700">โทร:</span> {selectedApplication.phone}</p>
+                <p className="text-slate-700"><span className="text-slate-700">อีเมล:</span> {selectedApplication.email}</p>
+                <p className="text-slate-700"><span className="text-slate-700">จังหวัด:</span> {selectedApplication.province} ({selectedApplication.region})</p>
+                <p className="text-slate-700"><span className="text-slate-700">LINE:</span> {selectedApplication.lineId || '-'}</p>
               </div>
 
               <div className="p-3.5 rounded-xl bg-white border border-slate-200 space-y-1.5">
                 <p className="font-bold text-slate-700">{language === 'th' ? 'ประวัติการศึกษา & ใบอนุญาต' : 'Education & License'}</p>
-                <p className="text-slate-600"><span className="text-slate-600">วุฒิ:</span> {selectedApplication.educationLevel.toUpperCase()} ({selectedApplication.major || '-'})</p>
-                <p className="text-slate-600"><span className="text-slate-600">สถาบัน:</span> {selectedApplication.university}</p>
-                <p className="text-slate-600"><span className="text-slate-600">ใบอนุญาต คปภ.:</span> {selectedApplication.licenseNumber || selectedApplication.licenseStatus}</p>
-                <p className="text-slate-600"><span className="text-slate-600">IC License:</span> {selectedApplication.hasICLicense ? '✅ มี' : '❌ ไม่มี'}</p>
+                <p className="text-slate-700"><span className="text-slate-700">วุฒิ:</span> {selectedApplication.educationLevel.toUpperCase()} ({selectedApplication.major || '-'})</p>
+                <p className="text-slate-700"><span className="text-slate-700">สถาบัน:</span> {selectedApplication.university}</p>
+                <p className="text-slate-700"><span className="text-slate-700">ใบอนุญาต คปภ.:</span> {selectedApplication.licenseNumber || selectedApplication.licenseStatus}</p>
+                <p className="text-slate-700"><span className="text-slate-700">IC License:</span> {selectedApplication.hasICLicense ? '✅ มี' : '❌ ไม่มี'}</p>
               </div>
 
               <div className="sm:col-span-2 p-3.5 rounded-xl bg-white border border-slate-200 space-y-1.5">
                 <p className="font-bold text-slate-700">{language === 'th' ? 'ผู้แนะนำ & เป้าหมาย' : 'Sponsor & Track'}</p>
-                <p className="text-slate-600">
-                  <span className="text-slate-600">ผู้แนะนำ:</span> <span className="text-white font-semibold">{selectedApplication.sponsorName}</span> ({selectedApplication.sponsorCode})
+                <p className="text-slate-700">
+                  <span className="text-slate-700">ผู้แนะนำ:</span> <span className="text-white font-semibold">{selectedApplication.sponsorName}</span> ({selectedApplication.sponsorCode})
                 </p>
-                <p className="text-slate-600">
-                  <span className="text-slate-600">เป้าหมาย FYC:</span> <span className="text-amber-400 font-bold">{(selectedApplication.targetYearlyFYCGoal || 0).toLocaleString()} บาท/ปี</span>
+                <p className="text-slate-700">
+                  <span className="text-slate-700">เป้าหมาย FYC:</span> <span className="text-amber-400 font-bold">{(selectedApplication.targetYearlyFYCGoal || 0).toLocaleString()} บาท/ปี</span>
                 </p>
-                <p className="text-slate-600">
-                  <span className="text-slate-600">เป้าหมายรายได้:</span> <span className="text-emerald-400 font-bold">{(selectedApplication.targetMonthlyIncomeGoal || 0).toLocaleString()} บาท/เดือน</span>
+                <p className="text-slate-700">
+                  <span className="text-slate-700">เป้าหมายรายได้:</span> <span className="text-emerald-400 font-bold">{(selectedApplication.targetMonthlyIncomeGoal || 0).toLocaleString()} บาท/เดือน</span>
                 </p>
                 <p className="text-slate-700 mt-2 italic bg-white p-2.5 rounded-lg border border-slate-200">
                   "{selectedApplication.motivationNote}"
@@ -1302,7 +1302,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setSelectedApplication(null)}
-                className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-white bg-slate-100"
+                className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:text-white bg-slate-100"
               >
                 {language === 'th' ? 'ปิดหน้าต่าง' : 'Close'}
               </button>

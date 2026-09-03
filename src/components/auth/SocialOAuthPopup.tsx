@@ -144,7 +144,7 @@ export const SocialOAuthPopup: React.FC = () => {
               <button
                 id="btn-close-oauth-google"
                 onClick={closeOAuthPopup}
-                className="p-1 rounded-lg text-slate-600 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+                className="p-1 rounded-lg text-slate-700 hover:text-slate-700 hover:bg-slate-100 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -155,7 +155,7 @@ export const SocialOAuthPopup: React.FC = () => {
                 <Sparkles className="w-7 h-7" />
               </div>
               <h3 className="text-lg font-bold text-slate-900">Choose an account</h3>
-              <p className="text-xs text-slate-600 mt-1">to continue to <span className="font-semibold text-indigo-600">AI Insurance Network OS</span></p>
+              <p className="text-xs text-slate-700 mt-1">to continue to <span className="font-semibold text-indigo-600">AI Insurance Network OS</span></p>
             </div>
 
             {/* Google OAuth — real Firebase sign-in */}
@@ -181,7 +181,7 @@ export const SocialOAuthPopup: React.FC = () => {
               </button>
             </div>
 
-            <div className="bg-slate-50 rounded-xl p-3 border border-slate-200 text-xs text-slate-600 flex items-start gap-2">
+            <div className="bg-slate-50 rounded-xl p-3 border border-slate-200 text-xs text-slate-700 flex items-start gap-2">
               <Shield className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
               <span>To continue, Google will share your name, email address, language preference, and profile picture with AI Insurance Network OS.</span>
             </div>
@@ -201,7 +201,7 @@ export const SocialOAuthPopup: React.FC = () => {
               <button
                 id="btn-close-oauth-tiktok"
                 onClick={closeOAuthPopup}
-                className="p-1 rounded-lg text-slate-600 hover:text-white hover:bg-slate-100 transition-colors"
+                className="p-1 rounded-lg text-slate-700 hover:text-white hover:bg-slate-100 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -214,7 +214,7 @@ export const SocialOAuthPopup: React.FC = () => {
                 </div>
               </div>
               <h3 className="text-lg font-bold text-white">Authorize AI Insurance Network OS</h3>
-              <p className="text-xs text-slate-600 mt-1">Sync your TikTok Agent Profile & Team Network</p>
+              <p className="text-xs text-slate-700 mt-1">Sync your TikTok Agent Profile & Team Network</p>
             </div>
 
             <div className="space-y-3 bg-white p-4 rounded-xl border border-slate-200 mb-5">
@@ -253,7 +253,7 @@ export const SocialOAuthPopup: React.FC = () => {
                 id="btn-cancel-tiktok-auth"
                 disabled={isProcessing}
                 onClick={closeOAuthPopup}
-                className="w-full py-2.5 px-4 rounded-xl text-slate-600 hover:text-white text-xs transition-colors"
+                className="w-full py-2.5 px-4 rounded-xl text-slate-700 hover:text-white text-xs transition-colors"
               >
                 Cancel
               </button>
@@ -272,7 +272,7 @@ export const SocialOAuthPopup: React.FC = () => {
               <button
                 id="btn-close-oauth-facebook"
                 onClick={closeOAuthPopup}
-                className="p-1 rounded-lg text-slate-600 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+                className="p-1 rounded-lg text-slate-700 hover:text-slate-700 hover:bg-slate-100 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -283,7 +283,7 @@ export const SocialOAuthPopup: React.FC = () => {
                 <FacebookIcon className="w-8 h-8" />
               </div>
               <h3 className="text-lg font-bold text-slate-900">Log in with Meta Facebook</h3>
-              <p className="text-xs text-slate-600 mt-1">AI Insurance Network OS is requesting access to:</p>
+              <p className="text-xs text-slate-700 mt-1">AI Insurance Network OS is requesting access to:</p>
             </div>
 
             <div className="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200 mb-5">
@@ -325,7 +325,7 @@ export const SocialOAuthPopup: React.FC = () => {
                 id="btn-cancel-facebook-auth"
                 disabled={isProcessing}
                 onClick={closeOAuthPopup}
-                className="w-full py-2.5 px-4 rounded-xl text-slate-600 hover:text-slate-800 text-xs transition-colors"
+                className="w-full py-2.5 px-4 rounded-xl text-slate-700 hover:text-slate-800 text-xs transition-colors"
               >
                 Cancel
               </button>
@@ -344,7 +344,7 @@ export const SocialOAuthPopup: React.FC = () => {
               <button
                 id="btn-close-oauth-github"
                 onClick={closeOAuthPopup}
-                className="p-1 rounded-lg text-slate-600 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+                className="p-1 rounded-lg text-slate-700 hover:text-slate-700 hover:bg-slate-100 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -355,7 +355,7 @@ export const SocialOAuthPopup: React.FC = () => {
                 <GithubIcon className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-lg font-bold text-slate-900">Authorize AI Insurance Network OS</h3>
-              <p className="text-xs text-slate-600 mt-1">Connect your GitHub Developer Profile</p>
+              <p className="text-xs text-slate-700 mt-1">Connect your GitHub Developer Profile</p>
             </div>
 
             <div className="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200 mb-5">
@@ -397,7 +397,7 @@ export const SocialOAuthPopup: React.FC = () => {
                 id="btn-cancel-github-auth"
                 disabled={isProcessing}
                 onClick={closeOAuthPopup}
-                className="w-full py-2.5 px-4 rounded-xl text-slate-600 hover:text-slate-800 text-xs transition-colors"
+                className="w-full py-2.5 px-4 rounded-xl text-slate-700 hover:text-slate-800 text-xs transition-colors"
               >
                 Cancel
               </button>

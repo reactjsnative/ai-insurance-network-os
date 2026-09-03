@@ -161,7 +161,7 @@ export default function MegaMenu() {
           >
             <div className="grid min-h-[520px] grid-cols-[320px_1fr]">
               <aside className="border-r border-slate-200 bg-slate-50 p-7">
-                <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-slate-500">
+                <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-slate-700">
                   หมวดหมู่
                 </p>
 
@@ -194,7 +194,7 @@ export default function MegaMenu() {
                           className={`grid h-10 w-10 place-items-center rounded-full ${
                             selected
                               ? "bg-blue-600 text-white"
-                              : "bg-white text-slate-600"
+                              : "bg-white text-slate-700"
                           }`}
                         >
                           <Icon className="h-5 w-5" />
@@ -250,7 +250,7 @@ export default function MegaMenu() {
                         role="menuitem"
                         className="group flex gap-4 rounded-xl border border-transparent p-4 transition hover:border-blue-100 hover:bg-blue-50"
                       >
-                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-slate-100 text-slate-600 transition group-hover:bg-blue-600 group-hover:text-white">
+                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-slate-100 text-slate-700 transition group-hover:bg-blue-600 group-hover:text-white">
                           <Icon className="h-5 w-5" />
                         </span>
 
@@ -260,7 +260,7 @@ export default function MegaMenu() {
                             <ChevronRight className="h-4 w-4 opacity-0 transition group-hover:translate-x-1 group-hover:opacity-100" />
                           </span>
 
-                          <span className="mt-1 block text-sm leading-6 text-slate-500">
+                          <span className="mt-1 block text-sm leading-6 text-slate-700">
                             {link.description}
                           </span>
                         </span>
@@ -347,7 +347,7 @@ export default function MegaMenu() {
                                   {link.title}
                                 </span>
 
-                                <span className="mt-1 block text-sm text-slate-500">
+                                <span className="mt-1 block text-sm text-slate-700">
                                   {link.description}
                                 </span>
                               </span>

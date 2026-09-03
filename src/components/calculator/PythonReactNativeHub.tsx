@@ -193,7 +193,7 @@ const MobileSimulatorView: React.FC = () => {
         <div>
           <span className="text-[9px] font-black text-amber-400 tracking-widest uppercase">Network Success · Compensation Engine</span>
           <h2 className="text-lg sm:text-xl font-black text-slate-900">โปรแกรมคำนวณผลประโยชน์และรายได้</h2>
-          <p className="text-[10px] text-slate-600">อิงโครงสร้างผลตอบแทน 13 รายการ 4 ระดับตำแหน่ง ปรับปรุง 15 ม.ค. 64</p>
+          <p className="text-[10px] text-slate-700">อิงโครงสร้างผลตอบแทน 13 รายการ 4 ระดับตำแหน่ง ปรับปรุง 15 ม.ค. 64</p>
         </div>
       </div>
 
@@ -209,7 +209,7 @@ const MobileSimulatorView: React.FC = () => {
             key={p.id}
             onClick={() => setPosition(p.id as any)}
             className={`py-1.5 px-1 rounded-lg text-center transition-all cursor-pointer ${
-              position === p.id ? 'bg-amber-500 text-slate-950 font-bold shadow' : 'text-slate-600 hover:text-slate-800'
+              position === p.id ? 'bg-amber-500 text-slate-950 font-bold shadow' : 'text-slate-700 hover:text-slate-800'
             }`}
           >
             <div className="text-[10px] font-bold leading-none">{p.label}</div>
@@ -224,7 +224,7 @@ const MobileSimulatorView: React.FC = () => {
         <div className="text-3xl font-black text-slate-900 mt-1 font-mono">
           ฿{calc.total.toLocaleString()}
         </div>
-        <div className="text-[10px] text-slate-600 mt-1">
+        <div className="text-[10px] text-slate-700 mt-1">
           ประมาณการรายได้ทั้งปี: <span className="text-amber-300 font-bold">฿{calc.annualized.toLocaleString()}</span> บาท/ปี
         </div>
       </div>
@@ -234,7 +234,7 @@ const MobileSimulatorView: React.FC = () => {
         <div className="text-[11px] font-bold text-slate-800">ปรับแต่งผลงานจำลอง</div>
 
         <div className="flex items-center justify-between text-xs">
-          <span className="text-slate-600 text-[11px]">บำเหน็จส่วนตัว (COM):</span>
+          <span className="text-slate-700 text-[11px]">บำเหน็จส่วนตัว (COM):</span>
           <input
             type="number"
             value={personalCom}
@@ -245,7 +245,7 @@ const MobileSimulatorView: React.FC = () => {
 
         {position !== 'agent' && (
           <div className="flex items-center justify-between text-xs">
-            <span className="text-slate-600 text-[11px]">COM รวมทั้งทีม:</span>
+            <span className="text-slate-700 text-[11px]">COM รวมทั้งทีม:</span>
             <input
               type="number"
               value={teamCom}
@@ -257,7 +257,7 @@ const MobileSimulatorView: React.FC = () => {
 
         {position === 'region_manager' && (
           <div className="flex items-center justify-between text-xs">
-            <span className="text-slate-600 text-[11px]">FYC รวมทั้งทีม (ภาค):</span>
+            <span className="text-slate-700 text-[11px]">FYC รวมทั้งทีม (ภาค):</span>
             <input
               type="number"
               value={teamFyc}
@@ -269,7 +269,7 @@ const MobileSimulatorView: React.FC = () => {
 
         {position !== 'agent' && (
           <div className="flex items-center justify-between text-xs">
-            <span className="text-slate-600 text-[11px]">จำนวนหน่วยแยก:</span>
+            <span className="text-slate-700 text-[11px]">จำนวนหน่วยแยก:</span>
             <input
               type="number"
               value={separatedUnits}
@@ -313,7 +313,7 @@ export const PythonReactNativeHub: React.FC = () => {
             <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
               ระบบคำนวณค่าตอบแทนและผลประโยชน์เครือข่าย
             </h1>
-            <p className="text-xs sm:text-sm text-slate-600 max-w-3xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-700 max-w-3xl leading-relaxed">
               คำนวณผลประโยชน์ 13 รายการ 4 ระดับตำแหน่ง อิงตามโครงสร้างผลตอบแทน ฉบับปรับปรุง 15 มกราคม 2564
             </p>
           </div>
@@ -342,22 +342,22 @@ export const PythonReactNativeHub: React.FC = () => {
           <div className="p-5 rounded-3xl bg-white/90 border border-slate-200 space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-xs font-extrabold text-amber-400 uppercase tracking-wider">แผ่นที่ 1 / ภาพรวม</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-mono">โครงสร้าง & คุณสมบัติ</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 font-mono">โครงสร้าง & คุณสมบัติ</span>
             </div>
             <h3 className="text-base font-bold text-slate-900">โครงสร้างรายได้ และคุณสมบัติการแต่งตั้ง 4 ตำแหน่ง</h3>
 
             <div className="space-y-2 text-xs text-slate-700">
               <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1">
                 <div className="font-bold text-sky-300">1. ตัวแทน (Agent) → ผู้บริหารหน่วย (UM)</div>
-                <p className="text-slate-600 text-[11px]">บำเหน็จ 20,000 บาท (เวลา 1-6 เดือน)</p>
+                <p className="text-slate-700 text-[11px]">บำเหน็จ 20,000 บาท (เวลา 1-6 เดือน)</p>
               </div>
               <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1">
                 <div className="font-bold text-emerald-300">2. ผู้บริหารหน่วย (UM) → ผู้บริหารศูนย์ (CM)</div>
-                <p className="text-slate-600 text-[11px]">บำเหน็จ 75,000 บาท (เวลา 3-6 เดือน) + แยกหน่วย 2 หน่วย</p>
+                <p className="text-slate-700 text-[11px]">บำเหน็จ 75,000 บาท (เวลา 3-6 เดือน) + แยกหน่วย 2 หน่วย</p>
               </div>
               <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1">
                 <div className="font-bold text-amber-300">3. ผู้บริหารศูนย์ (CM) → ผู้บริหารภาค (RM)</div>
-                <p className="text-slate-600 text-[11px]">บำเหน็จ 1,200,000 บาท (เวลา 12-24 เดือน) + แยกศูนย์ 4 ศูนย์</p>
+                <p className="text-slate-700 text-[11px]">บำเหน็จ 1,200,000 บาท (เวลา 12-24 เดือน) + แยกศูนย์ 4 ศูนย์</p>
               </div>
             </div>
           </div>
@@ -366,20 +366,20 @@ export const PythonReactNativeHub: React.FC = () => {
           <div className="p-5 rounded-3xl bg-white/90 border border-slate-200 space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-xs font-extrabold text-emerald-400 uppercase tracking-wider">แผ่นที่ 4 / ผู้บริหารหน่วย</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-mono">UM Rules</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 font-mono">UM Rules</span>
             </div>
             <h3 className="text-base font-bold text-slate-900">ผู้บริหารหน่วย (Unit Manager)</h3>
 
             <div className="space-y-2 text-xs text-slate-700">
               <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1">
                 <div className="font-bold text-emerald-300">ค่าจัดงานหน่วย (25% - 40%)</div>
-                <p className="text-slate-600 text-[11px]">
+                <p className="text-slate-700 text-[11px]">
                   COM ≥ 35k (40%) • 20k-35k (35%) • 10k-20k (30%) • 5k-10k (25%)
                 </p>
               </div>
               <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1">
                 <div className="font-bold text-emerald-300">ค่าแยกหน่วย (2,000 บาท/หน่วย)</div>
-                <p className="text-slate-600 text-[11px]">
+                <p className="text-slate-700 text-[11px]">
                   จ่าย 2,000 บาทต่อหน่วย ทุกหน่วยที่แยกตัวออกไปโดยไม่จำกัดจำนวน
                 </p>
               </div>
@@ -390,21 +390,21 @@ export const PythonReactNativeHub: React.FC = () => {
           <div className="p-5 rounded-3xl bg-white/90 border border-slate-200 space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-xs font-extrabold text-amber-400 uppercase tracking-wider">แผ่นที่ 2 / ผู้บริหารศูนย์</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-mono">CM Rules</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 font-mono">CM Rules</span>
             </div>
             <h3 className="text-base font-bold text-slate-900">ผู้บริหารศูนย์ (Center Manager)</h3>
 
             <div className="space-y-2 text-xs text-slate-700">
               <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1">
                 <div className="font-bold text-amber-300">ค่าจัดงานศูนย์ ประเภท 1, 2, 3</div>
-                <p className="text-slate-600 text-[11px]">
+                <p className="text-slate-700 text-[11px]">
                   T1: COM 15k(15%), 30k(20%), 60k(25%), 120k(30%)<br />
                   T2: 0.8% เบี้ยปีต่อ • T3: Fixed 5k - 15k ตาม COM
                 </p>
               </div>
               <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1">
                 <div className="font-bold text-amber-300">ค่าแยกศูนย์ & โบนัสศูนย์</div>
-                <p className="text-slate-600 text-[11px]">
+                <p className="text-slate-700 text-[11px]">
                   ค่าแยกศูนย์: เดือนแรก 4,000 + 24 เดือน (1.5k-3k)<br />
                   โบนัสศูนย์: COM ปี 150k(4%), 300k(5%), 600k(6%)
                 </p>
@@ -416,21 +416,21 @@ export const PythonReactNativeHub: React.FC = () => {
           <div className="p-5 rounded-3xl bg-white/90 border border-slate-200 space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-xs font-extrabold text-rose-400 uppercase tracking-wider">แผ่นที่ 3 / ผู้บริหารภาค</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-mono">RM Rules</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 font-mono">RM Rules</span>
             </div>
             <h3 className="text-base font-bold text-slate-900">ผู้บริหารภาค (Regional Manager)</h3>
 
             <div className="space-y-2 text-xs text-slate-700">
               <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1">
                 <div className="font-bold text-rose-300">ค่าจัดงานภาค T1, T2 & ค่าแยกภาค</div>
-                <p className="text-slate-600 text-[11px]">
+                <p className="text-slate-700 text-[11px]">
                   T1: FYC 60k(10%), 120k(12%), 180k(14%), 240k(16%), 300k(18% อาวุโส)<br />
                   T2: 1,000 - 2,500 บาทต่อศูนย์ • แยกภาค: 8k / 4k x 12 / 40% T1
                 </p>
               </div>
               <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1">
                 <div className="font-bold text-rose-300">ค่าบริหารเป้าหมาย & โบนัสภาค</div>
-                <p className="text-slate-600 text-[11px]">
+                <p className="text-slate-700 text-[11px]">
                   เป้าหมาย: FYC ปี 1.5M-5M จ่าย ฿10,000 - ฿30,000/เดือน (120k - 360k/ปี)<br />
                   โบนัสภาค: FYC ปี 500k(1.5%), 1M(2.0%), 2M(2.5%)
                 </p>

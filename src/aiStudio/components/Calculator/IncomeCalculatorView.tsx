@@ -244,7 +244,7 @@ export const IncomeCalculatorView: React.FC = () => {
             <Calculator className="w-6 h-6 text-amber-400" />
             เครื่องคำนวณผลประโยชน์และจำลองรายได้แบบโปร่งใส
           </h1>
-          <p className="text-xs text-slate-600 mt-1">
+          <p className="text-xs text-slate-700 mt-1">
             คำนวณรายได้ตามกติกาจริง พร้อมแสดงสูตรคณิตศาสตร์ ฐานผลงาน และอัตราเปอร์เซ็นต์ทุกรายการ
           </p>
         </div>
@@ -254,7 +254,7 @@ export const IncomeCalculatorView: React.FC = () => {
             <button
               onClick={() => setActiveTab('LIVE_MEMBER')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'LIVE_MEMBER' ? 'bg-blue-600 text-white shadow' : 'text-slate-600 hover:text-white'
+                activeTab === 'LIVE_MEMBER' ? 'bg-blue-600 text-white shadow' : 'text-slate-700 hover:text-white'
               }`}
             >
               เครื่องคำนวณแบบสด
@@ -262,7 +262,7 @@ export const IncomeCalculatorView: React.FC = () => {
             <button
               onClick={() => setActiveTab('SCENARIO_COMPARISON')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'SCENARIO_COMPARISON' ? 'bg-blue-600 text-white shadow' : 'text-slate-600 hover:text-white'
+                activeTab === 'SCENARIO_COMPARISON' ? 'bg-blue-600 text-white shadow' : 'text-slate-700 hover:text-white'
               }`}
             >
               เปรียบเทียบ 3 สถานการณ์
@@ -273,7 +273,7 @@ export const IncomeCalculatorView: React.FC = () => {
             <button
               onClick={() => setMode('MONTHLY')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                mode === 'MONTHLY' ? 'bg-amber-500 text-slate-950 shadow' : 'text-slate-600 hover:text-white'
+                mode === 'MONTHLY' ? 'bg-amber-500 text-slate-950 shadow' : 'text-slate-700 hover:text-white'
               }`}
             >
               รายเดือน
@@ -281,7 +281,7 @@ export const IncomeCalculatorView: React.FC = () => {
             <button
               onClick={() => setMode('ANNUAL')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                mode === 'ANNUAL' ? 'bg-amber-500 text-slate-950 shadow' : 'text-slate-600 hover:text-white'
+                mode === 'ANNUAL' ? 'bg-amber-500 text-slate-950 shadow' : 'text-slate-700 hover:text-white'
               }`}
             >
               รายปี (+โบนัส)
@@ -399,7 +399,7 @@ export const IncomeCalculatorView: React.FC = () => {
             {/* Separated Units & Centers */}
             <div className="grid grid-cols-2 gap-3 pt-2 border-t border-slate-200">
               <div>
-                <label className="text-[11px] text-slate-600 block mb-1">แยกหน่วย (หน่วย):</label>
+                <label className="text-[11px] text-slate-700 block mb-1">แยกหน่วย (หน่วย):</label>
                 <input
                   type="number"
                   min={0}
@@ -410,7 +410,7 @@ export const IncomeCalculatorView: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="text-[11px] text-slate-600 block mb-1">แยกศูนย์ (ศูนย์):</label>
+                <label className="text-[11px] text-slate-700 block mb-1">แยกศูนย์ (ศูนย์):</label>
                 <input
                   type="number"
                   min={0}
@@ -460,7 +460,7 @@ export const IncomeCalculatorView: React.FC = () => {
                 </div>
 
                 <div className="text-right sm:border-l sm:border-slate-200 sm:pl-6">
-                  <div className="text-xs text-slate-600">โบนัสประจำปีประมาณการ</div>
+                  <div className="text-xs text-slate-700">โบนัสประจำปีประมาณการ</div>
                   <div className="text-lg font-bold text-emerald-400 mt-0.5">
                     +{formatBaht(sandboxResult.annualBonusTotal)}
                   </div>
@@ -479,7 +479,7 @@ export const IncomeCalculatorView: React.FC = () => {
                     <Layers className="w-5 h-5 text-amber-400" />
                     ตารางรายละเอียดสูตรคำนวณ ({sandboxResult.breakdown.length} รายการ)
                   </h2>
-                  <p className="text-xs text-slate-600">
+                  <p className="text-xs text-slate-700">
                     แสดงรหัสหมวดหมู่ ฐานที่ใช้คำนวณ อัตรา ผลลัพธ์ และที่มาของผลงานโดยไม่นับซ้ำ
                   </p>
                 </div>
@@ -507,7 +507,7 @@ export const IncomeCalculatorView: React.FC = () => {
                         <td className="py-3 px-3 font-semibold text-white">
                           {item.categoryNameTh}
                         </td>
-                        <td className="py-3 px-3 font-mono text-[11px] text-slate-600">
+                        <td className="py-3 px-3 font-mono text-[11px] text-slate-700">
                           {item.tierOrRuleId}
                         </td>
                         <td className="py-3 px-3 text-right font-mono text-slate-800">
@@ -522,7 +522,7 @@ export const IncomeCalculatorView: React.FC = () => {
                         <td className="py-3 px-3 text-slate-700 text-[11px] max-w-xs">
                           <p>{item.formulaDescription}</p>
                           {item.sourceMemberName && (
-                            <span className="text-[10px] text-slate-600 block mt-0.5">
+                            <span className="text-[10px] text-slate-700 block mt-0.5">
                               ที่มา: {item.sourceMemberName}
                             </span>
                           )}
@@ -549,7 +549,7 @@ export const IncomeCalculatorView: React.FC = () => {
                       <td className="py-3 px-3 text-right font-mono text-amber-400 text-sm">
                         {formatBaht(sandboxResult.totalMonthlyIncome)}
                       </td>
-                      <td colSpan={2} className="py-3 px-3 text-[11px] text-slate-600">
+                      <td colSpan={2} className="py-3 px-3 text-[11px] text-slate-700">
                         (คำนวณจาก Decimal Precision ปัดเศษ 2 ตำแหน่ง)
                       </td>
                     </tr>
@@ -575,13 +575,13 @@ export const IncomeCalculatorView: React.FC = () => {
                     <span className="text-xs font-bold text-blue-400 bg-blue-950/80 px-2.5 py-0.5 rounded-full border border-blue-700/60">
                       {sc.name}
                     </span>
-                    <span className="text-xs font-mono text-slate-600">{sc.position}</span>
+                    <span className="text-xs font-mono text-slate-700">{sc.position}</span>
                   </div>
 
                   <h3 className="text-base font-bold text-white mb-2">{sc.description}</h3>
 
                   <div className="my-4 p-4 rounded-xl bg-white/80 border border-slate-200/80">
-                    <span className="text-xs text-slate-600 block">รายได้ประมาณการ / เดือน:</span>
+                    <span className="text-xs text-slate-700 block">รายได้ประมาณการ / เดือน:</span>
                     <div className="text-2xl font-black text-amber-400 mt-1">
                       {formatBaht(sc.calculatedMonthlyIncome)}
                     </div>
@@ -593,19 +593,19 @@ export const IncomeCalculatorView: React.FC = () => {
 
                   <div className="space-y-1.5 text-xs text-slate-700">
                     <div className="flex justify-between">
-                      <span className="text-slate-600">ขนาดทีม:</span>
+                      <span className="text-slate-700">ขนาดทีม:</span>
                       <strong>{sc.teamSize} คน (Active {sc.activeRate}%)</strong>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-slate-600">จำนวนหน่วยแยก:</span>
+                      <span className="text-slate-700">จำนวนหน่วยแยก:</span>
                       <strong>{sc.separatedUnits} หน่วย</strong>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-slate-600">จำนวนศูนย์แยก:</span>
+                      <span className="text-slate-700">จำนวนศูนย์แยก:</span>
                       <strong>{sc.separatedCenters} ศูนย์</strong>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-slate-600">พอร์ตเบี้ยปีต่อไป:</span>
+                      <span className="text-slate-700">พอร์ตเบี้ยปีต่อไป:</span>
                       <strong>{formatBaht(sc.renewalPremium)}</strong>
                     </div>
                   </div>

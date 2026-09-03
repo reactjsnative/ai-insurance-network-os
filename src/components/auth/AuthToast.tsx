@@ -53,7 +53,7 @@ export const AuthToast: React.FC = () => {
         <button
           id="btn-close-toast"
           onClick={() => setAuthNotification(null)}
-          className="p-1 rounded-lg text-slate-600 hover:text-white transition-colors"
+          className="p-1 rounded-lg text-slate-700 hover:text-white transition-colors"
         >
           <X className="w-4 h-4" />
         </button>

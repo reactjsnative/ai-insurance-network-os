@@ -20,7 +20,7 @@ export const MemberSheetView: React.FC = () => {
             <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">REAL-TIME</span>
           </div>
           <h1 className="mt-2 text-2xl font-black text-slate-900">คลังข้อมูลสมาชิก</h1>
-          <p className="text-sm text-slate-600 mt-1">รายชื่อสมาชิกทั้งหมดในระบบ อัปเดตเรียลไทม์จากฐานข้อมูลกลาง</p>
+          <p className="text-sm text-slate-700 mt-1">รายชื่อสมาชิกทั้งหมดในระบบ อัปเดตเรียลไทม์จากฐานข้อมูลกลาง</p>
         </div>
         <div className="flex items-center gap-2">
           <span className="px-4 py-2.5 rounded-xl bg-slate-100 text-slate-800 text-xs font-bold border border-slate-200">
@@ -30,16 +30,16 @@ export const MemberSheetView: React.FC = () => {
       </div>
 
       {members.length === 0 ? (
-        <div className="p-8 rounded-2xl bg-white/60 border border-slate-200 text-center text-slate-600 text-sm">
+        <div className="p-8 rounded-2xl bg-white/60 border border-slate-200 text-center text-slate-700 text-sm">
           ยังไม่มีข้อมูลสมาชิกในระบบ
-          <div className="mt-2 text-[12px] text-slate-600">
+          <div className="mt-2 text-[12px] text-slate-700">
             สมาชิกจะปรากฏที่นี่โดยอัตโนมัติเมื่อสมัครเข้ามาผ่านระบบ หรือเมื่อเพิ่มจากหน้า "การจัดการสมาชิก"
           </div>
         </div>
       ) : (
         <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white/60">
           <table className="w-full text-sm">
-            <thead className="bg-white text-slate-600 text-[11px] uppercase tracking-wider text-left">
+            <thead className="bg-white text-slate-700 text-[11px] uppercase tracking-wider text-left">
               <tr>
                 <th className="p-3">#</th>
                 <th className="p-3">รหัส</th>
@@ -55,7 +55,7 @@ export const MemberSheetView: React.FC = () => {
             <tbody>
               {sortedMembers.map((m, i) => (
                 <tr key={m.id || i} className="border-t border-slate-200 hover:bg-slate-100/40">
-                  <td className="p-3 text-slate-600">{i + 1}</td>
+                  <td className="p-3 text-slate-700">{i + 1}</td>
                   <td className="p-3 font-mono text-emerald-300">{m.memberCode}</td>
                   <td className="p-3 font-semibold text-slate-900">{m.name}</td>
                   <td className="p-3 text-slate-700">{m.email || '-'}</td>
@@ -69,7 +69,7 @@ export const MemberSheetView: React.FC = () => {
                         ? 'bg-emerald-500/15 text-emerald-300'
                         : m.status === 'probation'
                         ? 'bg-amber-500/15 text-amber-300'
-                        : 'bg-slate-500/15 text-slate-600'
+                        : 'bg-slate-500/15 text-slate-700'
                     }`}>{m.status || 'active'}</span>
                   </td>
                 </tr>
