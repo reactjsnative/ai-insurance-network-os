@@ -40,8 +40,6 @@ export const Sidebar: React.FC = () => {
   const navItems: { id: ActiveTab; label: string; icon: any; badge?: string }[] = [
     { id: 'dashboard', label: t('nav_dashboard'), icon: LayoutDashboard },
     { id: 'ai_studio', label: t('nav_ai_studio'), icon: Gem, badge: 'จำลอง' },
-    { id: 'organization', label: t('nav_organization'), icon: Building2, badge: 'สายงาน' },
-    { id: 'network_visual', label: t('nav_network_visual'), icon: Network, badge: '4 มุมมอง' },
     { id: 'career_path', label: t('nav_career_path'), icon: TrendingUp },
     { id: 'career_plan', label: t('nav_career_plan'), icon: Rocket, badge: 'แผน' },
     { id: 'my_plan', label: t('nav_my_plan'), icon: UserPlus, badge: 'สมาชิก' },
@@ -137,6 +135,8 @@ export const Sidebar: React.FC = () => {
         {/* ===== เมนู 2.5: จัดการสมาชิก ===== */}
         {renderNavItem({ id: 'members_mgmt', label: t('nav_members_mgmt'), icon: Users })}
         {renderNavItem({ id: 'member_sheet', label: t('nav_member_sheet'), icon: Sheet, badge: 'ชีต' })}
+        {renderNavItem({ id: 'organization', label: t('nav_organization'), icon: Building2, badge: 'สายงาน' })}
+        {renderNavItem({ id: 'network_visual', label: t('nav_network_visual'), icon: Network, badge: '4 มุมมอง' })}
 
         {/* ===== เมนู 3: ซัพเมนู ระบบบริหารตัวแทนประกัน ===== */}
         <div className="pt-1">
