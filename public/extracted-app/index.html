@@ -12,6 +12,36 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Sarabun:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <script>
+      // PRE-BOOT CLEAR: ล้าง 4 รหัส Super Admin ก่อน React บูต — กัน React เขียนทับกลับ
+      (function(){
+        try{
+          var K='ai_insurance_members_v2',raw=localStorage.getItem(K);
+          if(raw){
+            var a;
+            try{a=JSON.parse(raw)}catch(e){a=null}
+            if(Array.isArray(a) && a.length>0){
+              var hasFake=a.some(function(m){
+                var e=(m.email||'').toLowerCase(),c=m.memberCode||m.code||'',n=(m.name||'').toLowerCase();
+                return e.indexOf('insurance.co.th')!==-1 || e.indexOf('demo@example')!==-1 || e.indexOf('mock')!==-1
+                  || c.indexOf('MEM-00')!==-1 || c.indexOf('AG-101')!==-1
+                  || n.indexOf('ทดสอบ')!==-1 || n.indexOf('demo')!==-1;
+              });
+              // ถ้ามี fake หรือมี 4 รหัสขึ้นไปที่ไม่ใช่สมาชิกจริง — ล้างหมด
+              if(hasFake || a.length>=4){
+                localStorage.setItem(K,'[]');
+                localStorage.removeItem('ai_insurance_audit_logs_v2');
+                localStorage.removeItem('ai_insurance_rules_v2');
+                localStorage.removeItem('ai_insurance_placement_settings_v2');
+                localStorage.removeItem('ai_insurance_plan_version_v2');
+                localStorage.setItem('_preboot_cleared','1');
+                console.log('[PRE-BOOT] cleared '+a.length+' fake members');
+              }
+            }
+          }
+        }catch(e){}
+      })();
+    </script>
     <script type="module" crossorigin src="./static/index-DoTvPuU6.js"></script>
     <link rel="stylesheet" crossorigin href="./static/index-BIjHwKV2.css">
     <style>
