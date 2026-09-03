@@ -4,7 +4,7 @@ export const translations = {
   th: {
     // Header & Common
     app_title: 'AI INSURANCE NETWORK OS',
-    app_subtitle: 'ระบบบริหารองค์กรตัวแทนและผลตอบแทนเครือข่าย',
+    app_subtitle: 'ระบบบริหารตัวแทนและผลตอบแทนเครือข่าย',
     plan_badge: 'Update 28 ส.ค. 69',
     search_placeholder: 'ค้นหาชื่อตัวแทน, รหัสสมาชิก, หน่วยงาน, จังหวัด...',
     search_results: 'ผลการค้นหา',
