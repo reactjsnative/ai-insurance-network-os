@@ -2,7 +2,6 @@ import React from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import { Header } from './components/common/Header';
 import InsuranceMegaMenu from './components/navigation/InsuranceMegaMenu';
-import { Sidebar } from './components/common/Sidebar';
 import { MobileNav } from './components/common/MobileNav';
 
 import { Dashboard } from './components/dashboard/Dashboard';
@@ -68,9 +67,7 @@ const MainContent: React.FC = () => {
       {!isPresentationMode && <Header />}
 
       <div className="flex-1 flex overflow-hidden">
-        {!isPresentationMode && <Sidebar />}
-
-        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-gradient-to-b from-slate-950 via-slate-900/30 to-slate-950">
+        <main className="flex-1 overflow-y-auto bg-gradient-to-b from-slate-950 via-slate-900/30 to-slate-950"><div className="mx-auto max-w-7xl w-full p-4 sm:p-6 lg:p-8">
           {activeTab === 'dashboard' && <Dashboard />}
           {activeTab === 'network_success' && <NetworkSuccessView />}
           {activeTab === 'network_success_team_goal' && <TeamGoalView />}
@@ -100,7 +97,7 @@ const MainContent: React.FC = () => {
           {activeTab === 'video_library' && <VideoLibrary />}
           {activeTab === 'tiktok_links' && <TikTokLinks />}
           {activeTab === 'settings' && <SettingsView />}
-        </main>
+        </div></main>
       </div>
 
       {!isPresentationMode && <MobileNav />}
