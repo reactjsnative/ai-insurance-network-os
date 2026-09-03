@@ -42,6 +42,7 @@ export const Header: React.FC = () => {
     isFirebaseConnected,
     language,
     toggleLanguage,
+    logout,
     t
   } = useApp();
 
@@ -370,6 +371,12 @@ export const Header: React.FC = () => {
                 </div>
               )}
             </div>
+          )}
+          {authUser.isLoggedIn && (
+            <button id="btn_logout_far_right" onClick={logout} className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 border border-rose-500/20 text-xs font-bold transition-colors cursor-pointer shrink-0" title={t('auth_btn_logout')}>
+              <LogOut className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">ออกจากระบบ</span>
+            </button>
           )}
         </div>
       </header>
