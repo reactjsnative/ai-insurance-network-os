@@ -28,10 +28,10 @@ export const AuthToast: React.FC = () => {
         exit={{ opacity: 0, y: 20, scale: 0.95 }}
         className={`p-4 rounded-2xl shadow-xl border flex items-start gap-3 backdrop-blur-md ${
           authNotification.type === 'success'
-            ? 'bg-slate-900/95 text-white border-emerald-500/40'
+            ? 'bg-white/95 text-white border-emerald-500/40'
             : authNotification.type === 'error'
             ? 'bg-rose-950/95 text-white border-rose-500/40'
-            : 'bg-slate-900/95 text-white border-indigo-500/40'
+            : 'bg-white/95 text-white border-indigo-500/40'
         }`}
       >
         {authNotification.type === 'success' && (
@@ -53,7 +53,7 @@ export const AuthToast: React.FC = () => {
         <button
           id="btn-close-toast"
           onClick={() => setAuthNotification(null)}
-          className="p-1 rounded-lg text-slate-400 hover:text-white transition-colors"
+          className="p-1 rounded-lg text-slate-600 hover:text-white transition-colors"
         >
           <X className="w-4 h-4" />
         </button>

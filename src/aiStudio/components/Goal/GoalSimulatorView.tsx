@@ -65,13 +65,13 @@ export const GoalSimulatorView: React.FC = () => {
     <div className="space-y-6 pb-12">
       
       {/* Top Banner */}
-      <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <h1 className="text-xl font-bold text-white flex items-center gap-2.5">
             <Target className="w-6 h-6 text-amber-400" />
             ระบบคำนวณย้อนกลับและจำลองเป้าหมาย (Reverse Goal Simulator)
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-slate-600 mt-1">
             ระบุรายได้ที่คุณต้องการ แล้วระบบจะวิเคราะห์ขนาดทีม โครงสร้างหน่วย/ศูนย์ และแผนงานที่ต้องทำอย่างแม่นยำ
           </p>
         </div>
@@ -88,15 +88,15 @@ export const GoalSimulatorView: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Left Column: Input Form */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-5">
-          <h2 className="text-sm font-bold text-white flex items-center gap-2 pb-3 border-b border-slate-800">
+        <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-5">
+          <h2 className="text-sm font-bold text-white flex items-center gap-2 pb-3 border-b border-slate-200">
             <Zap className="w-4 h-4 text-amber-400" />
             ตั้งค่าเป้าหมายและสมมติฐาน
           </h2>
 
           {/* Target Income Input */}
           <div>
-            <label className="text-xs font-semibold text-slate-300 block mb-1">
+            <label className="text-xs font-semibold text-slate-700 block mb-1">
               รายได้เป้าหมายต่อเดือน (บาท):
             </label>
             <div className="text-2xl font-black text-amber-400 mb-2">
@@ -110,7 +110,7 @@ export const GoalSimulatorView: React.FC = () => {
                   className={`py-1 rounded-lg text-[11px] font-bold border transition-colors cursor-pointer ${
                     targetIncome === amt
                       ? 'bg-amber-500 text-slate-950 border-amber-400'
-                      : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
+                      : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200'
                   }`}
                 >
                   {amt >= 1000000 ? `${amt / 1000000}M` : `${amt / 1000}k`}
@@ -131,7 +131,7 @@ export const GoalSimulatorView: React.FC = () => {
           {/* New recruits per month */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-slate-300">สมาชิกใหม่เพิ่มต่อเดือน:</span>
+              <span className="text-slate-700">สมาชิกใหม่เพิ่มต่อเดือน:</span>
               <strong className="text-blue-400">+{newRecruitsPerMonth} คน/ด</strong>
             </div>
             <input
@@ -148,7 +148,7 @@ export const GoalSimulatorView: React.FC = () => {
           {/* Avg Sales per person */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-slate-300">ผลงานขายเฉลี่ยต่อคน:</span>
+              <span className="text-slate-700">ผลงานขายเฉลี่ยต่อคน:</span>
               <strong className="text-emerald-400">{formatBaht(avgSalesPerPerson)}/ด</strong>
             </div>
             <input
@@ -165,7 +165,7 @@ export const GoalSimulatorView: React.FC = () => {
           {/* Active rate % */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-slate-300">อัตราสมาชิก Active:</span>
+              <span className="text-slate-700">อัตราสมาชิก Active:</span>
               <strong className="text-purple-300">{activeRate}%</strong>
             </div>
             <input
@@ -182,7 +182,7 @@ export const GoalSimulatorView: React.FC = () => {
           {/* Simulation duration */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-slate-300">ระยะเวลาจำลอง:</span>
+              <span className="text-slate-700">ระยะเวลาจำลอง:</span>
               <strong className="text-white">{simulationMonths} เดือน</strong>
             </div>
             <div className="grid grid-cols-4 gap-1.5">
@@ -193,7 +193,7 @@ export const GoalSimulatorView: React.FC = () => {
                   className={`py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer ${
                     simulationMonths === m
                       ? 'bg-blue-600 text-white border-blue-500'
-                      : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
+                      : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200'
                   }`}
                 >
                   {m} เดือน
@@ -209,49 +209,49 @@ export const GoalSimulatorView: React.FC = () => {
           {/* Solution Cards Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             
-            <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-lg text-center">
-              <span className="text-[11px] text-slate-400 block mb-1">ระยะเวลาที่ต้องใช้</span>
+            <div className="bg-white/90 border border-slate-200 rounded-2xl p-4 shadow-lg text-center">
+              <span className="text-[11px] text-slate-600 block mb-1">ระยะเวลาที่ต้องใช้</span>
               <div className="text-xl sm:text-2xl font-black text-amber-400">
                 {result.monthsToReachGoal <= simulationMonths ? `${result.monthsToReachGoal} เดือน` : `> ${simulationMonths} ด.`}
               </div>
-              <span className="text-[10px] text-slate-400 mt-1 block">เพื่อแตะเป้าหมาย</span>
+              <span className="text-[10px] text-slate-600 mt-1 block">เพื่อแตะเป้าหมาย</span>
             </div>
 
-            <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-lg text-center">
-              <span className="text-[11px] text-slate-400 block mb-1">ต้องมีสมาชิกในทีม</span>
+            <div className="bg-white/90 border border-slate-200 rounded-2xl p-4 shadow-lg text-center">
+              <span className="text-[11px] text-slate-600 block mb-1">ต้องมีสมาชิกในทีม</span>
               <div className="text-xl sm:text-2xl font-black text-blue-400">
-                {result.requiredTotalTeamSize} <span className="text-xs font-normal text-slate-400">คน</span>
+                {result.requiredTotalTeamSize} <span className="text-xs font-normal text-slate-600">คน</span>
               </div>
-              <span className="text-[10px] text-slate-400 mt-1 block">Active {result.requiredActiveMembers} คน</span>
+              <span className="text-[10px] text-slate-600 mt-1 block">Active {result.requiredActiveMembers} คน</span>
             </div>
 
-            <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-lg text-center">
-              <span className="text-[11px] text-slate-400 block mb-1">โครงสร้างที่ต้องสร้าง</span>
+            <div className="bg-white/90 border border-slate-200 rounded-2xl p-4 shadow-lg text-center">
+              <span className="text-[11px] text-slate-600 block mb-1">โครงสร้างที่ต้องสร้าง</span>
               <div className="text-xl sm:text-2xl font-black text-emerald-400">
                 {result.requiredUnits}U / {result.requiredCenters}C
               </div>
-              <span className="text-[10px] text-slate-400 mt-1 block">{result.requiredUnits} หน่วย / {result.requiredCenters} ศูนย์</span>
+              <span className="text-[10px] text-slate-600 mt-1 block">{result.requiredUnits} หน่วย / {result.requiredCenters} ศูนย์</span>
             </div>
 
-            <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-lg text-center">
-              <span className="text-[11px] text-slate-400 block mb-1">ยอดขายรวมทีม / ด.</span>
+            <div className="bg-white/90 border border-slate-200 rounded-2xl p-4 shadow-lg text-center">
+              <span className="text-[11px] text-slate-600 block mb-1">ยอดขายรวมทีม / ด.</span>
               <div className="text-lg sm:text-xl font-black text-purple-300">
                 {formatBaht(result.requiredTotalMonthlySales, false)}
               </div>
-              <span className="text-[10px] text-slate-400 mt-1 block">ยอดขายองค์กร</span>
+              <span className="text-[10px] text-slate-600 mt-1 block">ยอดขายองค์กร</span>
             </div>
 
           </div>
 
           {/* Projected Growth Timeline Chart */}
-          <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-3">
+          <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-3">
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-base font-bold text-white flex items-center gap-2">
                   <TrendingUp className="w-5 h-5 text-blue-400" />
                   แนวโน้มรายได้และขนาดทีมตลอด {simulationMonths} เดือน
                 </h2>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-slate-600">
                   เส้นสีส้มคือรายได้เป้าหมาย ({formatBaht(targetIncome)}) และเส้นสีทองคือรายได้จริงที่จำลองได้
                 </p>
               </div>
@@ -295,7 +295,7 @@ export const GoalSimulatorView: React.FC = () => {
           </div>
 
           {/* Strategic Advice & Actionable Roadmap */}
-          <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-3">
+          <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-3">
             <h2 className="text-base font-bold text-white flex items-center gap-2">
               <Lightbulb className="w-5 h-5 text-amber-400" />
               คำแนะนำและกลยุทธ์พิชิตเป้าหมาย (Strategic Action Plan)
@@ -303,7 +303,7 @@ export const GoalSimulatorView: React.FC = () => {
 
             <div className="space-y-2">
               {result.strategicAdvice.map((adv, idx) => (
-                <div key={idx} className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-xs text-slate-300">
+                <div key={idx} className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-100/50 border border-slate-200/60 text-xs text-slate-700">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                   <p>{adv}</p>
                 </div>

@@ -48,7 +48,7 @@ export const DashboardView: React.FC = () => {
 
   if (!selectedMember || !result) {
     return (
-      <div className="p-8 text-center text-slate-400">
+      <div className="p-8 text-center text-slate-600">
         ไม่พบข้อมูลสมาชิก กรุณาเลือกสมาชิกจากเมนูด้านบน
       </div>
     );
@@ -77,7 +77,7 @@ export const DashboardView: React.FC = () => {
     <div className="space-y-6 pb-12">
       
       {/* 1. Header Profile Banner & Career Stage */}
-      <div className="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl relative overflow-hidden">
+      <div className="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 border border-slate-200 rounded-2xl p-6 shadow-xl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
 
@@ -106,11 +106,11 @@ export const DashboardView: React.FC = () => {
                 </span>
               </div>
 
-              <div className="flex flex-wrap items-center gap-y-1 gap-x-4 mt-2 text-xs text-slate-300">
+              <div className="flex flex-wrap items-center gap-y-1 gap-x-4 mt-2 text-xs text-slate-700">
                 <span>รหัส: <strong className="text-white">{selectedMember.code}</strong></span>
                 <span>อายุงาน: <strong className="text-white">{selectedMember.tenureMonths} เดือน</strong> (เริ่ม {selectedMember.startDate})</span>
                 {selectedMember.region && <span>เขตพื้นที่: <strong className="text-white">{selectedMember.region}</strong></span>}
-                {selectedMember.notes && <span className="text-slate-400 italic">“{selectedMember.notes}”</span>}
+                {selectedMember.notes && <span className="text-slate-600 italic">“{selectedMember.notes}”</span>}
               </div>
             </div>
           </div>
@@ -119,7 +119,7 @@ export const DashboardView: React.FC = () => {
           <div className="flex flex-wrap items-center gap-2 self-stretch sm:self-auto">
             <button
               onClick={() => setEditingMemberId(selectedMember.id)}
-              className="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 shadow-sm transition-all cursor-pointer"
+              className="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 shadow-sm transition-all cursor-pointer"
             >
               แก้ไขผลงาน
             </button>
@@ -141,9 +141,9 @@ export const DashboardView: React.FC = () => {
         </div>
 
         {/* Career Progression Roadmap Step Bar */}
-        <div className="mt-6 pt-5 border-t border-slate-800/80">
-          <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
-            <span className="font-semibold text-slate-300 flex items-center gap-1.5">
+        <div className="mt-6 pt-5 border-t border-slate-200/80">
+          <div className="flex items-center justify-between text-xs text-slate-600 mb-2">
+            <span className="font-semibold text-slate-700 flex items-center gap-1.5">
               <Award className="w-4 h-4 text-amber-400" />
               เส้นทางความก้าวหน้าในอาชีพ (Career Progression Pathway)
             </span>
@@ -165,12 +165,12 @@ export const DashboardView: React.FC = () => {
                     isCurrent
                       ? 'bg-blue-950/80 border-blue-500 ring-1 ring-blue-500 shadow-md shadow-blue-900/40'
                       : isPast
-                      ? 'bg-slate-900/60 border-slate-800 text-slate-400'
-                      : 'bg-slate-900/30 border-slate-800/60 text-slate-500'
+                      ? 'bg-white/60 border-slate-200 text-slate-600'
+                      : 'bg-white/30 border-slate-200/60 text-slate-600'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="font-bold text-slate-300">ขั้นที่ {idx + 1}</span>
+                    <span className="font-bold text-slate-700">ขั้นที่ {idx + 1}</span>
                     {isCurrent ? (
                       <span className="px-1.5 py-0.2 rounded text-[10px] font-bold bg-blue-500 text-white">ปัจจุบัน</span>
                     ) : isPast ? (
@@ -179,10 +179,10 @@ export const DashboardView: React.FC = () => {
                       <Clock className="w-3.5 h-3.5 text-slate-600" />
                     )}
                   </div>
-                  <p className={`font-semibold ${isCurrent ? 'text-white' : 'text-slate-300'}`}>
+                  <p className={`font-semibold ${isCurrent ? 'text-white' : 'text-slate-700'}`}>
                     {pos.nameTh.split('(')[0]}
                   </p>
-                  <p className="text-[11px] text-slate-400 mt-1">
+                  <p className="text-[11px] text-slate-600 mt-1">
                     {pos.minPerformance > 0 ? `ผลงานขั้นต่ำ ${formatBaht(pos.minPerformance, false)}` : 'ตัวแทนเริ่มแรก'}
                   </p>
                 </div>
@@ -196,8 +196,8 @@ export const DashboardView: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
         {/* Metric 1: Monthly Income */}
-        <div className="bg-slate-900/90 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-5 shadow-lg relative overflow-hidden transition-all group">
-          <div className="flex items-center justify-between text-slate-400 text-xs mb-2">
+        <div className="bg-white/90 border border-slate-200 hover:border-amber-500/50 rounded-2xl p-5 shadow-lg relative overflow-hidden transition-all group">
+          <div className="flex items-center justify-between text-slate-600 text-xs mb-2">
             <span>รายได้ประมาณการ / เดือน</span>
             <div className="p-2 rounded-xl bg-amber-500/10 text-amber-400">
               <DollarSign className="w-4 h-4" />
@@ -206,15 +206,15 @@ export const DashboardView: React.FC = () => {
           <div className="text-2xl sm:text-3xl font-black text-amber-400 tracking-tight">
             {formatBaht(result.totalMonthlyIncome)}
           </div>
-          <div className="flex items-center justify-between mt-3 text-[11px] text-slate-400 border-t border-slate-800/80 pt-2">
+          <div className="flex items-center justify-between mt-3 text-[11px] text-slate-600 border-t border-slate-200/80 pt-2">
             <span>รายได้ทั้งปีประมาณการ:</span>
-            <strong className="text-slate-200">{formatBaht(result.totalAnnualIncome)}</strong>
+            <strong className="text-slate-800">{formatBaht(result.totalAnnualIncome)}</strong>
           </div>
         </div>
 
         {/* Metric 2: Team Total Sales */}
-        <div className="bg-slate-900/90 border border-slate-800 hover:border-blue-500/50 rounded-2xl p-5 shadow-lg relative overflow-hidden transition-all group">
-          <div className="flex items-center justify-between text-slate-400 text-xs mb-2">
+        <div className="bg-white/90 border border-slate-200 hover:border-blue-500/50 rounded-2xl p-5 shadow-lg relative overflow-hidden transition-all group">
+          <div className="flex items-center justify-between text-slate-600 text-xs mb-2">
             <span>ผลงานยอดขายรวมทั้งทีม</span>
             <div className="p-2 rounded-xl bg-blue-500/10 text-blue-400">
               <TrendingUp className="w-4 h-4" />
@@ -223,15 +223,15 @@ export const DashboardView: React.FC = () => {
           <div className="text-2xl sm:text-3xl font-black text-blue-400 tracking-tight">
             {formatBaht(result.teamTotalMonthlySales)}
           </div>
-          <div className="flex items-center justify-between mt-3 text-[11px] text-slate-400 border-t border-slate-800/80 pt-2">
+          <div className="flex items-center justify-between mt-3 text-[11px] text-slate-600 border-t border-slate-200/80 pt-2">
             <span>ยอดขายส่วนตัว:</span>
-            <strong className="text-slate-200">{formatBaht(selectedMember.personalMonthlySales)}</strong>
+            <strong className="text-slate-800">{formatBaht(selectedMember.personalMonthlySales)}</strong>
           </div>
         </div>
 
         {/* Metric 3: Team Total FYC */}
-        <div className="bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 shadow-lg relative overflow-hidden transition-all group">
-          <div className="flex items-center justify-between text-slate-400 text-xs mb-2">
+        <div className="bg-white/90 border border-slate-200 hover:border-emerald-500/50 rounded-2xl p-5 shadow-lg relative overflow-hidden transition-all group">
+          <div className="flex items-center justify-between text-slate-600 text-xs mb-2">
             <span>FYC รวมทั้งสายงาน</span>
             <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400">
               <Award className="w-4 h-4" />
@@ -240,24 +240,24 @@ export const DashboardView: React.FC = () => {
           <div className="text-2xl sm:text-3xl font-black text-emerald-400 tracking-tight">
             {formatBaht(result.teamTotalMonthlyFyc)}
           </div>
-          <div className="flex items-center justify-between mt-3 text-[11px] text-slate-400 border-t border-slate-800/80 pt-2">
+          <div className="flex items-center justify-between mt-3 text-[11px] text-slate-600 border-t border-slate-200/80 pt-2">
             <span>COM รวมทั้งทีม:</span>
-            <strong className="text-slate-200">{formatBaht(result.teamTotalMonthlyCom)}</strong>
+            <strong className="text-slate-800">{formatBaht(result.teamTotalMonthlyCom)}</strong>
           </div>
         </div>
 
         {/* Metric 4: Team Structure Count */}
-        <div className="bg-slate-900/90 border border-slate-800 hover:border-purple-500/50 rounded-2xl p-5 shadow-lg relative overflow-hidden transition-all group">
-          <div className="flex items-center justify-between text-slate-400 text-xs mb-2">
+        <div className="bg-white/90 border border-slate-200 hover:border-purple-500/50 rounded-2xl p-5 shadow-lg relative overflow-hidden transition-all group">
+          <div className="flex items-center justify-between text-slate-600 text-xs mb-2">
             <span>โครงสร้างและขนาดทีม</span>
             <div className="p-2 rounded-xl bg-purple-500/10 text-purple-400">
               <Users className="w-4 h-4" />
             </div>
           </div>
           <div className="text-2xl sm:text-3xl font-black text-purple-300 tracking-tight">
-            {result.teamMemberCount} <span className="text-sm font-normal text-slate-400">คน</span>
+            {result.teamMemberCount} <span className="text-sm font-normal text-slate-600">คน</span>
           </div>
-          <div className="flex items-center justify-between mt-3 text-[11px] text-slate-400 border-t border-slate-800/80 pt-2">
+          <div className="flex items-center justify-between mt-3 text-[11px] text-slate-600 border-t border-slate-200/80 pt-2">
             <span>หน่วย: <strong className="text-white">{result.separatedUnitsCount}</strong></span>
             <span>ศูนย์: <strong className="text-white">{result.separatedCentersCount}</strong></span>
             <span>Active: <strong className="text-emerald-400">{result.teamActiveMemberCount}</strong></span>
@@ -270,14 +270,14 @@ export const DashboardView: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Left 2 Cols: Detailed Income Composition & Tiers */}
-        <div className="lg:col-span-2 bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl">
+        <div className="lg:col-span-2 bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl">
           <div className="flex items-center justify-between mb-4">
             <div>
               <h2 className="text-base font-bold text-white flex items-center gap-2">
                 <DollarSign className="w-5 h-5 text-amber-400" />
                 จำแนกโครงสร้างรายได้ 5 หมวด (Income Categories Breakdown)
               </h2>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-600">
                 สูตรคำนวณตามเกณฑ์ผลงานรายบุคคลและผลงานการบริหารสายงาน
               </p>
             </div>
@@ -291,48 +291,48 @@ export const DashboardView: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
             
-            <div className="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60">
-              <div className="flex items-center justify-between text-xs text-slate-400 mb-1">
+            <div className="p-3.5 rounded-xl bg-slate-100/60 border border-slate-200/60">
+              <div className="flex items-center justify-between text-xs text-slate-600 mb-1">
                 <span>1. รายได้จากผลงานส่วนตัว & พาหนะ</span>
-                <span className="font-semibold text-slate-300">
+                <span className="font-semibold text-slate-700">
                   {result.totalMonthlyIncome > 0 ? formatPercent(Math.round((result.personalIncomeTotal / result.totalMonthlyIncome) * 100)) : '0%'}
                 </span>
               </div>
               <p className="text-lg font-bold text-white">{formatBaht(result.personalIncomeTotal)}</p>
-              <p className="text-[11px] text-slate-400 mt-1">ค่าบำเหน็จขายตรง + ค่าพาหนะประจำตำแหน่ง</p>
+              <p className="text-[11px] text-slate-600 mt-1">ค่าบำเหน็จขายตรง + ค่าพาหนะประจำตำแหน่ง</p>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60">
-              <div className="flex items-center justify-between text-xs text-slate-400 mb-1">
+            <div className="p-3.5 rounded-xl bg-slate-100/60 border border-slate-200/60">
+              <div className="flex items-center justify-between text-xs text-slate-600 mb-1">
                 <span>2. ค่าบริหารหน่วย & ค่าแยกหน่วย</span>
-                <span className="font-semibold text-slate-300">
+                <span className="font-semibold text-slate-700">
                   {result.totalMonthlyIncome > 0 ? formatPercent(Math.round((result.unitManagementIncomeTotal / result.totalMonthlyIncome) * 100)) : '0%'}
                 </span>
               </div>
               <p className="text-lg font-bold text-white">{formatBaht(result.unitManagementIncomeTotal)}</p>
-              <p className="text-[11px] text-slate-400 mt-1">ค่าจัดงานหน่วย (25-40%) + หน่วยแยก (2,000 ฿/หน่วย)</p>
+              <p className="text-[11px] text-slate-600 mt-1">ค่าจัดงานหน่วย (25-40%) + หน่วยแยก (2,000 ฿/หน่วย)</p>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60">
-              <div className="flex items-center justify-between text-xs text-slate-400 mb-1">
+            <div className="p-3.5 rounded-xl bg-slate-100/60 border border-slate-200/60">
+              <div className="flex items-center justify-between text-xs text-slate-600 mb-1">
                 <span>3. ค่าบริหารศูนย์ 3 ประเภท & แยกศูนย์</span>
-                <span className="font-semibold text-slate-300">
+                <span className="font-semibold text-slate-700">
                   {result.totalMonthlyIncome > 0 ? formatPercent(Math.round((result.centerManagementIncomeTotal / result.totalMonthlyIncome) * 100)) : '0%'}
                 </span>
               </div>
               <p className="text-lg font-bold text-white">{formatBaht(result.centerManagementIncomeTotal)}</p>
-              <p className="text-[11px] text-slate-400 mt-1">จัดงานศูนย์ 1 (15-30%), 2 (0.8%), 3 (5k-15k) + แยกศูนย์</p>
+              <p className="text-[11px] text-slate-600 mt-1">จัดงานศูนย์ 1 (15-30%), 2 (0.8%), 3 (5k-15k) + แยกศูนย์</p>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60">
-              <div className="flex items-center justify-between text-xs text-slate-400 mb-1">
+            <div className="p-3.5 rounded-xl bg-slate-100/60 border border-slate-200/60">
+              <div className="flex items-center justify-between text-xs text-slate-600 mb-1">
                 <span>4. ค่าบริหารภาค 1-2 & บริหารเป้าหมาย</span>
-                <span className="font-semibold text-slate-300">
+                <span className="font-semibold text-slate-700">
                   {result.totalMonthlyIncome > 0 ? formatPercent(Math.round((result.groupManagementIncomeTotal / result.totalMonthlyIncome) * 100)) : '0%'}
                 </span>
               </div>
               <p className="text-lg font-bold text-white">{formatBaht(result.groupManagementIncomeTotal)}</p>
-              <p className="text-[11px] text-slate-400 mt-1">จัดงานภาค 1 (10-18%), 2 (1k-2.5k) + เป้าหมาย (10k-30k/ด)</p>
+              <p className="text-[11px] text-slate-600 mt-1">จัดงานภาค 1 (10-18%), 2 (1k-2.5k) + เป้าหมาย (10k-30k/ด)</p>
             </div>
 
           </div>
@@ -356,7 +356,7 @@ export const DashboardView: React.FC = () => {
         </div>
 
         {/* Right Col: Goal Progress & Target Simulator Card */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
+        <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-base font-bold text-white flex items-center gap-2">
@@ -370,23 +370,23 @@ export const DashboardView: React.FC = () => {
 
             <div className="space-y-4">
               <div>
-                <div className="flex justify-between text-xs text-slate-300 mb-1.5">
+                <div className="flex justify-between text-xs text-slate-700 mb-1.5">
                   <span>เป้าหมายรายได้ต่อเดือน:</span>
                   <strong className="text-white">{formatBaht(goalMonthlyIncome)}</strong>
                 </div>
-                <div className="w-full h-3 bg-slate-800 rounded-full overflow-hidden p-0.5 border border-slate-700">
+                <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden p-0.5 border border-slate-200">
                   <div
                     className="h-full bg-gradient-to-r from-blue-500 via-indigo-500 to-amber-400 rounded-full transition-all duration-500"
                     style={{ width: `${Math.min(100, incomeProgressPct)}%` }}
                   />
                 </div>
-                <div className="flex justify-between text-[11px] text-slate-400 mt-1">
+                <div className="flex justify-between text-[11px] text-slate-600 mt-1">
                   <span>ปัจจุบัน: {formatBaht(result.totalMonthlyIncome)}</span>
                   <span>{incomeProgressPct >= 100 ? '🎉 บรรลุเป้าหมายแล้ว!' : `ขาดอีก ${formatBaht(Math.max(0, goalMonthlyIncome - result.totalMonthlyIncome))}`}</span>
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/60 text-xs text-slate-300 space-y-2">
+              <div className="p-4 rounded-xl bg-slate-100/50 border border-slate-200/60 text-xs text-slate-700 space-y-2">
                 <p className="font-semibold text-white">💡 ข้อมูลเชิงกลยุทธ์:</p>
                 <p>
                   สมาชิกในทีมปัจจุบัน: <strong>{result.teamMemberCount} คน</strong> (Active {result.teamActiveMemberCount} คน)
@@ -410,14 +410,14 @@ export const DashboardView: React.FC = () => {
       </div>
 
       {/* 4. Promotion Requirements & Gap Analysis Section */}
-      <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl">
+      <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mb-4">
           <div>
             <h2 className="text-base font-bold text-white flex items-center gap-2">
               <Building2 className="w-5 h-5 text-indigo-400" />
               การประเมินคุณสมบัติเลื่อนตำแหน่งถัดไป (Promotion Gap Analysis)
             </h2>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-600">
               {nextPosInfo
                 ? `เปรียบเทียบคุณสมบัติปัจจุบันกับเกณฑ์ตำแหน่ง ${nextPosInfo.nameTh}`
                 : 'คุณอยู่ในตำแหน่งผู้บริหารระดับสูงสุดแล้ว (ผู้บริหารภาค)'}
@@ -444,11 +444,11 @@ export const DashboardView: React.FC = () => {
                 className={`p-4 rounded-xl border transition-all ${
                   check.met
                     ? 'bg-emerald-950/40 border-emerald-700/60 text-emerald-200'
-                    : 'bg-slate-800/60 border-slate-700 text-slate-300'
+                    : 'bg-slate-100/60 border-slate-200 text-slate-700'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-semibold text-xs text-slate-200">{check.item}</span>
+                  <span className="font-semibold text-xs text-slate-800">{check.item}</span>
                   {check.met ? (
                     <span className="flex items-center gap-1 text-[11px] font-bold text-emerald-400">
                       <CheckCircle className="w-3.5 h-3.5" /> ผ่าน
@@ -460,14 +460,14 @@ export const DashboardView: React.FC = () => {
                   )}
                 </div>
                 <div className="text-xs space-y-1">
-                  <p className="text-slate-400">เกณฑ์ที่ต้องได้: <strong className="text-white">{check.required}</strong></p>
-                  <p className="text-slate-400">ปัจจุบันทำได้: <strong className={check.met ? 'text-emerald-300' : 'text-amber-300'}>{check.current}</strong></p>
+                  <p className="text-slate-600">เกณฑ์ที่ต้องได้: <strong className="text-white">{check.required}</strong></p>
+                  <p className="text-slate-600">ปัจจุบันทำได้: <strong className={check.met ? 'text-emerald-300' : 'text-amber-300'}>{check.current}</strong></p>
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          <div className="p-4 rounded-xl bg-slate-800/40 border border-slate-700/60 text-xs text-slate-300">
+          <div className="p-4 rounded-xl bg-slate-100/40 border border-slate-200/60 text-xs text-slate-700">
             ขอแสดงความยินดี! คุณดำรงตำแหน่งผู้บริหารภาค ซึ่งเป็นโครงสร้างบริหารงานระดับสูงที่สุด พร้อมรับผลประโยชน์ครบทั้ง 12 สิทธิประโยชน์
           </div>
         )}
@@ -475,14 +475,14 @@ export const DashboardView: React.FC = () => {
 
       {/* 5. Direct Subordinates Quick List */}
       {directSubordinates.length > 0 && (
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl">
+        <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl">
           <div className="flex items-center justify-between mb-4">
             <div>
               <h2 className="text-base font-bold text-white flex items-center gap-2">
                 <Users className="w-5 h-5 text-blue-400" />
                 สมาชิกในสายงานตรง ({directSubordinates.length} คน)
               </h2>
-              <p className="text-xs text-slate-400">คลิกเพื่อสลับมุมมองดูรายละเอียดและผลลัพธ์รายได้ของสมาชิกแต่ละคน</p>
+              <p className="text-xs text-slate-600">คลิกเพื่อสลับมุมมองดูรายละเอียดและผลลัพธ์รายได้ของสมาชิกแต่ละคน</p>
             </div>
             <button
               onClick={() => setActiveTab('TREE')}
@@ -499,7 +499,7 @@ export const DashboardView: React.FC = () => {
                 <div
                   key={sub.id}
                   onClick={() => setSelectedMemberId(sub.id)}
-                  className="p-3.5 rounded-xl bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 hover:border-blue-500/60 transition-all cursor-pointer group"
+                  className="p-3.5 rounded-xl bg-slate-100/50 hover:bg-slate-100 border border-slate-200/60 hover:border-blue-500/60 transition-all cursor-pointer group"
                 >
                   <div className="flex items-start justify-between">
                     <div>
@@ -510,12 +510,12 @@ export const DashboardView: React.FC = () => {
                         {subPos.nameTh.split('(')[0]}
                       </span>
                     </div>
-                    <span className="text-[11px] font-mono text-slate-400 font-bold">
+                    <span className="text-[11px] font-mono text-slate-600 font-bold">
                       {sub.code}
                     </span>
                   </div>
 
-                  <div className="mt-2.5 pt-2 border-t border-slate-700/50 flex items-center justify-between text-[11px] text-slate-300">
+                  <div className="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[11px] text-slate-700">
                     <span>ยอดขายส่วนตัว:</span>
                     <strong className="text-white">{formatBaht(sub.personalMonthlySales)}</strong>
                   </div>

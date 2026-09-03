@@ -55,14 +55,14 @@ export const TikTokAdsTutorial: React.FC = () => {
   return (
     <div id="tiktok_ads_view" className="space-y-8 max-w-7xl mx-auto pb-16 text-left">
       {/* Header */}
-      <div className="p-6 rounded-3xl bg-gradient-to-r from-slate-900 to-rose-950/30 border border-slate-800 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-gradient-to-r from-slate-900 to-rose-950/30 border border-slate-200 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-rose-400" />
             <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-300 border border-rose-500/30">TUTORIAL</span>
           </div>
-          <h1 className="mt-2 text-2xl font-black text-slate-100">สอนยิงแอด TikTok Ads</h1>
-          <p className="text-sm text-slate-400 mt-1">เรียนรู้สร้างแคมเปญโฆษณาบน TikTok Ads Manager ตั้งแต่เริ่มต้นจนยิงแอดได้จริง</p>
+          <h1 className="mt-2 text-2xl font-black text-slate-900">สอนยิงแอด TikTok Ads</h1>
+          <p className="text-sm text-slate-600 mt-1">เรียนรู้สร้างแคมเปญโฆษณาบน TikTok Ads Manager ตั้งแต่เริ่มต้นจนยิงแอดได้จริง</p>
         </div>
         <a
           href={TIKTOK_URL}
@@ -78,10 +78,10 @@ export const TikTokAdsTutorial: React.FC = () => {
       {/* Steps overview */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {DEFAULT_SCENES.map((s, i) => (
-          <div key={i} className="p-4 rounded-2xl bg-slate-900/70 border border-slate-800">
+          <div key={i} className="p-4 rounded-2xl bg-white/70 border border-slate-200">
             <div className="text-[11px] font-bold text-rose-400 mb-1">ขั้นตอนที่ {i + 1}</div>
-            <div className="text-sm font-bold text-slate-100 mb-1">{s.title}</div>
-            <div className="text-xs text-slate-400 leading-relaxed">{s.body}</div>
+            <div className="text-sm font-bold text-slate-900 mb-1">{s.title}</div>
+            <div className="text-xs text-slate-600 leading-relaxed">{s.body}</div>
           </div>
         ))}
       </div>
@@ -90,10 +90,10 @@ export const TikTokAdsTutorial: React.FC = () => {
       <section className="space-y-4">
         <div className="flex items-center gap-2 px-1">
           <Play className="w-5 h-5 text-rose-400" />
-          <h2 className="text-lg font-black text-slate-100">สร้างวิดีโอสอนยิงแอด</h2>
+          <h2 className="text-lg font-black text-slate-900">สร้างวิดีโอสอนยิงแอด</h2>
         </div>
-        <div className="p-5 rounded-2xl bg-gradient-to-br from-slate-900 to-rose-950/20 border border-slate-800 space-y-4">
-          <p className="text-xs text-slate-300 leading-relaxed">
+        <div className="p-5 rounded-2xl bg-gradient-to-br from-slate-900 to-rose-950/20 border border-slate-200 space-y-4">
+          <p className="text-xs text-slate-700 leading-relaxed">
             กดปุ่มเพื่อสร้าง <b>วิดีโอสอนยิงแอด TikTok</b> แนว Professional Tutorial (9:16) พร้อมเสียงเล่าภาษาไทย
             และแสดงลิงก์ <b>ads.tiktok.com/business/th</b> ด้านล่างของวิดีโอตลอดทั้งคลิป
           </p>
@@ -131,14 +131,14 @@ export const TikTokAdsTutorial: React.FC = () => {
           )}
 
           {videoUrl && (
-            <div className="rounded-2xl overflow-hidden border border-rose-500/30 bg-slate-950">
+            <div className="rounded-2xl overflow-hidden border border-rose-500/30 bg-white">
               <video
                 src={videoUrl}
                 controls
                 className="w-full max-h-[70vh]"
                 onError={(e) => setError('ไม่สามารถเล่นวิดีโอได้: ' + (videoUrl || ''))}
               />
-              <div className="p-3 text-[11px] text-slate-400 flex items-center justify-between flex-wrap gap-2">
+              <div className="p-3 text-[11px] text-slate-600 flex items-center justify-between flex-wrap gap-2">
                 <span>วิดีโอสอนยิงแอด TikTok Ads</span>
                 <div className="flex items-center gap-3">
                   <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="text-rose-300 hover:underline flex items-center gap-1">
@@ -151,7 +151,7 @@ export const TikTokAdsTutorial: React.FC = () => {
             </div>
           )}
 
-          <p className="text-[10px] text-slate-500 leading-relaxed">
+          <p className="text-[10px] text-slate-600 leading-relaxed">
             วิดีโอใช้เพื่อการศึกษา ไม่รับประกันยอดขายหรือรายได้ใด ๆ การยิงแอดต้องอาศัยการทดสอบและวิเคราะห์ข้อมูลอย่างต่อเนื่อง
           </p>
         </div>

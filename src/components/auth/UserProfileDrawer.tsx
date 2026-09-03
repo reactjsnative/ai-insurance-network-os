@@ -99,7 +99,7 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
   return (
     <div 
       id="profile-drawer-backdrop"
-      className="fixed inset-0 z-50 flex justify-end bg-slate-950/60 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex justify-end bg-white/60 backdrop-blur-sm"
     >
       <motion.div
         id="profile-drawer-content"
@@ -114,7 +114,7 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
           <button
             id="btn-close-profile-drawer"
             onClick={onClose}
-            className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+            className="absolute top-5 right-5 p-2 rounded-xl text-slate-600 hover:text-white hover:bg-white/10 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -139,7 +139,7 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
                 </span>
               </div>
               <h3 className="text-lg font-bold text-white mt-1 leading-tight">{authUser.name}</h3>
-              <p className="text-xs text-slate-300 truncate max-w-[200px]">{authUser.email}</p>
+              <p className="text-xs text-slate-700 truncate max-w-[200px]">{authUser.email}</p>
             </div>
           </div>
         </div>
@@ -156,11 +156,11 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
             </div>
             <div className="grid grid-cols-2 gap-2 text-xs text-slate-600 mt-3 pt-3 border-t border-slate-200/70">
               <div>
-                <span className="text-[11px] text-slate-400 block">รหัสตัวแทน</span>
+                <span className="text-[11px] text-slate-600 block">รหัสตัวแทน</span>
                 <span className="font-semibold text-slate-800">{activeUser.memberCode}</span>
               </div>
               <div>
-                <span className="text-[11px] text-slate-400 block">สิทธิ์การเข้าถึง</span>
+                <span className="text-[11px] text-slate-600 block">สิทธิ์การเข้าถึง</span>
                 <span className="font-semibold text-slate-800 capitalize">{authUser.role}</span>
               </div>
             </div>
@@ -173,7 +173,7 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
                 <Link2 className="w-4 h-4 text-indigo-600" />
                 บัญชีที่เชื่อมต่อ (Connected Logins)
               </h4>
-              <span className="text-[11px] text-slate-400">
+              <span className="text-[11px] text-slate-600">
                 {authUser.connectedProviders.length} / 4 ช่องทาง
               </span>
             </div>
@@ -201,7 +201,7 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
                             </span>
                           )}
                         </div>
-                        <p className="text-[11px] text-slate-500 truncate">{item.description}</p>
+                        <p className="text-[11px] text-slate-600 truncate">{item.description}</p>
                       </div>
                     </div>
 
@@ -218,7 +218,7 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
                         {isConnected ? 'ยกเลิก' : 'เชื่อมต่อ'}
                       </button>
                     ) : (
-                      <span className="text-[11px] text-slate-400 font-medium px-2 py-1 bg-slate-100 rounded">
+                      <span className="text-[11px] text-slate-600 font-medium px-2 py-1 bg-slate-100 rounded">
                         หลัก
                       </span>
                     )}
@@ -240,7 +240,7 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
               </span>
             </div>
             <div className="flex items-center gap-2 text-xs text-slate-600">
-              <Clock className="w-3.5 h-3.5 text-slate-400" />
+              <Clock className="w-3.5 h-3.5 text-slate-600" />
               <span>เข้าสู่ระบบล่าสุด: {new Date(authUser.lastLoginAt).toLocaleTimeString('th-TH')} วันนี้</span>
             </div>
           </div>

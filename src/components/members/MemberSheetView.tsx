@@ -13,33 +13,33 @@ export const MemberSheetView: React.FC = () => {
 
   return (
     <div id="member_sheet_view" className="space-y-6 max-w-7xl mx-auto pb-16 text-left">
-      <div className="p-6 rounded-3xl bg-gradient-to-r from-slate-900 to-emerald-950/30 border border-slate-800 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-gradient-to-r from-slate-900 to-emerald-950/30 border border-slate-200 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <Sheet className="w-5 h-5 text-emerald-400" />
             <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">REAL-TIME</span>
           </div>
-          <h1 className="mt-2 text-2xl font-black text-slate-100">คลังข้อมูลสมาชิก</h1>
-          <p className="text-sm text-slate-400 mt-1">รายชื่อสมาชิกทั้งหมดในระบบ อัปเดตเรียลไทม์จากฐานข้อมูลกลาง</p>
+          <h1 className="mt-2 text-2xl font-black text-slate-900">คลังข้อมูลสมาชิก</h1>
+          <p className="text-sm text-slate-600 mt-1">รายชื่อสมาชิกทั้งหมดในระบบ อัปเดตเรียลไทม์จากฐานข้อมูลกลาง</p>
         </div>
         <div className="flex items-center gap-2">
-          <span className="px-4 py-2.5 rounded-xl bg-slate-800 text-slate-200 text-xs font-bold border border-slate-700">
+          <span className="px-4 py-2.5 rounded-xl bg-slate-100 text-slate-800 text-xs font-bold border border-slate-200">
             ทั้งหมด {members.length} คน
           </span>
         </div>
       </div>
 
       {members.length === 0 ? (
-        <div className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 text-center text-slate-400 text-sm">
+        <div className="p-8 rounded-2xl bg-white/60 border border-slate-200 text-center text-slate-600 text-sm">
           ยังไม่มีข้อมูลสมาชิกในระบบ
-          <div className="mt-2 text-[12px] text-slate-500">
+          <div className="mt-2 text-[12px] text-slate-600">
             สมาชิกจะปรากฏที่นี่โดยอัตโนมัติเมื่อสมัครเข้ามาผ่านระบบ หรือเมื่อเพิ่มจากหน้า "การจัดการสมาชิก"
           </div>
         </div>
       ) : (
-        <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/60">
+        <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white/60">
           <table className="w-full text-sm">
-            <thead className="bg-slate-950 text-slate-400 text-[11px] uppercase tracking-wider text-left">
+            <thead className="bg-white text-slate-600 text-[11px] uppercase tracking-wider text-left">
               <tr>
                 <th className="p-3">#</th>
                 <th className="p-3">รหัส</th>
@@ -54,22 +54,22 @@ export const MemberSheetView: React.FC = () => {
             </thead>
             <tbody>
               {sortedMembers.map((m, i) => (
-                <tr key={m.id || i} className="border-t border-slate-800 hover:bg-slate-800/40">
-                  <td className="p-3 text-slate-500">{i + 1}</td>
+                <tr key={m.id || i} className="border-t border-slate-200 hover:bg-slate-100/40">
+                  <td className="p-3 text-slate-600">{i + 1}</td>
                   <td className="p-3 font-mono text-emerald-300">{m.memberCode}</td>
-                  <td className="p-3 font-semibold text-slate-100">{m.name}</td>
-                  <td className="p-3 text-slate-300">{m.email || '-'}</td>
-                  <td className="p-3 text-slate-300">{m.phone || '-'}</td>
-                  <td className="p-3 text-slate-300">{m.positionId}</td>
-                  <td className="p-3 text-slate-300">{m.location?.province || '-'}</td>
-                  <td className="p-3 text-slate-300">{m.joinDate}</td>
+                  <td className="p-3 font-semibold text-slate-900">{m.name}</td>
+                  <td className="p-3 text-slate-700">{m.email || '-'}</td>
+                  <td className="p-3 text-slate-700">{m.phone || '-'}</td>
+                  <td className="p-3 text-slate-700">{m.positionId}</td>
+                  <td className="p-3 text-slate-700">{m.location?.province || '-'}</td>
+                  <td className="p-3 text-slate-700">{m.joinDate}</td>
                   <td className="p-3">
                     <span className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${
                       m.status === 'active'
                         ? 'bg-emerald-500/15 text-emerald-300'
                         : m.status === 'probation'
                         ? 'bg-amber-500/15 text-amber-300'
-                        : 'bg-slate-500/15 text-slate-400'
+                        : 'bg-slate-500/15 text-slate-600'
                     }`}>{m.status || 'active'}</span>
                   </td>
                 </tr>
