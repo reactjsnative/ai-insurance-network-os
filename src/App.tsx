@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import { Header } from './components/common/Header';
+import InsuranceMegaMenu from './components/navigation/InsuranceMegaMenu';
 import { Sidebar } from './components/common/Sidebar';
 import { MobileNav } from './components/common/MobileNav';
 
@@ -63,6 +64,7 @@ const MainContent: React.FC = () => {
 
   return (
     <div className="flex-1 flex flex-col h-screen overflow-hidden bg-slate-950 text-slate-100 font-sans">
+      {!isPresentationMode && <InsuranceMegaMenu />}
       {!isPresentationMode && <Header />}
 
       <div className="flex-1 flex overflow-hidden">
