@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Mega Menu Preview</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;700&display=swap" rel="stylesheet">
+<style>*{font-family:'Sarabun','Plus Jakarta Sans',system-ui,sans-serif}</style>
+</head>
+<body class="bg-slate-50">
+<div id="app"></div>
+<script type="module">
+import { createIcons, icons } from "https://cdn.jsdelivr.net/npm/lucide@0.511.0/+esm";
+
+const categories = [
+  {
+    id: "services", title: "บริการ", heading: "บริการสำหรับการทำงาน", description: "เลือกบริการที่เหมาะสมกับโครงการและทีมของคุณ", icon: "layers",
+    links: [
+      { title: "จัดการโครงการ", description: "สร้างและติดตามงานทั้งหมดจากพื้นที่เดียว", href: "/services/projects", icon: "boxes" },
+      { title: "ระบบอัตโนมัติ", description: "สร้างขั้นตอนการทำงานเพื่อลดงานซ้ำ", href: "/services/automation", icon: "workflow" },
+      { title: "การตั้งค่าระบบ", description: "กำหนดรูปแบบและเงื่อนไขการทำงาน", href: "/services/settings", icon: "settings" },
+      { title: "ระบบความปลอดภัย", description: "จัดการสิทธิ์และปกป้องข้อมูลสำคัญ", href: "/services/security", icon: "shield-check" },
+    ]
+  },
+  {
+    id: "solutions", title: "โซลูชัน", heading: "โซลูชันสำหรับทุกขนาดทีม", description: "รองรับตั้งแต่ผู้ใช้งานรายบุคคลจนถึงองค์กร", icon: "rocket",
+    links: [
+      { title: "ผู้ใช้งานทั่วไป", description: "เครื่องมือเริ่มต้นสำหรับจัดการงานส่วนตัว", href: "/solutions/individual", icon: "users" },
+      { title: "ทีมงาน", description: "ทำงานร่วมกันและติดตามความคืบหน้า", href: "/solutions/teams", icon: "users" },
+      { title: "นักพัฒนา", description: "เชื่อมต่อและพัฒนาฟังก์ชันเพิ่มเติม", href: "/solutions/developers", icon: "code-2" },
+      { title: "องค์กร", description: "รองรับระบบขนาดใหญ่และผู้ใช้จำนวนมาก", href: "/solutions/enterprise", icon: "layers" },
+    ]
+  },
+  {
+    id: "resources", title: "แหล่งเรียนรู้", heading: "คู่มือและแหล่งเรียนรู้", description: "ศึกษาวิธีใช้งานและตัวอย่างการพัฒนาระบบ", icon: "book-open",
+    links: [
+      { title: "เริ่มต้นใช้งาน", description: "เรียนรู้ขั้นตอนการตั้งค่าระบบครั้งแรก", href: "/guides/getting-started", icon: "rocket" },
+      { title: "คู่มือการใช้งาน", description: "อ่านรายละเอียดเกี่ยวกับฟังก์ชันต่าง ๆ", href: "/guides", icon: "book-open" },
+      { title: "ตัวอย่างโครงการ", description: "ดูตัวอย่างเพื่อนำไปประยุกต์ใช้งาน", href: "/examples", icon: "boxes" },
+      { title: "เอกสารสำหรับนักพัฒนา", description: "ศึกษารูปแบบการเชื่อมต่อระบบ", href: "/developers", icon: "code-2" },
+    ]
+  },
+];
+
+let desktopOpen = false;
+let mobileOpen = false;
+let activeId = categories[0].id;
+
+function render(){
+  const active = categories.find(c=>c.id===activeId) || categories[0];
+  document.getElementById('app').innerHTML = `
+<header class="relative z-50 border-b border-slate-200 bg-white">
+  <nav class="mx-auto flex h-20 max-w-7xl items-center justify-between px-5">
+    <a href="/" class="flex items-center gap-3">
+      <span class="grid h-10 w-10 place-items-center rounded-xl bg-blue-600 text-white"><i data-lucide="sparkles" class="h-5 w-5"></i></span>
+      <span class="text-xl font-bold text-slate-900">ชื่อแบรนด์</span>
+    </a>
+    <div class="hidden h-full items-center gap-8 lg:flex">
+      <button id="btn-menu" class="flex h-full items-center gap-2 border-b-2 px-1 font-medium transition ${desktopOpen ? 'border-blue-600 text-blue-600' : 'border-transparent text-slate-700 hover:text-blue-600'}">
+        เมนู <i data-lucide="chevron-down" class="h-4 w-4 ${desktopOpen?'rotate-180':''} transition-transform"></i>
+      </button>
+      <a href="/about" class="font-medium text-slate-700 hover:text-blue-600">เกี่ยวกับเรา</a>
+      <a href="/contact" class="font-medium text-slate-700 hover:text-blue-600">ติดต่อเรา</a>
+    </div>
+    <div class="hidden items-center gap-3 lg:flex">
+      <a href="/login" class="rounded-full px-5 py-2.5 font-medium text-slate-700 hover:bg-slate-100">เข้าสู่ระบบ</a>
+      <a href="/register" class="rounded-full bg-blue-600 px-6 py-2.5 font-medium text-white hover:bg-blue-700">เริ่มต้นใช้งาน</a>
+    </div>
+    <button id="btn-mobile-open" class="rounded-lg p-2 text-slate-700 hover:bg-slate-100 lg:hidden"><i data-lucide="menu" class="h-6 w-6"></i></button>
+  </nav>
+
+  ${desktopOpen ? `
+  <button id="btn-close-desktop" class="fixed inset-0 top-20 z-40 hidden cursor-default bg-slate-950/50 backdrop-blur-[2px] lg:block"></button>
+  <section class="absolute left-1/2 top-[92px] z-50 hidden w-[min(94vw,1400px)] -translate-x-1/2 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl lg:block">
+    <div class="grid min-h-[520px] grid-cols-[320px_1fr]">
+      <aside class="border-r border-slate-200 bg-slate-50 p-7">
+        <p class="mb-5 text-xs font-semibold uppercase tracking-widest text-slate-500">หมวดหมู่</p>
+        <div class="space-y-2">
+          ${categories.map(c=>`
+            <button data-cat="${c.id}" class="cat-btn flex w-full items-center gap-3 rounded-xl p-3 text-left transition ${c.id===activeId?'bg-blue-100 text-blue-700':'text-slate-700 hover:bg-white hover:text-blue-600'}">
+              <span class="grid h-10 w-10 place-items-center rounded-full ${c.id===activeId?'bg-blue-600 text-white':'bg-white text-slate-600'}"><i data-lucide="${c.icon}" class="h-5 w-5"></i></span>
+              <span class="flex-1 font-medium">${c.title}</span>
+              <i data-lucide="chevron-right" class="h-4 w-4"></i>
+            </button>`).join('')}
+        </div>
+      </aside>
+      <main class="p-8">
+        <div class="relative mb-8 overflow-hidden rounded-2xl bg-gradient-to-r from-slate-950 via-blue-950 to-blue-600 p-8 text-white">
+          <div class="relative z-10 max-w-2xl">
+            <p class="mb-3 text-sm font-medium text-blue-200">${active.title}</p>
+            <h2 class="text-3xl font-bold">${active.heading}</h2>
+            <p class="mt-3 leading-7 text-blue-100">${active.description}</p>
+            <a href="/category/${active.id}" class="mt-6 inline-flex items-center gap-2 font-semibold hover:text-blue-200">ดูทั้งหมด <i data-lucide="chevron-right" class="h-4 w-4"></i></a>
+          </div>
+          <div class="absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-white/10"></div>
+          <div class="absolute right-20 top-8 h-32 w-32 rounded-full bg-blue-300/10"></div>
+        </div>
+        <div class="grid grid-cols-2 gap-5">
+          ${active.links.map(l=>`
+            <a href="${l.href}" class="group flex gap-4 rounded-xl border border-transparent p-4 transition hover:border-blue-100 hover:bg-blue-50">
+              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-slate-100 text-slate-600 transition group-hover:bg-blue-600 group-hover:text-white"><i data-lucide="${l.icon}" class="h-5 w-5"></i></span>
+              <span><span class="flex items-center gap-1 font-semibold text-slate-900 group-hover:text-blue-700">${l.title} <i data-lucide="chevron-right" class="h-4 w-4 opacity-0 transition group-hover:translate-x-1 group-hover:opacity-100"></i></span><span class="mt-1 block text-sm leading-6 text-slate-500">${l.description}</span></span>
+            </a>`).join('')}
+        </div>
+      </main>
+    </div>
+  </section>`:''}
+
+  ${mobileOpen ? `
+  <div class="fixed inset-0 z-[70] bg-white lg:hidden">
+    <div class="flex h-20 items-center justify-between border-b px-5">
+      <span class="text-xl font-bold text-slate-900">ชื่อแบรนด์</span>
+      <button id="btn-mobile-close" class="rounded-lg p-2 text-slate-700 hover:bg-slate-100"><i data-lucide="x" class="h-6 w-6"></i></button>
+    </div>
+    <div class="h-[calc(100vh-80px)] overflow-y-auto p-5">
+      <div class="space-y-3">
+        ${categories.map(c=>`
+          <div class="overflow-hidden rounded-xl border border-slate-200">
+            <button data-mcat="${c.id}" class="flex w-full items-center gap-3 p-4 text-left">
+              <span class="grid h-10 w-10 place-items-center rounded-lg bg-blue-100 text-blue-600"><i data-lucide="${c.icon}" class="h-5 w-5"></i></span>
+              <span class="flex-1 font-semibold text-slate-900">${c.title}</span>
+              <i data-lucide="chevron-down" class="h-5 w-5 transition-transform ${activeId===c.id?'rotate-180':''}"></i>
+            </button>
+            ${activeId===c.id?`<div class="space-y-2 border-t bg-slate-50 p-3">${c.links.map(l=>`<a href="${l.href}" class="flex gap-3 rounded-lg bg-white p-3"><i data-lucide="${l.icon}" class="mt-0.5 h-5 w-5 shrink-0 text-blue-600"></i><span><span class="block font-medium text-slate-900">${l.title}</span><span class="mt-1 block text-sm text-slate-500">${l.description}</span></span></a>`).join('')}</div>`:''}
+          </div>`).join('')}
+      </div>
+    </div>
+  </div>`:''}
+</header>
+<div class="mx-auto max-w-7xl px-5 py-10">
+  <h1 class="text-2xl font-bold text-slate-900">พรีวิว Mega Menu</h1>
+  <p class="mt-2 text-slate-600">คลิก “เมนู” เพื่อเปิด Mega Menu (Desktop) หรือปุ่ม ☰ บนมือถือ — ไฟล์จริงอยู่ที่ <code class="bg-white border px-2 py-1 rounded text-xs">src/components/navigation/</code></p>
+  <div class="mt-6 p-4 rounded-xl bg-white border text-sm text-slate-700">ไฟล์สร้างแล้ว: <code>menu-data.ts</code> + <code>mega-menu.tsx</code> — ใช้ได้กับ Next.js / Vite ได้ทันที (lucide-react ติดตั้งแล้ว)</div>
+</div>
+  `;
+  createIcons({ icons });
+  document.getElementById('btn-menu')?.addEventListener('click', ()=>{ desktopOpen=!desktopOpen; render(); });
+  document.getElementById('btn-close-desktop')?.addEventListener('click', ()=>{ desktopOpen=false; render(); });
+  document.getElementById('btn-mobile-open')?.addEventListener('click', ()=>{ mobileOpen=true; render(); });
+  document.getElementById('btn-mobile-close')?.addEventListener('click', ()=>{ mobileOpen=false; render(); });
+  document.querySelectorAll('.cat-btn').forEach(b=>{ b.addEventListener('mouseenter', ()=>{ activeId=b.dataset.cat; render(); }); b.addEventListener('click', ()=>{ activeId=b.dataset.cat; render(); }); });
+  document.querySelectorAll('[data-mcat]').forEach(b=>{ b.addEventListener('click', ()=>{ activeId = activeId===b.dataset.mcat ? '' : b.dataset.mcat; render(); }); });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ desktopOpen=false; mobileOpen=false; render(); }});
+}
+render();
+</script>
+</body>
+</html>
