@@ -66,6 +66,11 @@ const MainContent: React.FC = () => {
       {!isPresentationMode && <InsuranceMegaMenu />}
       {!isPresentationMode && <Header />}
 
+      {activeTab === 'ai_studio' ? (
+        <div className="flex-1 overflow-y-auto bg-[#fcfdff]">
+          <AiStudioApp />
+        </div>
+      ) : (
       <div className="flex-1 flex overflow-hidden">
         <main className="flex-1 overflow-y-auto bg-gradient-to-b from-[#fcfdff]/50 via-white to-[#f0f9ff]/30"><div className="mx-auto max-w-7xl w-full p-4 sm:p-6 lg:p-8">
           {activeTab === 'dashboard' && <Dashboard />}
@@ -99,7 +104,7 @@ const MainContent: React.FC = () => {
           {activeTab === 'settings' && <SettingsView />}
         </div></main>
       </div>
-
+      )}
       {!isPresentationMode && <MobileNav />}
 
       {/* Global Authentication Modals & Feedback */}
