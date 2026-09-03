@@ -33,7 +33,7 @@ export const UnitTestsView: React.FC = () => {
     <div className="space-y-6 pb-12">
       
       {/* Top Banner */}
-      <div className="bg-sky-50/90 border border-sky-100 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-sky-50/90 border border-sky-100/60 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
             <ShieldCheck className="w-6 h-6 text-emerald-400" />
@@ -47,7 +47,7 @@ export const UnitTestsView: React.FC = () => {
         <div className="flex items-center gap-2">
           <button
             onClick={handleRunTests}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-slate-900 shadow-md shadow-emerald-600/20 transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-slate-900 shadow-sm shadow-emerald-600/20 transition-all cursor-pointer"
           >
             <Play className="w-4 h-4 fill-white" />
             <span>รันการทดสอบทั้งหมด</span>
@@ -58,7 +58,7 @@ export const UnitTestsView: React.FC = () => {
       {/* Summary Scorecard */}
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
         
-        <div className="bg-sky-50/90 border border-sky-100 rounded-2xl p-4 shadow-lg flex items-center gap-3">
+        <div className="bg-sky-50/90 border border-sky-100/60 rounded-2xl p-4 shadow-sm flex items-center gap-3">
           <div className="p-3 rounded-xl bg-blue-500/10 text-blue-400">
             <FileCheck className="w-5 h-5" />
           </div>
@@ -68,7 +68,7 @@ export const UnitTestsView: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-sky-50/90 border border-sky-100 rounded-2xl p-4 shadow-lg flex items-center gap-3">
+        <div className="bg-sky-50/90 border border-sky-100/60 rounded-2xl p-4 shadow-sm flex items-center gap-3">
           <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-400">
             <CheckCircle2 className="w-5 h-5" />
           </div>
@@ -78,7 +78,7 @@ export const UnitTestsView: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-sky-50/90 border border-sky-100 rounded-2xl p-4 shadow-lg flex items-center gap-3">
+        <div className="bg-sky-50/90 border border-sky-100/60 rounded-2xl p-4 shadow-sm flex items-center gap-3">
           <div className="p-3 rounded-xl bg-rose-500/10 text-rose-400">
             <XCircle className="w-5 h-5" />
           </div>
@@ -88,7 +88,7 @@ export const UnitTestsView: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-sky-50/90 border border-sky-100 rounded-2xl p-4 shadow-lg flex items-center gap-3">
+        <div className="bg-sky-50/90 border border-sky-100/60 rounded-2xl p-4 shadow-sm flex items-center gap-3">
           <div className="p-3 rounded-xl bg-blue-600/10 text-blue-600">
             <Award className="w-5 h-5" />
           </div>
@@ -101,11 +101,11 @@ export const UnitTestsView: React.FC = () => {
       </div>
 
       {/* Filter Tabs & Test Cases Table */}
-      <div className="bg-sky-50/90 border border-sky-100 rounded-2xl p-6 shadow-xl space-y-4">
+      <div className="bg-sky-50/90 border border-sky-100/60 rounded-2xl p-6 shadow-xl space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-sm font-bold text-slate-900">รายการทดสอบขอบเขต (Boundary Test Matrix)</h2>
 
-          <div className="flex bg-sky-100 rounded-xl p-1 border border-sky-100 text-xs">
+          <div className="flex bg-sky-100 rounded-xl p-1 border border-sky-100/60 text-xs">
             <button
               onClick={() => setFilter('ALL')}
               className={`px-3 py-1 rounded-lg font-semibold transition-colors cursor-pointer ${
@@ -136,7 +136,7 @@ export const UnitTestsView: React.FC = () => {
         <div className="overflow-x-auto">
           <table className="w-full text-xs text-left border-collapse">
             <thead>
-              <tr className="bg-sky-100 text-slate-700 border-b border-sky-100">
+              <tr className="bg-sky-100 text-slate-700 border-b border-sky-100/60">
                 <th className="py-2.5 px-3">สถานะ</th>
                 <th className="py-2.5 px-3">รหัสและชื่อชุดทดสอบ</th>
                 <th className="py-2.5 px-3">หมวดหมู่</th>
@@ -165,7 +165,7 @@ export const UnitTestsView: React.FC = () => {
                     <span className="font-mono text-[10px] text-slate-700">{test.id}</span>
                   </td>
                   <td className="py-3 px-3">
-                    <span className="text-[11px] text-slate-700 bg-sky-100 px-2 py-0.5 rounded border border-sky-100">
+                    <span className="text-[11px] text-slate-700 bg-sky-100 px-2 py-0.5 rounded border border-sky-100/60">
                       {test.category}
                     </span>
                   </td>

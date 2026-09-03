@@ -123,28 +123,28 @@ export const XLinks: React.FC = () => {
 
       {/* Add form */}
       {showAdd && (
-        <div className="p-4 rounded-2xl bg-sky-50/80 border border-sky-100 space-y-3">
+        <div className="p-4 rounded-2xl bg-sky-50/80 border border-sky-100/60 space-y-3">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <input
               id="x_title_input"
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
               placeholder="ชื่อ/คำอธิบาย"
-              className="px-3 py-2 rounded-lg bg-sky-50 border border-sky-100 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
+              className="px-3 py-2 rounded-lg bg-sky-50 border border-sky-100/60 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
             <input
               id="x_handle_input"
               value={form.handle}
               onChange={(e) => setForm({ ...form, handle: e.target.value })}
               placeholder="ชื่อผู้ใช้ เช่น @ai_network_os"
-              className="px-3 py-2 rounded-lg bg-sky-50 border border-sky-100 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
+              className="px-3 py-2 rounded-lg bg-sky-50 border border-sky-100/60 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
             <input
               id="x_url_input"
               value={form.url}
               onChange={(e) => setForm({ ...form, url: e.target.value })}
               placeholder="ลิงก์ (เว้นไว้ได้)"
-              className="px-3 py-2 rounded-lg bg-sky-50 border border-sky-100 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
+              className="px-3 py-2 rounded-lg bg-sky-50 border border-sky-100/60 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
           </div>
           <div className="flex gap-2">
@@ -170,7 +170,7 @@ export const XLinks: React.FC = () => {
         {links.map((l) => (
           <div
             key={l.id}
-            className="group relative p-4 rounded-2xl bg-gradient-to-br from-sky-50/90 to-sky-50 border border-sky-100 hover:border-sky-500/40 transition-all"
+            className="group relative p-4 rounded-2xl bg-gradient-to-br from-sky-50/90 to-sky-50 border border-sky-100/60 hover:border-sky-500/40 transition-all"
           >
             <div className="flex items-center gap-3">
               <div className="w-11 h-11 rounded-full bg-sky-100 flex items-center justify-center shrink-0">
@@ -194,14 +194,14 @@ export const XLinks: React.FC = () => {
             <button
               id={`btn_open_x_${l.id}`}
               onClick={() => openLink(l.url)}
-              className="mt-3 w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-sky-100 hover:bg-sky-500/20 hover:text-sky-300 text-slate-800 text-xs font-semibold border border-sky-100 transition-all"
+              className="mt-3 w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-sky-100 hover:bg-sky-500/20 hover:text-sky-300 text-slate-800 text-xs font-semibold border border-sky-100/60 transition-all"
             >
               <ExternalLink className="w-3.5 h-3.5" /> เปิดใน X
             </button>
           </div>
         ))}
         {links.length === 0 && (
-          <div className="col-span-full p-8 rounded-2xl bg-sky-50/60 border border-dashed border-sky-100 text-center text-slate-700 text-sm">
+          <div className="col-span-full p-8 rounded-2xl bg-sky-50/60 border border-dashed border-sky-100/60 text-center text-slate-700 text-sm">
             <Share2 className="w-8 h-8 mx-auto mb-2 text-slate-700" />
             ยังไม่มีลิงก์ X — กด "เพิ่มลิงก์" เพื่อเริ่มต้น
           </div>

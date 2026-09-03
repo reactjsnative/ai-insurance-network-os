@@ -328,13 +328,13 @@ export const AgentRecruitmentPortal: React.FC = () => {
           </div>
 
           {/* Quick Subtab Switcher */}
-          <div className="flex items-center gap-2 bg-sky-50/80 p-1.5 rounded-xl border border-sky-100 self-start md:self-auto">
+          <div className="flex items-center gap-2 bg-sky-50/80 p-1.5 rounded-xl border border-sky-100/60 self-start md:self-auto">
             <button
               id="tab_recruitment_form"
               onClick={() => { setActiveSubTab('form'); setSelectedApplication(null); }}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeSubTab === 'form'
-                  ? 'bg-indigo-600 text-slate-900 shadow-lg shadow-indigo-600/30'
+                  ? 'bg-indigo-600 text-slate-900 shadow-sm shadow-indigo-600/30'
                   : 'text-slate-700 hover:text-slate-800 hover:bg-sky-50'
               }`}
             >
@@ -346,7 +346,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
               onClick={() => setActiveSubTab('list')}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all relative ${
                 activeSubTab === 'list'
-                  ? 'bg-indigo-600 text-slate-900 shadow-lg shadow-indigo-600/30'
+                  ? 'bg-indigo-600 text-slate-900 shadow-sm shadow-indigo-600/30'
                   : 'text-slate-700 hover:text-slate-800 hover:bg-sky-50'
               }`}
             >
@@ -363,7 +363,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
               onClick={() => setActiveSubTab('stats')}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeSubTab === 'stats'
-                  ? 'bg-indigo-600 text-slate-900 shadow-lg shadow-indigo-600/30'
+                  ? 'bg-indigo-600 text-slate-900 shadow-sm shadow-indigo-600/30'
                   : 'text-slate-700 hover:text-slate-800 hover:bg-sky-50'
               }`}
             >
@@ -374,20 +374,20 @@ export const AgentRecruitmentPortal: React.FC = () => {
         </div>
 
         {/* 4 Mini KPI Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-sky-100/80">
-          <div className="bg-sky-50/60 p-3 rounded-xl border border-sky-100/60">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-sky-100/60/80">
+          <div className="bg-sky-50/60 p-3 rounded-xl border border-sky-100/60/60">
             <p className="text-xs text-slate-700">{language === 'th' ? 'ใบสมัครทั้งหมด' : 'Total Applications'}</p>
             <p className="text-xl font-bold text-slate-900 mt-1">{totalApps} <span className="text-xs font-normal text-slate-700">{language === 'th' ? 'ราย' : 'apps'}</span></p>
           </div>
-          <div className="bg-sky-50/60 p-3 rounded-xl border border-sky-100/60">
+          <div className="bg-sky-50/60 p-3 rounded-xl border border-sky-100/60/60">
             <p className="text-xs text-blue-600">{language === 'th' ? 'รอตรวจสอบ' : 'Pending Review'}</p>
             <p className="text-xl font-bold text-blue-600 mt-1">{pendingApps} <span className="text-xs font-normal text-slate-700">{language === 'th' ? 'ราย' : 'apps'}</span></p>
           </div>
-          <div className="bg-sky-50/60 p-3 rounded-xl border border-sky-100/60">
+          <div className="bg-sky-50/60 p-3 rounded-xl border border-sky-100/60/60">
             <p className="text-xs text-cyan-400">{language === 'th' ? 'พร้อมบรรจุ/ผ่านเกณฑ์' : 'Qualified / Ready'}</p>
             <p className="text-xl font-bold text-cyan-400 mt-1">{verifiedApps} <span className="text-xs font-normal text-slate-700">{language === 'th' ? 'ราย' : 'apps'}</span></p>
           </div>
-          <div className="bg-sky-50/60 p-3 rounded-xl border border-sky-100/60">
+          <div className="bg-sky-50/60 p-3 rounded-xl border border-sky-100/60/60">
             <p className="text-xs text-emerald-400">{language === 'th' ? 'อนุมัติบรรจุแล้ว' : 'Approved to Team'}</p>
             <p className="text-xl font-bold text-emerald-400 mt-1">{approvedApps} <span className="text-xs font-normal text-slate-700">{language === 'th' ? 'ราย' : 'members'}</span></p>
           </div>
@@ -416,7 +416,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
 
       {/* SUBTAB 1: 4-STEP RECRUITMENT APPLICATION FORM */}
       {activeSubTab === 'form' && (
-        <div className="bg-sky-50 border border-sky-100 rounded-2xl p-6 sm:p-8 shadow-xl">
+        <div className="bg-sky-50 border border-sky-100/60 rounded-2xl p-6 sm:p-8 shadow-xl">
           {/* Step Progress Tracker */}
           <div className="mb-8">
             <div className="flex items-center justify-between relative">
@@ -453,7 +453,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                         ? 'bg-emerald-600 border-emerald-500 text-slate-900'
                         : isCurrent
                         ? 'bg-indigo-600 border-indigo-400 text-slate-900 ring-4 ring-indigo-500/20'
-                        : 'bg-sky-100 border-sky-100 text-slate-700'
+                        : 'bg-sky-100 border-sky-100/60 text-slate-700'
                     }`}>
                       {isPassed ? <Check className="w-5 h-5 font-bold" /> : <Icon className="w-5 h-5" />}
                     </div>
@@ -472,7 +472,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
             {/* STEP 1: PERSONAL INFORMATION */}
             {currentStep === 1 && (
               <div className="space-y-6 animate-fadeIn">
-                <div className="border-b border-sky-100 pb-3">
+                <div className="border-b border-sky-100/60 pb-3">
                   <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                     <UserPlus className="w-5 h-5 text-indigo-400" />
                     {language === 'th' ? 'ขั้นตอนที่ 1: ข้อมูลประวัติส่วนตัวของผู้สมัคร' : 'Step 1: Personal Profile'}
@@ -488,7 +488,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                     <select
                       value={formData.prefix}
                       onChange={(e) => setFormData({ ...formData, prefix: e.target.value as any })}
-                      className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
+                      className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
                     >
                       <option value="นาย">นาย (Mr.)</option>
                       <option value="นางสาว">นางสาว (Ms.)</option>
@@ -504,7 +504,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                       value={formData.firstName}
                       onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                       className={`w-full bg-sky-50 border rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none ${
-                        validationErrors.firstName ? 'border-rose-500' : 'border-sky-100 focus:border-indigo-500'
+                        validationErrors.firstName ? 'border-rose-500' : 'border-sky-100/60 focus:border-indigo-500'
                       }`}
                     />
                     {validationErrors.firstName && <p className="text-xs text-rose-400 mt-1">{validationErrors.firstName}</p>}
@@ -518,7 +518,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                       value={formData.lastName}
                       onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                       className={`w-full bg-sky-50 border rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none ${
-                        validationErrors.lastName ? 'border-rose-500' : 'border-sky-100 focus:border-indigo-500'
+                        validationErrors.lastName ? 'border-rose-500' : 'border-sky-100/60 focus:border-indigo-500'
                       }`}
                     />
                     {validationErrors.lastName && <p className="text-xs text-rose-400 mt-1">{validationErrors.lastName}</p>}
@@ -531,7 +531,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                       placeholder="เช่น บอล, แพรว"
                       value={formData.nickname}
                       onChange={(e) => setFormData({ ...formData, nickname: e.target.value })}
-                      className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
+                      className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
                     />
                   </div>
                 </div>
@@ -546,7 +546,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                       value={formData.nationalId}
                       onChange={(e) => setFormData({ ...formData, nationalId: e.target.value })}
                       className={`w-full bg-sky-50 border rounded-lg px-3 py-2.5 text-sm text-slate-800 font-mono focus:outline-none ${
-                        validationErrors.nationalId ? 'border-rose-500' : 'border-sky-100 focus:border-indigo-500'
+                        validationErrors.nationalId ? 'border-rose-500' : 'border-sky-100/60 focus:border-indigo-500'
                       }`}
                     />
                     {validationErrors.nationalId && <p className="text-xs text-rose-400 mt-1">{validationErrors.nationalId}</p>}
@@ -558,7 +558,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                       type="date"
                       value={formData.birthDate}
                       onChange={(e) => setFormData({ ...formData, birthDate: e.target.value })}
-                      className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
+                      className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
                     />
                   </div>
 
@@ -567,7 +567,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                     <select
                       value={formData.gender}
                       onChange={(e) => setFormData({ ...formData, gender: e.target.value as any })}
-                      className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
+                      className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
                     >
                       <option value="male">{language === 'th' ? 'ชาย' : 'Male'}</option>
                       <option value="female">{language === 'th' ? 'หญิง' : 'Female'}</option>
@@ -587,7 +587,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className={`w-full bg-sky-50 border rounded-lg pl-9 pr-3 py-2.5 text-sm text-slate-800 focus:outline-none ${
-                          validationErrors.phone ? 'border-rose-500' : 'border-sky-100 focus:border-indigo-500'
+                          validationErrors.phone ? 'border-rose-500' : 'border-sky-100/60 focus:border-indigo-500'
                         }`}
                       />
                     </div>
@@ -604,7 +604,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className={`w-full bg-sky-50 border rounded-lg pl-9 pr-3 py-2.5 text-sm text-slate-800 focus:outline-none ${
-                          validationErrors.email ? 'border-rose-500' : 'border-sky-100 focus:border-indigo-500'
+                          validationErrors.email ? 'border-rose-500' : 'border-sky-100/60 focus:border-indigo-500'
                         }`}
                       />
                     </div>
@@ -618,7 +618,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                       placeholder="line_agent_id"
                       value={formData.lineId}
                       onChange={(e) => setFormData({ ...formData, lineId: e.target.value })}
-                      className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
+                      className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
                     />
                   </div>
                 </div>
@@ -631,7 +631,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                       placeholder="บ้านเลขที่ อาคาร ถนน ตำบล/แขวง"
                       value={formData.currentAddress}
                       onChange={(e) => setFormData({ ...formData, currentAddress: e.target.value })}
-                      className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
+                      className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
                     />
                   </div>
 
@@ -642,7 +642,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                       placeholder="กรุงเทพฯ, เชียงใหม่, ขอนแก่น..."
                       value={formData.province}
                       onChange={(e) => setFormData({ ...formData, province: e.target.value })}
-                      className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
+                      className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
                     />
                   </div>
                 </div>
@@ -652,7 +652,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
             {/* STEP 2: EDUCATION & EXPERIENCE */}
             {currentStep === 2 && (
               <div className="space-y-6 animate-fadeIn">
-                <div className="border-b border-sky-100 pb-3">
+                <div className="border-b border-sky-100/60 pb-3">
                   <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                     <GraduationCap className="w-5 h-5 text-indigo-400" />
                     {language === 'th' ? 'ขั้นตอนที่ 2: วุฒิการศึกษาและประวัติการทำงาน' : 'Step 2: Education & Work Experience'}
@@ -668,7 +668,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                     <select
                       value={formData.educationLevel}
                       onChange={(e) => setFormData({ ...formData, educationLevel: e.target.value as any })}
-                      className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
+                      className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
                     >
                       <option value="high_school">{language === 'th' ? 'มัธยมศึกษาตอนปลาย / ปวช.' : 'High School / Vocational'}</option>
                       <option value="vocational">{language === 'th' ? 'อนุปริญญา / ปวส.' : 'Associate Degree / High Vocational'}</option>
@@ -685,7 +685,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                       placeholder="เช่น บริหารธุรกิจ, การเงิน, การตลาด, วิศวกรรม..."
                       value={formData.major}
                       onChange={(e) => setFormData({ ...formData, major: e.target.value })}
-                      className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
+                      className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
                     />
                   </div>
 
@@ -697,7 +697,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                       value={formData.university}
                       onChange={(e) => setFormData({ ...formData, university: e.target.value })}
                       className={`w-full bg-sky-50 border rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none ${
-                        validationErrors.university ? 'border-rose-500' : 'border-sky-100 focus:border-indigo-500'
+                        validationErrors.university ? 'border-rose-500' : 'border-sky-100/60 focus:border-indigo-500'
                       }`}
                     />
                     {validationErrors.university && <p className="text-xs text-rose-400 mt-1">{validationErrors.university}</p>}
@@ -713,7 +713,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                       value={formData.currentOccupation}
                       onChange={(e) => setFormData({ ...formData, currentOccupation: e.target.value })}
                       className={`w-full bg-sky-50 border rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none ${
-                        validationErrors.currentOccupation ? 'border-rose-500' : 'border-sky-100 focus:border-indigo-500'
+                        validationErrors.currentOccupation ? 'border-rose-500' : 'border-sky-100/60 focus:border-indigo-500'
                       }`}
                     />
                     {validationErrors.currentOccupation && <p className="text-xs text-rose-400 mt-1">{validationErrors.currentOccupation}</p>}
@@ -724,7 +724,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                     <select
                       value={formData.experienceLevel}
                       onChange={(e) => setFormData({ ...formData, experienceLevel: e.target.value as any })}
-                      className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
+                      className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
                     >
                       <option value="newcomer">{language === 'th' ? 'ไม่มีประสบการณ์ (Newcomer พร้อมเรียนรู้)' : 'No Experience (Fresh Candidate)'}</option>
                       <option value="under_1_year">{language === 'th' ? 'น้อยกว่า 1 ปี' : 'Under 1 year'}</option>
@@ -741,7 +741,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                       placeholder="ระบุบริษัทหรือสังกัดเดิม"
                       value={formData.previousCompany}
                       onChange={(e) => setFormData({ ...formData, previousCompany: e.target.value })}
-                      className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
+                      className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
                     />
                   </div>
                 </div>
@@ -751,7 +751,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
             {/* STEP 3: OIC LICENSE & QUALIFICATIONS */}
             {currentStep === 3 && (
               <div className="space-y-6 animate-fadeIn">
-                <div className="border-b border-sky-100 pb-3">
+                <div className="border-b border-sky-100/60 pb-3">
                   <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                     <Award className="w-5 h-5 text-indigo-400" />
                     {language === 'th' ? 'ขั้นตอนที่ 3: สถานะใบอนุญาตตัวแทนประกันชีวิต (คปภ.)' : 'Step 3: OIC Life Insurance License Status'}
@@ -776,7 +776,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                           className={`p-4 rounded-xl border cursor-pointer transition-all ${
                             formData.licenseStatus === item.id
                               ? 'bg-indigo-950/60 border-indigo-500 text-slate-900 ring-2 ring-indigo-500/20'
-                              : 'bg-sky-50 border-sky-100 text-slate-700 hover:border-sky-100'
+                              : 'bg-sky-50 border-sky-100/60 text-slate-700 hover:border-sky-100/60'
                           }`}
                         >
                           <p className="font-semibold text-sm text-slate-800">{item.label}</p>
@@ -795,7 +795,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                           placeholder="เช่น 6401029384"
                           value={formData.licenseNumber}
                           onChange={(e) => setFormData({ ...formData, licenseNumber: e.target.value })}
-                          className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2.5 text-sm text-slate-800 font-mono focus:outline-none focus:border-indigo-500"
+                          className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2.5 text-sm text-slate-800 font-mono focus:outline-none focus:border-indigo-500"
                         />
                         {validationErrors.licenseNumber && <p className="text-xs text-rose-400 mt-1">{validationErrors.licenseNumber}</p>}
                       </div>
@@ -806,7 +806,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                           type="date"
                           value={formData.licenseExpiryDate}
                           onChange={(e) => setFormData({ ...formData, licenseExpiryDate: e.target.value })}
-                          className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
+                          className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
                         />
                       </div>
                     </>
@@ -819,22 +819,22 @@ export const AgentRecruitmentPortal: React.FC = () => {
                         type="date"
                         value={formData.examDate}
                         onChange={(e) => setFormData({ ...formData, examDate: e.target.value })}
-                        className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
+                        className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
                       />
                     </div>
                   )}
                 </div>
 
                 {/* Additional Credentials */}
-                <div className="pt-4 border-t border-sky-100/80">
+                <div className="pt-4 border-t border-sky-100/60/80">
                   <label className="block text-xs font-medium text-slate-700 mb-3">{language === 'th' ? 'ใบอนุญาตและคุณวุฒิเพิ่มเติม' : 'Additional Certifications'}</label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <label className="flex items-center gap-3 p-3.5 rounded-xl bg-sky-50 border border-sky-100 cursor-pointer hover:border-sky-100">
+                    <label className="flex items-center gap-3 p-3.5 rounded-xl bg-sky-50 border border-sky-100/60 cursor-pointer hover:border-sky-100/60">
                       <input
                         type="checkbox"
                         checked={formData.hasICLicense}
                         onChange={(e) => setFormData({ ...formData, hasICLicense: e.target.checked })}
-                        className="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 bg-sky-50 border-sky-100"
+                        className="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 bg-sky-50 border-sky-100/60"
                       />
                       <div>
                         <p className="text-xs font-semibold text-slate-800">{language === 'th' ? 'มีใบอนุญาตผู้แนะนำการลงทุน (IC License)' : 'Investment Consultant (IC License)'}</p>
@@ -842,12 +842,12 @@ export const AgentRecruitmentPortal: React.FC = () => {
                       </div>
                     </label>
 
-                    <label className="flex items-center gap-3 p-3.5 rounded-xl bg-sky-50 border border-sky-100 cursor-pointer hover:border-sky-100">
+                    <label className="flex items-center gap-3 p-3.5 rounded-xl bg-sky-50 border border-sky-100/60 cursor-pointer hover:border-sky-100/60">
                       <input
                         type="checkbox"
                         checked={formData.hasGeneralInsuranceLicense}
                         onChange={(e) => setFormData({ ...formData, hasGeneralInsuranceLicense: e.target.checked })}
-                        className="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 bg-sky-50 border-sky-100"
+                        className="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 bg-sky-50 border-sky-100/60"
                       />
                       <div>
                         <p className="text-xs font-semibold text-slate-800">{language === 'th' ? 'มีใบอนุญาตนายหน้าประกันวินาศภัย' : 'General / Non-Life Insurance License'}</p>
@@ -862,7 +862,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
             {/* STEP 4: SPONSOR & CAREER TARGETS */}
             {currentStep === 4 && (
               <div className="space-y-6 animate-fadeIn">
-                <div className="border-b border-sky-100 pb-3">
+                <div className="border-b border-sky-100/60 pb-3">
                   <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                     <Building2 className="w-5 h-5 text-indigo-400" />
                     {language === 'th' ? 'ขั้นตอนที่ 4: ผู้แนะนำ (Sponsor) และเป้าหมายเส้นทางอาชีพ' : 'Step 4: Network Sponsor & Career Goals'}
@@ -879,7 +879,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                     <select
                       value={formData.sponsorMemberId}
                       onChange={(e) => handleSponsorChange(e.target.value)}
-                      className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
+                      className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
                     >
                       {members.map(m => (
                         <option key={m.id} value={m.id}>
@@ -895,7 +895,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                     <select
                       value={formData.targetPositionPreference}
                       onChange={(e) => setFormData({ ...formData, targetPositionPreference: e.target.value as any })}
-                      className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
+                      className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
                     >
                       <option value="agent">{language === 'th' ? 'ตัวแทนมาตรฐาน (Professional Life Agent)' : 'Professional Life Agent'}</option>
                       <option value="unit_manager_fast_track">{language === 'th' ? 'Fast-Track สู่ผู้บริหารหน่วย (UM Fast Track)' : 'Unit Manager Fast Track (UM)'}</option>
@@ -927,7 +927,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                         min={50000}
                         value={formData.targetYearlyFYCGoal}
                         onChange={(e) => setFormData({ ...formData, targetYearlyFYCGoal: Number(e.target.value) || 0 })}
-                        className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2 text-sm text-blue-600 font-bold focus:outline-none focus:border-blue-600"
+                        className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2 text-sm text-blue-600 font-bold focus:outline-none focus:border-blue-600"
                       />
                       <p className="text-[11px] text-slate-700 mt-1">
                         ≈ {(formData.targetYearlyFYCGoal / 12).toLocaleString()} บาท/เดือน
@@ -944,7 +944,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                         min={10000}
                         value={formData.targetMonthlyIncomeGoal}
                         onChange={(e) => setFormData({ ...formData, targetMonthlyIncomeGoal: Number(e.target.value) || 0 })}
-                        className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2 text-sm text-emerald-400 font-bold focus:outline-none focus:border-emerald-500"
+                        className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2 text-sm text-emerald-400 font-bold focus:outline-none focus:border-emerald-500"
                       />
                       <p className="text-[11px] text-slate-700 mt-1">
                         {language === 'th' ? 'ประมาณการคอมมิชชั่นขั้นต้น' : 'Est. base commission'}: ≈ {estimatedMonthlyCommission.toLocaleString()} ฿/ด.
@@ -960,7 +960,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                     <select
                       value={formData.recruitmentChannel}
                       onChange={(e) => setFormData({ ...formData, recruitmentChannel: e.target.value as any })}
-                      className="w-full bg-sky-50 border border-sky-100 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
+                      className="w-full bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
                     >
                       <option value="direct_referral">{language === 'th' ? 'ผู้บริหาร/ตัวแทนแนะนำตรง' : 'Direct Referral'}</option>
                       <option value="seminar">{language === 'th' ? 'สัมมนาเปิดโอกาส (Opportunity Seminar)' : 'Opportunity Seminar'}</option>
@@ -978,7 +978,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                       value={formData.motivationNote}
                       onChange={(e) => setFormData({ ...formData, motivationNote: e.target.value })}
                       className={`w-full bg-sky-50 border rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none ${
-                        validationErrors.motivationNote ? 'border-rose-500' : 'border-sky-100 focus:border-indigo-500'
+                        validationErrors.motivationNote ? 'border-rose-500' : 'border-sky-100/60 focus:border-indigo-500'
                       }`}
                     />
                     {validationErrors.motivationNote && <p className="text-xs text-rose-400 mt-1">{validationErrors.motivationNote}</p>}
@@ -988,12 +988,12 @@ export const AgentRecruitmentPortal: React.FC = () => {
             )}
 
             {/* FORM FOOTER CONTROLS */}
-            <div className="pt-6 border-t border-sky-100 flex items-center justify-between">
+            <div className="pt-6 border-t border-sky-100/60 flex items-center justify-between">
               {currentStep > 1 ? (
                 <button
                   type="button"
                   onClick={handlePrevStep}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-sky-100 bg-sky-100 text-slate-700 text-xs font-semibold hover:bg-slate-200 transition-all"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-sky-100/60 bg-sky-100 text-slate-700 text-xs font-semibold hover:bg-slate-200 transition-all"
                 >
                   <ChevronLeft className="w-4 h-4" />
                   {language === 'th' ? 'ย้อนกลับ' : 'Previous Step'}
@@ -1006,7 +1006,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                 <button
                   type="button"
                   onClick={handleNextStep}
-                  className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-indigo-600 text-slate-900 text-xs font-semibold hover:bg-indigo-500 shadow-lg shadow-indigo-600/30 transition-all"
+                  className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-indigo-600 text-slate-900 text-xs font-semibold hover:bg-indigo-500 shadow-sm shadow-indigo-600/30 transition-all"
                 >
                   {language === 'th' ? 'ขั้นตอนถัดไป' : 'Next Step'}
                   <ChevronRight className="w-4 h-4" />
@@ -1014,7 +1014,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
               ) : (
                 <button
                   type="submit"
-                  className="flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-sm font-bold hover:from-emerald-500 hover:to-teal-500 shadow-xl shadow-emerald-600/30 transition-all"
+                  className="flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-slate-900 text-sm font-bold hover:from-emerald-500 hover:to-teal-500 shadow-xl shadow-emerald-600/30 transition-all"
                 >
                   <Send className="w-4 h-4" />
                   {language === 'th' ? 'ยืนยันการยื่นใบสมัครตัวแทน' : 'Submit Agent Application'}
@@ -1029,7 +1029,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
       {activeSubTab === 'list' && (
         <div className="space-y-4">
           {/* Filter Bar */}
-          <div className="bg-sky-50 border border-sky-100 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="bg-sky-50 border border-sky-100/60 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="relative flex-1 w-full">
               <Search className="w-4 h-4 text-slate-700 absolute left-3 top-3" />
               <input
@@ -1037,7 +1037,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                 placeholder={language === 'th' ? 'ค้นหาชื่อผู้สมัคร, รหัสใบสมัคร (APP-), เบอร์โทร, จังหวัด...' : 'Search by name, app no, phone, province...'}
                 value={searchFilter}
                 onChange={(e) => setSearchFilter(e.target.value)}
-                className="w-full bg-sky-50 border border-sky-100 rounded-lg pl-9 pr-4 py-2 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
+                className="w-full bg-sky-50 border border-sky-100/60 rounded-lg pl-9 pr-4 py-2 text-sm text-slate-800 focus:outline-none focus:border-indigo-500"
               />
             </div>
 
@@ -1046,7 +1046,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="bg-sky-50 border border-sky-100 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500"
+                className="bg-sky-50 border border-sky-100/60 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500"
               >
                 <option value="all">{language === 'th' ? 'ทุกสถานะ' : 'All Statuses'}</option>
                 <option value="pending_review">{language === 'th' ? 'รอตรวจสอบ' : 'Pending Review'}</option>
@@ -1059,10 +1059,10 @@ export const AgentRecruitmentPortal: React.FC = () => {
           </div>
 
           {/* Applications Table */}
-          <div className="bg-sky-50 border border-sky-100 rounded-xl overflow-hidden shadow-xl">
+          <div className="bg-sky-50 border border-sky-100/60 rounded-xl overflow-hidden shadow-xl">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm">
-                <thead className="bg-sky-50 text-slate-700 uppercase text-[10px] font-bold border-b border-sky-100 tracking-wider">
+                <thead className="bg-sky-50 text-slate-700 uppercase text-[10px] font-bold border-b border-sky-100/60 tracking-wider">
                   <tr>
                     <th className="px-4 py-3">{language === 'th' ? 'รหัสใบสมัคร / วันที่' : 'App No / Date'}</th>
                     <th className="px-4 py-3">{language === 'th' ? 'ผู้สมัคร' : 'Candidate'}</th>
@@ -1096,7 +1096,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
 
                         <td className="px-4 py-3.5">
                           <div className="flex items-center gap-2.5">
-                            <div className="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center font-bold text-xs text-slate-800 border border-sky-100">
+                            <div className="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center font-bold text-xs text-slate-800 border border-sky-100/60">
                               {app.firstName.charAt(0)}
                             </div>
                             <div>
@@ -1176,7 +1176,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
       {/* SUBTAB 3: RECRUITMENT PERFORMANCE STATS */}
       {activeSubTab === 'stats' && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-sky-50 border border-sky-100 rounded-2xl p-6 shadow-xl space-y-4">
+          <div className="bg-sky-50 border border-sky-100/60 rounded-2xl p-6 shadow-xl space-y-4">
             <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
               <TrendingUp className="w-5 h-5 text-indigo-400" />
               {language === 'th' ? 'ช่องทางการสรรหาตัวแทน (Recruitment Channels)' : 'Recruitment Source Breakdown'}
@@ -1204,19 +1204,19 @@ export const AgentRecruitmentPortal: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-sky-50 border border-sky-100 rounded-2xl p-6 shadow-xl space-y-4">
+          <div className="bg-sky-50 border border-sky-100/60 rounded-2xl p-6 shadow-xl space-y-4">
             <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
               <Award className="w-5 h-5 text-blue-600" />
               {language === 'th' ? 'ศักยภาพและเป้าหมายตัวแทนใหม่' : 'New Agent Capacity & Goals'}
             </h3>
-            <div className="p-4 rounded-xl bg-sky-50 border border-sky-100 space-y-3 text-xs">
-              <div className="flex justify-between py-1 border-b border-sky-100/80">
+            <div className="p-4 rounded-xl bg-sky-50 border border-sky-100/60 space-y-3 text-xs">
+              <div className="flex justify-between py-1 border-b border-sky-100/60/80">
                 <span className="text-slate-700">{language === 'th' ? 'เป้าหมาย FYC รวมของผู้สมัครทั้งหมด' : 'Total Projected FYC Pipeline'}</span>
                 <span className="font-bold text-blue-600 text-sm">
                   {applications.reduce((sum, a) => sum + (a.targetYearlyFYCGoal || 0), 0).toLocaleString()} THB
                 </span>
               </div>
-              <div className="flex justify-between py-1 border-b border-sky-100/80">
+              <div className="flex justify-between py-1 border-b border-sky-100/60/80">
                 <span className="text-slate-700">{language === 'th' ? 'ผู้สมัครที่มีใบอนุญาต คปภ. แล้ว' : 'Licensed Candidates Ready'}</span>
                 <span className="font-bold text-emerald-400">
                   {applications.filter(a => a.licenseStatus === 'has_license').length} {language === 'th' ? 'ท่าน' : 'agents'}
@@ -1236,9 +1236,9 @@ export const AgentRecruitmentPortal: React.FC = () => {
       {/* DETAIL / APPROVAL MODAL */}
       {selectedApplication && (
         <div className="fixed inset-0 bg-sky-50/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-sky-50 border border-sky-100 rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-6 shadow-2xl animate-scaleUp max-h-[90vh] overflow-y-auto">
+          <div className="bg-sky-50 border border-sky-100/60 rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-6 shadow-2xl animate-scaleUp max-h-[90vh] overflow-y-auto">
             {/* Modal Header */}
-            <div className="flex items-center justify-between border-b border-sky-100 pb-4">
+            <div className="flex items-center justify-between border-b border-sky-100/60 pb-4">
               <div>
                 <span className="font-mono text-xs text-indigo-400 font-bold">{selectedApplication.applicationNo}</span>
                 <h3 className="text-xl font-bold text-slate-900 mt-0.5">
@@ -1250,7 +1250,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
 
             {/* Application Data Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-              <div className="p-3.5 rounded-xl bg-sky-50 border border-sky-100 space-y-1.5">
+              <div className="p-3.5 rounded-xl bg-sky-50 border border-sky-100/60 space-y-1.5">
                 <p className="font-bold text-slate-700">{language === 'th' ? 'ข้อมูลติดต่อ & ภูมิลำเนา' : 'Contact & Location'}</p>
                 <p className="text-slate-700"><span className="text-slate-700">โทร:</span> {selectedApplication.phone}</p>
                 <p className="text-slate-700"><span className="text-slate-700">อีเมล:</span> {selectedApplication.email}</p>
@@ -1258,7 +1258,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                 <p className="text-slate-700"><span className="text-slate-700">LINE:</span> {selectedApplication.lineId || '-'}</p>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-sky-50 border border-sky-100 space-y-1.5">
+              <div className="p-3.5 rounded-xl bg-sky-50 border border-sky-100/60 space-y-1.5">
                 <p className="font-bold text-slate-700">{language === 'th' ? 'ประวัติการศึกษา & ใบอนุญาต' : 'Education & License'}</p>
                 <p className="text-slate-700"><span className="text-slate-700">วุฒิ:</span> {selectedApplication.educationLevel.toUpperCase()} ({selectedApplication.major || '-'})</p>
                 <p className="text-slate-700"><span className="text-slate-700">สถาบัน:</span> {selectedApplication.university}</p>
@@ -1266,7 +1266,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                 <p className="text-slate-700"><span className="text-slate-700">IC License:</span> {selectedApplication.hasICLicense ? '✅ มี' : '❌ ไม่มี'}</p>
               </div>
 
-              <div className="sm:col-span-2 p-3.5 rounded-xl bg-sky-50 border border-sky-100 space-y-1.5">
+              <div className="sm:col-span-2 p-3.5 rounded-xl bg-sky-50 border border-sky-100/60 space-y-1.5">
                 <p className="font-bold text-slate-700">{language === 'th' ? 'ผู้แนะนำ & เป้าหมาย' : 'Sponsor & Track'}</p>
                 <p className="text-slate-700">
                   <span className="text-slate-700">ผู้แนะนำ:</span> <span className="text-slate-900 font-semibold">{selectedApplication.sponsorName}</span> ({selectedApplication.sponsorCode})
@@ -1277,7 +1277,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                 <p className="text-slate-700">
                   <span className="text-slate-700">เป้าหมายรายได้:</span> <span className="text-emerald-400 font-bold">{(selectedApplication.targetMonthlyIncomeGoal || 0).toLocaleString()} บาท/เดือน</span>
                 </p>
-                <p className="text-slate-700 mt-2 italic bg-sky-50 p-2.5 rounded-lg border border-sky-100">
+                <p className="text-slate-700 mt-2 italic bg-sky-50 p-2.5 rounded-lg border border-sky-100/60">
                   "{selectedApplication.motivationNote}"
                 </p>
               </div>
@@ -1293,12 +1293,12 @@ export const AgentRecruitmentPortal: React.FC = () => {
                 value={reviewNoteInput}
                 onChange={(e) => setReviewNoteInput(e.target.value)}
                 placeholder="ระบุข้อคิดเห็น เช่น เอกสารครบถ้วน ตรวจสอบใบอนุญาตผ่านเกณฑ์..."
-                className="w-full bg-sky-50 border border-sky-100 rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none focus:border-indigo-500"
+                className="w-full bg-sky-50 border border-sky-100/60 rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none focus:border-indigo-500"
               />
             </div>
 
             {/* Modal Actions */}
-            <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-sky-100">
+            <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-sky-100/60">
               <button
                 type="button"
                 onClick={() => setSelectedApplication(null)}
@@ -1324,7 +1324,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => handleApproveModal(selectedApplication.id)}
-                      className="flex items-center gap-1.5 px-5 py-2 rounded-xl text-xs font-bold bg-emerald-600 text-slate-900 hover:bg-emerald-500 shadow-lg shadow-emerald-600/30 transition-all"
+                      className="flex items-center gap-1.5 px-5 py-2 rounded-xl text-xs font-bold bg-emerald-600 text-slate-900 hover:bg-emerald-500 shadow-sm shadow-emerald-600/30 transition-all"
                     >
                       <UserCheck className="w-4 h-4" />
                       {language === 'th' ? 'อนุมัติบรรจุเป็นตัวแทนทันที' : 'Approve & Issue Agent Code'}
@@ -1355,7 +1355,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                 : `Application for ${submissionSuccessModal.firstName} ${submissionSuccessModal.lastName} has been submitted.`}
             </p>
 
-            <div className="p-3 bg-sky-50 rounded-xl border border-sky-100 text-xs font-mono text-indigo-400 font-bold">
+            <div className="p-3 bg-sky-50 rounded-xl border border-sky-100/60 text-xs font-mono text-indigo-400 font-bold">
               {submissionSuccessModal.applicationNo}
             </div>
 

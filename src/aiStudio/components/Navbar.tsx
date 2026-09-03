@@ -33,13 +33,13 @@ export const Navbar: React.FC = () => {
   const posColor = POSITIONS_LIST.find(p => p.id === selectedMember?.position)?.accentColor || '#3B82F6';
 
   return (
-    <header className="sticky top-0 z-40 bg-sky-50/95 dark:bg-sky-50/95 backdrop-blur border-b border-sky-100 text-slate-900 shadow-lg">
+    <header className="sticky top-0 z-40 bg-sky-50/95 dark:bg-sky-50/95 backdrop-blur border-b border-sky-100/60 text-slate-900 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-4">
           
           {/* Brand Logo & Name */}
           <div className="flex items-center gap-3 shrink-0">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-indigo-600 to-amber-500 flex items-center justify-center shadow-md shadow-blue-500/20 ring-1 ring-white/20">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-indigo-600 to-amber-500 flex items-center justify-center shadow-sm shadow-blue-500/20 ring-1 ring-white/20">
               <TrendingUp className="w-5 h-5 text-slate-900" />
             </div>
             <div>
@@ -58,7 +58,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Member Quick Switcher */}
-          <div className="hidden lg:flex items-center gap-2 bg-sky-100/80 rounded-lg px-3 py-1.5 border border-sky-100">
+          <div className="hidden lg:flex items-center gap-2 bg-sky-100/80 rounded-lg px-3 py-1.5 border border-sky-100/60">
             <div className="flex items-center gap-1.5 text-xs text-slate-700">
               <UserCheck className="w-3.5 h-3.5 text-blue-600" />
               <span>กำลังดู:</span>
@@ -82,14 +82,14 @@ export const Navbar: React.FC = () => {
             {/* Quick Add Member button */}
             <button
               onClick={() => setIsAddMemberModalOpen(true)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 shadow-md shadow-amber-500/20 transition-all cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 shadow-sm shadow-amber-500/20 transition-all cursor-pointer"
             >
               <UserPlus className="w-4 h-4" />
               <span className="hidden sm:inline">เพิ่มสมาชิก</span>
             </button>
 
             {/* Role Switcher */}
-            <div className="hidden md:flex items-center gap-1 bg-sky-100/60 rounded-lg p-1 border border-sky-100/60">
+            <div className="hidden md:flex items-center gap-1 bg-sky-100/60 rounded-lg p-1 border border-sky-100/60/60">
               <select
                 value={userRole}
                 onChange={e => setUserRole(e.target.value as any)}
@@ -107,7 +107,7 @@ export const Navbar: React.FC = () => {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-sky-100/80 hover:bg-slate-200/80 border border-sky-100 text-slate-700 hover:text-slate-900 transition-colors cursor-pointer"
+              className="p-2 rounded-lg bg-sky-100/80 hover:bg-slate-200/80 border border-sky-100/60 text-slate-700 hover:text-slate-900 transition-colors cursor-pointer"
               title="สลับโหมดมืด/สว่าง"
             >
               {theme === 'dark' ? <Sun className="w-4 h-4 text-blue-600" /> : <Moon className="w-4 h-4 text-blue-300" />}
@@ -116,13 +116,13 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Navigation Tabs Bar */}
-        <nav className="flex items-center gap-1 sm:gap-2 overflow-x-auto py-2.5 scrollbar-none border-t border-sky-100/80">
+        <nav className="flex items-center gap-1 sm:gap-2 overflow-x-auto py-2.5 scrollbar-none border-t border-sky-100/60/80">
           
           <button
             onClick={() => setActiveTab('DASHBOARD')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'DASHBOARD'
-                ? 'bg-blue-600 text-slate-900 shadow-md shadow-blue-500/20'
+                ? 'bg-blue-600 text-slate-900 shadow-sm shadow-blue-500/20'
                 : 'text-slate-700 hover:text-slate-800 hover:bg-sky-100/60'
             }`}
           >
@@ -134,13 +134,13 @@ export const Navbar: React.FC = () => {
             onClick={() => setActiveTab('TREE')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'TREE'
-                ? 'bg-blue-600 text-slate-900 shadow-md shadow-blue-500/20'
+                ? 'bg-blue-600 text-slate-900 shadow-sm shadow-blue-500/20'
                 : 'text-slate-700 hover:text-slate-800 hover:bg-sky-100/60'
             }`}
           >
             <Network className="w-4 h-4" />
             <span>ผังองค์กรต้นไม้</span>
-            <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-sky-100 text-slate-700 border border-sky-100">
+            <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-sky-100 text-slate-700 border border-sky-100/60">
               {members.length}
             </span>
           </button>
@@ -149,7 +149,7 @@ export const Navbar: React.FC = () => {
             onClick={() => setActiveTab('CALCULATOR')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'CALCULATOR'
-                ? 'bg-blue-600 text-slate-900 shadow-md shadow-blue-500/20'
+                ? 'bg-blue-600 text-slate-900 shadow-sm shadow-blue-500/20'
                 : 'text-slate-700 hover:text-slate-800 hover:bg-sky-100/60'
             }`}
           >
@@ -161,7 +161,7 @@ export const Navbar: React.FC = () => {
             onClick={() => setActiveTab('GOAL')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'GOAL'
-                ? 'bg-blue-600 text-slate-900 shadow-md shadow-blue-500/20'
+                ? 'bg-blue-600 text-slate-900 shadow-sm shadow-blue-500/20'
                 : 'text-slate-700 hover:text-slate-800 hover:bg-sky-100/60'
             }`}
           >
@@ -173,7 +173,7 @@ export const Navbar: React.FC = () => {
             onClick={() => setActiveTab('ADMIN')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'ADMIN'
-                ? 'bg-blue-600 text-slate-900 shadow-md shadow-blue-500/20'
+                ? 'bg-blue-600 text-slate-900 shadow-sm shadow-blue-500/20'
                 : 'text-slate-700 hover:text-slate-800 hover:bg-sky-100/60'
             }`}
           >
@@ -185,7 +185,7 @@ export const Navbar: React.FC = () => {
             onClick={() => setActiveTab('UNIT_TESTS')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'UNIT_TESTS'
-                ? 'bg-blue-600 text-slate-900 shadow-md shadow-blue-500/20'
+                ? 'bg-blue-600 text-slate-900 shadow-sm shadow-blue-500/20'
                 : 'text-slate-700 hover:text-slate-800 hover:bg-sky-100/60'
             }`}
           >

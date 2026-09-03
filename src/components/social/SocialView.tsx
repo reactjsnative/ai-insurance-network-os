@@ -36,7 +36,7 @@ export const SocialView: React.FC = () => {
     <div className="w-full max-w-3xl mx-auto">
       <div className={`p-6 sm:p-8 rounded-3xl bg-gradient-to-r ${item.gradient} border ${item.ring} shadow-xl`}>
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-sky-50/80 border border-sky-100 flex items-center justify-center shadow-md">
+          <div className="w-14 h-14 rounded-2xl bg-sky-50/80 border border-sky-100/60 flex items-center justify-center shadow-sm">
             <Icon className="w-7 h-7 text-slate-900" />
           </div>
           <div className="min-w-0">
@@ -45,7 +45,7 @@ export const SocialView: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-6 p-4 rounded-2xl bg-sky-50/60 border border-sky-100">
+        <div className="mt-6 p-4 rounded-2xl bg-sky-50/60 border border-sky-100/60">
           <div className="flex items-center gap-2 text-[11px] text-slate-700">
             <Globe className="w-3.5 h-3.5" />
             <span className="truncate font-mono text-slate-700">{item.url}</span>
@@ -56,7 +56,7 @@ export const SocialView: React.FC = () => {
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-amber-500/20 cursor-pointer"
+          className="mt-6 w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 font-bold text-sm transition-all shadow-sm shadow-amber-500/20 cursor-pointer"
         >
           <ExternalLink className="w-4 h-4" />
           เปิด {item.title} ในแท็บใหม่

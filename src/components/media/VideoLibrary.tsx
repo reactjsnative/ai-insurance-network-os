@@ -184,28 +184,28 @@ export const VideoLibrary: React.FC = () => {
 
       {/* Add form */}
       {showAdd && (
-        <div className="p-4 rounded-2xl bg-sky-50/80 border border-sky-100 space-y-3">
+        <div className="p-4 rounded-2xl bg-sky-50/80 border border-sky-100/60 space-y-3">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <input
               id="video_title_input"
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
               placeholder="ชื่อวีดีโอ"
-              className="px-3 py-2 rounded-lg bg-sky-50 border border-sky-100 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
+              className="px-3 py-2 rounded-lg bg-sky-50 border border-sky-100/60 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
             <input
               id="video_url_input"
               value={form.url}
               onChange={(e) => setForm({ ...form, url: e.target.value })}
               placeholder="ลิงก์ YouTube / Vimeo"
-              className="px-3 py-2 rounded-lg bg-sky-50 border border-sky-100 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
+              className="px-3 py-2 rounded-lg bg-sky-50 border border-sky-100/60 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
             <input
               id="video_cat_input"
               value={form.category}
               onChange={(e) => setForm({ ...form, category: e.target.value })}
               placeholder="หมวดหมู่"
-              className="px-3 py-2 rounded-lg bg-sky-50 border border-sky-100 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
+              className="px-3 py-2 rounded-lg bg-sky-50 border border-sky-100/60 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
           </div>
           <div className="flex gap-2">
@@ -229,7 +229,7 @@ export const VideoLibrary: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Player */}
         <div className="lg:col-span-2 space-y-3">
-          <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-sky-50 border border-sky-100">
+          <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-sky-50 border border-sky-100/60">
             {activeVideo ? (
               activeVideo.type === 'image' ? (
                 <img
@@ -255,7 +255,7 @@ export const VideoLibrary: React.FC = () => {
             )}
           </div>
           {activeVideo && (
-            <div className="p-4 rounded-2xl bg-sky-50/60 border border-sky-100">
+            <div className="p-4 rounded-2xl bg-sky-50/60 border border-sky-100/60">
               <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                 <Play className="w-4 h-4 text-blue-600" /> {activeVideo.title}
               </h2>
@@ -282,7 +282,7 @@ export const VideoLibrary: React.FC = () => {
                 className={`group flex items-center gap-3 p-2.5 rounded-xl border transition-all cursor-pointer ${
                   activeVideo?.id === v.id
                     ? 'bg-blue-600/10 border-blue-600/40'
-                    : 'bg-sky-50/60 border-sky-100 hover:border-sky-100'
+                    : 'bg-sky-50/60 border-sky-100/60 hover:border-sky-100/60'
                 }`}
                 onClick={() => setActiveVideo(v)}
               >

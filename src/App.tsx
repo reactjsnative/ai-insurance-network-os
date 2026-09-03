@@ -52,7 +52,7 @@ const MainContent: React.FC = () => {
   // If gateway screen is active, display the pre-login entrance screen
   if (showGatewayScreen) {
     return (
-      <div className="flex-1 min-h-screen bg-gradient-to-b from-sky-50 via-blue-50 to-sky-100 font-sans">
+      <div className="flex-1 min-h-screen bg-gradient-to-b from-[#f0f9ff] via-[#e0f2fe]/30 to-[#f0f9ff] font-sans">
         <WelcomeLoginGateway onEnterSystem={() => setShowGatewayScreen(false)} />
         <AuthModal />
         <SocialOAuthPopup />
@@ -62,12 +62,12 @@ const MainContent: React.FC = () => {
   }
 
   return (
-    <div className="flex-1 flex flex-col h-screen overflow-hidden bg-gradient-to-b from-sky-50 via-blue-50 to-sky-100 text-slate-900 font-sans">
+    <div className="flex-1 flex flex-col h-screen overflow-hidden bg-gradient-to-b from-[#f0f9ff] via-[#e0f2fe]/30 to-[#f0f9ff] text-slate-900 font-sans">
       {!isPresentationMode && <InsuranceMegaMenu />}
       {!isPresentationMode && <Header />}
 
       <div className="flex-1 flex overflow-hidden">
-        <main className="flex-1 overflow-y-auto bg-gradient-to-b from-sky-50 via-sky-100/50 to-sky-50"><div className="mx-auto max-w-7xl w-full p-4 sm:p-6 lg:p-8">
+        <main className="flex-1 overflow-y-auto bg-gradient-to-b from-[#f0f9ff]/50 via-white to-[#f0f9ff]/30"><div className="mx-auto max-w-7xl w-full p-4 sm:p-6 lg:p-8">
           {activeTab === 'dashboard' && <Dashboard />}
           {activeTab === 'network_success' && <NetworkSuccessView />}
           {activeTab === 'network_success_team_goal' && <TeamGoalView />}

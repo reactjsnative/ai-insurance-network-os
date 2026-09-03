@@ -85,10 +85,10 @@ export const EditMemberModal: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-sky-50/75 backdrop-blur-sm">
-      <div className="bg-sky-50 border border-sky-100 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      <div className="bg-sky-50 border border-sky-100/60 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-sky-100 bg-sky-50/60">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-sky-100/60 bg-sky-50/60">
           <div className="flex items-center gap-2 text-slate-900 font-bold text-base">
             <Edit2 className="w-5 h-5 text-blue-400" />
             <span>แก้ไขข้อมูลและผลงาน: {member.name}</span>
@@ -112,7 +112,7 @@ export const EditMemberModal: React.FC = () => {
                 required
                 value={code}
                 onChange={e => setCode(e.target.value)}
-                className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
               />
             </div>
             <div>
@@ -121,7 +121,7 @@ export const EditMemberModal: React.FC = () => {
                 type="text"
                 value={nickname}
                 onChange={e => setNickname(e.target.value)}
-                className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
               />
             </div>
           </div>
@@ -133,7 +133,7 @@ export const EditMemberModal: React.FC = () => {
               required
               value={name}
               onChange={e => setName(e.target.value)}
-              className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+              className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
             />
           </div>
 
@@ -143,7 +143,7 @@ export const EditMemberModal: React.FC = () => {
               <select
                 value={position}
                 onChange={e => setPosition(e.target.value as PositionLevel)}
-                className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-slate-900 focus:outline-none cursor-pointer"
+                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none cursor-pointer"
               >
                 {POSITIONS_LIST.map(p => (
                   <option key={p.id} value={p.id}>{p.nameTh}</option>
@@ -156,7 +156,7 @@ export const EditMemberModal: React.FC = () => {
               <select
                 value={parentId}
                 onChange={e => setParentId(e.target.value)}
-                className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-slate-900 focus:outline-none cursor-pointer"
+                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none cursor-pointer"
               >
                 <option value="">รากสายงาน (Root)</option>
                 {members.filter(m => m.id !== member.id).map(m => (
@@ -180,7 +180,7 @@ export const EditMemberModal: React.FC = () => {
                   setPersonalMonthlyCom(val * 0.35);
                   setPersonalMonthlyFyc(val * 0.70);
                 }}
-                className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
               />
             </div>
             <div>
@@ -189,7 +189,7 @@ export const EditMemberModal: React.FC = () => {
                 type="number"
                 value={personalMonthlyCom}
                 onChange={e => setPersonalMonthlyCom(Number(e.target.value))}
-                className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
               />
             </div>
             <div>
@@ -198,7 +198,7 @@ export const EditMemberModal: React.FC = () => {
                 type="number"
                 value={personalMonthlyFyc}
                 onChange={e => setPersonalMonthlyFyc(Number(e.target.value))}
-                className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
               />
             </div>
           </div>
@@ -210,7 +210,7 @@ export const EditMemberModal: React.FC = () => {
                 type="number"
                 value={personalRenewalPremium}
                 onChange={e => setPersonalRenewalPremium(Number(e.target.value))}
-                className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
               />
             </div>
             <div>
@@ -219,7 +219,7 @@ export const EditMemberModal: React.FC = () => {
                 type="number"
                 value={monthlyGoalIncome}
                 onChange={e => setMonthlyGoalIncome(Number(e.target.value))}
-                className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
               />
             </div>
           </div>
@@ -231,7 +231,7 @@ export const EditMemberModal: React.FC = () => {
                 type="number"
                 value={directUnitCount}
                 onChange={e => setDirectUnitCount(Number(e.target.value))}
-                className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
               />
             </div>
             <div>
@@ -240,7 +240,7 @@ export const EditMemberModal: React.FC = () => {
                 type="number"
                 value={directCenterCount}
                 onChange={e => setDirectCenterCount(Number(e.target.value))}
-                className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
               />
             </div>
           </div>
@@ -258,7 +258,7 @@ export const EditMemberModal: React.FC = () => {
           </div>
 
           {/* Footer actions */}
-          <div className="flex items-center justify-between pt-4 border-t border-sky-100">
+          <div className="flex items-center justify-between pt-4 border-t border-sky-100/60">
             <button
               type="button"
               onClick={handleDelete}
@@ -278,7 +278,7 @@ export const EditMemberModal: React.FC = () => {
               </button>
               <button
                 type="submit"
-                className="flex items-center gap-1.5 px-5 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-bold shadow-md shadow-blue-500/20 cursor-pointer"
+                className="flex items-center gap-1.5 px-5 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-bold shadow-sm shadow-blue-500/20 cursor-pointer"
               >
                 <Save className="w-4 h-4" />
                 <span>บันทึกการแก้ไข</span>

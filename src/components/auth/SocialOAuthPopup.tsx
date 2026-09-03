@@ -131,12 +131,12 @@ export const SocialOAuthPopup: React.FC = () => {
         initial={{ opacity: 0, scale: 0.95, y: 15 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 15 }}
-        className="w-full max-w-md bg-sky-50 rounded-2xl shadow-2xl border border-sky-100 overflow-hidden"
+        className="w-full max-w-md bg-sky-50 rounded-2xl shadow-2xl border border-sky-100/60 overflow-hidden"
       >
         {/* GOOGLE OAUTH POPUP */}
         {authOAuthProvider === 'google' && (
           <div className="p-6">
-            <div className="flex items-center justify-between pb-4 border-b border-sky-100">
+            <div className="flex items-center justify-between pb-4 border-b border-sky-100/60">
               <div className="flex items-center gap-2.5">
                 <GoogleIcon className="w-6 h-6" />
                 <span className="text-sm font-semibold text-slate-800 tracking-tight">Sign in with Google</span>
@@ -164,7 +164,7 @@ export const SocialOAuthPopup: React.FC = () => {
                 id="btn-confirm-google-auth"
                 disabled={isProcessing}
                 onClick={handleConfirmGoogle}
-                className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-slate-900 font-semibold text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-slate-900 font-semibold text-sm transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
               >
                 {isProcessing ? (
                   <>
@@ -181,7 +181,7 @@ export const SocialOAuthPopup: React.FC = () => {
               </button>
             </div>
 
-            <div className="bg-sky-50 rounded-xl p-3 border border-sky-100 text-xs text-slate-700 flex items-start gap-2">
+            <div className="bg-sky-50 rounded-xl p-3 border border-sky-100/60 text-xs text-slate-700 flex items-start gap-2">
               <Shield className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
               <span>To continue, Google will share your name, email address, language preference, and profile picture with AI Insurance Network OS.</span>
             </div>
@@ -190,10 +190,10 @@ export const SocialOAuthPopup: React.FC = () => {
 
         {/* TIKTOK OAUTH POPUP */}
         {authOAuthProvider === 'tiktok' && (
-          <div className="p-6 bg-sky-50 text-white">
-            <div className="flex items-center justify-between pb-4 border-b border-sky-100">
+          <div className="p-6 bg-sky-50 text-slate-900">
+            <div className="flex items-center justify-between pb-4 border-b border-sky-100/60">
               <div className="flex items-center gap-2.5">
-                <div className="w-6 h-6 rounded-full bg-sky-50 flex items-center justify-center text-white">
+                <div className="w-6 h-6 rounded-full bg-sky-50 flex items-center justify-center text-slate-900">
                   <TikTokIcon className="w-4 h-4 text-cyan-400" />
                 </div>
                 <span className="text-sm font-semibold tracking-tight">TikTok Authorization</span>
@@ -208,7 +208,7 @@ export const SocialOAuthPopup: React.FC = () => {
             </div>
 
             <div className="py-5 text-center">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-tr from-rose-500 via-pink-500 to-cyan-400 text-white p-0.5 mb-3 shadow-lg shadow-pink-500/20">
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-tr from-rose-500 via-pink-500 to-cyan-400 text-slate-900 p-0.5 mb-3 shadow-sm shadow-pink-500/20">
                 <div className="w-full h-full bg-sky-50 rounded-[14px] flex items-center justify-center">
                   <TikTokIcon className="w-7 h-7 text-slate-900" />
                 </div>
@@ -217,7 +217,7 @@ export const SocialOAuthPopup: React.FC = () => {
               <p className="text-xs text-slate-700 mt-1">Sync your TikTok Agent Profile & Team Network</p>
             </div>
 
-            <div className="space-y-3 bg-sky-50 p-4 rounded-xl border border-sky-100 mb-5">
+            <div className="space-y-3 bg-sky-50 p-4 rounded-xl border border-sky-100/60 mb-5">
               <p className="text-xs font-semibold text-slate-700 uppercase tracking-wider">Requested Permissions:</p>
               <div className="flex items-center gap-2 text-xs text-slate-700">
                 <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
@@ -234,7 +234,7 @@ export const SocialOAuthPopup: React.FC = () => {
                 id="btn-confirm-tiktok-auth"
                 disabled={isProcessing}
                 onClick={handleConfirmTikTok}
-                className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-400 to-pink-500 hover:from-cyan-300 hover:to-pink-400 text-slate-950 font-bold text-sm transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-400 to-pink-500 hover:from-cyan-300 hover:to-pink-400 text-slate-950 font-bold text-sm transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
               >
                 {isProcessing ? (
                   <>
@@ -264,7 +264,7 @@ export const SocialOAuthPopup: React.FC = () => {
         {/* FACEBOOK OAUTH POPUP */}
         {authOAuthProvider === 'facebook' && (
           <div className="p-6">
-            <div className="flex items-center justify-between pb-4 border-b border-sky-100">
+            <div className="flex items-center justify-between pb-4 border-b border-sky-100/60">
               <div className="flex items-center gap-2.5">
                 <FacebookIcon className="w-6 h-6" />
                 <span className="text-sm font-semibold text-[#1877F2] tracking-tight">Log in with Facebook</span>
@@ -286,7 +286,7 @@ export const SocialOAuthPopup: React.FC = () => {
               <p className="text-xs text-slate-700 mt-1">AI Insurance Network OS is requesting access to:</p>
             </div>
 
-            <div className="space-y-3 bg-sky-50 p-4 rounded-xl border border-sky-100 mb-5">
+            <div className="space-y-3 bg-sky-50 p-4 rounded-xl border border-sky-100/60 mb-5">
               <div className="flex items-center gap-2 text-xs text-slate-700">
                 <CheckCircle2 className="w-4 h-4 text-[#1877F2] shrink-0" />
                 <span>Your name and profile picture</span>
@@ -306,7 +306,7 @@ export const SocialOAuthPopup: React.FC = () => {
                 id="btn-confirm-facebook-auth"
                 disabled={isProcessing}
                 onClick={handleConfirmFacebook}
-                className="w-full py-3 px-4 rounded-xl bg-[#1877F2] hover:bg-[#166fe5] text-slate-900 font-semibold text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3 px-4 rounded-xl bg-[#1877F2] hover:bg-[#166fe5] text-slate-900 font-semibold text-sm transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
               >
                 {isProcessing ? (
                   <>
@@ -336,7 +336,7 @@ export const SocialOAuthPopup: React.FC = () => {
         {/* GITHUB OAUTH POPUP */}
         {authOAuthProvider === 'github' && (
           <div className="p-6">
-            <div className="flex items-center justify-between pb-4 border-b border-sky-100">
+            <div className="flex items-center justify-between pb-4 border-b border-sky-100/60">
               <div className="flex items-center gap-2.5">
                 <GithubIcon className="w-6 h-6 text-slate-900" />
                 <span className="text-sm font-semibold text-slate-800 tracking-tight">Sign in with GitHub</span>
@@ -351,14 +351,14 @@ export const SocialOAuthPopup: React.FC = () => {
             </div>
 
             <div className="py-5 text-center">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sky-50 text-white mb-3">
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sky-50 text-slate-900 mb-3">
                 <GithubIcon className="w-8 h-8 text-slate-900" />
               </div>
               <h3 className="text-lg font-bold text-slate-900">Authorize AI Insurance Network OS</h3>
               <p className="text-xs text-slate-700 mt-1">Connect your GitHub Developer Profile</p>
             </div>
 
-            <div className="space-y-3 bg-sky-50 p-4 rounded-xl border border-sky-100 mb-5">
+            <div className="space-y-3 bg-sky-50 p-4 rounded-xl border border-sky-100/60 mb-5">
               <div className="flex items-center gap-2 text-xs text-slate-700">
                 <CheckCircle2 className="w-4 h-4 text-slate-900 shrink-0" />
                 <span>Your GitHub username and avatar</span>
@@ -378,7 +378,7 @@ export const SocialOAuthPopup: React.FC = () => {
                 id="btn-confirm-github-auth"
                 disabled={isProcessing}
                 onClick={handleConfirmGithub}
-                className="w-full py-3 px-4 rounded-xl bg-sky-50 hover:bg-sky-50 text-white font-semibold text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3 px-4 rounded-xl bg-sky-50 hover:bg-sky-50 text-slate-900 font-semibold text-sm transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
               >
                 {isProcessing ? (
                   <>

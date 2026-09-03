@@ -54,7 +54,7 @@ export const ReportsCenter: React.FC = () => {
   return (
     <div id="reports_center_view" className="space-y-6 max-w-7xl mx-auto pb-16 text-left">
       {/* 1. Header & Actions */}
-      <div className="p-6 rounded-3xl bg-sky-50/90 border border-sky-100 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-sky-50/90 border border-sky-100/60 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-xl sm:text-2xl font-black text-slate-900">
@@ -72,14 +72,14 @@ export const ReportsCenter: React.FC = () => {
         <div className="flex items-center gap-2 self-start md:self-auto">
           <button
             onClick={handleExportCSV}
-            className="px-4 py-2.5 rounded-xl bg-sky-100 hover:bg-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center gap-2 border border-sky-100 transition-colors"
+            className="px-4 py-2.5 rounded-xl bg-sky-100 hover:bg-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center gap-2 border border-sky-100/60 transition-colors"
           >
             <Download className="w-4 h-4 text-blue-600" />
             <span>ส่งออก CSV</span>
           </button>
           <button
             onClick={handlePrint}
-            className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 font-bold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-lg shadow-amber-500/20"
+            className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 font-bold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-sm shadow-amber-500/20"
           >
             <Printer className="w-4 h-4" />
             <span>พิมพ์รายงาน (Print / PDF)</span>
@@ -88,8 +88,8 @@ export const ReportsCenter: React.FC = () => {
       </div>
 
       {/* 2. Executive Statement Preview Card */}
-      <div className="p-8 rounded-3xl bg-sky-50 border border-sky-100 space-y-6 shadow-2xl print:border-none print:shadow-none print:p-0">
-        <div className="flex justify-between items-start border-b border-sky-100 pb-6">
+      <div className="p-8 rounded-3xl bg-sky-50 border border-sky-100/60 space-y-6 shadow-2xl print:border-none print:shadow-none print:p-0">
+        <div className="flex justify-between items-start border-b border-sky-100/60 pb-6">
           <div>
             <div className="text-lg font-black text-slate-900">
               AI INSURANCE NETWORK OS • COMPENSATION STATEMENT
@@ -107,19 +107,19 @@ export const ReportsCenter: React.FC = () => {
 
         {/* Summary Metrics */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <div className="p-4 rounded-2xl bg-sky-50 border border-sky-100">
+          <div className="p-4 rounded-2xl bg-sky-50 border border-sky-100/60">
             <span className="text-[10px] text-slate-700 block uppercase">FYC องค์กรรวม</span>
             <div className="text-xl font-black text-sky-400 font-mono mt-1">
               ฿{(activeUser.personalFYC + stats.teamFYC).toLocaleString()}
             </div>
           </div>
-          <div className="p-4 rounded-2xl bg-sky-50 border border-sky-100">
+          <div className="p-4 rounded-2xl bg-sky-50 border border-sky-100/60">
             <span className="text-[10px] text-slate-700 block uppercase">สมาชิกทั้งหมด</span>
             <div className="text-xl font-black text-slate-800 font-mono mt-1">
               {members.length} คน
             </div>
           </div>
-          <div className="p-4 rounded-2xl bg-sky-50 border border-sky-100">
+          <div className="p-4 rounded-2xl bg-sky-50 border border-sky-100/60">
             <span className="text-[10px] text-slate-700 block uppercase">หน่วยแยก / ศูนย์แยก</span>
             <div className="text-xl font-black text-slate-800 font-mono mt-1">
               {stats.totalUnits} / {stats.totalCenters}
@@ -136,9 +136,9 @@ export const ReportsCenter: React.FC = () => {
         {/* Income Items Breakdown Table */}
         <div>
           <h3 className="text-sm font-bold text-slate-800 mb-3">รายละเอียดผลประโยชน์ (13 Income Categories)</h3>
-          <div className="rounded-2xl border border-sky-100 overflow-hidden">
+          <div className="rounded-2xl border border-sky-100/60 overflow-hidden">
             <table className="w-full text-xs text-left text-slate-700">
-              <thead className="bg-sky-50 text-slate-700 font-bold uppercase text-[10px] border-b border-sky-100">
+              <thead className="bg-sky-50 text-slate-700 font-bold uppercase text-[10px] border-b border-sky-100/60">
                 <tr>
                   <th className="p-3">ลำดับ</th>
                   <th className="p-3">หมวดหมู่ผลประโยชน์</th>
@@ -156,7 +156,7 @@ export const ReportsCenter: React.FC = () => {
                   </tr>
                 ))}
               </tbody>
-              <tfoot className="bg-sky-50/90 font-bold text-slate-900 border-t border-sky-100">
+              <tfoot className="bg-sky-50/90 font-bold text-slate-900 border-t border-sky-100/60">
                 <tr>
                   <td colSpan={3} className="p-3 text-right text-blue-600 uppercase">รวมรายได้สุทธิ (Total Income)</td>
                   <td className="p-3 text-right text-base text-blue-600 font-mono">฿{income.totalIncome.toLocaleString()}</td>

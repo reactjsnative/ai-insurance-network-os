@@ -7,7 +7,7 @@ export const DisclaimerBanner: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="bg-gradient-to-r from-amber-950/90 via-amber-900/60 to-slate-50 border-b border-amber-600/40 text-amber-100 text-xs px-4 py-2.5 shadow-md">
+    <div className="bg-gradient-to-r from-amber-950/90 via-amber-900/60 to-slate-50 border-b border-amber-600/40 text-amber-100 text-xs px-4 py-2.5 shadow-sm">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-2">
         <div className="flex items-center gap-2.5 flex-1">
           <div className="p-1 rounded bg-blue-600/20 text-blue-600 shrink-0">

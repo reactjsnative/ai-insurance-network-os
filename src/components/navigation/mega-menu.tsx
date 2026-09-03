@@ -65,7 +65,7 @@ export default function MegaMenu() {
   return (
     <header
       ref={navigationRef}
-      className="relative z-50 border-b border-sky-100 bg-sky-50"
+      className="relative z-50 border-b border-sky-100/60 bg-sky-50"
     >
       <nav
         className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5"
@@ -157,10 +157,10 @@ export default function MegaMenu() {
             id="products-mega-menu"
             role="menu"
             aria-label="รายการเมนู"
-            className="absolute left-1/2 top-[92px] z-50 hidden w-[min(94vw,1400px)] -translate-x-1/2 overflow-hidden rounded-2xl border border-sky-100 bg-sky-50 shadow-2xl lg:block"
+            className="absolute left-1/2 top-[92px] z-50 hidden w-[min(94vw,1400px)] -translate-x-1/2 overflow-hidden rounded-2xl border border-sky-100/60 bg-sky-50 shadow-2xl lg:block"
           >
             <div className="grid min-h-[520px] grid-cols-[320px_1fr]">
-              <aside className="border-r border-sky-100 bg-sky-50 p-7">
+              <aside className="border-r border-sky-100/60 bg-sky-50 p-7">
                 <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-slate-700">
                   หมวดหมู่
                 </p>
@@ -212,7 +212,7 @@ export default function MegaMenu() {
               </aside>
 
               <main className="p-8">
-                <div className="relative mb-8 overflow-hidden rounded-2xl bg-gradient-to-r from-sky-50 via-blue-950 to-blue-600 p-8 text-white">
+                <div className="relative mb-8 overflow-hidden rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 p-8 text-white">
                   <div className="relative z-10 max-w-2xl">
                     <p className="mb-3 text-sm font-medium text-blue-700">
                       {activeCategory.title}
@@ -301,7 +301,7 @@ export default function MegaMenu() {
                 return (
                   <div
                     key={category.id}
-                    className="overflow-hidden rounded-xl border border-sky-100"
+                    className="overflow-hidden rounded-xl border border-sky-100/60"
                   >
                     <button
                       type="button"

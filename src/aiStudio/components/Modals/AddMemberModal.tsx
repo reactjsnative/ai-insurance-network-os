@@ -60,10 +60,10 @@ export const AddMemberModal: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-sky-50/75 backdrop-blur-sm">
-      <div className="bg-sky-50 border border-sky-100 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      <div className="bg-sky-50 border border-sky-100/60 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-sky-100 bg-sky-50/60">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-sky-100/60 bg-sky-50/60">
           <div className="flex items-center gap-2 text-slate-900 font-bold text-base">
             <UserPlus className="w-5 h-5 text-blue-600" />
             <span>เพิ่มสมาชิกใหม่เข้าสู่สายงาน</span>
@@ -87,7 +87,7 @@ export const AddMemberModal: React.FC = () => {
                 required
                 value={code}
                 onChange={e => setCode(e.target.value)}
-                className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
+                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
               />
             </div>
             <div>
@@ -97,7 +97,7 @@ export const AddMemberModal: React.FC = () => {
                 placeholder="เช่น บอส, แจน"
                 value={nickname}
                 onChange={e => setNickname(e.target.value)}
-                className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
+                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
               />
             </div>
           </div>
@@ -110,7 +110,7 @@ export const AddMemberModal: React.FC = () => {
               placeholder="เช่น นายสมเกียรติ สว่างไกล"
               value={name}
               onChange={e => setName(e.target.value)}
-              className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
+              className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
             />
           </div>
 
@@ -120,7 +120,7 @@ export const AddMemberModal: React.FC = () => {
               <select
                 value={position}
                 onChange={e => setPosition(e.target.value as PositionLevel)}
-                className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500 cursor-pointer"
+                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500 cursor-pointer"
               >
                 {POSITIONS_LIST.map(p => (
                   <option key={p.id} value={p.id}>{p.nameTh}</option>
@@ -133,7 +133,7 @@ export const AddMemberModal: React.FC = () => {
               <select
                 value={parentId}
                 onChange={e => setParentId(e.target.value)}
-                className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500 cursor-pointer"
+                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500 cursor-pointer"
               >
                 <option value="">รากสายงาน (ไม่มีหัวหน้า)</option>
                 {members.map(m => (
@@ -152,7 +152,7 @@ export const AddMemberModal: React.FC = () => {
                 type="number"
                 value={personalMonthlySales}
                 onChange={e => setPersonalMonthlySales(Number(e.target.value))}
-                className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
+                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
               />
             </div>
             <div>
@@ -161,13 +161,13 @@ export const AddMemberModal: React.FC = () => {
                 type="number"
                 value={personalRenewalPremium}
                 onChange={e => setPersonalRenewalPremium(Number(e.target.value))}
-                className="w-full bg-sky-100 border border-sky-100 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
+                className="w-full bg-sky-100 border border-sky-100/60 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
               />
             </div>
           </div>
 
           {/* Footer buttons */}
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-sky-100">
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-sky-100/60">
             <button
               type="button"
               onClick={() => setIsAddMemberModalOpen(false)}
@@ -177,7 +177,7 @@ export const AddMemberModal: React.FC = () => {
             </button>
             <button
               type="submit"
-              className="flex items-center gap-1.5 px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-bold shadow-md shadow-amber-500/20 cursor-pointer"
+              className="flex items-center gap-1.5 px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-bold shadow-sm shadow-amber-500/20 cursor-pointer"
             >
               <Save className="w-4 h-4" />
               <span>บันทึกสมาชิก</span>

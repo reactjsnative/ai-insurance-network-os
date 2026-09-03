@@ -173,7 +173,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
           id="save-goal-plan-btn"
           onClick={handleSave}
           disabled={isLoading}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-gradient-to-r from-amber-500 to-emerald-500 hover:from-amber-400 hover:to-emerald-400 text-slate-950 text-xs sm:text-sm font-bold shadow-lg shadow-amber-500/25 active:scale-95 transition-all disabled:opacity-50 cursor-pointer shrink-0"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-gradient-to-r from-amber-500 to-emerald-500 hover:from-amber-400 hover:to-emerald-400 text-slate-950 text-xs sm:text-sm font-bold shadow-sm shadow-amber-500/25 active:scale-95 transition-all disabled:opacity-50 cursor-pointer shrink-0"
         >
           <Save className="w-4 h-4" />
           <span>{saveSuccess ? "บันทึกสำเร็จแล้ว!" : "บันทึกแผนเป้าหมาย"}</span>
@@ -183,7 +183,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
       {/* Top 4 KPI Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
-        <div className="p-5 rounded-2xl bg-sky-50/80 border border-sky-100 backdrop-blur-md shadow-lg">
+        <div className="p-5 rounded-2xl bg-sky-50/80 border border-sky-100/60 backdrop-blur-md shadow-sm">
           <span className="text-xs text-slate-700 font-medium">เป้าหมายรายได้ต่อเดือน</span>
           <div className="text-2xl font-black text-blue-600 mt-1">
             ฿{monthlyGoal.toLocaleString()}
@@ -193,7 +193,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
           </span>
         </div>
 
-        <div className="p-5 rounded-2xl bg-sky-50/80 border border-sky-100 backdrop-blur-md shadow-lg">
+        <div className="p-5 rounded-2xl bg-sky-50/80 border border-sky-100/60 backdrop-blur-md shadow-sm">
           <span className="text-xs text-slate-700 font-medium">ส่วนต่างที่ขาดอยู่ (Gap)</span>
           <div className="text-2xl font-black text-rose-400 mt-1">
             ฿{incomeGap.toLocaleString()}
@@ -203,7 +203,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
           </span>
         </div>
 
-        <div className="p-5 rounded-2xl bg-sky-50/80 border border-sky-100 backdrop-blur-md shadow-lg">
+        <div className="p-5 rounded-2xl bg-sky-50/80 border border-sky-100/60 backdrop-blur-md shadow-sm">
           <span className="text-xs text-slate-700 font-medium">ระยะเวลาคาดการณ์สู่อิสรภาพ</span>
           <div className="text-2xl font-black text-emerald-400 mt-1">
             ~{estimatedMonths} เดือน
@@ -213,7 +213,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
           </span>
         </div>
 
-        <div className="p-5 rounded-2xl bg-sky-50/80 border border-sky-100 backdrop-blur-md shadow-lg">
+        <div className="p-5 rounded-2xl bg-sky-50/80 border border-sky-100/60 backdrop-blur-md shadow-sm">
           <span className="text-xs text-slate-700 font-medium">เงินสำรองฉุกเฉิน 6 เดือน</span>
           <div className="text-2xl font-black text-blue-400 mt-1">
             ฿{reserveFund.toLocaleString()}
@@ -226,7 +226,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
       </div>
 
       {/* Main Goal Configuration Form */}
-      <div className="p-6 rounded-3xl bg-sky-50/90 border border-sky-100/90 backdrop-blur-xl shadow-2xl space-y-6">
+      <div className="p-6 rounded-3xl bg-sky-50/90 border border-sky-100/60/90 backdrop-blur-xl shadow-2xl space-y-6">
         <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
           <Wallet className="w-4 h-4 text-blue-600" />
           <span>ปรับแต่งตัวเลขเป้าหมายและทรัพยากรการทำงาน</span>
@@ -239,7 +239,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
               type="number"
               value={monthlyGoal}
               onChange={(e) => setMonthlyGoal(Number(e.target.value))}
-              className="w-full px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-100 text-white font-semibold focus:outline-none focus:border-blue-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-100/60 text-slate-900 font-semibold focus:outline-none focus:border-blue-400"
             />
           </div>
 
@@ -249,7 +249,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
               type="date"
               value={targetDate}
               onChange={(e) => setTargetDate(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-100 text-white font-semibold focus:outline-none focus:border-blue-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-100/60 text-slate-900 font-semibold focus:outline-none focus:border-blue-400"
             />
           </div>
 
@@ -259,7 +259,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
               type="number"
               value={targetLeaders}
               onChange={(e) => setTargetLeaders(Number(e.target.value))}
-              className="w-full px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-100 text-white font-semibold focus:outline-none focus:border-blue-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-100/60 text-slate-900 font-semibold focus:outline-none focus:border-blue-400"
             />
           </div>
 
@@ -269,7 +269,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
               type="number"
               value={plannedRecruits}
               onChange={(e) => setPlannedRecruits(Number(e.target.value))}
-              className="w-full px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-100 text-white font-semibold focus:outline-none focus:border-blue-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-100/60 text-slate-900 font-semibold focus:outline-none focus:border-blue-400"
             />
           </div>
 
@@ -279,7 +279,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
               type="number"
               value={workHours}
               onChange={(e) => setWorkHours(Number(e.target.value))}
-              className="w-full px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-100 text-white font-semibold focus:outline-none focus:border-blue-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-100/60 text-slate-900 font-semibold focus:outline-none focus:border-blue-400"
             />
           </div>
 
@@ -289,15 +289,15 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
               type="number"
               value={monthlyExpenses}
               onChange={(e) => setMonthlyExpenses(Number(e.target.value))}
-              className="w-full px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-100 text-white font-semibold focus:outline-none focus:border-blue-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-sky-50 border border-sky-100/60 text-slate-900 font-semibold focus:outline-none focus:border-blue-400"
             />
           </div>
         </div>
       </div>
 
       {/* 4 Milestones Roadmap (25%, 50%, 75%, 100%) */}
-      <div className="p-6 rounded-3xl bg-sky-50/90 border border-sky-100/90 backdrop-blur-xl shadow-2xl space-y-6">
-        <div className="flex items-center justify-between border-b border-sky-100 pb-4">
+      <div className="p-6 rounded-3xl bg-sky-50/90 border border-sky-100/60/90 backdrop-blur-xl shadow-2xl space-y-6">
+        <div className="flex items-center justify-between border-b border-sky-100/60 pb-4">
           <div>
             <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
               <Award className="w-5 h-5 text-indigo-400" />
@@ -316,7 +316,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
           <div className={`p-5 rounded-2xl border transition-all ${
             milestoneCompleted.p25 
               ? "bg-sky-50/90 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.15)]" 
-              : "bg-sky-50/60 border-sky-100"
+              : "bg-sky-50/60 border-sky-100/60"
           }`}>
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-bold text-blue-400">Milestone 25%</span>
@@ -339,7 +339,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
           <div className={`p-5 rounded-2xl border transition-all ${
             milestoneCompleted.p50 
               ? "bg-sky-50/90 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.15)]" 
-              : "bg-sky-50/60 border-sky-100"
+              : "bg-sky-50/60 border-sky-100/60"
           }`}>
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-bold text-indigo-400">Milestone 50%</span>
@@ -362,7 +362,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
           <div className={`p-5 rounded-2xl border transition-all ${
             milestoneCompleted.p75 
               ? "bg-sky-50/90 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.15)]" 
-              : "bg-sky-50/60 border-sky-100"
+              : "bg-sky-50/60 border-sky-100/60"
           }`}>
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-bold text-blue-600">Milestone 75%</span>
@@ -385,7 +385,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
           <div className={`p-5 rounded-2xl border transition-all ${
             milestoneCompleted.p100 
               ? "bg-sky-50/90 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.15)]" 
-              : "bg-sky-50/60 border-sky-100"
+              : "bg-sky-50/60 border-sky-100/60"
           }`}>
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-bold text-purple-400">Milestone 100%</span>

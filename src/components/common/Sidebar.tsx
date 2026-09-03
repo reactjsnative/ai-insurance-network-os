@@ -119,7 +119,7 @@ export const Sidebar: React.FC = () => {
   };
 
   return (
-    <aside id="app_sidebar" className="w-64 border-r border-sky-100 bg-sky-50 flex flex-col justify-between shrink-0 hidden lg:flex">
+    <aside id="app_sidebar" className="w-64 border-r border-sky-100/60 bg-sky-50 flex flex-col justify-between shrink-0 hidden lg:flex">
       {/* Navigation Links */}
       <div className="p-3 space-y-1 overflow-y-auto">
         <div className="px-3 py-2 text-[10px] font-bold text-slate-700 uppercase tracking-wider text-left">
@@ -161,7 +161,7 @@ export const Sidebar: React.FC = () => {
           </button>
 
           {extractedOpen && (
-            <div className="ml-2.5 pl-2.5 mt-0.5 space-y-0.5 border-l border-sky-100">
+            <div className="ml-2.5 pl-2.5 mt-0.5 space-y-0.5 border-l border-sky-100/60">
               {extractedItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = activeTab === item.id;
@@ -211,7 +211,7 @@ export const Sidebar: React.FC = () => {
           </button>
 
           {networkSuccessOpen && (
-            <div className="ml-2.5 pl-2.5 mt-0.5 space-y-0.5 border-l border-sky-100">
+            <div className="ml-2.5 pl-2.5 mt-0.5 space-y-0.5 border-l border-sky-100/60">
               {networkSuccessItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = activeTab === item.id;
@@ -261,7 +261,7 @@ export const Sidebar: React.FC = () => {
           </button>
 
           {socialOpen && (
-            <div className="ml-2.5 pl-2.5 mt-0.5 space-y-0.5 border-l border-sky-100">
+            <div className="ml-2.5 pl-2.5 mt-0.5 space-y-0.5 border-l border-sky-100/60">
               {socialItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = activeTab === item.id;
@@ -287,7 +287,7 @@ export const Sidebar: React.FC = () => {
       </div>
 
       {/* Footer Info Box */}
-      <div className="p-3 border-t border-sky-100/80 bg-sky-50/40 space-y-2">
+      <div className="p-3 border-t border-sky-100/60/80 bg-sky-50/40 space-y-2">
         <button
           id="btn_sidebar_view_gateway"
           onClick={() => setShowGatewayScreen(true)}
@@ -302,7 +302,7 @@ export const Sidebar: React.FC = () => {
           </span>
         </button>
 
-        <div className="p-3 rounded-xl bg-sky-50/80 border border-sky-100 text-left">
+        <div className="p-3 rounded-xl bg-sky-50/80 border border-sky-100/60 text-left">
           <div className="flex items-center gap-2 text-xs font-bold text-slate-800">
             <Sparkles className="w-3.5 h-3.5 text-blue-600" />
             <span>{t('ai_network_engine')}</span>
