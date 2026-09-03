@@ -81,8 +81,8 @@ export const Dashboard: React.FC = () => {
   return (
     <div id="executive_dashboard_view" className="space-y-6 max-w-7xl mx-auto pb-12">
       {/* System Status Bar — shows after login */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 sm:p-4 rounded-2xl bg-[#fcfdff]/80 border border-sky-50/40 backdrop-blur-md shadow-[0_4px_12px_rgba(148,163,184,0.10)]">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-wrap items-center justify-end gap-3 p-3.5 sm:p-4 rounded-2xl bg-[#fcfdff]/80 border border-sky-50/40 backdrop-blur-md shadow-[0_4px_12px_rgba(148,163,184,0.10)]">
+        <div className="flex items-center gap-3 ml-auto">
           <div className="w-10 h-10 rounded-xl bg-blue-600/10 border border-blue-600/30 flex items-center justify-center text-blue-600 shrink-0">
             <Cpu className="w-5 h-5" />
           </div>
