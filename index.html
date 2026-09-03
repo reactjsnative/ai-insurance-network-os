@@ -15,22 +15,6 @@
   </head>
   <body class="bg-[#fcfdff] text-slate-900 font-sans antialiased selection:bg-amber-500/30 selection:text-amber-200">
     <div id="root"></div>
-    <!-- กลับหน้าแรก — ลอยมุมซ้ายบน ทุกหน้า (รวมโดเมนแยก extracted-ai-network) -->
-    <a id="global-home-btn" href="https://ai-insurance-network-os.vercel.app/?tab=dashboard" style="position:fixed;top:10px;left:10px;z-index:99999;display:none;align-items:center;gap:6px;padding:7px 14px;border-radius:9999px;font-size:13px;font-weight:800;color:#fff;background:linear-gradient(90deg,#2563eb,#4f46e5,#7c3aed);box-shadow:0 4px 12px rgba(37,99,235,0.35);text-decoration:none;font-family:'Sarabun',system-ui,sans-serif;">⌂ หน้าแรก</a>
-    <script>
-      (function(){
-        var btn=document.getElementById('global-home-btn');
-        function show(){ if(btn) btn.style.display='inline-flex'; }
-        // ถ้าเปิดโดเมนแยก extracted-ai-network ให้โชว์ทันที
-        if(location.hostname.indexOf('extracted-ai-network')!==-1) show();
-        // ถ้าเป็นหน้า /extracted-app ภายใน OS ก็โชว์ด้วย (iframe จะมี แต่หน้านี้คือ top)
-        if(location.pathname.indexOf('/extracted-app')===0) show();
-        // เผื่อ SPA โหลดช้า ลองอีกรอบหลัง 1 วิ
-        setTimeout(function(){
-          if(location.hostname.indexOf('extracted-ai-network')!==-1) show();
-        },1200);
-      })();
-    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
