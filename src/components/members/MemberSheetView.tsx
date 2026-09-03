@@ -68,7 +68,7 @@ export const MemberSheetView: React.FC = () => {
                       m.status === 'active'
                         ? 'bg-emerald-500/15 text-emerald-300'
                         : m.status === 'probation'
-                        ? 'bg-amber-500/15 text-amber-300'
+                        ? 'bg-blue-600/15 text-blue-600'
                         : 'bg-slate-500/15 text-slate-700'
                     }`}>{m.status || 'active'}</span>
                   </td>

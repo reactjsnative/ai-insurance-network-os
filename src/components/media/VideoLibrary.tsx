@@ -166,7 +166,7 @@ export const VideoLibrary: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
-            <Video className="w-6 h-6 text-amber-400" />
+            <Video className="w-6 h-6 text-blue-600" />
             {t('nav_video_library')}
           </h1>
           <p className="text-sm text-slate-700 mt-1">
@@ -176,7 +176,7 @@ export const VideoLibrary: React.FC = () => {
         <button
           id="btn_add_video"
           onClick={() => setShowAdd((s) => !s)}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-bold transition-all shadow-sm shadow-amber-500/20"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 text-sm font-bold transition-all shadow-sm shadow-amber-500/20"
         >
           <Plus className="w-4 h-4" /> เพิ่มวีดีโอ
         </button>
@@ -191,28 +191,28 @@ export const VideoLibrary: React.FC = () => {
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
               placeholder="ชื่อวีดีโอ"
-              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-amber-500"
+              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
             <input
               id="video_url_input"
               value={form.url}
               onChange={(e) => setForm({ ...form, url: e.target.value })}
               placeholder="ลิงก์ YouTube / Vimeo"
-              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-amber-500"
+              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
             <input
               id="video_cat_input"
               value={form.category}
               onChange={(e) => setForm({ ...form, category: e.target.value })}
               placeholder="หมวดหมู่"
-              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-amber-500"
+              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
           </div>
           <div className="flex gap-2">
             <button
               id="btn_save_video"
               onClick={handleAdd}
-              className="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-bold"
+              className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-slate-950 text-sm font-bold"
             >
               บันทึก
             </button>
@@ -257,10 +257,10 @@ export const VideoLibrary: React.FC = () => {
           {activeVideo && (
             <div className="p-4 rounded-2xl bg-white/60 border border-slate-200">
               <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                <Play className="w-4 h-4 text-amber-400" /> {activeVideo.title}
+                <Play className="w-4 h-4 text-blue-600" /> {activeVideo.title}
               </h2>
               <div className="flex flex-wrap items-center gap-2 mt-2 text-[11px] text-slate-700">
-                <span className="px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                <span className="px-2 py-0.5 rounded-full bg-blue-600/15 text-blue-600 border border-blue-600/30">
                   {activeVideo.category}
                 </span>
                 <span className="flex items-center gap-1">
@@ -281,7 +281,7 @@ export const VideoLibrary: React.FC = () => {
                 key={v.id}
                 className={`group flex items-center gap-3 p-2.5 rounded-xl border transition-all cursor-pointer ${
                   activeVideo?.id === v.id
-                    ? 'bg-amber-500/10 border-amber-500/40'
+                    ? 'bg-blue-600/10 border-blue-600/40'
                     : 'bg-white/60 border-slate-200 hover:border-slate-200'
                 }`}
                 onClick={() => setActiveVideo(v)}

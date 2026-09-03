@@ -125,7 +125,7 @@ export const GoalPlanner: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
-              <Compass className="w-3.5 h-3.5 text-amber-400" />
+              <Compass className="w-3.5 h-3.5 text-blue-600" />
               {language === 'th' ? 'ระบบวางแผนเป้าหมายองค์กรเชิงกลยุทธ์ (Strategic Goal Roadmap)' : 'Strategic Goal Roadmap & Requirements'}
             </div>
             <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight flex items-center gap-3">
@@ -159,7 +159,7 @@ export const GoalPlanner: React.FC = () => {
             <button
               onClick={() => applyPreset('aggressive')}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                selectedScenario === 'aggressive' ? 'bg-amber-600 text-white shadow-lg shadow-amber-600/30' : 'text-slate-700 hover:text-white'
+                selectedScenario === 'aggressive' ? 'bg-indigo-600 text-white shadow-lg shadow-amber-600/30' : 'text-slate-700 hover:text-white'
               }`}
             >
               {language === 'th' ? 'ก้าวกระโดด (1,000 คน)' : 'Aggressive (1k)'}
@@ -176,8 +176,8 @@ export const GoalPlanner: React.FC = () => {
           </div>
 
           <div className="bg-white/60 p-3.5 rounded-xl border border-slate-200/60">
-            <p className="text-xs text-amber-400 font-medium">{language === 'th' ? 'อัตราสรรหาที่ต้องทำ' : 'Required Recruits/Mo'}</p>
-            <p className="text-2xl font-black text-amber-400 mt-1">{calculation.monthlyRecruitsNeeded} <span className="text-xs text-slate-700 font-normal">คน/เดือน</span></p>
+            <p className="text-xs text-blue-600 font-medium">{language === 'th' ? 'อัตราสรรหาที่ต้องทำ' : 'Required Recruits/Mo'}</p>
+            <p className="text-2xl font-black text-blue-600 mt-1">{calculation.monthlyRecruitsNeeded} <span className="text-xs text-slate-700 font-normal">คน/เดือน</span></p>
             <p className="text-[11px] text-slate-700 mt-1">รวมทั้งสิ้น {formatNumber(calculation.totalRecruitsNeeded)} คน</p>
           </div>
 
@@ -224,7 +224,7 @@ export const GoalPlanner: React.FC = () => {
             <div>
               <div className="flex items-center justify-between text-xs mb-1.5">
                 <label className="text-slate-700 font-medium">{language === 'th' ? 'กรอบเวลาเป้าหมาย (เดือน)' : 'Timeline Duration (Months)'}</label>
-                <span className="font-bold text-amber-400">{targetTimeMonths} เดือน ({Math.round(targetTimeMonths/12 * 10)/10} ปี)</span>
+                <span className="font-bold text-blue-600">{targetTimeMonths} เดือน ({Math.round(targetTimeMonths/12 * 10)/10} ปี)</span>
               </div>
               <input
                 type="range"
@@ -302,7 +302,7 @@ export const GoalPlanner: React.FC = () => {
 
           <div className="p-3.5 rounded-xl bg-indigo-950/40 border border-indigo-500/30 text-xs text-indigo-200 space-y-1">
             <p className="font-semibold flex items-center gap-1.5 text-indigo-300">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <Sparkles className="w-3.5 h-3.5 text-blue-600" />
               {language === 'th' ? 'สูตรคณิตศาสตร์เครือข่าย' : 'Network Math Principle'}
             </p>
             <p className="text-slate-700 leading-relaxed text-[11px]">
@@ -319,7 +319,7 @@ export const GoalPlanner: React.FC = () => {
           <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xl space-y-4">
             <div className="flex items-center justify-between border-b border-slate-200 pb-3">
               <div className="flex items-center gap-2">
-                <Clock className="w-5 h-5 text-amber-400" />
+                <Clock className="w-5 h-5 text-blue-600" />
                 <h3 className="font-bold text-slate-900 text-base">{language === 'th' ? 'แผนขั้นบันไดสู่ความสำเร็จ (Milestone Roadmap)' : 'Execution Roadmap'}</h3>
               </div>
               <span className="text-xs text-slate-700">{calculation.milestones.length} หมุดหมายสำคัญ</span>
@@ -374,7 +374,7 @@ export const GoalPlanner: React.FC = () => {
                 <span>{language === 'th' ? 'แผนงานด้านการสรรหา (Recruitment)' : 'Recruitment Cadence'}</span>
               </div>
               <p className="text-xs text-slate-700">
-                ต้องรักษาอัตราการรับสมัครใหม่อย่างน้อย <strong className="text-amber-400">{calculation.monthlyRecruitsNeeded} คน/เดือน</strong> ทั่วทั้งองค์กร หรือเฉลี่ย 1 คนต่อเดือนสำหรับตัวแทนหลัก
+                ต้องรักษาอัตราการรับสมัครใหม่อย่างน้อย <strong className="text-blue-600">{calculation.monthlyRecruitsNeeded} คน/เดือน</strong> ทั่วทั้งองค์กร หรือเฉลี่ย 1 คนต่อเดือนสำหรับตัวแทนหลัก
               </p>
             </div>
 

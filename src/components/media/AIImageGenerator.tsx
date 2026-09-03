@@ -102,7 +102,7 @@ export const AIImageGenerator: React.FC = () => {
               ? 'bg-slate-100 text-slate-700'
               : configured
               ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/30'
-              : 'bg-amber-500/10 text-amber-300 border border-amber-500/30'
+              : 'bg-blue-600/10 text-blue-600 border border-blue-600/30'
           }`}
         >
           {configured === null ? (
@@ -230,7 +230,7 @@ export const AIImageGenerator: React.FC = () => {
           </div>
 
           {configured === false && (
-            <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs leading-relaxed">
+            <div className="p-4 rounded-2xl bg-blue-600/10 border border-blue-600/30 text-amber-200 text-xs leading-relaxed">
               <strong>หมายเหตุ:</strong> เซิร์ฟเวอร์ยังไม่ได้ตั้ง <code>OPENAI_API_KEY</code> ฟีเจอร์นี้จะเรียก OpenAI ไม่ได้จนกว่าจะตั้งค่า
               เพิ่ม <code>OPENAI_API_KEY="คีย์ของคุณ"</code> ในไฟล์ <code>.env</code> แล้วรัน <code>npm run dev</code> ใหม่
             </div>

@@ -164,7 +164,7 @@ export const GrowthSimulation: React.FC = () => {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
           <div className="p-4 rounded-2xl bg-white/80 border border-slate-200">
             <span className="text-[10px] text-slate-700 uppercase font-bold block">FYC องค์กรที่ต้องทำ</span>
-            <div className="text-xl font-black text-amber-300 font-mono mt-1">
+            <div className="text-xl font-black text-blue-600 font-mono mt-1">
               ฿{requiredFyc.toLocaleString()}
             </div>
             <span className="text-[10px] text-slate-700">เบี้ยประกัน ~฿{(requiredFyc * 3).toLocaleString()}</span>
@@ -244,7 +244,7 @@ export const GrowthSimulation: React.FC = () => {
               </div>
               <div className="p-3 rounded-xl bg-white border border-slate-200 flex justify-between">
                 <span className="text-slate-700">FYC เฉลี่ยต่อตัวแทน:</span>
-                <span className="font-bold text-amber-300 font-mono">฿{scenarios[activeScenario].fyc.toLocaleString()}</span>
+                <span className="font-bold text-blue-600 font-mono">฿{scenarios[activeScenario].fyc.toLocaleString()}</span>
               </div>
               <div className="p-3 rounded-xl bg-white border border-slate-200 flex justify-between">
                 <span className="text-slate-700">อัตราการคงอยู่ (Retention):</span>

@@ -156,10 +156,10 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
       
       {/* Header Banner */}
-      <div className="p-6 rounded-3xl bg-gradient-to-r from-amber-950/70 via-slate-50/90 to-indigo-950/80 border border-amber-500/30 backdrop-blur-xl shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-gradient-to-r from-amber-950/70 via-slate-50/90 to-indigo-950/80 border border-blue-600/30 backdrop-blur-xl shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <Target className="w-6 h-6 text-amber-400" />
+            <Target className="w-6 h-6 text-blue-600" />
             <h2 className="text-xl font-bold text-slate-900 tracking-tight">
               แผนที่สู่อิสรภาพทางการเงิน (Financial Freedom Roadmap)
             </h2>
@@ -185,7 +185,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
         
         <div className="p-5 rounded-2xl bg-white/80 border border-slate-200 backdrop-blur-md shadow-lg">
           <span className="text-xs text-slate-700 font-medium">เป้าหมายรายได้ต่อเดือน</span>
-          <div className="text-2xl font-black text-amber-300 mt-1">
+          <div className="text-2xl font-black text-blue-600 mt-1">
             ฿{monthlyGoal.toLocaleString()}
           </div>
           <span className="text-[11px] text-slate-700 mt-1 block">
@@ -228,7 +228,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
       {/* Main Goal Configuration Form */}
       <div className="p-6 rounded-3xl bg-white/90 border border-slate-200/90 backdrop-blur-xl shadow-2xl space-y-6">
         <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
-          <Wallet className="w-4 h-4 text-amber-400" />
+          <Wallet className="w-4 h-4 text-blue-600" />
           <span>ปรับแต่งตัวเลขเป้าหมายและทรัพยากรการทำงาน</span>
         </h3>
 
@@ -239,7 +239,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
               type="number"
               value={monthlyGoal}
               onChange={(e) => setMonthlyGoal(Number(e.target.value))}
-              className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-white font-semibold focus:outline-none focus:border-amber-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-white font-semibold focus:outline-none focus:border-blue-400"
             />
           </div>
 
@@ -249,7 +249,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
               type="date"
               value={targetDate}
               onChange={(e) => setTargetDate(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-white font-semibold focus:outline-none focus:border-amber-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-white font-semibold focus:outline-none focus:border-blue-400"
             />
           </div>
 
@@ -259,7 +259,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
               type="number"
               value={targetLeaders}
               onChange={(e) => setTargetLeaders(Number(e.target.value))}
-              className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-white font-semibold focus:outline-none focus:border-amber-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-white font-semibold focus:outline-none focus:border-blue-400"
             />
           </div>
 
@@ -269,7 +269,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
               type="number"
               value={plannedRecruits}
               onChange={(e) => setPlannedRecruits(Number(e.target.value))}
-              className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-white font-semibold focus:outline-none focus:border-amber-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-white font-semibold focus:outline-none focus:border-blue-400"
             />
           </div>
 
@@ -279,7 +279,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
               type="number"
               value={workHours}
               onChange={(e) => setWorkHours(Number(e.target.value))}
-              className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-white font-semibold focus:outline-none focus:border-amber-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-white font-semibold focus:outline-none focus:border-blue-400"
             />
           </div>
 
@@ -289,7 +289,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
               type="number"
               value={monthlyExpenses}
               onChange={(e) => setMonthlyExpenses(Number(e.target.value))}
-              className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-white font-semibold focus:outline-none focus:border-amber-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-white font-semibold focus:outline-none focus:border-blue-400"
             />
           </div>
         </div>
@@ -365,7 +365,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
               : "bg-white/60 border-slate-200"
           }`}>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-xs font-bold text-amber-400">Milestone 75%</span>
+              <span className="text-xs font-bold text-blue-600">Milestone 75%</span>
               <input
                 type="checkbox"
                 checked={milestoneCompleted.p75}

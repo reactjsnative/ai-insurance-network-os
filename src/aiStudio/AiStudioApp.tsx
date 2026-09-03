@@ -15,7 +15,7 @@ const AppContent: React.FC = () => {
   const { activeTab } = useApp();
 
   return (
-    <div className="min-h-full bg-white text-slate-900 flex flex-col font-sans selection:bg-amber-500/30 selection:text-amber-200">
+    <div className="min-h-full bg-white text-slate-900 flex flex-col font-sans selection:bg-blue-600/30 selection:text-amber-200">
       {/* 1. Mandatory Disclaimer Banner */}
       <DisclaimerBanner />
 

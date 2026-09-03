@@ -91,7 +91,7 @@ export const CareerPath: React.FC = () => {
             <h1 className="text-xl sm:text-2xl font-black text-slate-900">
               เส้นทางอาชีพและเกณฑ์เลื่อนตำแหน่ง (Career Path & Qualification)
             </h1>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-600/10 text-blue-600 border border-blue-600/30">
               Update 15 Jan 64
             </span>
           </div>
@@ -113,7 +113,7 @@ export const CareerPath: React.FC = () => {
           <button
             onClick={() => setSelectedTargetRank('center_manager')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-              selectedTargetRank === 'center_manager' ? 'bg-amber-500 text-slate-950' : 'text-slate-700 hover:text-slate-800'
+              selectedTargetRank === 'center_manager' ? 'bg-blue-600 text-slate-950' : 'text-slate-700 hover:text-slate-800'
             }`}
           >
             ผู้บริหารศูนย์ (CM)
@@ -134,7 +134,7 @@ export const CareerPath: React.FC = () => {
         {/* Left: Overall Readiness Gauge */}
         <div className="p-6 rounded-3xl bg-gradient-to-br from-white to-indigo-950/40 border border-slate-200 flex flex-col justify-between">
           <div>
-            <span className="text-xs font-bold text-amber-400 uppercase tracking-wider">
+            <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">
               เป้าหมาย: {targetCriteria.title}
             </span>
             <div className="text-4xl font-black text-slate-900 mt-2 font-mono">
@@ -152,7 +152,7 @@ export const CareerPath: React.FC = () => {
             </div>
             <div className="flex justify-between text-xs">
               <span className="text-slate-700">เกณฑ์ดำรงตำแหน่งรายปี:</span>
-              <span className="font-bold text-amber-400 font-mono">฿{targetCriteria.maintenanceAnnualFyc.toLocaleString()} FYC</span>
+              <span className="font-bold text-blue-600 font-mono">฿{targetCriteria.maintenanceAnnualFyc.toLocaleString()} FYC</span>
             </div>
           </div>
         </div>
@@ -168,7 +168,7 @@ export const CareerPath: React.FC = () => {
             <div className="flex justify-between text-xs">
               <span className="font-semibold text-slate-700">1. บำเหน็จสะสม (COM Requirement)</span>
               <span className="font-mono text-slate-700">
-                <span className="text-amber-400 font-bold">฿{actualCOM.toLocaleString()}</span> / ฿{targetCriteria.comRequired.toLocaleString()} ({comProgress}%)
+                <span className="text-blue-600 font-bold">฿{actualCOM.toLocaleString()}</span> / ฿{targetCriteria.comRequired.toLocaleString()} ({comProgress}%)
               </span>
             </div>
             <div className="h-3 w-full rounded-full bg-white overflow-hidden border border-slate-200">
@@ -220,7 +220,7 @@ export const CareerPath: React.FC = () => {
       {/* 3. Next Best Action (Coaching Plan) */}
       <div className="p-6 rounded-3xl bg-white/90 border border-slate-200 space-y-4">
         <div className="flex items-center gap-2">
-          <Sparkles className="w-4 h-4 text-amber-400" />
+          <Sparkles className="w-4 h-4 text-blue-600" />
           <h2 className="text-sm sm:text-base font-bold text-slate-900">
             คำแนะนำเชิงกลยุทธ์เพื่อพิชิตการเลื่อนตำแหน่ง (Next Best Actions)
           </h2>
@@ -228,7 +228,7 @@ export const CareerPath: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="p-4 rounded-2xl bg-white border border-slate-200 space-y-2">
-            <div className="text-xs font-bold text-amber-400">1. เร่งผลิตผลงานส่วนตัว & โค้ชชิ่ง</div>
+            <div className="text-xs font-bold text-blue-600">1. เร่งผลิตผลงานส่วนตัว & โค้ชชิ่ง</div>
             <p className="text-xs text-slate-700 leading-relaxed">
               รักษาอัตรา FYC รายสัปดาห์ไม่ต่ำกว่า 15,000 บาท เพื่อสะสมบำเหน็จแตะเป้าหมายภายใน 2 เดือนข้างหน้า
             </p>

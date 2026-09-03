@@ -97,18 +97,18 @@ export const Sidebar: React.FC = () => {
         onClick={() => setActiveTab(item.id)}
         className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all group ${
           isActive
-            ? 'bg-gradient-to-r from-amber-500/20 to-amber-500/5 text-amber-300 border border-amber-500/40 shadow-sm shadow-amber-500/10'
+            ? 'bg-gradient-to-r from-amber-500/20 to-amber-500/5 text-blue-600 border border-blue-600/40 shadow-sm shadow-amber-500/10'
             : 'text-slate-700 hover:text-slate-800 hover:bg-slate-50/80 border border-transparent'
         }`}
       >
         <div className="flex items-center gap-2.5">
-          <Icon className={`w-4 h-4 transition-colors ${isActive ? 'text-amber-400' : 'text-slate-700 group-hover:text-slate-800'}`} />
+          <Icon className={`w-4 h-4 transition-colors ${isActive ? 'text-blue-600' : 'text-slate-700 group-hover:text-slate-800'}`} />
           <span className="truncate">{item.label}</span>
         </div>
         {item.badge && (
           <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-full shrink-0 ${
             isActive 
-              ? 'bg-amber-400 text-slate-950' 
+              ? 'bg-blue-500 text-slate-950' 
               : item.badge === 'AI' ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30' : 'bg-slate-100 text-slate-700'
           }`}>
             {item.badge}
@@ -195,12 +195,12 @@ export const Sidebar: React.FC = () => {
             onClick={() => setNetworkSuccessOpen((v) => !v)}
             className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all group ${
               isNetworkSuccessActive
-                ? 'bg-gradient-to-r from-amber-500/20 to-amber-500/5 text-amber-300 border border-amber-500/40 shadow-sm shadow-amber-500/10'
+                ? 'bg-gradient-to-r from-amber-500/20 to-amber-500/5 text-blue-600 border border-blue-600/40 shadow-sm shadow-amber-500/10'
                 : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50/80 border border-transparent'
             }`}
           >
             <div className="flex items-center gap-2.5">
-              <Award className={`w-4 h-4 transition-colors ${isNetworkSuccessActive ? 'text-amber-400' : 'text-slate-700 group-hover:text-slate-800'}`} />
+              <Award className={`w-4 h-4 transition-colors ${isNetworkSuccessActive ? 'text-blue-600' : 'text-slate-700 group-hover:text-slate-800'}`} />
               <span className="truncate">{t('nav_network_success')}</span>
             </div>
             {networkSuccessOpen ? (
@@ -222,11 +222,11 @@ export const Sidebar: React.FC = () => {
                     onClick={() => setActiveTab(item.id)}
                     className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-[11px] font-medium transition-all group ${
                       isActive
-                        ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30'
+                        ? 'bg-blue-600/15 text-blue-600 border border-blue-600/30'
                         : 'text-slate-700 hover:text-slate-800 hover:bg-slate-50/80 border border-transparent'
                     }`}
                   >
-                    <Icon className={`w-3.5 h-3.5 shrink-0 transition-colors ${isActive ? 'text-amber-400' : 'text-slate-700 group-hover:text-slate-700'}`} />
+                    <Icon className={`w-3.5 h-3.5 shrink-0 transition-colors ${isActive ? 'text-blue-600' : 'text-slate-700 group-hover:text-slate-700'}`} />
                     <span className="truncate">{item.label}</span>
                   </button>
                 );
@@ -291,20 +291,20 @@ export const Sidebar: React.FC = () => {
         <button
           id="btn_sidebar_view_gateway"
           onClick={() => setShowGatewayScreen(true)}
-          className="w-full py-2 px-3 rounded-xl bg-white hover:bg-slate-850 text-amber-300 border border-amber-500/30 text-xs font-bold flex items-center justify-between transition-all cursor-pointer shadow-sm hover:border-amber-400"
+          className="w-full py-2 px-3 rounded-xl bg-white hover:bg-slate-850 text-blue-600 border border-blue-600/30 text-xs font-bold flex items-center justify-between transition-all cursor-pointer shadow-sm hover:border-blue-400"
         >
           <div className="flex items-center gap-2">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            <Sparkles className="w-3.5 h-3.5 text-blue-600" />
             <span>หน้าจอก่อนเข้าระบบ</span>
           </div>
-          <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono">
+          <span className="text-[10px] px-1.5 py-0.5 rounded bg-blue-600/20 text-blue-600 font-mono">
             4 Logins
           </span>
         </button>
 
         <div className="p-3 rounded-xl bg-white/80 border border-slate-200 text-left">
           <div className="flex items-center gap-2 text-xs font-bold text-slate-800">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            <Sparkles className="w-3.5 h-3.5 text-blue-600" />
             <span>{t('ai_network_engine')}</span>
           </div>
           <p className="text-[10px] text-slate-700 mt-1 leading-relaxed">

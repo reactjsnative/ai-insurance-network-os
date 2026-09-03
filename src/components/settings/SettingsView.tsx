@@ -265,7 +265,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               onClick={() => setActiveTab('auth_settings')}
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'auth_settings'
-                  ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/30'
+                  ? 'bg-blue-600 text-slate-950 shadow-lg shadow-amber-500/30'
                   : 'text-slate-700 hover:text-slate-800'
               }`}
             >
@@ -276,7 +276,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               onClick={() => setActiveTab('firebase_cloud')}
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'firebase_cloud'
-                  ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/30'
+                  ? 'bg-blue-600 text-slate-950 shadow-lg shadow-amber-500/30'
                   : 'text-slate-700 hover:text-slate-800'
               }`}
             >
@@ -344,7 +344,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
                 <img
                   src={authUser.avatarUrl || activeUser.avatarUrl}
                   alt={authUser.name}
-                  className="w-16 h-16 rounded-2xl object-cover border-2 border-amber-500/40 shadow-md"
+                  className="w-16 h-16 rounded-2xl object-cover border-2 border-blue-600/40 shadow-md"
                   referrerPolicy="no-referrer"
                 />
                 <div>
@@ -356,7 +356,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
                   </div>
                   <p className="text-xs text-slate-700">{authUser.email}</p>
                   <p className="text-[11px] text-slate-700 mt-1">
-                    รหัสตัวแทน: <strong className="text-amber-400">{activeUser.memberCode}</strong> • ช่องทางล็อกอินหลัก: <span className="capitalize font-semibold text-slate-700">{authUser.provider}</span>
+                    รหัสตัวแทน: <strong className="text-blue-600">{activeUser.memberCode}</strong> • ช่องทางล็อกอินหลัก: <span className="capitalize font-semibold text-slate-700">{authUser.provider}</span>
                   </p>
                 </div>
               </div>
@@ -364,7 +364,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => openAuthModal('login')}
-                  className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs shadow-md shadow-amber-500/20 transition-all flex items-center gap-1.5 cursor-pointer"
+                  className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 font-bold text-xs shadow-md shadow-amber-500/20 transition-all flex items-center gap-1.5 cursor-pointer"
                 >
                   <LogIn className="w-3.5 h-3.5" />
                   <span>เปิดหน้าต่างล็อกอิน (Open Login Modal)</span>
@@ -432,7 +432,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
                   className={`text-xs font-semibold px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
                     authUser.connectedProviders.includes('google')
                       ? 'text-rose-400 hover:bg-rose-500/10 border-rose-500/30'
-                      : 'text-amber-300 hover:bg-amber-500/10 border-amber-500/30 bg-amber-500/5'
+                      : 'text-blue-600 hover:bg-blue-600/10 border-blue-600/30 bg-blue-600/5'
                   }`}
                 >
                   {authUser.connectedProviders.includes('google') ? 'ยกเลิกการเชื่อมต่อ' : 'เชื่อมต่อ Google'}

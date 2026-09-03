@@ -184,7 +184,7 @@ export const AICoach: React.FC = () => {
       {/* 2. Automated Smart Insights Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="p-4 rounded-2xl bg-white/80 border border-slate-200 space-y-2">
-          <div className="flex items-center gap-2 text-xs font-bold text-amber-400">
+          <div className="flex items-center gap-2 text-xs font-bold text-blue-600">
             <Award className="w-4 h-4" />
             <span>ผู้มีศักยภาพเลื่อนตำแหน่ง</span>
           </div>
@@ -196,7 +196,7 @@ export const AICoach: React.FC = () => {
             <ul className="space-y-2">
               {insights.promotionCandidates.map((c) => (
                 <li key={c.member.id} className="text-xs text-slate-800 leading-relaxed">
-                  <strong className="text-amber-300">{c.member.name}</strong> (FYC ทีม ฿{c.teamFYC.toLocaleString()})
+                  <strong className="text-blue-600">{c.member.name}</strong> (FYC ทีม ฿{c.teamFYC.toLocaleString()})
                   <span className="text-slate-700 block">
                     ใกล้เลื่อนเป็น {c.next?.name || 'ตำแหน่งถัดไป'}
                   </span>
@@ -268,7 +268,7 @@ export const AICoach: React.FC = () => {
               <div
                 className={`max-w-xl rounded-2xl p-4 text-xs sm:text-sm leading-relaxed space-y-1 ${
                   msg.sender === 'user'
-                    ? 'bg-amber-500 text-slate-950 font-medium rounded-tr-none'
+                    ? 'bg-blue-600 text-slate-950 font-medium rounded-tr-none'
                     : 'bg-white/80 border border-slate-200 text-slate-800 rounded-tl-none'
                 }`}
               >
@@ -282,7 +282,7 @@ export const AICoach: React.FC = () => {
                 <img
                   src={activeUser.avatarUrl}
                   alt={activeUser.name}
-                  className="w-8 h-8 rounded-xl object-cover shrink-0 border border-amber-500/50"
+                  className="w-8 h-8 rounded-xl object-cover shrink-0 border border-blue-600/50"
                 />
               )}
             </div>
@@ -294,7 +294,7 @@ export const AICoach: React.FC = () => {
                 <Bot className="w-4 h-4 animate-spin" />
               </div>
               <div className="bg-white/80 border border-slate-200 rounded-2xl rounded-tl-none p-4 text-xs text-slate-700 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-amber-400 animate-bounce" />
+                <span className="w-2 h-2 rounded-full bg-blue-500 animate-bounce" />
                 <span className="w-2 h-2 rounded-full bg-indigo-400 animate-bounce [animation-delay:0.2s]" />
                 <span className="w-2 h-2 rounded-full bg-purple-400 animate-bounce [animation-delay:0.4s]" />
                 <span>AI กำลังประมวลผลข้อมูลองค์กร...</span>
@@ -328,12 +328,12 @@ export const AICoach: React.FC = () => {
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
-            className="flex-1 bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-slate-800 placeholder-slate-500 focus:outline-none focus:border-amber-500/50"
+            className="flex-1 bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-slate-800 placeholder-slate-500 focus:outline-none focus:border-blue-600/50"
           />
           <button
             onClick={() => handleSendMessage()}
             disabled={!inputMessage.trim() || loading}
-            className="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-40 text-slate-950 font-bold text-xs sm:text-sm flex items-center gap-1.5 transition-all shadow-md shadow-amber-500/20"
+            className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 disabled:opacity-40 text-slate-950 font-bold text-xs sm:text-sm flex items-center gap-1.5 transition-all shadow-md shadow-amber-500/20"
           >
             <Send className="w-4 h-4" />
             <span>ส่ง</span>

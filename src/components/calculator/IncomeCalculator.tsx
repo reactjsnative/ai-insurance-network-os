@@ -62,7 +62,7 @@ export const IncomeCalculator: React.FC = () => {
   const getPositionBadge = (posId: string) => {
     switch (posId) {
       case 'region_manager': return { label: 'ผู้บริหารภาค (RM)', bg: 'bg-rose-500/20 text-rose-300 border-rose-500/40' };
-      case 'center_manager': return { label: 'ผู้บริหารศูนย์ (CM)', bg: 'bg-amber-500/20 text-amber-300 border-amber-500/40' };
+      case 'center_manager': return { label: 'ผู้บริหารศูนย์ (CM)', bg: 'bg-blue-600/20 text-blue-600 border-blue-600/40' };
       case 'unit_manager': return { label: 'ผู้บริหารหน่วย (UM)', bg: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40' };
       default: return { label: 'ตัวแทน (Agent)', bg: 'bg-sky-500/20 text-sky-300 border-sky-500/40' };
     }
@@ -84,7 +84,7 @@ export const IncomeCalculator: React.FC = () => {
             </span>
           </div>
           <p className="text-xs text-slate-700 mt-1">
-            อิงตาม Compensation Plan เวอร์ชัน <span className="text-amber-400 font-mono font-bold">{activePlan.code}</span> (Update 15 Jan 64)
+            อิงตาม Compensation Plan เวอร์ชัน <span className="text-blue-600 font-mono font-bold">{activePlan.code}</span> (Update 15 Jan 64)
           </p>
         </div>
 
@@ -95,7 +95,7 @@ export const IncomeCalculator: React.FC = () => {
               onClick={() => setCalcMode('ACTUAL')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                 calcMode === 'ACTUAL' 
-                  ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20' 
+                  ? 'bg-blue-600 text-slate-950 shadow-md shadow-amber-500/20' 
                   : 'text-slate-700 hover:text-slate-800'
               }`}
             >
@@ -151,7 +151,7 @@ export const IncomeCalculator: React.FC = () => {
             <div className="p-3 rounded-xl bg-white border border-slate-200">
               <div className="flex justify-between text-xs text-slate-700 mb-1">
                 <span>บำเหน็จส่วนตัว (COM)</span>
-                <span className="text-amber-400 font-bold">฿{customParams.personalCOM.toLocaleString()}</span>
+                <span className="text-blue-600 font-bold">฿{customParams.personalCOM.toLocaleString()}</span>
               </div>
               <input
                 type="range"
@@ -217,10 +217,10 @@ export const IncomeCalculator: React.FC = () => {
       )}
 
       {/* 3. Hero Total Income Result Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-amber-500/10 via-slate-50 to-indigo-950/40 border border-amber-500/30 p-6 sm:p-8">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-amber-500/10 via-slate-50 to-indigo-950/40 border border-blue-600/30 p-6 sm:p-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div>
-            <span className="text-xs font-extrabold uppercase tracking-widest text-amber-400">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-blue-600">
               รายได้รวมสุทธิจากการคำนวณ (TOTAL ESTIMATED INCOME)
             </span>
             <div className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight mt-2 flex items-baseline gap-2">
@@ -228,7 +228,7 @@ export const IncomeCalculator: React.FC = () => {
               <span className="text-sm sm:text-base font-medium text-slate-700">/ เดือน</span>
             </div>
             <p className="text-xs text-slate-700 mt-2">
-              ประเมินรายได้รายปี (Annualized Run-Rate): <span className="text-amber-300 font-bold font-mono">฿{(incomeResult.totalIncome * 12).toLocaleString()}</span> บาท/ปี
+              ประเมินรายได้รายปี (Annualized Run-Rate): <span className="text-blue-600 font-bold font-mono">฿{(incomeResult.totalIncome * 12).toLocaleString()}</span> บาท/ปี
             </p>
           </div>
 
@@ -240,7 +240,7 @@ export const IncomeCalculator: React.FC = () => {
             </div>
             <div className="p-3 rounded-2xl bg-white/80 border border-slate-200">
               <span className="text-slate-700 block text-[10px]">ผลตอบแทนบริหารทีม (Override)</span>
-              <span className="font-bold text-amber-400 text-sm">฿{(incomeResult.totalIncome - (incomeResult.breakdown.find(b => b.id.includes('direct') || b.id.includes('personal'))?.amount || 0)).toLocaleString()}</span>
+              <span className="font-bold text-blue-600 text-sm">฿{(incomeResult.totalIncome - (incomeResult.breakdown.find(b => b.id.includes('direct') || b.id.includes('personal'))?.amount || 0)).toLocaleString()}</span>
             </div>
           </div>
         </div>
@@ -265,11 +265,11 @@ export const IncomeCalculator: React.FC = () => {
             <div
               key={item.id}
               onClick={() => setSelectedIncomeCard(item)}
-              className="p-4 rounded-2xl bg-white/80 hover:bg-slate-50 border border-slate-200 hover:border-amber-500/50 cursor-pointer transition-all duration-200 group flex flex-col justify-between"
+              className="p-4 rounded-2xl bg-white/80 hover:bg-slate-50 border border-slate-200 hover:border-blue-600/50 cursor-pointer transition-all duration-200 group flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-start justify-between gap-2">
-                  <div className="text-xs font-bold text-slate-800 group-hover:text-amber-400 transition-colors">
+                  <div className="text-xs font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
                     {item.title}
                   </div>
                   <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${
@@ -279,7 +279,7 @@ export const IncomeCalculator: React.FC = () => {
                   </span>
                 </div>
 
-                <div className="text-xl font-extrabold text-amber-300 mt-2 font-mono">
+                <div className="text-xl font-extrabold text-blue-600 mt-2 font-mono">
                   ฿{item.amount.toLocaleString()}
                 </div>
 
@@ -290,7 +290,7 @@ export const IncomeCalculator: React.FC = () => {
 
               <div className="pt-3 mt-3 border-t border-slate-200/80 flex items-center justify-between text-[10px] text-slate-700">
                 <span className="font-mono truncate max-w-[180px]">สูตร: {item.rateOrFormula}</span>
-                <span className="text-amber-400 font-semibold group-hover:underline flex items-center gap-0.5">
+                <span className="text-blue-600 font-semibold group-hover:underline flex items-center gap-0.5">
                   ดูสูตร <ArrowRight className="w-3 h-3" />
                 </span>
               </div>
@@ -305,7 +305,7 @@ export const IncomeCalculator: React.FC = () => {
           <div className="bg-white border border-slate-200 rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in duration-200">
             <div className="flex items-center justify-between pb-3 border-b border-slate-200">
               <div className="flex items-center gap-2">
-                <Calculator className="w-5 h-5 text-amber-400" />
+                <Calculator className="w-5 h-5 text-blue-600" />
                 <h3 className="text-sm sm:text-base font-bold text-slate-900">
                   {selectedIncomeCard.title}
                 </h3>
@@ -321,7 +321,7 @@ export const IncomeCalculator: React.FC = () => {
             <div className="space-y-3">
               <div className="p-3 rounded-xl bg-white border border-slate-200">
                 <span className="text-[10px] text-slate-700 uppercase font-bold">ยอดเงินที่คำนวณได้</span>
-                <div className="text-2xl font-black text-amber-300 font-mono mt-0.5">
+                <div className="text-2xl font-black text-blue-600 font-mono mt-0.5">
                   ฿{selectedIncomeCard.amount.toLocaleString()} บาท
                 </div>
               </div>

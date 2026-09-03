@@ -79,7 +79,7 @@ export const DashboardView: React.FC = () => {
       {/* 1. Header Profile Banner & Career Stage */}
       <div className="bg-gradient-to-r from-white via-blue-950 to-slate-50 border border-slate-200 rounded-2xl p-6 shadow-xl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-600/10 rounded-full blur-2xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
           
@@ -94,7 +94,7 @@ export const DashboardView: React.FC = () => {
                   {selectedMember.name}
                 </h1>
                 {selectedMember.nickname && (
-                  <span className="text-sm font-medium text-amber-300 bg-amber-950/80 px-2.5 py-0.5 rounded-full border border-amber-600/40">
+                  <span className="text-sm font-medium text-blue-600 bg-amber-950/80 px-2.5 py-0.5 rounded-full border border-amber-600/40">
                     "{selectedMember.nickname}"
                   </span>
                 )}
@@ -144,11 +144,11 @@ export const DashboardView: React.FC = () => {
         <div className="mt-6 pt-5 border-t border-slate-200/80">
           <div className="flex items-center justify-between text-xs text-slate-700 mb-2">
             <span className="font-semibold text-slate-700 flex items-center gap-1.5">
-              <Award className="w-4 h-4 text-amber-400" />
+              <Award className="w-4 h-4 text-blue-600" />
               เส้นทางความก้าวหน้าในอาชีพ (Career Progression Pathway)
             </span>
             <span>
-              สถานะ: <strong className="text-amber-300">{currentPosInfo.nameEn}</strong>
+              สถานะ: <strong className="text-blue-600">{currentPosInfo.nameEn}</strong>
             </span>
           </div>
 
@@ -196,14 +196,14 @@ export const DashboardView: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
         {/* Metric 1: Monthly Income */}
-        <div className="bg-white/90 border border-slate-200 hover:border-amber-500/50 rounded-2xl p-5 shadow-lg relative overflow-hidden transition-all group">
+        <div className="bg-white/90 border border-slate-200 hover:border-blue-600/50 rounded-2xl p-5 shadow-lg relative overflow-hidden transition-all group">
           <div className="flex items-center justify-between text-slate-700 text-xs mb-2">
             <span>รายได้ประมาณการ / เดือน</span>
-            <div className="p-2 rounded-xl bg-amber-500/10 text-amber-400">
+            <div className="p-2 rounded-xl bg-blue-600/10 text-blue-600">
               <DollarSign className="w-4 h-4" />
             </div>
           </div>
-          <div className="text-2xl sm:text-3xl font-black text-amber-400 tracking-tight">
+          <div className="text-2xl sm:text-3xl font-black text-blue-600 tracking-tight">
             {formatBaht(result.totalMonthlyIncome)}
           </div>
           <div className="flex items-center justify-between mt-3 text-[11px] text-slate-700 border-t border-slate-200/80 pt-2">
@@ -274,7 +274,7 @@ export const DashboardView: React.FC = () => {
           <div className="flex items-center justify-between mb-4">
             <div>
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <DollarSign className="w-5 h-5 text-amber-400" />
+                <DollarSign className="w-5 h-5 text-blue-600" />
                 จำแนกโครงสร้างรายได้ 5 หมวด (Income Categories Breakdown)
               </h2>
               <p className="text-xs text-slate-700">
@@ -360,10 +360,10 @@ export const DashboardView: React.FC = () => {
           <div>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-amber-400" />
+                <Sparkles className="w-5 h-5 text-blue-600" />
                 ความคืบหน้าเป้าหมาย
               </h2>
-              <span className="text-xs font-bold text-amber-400 bg-amber-950/80 px-2 py-0.5 rounded border border-amber-600/40">
+              <span className="text-xs font-bold text-blue-600 bg-amber-950/80 px-2 py-0.5 rounded border border-amber-600/40">
                 {incomeProgressPct}% สำเร็จ
               </span>
             </div>
@@ -428,7 +428,7 @@ export const DashboardView: React.FC = () => {
               className={`text-xs px-3 py-1 rounded-full font-bold border ${
                 result.promotionRequirementsMet
                   ? 'bg-emerald-950 text-emerald-300 border-emerald-600'
-                  : 'bg-amber-950 text-amber-300 border-amber-600'
+                  : 'bg-amber-950 text-blue-600 border-amber-600'
               }`}
             >
               {result.promotionRequirementsMet ? '✓ ผ่านเกณฑ์เลื่อนตำแหน่งแล้ว' : '⏳ ยังขาดคุณสมบัติบางส่วน'}
@@ -454,14 +454,14 @@ export const DashboardView: React.FC = () => {
                       <CheckCircle className="w-3.5 h-3.5" /> ผ่าน
                     </span>
                   ) : (
-                    <span className="flex items-center gap-1 text-[11px] font-bold text-amber-400">
+                    <span className="flex items-center gap-1 text-[11px] font-bold text-blue-600">
                       <AlertCircle className="w-3.5 h-3.5" /> ยังไม่ถึง
                     </span>
                   )}
                 </div>
                 <div className="text-xs space-y-1">
                   <p className="text-slate-700">เกณฑ์ที่ต้องได้: <strong className="text-slate-900">{check.required}</strong></p>
-                  <p className="text-slate-700">ปัจจุบันทำได้: <strong className={check.met ? 'text-emerald-300' : 'text-amber-300'}>{check.current}</strong></p>
+                  <p className="text-slate-700">ปัจจุบันทำได้: <strong className={check.met ? 'text-emerald-300' : 'text-blue-600'}>{check.current}</strong></p>
                 </div>
               </div>
             ))}

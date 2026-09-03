@@ -782,8 +782,8 @@ export const AuthModal: React.FC = () => {
               {/* STEP 2: enter code */}
               {forgotStep === 'code' && (
                 <form onSubmit={handleVerifyCode} className="space-y-4">
-                  <div className="text-center p-3 bg-amber-50/60 rounded-2xl border border-amber-100">
-                    <CheckCircle2 className="w-8 h-8 text-amber-600 mx-auto mb-1.5" />
+                  <div className="text-center p-3 bg-blue-50/60 rounded-2xl border border-amber-100">
+                    <CheckCircle2 className="w-8 h-8 text-blue-600 mx-auto mb-1.5" />
                     <h4 className="text-sm font-bold text-slate-800">ส่งอีเมลรีเซ็ตรหัสผ่านแล้ว</h4>
                     <p className="text-xs text-slate-700 mt-0.5">
                       เปิดอีเมล <b className="text-slate-700">{forgotEmail}</b> แล้วคลิกลิงก์{" "}

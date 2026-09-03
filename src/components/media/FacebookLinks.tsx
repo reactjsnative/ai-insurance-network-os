@@ -117,7 +117,7 @@ export const FacebookLinks: React.FC = () => {
         <button
           id="btn_add_facebook"
           onClick={() => setShowAdd((s) => !s)}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-bold transition-all shadow-sm shadow-amber-500/20"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 text-sm font-bold transition-all shadow-sm shadow-amber-500/20"
         >
           <Plus className="w-4 h-4" /> เพิ่มลิงก์
         </button>
@@ -132,28 +132,28 @@ export const FacebookLinks: React.FC = () => {
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
               placeholder="ชื่อ/คำอธิบาย"
-              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-amber-500"
+              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
             <input
               id="fb_handle_input"
               value={form.handle}
               onChange={(e) => setForm({ ...form, handle: e.target.value })}
               placeholder="ชื่อเพจ/ผู้ใช้ เช่น AINetworkOS"
-              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-amber-500"
+              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
             <input
               id="fb_url_input"
               value={form.url}
               onChange={(e) => setForm({ ...form, url: e.target.value })}
               placeholder="ลิงก์ (เว้นไว้ได้)"
-              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-amber-500"
+              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
           </div>
           <div className="flex gap-2">
             <button
               id="btn_save_facebook"
               onClick={handleAdd}
-              className="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-bold"
+              className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-slate-950 text-sm font-bold"
             >
               บันทึก
             </button>

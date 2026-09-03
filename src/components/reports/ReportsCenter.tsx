@@ -74,12 +74,12 @@ export const ReportsCenter: React.FC = () => {
             onClick={handleExportCSV}
             className="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center gap-2 border border-slate-200 transition-colors"
           >
-            <Download className="w-4 h-4 text-amber-400" />
+            <Download className="w-4 h-4 text-blue-600" />
             <span>ส่งออก CSV</span>
           </button>
           <button
             onClick={handlePrint}
-            className="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-lg shadow-amber-500/20"
+            className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 font-bold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-lg shadow-amber-500/20"
           >
             <Printer className="w-4 h-4" />
             <span>พิมพ์รายงาน (Print / PDF)</span>
@@ -94,7 +94,7 @@ export const ReportsCenter: React.FC = () => {
             <div className="text-lg font-black text-slate-900">
               AI INSURANCE NETWORK OS • COMPENSATION STATEMENT
             </div>
-            <div className="text-xs text-amber-400 font-mono mt-0.5">
+            <div className="text-xs text-blue-600 font-mono mt-0.5">
               รอบผลงาน: ประจำเดือนปัจจุบัน | เวอร์ชันแผน: {activePlan.code}
             </div>
           </div>
@@ -125,9 +125,9 @@ export const ReportsCenter: React.FC = () => {
               {stats.totalUnits} / {stats.totalCenters}
             </div>
           </div>
-          <div className="p-4 rounded-2xl bg-white border border-amber-500/40">
-            <span className="text-[10px] text-amber-400 block uppercase font-bold">รายได้สุทธิเดือนนี้</span>
-            <div className="text-xl font-black text-amber-300 font-mono mt-1">
+          <div className="p-4 rounded-2xl bg-white border border-blue-600/40">
+            <span className="text-[10px] text-blue-600 block uppercase font-bold">รายได้สุทธิเดือนนี้</span>
+            <div className="text-xl font-black text-blue-600 font-mono mt-1">
               ฿{income.totalIncome.toLocaleString()}
             </div>
           </div>
@@ -152,14 +152,14 @@ export const ReportsCenter: React.FC = () => {
                     <td className="p-3 text-slate-700">{idx + 1}</td>
                     <td className="p-3 font-semibold text-slate-800">{b.title}</td>
                     <td className="p-3 text-slate-700 font-mono">{b.rateOrFormula}</td>
-                    <td className="p-3 text-right font-bold text-amber-400 font-mono">฿{b.amount.toLocaleString()}</td>
+                    <td className="p-3 text-right font-bold text-blue-600 font-mono">฿{b.amount.toLocaleString()}</td>
                   </tr>
                 ))}
               </tbody>
               <tfoot className="bg-white/90 font-bold text-slate-900 border-t border-slate-200">
                 <tr>
-                  <td colSpan={3} className="p-3 text-right text-amber-400 uppercase">รวมรายได้สุทธิ (Total Income)</td>
-                  <td className="p-3 text-right text-base text-amber-300 font-mono">฿{income.totalIncome.toLocaleString()}</td>
+                  <td colSpan={3} className="p-3 text-right text-blue-600 uppercase">รวมรายได้สุทธิ (Total Income)</td>
+                  <td className="p-3 text-right text-base text-blue-600 font-mono">฿{income.totalIncome.toLocaleString()}</td>
                 </tr>
               </tfoot>
             </table>

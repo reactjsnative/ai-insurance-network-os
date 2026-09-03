@@ -39,7 +39,7 @@ export const CompensationAdmin: React.FC = () => {
             <h1 className="text-xl sm:text-2xl font-black text-slate-900">
               ผู้ดูแลระบบแผนผลตอบแทน (Compensation Admin & Rule Engine)
             </h1>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-600/10 text-blue-600 border border-blue-600/30">
               {activePlan.code}
             </span>
           </div>
@@ -61,7 +61,7 @@ export const CompensationAdmin: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="p-4 rounded-2xl bg-white/80 border border-slate-200">
           <span className="text-[10px] text-slate-700 uppercase font-bold">เวอร์ชันปัจจุบัน</span>
-          <div className="text-lg font-black text-amber-300 mt-1">{activePlan.name}</div>
+          <div className="text-lg font-black text-blue-600 mt-1">{activePlan.name}</div>
           <div className="text-[10px] text-slate-700 font-mono mt-0.5">Code: {activePlan.code}</div>
         </div>
         <div className="p-4 rounded-2xl bg-white/80 border border-slate-200">
@@ -108,7 +108,7 @@ export const CompensationAdmin: React.FC = () => {
                       {r.positionId || 'ทุกตำแหน่ง'}
                     </span>
                   </td>
-                  <td className="py-3 px-4 font-mono text-amber-400">
+                  <td className="py-3 px-4 font-mono text-blue-600">
                     {r.basis}
                   </td>
                   <td className="py-3 px-4 font-mono text-sky-300">
@@ -129,7 +129,7 @@ export const CompensationAdmin: React.FC = () => {
       {/* 4. Audit Log Trail */}
       <div className="rounded-3xl bg-white/90 border border-slate-200 p-6 space-y-4 shadow-xl">
         <div className="flex items-center gap-2">
-          <History className="w-5 h-5 text-amber-400" />
+          <History className="w-5 h-5 text-blue-600" />
           <h2 className="text-sm sm:text-base font-bold text-slate-900">
             ประวัติการเปลี่ยนแปลงและ Audit Trail (System Audit Logs)
           </h2>
@@ -145,7 +145,7 @@ export const CompensationAdmin: React.FC = () => {
                 </div>
                 <div className="text-slate-700 mt-0.5">{log.reason}</div>
               </div>
-              <div className="text-[10px] text-amber-400 font-medium">โดย {log.userName}</div>
+              <div className="text-[10px] text-blue-600 font-medium">โดย {log.userName}</div>
             </div>
           ))}
         </div>

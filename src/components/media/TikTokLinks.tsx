@@ -118,7 +118,7 @@ export const TikTokLinks: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
-            <Music2 className="w-6 h-6 text-amber-400" />
+            <Music2 className="w-6 h-6 text-blue-600" />
             {t('social_sub_tiktok')}
           </h1>
           <p className="text-sm text-slate-700 mt-1">
@@ -128,7 +128,7 @@ export const TikTokLinks: React.FC = () => {
         <button
           id="btn_add_tiktok"
           onClick={() => setShowAdd((s) => !s)}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-bold transition-all shadow-sm shadow-amber-500/20"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 text-sm font-bold transition-all shadow-sm shadow-amber-500/20"
         >
           <Plus className="w-4 h-4" /> เพิ่มลิงก์
         </button>
@@ -143,28 +143,28 @@ export const TikTokLinks: React.FC = () => {
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
               placeholder="ชื่อ/คำอธิบาย"
-              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-amber-500"
+              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
             <input
               id="tk_handle_input"
               value={form.handle}
               onChange={(e) => setForm({ ...form, handle: e.target.value })}
               placeholder="ชื่อผู้ใช้ เช่น @insurance_pro"
-              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-amber-500"
+              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
             <input
               id="tk_url_input"
               value={form.url}
               onChange={(e) => setForm({ ...form, url: e.target.value })}
               placeholder="ลิงก์ (เว้นไว้ได้)"
-              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-amber-500"
+              className="px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-600"
             />
           </div>
           <div className="flex gap-2">
             <button
               id="btn_save_tiktok"
               onClick={handleAdd}
-              className="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-bold"
+              className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-slate-950 text-sm font-bold"
             >
               บันทึก
             </button>
@@ -183,11 +183,11 @@ export const TikTokLinks: React.FC = () => {
         {links.map((l) => (
           <div
             key={l.id}
-            className="group relative p-4 rounded-2xl bg-gradient-to-br from-white/90 to-white border border-slate-200 hover:border-amber-500/40 transition-all"
+            className="group relative p-4 rounded-2xl bg-gradient-to-br from-white/90 to-white border border-slate-200 hover:border-blue-600/40 transition-all"
           >
             <div className="flex items-center gap-3">
               <div className="w-11 h-11 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
-                <Music2 className="w-5 h-5 text-amber-400" />
+                <Music2 className="w-5 h-5 text-blue-600" />
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-bold text-slate-900 truncate flex items-center gap-1">
@@ -207,7 +207,7 @@ export const TikTokLinks: React.FC = () => {
             <button
               id={`btn_open_tk_${l.id}`}
               onClick={() => openLink(l.url)}
-              className="mt-3 w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-slate-100 hover:bg-amber-500/20 hover:text-amber-300 text-slate-800 text-xs font-semibold border border-slate-200 transition-all"
+              className="mt-3 w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-slate-100 hover:bg-blue-600/20 hover:text-blue-600 text-slate-800 text-xs font-semibold border border-slate-200 transition-all"
             >
               <ExternalLink className="w-3.5 h-3.5" /> เปิดใน TikTok
             </button>

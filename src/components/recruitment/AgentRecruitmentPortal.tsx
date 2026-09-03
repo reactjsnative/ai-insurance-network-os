@@ -254,7 +254,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
     switch (status) {
       case 'pending_review':
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/30">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-600/10 text-blue-600 border border-blue-600/30">
             <Clock className="w-3.5 h-3.5" />
             {language === 'th' ? 'รอตรวจสอบเอกสาร' : 'Pending Review'}
           </span>
@@ -313,7 +313,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <Sparkles className="w-3.5 h-3.5 text-blue-600" />
               {language === 'th' ? 'ระบบรับสมัครและขึ้นทะเบียนตัวแทนใหม่ (Life Agent Onboarding)' : 'Life Insurance Agent Recruitment & Onboarding'}
             </div>
             <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight flex items-center gap-3">
@@ -353,7 +353,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
               <FileText className="w-3.5 h-3.5" />
               {language === 'th' ? 'รายการใบสมัคร' : 'Applications List'}
               {pendingApps > 0 && (
-                <span className="w-5 h-5 rounded-full bg-amber-500 text-slate-950 font-bold text-[10px] flex items-center justify-center">
+                <span className="w-5 h-5 rounded-full bg-blue-600 text-slate-950 font-bold text-[10px] flex items-center justify-center">
                   {pendingApps}
                 </span>
               )}
@@ -380,8 +380,8 @@ export const AgentRecruitmentPortal: React.FC = () => {
             <p className="text-xl font-bold text-slate-900 mt-1">{totalApps} <span className="text-xs font-normal text-slate-700">{language === 'th' ? 'ราย' : 'apps'}</span></p>
           </div>
           <div className="bg-white/60 p-3 rounded-xl border border-slate-200/60">
-            <p className="text-xs text-amber-400">{language === 'th' ? 'รอตรวจสอบ' : 'Pending Review'}</p>
-            <p className="text-xl font-bold text-amber-400 mt-1">{pendingApps} <span className="text-xs font-normal text-slate-700">{language === 'th' ? 'ราย' : 'apps'}</span></p>
+            <p className="text-xs text-blue-600">{language === 'th' ? 'รอตรวจสอบ' : 'Pending Review'}</p>
+            <p className="text-xl font-bold text-blue-600 mt-1">{pendingApps} <span className="text-xs font-normal text-slate-700">{language === 'th' ? 'ราย' : 'apps'}</span></p>
           </div>
           <div className="bg-white/60 p-3 rounded-xl border border-slate-200/60">
             <p className="text-xs text-cyan-400">{language === 'th' ? 'พร้อมบรรจุ/ผ่านเกณฑ์' : 'Qualified / Ready'}</p>
@@ -908,10 +908,10 @@ export const AgentRecruitmentPortal: React.FC = () => {
                 <div className="p-5 rounded-2xl bg-gradient-to-br from-indigo-950/40 via-slate-50 to-white border border-indigo-500/30 space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Calculator className="w-5 h-5 text-amber-400" />
+                      <Calculator className="w-5 h-5 text-blue-600" />
                       <h3 className="text-sm font-bold text-slate-900">{language === 'th' ? 'การจำลองเป้าหมายรายได้และผลงานปีแรก' : 'First Year Income Goal Simulation'}</h3>
                     </div>
-                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30">
+                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-600/10 text-blue-600 border border-blue-600/30">
                       Rule Engine 15 ม.ค. 64
                     </span>
                   </div>
@@ -927,7 +927,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                         min={50000}
                         value={formData.targetYearlyFYCGoal}
                         onChange={(e) => setFormData({ ...formData, targetYearlyFYCGoal: Number(e.target.value) || 0 })}
-                        className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm text-amber-400 font-bold focus:outline-none focus:border-amber-500"
+                        className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm text-blue-600 font-bold focus:outline-none focus:border-blue-600"
                       />
                       <p className="text-[11px] text-slate-700 mt-1">
                         ≈ {(formData.targetYearlyFYCGoal / 12).toLocaleString()} บาท/เดือน
@@ -1119,7 +1119,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                               <p className="text-[10px] text-slate-700 font-mono mt-0.5">No. {app.licenseNumber || '-'}</p>
                             </div>
                           ) : app.licenseStatus === 'exam_scheduled' ? (
-                            <span className="text-xs font-medium text-amber-400 flex items-center gap-1">
+                            <span className="text-xs font-medium text-blue-600 flex items-center gap-1">
                               <Clock className="w-3.5 h-3.5" /> นัดสอบ {app.examDate || 'เร็วๆ นี้'}
                             </span>
                           ) : (
@@ -1135,7 +1135,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                         </td>
 
                         <td className="px-4 py-3.5">
-                          <p className="font-bold text-xs text-amber-400">{(app.targetYearlyFYCGoal || 0).toLocaleString()} ฿</p>
+                          <p className="font-bold text-xs text-blue-600">{(app.targetYearlyFYCGoal || 0).toLocaleString()} ฿</p>
                           <p className="text-[10px] text-slate-700 mt-0.5">
                             {app.targetPositionPreference === 'unit_manager_fast_track' ? 'UM Fast Track' :
                              app.targetPositionPreference === 'center_executive_track' ? 'CM Track' : 'Life Agent'}
@@ -1185,7 +1185,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
               {[
                 { label: language === 'th' ? 'ผู้บริหารและตัวแทนแนะนำตรง (Direct Referral)' : 'Direct Referral', count: applications.filter(a => a.recruitmentChannel === 'direct_referral').length, color: 'bg-indigo-500' },
                 { label: language === 'th' ? 'สัมมนาเปิดโอกาส (Opportunity Seminar)' : 'Opportunity Seminar', count: applications.filter(a => a.recruitmentChannel === 'seminar').length, color: 'bg-cyan-500' },
-                { label: language === 'th' ? 'โซเชียลมีเดีย (TikTok / FB / IG)' : 'Social Media', count: applications.filter(a => a.recruitmentChannel === 'social_media').length, color: 'bg-amber-500' },
+                { label: language === 'th' ? 'โซเชียลมีเดีย (TikTok / FB / IG)' : 'Social Media', count: applications.filter(a => a.recruitmentChannel === 'social_media').length, color: 'bg-blue-600' },
                 { label: language === 'th' ? 'อื่นๆ / โฆษณา' : 'Others / Ads', count: applications.filter(a => a.recruitmentChannel === 'company_booth' || a.recruitmentChannel === 'online_ad' || a.recruitmentChannel === 'other').length, color: 'bg-emerald-500' },
               ].map((item, idx) => (
                 <div key={idx} className="space-y-1">
@@ -1206,13 +1206,13 @@ export const AgentRecruitmentPortal: React.FC = () => {
 
           <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xl space-y-4">
             <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-              <Award className="w-5 h-5 text-amber-400" />
+              <Award className="w-5 h-5 text-blue-600" />
               {language === 'th' ? 'ศักยภาพและเป้าหมายตัวแทนใหม่' : 'New Agent Capacity & Goals'}
             </h3>
             <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-3 text-xs">
               <div className="flex justify-between py-1 border-b border-slate-200/80">
                 <span className="text-slate-700">{language === 'th' ? 'เป้าหมาย FYC รวมของผู้สมัครทั้งหมด' : 'Total Projected FYC Pipeline'}</span>
-                <span className="font-bold text-amber-400 text-sm">
+                <span className="font-bold text-blue-600 text-sm">
                   {applications.reduce((sum, a) => sum + (a.targetYearlyFYCGoal || 0), 0).toLocaleString()} THB
                 </span>
               </div>
@@ -1272,7 +1272,7 @@ export const AgentRecruitmentPortal: React.FC = () => {
                   <span className="text-slate-700">ผู้แนะนำ:</span> <span className="text-slate-900 font-semibold">{selectedApplication.sponsorName}</span> ({selectedApplication.sponsorCode})
                 </p>
                 <p className="text-slate-700">
-                  <span className="text-slate-700">เป้าหมาย FYC:</span> <span className="text-amber-400 font-bold">{(selectedApplication.targetYearlyFYCGoal || 0).toLocaleString()} บาท/ปี</span>
+                  <span className="text-slate-700">เป้าหมาย FYC:</span> <span className="text-blue-600 font-bold">{(selectedApplication.targetYearlyFYCGoal || 0).toLocaleString()} บาท/ปี</span>
                 </p>
                 <p className="text-slate-700">
                   <span className="text-slate-700">เป้าหมายรายได้:</span> <span className="text-emerald-400 font-bold">{(selectedApplication.targetMonthlyIncomeGoal || 0).toLocaleString()} บาท/เดือน</span>

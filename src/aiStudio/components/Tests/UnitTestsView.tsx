@@ -89,12 +89,12 @@ export const UnitTestsView: React.FC = () => {
         </div>
 
         <div className="bg-white/90 border border-slate-200 rounded-2xl p-4 shadow-lg flex items-center gap-3">
-          <div className="p-3 rounded-xl bg-amber-500/10 text-amber-400">
+          <div className="p-3 rounded-xl bg-blue-600/10 text-blue-600">
             <Award className="w-5 h-5" />
           </div>
           <div>
             <span className="text-xs text-slate-700">อัตราความถูกต้อง</span>
-            <div className="text-xl font-black text-amber-400">{passRate}%</div>
+            <div className="text-xl font-black text-blue-600">{passRate}%</div>
           </div>
         </div>
 
@@ -175,7 +175,7 @@ export const UnitTestsView: React.FC = () => {
                   <td className="py-3 px-3 text-right font-mono font-bold text-slate-800">
                     {test.expected}
                   </td>
-                  <td className="py-3 px-3 text-right font-mono font-bold text-amber-400">
+                  <td className="py-3 px-3 text-right font-mono font-bold text-blue-600">
                     {test.actual}
                   </td>
                   <td className="py-3 px-3 text-slate-700 text-[11px]">

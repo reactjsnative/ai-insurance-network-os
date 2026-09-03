@@ -56,7 +56,7 @@ export const SocialView: React.FC = () => {
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-amber-500/20 cursor-pointer"
+          className="mt-6 w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-amber-500/20 cursor-pointer"
         >
           <ExternalLink className="w-4 h-4" />
           เปิด {item.title} ในแท็บใหม่

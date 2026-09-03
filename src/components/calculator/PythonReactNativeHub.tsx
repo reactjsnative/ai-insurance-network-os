@@ -191,7 +191,7 @@ const MobileSimulatorView: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between gap-3 flex-wrap">
         <div>
-          <span className="text-[9px] font-black text-amber-400 tracking-widest uppercase">Network Success · Compensation Engine</span>
+          <span className="text-[9px] font-black text-blue-600 tracking-widest uppercase">Network Success · Compensation Engine</span>
           <h2 className="text-lg sm:text-xl font-black text-slate-900">โปรแกรมคำนวณผลประโยชน์และรายได้</h2>
           <p className="text-[10px] text-slate-700">อิงโครงสร้างผลตอบแทน 13 รายการ 4 ระดับตำแหน่ง ปรับปรุง 15 ม.ค. 64</p>
         </div>
@@ -209,7 +209,7 @@ const MobileSimulatorView: React.FC = () => {
             key={p.id}
             onClick={() => setPosition(p.id as any)}
             className={`py-1.5 px-1 rounded-lg text-center transition-all cursor-pointer ${
-              position === p.id ? 'bg-amber-500 text-slate-950 font-bold shadow' : 'text-slate-700 hover:text-slate-800'
+              position === p.id ? 'bg-blue-600 text-slate-950 font-bold shadow' : 'text-slate-700 hover:text-slate-800'
             }`}
           >
             <div className="text-[10px] font-bold leading-none">{p.label}</div>
@@ -219,13 +219,13 @@ const MobileSimulatorView: React.FC = () => {
       </div>
 
       {/* Hero Income Card */}
-      <div className="p-4 rounded-2xl bg-gradient-to-r from-amber-500/20 via-slate-50 to-white border border-amber-500/40">
-        <span className="text-[9px] font-extrabold text-amber-400 uppercase">รายได้รวมสุทธิ (ต่อเดือน)</span>
+      <div className="p-4 rounded-2xl bg-gradient-to-r from-amber-500/20 via-slate-50 to-white border border-blue-600/40">
+        <span className="text-[9px] font-extrabold text-blue-600 uppercase">รายได้รวมสุทธิ (ต่อเดือน)</span>
         <div className="text-3xl font-black text-slate-900 mt-1 font-mono">
           ฿{calc.total.toLocaleString()}
         </div>
         <div className="text-[10px] text-slate-700 mt-1">
-          ประมาณการรายได้ทั้งปี: <span className="text-amber-300 font-bold">฿{calc.annualized.toLocaleString()}</span> บาท/ปี
+          ประมาณการรายได้ทั้งปี: <span className="text-blue-600 font-bold">฿{calc.annualized.toLocaleString()}</span> บาท/ปี
         </div>
       </div>
 
@@ -239,7 +239,7 @@ const MobileSimulatorView: React.FC = () => {
             type="number"
             value={personalCom}
             onChange={(e) => setPersonalCom(Number(e.target.value) || 0)}
-            className="w-24 bg-white border border-slate-200 rounded-lg px-2 py-1 text-right text-xs text-amber-400 font-bold"
+            className="w-24 bg-white border border-slate-200 rounded-lg px-2 py-1 text-right text-xs text-blue-600 font-bold"
           />
         </div>
 
@@ -289,7 +289,7 @@ const MobileSimulatorView: React.FC = () => {
               <div className="text-[11px] font-bold text-slate-800">{it.title}</div>
               <div className="text-[9px] text-sky-400 font-mono">{it.rate} • {it.desc}</div>
             </div>
-            <div className="text-xs font-black text-amber-400 font-mono">
+            <div className="text-xs font-black text-blue-600 font-mono">
               ฿{it.amount.toLocaleString()}
             </div>
           </div>
@@ -303,10 +303,10 @@ export const PythonReactNativeHub: React.FC = () => {
   return (
     <div className="space-y-6 text-left">
       {/* Header Hero Card */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-amber-500/15 via-slate-50 to-indigo-950/40 border border-amber-500/30 shadow-xl">
+      <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-amber-500/15 via-slate-50 to-indigo-950/40 border border-blue-600/30 shadow-xl">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-black uppercase tracking-wider border border-amber-500/30">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/20 text-blue-600 text-xs font-black uppercase tracking-wider border border-blue-600/30">
               <Zap className="w-3.5 h-3.5" />
               <span>Network Success · Compensation Engine</span>
             </div>
@@ -326,12 +326,12 @@ export const PythonReactNativeHub: React.FC = () => {
       {/* Rules & Structure Infographics */}
       <div className="space-y-6">
         <div className="flex items-center gap-2 pt-2">
-          <Layers className="w-5 h-5 text-amber-400" />
+          <Layers className="w-5 h-5 text-blue-600" />
           <h2 className="text-base font-black text-slate-900">โครงสร้างรายได้ และคุณสมบัติการแต่งตั้ง 4 ตำแหน่ง</h2>
         </div>
 
         <div className="p-4 rounded-2xl bg-white/60 border border-slate-200 flex items-center gap-3">
-          <Info className="w-5 h-5 text-amber-400 shrink-0" />
+          <Info className="w-5 h-5 text-blue-600 shrink-0" />
           <p className="text-xs text-slate-700">
             ถอดสูตรคณิตศาสตร์และเงื่อนไขทั้งหมดจากเอกสารทั้ง 4 แผ่น (ภาพรวม 4 ตำแหน่ง, ผบ.ศูนย์ CM, ผบ.ภาค RM, ผบ.หน่วย UM) อย่างแม่นยำ 100%
           </p>
@@ -341,7 +341,7 @@ export const PythonReactNativeHub: React.FC = () => {
           {/* Sheet 1: ภาพรวม */}
           <div className="p-5 rounded-3xl bg-white/90 border border-slate-200 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-extrabold text-amber-400 uppercase tracking-wider">แผ่นที่ 1 / ภาพรวม</span>
+              <span className="text-xs font-extrabold text-blue-600 uppercase tracking-wider">แผ่นที่ 1 / ภาพรวม</span>
               <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 font-mono">โครงสร้าง & คุณสมบัติ</span>
             </div>
             <h3 className="text-base font-bold text-slate-900">โครงสร้างรายได้ และคุณสมบัติการแต่งตั้ง 4 ตำแหน่ง</h3>
@@ -356,7 +356,7 @@ export const PythonReactNativeHub: React.FC = () => {
                 <p className="text-slate-700 text-[11px]">บำเหน็จ 75,000 บาท (เวลา 3-6 เดือน) + แยกหน่วย 2 หน่วย</p>
               </div>
               <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1">
-                <div className="font-bold text-amber-300">3. ผู้บริหารศูนย์ (CM) → ผู้บริหารภาค (RM)</div>
+                <div className="font-bold text-blue-600">3. ผู้บริหารศูนย์ (CM) → ผู้บริหารภาค (RM)</div>
                 <p className="text-slate-700 text-[11px]">บำเหน็จ 1,200,000 บาท (เวลา 12-24 เดือน) + แยกศูนย์ 4 ศูนย์</p>
               </div>
             </div>
@@ -389,21 +389,21 @@ export const PythonReactNativeHub: React.FC = () => {
           {/* Sheet 2: ผู้บริหารศูนย์ CM */}
           <div className="p-5 rounded-3xl bg-white/90 border border-slate-200 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-extrabold text-amber-400 uppercase tracking-wider">แผ่นที่ 2 / ผู้บริหารศูนย์</span>
+              <span className="text-xs font-extrabold text-blue-600 uppercase tracking-wider">แผ่นที่ 2 / ผู้บริหารศูนย์</span>
               <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 font-mono">CM Rules</span>
             </div>
             <h3 className="text-base font-bold text-slate-900">ผู้บริหารศูนย์ (Center Manager)</h3>
 
             <div className="space-y-2 text-xs text-slate-700">
               <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1">
-                <div className="font-bold text-amber-300">ค่าจัดงานศูนย์ ประเภท 1, 2, 3</div>
+                <div className="font-bold text-blue-600">ค่าจัดงานศูนย์ ประเภท 1, 2, 3</div>
                 <p className="text-slate-700 text-[11px]">
                   T1: COM 15k(15%), 30k(20%), 60k(25%), 120k(30%)<br />
                   T2: 0.8% เบี้ยปีต่อ • T3: Fixed 5k - 15k ตาม COM
                 </p>
               </div>
               <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1">
-                <div className="font-bold text-amber-300">ค่าแยกศูนย์ & โบนัสศูนย์</div>
+                <div className="font-bold text-blue-600">ค่าแยกศูนย์ & โบนัสศูนย์</div>
                 <p className="text-slate-700 text-[11px]">
                   ค่าแยกศูนย์: เดือนแรก 4,000 + 24 เดือน (1.5k-3k)<br />
                   โบนัสศูนย์: COM ปี 150k(4%), 300k(5%), 600k(6%)

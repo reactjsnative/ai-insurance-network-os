@@ -62,8 +62,8 @@ const TreeNodeComponent: React.FC<TreeNodeProps> = ({
   let borderClass = 'border-slate-200 hover:border-slate-500';
   let badgeBg = 'bg-slate-100 text-slate-700';
   if (member.position === 'GROUP_MANAGER') {
-    borderClass = 'border-amber-500/80 shadow-amber-500/10 shadow-lg';
-    badgeBg = 'bg-amber-950 text-amber-300 border-amber-600';
+    borderClass = 'border-blue-600/80 shadow-amber-500/10 shadow-lg';
+    badgeBg = 'bg-amber-950 text-blue-600 border-amber-600';
   } else if (member.position === 'CENTER_MANAGER') {
     borderClass = 'border-emerald-500/80 shadow-emerald-500/10 shadow-md';
     badgeBg = 'bg-emerald-950 text-emerald-300 border-emerald-600';
@@ -98,7 +98,7 @@ const TreeNodeComponent: React.FC<TreeNodeProps> = ({
               <div className="flex items-center gap-1 mt-0.5">
                 <span className="font-mono text-[10px] text-slate-700 font-semibold">{member.code}</span>
                 {member.nickname && (
-                  <span className="text-[10px] text-amber-300 font-medium">({member.nickname})</span>
+                  <span className="text-[10px] text-blue-600 font-medium">({member.nickname})</span>
                 )}
               </div>
             </div>
@@ -120,7 +120,7 @@ const TreeNodeComponent: React.FC<TreeNodeProps> = ({
                 e.stopPropagation();
                 onAddChild(member.id);
               }}
-              className="p-1 rounded-md text-amber-400 hover:text-amber-300 hover:bg-amber-950/60 transition-colors"
+              className="p-1 rounded-md text-blue-600 hover:text-blue-600 hover:bg-amber-950/60 transition-colors"
               title="เพิ่มลูกทีมสายตรง"
             >
               <UserPlus className="w-3.5 h-3.5" />
@@ -150,7 +150,7 @@ const TreeNodeComponent: React.FC<TreeNodeProps> = ({
           </div>
           <div className="col-span-2 pt-1 border-t border-slate-200/60 flex items-center justify-between">
             <span className="text-[10px] text-slate-700">รายได้ประมาณการ/ด:</span>
-            <strong className="text-amber-400">{formatBaht(incomeRes?.totalMonthlyIncome || 0, false)}</strong>
+            <strong className="text-blue-600">{formatBaht(incomeRes?.totalMonthlyIncome || 0, false)}</strong>
           </div>
         </div>
 
@@ -352,7 +352,7 @@ export const OrganizationTreeView: React.FC = () => {
 
           <button
             onClick={() => setIsAddMemberModalOpen(true)}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold text-xs shadow-md shadow-amber-500/20 cursor-pointer"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-indigo-600 text-slate-950 font-bold text-xs shadow-md shadow-amber-500/20 cursor-pointer"
           >
             <UserPlus className="w-3.5 h-3.5" />
             <span>เพิ่มสมาชิกใหม่</span>
@@ -366,8 +366,8 @@ export const OrganizationTreeView: React.FC = () => {
       <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-700 bg-white/60 p-3 rounded-xl border border-slate-200">
         <div className="flex flex-wrap items-center gap-3">
           <span className="font-semibold text-slate-700">สัญลักษณ์ตำแหน่ง:</span>
-          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-950/80 text-amber-300 border border-amber-600/60 text-[11px] font-semibold">
-            <span className="w-2 h-2 rounded-full bg-amber-400" /> ผู้บริหารภาค (GM)
+          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-950/80 text-blue-600 border border-amber-600/60 text-[11px] font-semibold">
+            <span className="w-2 h-2 rounded-full bg-blue-500" /> ผู้บริหารภาค (GM)
           </span>
           <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-600/60 text-[11px] font-semibold">
             <span className="w-2 h-2 rounded-full bg-emerald-400" /> ผู้บริหารศูนย์ (CM)

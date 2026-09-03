@@ -32,7 +32,7 @@ export const ExtractedAiNetwork: React.FC<{ tab?: string }> = ({ tab = 'dashboar
       {/* Slim toolbar */}
       <div className="flex items-center justify-between gap-3 px-4 py-2.5 border-b border-slate-200 bg-white/95 shrink-0">
         <div className="flex items-center gap-2.5 min-w-0">
-          <Network className="w-4 h-4 text-amber-400 shrink-0" />
+          <Network className="w-4 h-4 text-blue-600 shrink-0" />
           <div className="min-w-0">
             <p className="text-sm font-bold text-slate-900 truncate leading-tight">
               ระบบบริหารตัวแทนประกันชีวิต
@@ -56,7 +56,7 @@ export const ExtractedAiNetwork: React.FC<{ tab?: string }> = ({ tab = 'dashboar
             target="_blank"
             rel="noopener noreferrer"
             title="เปิดในแท็บใหม่ (Open in new tab)"
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-amber-300 hover:text-amber-200 hover:bg-amber-500/10 border border-amber-500/30 transition-colors"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-blue-600 hover:text-amber-200 hover:bg-blue-600/10 border border-blue-600/30 transition-colors"
           >
             <ExternalLink className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">เปิดแท็บใหม่</span>

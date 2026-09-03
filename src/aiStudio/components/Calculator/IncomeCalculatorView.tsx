@@ -241,7 +241,7 @@ export const IncomeCalculatorView: React.FC = () => {
       <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
-            <Calculator className="w-6 h-6 text-amber-400" />
+            <Calculator className="w-6 h-6 text-blue-600" />
             เครื่องคำนวณผลประโยชน์และจำลองรายได้แบบโปร่งใส
           </h1>
           <p className="text-xs text-slate-700 mt-1">
@@ -273,7 +273,7 @@ export const IncomeCalculatorView: React.FC = () => {
             <button
               onClick={() => setMode('MONTHLY')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                mode === 'MONTHLY' ? 'bg-amber-500 text-slate-950 shadow' : 'text-slate-700 hover:text-white'
+                mode === 'MONTHLY' ? 'bg-blue-600 text-slate-950 shadow' : 'text-slate-700 hover:text-white'
               }`}
             >
               รายเดือน
@@ -281,7 +281,7 @@ export const IncomeCalculatorView: React.FC = () => {
             <button
               onClick={() => setMode('ANNUAL')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                mode === 'ANNUAL' ? 'bg-amber-500 text-slate-950 shadow' : 'text-slate-700 hover:text-white'
+                mode === 'ANNUAL' ? 'bg-blue-600 text-slate-950 shadow' : 'text-slate-700 hover:text-white'
               }`}
             >
               รายปี (+โบนัส)
@@ -300,7 +300,7 @@ export const IncomeCalculatorView: React.FC = () => {
                 <Sliders className="w-4 h-4 text-blue-400" />
                 พารามิเตอร์จำลองผลงาน
               </h2>
-              <span className="text-[11px] text-amber-300 font-semibold bg-amber-950/80 px-2 py-0.5 rounded border border-amber-600/40">
+              <span className="text-[11px] text-blue-600 font-semibold bg-amber-950/80 px-2 py-0.5 rounded border border-amber-600/40">
                 คำนวณแบบเรียลไทม์
               </span>
             </div>
@@ -327,7 +327,7 @@ export const IncomeCalculatorView: React.FC = () => {
             <div>
               <div className="flex justify-between text-xs mb-1">
                 <span className="text-slate-700">ผลงานขายส่วนตัว / เดือน:</span>
-                <strong className="text-amber-400">{formatBaht(customPersonalSales)}</strong>
+                <strong className="text-blue-600">{formatBaht(customPersonalSales)}</strong>
               </div>
               <input
                 type="range"
@@ -451,7 +451,7 @@ export const IncomeCalculatorView: React.FC = () => {
                   <span className="text-xs font-bold text-blue-400 uppercase tracking-wider">
                     {mode === 'MONTHLY' ? 'รายได้รวมประมาณการต่อเดือน' : 'รายได้รวมประมาณการทั้งปี (รวมโบนัส)'}
                   </span>
-                  <div className="text-3xl sm:text-4xl font-black text-amber-400 mt-1 tracking-tight">
+                  <div className="text-3xl sm:text-4xl font-black text-blue-600 mt-1 tracking-tight">
                     {formatBaht(mode === 'MONTHLY' ? sandboxResult.totalMonthlyIncome : sandboxResult.totalAnnualIncome)}
                   </div>
                   <p className="text-xs text-slate-700 mt-1">
@@ -476,7 +476,7 @@ export const IncomeCalculatorView: React.FC = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                    <Layers className="w-5 h-5 text-amber-400" />
+                    <Layers className="w-5 h-5 text-blue-600" />
                     ตารางรายละเอียดสูตรคำนวณ ({sandboxResult.breakdown.length} รายการ)
                   </h2>
                   <p className="text-xs text-slate-700">
@@ -516,7 +516,7 @@ export const IncomeCalculatorView: React.FC = () => {
                         <td className="py-3 px-3 text-center font-bold text-blue-400">
                           {item.isPercentage ? `${item.rateOrAmount}%` : formatBaht(item.rateOrAmount, false)}
                         </td>
-                        <td className="py-3 px-3 text-right font-mono font-bold text-amber-400">
+                        <td className="py-3 px-3 text-right font-mono font-bold text-blue-600">
                           {formatBaht(item.calculatedAmount)}
                         </td>
                         <td className="py-3 px-3 text-slate-700 text-[11px] max-w-xs">
@@ -533,7 +533,7 @@ export const IncomeCalculatorView: React.FC = () => {
                               ผ่านเกณฑ์
                             </span>
                           ) : (
-                            <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-950 text-amber-300 border border-amber-700">
+                            <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-950 text-blue-600 border border-amber-700">
                               รอตรวจสอบ
                             </span>
                           )}
@@ -546,7 +546,7 @@ export const IncomeCalculatorView: React.FC = () => {
                       <td colSpan={4} className="py-3 px-3 text-right text-slate-900">
                         รายได้รวมต่อเดือนสุทธิ:
                       </td>
-                      <td className="py-3 px-3 text-right font-mono text-amber-400 text-sm">
+                      <td className="py-3 px-3 text-right font-mono text-blue-600 text-sm">
                         {formatBaht(sandboxResult.totalMonthlyIncome)}
                       </td>
                       <td colSpan={2} className="py-3 px-3 text-[11px] text-slate-700">
@@ -582,7 +582,7 @@ export const IncomeCalculatorView: React.FC = () => {
 
                   <div className="my-4 p-4 rounded-xl bg-white/80 border border-slate-200/80">
                     <span className="text-xs text-slate-700 block">รายได้ประมาณการ / เดือน:</span>
-                    <div className="text-2xl font-black text-amber-400 mt-1">
+                    <div className="text-2xl font-black text-blue-600 mt-1">
                       {formatBaht(sc.calculatedMonthlyIncome)}
                     </div>
                     <div className="text-xs text-slate-700 mt-2 flex justify-between">

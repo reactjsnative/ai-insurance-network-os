@@ -47,7 +47,7 @@ export const Navbar: React.FC = () => {
                 <span className="font-bold text-base sm:text-lg tracking-tight bg-gradient-to-r from-white via-slate-200 to-amber-300 bg-clip-text text-transparent">
                   AI Insurance Simulator
                 </span>
-                <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-semibold tracking-wide rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-semibold tracking-wide rounded bg-blue-600/20 text-blue-600 border border-blue-600/30">
                   PRO
                 </span>
               </div>
@@ -60,7 +60,7 @@ export const Navbar: React.FC = () => {
           {/* Member Quick Switcher */}
           <div className="hidden lg:flex items-center gap-2 bg-slate-100/80 rounded-lg px-3 py-1.5 border border-slate-200">
             <div className="flex items-center gap-1.5 text-xs text-slate-700">
-              <UserCheck className="w-3.5 h-3.5 text-amber-400" />
+              <UserCheck className="w-3.5 h-3.5 text-blue-600" />
               <span>กำลังดู:</span>
             </div>
             <select
@@ -82,7 +82,7 @@ export const Navbar: React.FC = () => {
             {/* Quick Add Member button */}
             <button
               onClick={() => setIsAddMemberModalOpen(true)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 shadow-md shadow-amber-500/20 transition-all cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 shadow-md shadow-amber-500/20 transition-all cursor-pointer"
             >
               <UserPlus className="w-4 h-4" />
               <span className="hidden sm:inline">เพิ่มสมาชิก</span>
@@ -110,7 +110,7 @@ export const Navbar: React.FC = () => {
               className="p-2 rounded-lg bg-slate-100/80 hover:bg-slate-200/80 border border-slate-200 text-slate-700 hover:text-slate-900 transition-colors cursor-pointer"
               title="สลับโหมดมืด/สว่าง"
             >
-              {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-blue-300" />}
+              {theme === 'dark' ? <Sun className="w-4 h-4 text-blue-600" /> : <Moon className="w-4 h-4 text-blue-300" />}
             </button>
           </div>
         </div>

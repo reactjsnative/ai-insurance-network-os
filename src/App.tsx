@@ -67,7 +67,7 @@ const MainContent: React.FC = () => {
       {!isPresentationMode && <Header />}
 
       <div className="flex-1 flex overflow-hidden">
-        <main className="flex-1 overflow-y-auto bg-gradient-to-b from-white via-slate-50 to-white"><div className="mx-auto max-w-7xl w-full p-4 sm:p-6 lg:p-8">
+        <main className="flex-1 overflow-y-auto bg-gradient-to-b from-white via-blue-50/50 to-white"><div className="mx-auto max-w-7xl w-full p-4 sm:p-6 lg:p-8">
           {activeTab === 'dashboard' && <Dashboard />}
           {activeTab === 'network_success' && <NetworkSuccessView />}
           {activeTab === 'network_success_team_goal' && <TeamGoalView />}

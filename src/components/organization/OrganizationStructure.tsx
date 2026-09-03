@@ -57,7 +57,7 @@ export const OrganizationStructure: React.FC = () => {
   const getPositionBadge = (posId: PositionId) => {
     switch (posId) {
       case 'regional_manager':
-        return <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">ผู้บริหารภาค (RM)</span>;
+        return <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-blue-600/20 text-blue-600 border border-blue-600/40">ผู้บริหารภาค (RM)</span>;
       case 'center_manager':
         return <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">ผู้บริหารศูนย์ (CM)</span>;
       case 'unit_manager':
@@ -91,7 +91,7 @@ export const OrganizationStructure: React.FC = () => {
               {language === 'th' ? 'โครงสร้างสายงานองค์กรแบบ Drill-Down' : 'Multi-Level Organization Drill-Down'}
             </div>
             <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight flex items-center gap-3">
-              <Building2 className="w-8 h-8 text-amber-400" />
+              <Building2 className="w-8 h-8 text-blue-600" />
               {language === 'th' ? 'โครงสร้างองค์กร (Organization)' : 'Organization Hierarchy'}
             </h1>
             <p className="text-slate-700 text-sm max-w-2xl">
@@ -120,8 +120,8 @@ export const OrganizationStructure: React.FC = () => {
             <p className="text-[11px] text-emerald-400 mt-1">Active: {totalActive} ({((totalActive/members.length)*100).toFixed(0)}%)</p>
           </div>
           <div className="bg-white/60 p-3.5 rounded-xl border border-slate-200/60">
-            <p className="text-xs text-amber-400">{language === 'th' ? 'โครงสร้างผู้นำ' : 'Leadership Structure'}</p>
-            <p className="text-xl font-bold text-amber-400 mt-1">{regionalManagers.length} <span className="text-xs text-slate-700 font-normal">ภาค</span> / {centerManagers.length} <span className="text-xs text-slate-700 font-normal">ศูนย์</span></p>
+            <p className="text-xs text-blue-600">{language === 'th' ? 'โครงสร้างผู้นำ' : 'Leadership Structure'}</p>
+            <p className="text-xl font-bold text-blue-600 mt-1">{regionalManagers.length} <span className="text-xs text-slate-700 font-normal">ภาค</span> / {centerManagers.length} <span className="text-xs text-slate-700 font-normal">ศูนย์</span></p>
             <p className="text-[11px] text-slate-700 mt-1">{unitManagers.length} หน่วย / {agents.length} ตัวแทน</p>
           </div>
           <div className="bg-white/60 p-3.5 rounded-xl border border-slate-200/60">
@@ -209,7 +209,7 @@ export const OrganizationStructure: React.FC = () => {
                   <img
                     src={rm.avatarUrl || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'}
                     alt={rm.name}
-                    className="w-11 h-11 rounded-full object-cover border-2 border-amber-500 shadow-md"
+                    className="w-11 h-11 rounded-full object-cover border-2 border-blue-600 shadow-md"
                   />
                   <div>
                     <div className="flex items-center gap-2">
@@ -231,14 +231,14 @@ export const OrganizationStructure: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-xs text-slate-700">{language === 'th' ? 'FYC ทั้งภาค' : 'Region FYC'}</p>
-                    <p className="text-sm font-bold text-amber-400">{formatCurrency(rmTotalFYC)}</p>
+                    <p className="text-sm font-bold text-blue-600">{formatCurrency(rmTotalFYC)}</p>
                   </div>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       setSelectedMemberId(rm.id);
                     }}
-                    className="px-3 py-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 text-xs font-semibold border border-amber-500/40 flex items-center gap-1.5"
+                    className="px-3 py-1.5 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-600 text-xs font-semibold border border-blue-600/40 flex items-center gap-1.5"
                   >
                     <ExternalLink className="w-3.5 h-3.5" />
                     {language === 'th' ? 'ดูโปรไฟล์' : 'Profile'}

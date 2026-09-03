@@ -83,7 +83,7 @@ export const Dashboard: React.FC = () => {
       {/* System Status Bar — shows after login */}
       <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 sm:p-4 rounded-2xl bg-white/80 border border-slate-200 backdrop-blur-md shadow-xl">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-blue-600/10 border border-blue-600/30 flex items-center justify-center text-blue-600 shrink-0">
             <Cpu className="w-5 h-5" />
           </div>
           <div>
@@ -105,13 +105,13 @@ export const Dashboard: React.FC = () => {
 
       {/* 1. Hero Network Growth Visualizer Card */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-white via-slate-50 to-indigo-950/40 border border-slate-200 p-6 sm:p-8 shadow-2xl">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
           {/* Left: Inspiring Hero Copy & Actions */}
           <div className="max-w-xl text-left space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/10 border border-blue-600/30 text-blue-600 text-xs font-bold">
               <Sparkles className="w-3.5 h-3.5" />
               <span>AI INSURANCE NETWORK OS • ระบบหลัก</span>
             </div>
@@ -131,7 +131,7 @@ export const Dashboard: React.FC = () => {
                 onClick={() => setActiveTab('income_calculator')}
                 className="px-4 py-2.5 rounded-xl bg-slate-100/80 hover:bg-slate-100 text-slate-800 font-semibold text-xs sm:text-sm border border-slate-200 flex items-center gap-2 transition-all"
               >
-                <DollarSign className="w-4 h-4 text-amber-400" />
+                <DollarSign className="w-4 h-4 text-blue-600" />
                 <span>{t('calculate_income_btn')}</span>
               </button>
 
@@ -171,9 +171,9 @@ export const Dashboard: React.FC = () => {
                 <img 
                   src={activeUser.avatarUrl} 
                   alt={activeUser.name} 
-                  className="w-14 h-14 rounded-full object-cover border-2 border-amber-400 shadow-xl shadow-amber-500/30"
+                  className="w-14 h-14 rounded-full object-cover border-2 border-blue-400 shadow-xl shadow-amber-500/30"
                 />
-                <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-amber-500 text-slate-950 font-black text-[9px] flex items-center justify-center border-2 border-slate-950">
+                <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-blue-600 text-slate-950 font-black text-[9px] flex items-center justify-center border-2 border-slate-950">
                   RM
                 </span>
               </div>
@@ -191,10 +191,10 @@ export const Dashboard: React.FC = () => {
                       transform: `translate(${(idx === 0 ? -120 : idx === 1 ? 120 : idx === 2 ? -60 : 60)}px, ${(idx < 2 ? -45 : 55)}px)`
                     }}
                   >
-                    <div className="w-9 h-9 rounded-full overflow-hidden border border-amber-400/80 shadow-md">
+                    <div className="w-9 h-9 rounded-full overflow-hidden border border-blue-400/80 shadow-md">
                       <img src={cm.avatarUrl} alt={cm.name} className="w-full h-full object-cover" />
                     </div>
-                    <span className="text-[9px] font-medium text-amber-300">{cm.nickname || cm.name.split(' ')[0]}</span>
+                    <span className="text-[9px] font-medium text-blue-600">{cm.nickname || cm.name.split(' ')[0]}</span>
                   </div>
                 ))}
               </div>
@@ -224,13 +224,13 @@ export const Dashboard: React.FC = () => {
             {/* Step 4: Digital connection waves */}
             {animationStep === 4 && (
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-64 h-64 rounded-full border border-amber-500/10 animate-ping opacity-20" />
+                <div className="w-64 h-64 rounded-full border border-blue-600/10 animate-ping opacity-20" />
                 <div className="w-48 h-48 rounded-full border border-indigo-500/15 animate-pulse" />
               </div>
             )}
 
             <div className="absolute bottom-2 text-[10px] text-slate-700 font-mono">
-              {t('kpi_downline_count')}: <span className="text-amber-400 font-bold">{downlineStats.totalDownlineCount}</span> {t('people')} • Active: <span className="text-emerald-400 font-bold">{downlineStats.activeDownlineCount}</span> {t('people')}
+              {t('kpi_downline_count')}: <span className="text-blue-600 font-bold">{downlineStats.totalDownlineCount}</span> {t('people')} • Active: <span className="text-emerald-400 font-bold">{downlineStats.activeDownlineCount}</span> {t('people')}
             </div>
           </div>
         </div>
@@ -239,10 +239,10 @@ export const Dashboard: React.FC = () => {
       {/* 2. Executive KPI Cards Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* KPI 1: Monthly Income */}
-        <div className="p-5 rounded-2xl bg-white/90 border border-slate-200 relative overflow-hidden text-left group hover:border-amber-500/40 transition-colors">
+        <div className="p-5 rounded-2xl bg-white/90 border border-slate-200 relative overflow-hidden text-left group hover:border-blue-600/40 transition-colors">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-700">{t('kpi_monthly_income')}</span>
-            <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-blue-600/10 text-blue-600 flex items-center justify-center">
               <DollarSign className="w-4 h-4" />
             </div>
           </div>
@@ -285,7 +285,7 @@ export const Dashboard: React.FC = () => {
           <div className="flex items-center gap-2 text-[11px] text-slate-700 mt-2">
             <span className="text-emerald-400 font-semibold">{t('kpi_active_rate')} {activeRate}%</span>
             <span>•</span>
-            <span className="text-amber-400 font-semibold">{t('kpi_retention')} {retentionRate}%</span>
+            <span className="text-blue-600 font-semibold">{t('kpi_retention')} {retentionRate}%</span>
           </div>
         </div>
 
@@ -316,8 +316,8 @@ export const Dashboard: React.FC = () => {
               <p className="text-[11px] text-slate-700">{t('trend_12_month_subtitle')}</p>
             </div>
             <div className="flex items-center gap-2 text-xs">
-              <span className="inline-flex items-center gap-1 text-[11px] text-amber-400 font-medium">
-                <span className="w-2 h-2 rounded-full bg-amber-400" /> {language === 'th' ? 'รายได้ (฿)' : 'Income (฿)'}
+              <span className="inline-flex items-center gap-1 text-[11px] text-blue-600 font-medium">
+                <span className="w-2 h-2 rounded-full bg-blue-500" /> {language === 'th' ? 'รายได้ (฿)' : 'Income (฿)'}
               </span>
               <span className="inline-flex items-center gap-1 text-[11px] text-sky-400 font-medium">
                 <span className="w-2 h-2 rounded-full bg-sky-400" /> FYC (฿)
@@ -420,7 +420,7 @@ export const Dashboard: React.FC = () => {
 
           <button
             onClick={() => setActiveTab('income_calculator')}
-            className="text-xs text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1 self-start"
+            className="text-xs text-blue-600 hover:text-blue-600 font-semibold flex items-center gap-1 self-start"
           >
             <span>{t('view_all_breakdown')}</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -433,7 +433,7 @@ export const Dashboard: React.FC = () => {
               <div className="text-[10px] text-slate-700 font-medium truncate" title={item.title}>
                 {item.title}
               </div>
-              <div className="text-sm sm:text-base font-bold text-amber-300 mt-1">
+              <div className="text-sm sm:text-base font-bold text-blue-600 mt-1">
                 ฿{item.amount.toLocaleString()}
               </div>
               <div className="text-[9px] text-slate-700 mt-1 truncate">

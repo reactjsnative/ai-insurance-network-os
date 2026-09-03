@@ -94,7 +94,7 @@ export default function InsuranceMegaMenu() {
     <header ref={ref} className="relative z-50 border-b border-slate-200 bg-white">
       <nav className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-5" aria-label="เมนูหลัก">
         <a href="/" className="flex items-center gap-3" onClick={(e)=>{e.preventDefault(); go("dashboard");}}>
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 text-slate-950 font-black">OS</span>
+          <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-slate-950 font-black">OS</span>
           <span className="hidden sm:block text-[15px] font-black text-slate-900 tracking-tight">AI INSURANCE NETWORK OS</span>
           <span className="sm:hidden text-[15px] font-black text-slate-900">OS</span>
         </a>
@@ -103,17 +103,17 @@ export default function InsuranceMegaMenu() {
           <button
             onClick={() => setDesktopOpen(v=>!v)}
             aria-expanded={desktopOpen}
-            className={`flex h-full items-center gap-2 border-b-2 px-3 text-[13px] font-bold transition ${desktopOpen ? "border-amber-500 text-amber-400" : "border-transparent text-slate-700 hover:text-amber-600"}`}
+            className={`flex h-full items-center gap-2 border-b-2 px-3 text-[13px] font-bold transition ${desktopOpen ? "border-blue-600 text-blue-600" : "border-transparent text-slate-700 hover:text-blue-600"}`}
           >
             เมนู <ChevronDown className={`h-4 w-4 transition-transform ${desktopOpen ? "rotate-180" : ""}`} />
           </button>
-          <button onClick={()=>go("dashboard")} className="px-3 text-[13px] font-semibold text-slate-700 hover:text-amber-600">แดชบอร์ด</button>
-          <button onClick={()=>go("recruit_agent")} className="px-3 text-[13px] font-semibold text-slate-700 hover:text-amber-600">สมัครตัวแทน</button>
-          <button onClick={()=>go("members_mgmt")} className="px-3 text-[13px] font-semibold text-slate-700 hover:text-amber-600">จัดการสมาชิก</button>
+          <button onClick={()=>go("dashboard")} className="px-3 text-[13px] font-semibold text-slate-700 hover:text-blue-600">แดชบอร์ด</button>
+          <button onClick={()=>go("recruit_agent")} className="px-3 text-[13px] font-semibold text-slate-700 hover:text-blue-600">สมัครตัวแทน</button>
+          <button onClick={()=>go("members_mgmt")} className="px-3 text-[13px] font-semibold text-slate-700 hover:text-blue-600">จัดการสมาชิก</button>
         </div>
 
         <div className="hidden items-center gap-2 lg:flex">
-          <button onClick={()=>go("ai_studio")} className="rounded-full bg-amber-500 px-5 py-2 text-[13px] font-bold text-slate-950 hover:bg-amber-400">จำลองรายได้</button>
+          <button onClick={()=>go("ai_studio")} className="rounded-full bg-blue-600 px-5 py-2 text-[13px] font-bold text-slate-950 hover:bg-blue-500">จำลองรายได้</button>
         </div>
 
         <button onClick={()=>setMobileOpen(true)} className="rounded-lg p-2 text-slate-700 hover:bg-slate-50 lg:hidden"><Menu className="h-6 w-6" /></button>
@@ -130,8 +130,8 @@ export default function InsuranceMegaMenu() {
                   {categories.map(c=>{
                     const Icon=c.icon; const sel=c.id===activeId;
                     return (
-                      <button key={c.id} onMouseEnter={()=>setActiveId(c.id)} onClick={()=>setActiveId(c.id)} className={`flex w-full items-center gap-3 rounded-xl p-3 text-left transition ${sel ? "bg-amber-500/15 text-amber-700 border border-amber-500/30" : "text-slate-700 hover:bg-slate-50 hover:text-amber-600"}`}>
-                        <span className={`grid h-9 w-9 place-items-center rounded-full ${sel ? "bg-amber-500 text-slate-950" : "bg-white text-slate-700"}`}><Icon className="h-5 w-5" /></span>
+                      <button key={c.id} onMouseEnter={()=>setActiveId(c.id)} onClick={()=>setActiveId(c.id)} className={`flex w-full items-center gap-3 rounded-xl p-3 text-left transition ${sel ? "bg-blue-600/15 text-blue-700 border border-blue-600/30" : "text-slate-700 hover:bg-slate-50 hover:text-blue-600"}`}>
+                        <span className={`grid h-9 w-9 place-items-center rounded-full ${sel ? "bg-blue-600 text-slate-950" : "bg-white text-slate-700"}`}><Icon className="h-5 w-5" /></span>
                         <span className="flex-1 text-[13px] font-bold">{c.title}</span>
                         <ChevronRight className="h-4 w-4 opacity-60" />
                       </button>
@@ -140,21 +140,21 @@ export default function InsuranceMegaMenu() {
                 </div>
               </aside>
               <main className="p-7 bg-slate-50">
-                <div className="relative mb-6 overflow-hidden rounded-2xl bg-gradient-to-r from-white via-amber-50/40 to-amber-600 p-7 text-white border border-amber-500/20">
+                <div className="relative mb-6 overflow-hidden rounded-2xl bg-gradient-to-r from-white via-blue-50/40 to-indigo-600 p-7 text-white border border-blue-600/20">
                   <div className="relative z-10 max-w-xl">
-                    <p className="mb-2 text-xs font-bold tracking-widest text-amber-700">{active.title}</p>
+                    <p className="mb-2 text-xs font-bold tracking-widest text-blue-700">{active.title}</p>
                     <h2 className="text-2xl font-black">{active.heading}</h2>
                     <p className="mt-2 text-sm leading-6 text-slate-700">{active.description}</p>
                   </div>
-                  <div className="absolute -bottom-20 -right-10 h-64 w-64 rounded-full bg-amber-500/10" />
+                  <div className="absolute -bottom-20 -right-10 h-64 w-64 rounded-full bg-blue-600/10" />
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   {active.links.map(l=>{
                     const Icon=l.icon;
                     return (
-                      <button key={l.tab} onClick={()=>go(l.tab)} className="group flex gap-3 rounded-xl border border-slate-200 bg-white p-4 text-left transition hover:border-amber-500/40 hover:bg-slate-50">
-                        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-slate-700 group-hover:bg-amber-500 group-hover:text-slate-950 transition"><Icon className="h-5 w-5" /></span>
-                        <span className="min-w-0"><span className="flex items-center gap-1 text-[13px] font-bold text-slate-900 group-hover:text-amber-600">{l.title} {l.badge && <span className="ml-1 rounded-full bg-amber-500 px-1.5 py-0.5 text-[9px] font-black text-slate-950">{l.badge}</span>}<ChevronRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition" /></span><span className="mt-1 block text-xs leading-5 text-slate-700">{l.description}</span></span>
+                      <button key={l.tab} onClick={()=>go(l.tab)} className="group flex gap-3 rounded-xl border border-slate-200 bg-white p-4 text-left transition hover:border-blue-600/40 hover:bg-slate-50">
+                        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-slate-700 group-hover:bg-blue-600 group-hover:text-slate-950 transition"><Icon className="h-5 w-5" /></span>
+                        <span className="min-w-0"><span className="flex items-center gap-1 text-[13px] font-bold text-slate-900 group-hover:text-blue-600">{l.title} {l.badge && <span className="ml-1 rounded-full bg-blue-600 px-1.5 py-0.5 text-[9px] font-black text-slate-950">{l.badge}</span>}<ChevronRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition" /></span><span className="mt-1 block text-xs leading-5 text-slate-700">{l.description}</span></span>
                       </button>
                     );
                   })}
@@ -177,7 +177,7 @@ export default function InsuranceMegaMenu() {
               return (
                 <div key={c.id} className="overflow-hidden rounded-xl border border-slate-200 bg-white">
                   <button onClick={()=>setActiveId(exp ? "" : c.id)} className="flex w-full items-center gap-3 p-4 text-left">
-                    <span className="grid h-9 w-9 place-items-center rounded-lg bg-amber-500/15 text-amber-400"><Icon className="h-5 w-5" /></span>
+                    <span className="grid h-9 w-9 place-items-center rounded-lg bg-blue-600/15 text-blue-600"><Icon className="h-5 w-5" /></span>
                     <span className="flex-1 text-[13px] font-bold text-slate-900">{c.title}</span>
                     <ChevronDown className={`h-5 w-5 text-slate-700 transition-transform ${exp ? "rotate-180" : ""}`} />
                   </button>
@@ -187,7 +187,7 @@ export default function InsuranceMegaMenu() {
                         const Ic=l.icon;
                         return (
                           <button key={l.tab} onClick={()=>go(l.tab)} className="flex w-full gap-3 rounded-lg bg-slate-50 p-3 text-left border border-slate-200">
-                            <Ic className="mt-0.5 h-5 w-5 shrink-0 text-amber-400" />
+                            <Ic className="mt-0.5 h-5 w-5 shrink-0 text-blue-600" />
                             <span><span className="block text-[13px] font-bold text-slate-900">{l.title}</span><span className="mt-1 block text-xs text-slate-700">{l.description}</span></span>
                           </button>
                         );

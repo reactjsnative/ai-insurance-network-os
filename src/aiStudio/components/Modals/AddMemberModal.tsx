@@ -65,7 +65,7 @@ export const AddMemberModal: React.FC = () => {
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-white/60">
           <div className="flex items-center gap-2 text-slate-900 font-bold text-base">
-            <UserPlus className="w-5 h-5 text-amber-400" />
+            <UserPlus className="w-5 h-5 text-blue-600" />
             <span>เพิ่มสมาชิกใหม่เข้าสู่สายงาน</span>
           </div>
           <button
@@ -177,7 +177,7 @@ export const AddMemberModal: React.FC = () => {
             </button>
             <button
               type="submit"
-              className="flex items-center gap-1.5 px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-bold shadow-md shadow-amber-500/20 cursor-pointer"
+              className="flex items-center gap-1.5 px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-bold shadow-md shadow-amber-500/20 cursor-pointer"
             >
               <Save className="w-4 h-4" />
               <span>บันทึกสมาชิก</span>

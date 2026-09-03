@@ -48,7 +48,7 @@ export const MobileNav: React.FC = () => {
             key={item.id}
             onClick={() => setActiveTab(item.id)}
             className={`flex flex-col items-center justify-center flex-1 py-1 transition-all ${
-              isActive ? 'text-amber-400' : 'text-slate-700 hover:text-slate-800'
+              isActive ? 'text-blue-600' : 'text-slate-700 hover:text-slate-800'
             }`}
           >
             <Icon className="w-4 h-4" />
