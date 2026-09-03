@@ -156,11 +156,11 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
       
       {/* Header Banner */}
-      <div className="p-6 rounded-3xl bg-gradient-to-r from-amber-950/70 via-slate-900/90 to-indigo-950/80 border border-amber-500/30 backdrop-blur-xl shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-gradient-to-r from-amber-950/70 via-slate-50/90 to-indigo-950/80 border border-amber-500/30 backdrop-blur-xl shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <Target className="w-6 h-6 text-amber-400" />
-            <h2 className="text-xl font-bold text-white tracking-tight">
+            <h2 className="text-xl font-bold text-slate-900 tracking-tight">
               แผนที่สู่อิสรภาพทางการเงิน (Financial Freedom Roadmap)
             </h2>
           </div>
@@ -227,7 +227,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
 
       {/* Main Goal Configuration Form */}
       <div className="p-6 rounded-3xl bg-white/90 border border-slate-200/90 backdrop-blur-xl shadow-2xl space-y-6">
-        <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+        <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
           <Wallet className="w-4 h-4 text-amber-400" />
           <span>ปรับแต่งตัวเลขเป้าหมายและทรัพยากรการทำงาน</span>
         </h3>
@@ -299,7 +299,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
       <div className="p-6 rounded-3xl bg-white/90 border border-slate-200/90 backdrop-blur-xl shadow-2xl space-y-6">
         <div className="flex items-center justify-between border-b border-slate-200 pb-4">
           <div>
-            <h3 className="text-base font-bold text-white flex items-center gap-2">
+            <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
               <Award className="w-5 h-5 text-indigo-400" />
               <span>แผนบันได 4 ขั้นสู่ความสำเร็จ (4-Stage Milestone Roadmap)</span>
             </h3>
@@ -327,7 +327,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
                 className="w-4 h-4 accent-emerald-500 cursor-pointer"
               />
             </div>
-            <h4 className="text-xs font-bold text-white mb-2">วางรากฐานทีม & ยอดส่วนตัว</h4>
+            <h4 className="text-xs font-bold text-slate-900 mb-2">วางรากฐานทีม & ยอดส่วนตัว</h4>
             <div className="space-y-1 text-[11px] text-slate-700">
               <div>รายได้เป้าหมาย: <strong className="text-emerald-400">฿{Math.round(monthlyGoal * 0.25).toLocaleString()}</strong></div>
               <div>สมาชิกในทีม: <strong className="text-slate-900">3-5 คน</strong></div>
@@ -350,7 +350,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
                 className="w-4 h-4 accent-emerald-500 cursor-pointer"
               />
             </div>
-            <h4 className="text-xs font-bold text-white mb-2">ขยายสายงาน & สร้าง 1 UM</h4>
+            <h4 className="text-xs font-bold text-slate-900 mb-2">ขยายสายงาน & สร้าง 1 UM</h4>
             <div className="space-y-1 text-[11px] text-slate-700">
               <div>รายได้เป้าหมาย: <strong className="text-emerald-400">฿{Math.round(monthlyGoal * 0.5).toLocaleString()}</strong></div>
               <div>สมาชิกในทีม: <strong className="text-slate-900">7-10 คน</strong></div>
@@ -373,7 +373,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
                 className="w-4 h-4 accent-emerald-500 cursor-pointer"
               />
             </div>
-            <h4 className="text-xs font-bold text-white mb-2">ระบบผู้นำขยายตัวต่อเนื่อง</h4>
+            <h4 className="text-xs font-bold text-slate-900 mb-2">ระบบผู้นำขยายตัวต่อเนื่อง</h4>
             <div className="space-y-1 text-[11px] text-slate-700">
               <div>รายได้เป้าหมาย: <strong className="text-emerald-400">฿{Math.round(monthlyGoal * 0.75).toLocaleString()}</strong></div>
               <div>สมาชิกในทีม: <strong className="text-slate-900">15-20 คน</strong></div>
@@ -396,7 +396,7 @@ export const FinancialGoalPlanner: React.FC<FinancialGoalPlannerProps> = ({
                 className="w-4 h-4 accent-emerald-500 cursor-pointer"
               />
             </div>
-            <h4 className="text-xs font-bold text-white mb-2">อิสรภาพทางการเงินสมบูรณ์</h4>
+            <h4 className="text-xs font-bold text-slate-900 mb-2">อิสรภาพทางการเงินสมบูรณ์</h4>
             <div className="space-y-1 text-[11px] text-slate-700">
               <div>รายได้เป้าหมาย: <strong className="text-emerald-400">฿{monthlyGoal.toLocaleString()}</strong></div>
               <div>สมาชิกในทีม: <strong className="text-slate-900">30+ คน</strong></div>

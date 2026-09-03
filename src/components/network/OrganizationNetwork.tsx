@@ -302,7 +302,7 @@ export const OrganizationNetwork: React.FC = () => {
             className="w-full h-[520px] relative overflow-hidden flex items-center justify-center"
             style={{ transform: `scale(${zoomLevel})` }}
           >
-            <div className="absolute inset-0 bg-radial from-amber-500/10 via-slate-950 to-slate-950 pointer-events-none" />
+            <div className="absolute inset-0 bg-radial from-amber-500/10 via-slate-50 to-white pointer-events-none" />
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 z-10">
               {centerLeaders.map((cm, cIdx) => (
                 <div key={cm.id} className="p-4 rounded-2xl bg-white/60 border border-slate-200 text-center space-y-3">
@@ -443,7 +443,7 @@ export const OrganizationNetwork: React.FC = () => {
             </div>
 
             {/* Estimated Total Income */}
-            <div className="p-4 rounded-xl bg-gradient-to-br from-amber-500/20 to-slate-950 border border-amber-500/30">
+            <div className="p-4 rounded-xl bg-gradient-to-br from-amber-500/20 to-white border border-amber-500/30">
               <div className="text-[10px] text-amber-300 uppercase font-bold">ประมาณการรายได้เดือนนี้</div>
               <div className="text-2xl font-black text-slate-900 font-mono mt-1">
                 ฿{calculateMemberIncome(selectedMember, 'ACTUAL').totalIncome.toLocaleString()}

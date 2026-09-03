@@ -110,11 +110,11 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
         className="w-full max-w-md bg-white h-full shadow-2xl flex flex-col overflow-hidden border-l border-slate-200"
       >
         {/* Header */}
-        <div className="p-6 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white relative">
+        <div className="p-6 bg-gradient-to-br from-white via-indigo-950 to-slate-50 text-white relative">
           <button
             id="btn-close-profile-drawer"
             onClick={onClose}
-            className="absolute top-5 right-5 p-2 rounded-xl text-slate-700 hover:text-white hover:bg-white/10 transition-colors"
+            className="absolute top-5 right-5 p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-50/10 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -127,8 +127,8 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
                 className="w-16 h-16 rounded-2xl object-cover border-2 border-indigo-400/50 shadow-md"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-slate-900 flex items-center justify-center">
-                <CheckCircle2 className="w-3.5 h-3.5 text-white" />
+              <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-slate-200 flex items-center justify-center">
+                <CheckCircle2 className="w-3.5 h-3.5 text-slate-900" />
               </div>
             </div>
 
@@ -138,7 +138,7 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
                   {currentPos?.code || 'RM'} • {activeUser.memberCode}
                 </span>
               </div>
-              <h3 className="text-lg font-bold text-white mt-1 leading-tight">{authUser.name}</h3>
+              <h3 className="text-lg font-bold text-slate-900 mt-1 leading-tight">{authUser.name}</h3>
               <p className="text-xs text-slate-700 truncate max-w-[200px]">{authUser.email}</p>
             </div>
           </div>
@@ -266,7 +266,7 @@ export const UserProfileDrawer: React.FC<UserProfileDrawerProps> = ({ isOpen, on
                 <button
                   id="btn-confirm-signout"
                   onClick={handleConfirmLogout}
-                  className="flex-1 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs"
+                  className="flex-1 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-700 text-slate-900 font-bold text-xs"
                 >
                   ยืนยันออกจากระบบ
                 </button>

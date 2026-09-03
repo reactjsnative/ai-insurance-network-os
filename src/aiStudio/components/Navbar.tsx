@@ -40,7 +40,7 @@ export const Navbar: React.FC = () => {
           {/* Brand Logo & Name */}
           <div className="flex items-center gap-3 shrink-0">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-indigo-600 to-amber-500 flex items-center justify-center shadow-md shadow-blue-500/20 ring-1 ring-white/20">
-              <TrendingUp className="w-5 h-5 text-white" />
+              <TrendingUp className="w-5 h-5 text-slate-900" />
             </div>
             <div>
               <div className="flex items-center gap-2">
@@ -107,7 +107,7 @@ export const Navbar: React.FC = () => {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-slate-100/80 hover:bg-slate-200/80 border border-slate-200 text-slate-700 hover:text-white transition-colors cursor-pointer"
+              className="p-2 rounded-lg bg-slate-100/80 hover:bg-slate-200/80 border border-slate-200 text-slate-700 hover:text-slate-900 transition-colors cursor-pointer"
               title="สลับโหมดมืด/สว่าง"
             >
               {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-blue-300" />}
@@ -122,7 +122,7 @@ export const Navbar: React.FC = () => {
             onClick={() => setActiveTab('DASHBOARD')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'DASHBOARD'
-                ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
+                ? 'bg-blue-600 text-slate-900 shadow-md shadow-blue-500/20'
                 : 'text-slate-700 hover:text-slate-800 hover:bg-slate-100/60'
             }`}
           >
@@ -134,7 +134,7 @@ export const Navbar: React.FC = () => {
             onClick={() => setActiveTab('TREE')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'TREE'
-                ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
+                ? 'bg-blue-600 text-slate-900 shadow-md shadow-blue-500/20'
                 : 'text-slate-700 hover:text-slate-800 hover:bg-slate-100/60'
             }`}
           >
@@ -149,7 +149,7 @@ export const Navbar: React.FC = () => {
             onClick={() => setActiveTab('CALCULATOR')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'CALCULATOR'
-                ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
+                ? 'bg-blue-600 text-slate-900 shadow-md shadow-blue-500/20'
                 : 'text-slate-700 hover:text-slate-800 hover:bg-slate-100/60'
             }`}
           >
@@ -161,7 +161,7 @@ export const Navbar: React.FC = () => {
             onClick={() => setActiveTab('GOAL')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'GOAL'
-                ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
+                ? 'bg-blue-600 text-slate-900 shadow-md shadow-blue-500/20'
                 : 'text-slate-700 hover:text-slate-800 hover:bg-slate-100/60'
             }`}
           >
@@ -173,7 +173,7 @@ export const Navbar: React.FC = () => {
             onClick={() => setActiveTab('ADMIN')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'ADMIN'
-                ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
+                ? 'bg-blue-600 text-slate-900 shadow-md shadow-blue-500/20'
                 : 'text-slate-700 hover:text-slate-800 hover:bg-slate-100/60'
             }`}
           >
@@ -185,7 +185,7 @@ export const Navbar: React.FC = () => {
             onClick={() => setActiveTab('UNIT_TESTS')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
               activeTab === 'UNIT_TESTS'
-                ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
+                ? 'bg-blue-600 text-slate-900 shadow-md shadow-blue-500/20'
                 : 'text-slate-700 hover:text-slate-800 hover:bg-slate-100/60'
             }`}
           >

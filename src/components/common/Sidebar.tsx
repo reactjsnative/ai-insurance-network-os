@@ -98,7 +98,7 @@ export const Sidebar: React.FC = () => {
         className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all group ${
           isActive
             ? 'bg-gradient-to-r from-amber-500/20 to-amber-500/5 text-amber-300 border border-amber-500/40 shadow-sm shadow-amber-500/10'
-            : 'text-slate-700 hover:text-slate-800 hover:bg-white/80 border border-transparent'
+            : 'text-slate-700 hover:text-slate-800 hover:bg-slate-50/80 border border-transparent'
         }`}
       >
         <div className="flex items-center gap-2.5">
@@ -146,7 +146,7 @@ export const Sidebar: React.FC = () => {
             className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all group ${
               isExtractedActive
                 ? 'bg-gradient-to-r from-blue-500/20 to-blue-500/5 text-blue-300 border border-blue-500/40 shadow-sm shadow-blue-500/10'
-                : 'text-slate-700 hover:text-white hover:bg-white/80 border border-transparent'
+                : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50/80 border border-transparent'
             }`}
           >
             <div className="flex items-center gap-2.5">
@@ -173,7 +173,7 @@ export const Sidebar: React.FC = () => {
                     className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-[11px] font-medium transition-all group ${
                       isActive
                         ? 'bg-blue-500/15 text-blue-300 border border-blue-500/30'
-                        : 'text-slate-700 hover:text-slate-800 hover:bg-white/80 border border-transparent'
+                        : 'text-slate-700 hover:text-slate-800 hover:bg-slate-50/80 border border-transparent'
                     }`}
                   >
                     <Icon className={`w-3.5 h-3.5 shrink-0 transition-colors ${isActive ? 'text-blue-400' : 'text-slate-700 group-hover:text-slate-700'}`} />
@@ -196,7 +196,7 @@ export const Sidebar: React.FC = () => {
             className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all group ${
               isNetworkSuccessActive
                 ? 'bg-gradient-to-r from-amber-500/20 to-amber-500/5 text-amber-300 border border-amber-500/40 shadow-sm shadow-amber-500/10'
-                : 'text-slate-700 hover:text-white hover:bg-white/80 border border-transparent'
+                : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50/80 border border-transparent'
             }`}
           >
             <div className="flex items-center gap-2.5">
@@ -223,7 +223,7 @@ export const Sidebar: React.FC = () => {
                     className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-[11px] font-medium transition-all group ${
                       isActive
                         ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30'
-                        : 'text-slate-700 hover:text-slate-800 hover:bg-white/80 border border-transparent'
+                        : 'text-slate-700 hover:text-slate-800 hover:bg-slate-50/80 border border-transparent'
                     }`}
                   >
                     <Icon className={`w-3.5 h-3.5 shrink-0 transition-colors ${isActive ? 'text-amber-400' : 'text-slate-700 group-hover:text-slate-700'}`} />
@@ -246,7 +246,7 @@ export const Sidebar: React.FC = () => {
             className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all group ${
               isSocialActive
                 ? 'bg-gradient-to-r from-violet-500/20 to-violet-500/5 text-violet-300 border border-violet-500/40 shadow-sm shadow-violet-500/10'
-                : 'text-slate-700 hover:text-white hover:bg-white/80 border border-transparent'
+                : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50/80 border border-transparent'
             }`}
           >
             <div className="flex items-center gap-2.5">
@@ -273,7 +273,7 @@ export const Sidebar: React.FC = () => {
                     className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-[11px] font-medium transition-all group ${
                       isActive
                         ? 'bg-violet-500/15 text-violet-300 border border-violet-500/30'
-                        : 'text-slate-700 hover:text-slate-800 hover:bg-white/80 border border-transparent'
+                        : 'text-slate-700 hover:text-slate-800 hover:bg-slate-50/80 border border-transparent'
                     }`}
                   >
                     <Icon className={`w-3.5 h-3.5 shrink-0 transition-colors ${isActive ? 'text-violet-400' : 'text-slate-700 group-hover:text-slate-700'}`} />

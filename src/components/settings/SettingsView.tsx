@@ -241,14 +241,14 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
   return (
     <div id="settings_integrations_view" className="space-y-6 max-w-7xl mx-auto pb-12">
       {/* Top Banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border border-slate-200 p-6 sm:p-8 shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-white via-indigo-950 to-slate-50 border border-slate-200 p-6 sm:p-8 shadow-xl">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
               <Cpu className="w-3.5 h-3.5 text-indigo-400" />
               {language === 'th' ? 'การตั้งค่าระบบ ฐานข้อมูล และการเชื่อมต่อ (Enterprise Settings & Integrations)' : 'System Architecture, Integrations & Verification'}
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center gap-3">
+            <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight flex items-center gap-3">
               <SettingsIcon className="w-8 h-8 text-indigo-400" />
               {language === 'th' ? 'การตั้งค่า & การเชื่อมต่อระบบ (Settings)' : 'Settings & Integrations'}
             </h1>
@@ -287,7 +287,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               onClick={() => setActiveTab('integrations')}
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'integrations'
-                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
+                  ? 'bg-indigo-600 text-slate-900 shadow-lg shadow-indigo-600/30'
                   : 'text-slate-700 hover:text-slate-800'
               }`}
             >
@@ -298,7 +298,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               onClick={() => setActiveTab('database_schema')}
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'database_schema'
-                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
+                  ? 'bg-indigo-600 text-slate-900 shadow-lg shadow-indigo-600/30'
                   : 'text-slate-700 hover:text-slate-800'
               }`}
             >
@@ -309,7 +309,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               onClick={() => setActiveTab('security_rls')}
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'security_rls'
-                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
+                  ? 'bg-indigo-600 text-slate-900 shadow-lg shadow-indigo-600/30'
                   : 'text-slate-700 hover:text-slate-800'
               }`}
             >
@@ -323,7 +323,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
               }}
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'test_runner'
-                  ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30'
+                  ? 'bg-emerald-600 text-slate-900 shadow-lg shadow-emerald-600/30'
                   : 'text-slate-700 hover:text-slate-800'
               }`}
             >
@@ -338,7 +338,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
       {activeTab === 'auth_settings' && (
         <div className="space-y-6">
           {/* Active Account Overview Card */}
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950/40 border border-slate-200 shadow-xl">
+          <div className="p-6 rounded-2xl bg-gradient-to-br from-white via-slate-50 to-indigo-950/40 border border-slate-200 shadow-xl">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="flex items-center gap-4">
                 <img
@@ -349,7 +349,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
                 />
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="text-lg font-bold text-white">{authUser.name}</h3>
+                    <h3 className="text-lg font-bold text-slate-900">{authUser.name}</h3>
                     <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/30">
                       {authUser.isLoggedIn ? 'Online (เข้าสู่ระบบแล้ว)' : 'Guest Mode'}
                     </span>
@@ -574,7 +574,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
                       <Webhook className="w-4 h-4" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-white text-sm">{item.title}</h3>
+                      <h3 className="font-bold text-slate-900 text-sm">{item.title}</h3>
                       <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-400">
                         <CheckCircle2 className="w-3 h-3" />
                         {item.status}
@@ -609,13 +609,13 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
             <div className="flex items-center gap-2">
               <Database className="w-5 h-5 text-indigo-400" />
               <div>
-                <h3 className="font-bold text-white text-sm">Supabase PostgreSQL Schema (Production DDL)</h3>
+                <h3 className="font-bold text-slate-900 text-sm">Supabase PostgreSQL Schema (Production DDL)</h3>
                 <p className="text-xs text-slate-700">20+ Production Tables with Infinite Organization & Multi-Level RBAC</p>
               </div>
             </div>
             <button
               onClick={() => handleCopy(supabaseDdlSchema, 'ddl_schema')}
-              className="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center gap-1.5"
+              className="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-slate-900 text-xs font-semibold flex items-center gap-1.5"
             >
               {copiedKey === 'ddl_schema' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
               <span>{copiedKey === 'ddl_schema' ? 'คัดลอกแล้ว' : 'คัดลอก SQL DDL'}</span>
@@ -634,7 +634,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
           <div className="border-b border-slate-200 pb-3 flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-emerald-400" />
             <div>
-              <h3 className="font-bold text-white text-sm">การกำหนดสิทธิ์และการเข้าถึงข้อมูล (Role-Based Access & RLS)</h3>
+              <h3 className="font-bold text-slate-900 text-sm">การกำหนดสิทธิ์และการเข้าถึงข้อมูล (Role-Based Access & RLS)</h3>
               <p className="text-xs text-slate-700">ป้องกันการมองเห็นรายได้ข้ามสายงาน (Data Privacy & Compliance)</p>
             </div>
           </div>
@@ -666,7 +666,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
             <div className="flex items-center gap-2">
               <Terminal className="w-5 h-5 text-emerald-400" />
               <div>
-                <h3 className="font-bold text-white text-sm">การตรวจสอบความถูกต้องของระบบคำนวณ (Calculation Engine Verification)</h3>
+                <h3 className="font-bold text-slate-900 text-sm">การตรวจสอบความถูกต้องของระบบคำนวณ (Calculation Engine Verification)</h3>
                 <p className="text-xs text-slate-700">ทดสอบสมการทางคณิตศาสตร์ 7 เงื่อนไขตาม Section 51 + Cycle Prevention</p>
               </div>
             </div>
@@ -674,7 +674,7 @@ ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;`;
             <button
               onClick={runAllUnitTests}
               disabled={runningTests}
-              className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs flex items-center gap-2 shadow-lg shadow-emerald-600/30 transition-all"
+              className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-900 font-semibold text-xs flex items-center gap-2 shadow-lg shadow-emerald-600/30 transition-all"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${runningTests ? 'animate-spin' : ''}`} />
               <span>{runningTests ? 'กำลังทดสอบ...' : 'รันทดสอบทั้งหมด (Run Tests)'}</span>

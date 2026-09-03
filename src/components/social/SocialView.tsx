@@ -14,7 +14,7 @@ const SOCIAL_LINKS: Record<
     url: 'https://www.facebook.com/',
     desc: 'ลิงก์ Facebook ของทีมและตัวแทน เพื่อต่อยอดการตลาดออนไลน์',
     icon: Facebook,
-    gradient: 'from-blue-600/20 via-slate-900 to-slate-950',
+    gradient: 'from-blue-600/20 via-slate-50 to-white',
     ring: 'border-blue-500/30',
   },
   social_youtube: {
@@ -22,7 +22,7 @@ const SOCIAL_LINKS: Record<
     url: 'https://www.youtube.com/',
     desc: 'ลิงก์ YouTube ของทีมและตัวแทน เพื่อต่อยอดการตลาดออนไลน์',
     icon: Youtube,
-    gradient: 'from-red-600/20 via-slate-900 to-slate-950',
+    gradient: 'from-red-600/20 via-slate-50 to-white',
     ring: 'border-red-500/30',
   },
 };
@@ -37,10 +37,10 @@ export const SocialView: React.FC = () => {
       <div className={`p-6 sm:p-8 rounded-3xl bg-gradient-to-r ${item.gradient} border ${item.ring} shadow-xl`}>
         <div className="flex items-center gap-4">
           <div className="w-14 h-14 rounded-2xl bg-white/80 border border-slate-200 flex items-center justify-center shadow-md">
-            <Icon className="w-7 h-7 text-white" />
+            <Icon className="w-7 h-7 text-slate-900" />
           </div>
           <div className="min-w-0">
-            <h1 className="text-2xl font-black text-white tracking-tight">{item.title}</h1>
+            <h1 className="text-2xl font-black text-slate-900 tracking-tight">{item.title}</h1>
             <p className="text-xs text-slate-700 mt-1">{item.desc}</p>
           </div>
         </div>

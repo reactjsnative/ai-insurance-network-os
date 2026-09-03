@@ -144,7 +144,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
           >
             {/* Top Card Branding */}
             <div className="space-y-1 text-center">
-              <h2 className="text-xl font-black text-white tracking-tight">{t('login_title')}</h2>
+              <h2 className="text-xl font-black text-slate-900 tracking-tight">{t('login_title')}</h2>
             </div>
 
             {/* Error Notification */}
@@ -156,7 +156,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
 
             {/* Create Account Heading */}
             <div className="text-center space-y-1">
-              <h3 className="text-base font-bold text-white tracking-tight">{t('login_create_account')}</h3>
+              <h3 className="text-base font-bold text-slate-900 tracking-tight">{t('login_create_account')}</h3>
             </div>
 
             {/* Social OAuth Providers - Vertical stack */}
@@ -177,9 +177,9 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
                 id="btn-gateway-login-tiktok"
                 onClick={() => handleSocialLogin('tiktok')}
                 type="button"
-                className="w-full py-2.5 px-4 rounded-xl bg-black hover:bg-zinc-900 text-white font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-3 border border-zinc-800 cursor-pointer active:scale-[0.99]"
+                className="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-zinc-900 text-white font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-3 border border-zinc-800 cursor-pointer active:scale-[0.99]"
               >
-                <TikTokIcon className="w-4 h-4 text-white" />
+                <TikTokIcon className="w-4 h-4 text-slate-900" />
                 <span>{t('login_with_tiktok') || 'ดำเนินการต่อด้วย TikTok'}</span>
               </button>
 
@@ -188,7 +188,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
                 id="btn-gateway-login-facebook"
                 onClick={() => handleSocialLogin('facebook')}
                 type="button"
-                className="w-full py-2.5 px-4 rounded-xl bg-[#1877F2] hover:bg-[#166fe5] text-white font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-3 border border-[#1877F2] cursor-pointer active:scale-[0.99]"
+                className="w-full py-2.5 px-4 rounded-xl bg-[#1877F2] hover:bg-[#166fe5] text-slate-900 font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-3 border border-[#1877F2] cursor-pointer active:scale-[0.99]"
               >
                 <FacebookIcon className="w-4 h-4" />
                 <span>{t('login_with_facebook') || 'ดำเนินการต่อด้วย Facebook'}</span>
@@ -199,9 +199,9 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
                 id="btn-gateway-login-github"
                 onClick={() => handleSocialLogin('github')}
                 type="button"
-                className="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-black text-white font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-3 border border-slate-200 cursor-pointer active:scale-[0.99]"
+                className="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-slate-50 text-white font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-3 border border-slate-200 cursor-pointer active:scale-[0.99]"
               >
-                <GithubIcon className="w-4 h-4 text-white" />
+                <GithubIcon className="w-4 h-4 text-slate-900" />
                 <span>{t('login_with_github') || 'ดำเนินการต่อด้วย GitHub'}</span>
               </button>
 
@@ -322,7 +322,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
       </main>
 
       {/* Footer — copyright only (i18n) */}
-      <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 border-t border-slate-900 text-center text-xs text-slate-700 relative z-10">
+      <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 border-t border-slate-200 text-center text-xs text-slate-700 relative z-10">
         {t('login_copyright')}
       </footer>
     </div>

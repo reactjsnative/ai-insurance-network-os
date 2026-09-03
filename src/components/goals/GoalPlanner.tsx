@@ -121,14 +121,14 @@ export const GoalPlanner: React.FC = () => {
   return (
     <div id="goal_planner_container" className="space-y-6 max-w-7xl mx-auto pb-12">
       {/* Header Banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border border-indigo-500/20 p-6 sm:p-8 shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-white via-indigo-950 to-slate-50 border border-indigo-500/20 p-6 sm:p-8 shadow-xl">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
               <Compass className="w-3.5 h-3.5 text-amber-400" />
               {language === 'th' ? 'ระบบวางแผนเป้าหมายองค์กรเชิงกลยุทธ์ (Strategic Goal Roadmap)' : 'Strategic Goal Roadmap & Requirements'}
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center gap-3">
+            <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight flex items-center gap-3">
               <Target className="w-8 h-8 text-indigo-400" />
               {language === 'th' ? 'การวางแผนเป้าหมาย (Goal Planner)' : 'Network Goal Planner'}
             </h1>
@@ -143,7 +143,7 @@ export const GoalPlanner: React.FC = () => {
             <button
               onClick={() => applyPreset('conservative')}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                selectedScenario === 'conservative' ? 'bg-slate-700 text-white' : 'text-slate-700 hover:text-white'
+                selectedScenario === 'conservative' ? 'bg-slate-700 text-slate-900' : 'text-slate-700 hover:text-slate-900'
               }`}
             >
               {language === 'th' ? 'ระมัดระวัง (250 คน)' : 'Conservative'}
@@ -151,7 +151,7 @@ export const GoalPlanner: React.FC = () => {
             <button
               onClick={() => applyPreset('standard')}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                selectedScenario === 'standard' ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30' : 'text-slate-700 hover:text-white'
+                selectedScenario === 'standard' ? 'bg-indigo-600 text-slate-900 shadow-lg shadow-indigo-600/30' : 'text-slate-700 hover:text-slate-900'
               }`}
             >
               {language === 'th' ? 'มาตรฐาน (500 คน)' : 'Standard (500)'}
@@ -171,7 +171,7 @@ export const GoalPlanner: React.FC = () => {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-slate-200/80">
           <div className="bg-white/60 p-3.5 rounded-xl border border-slate-200/60">
             <p className="text-xs text-indigo-300 font-medium">{language === 'th' ? 'เป้าหมายสมาชิก Active' : 'Target Active Members'}</p>
-            <p className="text-2xl font-black text-white mt-1">{formatNumber(targetActiveMembers)} <span className="text-xs text-slate-700 font-normal">คน</span></p>
+            <p className="text-2xl font-black text-slate-900 mt-1">{formatNumber(targetActiveMembers)} <span className="text-xs text-slate-700 font-normal">คน</span></p>
             <p className="text-[11px] text-slate-700 mt-1">ในระยะเวลา {targetTimeMonths} เดือน</p>
           </div>
 
@@ -201,7 +201,7 @@ export const GoalPlanner: React.FC = () => {
         <div className="bg-white border border-slate-200 rounded-2xl p-6 space-y-5 shadow-xl">
           <div className="border-b border-slate-200 pb-3 flex items-center gap-2">
             <Calculator className="w-5 h-5 text-indigo-400" />
-            <h2 className="font-bold text-white text-base">{language === 'th' ? 'ตั้งค่าเป้าหมายและสมมติฐาน' : 'Goal Inputs & Assumptions'}</h2>
+            <h2 className="font-bold text-slate-900 text-base">{language === 'th' ? 'ตั้งค่าเป้าหมายและสมมติฐาน' : 'Goal Inputs & Assumptions'}</h2>
           </div>
 
           <div className="space-y-4">
@@ -320,7 +320,7 @@ export const GoalPlanner: React.FC = () => {
             <div className="flex items-center justify-between border-b border-slate-200 pb-3">
               <div className="flex items-center gap-2">
                 <Clock className="w-5 h-5 text-amber-400" />
-                <h3 className="font-bold text-white text-base">{language === 'th' ? 'แผนขั้นบันไดสู่ความสำเร็จ (Milestone Roadmap)' : 'Execution Roadmap'}</h3>
+                <h3 className="font-bold text-slate-900 text-base">{language === 'th' ? 'แผนขั้นบันไดสู่ความสำเร็จ (Milestone Roadmap)' : 'Execution Roadmap'}</h3>
               </div>
               <span className="text-xs text-slate-700">{calculation.milestones.length} หมุดหมายสำคัญ</span>
             </div>
@@ -348,7 +348,7 @@ export const GoalPlanner: React.FC = () => {
                         </div>
                       </td>
                       <td className="py-3 px-3">
-                        <span className="font-bold text-white">{m.targetMembers} คน</span>
+                        <span className="font-bold text-slate-900">{m.targetMembers} คน</span>
                       </td>
                       <td className="py-3 px-3 text-cyan-300 font-medium">
                         {m.requiredUnits} หน่วย

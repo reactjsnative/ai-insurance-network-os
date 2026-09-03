@@ -46,7 +46,7 @@ export const ExtractedAiNetwork: React.FC<{ tab?: string }> = ({ tab = 'dashboar
           <button
             onClick={() => setNonce((n) => n + 1)}
             title="โหลดใหม่ (Reload)"
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-700 hover:text-white hover:bg-slate-100 border border-slate-200/60 transition-colors"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-700 hover:text-slate-900 hover:bg-slate-100 border border-slate-200/60 transition-colors"
           >
             <RefreshCw className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">โหลดใหม่</span>

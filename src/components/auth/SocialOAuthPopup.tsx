@@ -164,11 +164,11 @@ export const SocialOAuthPopup: React.FC = () => {
                 id="btn-confirm-google-auth"
                 disabled={isProcessing}
                 onClick={handleConfirmGoogle}
-                className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-slate-900 font-semibold text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
               >
                 {isProcessing ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin text-white" />
+                    <Loader2 className="w-4 h-4 animate-spin text-slate-900" />
                     <span>กำลังเชื่อมต่อ Google...</span>
                   </>
                 ) : (
@@ -193,7 +193,7 @@ export const SocialOAuthPopup: React.FC = () => {
           <div className="p-6 bg-white text-white">
             <div className="flex items-center justify-between pb-4 border-b border-slate-200">
               <div className="flex items-center gap-2.5">
-                <div className="w-6 h-6 rounded-full bg-black flex items-center justify-center text-white">
+                <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center text-white">
                   <TikTokIcon className="w-4 h-4 text-cyan-400" />
                 </div>
                 <span className="text-sm font-semibold tracking-tight">TikTok Authorization</span>
@@ -201,7 +201,7 @@ export const SocialOAuthPopup: React.FC = () => {
               <button
                 id="btn-close-oauth-tiktok"
                 onClick={closeOAuthPopup}
-                className="p-1 rounded-lg text-slate-700 hover:text-white hover:bg-slate-100 transition-colors"
+                className="p-1 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -210,10 +210,10 @@ export const SocialOAuthPopup: React.FC = () => {
             <div className="py-5 text-center">
               <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-tr from-rose-500 via-pink-500 to-cyan-400 text-white p-0.5 mb-3 shadow-lg shadow-pink-500/20">
                 <div className="w-full h-full bg-white rounded-[14px] flex items-center justify-center">
-                  <TikTokIcon className="w-7 h-7 text-white" />
+                  <TikTokIcon className="w-7 h-7 text-slate-900" />
                 </div>
               </div>
-              <h3 className="text-lg font-bold text-white">Authorize AI Insurance Network OS</h3>
+              <h3 className="text-lg font-bold text-slate-900">Authorize AI Insurance Network OS</h3>
               <p className="text-xs text-slate-700 mt-1">Sync your TikTok Agent Profile & Team Network</p>
             </div>
 
@@ -253,7 +253,7 @@ export const SocialOAuthPopup: React.FC = () => {
                 id="btn-cancel-tiktok-auth"
                 disabled={isProcessing}
                 onClick={closeOAuthPopup}
-                className="w-full py-2.5 px-4 rounded-xl text-slate-700 hover:text-white text-xs transition-colors"
+                className="w-full py-2.5 px-4 rounded-xl text-slate-700 hover:text-slate-900 text-xs transition-colors"
               >
                 Cancel
               </button>
@@ -306,11 +306,11 @@ export const SocialOAuthPopup: React.FC = () => {
                 id="btn-confirm-facebook-auth"
                 disabled={isProcessing}
                 onClick={handleConfirmFacebook}
-                className="w-full py-3 px-4 rounded-xl bg-[#1877F2] hover:bg-[#166fe5] text-white font-semibold text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3 px-4 rounded-xl bg-[#1877F2] hover:bg-[#166fe5] text-slate-900 font-semibold text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
               >
                 {isProcessing ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin text-white" />
+                    <Loader2 className="w-4 h-4 animate-spin text-slate-900" />
                     <span>Connecting Facebook OAuth...</span>
                   </>
                 ) : (
@@ -352,7 +352,7 @@ export const SocialOAuthPopup: React.FC = () => {
 
             <div className="py-5 text-center">
               <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white text-white mb-3">
-                <GithubIcon className="w-8 h-8 text-white" />
+                <GithubIcon className="w-8 h-8 text-slate-900" />
               </div>
               <h3 className="text-lg font-bold text-slate-900">Authorize AI Insurance Network OS</h3>
               <p className="text-xs text-slate-700 mt-1">Connect your GitHub Developer Profile</p>
@@ -378,16 +378,16 @@ export const SocialOAuthPopup: React.FC = () => {
                 id="btn-confirm-github-auth"
                 disabled={isProcessing}
                 onClick={handleConfirmGithub}
-                className="w-full py-3 px-4 rounded-xl bg-white hover:bg-black text-white font-semibold text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3 px-4 rounded-xl bg-white hover:bg-slate-50 text-white font-semibold text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
               >
                 {isProcessing ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin text-white" />
+                    <Loader2 className="w-4 h-4 animate-spin text-slate-900" />
                     <span>Connecting GitHub...</span>
                   </>
                 ) : (
                   <>
-                    <GithubIcon className="w-4 h-4 text-white" />
+                    <GithubIcon className="w-4 h-4 text-slate-900" />
                     <span>Authorize with GitHub</span>
                     <ArrowRight className="w-4 h-4" />
                   </>

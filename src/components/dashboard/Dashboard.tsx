@@ -87,7 +87,7 @@ export const Dashboard: React.FC = () => {
             <Cpu className="w-5 h-5" />
           </div>
           <div>
-            <div className="text-xs font-bold text-white flex items-center gap-1.5">
+            <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
               <span>AI Engine 2026 เปิดใช้งาน</span>
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             </div>
@@ -104,7 +104,7 @@ export const Dashboard: React.FC = () => {
       </div>
 
       {/* 1. Hero Network Growth Visualizer Card */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950/40 border border-slate-200 p-6 sm:p-8 shadow-2xl">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-white via-slate-50 to-indigo-950/40 border border-slate-200 p-6 sm:p-8 shadow-2xl">
         <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -138,7 +138,7 @@ export const Dashboard: React.FC = () => {
               <button
                 id="btn_hero_recruit_agent"
                 onClick={() => setActiveTab('recruit_agent')}
-                className="px-4 py-2.5 rounded-xl bg-indigo-600/80 hover:bg-indigo-600 text-white font-semibold text-xs sm:text-sm border border-indigo-500/50 flex items-center gap-2 shadow-lg shadow-indigo-600/20 transition-all"
+                className="px-4 py-2.5 rounded-xl bg-indigo-600/80 hover:bg-indigo-600 text-slate-900 font-semibold text-xs sm:text-sm border border-indigo-500/50 flex items-center gap-2 shadow-lg shadow-indigo-600/20 transition-all"
               >
                 <UserPlus className="w-4 h-4 text-indigo-200" />
                 <span>{language === 'th' ? 'สมัครตัวแทนใหม่' : 'Recruit Agent'}</span>

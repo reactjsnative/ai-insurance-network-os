@@ -163,7 +163,7 @@ export const AICoach: React.FC = () => {
       <div className="p-6 rounded-3xl bg-white/90 border border-slate-200 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-slate-900 shadow-lg shadow-indigo-500/30">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
               <Brain className="w-4 h-4" />
             </div>
             <h1 className="text-xl sm:text-2xl font-black text-slate-900">
@@ -260,7 +260,7 @@ export const AICoach: React.FC = () => {
               className={`flex gap-3 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               {msg.sender === 'ai' && (
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-slate-900 flex items-center justify-center shrink-0 shadow-md">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center shrink-0 shadow-md">
                   <Bot className="w-4 h-4" />
                 </div>
               )}
@@ -290,7 +290,7 @@ export const AICoach: React.FC = () => {
 
           {loading && (
             <div className="flex gap-3 justify-start">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-slate-900 flex items-center justify-center shrink-0">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center shrink-0">
                 <Bot className="w-4 h-4 animate-spin" />
               </div>
               <div className="bg-white/80 border border-slate-200 rounded-2xl rounded-tl-none p-4 text-xs text-slate-700 flex items-center gap-2">

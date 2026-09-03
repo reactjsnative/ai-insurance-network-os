@@ -217,7 +217,7 @@ export const IncomeCalculator: React.FC = () => {
       )}
 
       {/* 3. Hero Total Income Result Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-amber-500/10 via-slate-900 to-indigo-950/40 border border-amber-500/30 p-6 sm:p-8">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-amber-500/10 via-slate-50 to-indigo-950/40 border border-amber-500/30 p-6 sm:p-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div>
             <span className="text-xs font-extrabold uppercase tracking-widest text-amber-400">
@@ -265,7 +265,7 @@ export const IncomeCalculator: React.FC = () => {
             <div
               key={item.id}
               onClick={() => setSelectedIncomeCard(item)}
-              className="p-4 rounded-2xl bg-white/80 hover:bg-white border border-slate-200 hover:border-amber-500/50 cursor-pointer transition-all duration-200 group flex flex-col justify-between"
+              className="p-4 rounded-2xl bg-white/80 hover:bg-slate-50 border border-slate-200 hover:border-amber-500/50 cursor-pointer transition-all duration-200 group flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-start justify-between gap-2">

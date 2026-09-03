@@ -240,7 +240,7 @@ export const IncomeCalculatorView: React.FC = () => {
       {/* Top Header & Toggle Tabs */}
       <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-white flex items-center gap-2.5">
+          <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
             <Calculator className="w-6 h-6 text-amber-400" />
             เครื่องคำนวณผลประโยชน์และจำลองรายได้แบบโปร่งใส
           </h1>
@@ -254,7 +254,7 @@ export const IncomeCalculatorView: React.FC = () => {
             <button
               onClick={() => setActiveTab('LIVE_MEMBER')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'LIVE_MEMBER' ? 'bg-blue-600 text-white shadow' : 'text-slate-700 hover:text-white'
+                activeTab === 'LIVE_MEMBER' ? 'bg-blue-600 text-slate-900 shadow' : 'text-slate-700 hover:text-slate-900'
               }`}
             >
               เครื่องคำนวณแบบสด
@@ -262,7 +262,7 @@ export const IncomeCalculatorView: React.FC = () => {
             <button
               onClick={() => setActiveTab('SCENARIO_COMPARISON')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'SCENARIO_COMPARISON' ? 'bg-blue-600 text-white shadow' : 'text-slate-700 hover:text-white'
+                activeTab === 'SCENARIO_COMPARISON' ? 'bg-blue-600 text-slate-900 shadow' : 'text-slate-700 hover:text-slate-900'
               }`}
             >
               เปรียบเทียบ 3 สถานการณ์
@@ -296,7 +296,7 @@ export const IncomeCalculatorView: React.FC = () => {
           {/* Left Column: Interactive Numeric Sliders & Controls */}
           <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-slate-200">
-              <h2 className="text-sm font-bold text-white flex items-center gap-2">
+              <h2 className="text-sm font-bold text-slate-900 flex items-center gap-2">
                 <Sliders className="w-4 h-4 text-blue-400" />
                 พารามิเตอร์จำลองผลงาน
               </h2>
@@ -313,7 +313,7 @@ export const IncomeCalculatorView: React.FC = () => {
               <select
                 value={customPosition}
                 onChange={e => setCustomPosition(e.target.value as PositionLevel)}
-                className="w-full bg-slate-100 border border-slate-200 text-xs text-white rounded-xl px-3 py-2 focus:outline-none focus:border-blue-500 cursor-pointer"
+                className="w-full bg-slate-100 border border-slate-200 text-xs text-slate-900 rounded-xl px-3 py-2 focus:outline-none focus:border-blue-500 cursor-pointer"
               >
                 {POSITIONS_LIST.map(p => (
                   <option key={p.id} value={p.id}>
@@ -406,7 +406,7 @@ export const IncomeCalculatorView: React.FC = () => {
                   max={20}
                   value={customSeparatedUnits}
                   onChange={e => setCustomSeparatedUnits(Number(e.target.value))}
-                  className="w-full bg-slate-100 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none"
+                  className="w-full bg-slate-100 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 focus:outline-none"
                 />
               </div>
               <div>
@@ -417,7 +417,7 @@ export const IncomeCalculatorView: React.FC = () => {
                   max={10}
                   value={customSeparatedCenters}
                   onChange={e => setCustomSeparatedCenters(Number(e.target.value))}
-                  className="w-full bg-slate-100 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none"
+                  className="w-full bg-slate-100 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 focus:outline-none"
                 />
               </div>
             </div>
@@ -445,7 +445,7 @@ export const IncomeCalculatorView: React.FC = () => {
           <div className="lg:col-span-2 space-y-6">
             
             {/* Grand Total Result Display Banner */}
-            <div className="bg-gradient-to-r from-blue-950 via-slate-900 to-indigo-950 border-2 border-blue-500/60 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+            <div className="bg-gradient-to-r from-blue-950 via-slate-50 to-indigo-950 border-2 border-blue-500/60 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
                   <span className="text-xs font-bold text-blue-400 uppercase tracking-wider">
@@ -455,7 +455,7 @@ export const IncomeCalculatorView: React.FC = () => {
                     {formatBaht(mode === 'MONTHLY' ? sandboxResult.totalMonthlyIncome : sandboxResult.totalAnnualIncome)}
                   </div>
                   <p className="text-xs text-slate-700 mt-1">
-                    ยอดขายรวมทั้งทีม: <strong className="text-white">{formatBaht(sandboxResult.teamTotalMonthlySales)}</strong> (สมาชิก {sandboxResult.teamMemberCount} คน)
+                    ยอดขายรวมทั้งทีม: <strong className="text-slate-900">{formatBaht(sandboxResult.teamTotalMonthlySales)}</strong> (สมาชิก {sandboxResult.teamMemberCount} คน)
                   </p>
                 </div>
 
@@ -475,7 +475,7 @@ export const IncomeCalculatorView: React.FC = () => {
             <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-base font-bold text-white flex items-center gap-2">
+                  <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
                     <Layers className="w-5 h-5 text-amber-400" />
                     ตารางรายละเอียดสูตรคำนวณ ({sandboxResult.breakdown.length} รายการ)
                   </h2>
@@ -504,7 +504,7 @@ export const IncomeCalculatorView: React.FC = () => {
                   <tbody className="divide-y divide-slate-800">
                     {sandboxResult.breakdown.map((item, idx) => (
                       <tr key={item.id || idx} className="hover:bg-slate-100/50 transition-colors">
-                        <td className="py-3 px-3 font-semibold text-white">
+                        <td className="py-3 px-3 font-semibold text-slate-900">
                           {item.categoryNameTh}
                         </td>
                         <td className="py-3 px-3 font-mono text-[11px] text-slate-700">
@@ -543,7 +543,7 @@ export const IncomeCalculatorView: React.FC = () => {
                   </tbody>
                   <tfoot>
                     <tr className="bg-slate-100/90 font-bold border-t-2 border-slate-200">
-                      <td colSpan={4} className="py-3 px-3 text-right text-white">
+                      <td colSpan={4} className="py-3 px-3 text-right text-slate-900">
                         รายได้รวมต่อเดือนสุทธิ:
                       </td>
                       <td className="py-3 px-3 text-right font-mono text-amber-400 text-sm">
@@ -578,7 +578,7 @@ export const IncomeCalculatorView: React.FC = () => {
                     <span className="text-xs font-mono text-slate-700">{sc.position}</span>
                   </div>
 
-                  <h3 className="text-base font-bold text-white mb-2">{sc.description}</h3>
+                  <h3 className="text-base font-bold text-slate-900 mb-2">{sc.description}</h3>
 
                   <div className="my-4 p-4 rounded-xl bg-white/80 border border-slate-200/80">
                     <span className="text-xs text-slate-700 block">รายได้ประมาณการ / เดือน:</span>
@@ -620,7 +620,7 @@ export const IncomeCalculatorView: React.FC = () => {
                     setCustomRenewalPremium(sc.renewalPremium);
                     setActiveTab('LIVE_MEMBER');
                   }}
-                  className="w-full mt-5 py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-semibold text-white border border-slate-200 flex items-center justify-center gap-1.5 cursor-pointer transition-colors"
+                  className="w-full mt-5 py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-semibold text-slate-900 border border-slate-200 flex items-center justify-center gap-1.5 cursor-pointer transition-colors"
                 >
                   <span>นำเข้าสถานการณ์นี้</span>
                   <ArrowRight className="w-3.5 h-3.5" />

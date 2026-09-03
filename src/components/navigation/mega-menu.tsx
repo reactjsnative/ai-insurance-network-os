@@ -72,7 +72,7 @@ export default function MegaMenu() {
         aria-label="เมนูหลัก"
       >
         <a href="/" className="flex items-center gap-3">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-blue-600 text-white">
+          <span className="grid h-10 w-10 place-items-center rounded-xl bg-blue-600 text-slate-900">
             <Sparkles className="h-5 w-5" />
           </span>
 
@@ -127,7 +127,7 @@ export default function MegaMenu() {
 
           <a
             href="/register"
-            className="rounded-full bg-blue-600 px-6 py-2.5 font-medium text-white hover:bg-blue-700"
+            className="rounded-full bg-blue-600 px-6 py-2.5 font-medium text-slate-900 hover:bg-blue-700"
           >
             เริ่มต้นใช้งาน
           </a>
@@ -150,7 +150,7 @@ export default function MegaMenu() {
             type="button"
             aria-label="ปิดเมนู"
             onClick={() => setDesktopOpen(false)}
-            className="fixed inset-0 top-20 z-40 hidden cursor-default bg-slate-950/50 backdrop-blur-[2px] lg:block"
+            className="fixed inset-0 top-20 z-40 hidden cursor-default bg-white/50 backdrop-blur-[2px] lg:block"
           />
 
           <section
@@ -187,13 +187,13 @@ export default function MegaMenu() {
                         className={`flex w-full items-center gap-3 rounded-xl p-3 text-left transition ${
                           selected
                             ? "bg-blue-100 text-blue-700"
-                            : "text-slate-700 hover:bg-white hover:text-blue-600"
+                            : "text-slate-700 hover:bg-slate-50 hover:text-blue-600"
                         }`}
                       >
                         <span
                           className={`grid h-10 w-10 place-items-center rounded-full ${
                             selected
-                              ? "bg-blue-600 text-white"
+                              ? "bg-blue-600 text-slate-900"
                               : "bg-white text-slate-700"
                           }`}
                         >
@@ -212,9 +212,9 @@ export default function MegaMenu() {
               </aside>
 
               <main className="p-8">
-                <div className="relative mb-8 overflow-hidden rounded-2xl bg-gradient-to-r from-slate-950 via-blue-950 to-blue-600 p-8 text-white">
+                <div className="relative mb-8 overflow-hidden rounded-2xl bg-gradient-to-r from-white via-blue-950 to-blue-600 p-8 text-white">
                   <div className="relative z-10 max-w-2xl">
-                    <p className="mb-3 text-sm font-medium text-blue-200">
+                    <p className="mb-3 text-sm font-medium text-blue-700">
                       {activeCategory.title}
                     </p>
 
@@ -222,13 +222,13 @@ export default function MegaMenu() {
                       {activeCategory.heading}
                     </h2>
 
-                    <p className="mt-3 leading-7 text-blue-100">
+                    <p className="mt-3 leading-7 text-slate-700">
                       {activeCategory.description}
                     </p>
 
                     <a
                       href={`/category/${activeCategory.id}`}
-                      className="mt-6 inline-flex items-center gap-2 font-semibold hover:text-blue-200"
+                      className="mt-6 inline-flex items-center gap-2 font-semibold hover:text-blue-700"
                     >
                       ดูทั้งหมด
                       <ChevronRight className="h-4 w-4" />
@@ -250,7 +250,7 @@ export default function MegaMenu() {
                         role="menuitem"
                         className="group flex gap-4 rounded-xl border border-transparent p-4 transition hover:border-blue-100 hover:bg-blue-50"
                       >
-                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-slate-100 text-slate-700 transition group-hover:bg-blue-600 group-hover:text-white">
+                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-slate-100 text-slate-700 transition group-hover:bg-blue-600 group-hover:text-slate-900">
                           <Icon className="h-5 w-5" />
                         </span>
 

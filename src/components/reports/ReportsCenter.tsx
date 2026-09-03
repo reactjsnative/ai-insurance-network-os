@@ -148,7 +148,7 @@ export const ReportsCenter: React.FC = () => {
               </thead>
               <tbody className="divide-y divide-slate-800/60">
                 {income.breakdown.map((b, idx) => (
-                  <tr key={b.id} className="hover:bg-white/30">
+                  <tr key={b.id} className="hover:bg-slate-50/30">
                     <td className="p-3 text-slate-700">{idx + 1}</td>
                     <td className="p-3 font-semibold text-slate-800">{b.title}</td>
                     <td className="p-3 text-slate-700 font-mono">{b.rateOrFormula}</td>

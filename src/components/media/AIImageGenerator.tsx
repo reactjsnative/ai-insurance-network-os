@@ -85,7 +85,7 @@ export const AIImageGenerator: React.FC = () => {
       <div className="p-6 rounded-3xl bg-white/90 border border-slate-200 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-slate-900 shadow-lg shadow-emerald-500/30">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white shadow-lg shadow-emerald-500/30">
               <Wand2 className="w-4 h-4" />
             </div>
             <h1 className="text-xl sm:text-2xl font-black text-slate-900">
@@ -260,7 +260,7 @@ export const AIImageGenerator: React.FC = () => {
               <a
                 href={imageUrl}
                 download={`ai_image_${Date.now()}.png`}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold transition-all"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-900 text-sm font-bold transition-all"
               >
                 <Download className="w-4 h-4" /> ดาวน์โหลด
               </a>

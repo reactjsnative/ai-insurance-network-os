@@ -30,7 +30,7 @@ export const AuthToast: React.FC = () => {
           authNotification.type === 'success'
             ? 'bg-white/95 text-white border-emerald-500/40'
             : authNotification.type === 'error'
-            ? 'bg-rose-950/95 text-white border-rose-500/40'
+            ? 'bg-rose-950/95 text-slate-900 border-rose-500/40'
             : 'bg-white/95 text-white border-indigo-500/40'
         }`}
       >
@@ -53,7 +53,7 @@ export const AuthToast: React.FC = () => {
         <button
           id="btn-close-toast"
           onClick={() => setAuthNotification(null)}
-          className="p-1 rounded-lg text-slate-700 hover:text-white transition-colors"
+          className="p-1 rounded-lg text-slate-700 hover:text-slate-900 transition-colors"
         >
           <X className="w-4 h-4" />
         </button>

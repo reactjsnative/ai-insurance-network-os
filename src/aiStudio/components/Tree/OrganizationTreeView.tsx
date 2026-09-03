@@ -86,13 +86,13 @@ const TreeNodeComponent: React.FC<TreeNodeProps> = ({
         <div className="flex items-start justify-between gap-2">
           <div className="flex items-center gap-2.5">
             <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm shadow-md shrink-0"
+              className="w-10 h-10 rounded-xl flex items-center justify-center text-slate-900 font-bold text-sm shadow-md shrink-0"
               style={{ backgroundColor: posInfo.accentColor }}
             >
               {member.nickname ? member.nickname.slice(0, 2) : member.name.slice(0, 2)}
             </div>
             <div className="overflow-hidden">
-              <p className="font-bold text-xs text-white truncate max-w-[130px]" title={member.name}>
+              <p className="font-bold text-xs text-slate-900 truncate max-w-[130px]" title={member.name}>
                 {member.name}
               </p>
               <div className="flex items-center gap-1 mt-0.5">
@@ -110,7 +110,7 @@ const TreeNodeComponent: React.FC<TreeNodeProps> = ({
                 e.stopPropagation();
                 onEdit(member.id);
               }}
-              className="p-1 rounded-md text-slate-700 hover:text-white hover:bg-slate-100 transition-colors"
+              className="p-1 rounded-md text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-colors"
               title="แก้ไขข้อมูลสมาชิก"
             >
               <Edit2 className="w-3.5 h-3.5" />
@@ -292,7 +292,7 @@ export const OrganizationTreeView: React.FC = () => {
               value={search}
               onChange={e => setSearch(e.target.value)}
               placeholder="ค้นหาชื่อ, รหัส, ชื่อเล่น..."
-              className="w-full pl-9 pr-3 py-1.5 rounded-xl bg-slate-100 border border-slate-200 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
+              className="w-full pl-9 pr-3 py-1.5 rounded-xl bg-slate-100 border border-slate-200 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
             />
           </div>
 
@@ -315,7 +315,7 @@ export const OrganizationTreeView: React.FC = () => {
           <div className="flex items-center bg-slate-100 rounded-xl p-1 border border-slate-200">
             <button
               onClick={() => setZoom(z => Math.max(0.5, z - 0.1))}
-              className="p-1.5 rounded-lg text-slate-700 hover:text-white hover:bg-slate-200 transition-colors"
+              className="p-1.5 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-200 transition-colors"
               title="ย่อขนาด"
             >
               <ZoomOut className="w-3.5 h-3.5" />
@@ -323,14 +323,14 @@ export const OrganizationTreeView: React.FC = () => {
             <span className="text-[11px] font-mono font-bold text-slate-700 px-1.5">{Math.round(zoom * 100)}%</span>
             <button
               onClick={() => setZoom(z => Math.min(1.5, z + 0.1))}
-              className="p-1.5 rounded-lg text-slate-700 hover:text-white hover:bg-slate-200 transition-colors"
+              className="p-1.5 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-200 transition-colors"
               title="ขยายขนาด"
             >
               <ZoomIn className="w-3.5 h-3.5" />
             </button>
             <button
               onClick={() => setZoom(1)}
-              className="p-1.5 rounded-lg text-slate-700 hover:text-white hover:bg-slate-200 transition-colors"
+              className="p-1.5 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-200 transition-colors"
               title="รีเซ็ตขนาด 100%"
             >
               <RotateCcw className="w-3.5 h-3.5" />

@@ -55,7 +55,7 @@ export const TikTokAdsTutorial: React.FC = () => {
   return (
     <div id="tiktok_ads_view" className="space-y-8 max-w-7xl mx-auto pb-16 text-left">
       {/* Header */}
-      <div className="p-6 rounded-3xl bg-gradient-to-r from-slate-900 to-rose-950/30 border border-slate-200 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-gradient-to-r from-white to-rose-950/30 border border-slate-200 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-rose-400" />
@@ -68,7 +68,7 @@ export const TikTokAdsTutorial: React.FC = () => {
           href={TIKTOK_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#ff0050] hover:bg-[#e60048] text-white text-xs font-bold transition-colors"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#ff0050] hover:bg-[#e60048] text-slate-900 text-xs font-bold transition-colors"
         >
           <ExternalLink className="w-4 h-4" />
           เปิด TikTok for Business
@@ -92,7 +92,7 @@ export const TikTokAdsTutorial: React.FC = () => {
           <Play className="w-5 h-5 text-rose-400" />
           <h2 className="text-lg font-black text-slate-900">สร้างวิดีโอสอนยิงแอด</h2>
         </div>
-        <div className="p-5 rounded-2xl bg-gradient-to-br from-slate-900 to-rose-950/20 border border-slate-200 space-y-4">
+        <div className="p-5 rounded-2xl bg-gradient-to-br from-white to-rose-950/20 border border-slate-200 space-y-4">
           <p className="text-xs text-slate-700 leading-relaxed">
             กดปุ่มเพื่อสร้าง <b>วิดีโอสอนยิงแอด TikTok</b> แนว Professional Tutorial (9:16) พร้อมเสียงเล่าภาษาไทย
             และแสดงลิงก์ <b>ads.tiktok.com/business/th</b> ด้านล่างของวิดีโอตลอดทั้งคลิป

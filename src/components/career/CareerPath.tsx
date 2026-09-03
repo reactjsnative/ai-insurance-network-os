@@ -132,7 +132,7 @@ export const CareerPath: React.FC = () => {
       {/* 2. Target Milestone & Overall Progress Gauge */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left: Overall Readiness Gauge */}
-        <div className="p-6 rounded-3xl bg-gradient-to-br from-slate-900 to-indigo-950/40 border border-slate-200 flex flex-col justify-between">
+        <div className="p-6 rounded-3xl bg-gradient-to-br from-white to-indigo-950/40 border border-slate-200 flex flex-col justify-between">
           <div>
             <span className="text-xs font-bold text-amber-400 uppercase tracking-wider">
               เป้าหมาย: {targetCriteria.title}

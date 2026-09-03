@@ -59,18 +59,18 @@ export const AddMemberModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-white/75 backdrop-blur-sm">
       <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-white/60">
-          <div className="flex items-center gap-2 text-white font-bold text-base">
+          <div className="flex items-center gap-2 text-slate-900 font-bold text-base">
             <UserPlus className="w-5 h-5 text-amber-400" />
             <span>เพิ่มสมาชิกใหม่เข้าสู่สายงาน</span>
           </div>
           <button
             onClick={() => setIsAddMemberModalOpen(false)}
-            className="p-1 rounded-lg text-slate-700 hover:text-white hover:bg-slate-100 transition-colors"
+            className="p-1 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -87,7 +87,7 @@ export const AddMemberModal: React.FC = () => {
                 required
                 value={code}
                 onChange={e => setCode(e.target.value)}
-                className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
               />
             </div>
             <div>
@@ -97,7 +97,7 @@ export const AddMemberModal: React.FC = () => {
                 placeholder="เช่น บอส, แจน"
                 value={nickname}
                 onChange={e => setNickname(e.target.value)}
-                className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
               />
             </div>
           </div>
@@ -110,7 +110,7 @@ export const AddMemberModal: React.FC = () => {
               placeholder="เช่น นายสมเกียรติ สว่างไกล"
               value={name}
               onChange={e => setName(e.target.value)}
-              className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+              className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
             />
           </div>
 
@@ -120,7 +120,7 @@ export const AddMemberModal: React.FC = () => {
               <select
                 value={position}
                 onChange={e => setPosition(e.target.value as PositionLevel)}
-                className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-blue-500 cursor-pointer"
+                className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500 cursor-pointer"
               >
                 {POSITIONS_LIST.map(p => (
                   <option key={p.id} value={p.id}>{p.nameTh}</option>
@@ -133,7 +133,7 @@ export const AddMemberModal: React.FC = () => {
               <select
                 value={parentId}
                 onChange={e => setParentId(e.target.value)}
-                className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-blue-500 cursor-pointer"
+                className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500 cursor-pointer"
               >
                 <option value="">รากสายงาน (ไม่มีหัวหน้า)</option>
                 {members.map(m => (
@@ -152,7 +152,7 @@ export const AddMemberModal: React.FC = () => {
                 type="number"
                 value={personalMonthlySales}
                 onChange={e => setPersonalMonthlySales(Number(e.target.value))}
-                className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
               />
             </div>
             <div>
@@ -161,7 +161,7 @@ export const AddMemberModal: React.FC = () => {
                 type="number"
                 value={personalRenewalPremium}
                 onChange={e => setPersonalRenewalPremium(Number(e.target.value))}
-                className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-blue-500"
               />
             </div>
           </div>

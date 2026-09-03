@@ -285,11 +285,11 @@ export const AuthModal: React.FC = () => {
         className="w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-slate-200/80 overflow-hidden my-8"
       >
         {/* Header Bar */}
-        <div className="relative bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-6 sm:p-7">
+        <div className="relative bg-gradient-to-r from-white via-indigo-950 to-slate-50 text-white p-6 sm:p-7">
           <button
             id="btn-close-auth-modal"
             onClick={closeAuthModal}
-            className="absolute top-5 right-5 p-2 rounded-xl text-slate-700 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            className="absolute top-5 right-5 p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-50/10 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -304,7 +304,7 @@ export const AuthModal: React.FC = () => {
               <span className="text-[11px] font-semibold uppercase tracking-wider text-indigo-300">
                 AI Insurance Network OS
               </span>
-              <h2 className="text-xl font-extrabold text-white">
+              <h2 className="text-xl font-extrabold text-slate-900">
                 {authModalTab === 'login' && 'เข้าสู่ระบบ (Sign In)'}
                 {authModalTab === 'register' && 'สร้างบัญชีตัวแทน (Register)'}
                 {authModalTab === 'forgot' && 'รีเซ็ตรหัสผ่าน (Reset Password)'}
@@ -322,8 +322,8 @@ export const AuthModal: React.FC = () => {
               }}
               className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 authModalTab === 'login'
-                  ? 'bg-indigo-600 text-white shadow-sm'
-                  : 'text-slate-700 hover:text-white'
+                  ? 'bg-indigo-600 text-slate-900 shadow-sm'
+                  : 'text-slate-700 hover:text-slate-900'
               }`}
             >
               เข้าสู่ระบบ
@@ -336,8 +336,8 @@ export const AuthModal: React.FC = () => {
               }}
               className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 authModalTab === 'register'
-                  ? 'bg-indigo-600 text-white shadow-sm'
-                  : 'text-slate-700 hover:text-white'
+                  ? 'bg-indigo-600 text-slate-900 shadow-sm'
+                  : 'text-slate-700 hover:text-slate-900'
               }`}
             >
               สมัครสมาชิกใหม่
@@ -379,9 +379,9 @@ export const AuthModal: React.FC = () => {
                     id="btn-login-tiktok"
                     type="button"
                     onClick={() => openOAuthPopup('tiktok')}
-                    className="w-full py-2.5 px-3.5 rounded-xl border border-slate-200 bg-black hover:bg-zinc-900 text-white font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-2.5 px-3.5 rounded-xl border border-slate-200 bg-white hover:bg-zinc-900 text-white font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <TikTokIcon className="w-4 h-4 text-white" />
+                    <TikTokIcon className="w-4 h-4 text-slate-900" />
                     <span>TikTok</span>
                   </button>
                   {/* Facebook — ลำดับต่อจาก TikTok */}
@@ -389,7 +389,7 @@ export const AuthModal: React.FC = () => {
                     id="btn-login-facebook"
                     type="button"
                     onClick={() => openOAuthPopup('facebook')}
-                    className="w-full py-2.5 px-3.5 rounded-xl border border-[#1877F2] bg-[#1877F2] hover:bg-[#166fe5] text-white font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-2.5 px-3.5 rounded-xl border border-[#1877F2] bg-[#1877F2] hover:bg-[#166fe5] text-slate-900 font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <FacebookIcon className="w-4 h-4" />
                     <span>Facebook</span>
@@ -399,9 +399,9 @@ export const AuthModal: React.FC = () => {
                     id="btn-login-github"
                     type="button"
                     onClick={() => openOAuthPopup('github')}
-                    className="w-full py-2.5 px-3.5 rounded-xl border border-slate-200 bg-white hover:bg-black text-white font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-2.5 px-3.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-white font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <GithubIcon className="w-4 h-4 text-white" />
+                    <GithubIcon className="w-4 h-4 text-slate-900" />
                     <span>GitHub</span>
                   </button>
                 </div>
@@ -486,11 +486,11 @@ export const AuthModal: React.FC = () => {
                   id="btn-submit-email-login"
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-bold text-xs transition-all shadow-md shadow-indigo-600/20 flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-slate-900 font-bold text-xs transition-all shadow-md shadow-indigo-600/20 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   {isLoading ? (
                     <>
-                      <Loader2 className="w-4 h-4 animate-spin text-white" />
+                      <Loader2 className="w-4 h-4 animate-spin text-slate-900" />
                       <span>กำลังตรวจสอบข้อมูล...</span>
                     </>
                   ) : (
@@ -621,11 +621,11 @@ export const AuthModal: React.FC = () => {
                 id="btn-submit-register"
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-bold text-xs transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer mt-2"
+                className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-slate-900 font-bold text-xs transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer mt-2"
               >
                 {isLoading ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin text-white" />
+                    <Loader2 className="w-4 h-4 animate-spin text-slate-900" />
                     <span>กำลังสร้างบัญชีตัวแทน...</span>
                   </>
                 ) : (
@@ -672,11 +672,11 @@ export const AuthModal: React.FC = () => {
                     id="btn-send-reset-email"
                     type="submit"
                     disabled={isLoading}
-                    className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-slate-900 font-bold text-xs transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
                   >
                     {isLoading ? (
                       <>
-                        <Loader2 className="w-4 h-4 animate-spin text-white" />
+                        <Loader2 className="w-4 h-4 animate-spin text-slate-900" />
                         <span>กำลังส่งรหัสยืนยัน...</span>
                       </>
                     ) : (
@@ -757,11 +757,11 @@ export const AuthModal: React.FC = () => {
                     id="btn-verify-otp"
                     type="submit"
                     disabled={isLoading}
-                    className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-slate-900 font-bold text-xs transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
                   >
                     {isLoading ? (
                       <>
-                        <Loader2 className="w-4 h-4 animate-spin text-white" />
+                        <Loader2 className="w-4 h-4 animate-spin text-slate-900" />
                         <span>กำลังตรวจสอบรหัส...</span>
                       </>
                     ) : (
@@ -811,11 +811,11 @@ export const AuthModal: React.FC = () => {
                     id="btn-verify-reset-code"
                     type="submit"
                     disabled={isLoading}
-                    className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-slate-900 font-bold text-xs transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
                   >
                     {isLoading ? (
                       <>
-                        <Loader2 className="w-4 h-4 animate-spin text-white" />
+                        <Loader2 className="w-4 h-4 animate-spin text-slate-900" />
                         <span>กำลังตรวจสอบรหัส...</span>
                       </>
                     ) : (
@@ -887,11 +887,11 @@ export const AuthModal: React.FC = () => {
                     id="btn-confirm-reset-password"
                     type="submit"
                     disabled={isLoading}
-                    className="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-slate-900 font-bold text-xs transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
                   >
                     {isLoading ? (
                       <>
-                        <Loader2 className="w-4 h-4 animate-spin text-white" />
+                        <Loader2 className="w-4 h-4 animate-spin text-slate-900" />
                         <span>กำลังตั้งรหัสผ่านใหม่...</span>
                       </>
                     ) : (
@@ -916,7 +916,7 @@ export const AuthModal: React.FC = () => {
                       setForgotStep('request');
                       openAuthModal('login');
                     }}
-                    className="py-2.5 px-6 rounded-xl bg-indigo-600 text-white font-semibold text-xs hover:bg-indigo-700 cursor-pointer"
+                    className="py-2.5 px-6 rounded-xl bg-indigo-600 text-slate-900 font-semibold text-xs hover:bg-indigo-700 cursor-pointer"
                   >
                     กลับไปหน้าเข้าสู่ระบบ
                   </button>

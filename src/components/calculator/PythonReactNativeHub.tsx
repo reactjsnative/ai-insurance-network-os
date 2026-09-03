@@ -219,7 +219,7 @@ const MobileSimulatorView: React.FC = () => {
       </div>
 
       {/* Hero Income Card */}
-      <div className="p-4 rounded-2xl bg-gradient-to-r from-amber-500/20 via-slate-900 to-slate-950 border border-amber-500/40">
+      <div className="p-4 rounded-2xl bg-gradient-to-r from-amber-500/20 via-slate-50 to-white border border-amber-500/40">
         <span className="text-[9px] font-extrabold text-amber-400 uppercase">รายได้รวมสุทธิ (ต่อเดือน)</span>
         <div className="text-3xl font-black text-slate-900 mt-1 font-mono">
           ฿{calc.total.toLocaleString()}
@@ -303,7 +303,7 @@ export const PythonReactNativeHub: React.FC = () => {
   return (
     <div className="space-y-6 text-left">
       {/* Header Hero Card */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-amber-500/15 via-slate-900 to-indigo-950/40 border border-amber-500/30 shadow-xl">
+      <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-amber-500/15 via-slate-50 to-indigo-950/40 border border-amber-500/30 shadow-xl">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-black uppercase tracking-wider border border-amber-500/30">

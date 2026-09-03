@@ -67,7 +67,7 @@ export const GoalSimulatorView: React.FC = () => {
       {/* Top Banner */}
       <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-white flex items-center gap-2.5">
+          <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
             <Target className="w-6 h-6 text-amber-400" />
             ระบบคำนวณย้อนกลับและจำลองเป้าหมาย (Reverse Goal Simulator)
           </h1>
@@ -89,7 +89,7 @@ export const GoalSimulatorView: React.FC = () => {
         
         {/* Left Column: Input Form */}
         <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-5">
-          <h2 className="text-sm font-bold text-white flex items-center gap-2 pb-3 border-b border-slate-200">
+          <h2 className="text-sm font-bold text-slate-900 flex items-center gap-2 pb-3 border-b border-slate-200">
             <Zap className="w-4 h-4 text-amber-400" />
             ตั้งค่าเป้าหมายและสมมติฐาน
           </h2>
@@ -183,7 +183,7 @@ export const GoalSimulatorView: React.FC = () => {
           <div>
             <div className="flex justify-between text-xs mb-1">
               <span className="text-slate-700">ระยะเวลาจำลอง:</span>
-              <strong className="text-white">{simulationMonths} เดือน</strong>
+              <strong className="text-slate-900">{simulationMonths} เดือน</strong>
             </div>
             <div className="grid grid-cols-4 gap-1.5">
               {[6, 12, 18, 24].map(m => (
@@ -192,7 +192,7 @@ export const GoalSimulatorView: React.FC = () => {
                   onClick={() => setSimulationMonths(m)}
                   className={`py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer ${
                     simulationMonths === m
-                      ? 'bg-blue-600 text-white border-blue-500'
+                      ? 'bg-blue-600 text-slate-900 border-blue-500'
                       : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200'
                   }`}
                 >
@@ -247,7 +247,7 @@ export const GoalSimulatorView: React.FC = () => {
           <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-3">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-base font-bold text-white flex items-center gap-2">
+                <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
                   <TrendingUp className="w-5 h-5 text-blue-400" />
                   แนวโน้มรายได้และขนาดทีมตลอด {simulationMonths} เดือน
                 </h2>
@@ -296,7 +296,7 @@ export const GoalSimulatorView: React.FC = () => {
 
           {/* Strategic Advice & Actionable Roadmap */}
           <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-3">
-            <h2 className="text-base font-bold text-white flex items-center gap-2">
+            <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
               <Lightbulb className="w-5 h-5 text-amber-400" />
               คำแนะนำและกลยุทธ์พิชิตเป้าหมาย (Strategic Action Plan)
             </h2>

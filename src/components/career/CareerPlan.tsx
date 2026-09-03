@@ -367,7 +367,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
       <div className="p-6 rounded-3xl bg-white/90 border border-slate-200 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-500 to-rose-600 flex items-center justify-center text-slate-900 shadow-lg shadow-amber-500/30">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-500 to-rose-600 flex items-center justify-center text-white shadow-lg shadow-amber-500/30">
               <Rocket className="w-4 h-4" />
             </div>
             <h1 className="text-xl sm:text-2xl font-black text-slate-900">แผนรายได้ & เส้นทางสู่อิสระภาพทางการเงิน</h1>
@@ -485,7 +485,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
           <h2 className="text-lg font-black text-slate-900">3. คำนวณย้อนหลัง & วิเคราะห์ช่องว่าง (Reverse + Gap)</h2>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-          <div className="p-5 rounded-2xl bg-gradient-to-br from-slate-900 to-fuchsia-950/20 border border-slate-200 space-y-4">
+          <div className="p-5 rounded-2xl bg-gradient-to-br from-white to-fuchsia-950/20 border border-slate-200 space-y-4">
             <div className="flex items-center gap-2 text-fuchsia-300">
               <Target className="w-4 h-4" />
               <span className="text-xs font-bold uppercase tracking-wider">Reverse Goal Calculator</span>
@@ -501,7 +501,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
             </div>
           </div>
 
-          <div className="p-5 rounded-2xl bg-gradient-to-br from-slate-900 to-amber-950/20 border border-slate-200 space-y-4">
+          <div className="p-5 rounded-2xl bg-gradient-to-br from-white to-amber-950/20 border border-slate-200 space-y-4">
             <div className="flex items-center gap-2 text-amber-300">
               <TrendingDown className="w-4 h-4" />
               <span className="text-xs font-bold uppercase tracking-wider">Career Gap Analysis</span>
@@ -597,7 +597,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
           <BrainCircuit className="w-5 h-5 text-indigo-400" />
           <h2 className="text-lg font-black text-slate-900">6. AI Team Coach (คำแนะนำอัตโนมัติ)</h2>
         </div>
-        <div className="p-5 rounded-2xl bg-gradient-to-br from-slate-900 to-indigo-950/30 border border-indigo-500/20 space-y-3">
+        <div className="p-5 rounded-2xl bg-gradient-to-br from-white to-indigo-950/30 border border-indigo-500/20 space-y-3">
           <div className="flex items-center gap-2 text-indigo-300">
             <Sparkles className="w-4 h-4" />
             <span className="text-xs font-bold uppercase tracking-wider">AI Team Coach</span>
@@ -650,7 +650,7 @@ export const CareerPlan: React.FC<{ memberMode?: boolean }> = ({ memberMode = fa
             <h2 className="text-lg font-black text-slate-900">8. วิดีโอสรุปแผนของฉัน</h2>
             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-fuchsia-500/10 text-fuchsia-300 border border-fuchsia-500/30">AI Video</span>
           </div>
-          <div className="p-5 rounded-2xl bg-gradient-to-br from-slate-900 to-fuchsia-950/20 border border-slate-200 space-y-4">
+          <div className="p-5 rounded-2xl bg-gradient-to-br from-white to-fuchsia-950/20 border border-slate-200 space-y-4">
             <p className="text-xs text-slate-700 leading-relaxed">
               เมื่อคุณตั้งค่าแผนด้านบนเรียบร้อย กดปุ่มด้านล่างเพื่อสร้าง <b>วิดีโอสรุปแผนของคุณ</b> อัตโนมัติ
               จากข้อมูลที่คุณกรอก — ตำแหน่งปัจจุบัน เป้าหมาย รายได้จำลอง แผน 30/60/90 วัน พร้อมเสียงเล่าภาษาไทย
@@ -776,7 +776,7 @@ const KpiCard: React.FC<{ label: string; value: string; sub: string; accent: 'sk
     amber: 'from-amber-500/20 text-amber-300',
   }[accent];
   return (
-    <div className={`p-4 rounded-2xl bg-gradient-to-br to-slate-950 border border-slate-200 ${ring}`}>
+    <div className={`p-4 rounded-2xl bg-gradient-to-br to-white border border-slate-200 ${ring}`}>
       <p className="text-[11px] font-semibold uppercase tracking-wider opacity-80">{label}</p>
       <p className="text-lg font-black mt-1">{value}</p>
       <p className="text-[10px] opacity-60">{sub}</p>
@@ -887,7 +887,7 @@ const InfiniteNetworkTree: React.FC<{
   }, [tree]);
 
   return (
-    <div className="p-5 rounded-2xl bg-gradient-to-br from-slate-900 to-rose-950/10 border border-slate-200 space-y-4">
+    <div className="p-5 rounded-2xl bg-gradient-to-br from-white to-rose-950/10 border border-slate-200 space-y-4">
       {/* Toolbar */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2 text-rose-300 text-xs font-bold uppercase tracking-wider">
@@ -954,7 +954,7 @@ const InfiniteNetworkTree: React.FC<{
                       title={`${n.name} • ${role.label}`}
                     >
                       <span
-                        className="absolute -top-1.5 -right-1.5 w-3 h-3 rounded-full border border-slate-900"
+                        className="absolute -top-1.5 -right-1.5 w-3 h-3 rounded-full border border-slate-200"
                         style={{ background: role.color }}
                       />
                       <img

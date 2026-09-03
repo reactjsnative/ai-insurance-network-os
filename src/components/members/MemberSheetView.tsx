@@ -13,7 +13,7 @@ export const MemberSheetView: React.FC = () => {
 
   return (
     <div id="member_sheet_view" className="space-y-6 max-w-7xl mx-auto pb-16 text-left">
-      <div className="p-6 rounded-3xl bg-gradient-to-r from-slate-900 to-emerald-950/30 border border-slate-200 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-gradient-to-r from-white to-emerald-950/30 border border-slate-200 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <Sheet className="w-5 h-5 text-emerald-400" />

@@ -118,7 +118,7 @@ export const GrowthSimulation: React.FC = () => {
       </div>
 
       {/* 2. Reverse Goal Solver: "อยากได้รายได้เดือนละเท่าไหร่? ระบบคำนวณสิ่งที่ต้องสร้างให้" */}
-      <div className="p-6 rounded-3xl bg-gradient-to-r from-purple-950/40 via-slate-900 to-indigo-950/40 border border-purple-500/30 space-y-6">
+      <div className="p-6 rounded-3xl bg-gradient-to-r from-purple-950/40 via-slate-50 to-indigo-950/40 border border-purple-500/30 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">

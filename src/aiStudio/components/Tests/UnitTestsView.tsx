@@ -35,7 +35,7 @@ export const UnitTestsView: React.FC = () => {
       {/* Top Banner */}
       <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-white flex items-center gap-2.5">
+          <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
             <ShieldCheck className="w-6 h-6 text-emerald-400" />
             ระบบทดสอบความถูกต้องของสูตร (Automated Boundary Unit Tests)
           </h1>
@@ -47,7 +47,7 @@ export const UnitTestsView: React.FC = () => {
         <div className="flex items-center gap-2">
           <button
             onClick={handleRunTests}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-md shadow-emerald-600/20 transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-slate-900 shadow-md shadow-emerald-600/20 transition-all cursor-pointer"
           >
             <Play className="w-4 h-4 fill-white" />
             <span>รันการทดสอบทั้งหมด</span>
@@ -64,7 +64,7 @@ export const UnitTestsView: React.FC = () => {
           </div>
           <div>
             <span className="text-xs text-slate-700">ชุดทดสอบทั้งหมด</span>
-            <div className="text-xl font-black text-white">{totalTests} เคส</div>
+            <div className="text-xl font-black text-slate-900">{totalTests} เคส</div>
           </div>
         </div>
 
@@ -103,13 +103,13 @@ export const UnitTestsView: React.FC = () => {
       {/* Filter Tabs & Test Cases Table */}
       <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-bold text-white">รายการทดสอบขอบเขต (Boundary Test Matrix)</h2>
+          <h2 className="text-sm font-bold text-slate-900">รายการทดสอบขอบเขต (Boundary Test Matrix)</h2>
 
           <div className="flex bg-slate-100 rounded-xl p-1 border border-slate-200 text-xs">
             <button
               onClick={() => setFilter('ALL')}
               className={`px-3 py-1 rounded-lg font-semibold transition-colors cursor-pointer ${
-                filter === 'ALL' ? 'bg-blue-600 text-white' : 'text-slate-700 hover:text-white'
+                filter === 'ALL' ? 'bg-blue-600 text-slate-900' : 'text-slate-700 hover:text-slate-900'
               }`}
             >
               ทั้งหมด ({totalTests})
@@ -117,7 +117,7 @@ export const UnitTestsView: React.FC = () => {
             <button
               onClick={() => setFilter('PASSED')}
               className={`px-3 py-1 rounded-lg font-semibold transition-colors cursor-pointer ${
-                filter === 'PASSED' ? 'bg-emerald-600 text-white' : 'text-slate-700 hover:text-white'
+                filter === 'PASSED' ? 'bg-emerald-600 text-slate-900' : 'text-slate-700 hover:text-slate-900'
               }`}
             >
               ผ่าน ({passedCount})
@@ -125,7 +125,7 @@ export const UnitTestsView: React.FC = () => {
             <button
               onClick={() => setFilter('FAILED')}
               className={`px-3 py-1 rounded-lg font-semibold transition-colors cursor-pointer ${
-                filter === 'FAILED' ? 'bg-rose-600 text-white' : 'text-slate-700 hover:text-white'
+                filter === 'FAILED' ? 'bg-rose-600 text-slate-900' : 'text-slate-700 hover:text-slate-900'
               }`}
             >
               ไม่ผ่าน ({failedCount})
@@ -161,7 +161,7 @@ export const UnitTestsView: React.FC = () => {
                     )}
                   </td>
                   <td className="py-3 px-3">
-                    <p className="font-bold text-white">{test.testName}</p>
+                    <p className="font-bold text-slate-900">{test.testName}</p>
                     <span className="font-mono text-[10px] text-slate-700">{test.id}</span>
                   </td>
                   <td className="py-3 px-3">

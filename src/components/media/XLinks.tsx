@@ -170,7 +170,7 @@ export const XLinks: React.FC = () => {
         {links.map((l) => (
           <div
             key={l.id}
-            className="group relative p-4 rounded-2xl bg-gradient-to-br from-slate-900/90 to-slate-950 border border-slate-200 hover:border-sky-500/40 transition-all"
+            className="group relative p-4 rounded-2xl bg-gradient-to-br from-white/90 to-white border border-slate-200 hover:border-sky-500/40 transition-all"
           >
             <div className="flex items-center gap-3">
               <div className="w-11 h-11 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
