@@ -93,16 +93,15 @@ export const Header: React.FC = () => {
         {/* Left: Brand / Title */}
         <div className="flex items-center gap-3 shrink-0">
           <button onClick={() => setActiveTab('dashboard')} title={t('nav_home')} className="group flex items-center gap-2.5 text-left rounded-xl px-2 py-1.5 -ml-2 transition-all duration-200 hover:bg-blue-50 hover:shadow-sm active:bg-blue-100 active:scale-[0.97]">
-          <div className="block">
-            <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 whitespace-nowrap">
               <h1 className="font-black tracking-tight text-base sm:text-lg bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent transition-all duration-200 group-hover:from-blue-700 group-hover:via-indigo-700 group-hover:to-violet-700 group-active:scale-95">
                 {t('nav_home')}
               </h1>
               <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-blue-600/10 text-blue-600 border border-blue-600/30">
                 {t('plan_badge')}
               </span>
-            </div>
-            <p className="text-sm text-slate-900 font-semibold mt-0.5 whitespace-nowrap leading-none">{t('app_subtitle')}</p>
+            <span className="hidden sm:inline text-slate-300 font-light">|</span>
+            <p className="hidden sm:inline text-sm text-slate-900 font-semibold whitespace-nowrap leading-none">{t('app_subtitle')}</p>
           </div>
           </button>
         </div>
