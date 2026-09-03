@@ -95,7 +95,7 @@ export default function InsuranceMegaMenu() {
       <nav className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-5" aria-label="เมนูหลัก">
         <a href="/" className="flex items-center gap-3" onClick={(e)=>{e.preventDefault(); go("dashboard");}} title={t('nav_home')}>
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white font-black">OS</span>
-          <span className="text-[15px] font-black text-slate-900 tracking-tight">{t('nav_home')}</span>
+          <span className="text-[13px] font-bold text-slate-900 tracking-tight">{t('nav_home')}</span>
         </a>
 
         <div className="hidden h-full items-center gap-1 lg:flex">
@@ -167,7 +167,7 @@ export default function InsuranceMegaMenu() {
       {mobileOpen && (
         <div className="fixed inset-0 z-[70] bg-white lg:hidden">
           <div className="flex h-[68px] items-center justify-between border-b border-sky-50/40 px-5">
-            <span className="text-[15px] font-black text-slate-900">AI INSURANCE NETWORK OS</span>
+            <span className="text-xs font-bold text-slate-900 tracking-tight">{t('nav_home')}</span>
             <button onClick={()=>setMobileOpen(false)} className="rounded-lg p-2 text-slate-800 hover:bg-white"><X className="h-6 w-6" /></button>
           </div>
           <div className="h-[calc(100vh-68px)] overflow-y-auto p-5 space-y-3">
