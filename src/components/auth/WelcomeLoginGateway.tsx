@@ -64,7 +64,7 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
     }
   };
 
-  const handleSocialLogin = (provider: 'google' | 'tiktok' | 'facebook') => {
+  const handleSocialLogin = (provider: 'google' | 'tiktok' | 'facebook' | 'github') => {
     openOAuthPopup(provider);
   };
 
