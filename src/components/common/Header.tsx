@@ -149,7 +149,7 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Right: Firebase Cloud Badge, Language Switcher, Presentation Mode, Notifications, User Switcher / Auth */}
-        <div className="flex items-center gap-2 sm:gap-2.5">
+        <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap justify-end max-w-[60%] sm:max-w-none">
           {/* Firebase Cloud Live Database Badge */}
           <div 
             id="badge_firebase_status" 
