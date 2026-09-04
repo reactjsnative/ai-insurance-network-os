@@ -78,12 +78,17 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
       {/* Top Header Bar */}
       <header className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 relative z-10 isolate">
         <div className="flex items-center gap-3 shrink-0">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 shadow-[0_4px_12px_rgba(37,99,235,0.25)] flex items-center justify-center shrink-0">
+            <span className="text-white font-black text-[11px] tracking-widest">AI</span>
+          </div>
           <div className="min-w-0">
             <div className="flex items-center gap-2 whitespace-nowrap flex-wrap">
               <span className="font-black tracking-tight text-base sm:text-lg bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent shrink-0">
-                {t('nav_home')}
+                AI Network
               </span>
+              <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold tracking-widest bg-gradient-to-r from-blue-600/10 to-violet-600/10 text-blue-700 border border-blue-200/50">หน้าแรก</span>
             </div>
+            <div className="text-[10px] font-medium text-slate-500 tracking-wide hidden sm:block -mt-0.5">AI Insurance Network OS • Enterprise 2026</div>
           </div>
         </div>
 
