@@ -140,7 +140,7 @@
         }
         createBadge();
         readStatus();
-        setInterval(readStatus, 800); // keep in sync if user changes mode / runs auto-sponsor
+        setInterval(readStatus, 3000); // keep in sync if user changes mode / runs auto-sponsor
       })();
     </script>
     <script>
@@ -233,150 +233,15 @@
             .catch(function () { /* network error -> retry on next tick */ });
         }
 
-        setInterval(capture, 1200);
+        setInterval(capture, 5000);
         try {
           new MutationObserver(capture).observe(document.body, { childList: true, subtree: true });
         } catch (e) {}
       })();
     </script>
   
-    <script>
-      // Force cleanup - ลบสมาชิกปลอมทั้งหมดที่ค้างในระบบ (v2)
-      (function () {
-        try {
-          var today = new Date().toISOString().slice(0,10);
-          var now = new Date().toISOString();
-          // Clear localStorage fake demo data
-          var keys = Object.keys(localStorage);
-          keys.forEach(function(k){
-            try {
-              var v = localStorage.getItem(k);
-              if (v && (v.indexOf("demo@example.com") !== -1 || v.indexOf("MEM-00") !== -1 || v.indexOf("AG-101") !== -1)) {
-                var parsed = JSON.parse(v);
-                if (Array.isArray(parsed)) {
-                  var filtered = parsed.filter(function(m){ 
-                    var email = (m.email||"").toLowerCase();
-                    var code = m.memberCode||m.code||"";
-                    return email.indexOf("demo@example.com")===-1 && email.indexOf("mock")===-1 && code.indexOf("MEM-00")===-1;
-                  });
-                  if (filtered.length !== parsed.length) {
-                    localStorage.setItem(k, JSON.stringify(filtered));
-                  }
-                }
-              }
-              // Update any stored dates that are old (2024/2025)
-              if (v && v.indexOf("2024-")===-1 && v.indexOf("2025-")===-1) {}
-            } catch(e){}
-          });
-          // Ensure current date is used for new registrations
-          var dateInputs = document.querySelectorAll("input[type=date]");
-          dateInputs.forEach(function(inp){ if(!inp.value) inp.value = today; });
-          console.log("[extracted-app] Auto-cleanup done, date:", today);
-        } catch(e){ console.log("cleanup error", e); }
-      })();
-    </script>
-
-    <script>
-      // FORCE CLEAR fake members - aggressive v2
-      (function(){
-        try{
-          var raw=localStorage.getItem("ai_insurance_members_v2");
-          if(raw){
-            var arr=JSON.parse(raw);
-            var hasFake = arr.some(function(m){ var e=(m.email||"").toLowerCase(); return e.indexOf("insurance.co.th")!==-1 || e.indexOf("demo@example")!==-1; });
-            if(hasFake && arr.length>3){
-              localStorage.removeItem("ai_insurance_members_v2");
-              localStorage.removeItem("ai_insurance_audit_logs_v2");
-              console.log("[FORCE] cleared fake members");
-              setTimeout(function(){ location.reload(); }, 600);
-            }
-          }
-        }catch(e){}
-      })();
-    </script>
-
-    <script>
-      // FINAL CLEAR - ลบ 4 รหัสค้าง Super Admin ให้หมด
-      (function(){
-        try{
-          var v = localStorage.getItem("_cleanup_v3");
-          if(v !== "done"){
-            localStorage.removeItem("ai_insurance_members_v2");
-            localStorage.removeItem("ai_insurance_audit_logs_v2");
-            localStorage.removeItem("ai_insurance_rules_v2");
-            localStorage.removeItem("ai_insurance_placement_settings_v2");
-            localStorage.setItem("_cleanup_v3","done");
-            console.log("[FINAL] cleared all 4 Super Admin codes");
-            setTimeout(function(){ location.reload(); }, 700);
-          }
-        }catch(e){}
-      })();
-    </script>
-
-    <script>
-      // FORCE V4 - ลบ 4 รหัส Super Admin ที่ยังค้างให้หมด (บังคับล้างอีกรอบ)
-      (function(){
-        try{
-          var v = localStorage.getItem("_cleanup_v4");
-          if(v !== "done"){
-            localStorage.removeItem("ai_insurance_members_v2");
-            localStorage.removeItem("ai_insurance_audit_logs_v2");
-            localStorage.removeItem("ai_insurance_rules_v2");
-            localStorage.removeItem("ai_insurance_placement_settings_v2");
-            localStorage.removeItem("ai_insurance_members");
-            localStorage.removeItem("ai_insurance_audit");
-            localStorage.setItem("_cleanup_v4","done");
-            console.log("[FORCE V4] cleared all 4 codes");
-            setTimeout(function(){ location.reload(); }, 800);
-          } else {
-            // Even if v4 done, check still has fake - clear again
-            var raw = localStorage.getItem("ai_insurance_members_v2");
-            if(raw){
-              var arr = JSON.parse(raw);
-              if(arr.length >= 4 && arr.some(function(m){ return (m.email||"").indexOf("insurance.co.th")!==-1; })){
-                localStorage.removeItem("ai_insurance_members_v2");
-                localStorage.removeItem("ai_insurance_audit_logs_v2");
-                console.log("[FORCE V4-2] cleared remaining fake");
-                setTimeout(function(){ location.reload(); }, 800);
-              }
-            }
-          }
-        }catch(e){}
-      })();
-    </script>
-    <script>
-      // V5-1: ลบ 4 รหัส Super Admin เจาะจง (AG000001/002/005/012) แบบกรอง — กันกรณี _cleanup_v4 = done แล้วยังเหลือ
-      (function(){
-        try{
-          if(localStorage.getItem("_cleanup_v5")==="done") return;
-          var raw=localStorage.getItem("ai_insurance_members_v2");
-          if(raw){
-            var arr; try{arr=JSON.parse(raw)}catch(e){arr=null}
-            if(Array.isArray(arr) && arr.length>0){
-              var block=["AG000001","AG000002","AG000005","AG000012"];
-              var need=false;
-              var filtered=arr.filter(function(m){
-                var c=(m.member_code||m.memberCode||m.code||m.member_code||"").toUpperCase();
-                var n=m.name||m.nickname||"";
-                var s=JSON.stringify(m);
-                var isBlock=block.indexOf(c)!==-1 || n.indexOf("สมชาย")!==-1 || n.indexOf("กานดา")!==-1 || n.indexOf("วิชัย")!==-1 || n.indexOf("อานนท์")!==-1 || s.indexOf("AG000001")!==-1 || s.indexOf("AG000002")!==-1 || s.indexOf("AG000005")!==-1 || s.indexOf("AG000012")!==-1;
-                if(isBlock) need=true;
-                return !isBlock;
-              });
-              if(need){
-                localStorage.setItem("ai_insurance_members_v2", JSON.stringify(filtered));
-                localStorage.removeItem("ai_insurance_audit_logs_v2");
-                console.log("[V5-1] filtered 4 Super Admin", arr.length, "->", filtered.length);
-                localStorage.setItem("_cleanup_v5","done");
-                setTimeout(function(){ location.reload(); }, 700);
-                return;
-              }
-            }
-          }
-          localStorage.setItem("_cleanup_v5","done");
-        }catch(e){ try{localStorage.setItem("_cleanup_v5","done")}catch(x){} }
-      })();
-    </script>
+    <!-- cleanup consolidated into V6 -->
+    <!-- V5-1 merged into V6 -->
     <script>
       // V6: วงจรกรองถาวร — ตรวจทุก 1.5 วิ ถ้ายังมี 4 รหัส ให้ลบซ้ำจนกว่าจะหาย (แก้เคส _cleanup_v5=done แล้วยังเหลือ)
       (function(){
