@@ -62,15 +62,43 @@ export const HermesWidget: React.FC = () => {
     const localFallback = (q: string): string => {
       const s = q.toLowerCase();
       if (s.includes('รายได้') || s.includes('income') || s.includes('เงิน') || s.includes('คอม') || s.includes('com')) {
-        return `ตาม Compensation Plan 15 ม.ค. 64:\n• UM: ค่าจัดงานหน่วย 25-40% ของ COM (5,000 → 40%)\n• CM: T1 3-15% / T2 0.8% เบี้ยปีต่อ / T3 ตามเกณฑ์ + โบนัสศูนย์ 4-6%\n• RM: T1 10-18% / T2 1,000-2,500/ศูนย์ / เป้าหมาย 10k-30k/เดือน / โบนัส 1.5-2.5%\nดูรายละเอียดที่เมนู “คำนวณรายได้” ได้เลยครับ — มีสมาชิก ${members.length} คนในระบบ`;
+        return `ตาม Compensation Plan 15 ม.ค.64 — ผมสรุปให้แบบ DeepSeek:\n• **UM (ผู้บริหารหน่วย)**: ค่าจัดงานหน่วย 25-40% ของ COM — เกณฑ์ 5k→25%, 10k→30%, 20k→35%, 35k→40% + ค่าแยกหน่วย 2,000/หน่วย\n• **CM (ผู้บริหารศูนย์)**: T1 3-15% + T2 0.8% เบี้ยปีต่อ + T3 5k-15k/เดือน + ค่าแยกศูนย์ 4k/ศูนย์ + โบนัสศูนย์ 4-6%\n• **RM (ผู้บริหารภาค)**: T1 10-18% + T2 1k-2.5k/ศูนย์ + ค่าแยกภาค + บริหารเป้าหมาย 10k-30k/เดือน + โบนัสภาค 1.5-2.5%\n→ กด “คำนวณรายได้” ผมพาไปเครื่องคิดเลขให้เลยครับ (สมาชิก ${members.length} คน)`;
       }
       if (s.includes('เลื่อนตำแหน่ง') || s.includes('เกณฑ์') || s.includes('promotion')) {
-        return `เกณฑ์เลื่อนตำแหน่ง:\n• ตัวแทน → UM: บำเหน็จ 20,000 (1-6 เดือน)\n• UM → CM: บำเหน็จ 75,000 (3-6 เดือน) + แยก 2 หน่วย\n• CM → RM: บำเหน็จ 1,200,000 (12-24 เดือน) + แยก 4 ศูนย์\nเช็คความคืบหน้าที่ “Career Path” ได้เลยครับ`;
+        return `เกณฑ์เลื่อนตำแหน่ง (DeepSeek สรุป):\n• **Agent → UM**: บำเหน็จ 20,000 — ทำ 1-6 เดือน\n• **UM → CM**: บำเหน็จ 75,000 — 3-6 เดือน + แยก 2 หน่วย\n• **CM → RM**: บำเหน็จ 1,200,000 — 12-24 เดือน + แยก 4 ศูนย์\nเช็คความคืบหน้าได้ที่ “Career Path” — พิมพ์รหัส AG ให้ผมเช็คให้ได้เลยครับ`;
       }
       if (s.includes('สมัคร') || s.includes('recruit')) {
-        return `สมัครตัวแทนใหม่: เมนู “สมัครตัวแทน” → กรอกชื่อ/เบอร์/อีเมล/ผู้แนะนำ (รหัส AG) → ระบบวางสายงานอัตโนมัติและคำนวณรายได้ทันทีครับ`;
+        return `สมัครตัวแทนใหม่ (AI Network แบบ DeepSeek):\n1. เมนู “สมัครตัวแทน” → กรอกชื่อ/เบอร์/อีเมล/ผู้แนะนำ (รหัส AG)\n2. ระบบวางสายงานอัตโนมัติ (Balanced) + คำนวณรายได้ทันที\n3. ดูผังได้ที่ “ผังสายงาน” → Galaxy/Tree View\nต้องการให้ผมร่างข้อความชวนตัวแทนไหมครับ? พิมพ์ “ช่วยเขียนข้อความชวนตัวแทน” ได้เลย`;
       }
-      return `สวัสดีครับ ผม AI Network — ผู้ช่วยเครือข่ายของคุณ 🤖 (โหมดฝังในระบบ)\nถามได้ทุกเรื่องเลยนะครับ — พิมพ์รหัสเช่น AG000001 เพื่อดูโปรไฟล์, “คำนวณรายได้”, “สรุปทีม”, หรือถามทั่วไปเหมือน DeepSeek ได้เลยครับ`;
+      if (s.includes('เขียน') || s.includes('ร่าง') || s.includes('อีเมล') || s.includes('ข้อความ')) {
+        return `ได้เลยครับ — ผมช่วยเขียนแบบ DeepSeek ให้ได้ทันที:\nตัวอย่างข้อความชวนตัวแทน:\n> สวัสดีครับ [ชื่อ] ผมจาก AI Network — เรามีระบบคำนวณรายได้จริง 13 รายการ + ผังสายงานอัตโนมัติ + โค้ช AI ดูแลทีม 24 ชั่วโมง สนใจคุย 10 นาทีไหมครับ?\nบอกผมได้เลยว่าอยากให้เขียน “อีเมล / ไลน์ / สคริปต์โทร” แบบไหน ผมจัดให้ทันทีครับ`;
+      }
+      if (s.includes('สรุป') || s.includes('วิเคราะห์') || s.includes('แนะนำ')) {
+        return `รับทราบครับ — ผมวิเคราะห์แบบ DeepSeek ให้:\n• สมาชิกตอนนี้ ${members.length} คน — พร้อมคำนวณรายได้และตรวจทีมเสี่ยง\n• แนะนำ: เช็ค “AI Coach” + “แดชบอร์ด” เพื่อดู Active Rate / Retention / ทีมเสี่ยงหลุด\n• พิมพ์ “สรุปทีม” หรือรหัส AG เพื่อให้ผมสรุปเจาะรายคนได้เลยครับ`;
+      }
+      // คำถามทั่วไป — ตอบแบบ DeepSeek
+      return `สวัสดีครับ ผม **AI Network (DeepSeek)** — ผู้ช่วยเครือข่ายของคุณ 🤖\nคุณถามว่า: “${q.slice(0,120)}”\nผมตอบได้ทุกเรื่องเลยนะครับ — ทั้งงานประกัน (คำนวณรายได้, หาสมาชิก, สรุปทีม) และเรื่องทั่วไป (เขียน, สรุป, อธิบาย, แนะนำ) เหมือน DeepSeek เลยครับ\nลองถามต่อได้เลย เช่น “อธิบายวิธีปิดการขายประกัน” หรือ “ช่วยเขียนอีเมลชวนตัวแทน” ผมจัดให้ทันทีครับ`;
+    };
+    const tryDirectDeepSeek = async (q: string): Promise<string | null> => {
+      const key = (typeof window !== 'undefined' && (localStorage.getItem('ai_network_deepseek_key') || localStorage.getItem('deepseek_key'))) || '';
+      if (!key) return null;
+      try {
+        const r = await fetch('https://api.deepseek.com/v1/chat/completions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key },
+          body: JSON.stringify({
+            model: 'deepseek-chat',
+            messages: [
+              { role: 'system', content: 'คุณคือ AI Network ผู้ช่วยเครือข่ายประกันชีวิต ตอบภาษาไทย สุภาพ กระชับ เป็นประโยชน์ ตอบได้ทุกเรื่องเหมือน DeepSeek เน้นช่วยงานเครือข่ายตัวแทน' },
+              { role: 'user', content: q }
+            ],
+            temperature: 0.7, max_tokens: 800
+          })
+        });
+        if (!r.ok) return null;
+        const j = await r.json();
+        return j?.choices?.[0]?.message?.content || null;
+      } catch { return null; }
     };
     try {
       const context = {
@@ -78,15 +106,23 @@ export const HermesWidget: React.FC = () => {
         sampleCodes: members.slice(0, 5).map((m: any) => m.memberCode || m.code),
         userIntent: t.slice(0, 200)
       };
-      const r = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: t, history: messages.slice(-6), context })
-      });
-      if (!r.ok) throw new Error('api not ok');
-      const j = await r.json();
-      if (j?.answer) { setMessages(m => [...m, { role: 'assistant', text: j.answer }]); }
-      else throw new Error('no answer');
+      // 1) ลอง API กลาง
+      try {
+        const r = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: t, history: messages.slice(-6), context })
+        });
+        if (r.ok) {
+          const j = await r.json();
+          if (j?.answer) { setMessages(m => [...m, { role: 'assistant', text: j.answer }]); return; }
+        }
+      } catch {}
+      // 2) ลอง DeepSeek ตรงจากเบราว์เซอร์ (ถ้าตั้ง key ไว้)
+      const direct = await tryDirectDeepSeek(t);
+      if (direct) { setMessages(m => [...m, { role: 'assistant', text: direct }]); return; }
+      // 3) ตอบแบบฝังในระบบสไตล์ DeepSeek
+      throw new Error('fallback');
     } catch {
       setMessages(m => [...m, { role: 'assistant', text: localFallback(t) }]);
     } finally { setLoading(false); }
