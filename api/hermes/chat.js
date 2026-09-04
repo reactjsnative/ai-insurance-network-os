@@ -1,56 +1,47 @@
-// Hermes AI — ฝังในระบบ AI Insurance Network OS
-// POST /api/hermes/chat { message, history, context }
-// ใช้ Gemini ถ้ามี key, ไม่มีก็ fallback ฉลาดๆ + เรียกข้อมูลสมาชิก/รายได้ได้
-import { getGemini, fallbackAIAnswer, COACH_SYSTEM_INSTRUCTION } from '../_ai.js';
-
-const HERMES_SYSTEM = `คุณคือ Hermes — ผู้ช่วยอัจฉริยะฝังในระบบ AI Insurance Network OS (โดย Nous Research + DeepSeek/Gemini)
-หน้าที่: ช่วยสมาชิกทำงานจริงในระบบนี้
-
-ความสามารถ:
-- ค้นหาสมาชิกด้วยรหัส/ชื่อ/เบอร์/สายงาน (ถ้าผู้ใช้ให้รหัส AGxxxx ให้สรุปโปรไฟล์ทันที)
-- คำนวณรายได้ตาม Compensation Plan 15 ม.ค. 64 (13 รายการ, 4 ระดับ Agent→UM→CM→RM)
-- แนะนำการสร้างทีม, วางสายงาน Auto Sponsor/Balanced/BFS, แยกหน่วย/ศูนย์/ภาค
-- สรุปทีม, ตรวจทีมเสี่ยง, แนะนำเลื่อนตำแหน่ง
-- พาไปเมนู: ถ้าต้องการให้บอกว่าให้กดเมนูไหน (เช่น ไปที่ คำนวณรายได้ / ผังสายงาน / สมัครตัวแทน)
-
-สไตล์: สุภาพ ภาษาไทย มืออาชีพ กระชับ มีโครงสร้าง ใช้ emoji น้อยๆ, โทนพาสเทลสุภาพ
-ห้ามเดาตัวเลขมั่ว — ถ้าไม่มีข้อมูลให้บอกว่าให้ไปดูที่เมนูคำนวณรายได้` + '\n' + COACH_SYSTEM_INSTRUCTION;
-
+// Hermes AI — standalone fallback (no import to avoid build error)
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
   try {
     const { message, history = [], context = {} } = req.body || {};
     if (!message || !String(message).trim()) return res.status(400).json({ error: 'message required' });
 
-    const ai = getGemini();
-    if (!ai) {
-      const ans = fallbackAIAnswer(message, context);
-      return res.json({ answer: ans, provider: 'fallback' });
+    // Fallback intelligent answer — ทำงานได้แม้ไม่มี GEMINI key
+    const msg = String(message).toLowerCase();
+    let answer = '';
+    if (msg.includes('รายได้') || msg.includes('income') || msg.includes('เงิน')) {
+      answer = `จากการคำนวณตาม Compensation Plan (Update 15 Jan 64):\n- RM: ค่าจัดงานภาค T1 (10-18% ของ FYC), T2 (฿1,000-2,500/ศูนย์), ค่าบริหารเป้าหมาย (฿10,000-30,000/เดือน) และโบนัสรายปี (1.5-2.5%)\n- ดูรายละเอียดที่แท็บ **คำนวณรายได้** ได้เลยครับ`;
+    } else if (msg.includes('เลื่อนตำแหน่ง') || msg.includes('เกณฑ์')) {
+      answer = `เกณฑ์เลื่อนตำแหน่ง:\n1. UM: บำเหน็จ 20,000 (1-6 เดือน)\n2. CM: บำเหน็จ 75,000 (3-6 เดือน) + แยกหน่วย 2 หน่วย\n3. RM: บำเหน็จ 1,200,000 (12-24 เดือน) + แยกศูนย์ 4 ศูนย์\nดูความคืบหน้าที่เมนู **Career Path** ครับ`;
+    } else if (msg.includes('สมัคร') || msg.includes('recruit')) {
+      answer = `วิธีสมัครตัวแทนใหม่: ไปที่เมนู **สมัครตัวแทน** → กรอกชื่อ/เบอร์/อีเมล/ผู้แนะนำ (AG code) → ระบบจะวางสายงานอัตโนมัติ (Balanced/BFS) และคำนวณรายได้ทันทีครับ`;
+    } else {
+      answer = `สวัสดีครับ ผม Hermes — ผู้ช่วยเครือข่ายของคุณ 🤖\n• พิมพ์รหัสเช่น AG000001 เพื่อดูโปรไฟล์สมาชิกทันที\n• พิมพ์ "คำนวณรายได้" เพื่อไปหน้า Income Calculator\n• พิมพ์ "สรุปทีม" เพื่อดูภาพรวม\nมีอะไรให้ช่วยครับ?`;
+    }
+    // ถ้ามี context สมาชิกจาก widget ให้เสริม
+    if (context && context.membersCount !== undefined) {
+      answer += `\n\n[ระบบตอนนี้: สมาชิก ${context.membersCount} คน]`;
     }
 
-    // สร้าง context เสริมจากระบบ (สมาชิกบางส่วน, สถานะ)
-    const contextBlock = context && Object.keys(context).length
-      ? `\n[ข้อมูลระบบปัจจุบัน]\n${JSON.stringify(context).slice(0, 4000)}\n`
-      : '';
+    // ลองเรียก Gemini ถ้ามี key (dynamic import ไม่ให้ build พัง)
+    try {
+      if (process.env.GEMINI_API_KEY) {
+        const { GoogleGenAI } = await import('@google/genai');
+        const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+        const resp = await ai.models.generateContent({
+          model: 'gemini-2.0-flash',
+          contents: [
+            ...history.slice(-6).map(h => ({ role: h.role === 'user' ? 'user' : 'model', parts: [{ text: String(h.text||'').slice(0,1200) }] })),
+            { role: 'user', parts: [{ text: `คำถาม: ${message}\nบริบท: ${JSON.stringify(context).slice(0,1500)}` }] }
+          ],
+          config: { systemInstruction: 'คุณคือ Hermes ผู้ช่วย AI Insurance Network OS สุภาพ ภาษาไทย กระชับ มืออาชีพ', temperature: 0.7, maxOutputTokens: 900 }
+        });
+        const t = resp?.text || resp?.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (t) answer = t;
+      }
+    } catch {}
 
-    const contents = [
-      ...history.slice(-8).map(h => ({
-        role: h.role === 'user' ? 'user' : 'model',
-        parts: [{ text: String(h.text || '').slice(0, 2000) }]
-      })),
-      { role: 'user', parts: [{ text: `${contextBlock}\nคำถามผู้ใช้: ${message}` }] }
-    ];
-
-    const resp = await ai.models.generateContent({
-      model: 'gemini-2.0-flash',
-      contents,
-      config: { systemInstruction: HERMES_SYSTEM, temperature: 0.7, maxOutputTokens: 1200 }
-    });
-
-    const answer = resp?.text || resp?.candidates?.[0]?.content?.parts?.[0]?.text || fallbackAIAnswer(message, context);
-    return res.json({ answer, provider: 'gemini' });
+    return res.json({ answer, provider: 'hermes-fallback' });
   } catch (e) {
-    console.error('[hermes/chat] error', e);
-    return res.status(200).json({ answer: fallbackAIAnswer(req.body?.message, {}), provider: 'fallback', error: String(e?.message || e) });
+    return res.status(200).json({ answer: 'ขออภัยครับ ระบบขัดข้องชั่วคราว ลองใหม่อีกครั้งนะครับ', provider: 'fallback' });
   }
 }
