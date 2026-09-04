@@ -52,4 +52,3 @@ export default async function handler(req, res) {
     return res.status(200).json({ answer:'ขออภัยครับ ระบบขัดข้องชั่วคราว ลองใหม่อีกครั้งนะครับ', provider:'error' });
   }
 }
-# redeploy for DeepSeek env
