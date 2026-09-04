@@ -344,5 +344,37 @@
         }catch(e){}
       })();
     </script>
+    <script>
+      // V5-1: ลบ 4 รหัส Super Admin เจาะจง (AG000001/002/005/012) แบบกรอง — กันกรณี _cleanup_v4 = done แล้วยังเหลือ
+      (function(){
+        try{
+          if(localStorage.getItem("_cleanup_v5")==="done") return;
+          var raw=localStorage.getItem("ai_insurance_members_v2");
+          if(raw){
+            var arr; try{arr=JSON.parse(raw)}catch(e){arr=null}
+            if(Array.isArray(arr) && arr.length>0){
+              var block=["AG000001","AG000002","AG000005","AG000012"];
+              var need=false;
+              var filtered=arr.filter(function(m){
+                var c=(m.member_code||m.memberCode||m.code||m.member_code||"").toUpperCase();
+                var n=m.name||m.nickname||"";
+                var isBlock=block.indexOf(c)!==-1 || n.indexOf("สมชาย")!==-1 || n.indexOf("กานดา")!==-1 || n.indexOf("วิชัย")!==-1 || n.indexOf("อานนท์")!==-1;
+                if(isBlock) need=true;
+                return !isBlock;
+              });
+              if(need){
+                localStorage.setItem("ai_insurance_members_v2", JSON.stringify(filtered));
+                localStorage.removeItem("ai_insurance_audit_logs_v2");
+                console.log("[V5-1] filtered 4 Super Admin", arr.length, "->", filtered.length);
+                localStorage.setItem("_cleanup_v5","done");
+                setTimeout(function(){ location.reload(); }, 700);
+                return;
+              }
+            }
+          }
+          localStorage.setItem("_cleanup_v5","done");
+        }catch(e){ try{localStorage.setItem("_cleanup_v5","done")}catch(x){} }
+      })();
+    </script>
 </body>
 </html>
