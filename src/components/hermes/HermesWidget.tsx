@@ -59,6 +59,19 @@ export const HermesWidget: React.FC = () => {
     if (/สมาชิก|members/i.test(t) && !/AG\d/i.test(t)) { setActiveTab('members_mgmt' as any); }
 
     setLoading(true);
+    const localFallback = (q: string): string => {
+      const s = q.toLowerCase();
+      if (s.includes('รายได้') || s.includes('income') || s.includes('เงิน') || s.includes('คอม') || s.includes('com')) {
+        return `ตาม Compensation Plan 15 ม.ค. 64:\n• UM: ค่าจัดงานหน่วย 25-40% ของ COM (5,000 → 40%)\n• CM: T1 3-15% / T2 0.8% เบี้ยปีต่อ / T3 ตามเกณฑ์ + โบนัสศูนย์ 4-6%\n• RM: T1 10-18% / T2 1,000-2,500/ศูนย์ / เป้าหมาย 10k-30k/เดือน / โบนัส 1.5-2.5%\nดูรายละเอียดที่เมนู “คำนวณรายได้” ได้เลยครับ — มีสมาชิก ${members.length} คนในระบบ`;
+      }
+      if (s.includes('เลื่อนตำแหน่ง') || s.includes('เกณฑ์') || s.includes('promotion')) {
+        return `เกณฑ์เลื่อนตำแหน่ง:\n• ตัวแทน → UM: บำเหน็จ 20,000 (1-6 เดือน)\n• UM → CM: บำเหน็จ 75,000 (3-6 เดือน) + แยก 2 หน่วย\n• CM → RM: บำเหน็จ 1,200,000 (12-24 เดือน) + แยก 4 ศูนย์\nเช็คความคืบหน้าที่ “Career Path” ได้เลยครับ`;
+      }
+      if (s.includes('สมัคร') || s.includes('recruit')) {
+        return `สมัครตัวแทนใหม่: เมนู “สมัครตัวแทน” → กรอกชื่อ/เบอร์/อีเมล/ผู้แนะนำ (รหัส AG) → ระบบวางสายงานอัตโนมัติและคำนวณรายได้ทันทีครับ`;
+      }
+      return `สวัสดีครับ ผม AI Network — ผู้ช่วยเครือข่ายของคุณ 🤖 (โหมดฝังในระบบ)\nพิมพ์รหัสเช่น AG000001 เพื่อดูโปรไฟล์ทันที หรือพิมพ์ “คำนวณรายได้ / สรุปทีม / สมัครตัวแทน” ได้เลยครับ`;
+    };
     try {
       const context = {
         membersCount: members.length,
@@ -70,10 +83,12 @@ export const HermesWidget: React.FC = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: t, history: messages.slice(-6), context })
       });
+      if (!r.ok) throw new Error('api not ok');
       const j = await r.json();
-      setMessages(m => [...m, { role: 'assistant', text: j.answer || 'ขออภัยครับ ระบบขัดข้องชั่วคราว ลองใหม่อีกครั้งนะครับ' }]);
+      if (j?.answer) { setMessages(m => [...m, { role: 'assistant', text: j.answer }]); }
+      else throw new Error('no answer');
     } catch {
-      setMessages(m => [...m, { role: 'assistant', text: 'ขออภัยครับ เชื่อมต่อไม่สำเร็จ — ลองใหม่อีกครั้ง หรือดูที่เมนู “AI Coach” ได้เลยครับ' }]);
+      setMessages(m => [...m, { role: 'assistant', text: localFallback(t) }]);
     } finally { setLoading(false); }
   };
 
