@@ -21,24 +21,30 @@
             var a;
             try{a=JSON.parse(raw)}catch(e){a=null}
             if(Array.isArray(a) && a.length>0){
+              var block=['AG000001','AG000002','AG000005','AG000012'];
+              var hasBlock=a.some(function(m){
+                var c=(m.memberCode||m.code||m.member_code||'').toUpperCase();
+                var n=(m.name||'');
+                return block.indexOf(c)!==-1 || n.indexOf('สมชาย')!==-1 || n.indexOf('กานดา')!==-1 || n.indexOf('วิชัย')!==-1 || n.indexOf('อานนท์')!==-1;
+              });
               var hasFake=a.some(function(m){
                 var e=(m.email||'').toLowerCase(),c=m.memberCode||m.code||'',n=(m.name||'').toLowerCase();
                 return e.indexOf('insurance.co.th')!==-1 || e.indexOf('demo@example')!==-1 || e.indexOf('mock')!==-1
-                  || c.indexOf('MEM-00')!==-1 || c.indexOf('AG-101')!==-1
-                  || n.indexOf('ทดสอบ')!==-1 || n.indexOf('demo')!==-1;
+                  || c.indexOf('MEM-00')!==-1 || n.indexOf('ทดสอบ')!==-1;
               });
-              // ถ้ามี fake หรือมี 4 รหัสขึ้นไปที่ไม่ใช่สมาชิกจริง — ล้างหมด
-              if(hasFake || a.length>=4){
+              if(hasBlock || hasFake){
                 localStorage.setItem(K,'[]');
                 localStorage.removeItem('ai_insurance_audit_logs_v2');
                 localStorage.removeItem('ai_insurance_rules_v2');
                 localStorage.removeItem('ai_insurance_placement_settings_v2');
                 localStorage.removeItem('ai_insurance_plan_version_v2');
-                localStorage.setItem('_preboot_cleared','1');
-                console.log('[PRE-BOOT] cleared '+a.length+' fake members');
+                localStorage.setItem('_preboot_v5','1');
+                console.log('[PRE-BOOT V5] cleared blocked 4 codes', a.length);
               }
             }
           }
+          // กันเคสไม่มี raw แต่มี _cleanup เก่า — ล้างอีกรอบถ้ายังมี 4 รหัสดังกล่าว
+          try{localStorage.removeItem('_cleanup_v3');localStorage.removeItem('_cleanup_v4');}catch(e){}
         }catch(e){}
       })();
     </script>
