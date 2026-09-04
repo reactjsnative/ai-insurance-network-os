@@ -13,6 +13,7 @@ const QUICK = [
 export const HermesWidget: React.FC = () => {
   const { members, getMemberByCode, getMemberIncome, setActiveTab } = useApp();
   const [open, setOpen] = React.useState(false);
+  const [fullscreen, setFullscreen] = React.useState(false);
   const [input, setInput] = React.useState('');
   const [loading, setLoading] = React.useState(false);
   const [messages, setMessages] = React.useState<Msg[]>([
@@ -143,7 +144,9 @@ export const HermesWidget: React.FC = () => {
 
       {/* แผงแชท */}
       {open && (
-        <div className="fixed bottom-[76px] right-4 sm:right-5 z-[9998] w-[min(380px,calc(100vw-24px))] h-[min(520px,70vh)] flex flex-col rounded-[20px] overflow-hidden border border-sky-100 bg-[#fcfdff] shadow-[0_16px_48px_rgba(148,163,184,0.35)]">
+        <div className={fullscreen
+          ? "fixed inset-0 z-[9998] flex flex-col bg-[#fcfdff] overflow-hidden"
+          : "fixed bottom-[76px] right-4 sm:right-5 z-[9998] w-[min(380px,calc(100vw-24px))] h-[min(520px,70vh)] flex flex-col rounded-[20px] overflow-hidden border border-sky-100 bg-[#fcfdff] shadow-[0_16px_48px_rgba(148,163,184,0.35)]"}>
           <div className="px-4 py-3 flex items-center justify-between bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 text-white">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-sm">AI</div>
@@ -152,7 +155,10 @@ export const HermesWidget: React.FC = () => {
                 <div className="text-[11px] opacity-90">Muse Spark 1.2 • Contributor Free</div>
               </div>
             </div>
-            <button onClick={() => setOpen(false)} className="w-7 h-7 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center">✕</button>
+            <div className="flex items-center gap-1.5">
+              <button onClick={() => setFullscreen(v => !v)} title={fullscreen ? "ย่อลง" : "ขยายเต็มจอ"} className="w-7 h-7 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-[13px]">{fullscreen ? "⇲" : "⇱"}</button>
+              <button onClick={() => { setOpen(false); setFullscreen(false); }} className="w-7 h-7 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center">✕</button>
+            </div>
           </div>
 
           <div className="px-3 pt-3 flex flex-wrap gap-1.5">
