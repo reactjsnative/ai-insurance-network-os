@@ -394,10 +394,10 @@
         function doFilter(){
           try{
             var raw=localStorage.getItem("ai_insurance_members_v2");
-            if(!raw) return;
-            var arr; try{arr=JSON.parse(raw)}catch(e){return}
-            if(!Array.isArray(arr) || arr.length===0) return;
-            if(!hasBlock(arr)) return;
+            if(!raw) return false;
+            var arr; try{arr=JSON.parse(raw)}catch(e){return false}
+            if(!Array.isArray(arr) || arr.length===0) return false;
+            if(!hasBlock(arr)) return false;
             var filtered=arr.filter(function(m){
               var s=JSON.stringify(m||{});
               for(var i=0;i<BLOCK.length;i++) if(s.indexOf(BLOCK[i])!==-1) return false;
@@ -409,12 +409,14 @@
               localStorage.setItem("ai_insurance_members_v2", JSON.stringify(filtered));
               try{localStorage.removeItem("ai_insurance_audit_logs_v2")}catch(e){}
               console.log("[V6] removed Super Admin", arr.length, "->", filtered.length);
-              setTimeout(function(){ location.reload(); }, 800);
+              return true;
             }
           }catch(e){}
+          return false;
         }
-        doFilter();
-        setInterval(doFilter, 1500);
+        if(doFilter()){
+          setTimeout(function(){ location.reload(); }, 600);
+        }
       })();
     </script>
 </body>
