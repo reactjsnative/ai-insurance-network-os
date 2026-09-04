@@ -79,15 +79,9 @@ export const WelcomeLoginGateway: React.FC<WelcomeLoginGatewayProps> = ({ onEnte
       <header className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 relative z-10 isolate">
         <div className="flex items-center gap-3 shrink-0">
           <div className="min-w-0">
-            <div className="text-[10px] font-bold text-blue-600 tracking-wider uppercase whitespace-nowrap">
-              {t('login_freedom')}
-            </div>
             <div className="flex items-center gap-2 whitespace-nowrap flex-wrap">
               <span className="font-black tracking-tight text-base sm:text-lg bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent shrink-0">
                 {t('nav_home')}
-              </span>
-              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-blue-600/10 text-blue-600 border border-blue-600/30 hidden sm:inline whitespace-nowrap">
-                AI Network
               </span>
             </div>
           </div>
