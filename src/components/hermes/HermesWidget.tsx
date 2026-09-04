@@ -16,7 +16,7 @@ export const HermesWidget: React.FC = () => {
   const [input, setInput] = React.useState('');
   const [loading, setLoading] = React.useState(false);
   const [messages, setMessages] = React.useState<Msg[]>([
-    { role: 'assistant', text: 'สวัสดีครับ ผม Hermes — ผู้ช่วยเครือข่ายของคุณ 🤖\nถามได้เลยครับ: ค้นหาสมาชิก คำนวณรายได้ สรุปทีม หรือสมัครตัวแทน ผมช่วยพาไปถูกเมนูให้ทันทีครับ' }
+    { role: 'assistant', text: 'สวัสดีครับ ผม AI Network — ผู้ช่วยเครือข่ายของคุณ 🤖\nถามได้เลยครับ: ค้นหาสมาชิก คำนวณรายได้ สรุปทีม หรือสมัครตัวแทน ผมช่วยพาไปถูกเมนูให้ทันทีครับ' }
   ]);
   const listRef = React.useRef<HTMLDivElement>(null);
 
@@ -82,11 +82,11 @@ export const HermesWidget: React.FC = () => {
       {/* ปุ่มลอย */}
       <button
         onClick={() => setOpen(v => !v)}
-        aria-label="Hermes AI"
+        aria-label="AI Network"
         className="fixed bottom-5 right-5 z-[9998] flex items-center gap-2 px-4 py-3 rounded-full font-bold text-white shadow-[0_8px_24px_rgba(37,99,235,0.35)] bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 active:scale-[0.97] transition-all"
       >
         <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse" />
-        Hermes
+        AI Network
         <span className="hidden sm:inline opacity-90 font-medium">ผู้ช่วยเครือข่าย</span>
       </button>
 
@@ -95,9 +95,9 @@ export const HermesWidget: React.FC = () => {
         <div className="fixed bottom-[76px] right-4 sm:right-5 z-[9998] w-[min(380px,calc(100vw-24px))] h-[min(520px,70vh)] flex flex-col rounded-[20px] overflow-hidden border border-sky-100 bg-[#fcfdff] shadow-[0_16px_48px_rgba(148,163,184,0.35)]">
           <div className="px-4 py-3 flex items-center justify-between bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 text-white">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-sm">⌁</div>
+              <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-sm">AI</div>
               <div>
-                <div className="text-sm font-extrabold leading-none">Hermes AI</div>
+                <div className="text-sm font-extrabold leading-none">AI Network</div>
                 <div className="text-[11px] opacity-90">ฝังในระบบ • ตอบทันที</div>
               </div>
             </div>
@@ -122,7 +122,7 @@ export const HermesWidget: React.FC = () => {
                 </div>
               </div>
             ))}
-            {loading && <div className="text-xs text-slate-400 px-1">Hermes กำลังพิมพ์…</div>}
+            {loading && <div className="text-xs text-slate-400 px-1">AI Network กำลังพิมพ์…</div>}
           </div>
 
           <div className="p-3 border-t border-slate-100 bg-white flex gap-2">
@@ -130,12 +130,12 @@ export const HermesWidget: React.FC = () => {
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={e => { if (e.key === 'Enter') send(input); }}
-              placeholder="พิมพ์ถาม Hermes… เช่น หา AG000001 หรือ คำนวณรายได้"
+              placeholder="พิมพ์ถาม AI Network… เช่น หา AG000001 หรือ คำนวณรายได้"
               className="flex-1 px-3 py-2 rounded-full border border-slate-200 bg-[#fcfdff] text-sm outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-300"
             />
             <button onClick={() => send(input)} disabled={loading || !input.trim()} className="px-4 py-2 rounded-full font-bold text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-40 text-sm">ส่ง</button>
           </div>
-          <div className="px-3 pb-2 text-[10px] text-slate-400 text-center">Hermes ฝังในระบบ • ข้อมูลสมาชิก {members.length} คน • กดรหัส AG เพื่อดูโปรไฟล์ทันที</div>
+          <div className="px-3 pb-2 text-[10px] text-slate-400 text-center">AI Network ฝังในระบบ • ข้อมูลสมาชิก {members.length} คน • กดรหัส AG เพื่อดูโปรไฟล์ทันที</div>
         </div>
       )}
     </>
