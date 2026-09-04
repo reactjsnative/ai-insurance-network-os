@@ -33,6 +33,7 @@ import { AuthModal } from './components/auth/AuthModal';
 import { SocialOAuthPopup } from './components/auth/SocialOAuthPopup';
 import { AuthToast } from './components/auth/AuthToast';
 import { WelcomeLoginGateway } from './components/auth/WelcomeLoginGateway';
+import { HermesWidget } from './components/hermes/HermesWidget';
 
 const MainContent: React.FC = () => {
   const { activeTab, setActiveTab, isPresentationMode, showGatewayScreen, setShowGatewayScreen, authUser } = useApp();
@@ -111,6 +112,7 @@ const MainContent: React.FC = () => {
       <AuthModal />
       <SocialOAuthPopup />
       <AuthToast />
+      {!showGatewayScreen && <HermesWidget />}
     </div>
   );
 };
