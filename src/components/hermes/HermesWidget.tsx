@@ -134,12 +134,14 @@ export const HermesWidget: React.FC = () => {
       {/* ปุ่มลอย */}
       <button
         onClick={() => setOpen(v => !v)}
-        aria-label="AI Network"
+        aria-label="AI Network Muse Spark 1.2"
+        title="AI Network — Muse Spark 1.2 Contributor Free"
         className="fixed bottom-5 right-5 z-[9998] flex items-center gap-2 px-4 py-3 rounded-full font-bold text-white shadow-[0_8px_24px_rgba(37,99,235,0.35)] bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 active:scale-[0.97] transition-all"
       >
         <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse" />
         AI Network
         <span className="hidden sm:inline opacity-90 font-medium">ผู้ช่วยเครือข่าย</span>
+        <span className="hidden sm:inline text-[10px] font-extrabold bg-white/20 border border-white/30 px-2 py-0.5 rounded-full">Muse Spark 1.2</span>
       </button>
 
       {/* แผงแชท */}
@@ -151,8 +153,8 @@ export const HermesWidget: React.FC = () => {
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-sm">AI</div>
               <div>
-                <div className="text-sm font-extrabold leading-none">AI Network</div>
-                <div className="text-[11px] opacity-90">Muse Spark 1.2 • Contributor Free</div>
+                <div className="text-sm font-extrabold leading-none flex items-center gap-2">AI Network <span className="text-[9px] font-black tracking-widest bg-white text-blue-600 px-2 py-0.5 rounded-full border border-white/80">MUSE SPARK 1.2</span></div>
+                <div className="text-[11px] font-semibold bg-white/20 border border-white/30 px-2 py-0.5 rounded-full inline-flex mt-1">Contributor Free • พร้อมใช้งาน</div>
               </div>
             </div>
             <div className="flex items-center gap-1.5">
