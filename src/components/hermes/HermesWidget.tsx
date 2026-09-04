@@ -70,7 +70,7 @@ export const HermesWidget: React.FC = () => {
       if (s.includes('สมัคร') || s.includes('recruit')) {
         return `สมัครตัวแทนใหม่: เมนู “สมัครตัวแทน” → กรอกชื่อ/เบอร์/อีเมล/ผู้แนะนำ (รหัส AG) → ระบบวางสายงานอัตโนมัติและคำนวณรายได้ทันทีครับ`;
       }
-      return `สวัสดีครับ ผม AI Network — ผู้ช่วยเครือข่ายของคุณ 🤖 (โหมดฝังในระบบ)\nพิมพ์รหัสเช่น AG000001 เพื่อดูโปรไฟล์ทันที หรือพิมพ์ “คำนวณรายได้ / สรุปทีม / สมัครตัวแทน” ได้เลยครับ`;
+      return `สวัสดีครับ ผม AI Network — ผู้ช่วยเครือข่ายของคุณ 🤖 (โหมดฝังในระบบ)\nถามได้ทุกเรื่องเลยนะครับ — พิมพ์รหัสเช่น AG000001 เพื่อดูโปรไฟล์, “คำนวณรายได้”, “สรุปทีม”, หรือถามทั่วไปเหมือน DeepSeek ได้เลยครับ`;
     };
     try {
       const context = {
@@ -78,7 +78,7 @@ export const HermesWidget: React.FC = () => {
         sampleCodes: members.slice(0, 5).map((m: any) => m.memberCode || m.code),
         userIntent: t.slice(0, 200)
       };
-      const r = await fetch('/api/hermes/chat', {
+      const r = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: t, history: messages.slice(-6), context })
