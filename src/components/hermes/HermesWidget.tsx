@@ -149,7 +149,7 @@ export const HermesWidget: React.FC = () => {
               <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-sm">AI</div>
               <div>
                 <div className="text-sm font-extrabold leading-none">AI Network</div>
-                <div className="text-[11px] opacity-90">ฝังในระบบ • ตอบทันที</div>
+                <div className="text-[11px] opacity-90">Muse Spark 1.2 • Contributor Free</div>
               </div>
             </div>
             <button onClick={() => setOpen(false)} className="w-7 h-7 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center">✕</button>
@@ -186,7 +186,7 @@ export const HermesWidget: React.FC = () => {
             />
             <button onClick={() => send(input)} disabled={loading || !input.trim()} className="px-4 py-2 rounded-full font-bold text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-40 text-sm">ส่ง</button>
           </div>
-          <div className="px-3 pb-2 text-[10px] text-slate-400 text-center">AI Network ฝังในระบบ • ข้อมูลสมาชิก {members.length} คน • กดรหัส AG เพื่อดูโปรไฟล์ทันที</div>
+          <div className="px-3 pb-2 text-[10px] text-slate-400 text-center">Muse Spark 1.2 • Contributor Free • สมาชิก {members.length} คน • กดรหัส AG เพื่อดูโปรไฟล์ทันที</div>
         </div>
       )}
     </>
