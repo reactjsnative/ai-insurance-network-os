@@ -91,9 +91,8 @@ export default function InsuranceMegaMenu() {
   const go = (tab: string) => { setActiveTab(tab as any); setDesktopOpen(false); setMobileOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); };
 
   return (
-    <header ref={ref} className="relative z-50 border-b border-sky-50/40 bg-white isolate">
-      <nav className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-5" aria-label="เมนูหลัก">
-        <div className="flex items-center gap-3"></div>
+    <header ref={ref} className="sticky top-16 z-30 border-b border-sky-50/40 bg-white isolate shadow-[0_2px_8px_rgba(148,163,184,0.06)]">
+      <nav className="mx-auto flex h-[52px] max-w-7xl items-center justify-start gap-2 px-5" aria-label="เมนูหลัก">
         <div className="hidden h-full items-center gap-1.5 lg:flex">
           <button
             onClick={() => setDesktopOpen(v=>!v)}
@@ -107,17 +106,17 @@ export default function InsuranceMegaMenu() {
           <button onClick={()=>go("members_mgmt")} className={`px-4 py-2 rounded-full text-[13px] font-bold transition-all ${activeTab==='members_mgmt' ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 text-white shadow-md" : "text-slate-700 hover:text-blue-600 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 border border-transparent hover:border-blue-100"}`}>จัดการสมาชิก</button>
         </div>
 
-        <div className="hidden items-center gap-2 lg:flex">
+        <div className="hidden items-center gap-2 lg:flex ml-auto">
           <button onClick={()=>go("ai_studio")} className="rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-700 hover:via-indigo-700 hover:to-violet-700 px-5 py-2 text-[13px] font-black text-white shadow-md transition-all hover:shadow-lg hover:scale-105 active:scale-95">จำลองรายได้</button>
         </div>
 
-        <button onClick={()=>setMobileOpen(true)} className="rounded-lg p-2 text-slate-800 hover:bg-white lg:hidden"><Menu className="h-6 w-6" /></button>
+        <button onClick={()=>setMobileOpen(true)} className="rounded-lg p-2 text-slate-800 hover:bg-white lg:hidden ml-auto"><Menu className="h-6 w-6" /></button>
       </nav>
 
       {desktopOpen && (
         <>
-          <button onClick={()=>setDesktopOpen(false)} className="fixed inset-0 top-[68px] z-40 hidden cursor-default bg-white/20 backdrop-blur-[2px] lg:block" aria-label="ปิดเมนู" />
-          <section className="absolute left-1/2 top-[76px] z-50 hidden w-[min(94vw,1200px)] -translate-x-1/2 overflow-hidden rounded-2xl border border-sky-50/40 bg-white shadow-[0_8px_24px_rgba(148,163,184,0.08)] lg:block">
+          <button onClick={()=>setDesktopOpen(false)} className="fixed inset-0 top-[116px] z-40 hidden cursor-default bg-white/20 backdrop-blur-[2px] lg:block" aria-label="ปิดเมนู" />
+          <section className="absolute left-5 top-[60px] z-50 hidden w-[min(94vw,1200px)] overflow-hidden rounded-2xl border border-sky-50/40 bg-white shadow-[0_8px_24px_rgba(148,163,184,0.08)] lg:block">
             <div className="grid min-h-[480px] grid-cols-[300px_1fr]">
               <aside className="border-r border-sky-50/30/40 bg-[#f8fbff] p-6">
                 <p className="mb-4 text-[11px] font-bold uppercase tracking-widest text-slate-800">หมวดหมู่</p>

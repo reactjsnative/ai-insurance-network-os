@@ -64,8 +64,8 @@ const MainContent: React.FC = () => {
 
   return (
     <div className="flex-1 flex flex-col h-screen overflow-hidden bg-gradient-to-b from-[#fcfdff] via-[#f8fbff]/30 to-[#f0f9ff] text-slate-900 font-sans">
-      {!isPresentationMode && <InsuranceMegaMenu />}
       {!isPresentationMode && <Header />}
+      {!isPresentationMode && <InsuranceMegaMenu />}
 
       {activeTab === 'ai_studio' ? (
         <div className="flex-1 overflow-y-auto bg-[#fcfdff]">
